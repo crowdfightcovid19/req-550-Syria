@@ -26,7 +26,8 @@ Please add here any URL address to other tools you may be using (e.g. Google doc
 
 Please describe here the contents of your folders, eg. 
 
-* `papers`: Modelling-related scientific papers, it would be better looking for an external folder.
+* `docs`: Documents related to the model (e.g. documentation).
+    * `papers`: Modelling-related scientific papers, it would be better looking for an external folder.
 * `manuscripts`: For the moment  there is just a bib file. We may consider working in Overleaf.
 * `src`: Source files
 * `bin`: Binary files
