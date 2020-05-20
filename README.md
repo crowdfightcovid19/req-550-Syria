@@ -4,7 +4,7 @@ Repository to host the code of request 550 coming from the Pax Syriana Foundatio
 ### Participants
 
 * Chamsy Sarkis, Chairman Pax Syriana Foundation (chamsy.sarkis@paxsyriana.com)
-* Jean Jaques Py, IT Pax Syriana Foundation (**add email**)
+* Jean Jaques Py, IT Pax Syriana Foundation (jean-jacques.py@paxsyriana.com)
 * Sylvie Diane, Stellenbosch University, South Africa. (sylvie@sun.ac.za)
 * Morgane Salines, Ministry of Agriculture in France. (morgane.salines@gmail.com)
 * Eduard Campillo-Funollet, University of Sussex, UK. (funollet@sussex.ac.uk)
