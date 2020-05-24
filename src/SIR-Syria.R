@@ -1,3 +1,12 @@
+# ****************************************
+# SimpleSIR.R
+# ****************************************
+# author = Eduard Campillo-Funollet
+# email = funollet@sussex.ac.uk
+# date = 21st May 2020
+# description = 
+# usage = 
+
 library(deSolve)   # package to solve the model
 library(reshape2)  # package to change the shape of the model output
 library(ggplot2)

@@ -25,9 +25,10 @@ Please add here any URL address to other tools you may be using (e.g. Google doc
 
 ### Contents
 
-**Note** Please avoid the use of blanks or special characters in ALL filenames. The safest separator is "_".
+**File conventions**:
+* Please avoid the use of blanks or special characters in ALL filenames. The safest separator is "_".
 
-Please describe here the contents of your folders.
+**Contents of the folders**:
 
 * `docs`: Documents related to the model (e.g. documentation).
     * `papers`: Modelling-related scientific papers, it would be better looking for an external folder.
@@ -36,3 +37,11 @@ Please describe here the contents of your folders.
 * `bin`: Binary files
 * `data`: Data used for the study
     * `age_structure_and_NCDprevalence`: Split of the table `idps_in_camps_syria_april_2020.xlsx` into age structure and administrative levels.
+
+
+### Scripts
+
+* `Age_comorbidities_analysis.R`:  The script splits the table `idps_in_camps_syria_april_2020.xlsx` into age structure and administrative levels.
+*  `SimpleSIR.R`: Minimal SIR model
+*  `SIR-Syria.R`: Minimal SIR model with some Syrian parameters.
+
