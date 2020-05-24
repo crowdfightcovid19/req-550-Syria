@@ -21,13 +21,18 @@ Please add here any URL address to other tools you may be using (e.g. Google doc
 * _slack_: Quick communication.
 * _Google drive_:
      * Shared documents: [link](https://drive.google.com/drive/folders/1aIYpuSEaXgdNS8Z-7KTMhpNNWWzQqvg4)
+* _Overleaf_: More detailed documentation of the methods and results.
 
 ### Contents
 
-Please describe here the contents of your folders, eg. 
+**Note** Please avoid the use of blanks or special characters in ALL filenames. The safest separator is "_".
+
+Please describe here the contents of your folders.
 
 * `docs`: Documents related to the model (e.g. documentation).
     * `papers`: Modelling-related scientific papers, it would be better looking for an external folder.
 * `manuscripts`: For the moment  there is just a bib file. We may consider working in Overleaf.
-* `src`: Source files
+* `src`: Source files. Create a directory for your script if a local environment must be loaded
 * `bin`: Binary files
+* `data`: Data used for the study
+    * `age_structure_and_NCDprevalence`: Split of the table `idps_in_camps_syria_april_2020.xlsx` into age structure and administrative levels.
