@@ -1,11 +1,11 @@
 # ****************************************
 # SimpleSIR.R
 # ****************************************
-# author = Eduard Campillo-Funollet
-# email = funollet@sussex.ac.uk
+# author = Jennifer Villers
+# email = villers.jennifer@gmail.com
 # date = 21st May 2020
-# description = 
-# usage = 
+# description = Basic SIR model in R
+# usage = Edit the script (lines 15 to 24) to set initial contidions and parameters.
 
 library(deSolve)   # package to solve the model
 library(reshape2)  # package to change the shape of the model output
