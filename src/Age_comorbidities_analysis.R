@@ -4,13 +4,14 @@
 # author = Jordan Klein
 # email = jdklein@princeton.edu
 # date = 21st May 2020
-# description = 
-# usage = script should be run within the folder "data". Further details..
+# description = Cleans relevant demographic data on idps in camps, tabulates NCD prevalence & age structure at each administrative level
+# usage = script should be run within the folder "data". 
 #### Load packages & data ####
 
 library(readxl)
 library(tidyverse)
 
+setwd("data")
 dirOut="age_structure_and_NCDprevalence"
 
 camps <- read_excel("idps_in_camps_syria_april_2020.xlsx")
