@@ -1,11 +1,12 @@
 # ****************************************
 # SimpleSIR.R
 # ****************************************
-# author = Eduard Campillo-Funollet
-# email = funollet@sussex.ac.uk
+# ****************************************
+# author = Jennifer Villers
+# email = villers.jennifer@gmail.com
 # date = 21st May 2020
-# description = 
-# usage = 
+# description = SIR model including birth and deaths
+# usage = Edit the script (lines 16 to 27) to set initial contidions and parameters.
 
 library(deSolve)   # package to solve the model
 library(reshape2)  # package to change the shape of the model output
