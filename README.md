@@ -44,4 +44,7 @@ Please add here any URL address to other tools you may be using (e.g. Google doc
 * `Age_comorbidities_analysis.R`:  The script splits the table `idps_in_camps_syria_april_2020.xlsx` into age structure and administrative levels.
 *  `SimpleSIR.R`: Minimal SIR model
 *  `SIR-Syria.R`: Minimal SIR model with some Syrian parameters.
+*  `SIR-Syria_structured.R`: 
+    * _Description_: SEAIRQD model including the possibility of defining population classes. The transition probabilities from one compartment to another depend on features of the population that the user may want to define, for instance related to age, sex, comorbidities of the individuals, roles like "carers" or "shielded". These are named population "classes" in the script.
+    * _Usage_: Usage, input and output files are described in the header of the file.
 
