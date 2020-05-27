@@ -15,3 +15,6 @@
 * Pregnant and Lactating Women: Numbers vary from one camp to another, but roughly 30-40% of the households have a PWL (pregnant or lactating woman) [pdf](https://www.impact-repository.org/document/reach/1625f5c2/REACH_SYR_-Northwest-Syria-Camps-and-Sites-Needs-Assessment_Sub-District-Profiles_April2020.pdf)
 * The datasets are on this link (from about 1240 households, survey performed in 2019): [Gdrive](https://drive.google.com/open?id=1K8yKP0ac98ogy95fng37prJ_6Yle1xo7)
 
+### General COVID data
+* Links/comments about asymptomatic cases: [external link](https://www.cebm.net/covid-19/covid-19-what-proportion-are-asymptomatic/)
+
