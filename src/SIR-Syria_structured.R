@@ -4,7 +4,7 @@
 # 
 # 
 # author = Alberto Pascual-García, expanding a version from Eduard Campillo-Funollet
-# email = alberto.pascual.garcia@gmail.com (Eduard: funollet@sussex.ac.uk)
+# email = alberto.pascual.garcia@gmail.com (Eduard: e.campillo-funollet@sussex.ac.uk)
 # date = 27th May 2020
 # description = This script expands the script SimpleSIR.R to account for a structured population
 #        in which the transition probabilities from one compartment to another depend on features
