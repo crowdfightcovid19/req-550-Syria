@@ -1,0 +1,678 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\I}{\mathrm{I}}
+\newcommand{\A}{\mathrm{A}}
+\newcommand{\Q}{\mathrm{Q}}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.3cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+An extended SIR model incorporating population classes
+\end_layout
+
+\begin_layout Author
+crowdfightCOVID & Pax Syriana Foundation
+\end_layout
+
+\begin_layout Section*
+Motivation
+\end_layout
+
+\begin_layout Standard
+The aim of this model is to provide a solid basis to explore the impact
+ of a possible outbreak in Syrian refugees' camps.
+ The model should have sufficient complexity to bring reliable results while
+ being sufficiently general to embrace the diversity of situations that
+ exist in the different camps.
+\end_layout
+
+\begin_layout Standard
+There are a number of considerations with respect to models developed in
+ the context of high income countries.
+ Firstly, the inaccessibilty to any kind of health system, makes the considerati
+on of compartments such as 
+\begin_inset Quotes eld
+\end_inset
+
+hospitalized
+\begin_inset Quotes erd
+\end_inset
+
+ meaningless, and will not be considered here.
+ Also along these lines, we note that epidemiologic parameters found in
+ the literature should be reconsidered to account from a more severe impact
+ of the disease at all levels.
+ Since there is no existing data a careful sensitivity analysis of the model
+ under different scenarios must be performed.
+ To continue with, social interactions within the camps is itself compartmentali
+zed, segregating the activities by gender and age [APG: How true is this
+ assertion, I show an example below], which may be considered when the frequency
+ of contacts are modelled.
+ Lastly, any actions intended to minimize the impact of the spread of the
+ virus should be designed considering these limitations and the social structure.
+ Since the most feasible actions are related to shielding strategies, the
+ complexity of the living conditions should be considered in the models.
+\end_layout
+
+\begin_layout Standard
+To address these challenges, we incorporate in the model the concept of
+ 
+\shape italic
+population class
+\shape default
+, which is a subset of the population that we may want to distinguish either
+ because it has different epidemiological parameters (e.g.
+ fatality rates), significantly different frequency in the number of contacts
+ with members that do not belong to their own class, or both.
+ Population classes allow us to generalize previous models that considered
+ stratification of population in classes [REF] or locations [REF], that
+ we can implicitly model via different subsets of parameters.
+ In this way, we can also model the impact of potential management measures
+ like shielding a vulnerable population, or subsetting the population classes
+ like a quarantined population in a separated area of the camp, controlling
+ the probability of contacts with potential carers.
+\end_layout
+
+\begin_layout Section*
+Description of the model
+\end_layout
+
+\begin_layout Standard
+The model starts considers a generic population class 
+\begin_inset Formula $i$
+\end_inset
+
+, whose dynamics is described by the model:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\dot{S}_{i} & = & -\lambda_{i}S_{i}\\
+\dot{E}_{i} & = & \lambda_{i}S_{i}-\delta_{\mathrm{E}}E_{i}\\
+\dot{A}_{i} & = & \sigma_{i}\delta_{\mathrm{E}}E_{i}-\gamma_{\mathrm{A}}A_{i}\\
+\dot{I_{i}} & = & (1-\sigma_{i})\delta_{\mathrm{E}}E_{i}-(\gamma_{\mathrm{I}i}+\alpha_{\mathrm{I}i}+\eta q)I_{i}\\
+\dot{Q_{i}} & = & \eta qI_{i}-(\gamma_{\mathrm{Q}i}+\alpha_{\mathrm{Q}i})Q_{i}\\
+\dot{R_{i}} & = & \gamma_{\mathrm{A}}A+\gamma_{\mathrm{I}i}I_{i}+\gamma_{Qi}Q_{i}\\
+\dot{D_{i}} & = & \alpha_{\mathrm{I}i}I_{i}+\alpha_{\mathrm{Q}i}Q_{i}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where all the variables 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ (susceptibles), 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+ (exposed), 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ (infectious and asymptomatic), 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ (infections and symptomatic), 
+\begin_inset Formula $Q_{i}$
+\end_inset
+
+ (quarantined), 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ (recovered) and 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ (dead) are class-specific.
+ The model is illustrated for a single class in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Scheme_oneClass"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+[APG.
+ Note that the lambda parameter is not properly represented, see definition
+ below].
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/docs/SEIAQRD Model graph.jpg
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Scheme_oneClass"
+
+\end_inset
+
+
+\series bold
+Schematic representation of the model.
+
+\series default
+ Note that the model does not represent the distinction in classes.
+ In particular, the rate 
+\begin_inset Formula $\beta_{\A}A+\beta_{\I}I$
+\end_inset
+
+ is only valid if there is one class only.
+ See definition of 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ in the text.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some of the parameters are also class-specific and are labelled with the
+ subindex 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ The 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ parameter models the transmission rate and will be discussed below.
+ The following parameters are independent of the class: the rate at which
+ exposed become infectious 
+\begin_inset Formula $\delta_{\E}$
+\end_inset
+
+, the recovery rate of asymptomatic 
+\begin_inset Formula $\gamma_{\A}$
+\end_inset
+
+, the rate at which a fraction of the population 
+\begin_inset Formula $q$
+\end_inset
+
+ is quarantined and the rate 
+\begin_inset Formula $\eta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+On the other hand, the following parameters depend on the population class:
+ the fraction of the population that will become infectious and symptomatic
+ after being exposed, 
+\begin_inset Formula $\sigma_{\I i}$
+\end_inset
+
+, the rate of recovery of symptomatic 
+\begin_inset Formula $\gamma_{\mathrm{I}i}$
+\end_inset
+
+, and their fatality rate, 
+\begin_inset Formula $\alpha_{\mathrm{I}i}$
+\end_inset
+
+, and similarly for the parameters of the quarantined population, 
+\begin_inset Formula $\gamma_{Qi}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{Qi}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Therefore, in the model we are making the following assumptions.
+ Firstly, there is no distinction between being exposed or latent, we considered
+ that every indiviudal exposed becomes latent.
+ This is justified by the fact that the population is well mixed and the
+ latent times are typically low [APG.
+ Is this true?].
+ Secondly, there is no hospitalized compartment because there is no access
+ to any facility.
+ As a consequence, we are considering that every symptomatic patient may
+ develop a critical condition and hence we do not explicitly consider a
+ gradient of symptoms.
+\end_layout
+
+\begin_layout Standard
+The quarantine variable 
+\begin_inset Formula $Q$
+\end_inset
+
+ deserves special consideration.
+ In its current form there is a fraction of the population that can be removed
+ at a certain rate.
+ This may make sense in a context in which there is a regulation within
+ the population to become quarantined if certain conditions happen (e.g.
+ being in contact with a symptomatic), in which case the quarantine rate
+ is density-dependent (and hence the term 
+\begin_inset Formula $\eta Q$
+\end_inset
+
+).
+ On the other hand, if quarantine happens because an external (e.g.
+ WHO agent) remove symptomatics from the camp, the capacity of the agency
+ to remove patients will saturate at some point and it would be more appropriate
+ to model it as a constant or a sigmoidal-like function.
+ In addition, note that in the current form of the model the parameter 
+\begin_inset Formula $q$
+\end_inset
+
+ is not implemented.
+\end_layout
+
+\begin_layout Standard
+To finish, the transmission rate 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ depends on the average contacts between the different classes.
+ To determine its value, we define the maximum transmission rates of asymptomati
+c, 
+\begin_inset Formula $\beta_{A}$
+\end_inset
+
+, and symptomatic, 
+\begin_inset Formula $\beta_{I}$
+\end_inset
+
+, and the reduction of these transmission values between the class 
+\begin_inset Formula $i$
+\end_inset
+
+ and class 
+\begin_inset Formula $j$
+\end_inset
+
+ with the matrix 
+\begin_inset Formula $C_{ij}\qquad\in[0,1]$
+\end_inset
+
+.
+ This reduction may be motivated by social constraints (e.g.
+ groups of men not getting in contact with certain groups of women) or managemen
+t actions (e.g.
+ a class is shielded from the remaining population).
+ Its value represents the fraction of contacts that the classes 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ have with respect to the mean contacts between two individuals in the whole
+ population.
+ Taking these considerations we define the transmission rate of the class
+ 
+\begin_inset Formula $i$
+\end_inset
+
+ as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{i}=\frac{1}{N}\sum_{j}C_{ij}(\beta_{\A}A_{j}+\beta_{\I}I_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $j$
+\end_inset
+
+ runs across all classes including the reference class 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Examples
+\end_layout
+
+\begin_layout Subsection*
+Shielding vulnerable population
+\end_layout
+
+\begin_layout Standard
+In this example exist only two classes, one vulnerable subpopulations and
+ one healthy, differing in their epidemiological parameters.
+ Then we considered two scenarios, one in which both populations are well-mixed,
+ and a second scenario in which the average number of contacts between the
+ healthy and vulnerable subpopulations are reduced to half the whole population
+ values.
+ The dynamics of both populations for both scenarios are shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:healthy_vs_vulnerable"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ We observe that the total number of deaths are reduced from 55 to 51.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/data/fake_models/healthy_vs_vulnerable/figures/Plot_ SEIRD_dynamics_healthy_vs_vulnerable_cont_mean .pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/data/fake_models/healthy_vs_vulnerableShielded/figures/Plot_ SEIRD_dynamics_healthy_vs_vulnerableShielded_cont_external .pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:healthy_vs_vulnerable"
+
+\end_inset
+
+
+\series bold
+Population dynamics of healthy and vulnerable subpopulations.
+
+\series default
+ (Top) Well mixed scenario.
+ (Bottom) Average contact between healthy and vulnerable populations are
+ reduced to half their value.
+ Total number of deaths are reduced from 55 to 51.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Socially-structured population with shielding and carers
+\end_layout
+
+\begin_layout Standard
+As a second proof of concept we consider now a more complex example in which
+ the population is divided in three age-levels (young, adults and elderly).
+ Starting population values were proportional to Syrian structure, and total
+ population size is 2000.
+ In addition, within each age-level there are two additional classes, healthy
+ and vulnerable.
+ The fraction of vulnerable population within each age class increases with
+ age.
+ Finally, each class is divided by gender.
+ This leads to 12 population classes and 82 epidemiological variables.
+\end_layout
+
+\begin_layout Standard
+We consider again one scenario in which the population is well-mixed, and
+ where there is one infection starting in the class o adult healthy men.
+ The second scenario considers two contact limitations.
+ Firstly, healthy women have contacts only with their respective partners
+ from the class of healthy men.
+ Considering an average number of contacts in the whole population of 20,
+ we reduce the transmission parameters between these subpopulations to 1/20.
+ In addition, we shield the elderly vulnerable classes (male and female)
+ from all the other subclasses except the one of adult healthy women, which
+ will be considered the carers, again with a parameter 1/20.
+\end_layout
+
+\begin_layout Standard
+The death toll for the different subclasses in both scenarios is shown in
+ Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:structured_with_carers"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Without shielding there is a 61% more deaths, and it becomes apparent that
+ the reduction comes from the shielded population at age 3.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/data/fake_models/age3_gender2_com2/figures/Plot-Deaths_ SEIRD_dynamics_age3_gender2_com2_cont_mean .pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/data/fake_models/age3_gender2_com2_FC/figures/Plot-Deaths_ SEIRD_dynamics_age3_gender2_com2_FC_cont_mean .pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:structured_with_carers"
+
+\end_inset
+
+
+\series bold
+Death tolls for a population with a strong social structure.
+
+\series default
+ (Top) Well mixed scenario.
+ (Bottom) A socially-structured shielding strategy is implemented (see Main
+ Text for details).
+ Note the change in the scale between both figures.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
