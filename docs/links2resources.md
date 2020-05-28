@@ -17,4 +17,5 @@
 
 ### General COVID data
 * Links/comments about asymptomatic cases: [external link](https://www.cebm.net/covid-19/covid-19-what-proportion-are-asymptomatic/)
+* Paper on asymptomatic cases in the city of Vo, Italy: [external link] (https://www.medrxiv.org/content/10.1101/2020.04.17.20053157v1.full.pdf)
 
