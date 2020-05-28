@@ -75,14 +75,15 @@ library(rstudioapi) # package to retrieve current path, fix manually if working 
 # taus = [ 2, 4, 7, 8, 1.5, 14, 0.02, 7, 12, 1e10]'; 
 # -- Models implemented so far:
 #    * Fake models (directory fake_data)
-#    ... age3-gender2-com2
+#    ... age3_gender2_com2
 #    ... healthy_vs_vulnerable
 #    ... healthy_vs_vulnerable-confined
 ###### START EDITING
 fake=1 # fix to 1 if you are working with fake data (used for storage only)
-descr="healthy_vs_vulnerableShielded" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
-class.infected="healthy" # string with the name of the class in which the first infection is detected
-model="external" # one of "mean"= mean field, "external"= read from file
+descr="age3_gender2_com2" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
+class.infected="age2_M_healthy" # string with the name of the class in which the first infection is detected
+model="mean" # one of "mean"= mean field, "external"= read from file
+strat=0 # if "mean" and = 1 it will source contact_matrix.R, where you can create manually a contacts matrix
 Ndays=365 # Number of days simulated
 file.age="classes_structure.csv" # Starting population sizes by classes
 betaI=0.5 # 
@@ -121,14 +122,23 @@ Nclass=dim(age.str)[2] # number of classes in the population structure
 fracAI.str=as.vector(read.table(file=file.fracAI,sep="\t",header = TRUE)) # fraction E-->I
 gammaI.str=as.vector(read.table(file=file.gammaI,sep="\t",header = TRUE))
 alpha.str=as.vector(read.table(file=file.alpha,sep="\t",header = TRUE))
+class.names=colnames(age.str) # Store the name of the classes
 if(model != "mean"){ # Read contacts file
   Cont=as.matrix(read.table(file=file.contacts,sep="\t")) # format to determine
+  rownames(Cont)=class.names
+  colnames(Cont)=class.names
 }else{ # or create a mean field matrix
   Cont=matrix(1,nrow = Nclass,ncol=Nclass)
+  rownames(Cont)=class.names
+  colnames(Cont)=class.names
+  if(strat==1){ # create a specific contact matrix
+    setwd(dirFun)
+    source("contacts_matrix.R")
+    setwd(dirDataIn)
+  }
 }
-class.names=colnames(age.str) # Store the name of the classes
-rownames(Cont)=class.names
-colnames(Cont)=class.names
+
+
 
 # Initialize data and source derivatives ----------
 # --- Starting population values
@@ -171,7 +181,8 @@ SEAIRD.output <- as.data.frame(lsoda(y=y.start,
 death.vars=grep(".D",colnames(SEAIRD.output))
 death.tolls=SEAIRD.output[Ndays,death.vars]
 death.total=round(sum(death.tolls))
-
+death.frac=100*death.tolls/age.str
+  
 # Print the output: this is a matrix of S, I and R values at each time point	
 dir.create(dirDataOut)
 setwd(dirDataOut)
@@ -182,9 +193,9 @@ write.table(SEAIRD.output,file=fileOut,row.names = FALSE)
 output_long <- melt(as.data.frame(SEAIRD.output), id = "time")
 dir.create(dirPlotOut)
 setwd(dirPlotOut)
-filePlotOut=paste("Plot_",label,".pdf")
+filePlotOut=paste("Plot-Dynamics_",label,".pdf")
 
-pdf(file=filePlotOut,width=14,height = 8)
+pdf(file=filePlotOut,width=30,height = 8)
 gg=ggplot(data = output_long,
        aes(x = time,
            y = value,
@@ -199,6 +210,26 @@ gg=ggplot(data = output_long,
   labs(title = paste("Model =",descr),
        subtitle = paste("Total deaths =",death.total),
        colour="Class/Compartment") # add title
+print(gg)
+dev.off( )
+
+filePlotOut=paste("Plot-Deaths_",label,".pdf")
+
+df.plot <- data.frame(class=colnames(death.tolls),
+                 deaths=as.numeric(death.frac))
+
+df.plot=as.data.frame(df.plot[!is.na(df.plot$deaths),]) # exclude classes with no deaths
+pdf(file=filePlotOut,width=15,height = 8)
+gg=ggplot(data = df.plot,
+          aes(x = class,y = deaths)) +  # assign columns to axes and groups
+  geom_bar(stat="identity") +                  # represent data as lines
+  xlab("Population class")+           # add label for x axis
+  ylab("Death toll (%)") +     # add label for y axis
+  theme(axis.title = element_text(size=16),
+        axis.text = element_text(size=12),
+        legend.text = element_text(size=16))+ # Increase fonts size
+  labs(title = paste("Model =",descr),
+       subtitle = paste("Total deaths =",death.total))
 print(gg)
 dev.off( )
 
