@@ -16,7 +16,7 @@
 * [Nature paper on temporal dynamics in viral shedding and transmissibility of COVID-19](https://www.nature.com/articles/s41591-020-0869-5#citeas)
 * [Paper on incubation period](https://www.acpjournals.org/doi/10.7326/M20-0504)
 * 1/delta_E = average incubation period (5 days, range: 4-6) - pre-symptomatic period (2-3 days) 
-*           = 2-3 days (range: 1-4)
+* 1/delta_E = 2-3 days (range: 1-4)
 
 ### 1/delta_P (average duration of the pre-symptomatic period P)
 * [Nature paper on temporal dynamics in viral shedding and transmissibility of COVID-19](https://www.nature.com/articles/s41591-020-0869-5#citeas)
