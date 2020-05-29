@@ -20,3 +20,4 @@
 * Paper on asymptomatic cases in the city of Vo, Italy: [external link](https://www.medrxiv.org/content/10.1101/2020.04.17.20053157v1.full.pdf)
 * Paper estimating proportion asymptomatic on the Diamond Princess: [external link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7078829/)
 * Japan NIID Diamond Princess data used in paper: [external link](https://www.niid.go.jp/niid/en/2019-ncov-e/9417-covid-dp-fe-02.html)
+* Meta analysis of proportion asymptomatic: [external link](https://www.medrxiv.org/content/10.1101/2020.05.10.20097543v1)
