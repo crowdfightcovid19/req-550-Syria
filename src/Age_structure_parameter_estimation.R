@@ -15,7 +15,7 @@ library(tidyverse)
 library(rvest)
 
 setwd("data")
-dirOut="fake_models/age3_gender2_com2_v2_by_jordan"
+dirOut="real_models"
 
 pop <- read.csv("age_structure_and_NCDprevalence/entire_population.csv")
 
