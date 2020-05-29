@@ -24,5 +24,5 @@
 
 ### 1/gamma (average duration of infection A/I)
 * [Nature paper on temporal dynamics in viral shedding and transmissibility of COVID-19](https://www.nature.com/articles/s41591-020-0869-5#citeas)
-* 1/gamma = 7-8 days 
+* 1/gamma_I = 1/gamma_A = 7-8 days 
 * Note: after 8 days, viral RNA from mild cases (not hopitalized) could still be detected by PCR but could not infect cells in vitro anymore [Ref](https://www.nature.com/articles/s41586-020-2196-x)
