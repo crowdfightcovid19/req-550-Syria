@@ -66,6 +66,7 @@ library(deSolve)   # package to solve the model
 library(reshape2)  # package to change the shape of the model output
 library(ggplot2)
 library(rstudioapi) # package to retrieve current path, fix manually if working in Windows or outside Rstudio
+library(tidyverse) # another package to reshape data for ggplot
 
 # -- Comments (ongoing tests)
 # Juan Poyatos parameters
@@ -78,24 +79,49 @@ library(rstudioapi) # package to retrieve current path, fix manually if working 
 #    ... age3_gender2_com2
 #    ... healthy_vs_vulnerable
 #    ... healthy_vs_vulnerable-confined
+# 
+#
+# Fix parameters ----------------------
 ###### START EDITING
+# --- Structure of directories and labelling 
 fake=1 # fix to 1 if you are working with fake data (used for storage only)
 descr="age3_gender2_com2" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
 class.infected="age2_M_healthy" # string with the name of the class in which the first infection is detected
-model="mean" # one of "mean"= mean field, "external"= read from file
-strat=0 # if "mean" and = 1 it will source contact_matrix.R, where you can create manually a contacts matrix
+# --- Model type
+CompModel="SEAIRQD" # One of "SEAIRQD" (basic), "SEPAIRQD" (+latent) or "SEPAIRQHD" (+latent and hospitalized)
+ContMatType="mean" # one of "mean"= mean field, "external"= read from file
+strat=0 # if ContMatType="mean" and strat= 1 it will source contact_matrix.R, where you can create manually a contacts matrix
+# --- Epidemiological parameters
 Ndays=365 # Number of days simulated
 file.age="classes_structure.csv" # Starting population sizes by classes
+# Infected to susceptible (R0)
 betaI=0.5 # 
+betaI.lowCI=0.3 # lower CI boundary
+betaI.sigCI="95" # character, significance of the confidence interval
 betaA=0.5 # 
+betaA.lowCI=0.3 # lower CI boundary
+betaA.sigCI="95"
+file.contacts="contacts_structure.csv" # Matrix of contacts between classes, required unless ContMatType="mean" (field)
+# Exposed and Latent
 deltaE=0.5 # Exposed
+deltaE.lowCI=0.3
+deltaE.sigCI="95"
+deltaP=0.3 # Latent
+# Assymptomatic and Infectious
 file.fracAI="fracAI_structure.csv"  # fracAI = fraction of infected showing severe symptoms, class dependent
 gammaA=0.15 # from asymptomatic to recovered
-gammaQ=0.001 # from quarantined to recovered, note that they would have left the camp, possibly low
+gammaA.lowCI=0.1
+gammaA.sigCI="95"
 file.gammaI="gammaI_structure.csv" # gammaI = from infected to recovered (class dependent)
-psi=0 # rate at which they are removed from the camp and quarantined (WHO-controlled)
 file.alpha="alpha_structure.csv" # alphaI = alphaQ = fatality rate, by classes
-file.contacts="contacts_structure.csv" # Matrix of contacts between classes, required unless model="mean" (field)
+# Quarantined, hospitalized, and dead
+gammaQ=0.001 # from quarantined to recovered, note that they would have left the camp, possibly low
+psi=0 # rate at which they are removed from the camp and quarantined (WHO-controlled)
+# --- Parameters to control the randomizations
+Nrand=100 # number of realizations of parameters
+# --- Output options
+Nfull=5 # Number of realization whose results will be fully reported
+
 ######### STOP EDITING
 
 # Fix directories ------------
@@ -113,7 +139,7 @@ dirFun=paste(this.dir,"/src",sep="") # Directory where the function with the der
 dirDataOut=paste(this.dir,"/data",dirTmp,descr,"/results",sep="") # directory for the simulation output
 dirPlotOut=paste(this.dir,"/data",dirTmp,descr,"/figures",sep="") # directory for the figure
 
-label=paste("SEIRD_dynamics",descr,"cont",model,sep="_") # a label for your output  files
+label=paste("SEIRD_dynamics",descr,"cont",ContMatType,sep="_") # a label for your output  files
 
 # Read input data ---------
 setwd(dirDataIn)
@@ -123,7 +149,7 @@ fracAI.str=as.vector(read.table(file=file.fracAI,sep="\t",header = TRUE)) # frac
 gammaI.str=as.vector(read.table(file=file.gammaI,sep="\t",header = TRUE))
 alpha.str=as.vector(read.table(file=file.alpha,sep="\t",header = TRUE))
 class.names=colnames(age.str) # Store the name of the classes
-if(model != "mean"){ # Read contacts file
+if(ContMatType != "mean"){ # Read contacts file
   Cont=as.matrix(read.table(file=file.contacts,sep="\t")) # format to determine
   rownames(Cont)=class.names
   colnames(Cont)=class.names
@@ -138,11 +164,24 @@ if(model != "mean"){ # Read contacts file
   }
 }
 
-
-
-# Initialize data and source derivatives ----------
+# Initialize the model and data  ----------
+# Select the model and source it
+setwd(dirFun)
+if(CompModel == "SEAIRQD"){
+  compartments=c("S","E","A","I","R","Q","D") # Declare the compartments
+  source("dxdt_SEAIRD_str.R")
+  dxdtfun=dxdt_SEAIRD_str
+}else if(CompModel == "SEPAIRQD"){ # Include P
+  compartments=c("S","E","P","A","I","R","Q","D") # 
+  source("dxdt_SEPAIRD_str.R")
+  dxdtfun=dxdt_SEPAIRQD_str
+}else if(CompModel == "SEPAIRQHD"){ # Include H
+  compartments=c("S","E","P","A","I","R","Q","H","D") # 
+  source("dxdt_SEPAIRQHD_str.R")
+  dxdtfun=dxdt_SEPAIRHD_str
+}
 # --- Starting population values
-compartments=c("S","E","A","I","R","Q","D") # Declare the compartments
+setwd(dirDataIn)
 Ncomp=length(compartments)
 y.start=matrix(0, nrow= Ncomp*Nclass,ncol=1)
 var.names=c()
@@ -158,71 +197,123 @@ first.inf=paste(class.infected,"I",sep=".") # In the class where the infection w
 y.start[first.inf]=1 # we initialize the first case
 # NOTES: At the time in which the first infection is detected, a number of asymptomatic and exposed
 # cases could already be there, how to initialize it?
-# How is typically controlled avoiding having negative populations in the compartments? 
 
-# --- Parameters list
-parms.list=list(betaI=betaI,betaA=betaA,deltaE=deltaE,gammaA=gammaA,fracAI.str=fracAI.str,
-                gammaI.str=gammaI.str,alpha.str=alpha.str,Cont=Cont,
-                classes=class.names,vars=var.names,compartments=compartments)
-# --- Times 
+# --- Generate random realizations of the parameters
+zscore=vector(mode="numeric")
+zscore["95"]=-1.64 # translate CI significance in zscore
+zscore["99"]=-2.32
+betaI.std=(betaI.lowCI-betaI)/zscore[betaI.sigCI] # extract standard deviation
+betaI.mat=rnorm(Nrand,betaI,betaI.std) # generate a matrix of realizations
+betaA.std=(betaA.lowCI-betaA)/zscore[betaA.sigCI] # extract standard deviation
+betaA.mat=rnorm(Nrand,betaA,betaA.std)
+deltaE.std=(deltaE.lowCI-deltaE)/zscore[deltaE.sigCI] # extract standard deviation
+deltaE.mat=rnorm(Nrand,deltaE,deltaE.std)
+gammaA.std=(gammaA.lowCI-gammaA)/zscore[gammaA.sigCI] # extract standard deviation
+gammaA.mat=rnorm(Nrand,gammaA,gammaA.std)
+# --- Finally, initialize times 
 # (here, we do daily for Ndays days - you can change this value)
 times_vector <- seq(from=0, to=Ndays, by=1)
 
-# --- Source the function
-setwd(dirFun)
-source("dxdt_SEAIRD_str.R")
-
-# Run the ODE solver
-SEAIRD.output <- as.data.frame(lsoda(y=y.start, 
-                                  times=times_vector, 
-                                  func=dxdt_SEAIRD_str, 
-                                  parms=parms.list))
-# Retrieve deaths
-death.vars=grep(".D",colnames(SEAIRD.output))
-death.tolls=SEAIRD.output[Ndays,death.vars]
-death.total=round(sum(death.tolls))
-death.frac=100*death.tolls/age.str
-  
-# Print the output: this is a matrix of S, I and R values at each time point	
+# Run the model Nrand times ----------------
 dir.create(dirDataOut)
 setwd(dirDataOut)
-fileOut=paste(label,"dat",sep=".")
-write.table(SEAIRD.output,file=fileOut,row.names = FALSE)
+k=1 # labels the number of fully reported results
+rand2report=vector(mode="integer",length=Nfull) # store realization that will be reported
+output.list=list()
+for(i in 1:Nrand){ # Launch the script Nrand times
+  betaI=betaI.mat[i]
+  betaA=betaA.mat[i]
+  deltaE=deltaE.mat[i]
+  gammaA=gammaA.mat[i]
+  fracAI.str=fracAI.str
+  gammaI.str=gammaI.str
+  alpha.str=alpha.str
+  Cont=Cont
+  parms.list=list(betaI=betaI,betaA=betaA,deltaE=deltaE,gammaA=gammaA,fracAI.str=fracAI.str,
+                gammaI.str=gammaI.str,alpha.str=alpha.str,Cont=Cont,
+                classes=class.names,vars=var.names,compartments=compartments)
+  
+  # Run the ODE solver
+  SEAIRD.output <- as.data.frame(lsoda(y=y.start, 
+                                       times=times_vector, 
+                                       func=dxdtfun, 
+                                       parms=parms.list))
+  
+  # --- Process output
+  if(i == round(k*Nrand/Nfull)){
+    labelTmp=paste(label,"_rand-",i,sep="")
+    fileOut=paste(labelTmp,"dat",sep=".")
+    write.table(SEAIRD.output,file=fileOut,row.names = FALSE)
+    output.list[[k]]=SEAIRD.output
+    rand2report[k]=i
+    k=k+1
+  }
+  # ..... Retrieve deaths
+  if(i == 1){
+    death.vars=grep(".D",colnames(SEAIRD.output))
+    death.names=colnames(SEAIRD.output)[death.vars]
+    death.tolls.df=data.frame(matrix(ncol = length(death.vars), nrow = Nrand))
+    colnames(death.tolls.df)=death.names
+    death.total=vector(mode="numeric",length=Nrand)
+    death.frac.df=data.frame(matrix(ncol = length(death.vars), nrow = Nrand))
+    colnames(death.frac.df)=death.names
+    infect.vars=grep(".I",colnames(SEAIRD.output))
+    infect.names=colnames(SEAIRD.output)[infect.vars]
+    infect.max.df=data.frame(matrix(ncol = length(infect.vars), nrow = Nrand)) # We will add the time
+    colnames(infect.max.df)=infect.names
+    time.infect.max.df=data.frame(matrix(ncol = length(infect.vars), nrow = Nrand))
+    colnames(time.infect.max.df)=infect.names
+  }
+  death.tolls=SEAIRD.output[Ndays,death.vars]
+  death.tolls.df[i,]=death.tolls
+  death.total[i]=round(sum(death.tolls))
+  death.frac.df[i,]=100*death.tolls/age.str
+  infect.max=apply(SEAIRD.output[,infect.vars],2,max)
+  infect.max.df[i,]=infect.max
+  time.max=apply(SEAIRD.output[,infect.vars],2,which.max)
+  time.infect.max.df[i,]=time.max
+}
 
-#check the output, and plot
-output_long <- melt(as.data.frame(SEAIRD.output), id = "time")
+# --- Print the output: this is a matrix of S, I and R values at each time point	
+# Plots ------------------------
+# --- Check the output, and plot dynamics
 dir.create(dirPlotOut)
 setwd(dirPlotOut)
-filePlotOut=paste("Plot-Dynamics_",label,".pdf")
+for(k in 1:Nfull){
+  SEAIRD.output=output.list[[k]]
+  output_long <- melt(as.data.frame(SEAIRD.output), id = "time")
+  labelTmp=paste(label,"_rand-",rand2report[k],sep="")
+  filePlotOut=paste("Plot-Dynamics_",labelTmp,".pdf")
+  pdf(file=filePlotOut,width=30,height = 8)
+  gg=ggplot(data = output_long,
+            aes(x = time,
+                y = value,
+                colour = variable,
+                group = variable)) +  # assign columns to axes and groups
+    geom_line() +                  # represent data as lines
+    xlab("Time (days)")+           # add label for x axis
+    ylab("Number of people") +     # add label for y axis
+    theme(axis.title = element_text(size=16),
+          axis.text = element_text(size=12),
+          legend.text = element_text(size=16))+ # Increase fonts size
+    labs(title = paste("Model =",descr),
+         subtitle = paste("Total deaths =",death.total[rand2report[k]]),
+         colour="Class/Compartment") # add title
+  print(gg)
+  dev.off( )
+}
 
-pdf(file=filePlotOut,width=30,height = 8)
-gg=ggplot(data = output_long,
-       aes(x = time,
-           y = value,
-           colour = variable,
-           group = variable)) +  # assign columns to axes and groups
-  geom_line() +                  # represent data as lines
-  xlab("Time (days)")+           # add label for x axis
-  ylab("Number of people") +     # add label for y axis
-  theme(axis.title = element_text(size=16),
-        axis.text = element_text(size=12),
-        legend.text = element_text(size=16))+ # Increase fonts size
-  labs(title = paste("Model =",descr),
-       subtitle = paste("Total deaths =",death.total),
-       colour="Class/Compartment") # add title
-print(gg)
-dev.off( )
-
-filePlotOut=paste("Plot-Deaths_",label,".pdf")
-
-df.plot <- data.frame(class=colnames(death.tolls),
-                 deaths=as.numeric(death.frac))
-
-df.plot=as.data.frame(df.plot[!is.na(df.plot$deaths),]) # exclude classes with no deaths
-pdf(file=filePlotOut,width=15,height = 8)
+# --- Death tolls
+filePlotOut=paste("Plot-DeathTolls_",label,".pdf")
+nodeath=which(colSums(death.tolls.df)!=0) # Exclude classes with no deaths
+death.tolls.df=death.tolls.df[,nodeath]
+df.plot <- pivot_longer(death.tolls.df,cols=colnames(death.tolls.df)) # Transform long format
+colnames(df.plot)=c("class","deaths")
+pdf(file=filePlotOut,width=17,height = 8)
 gg=ggplot(data = df.plot,
           aes(x = class,y = deaths)) +  # assign columns to axes and groups
-  geom_bar(stat="identity") +                  # represent data as lines
+  geom_boxplot()+
+  #geom_bar(stat="identity") +                  # represent data as lines
   xlab("Population class")+           # add label for x axis
   ylab("Death toll (%)") +     # add label for y axis
   theme(axis.title = element_text(size=16),
@@ -232,6 +323,47 @@ gg=ggplot(data = df.plot,
        subtitle = paste("Total deaths =",death.total))
 print(gg)
 dev.off( )
+
+# --- Maximum number of infected
+filePlotOut=paste("Plot-MaxInfected_",label,".pdf")
+df.plot <- pivot_longer(infect.max.df,cols=colnames(infect.max.df)) # Transform long format
+colnames(df.plot)=c("class","infections")
+pdf(file=filePlotOut,width=17,height = 8)
+gg=ggplot(data = df.plot,
+          aes(x = class,y = infections)) +  # assign columns to axes and groups
+  geom_boxplot(notch = TRUE)+
+  #geom_bar(stat="identity") +                  # represent data as lines
+  xlab("Population class")+           # add label for x axis
+  ylab("Max. infected") +     # add label for y axis
+  theme(axis.title = element_text(size=16),
+        axis.text = element_text(size=12),
+        legend.text = element_text(size=16))+ # Increase fonts size
+  theme_bw()+
+  labs(title = paste("Model =",descr),
+       subtitle = paste("Total deaths =",death.total))
+print(gg)
+dev.off( )
+
+# --- Days from first infection to peak
+filePlotOut=paste("Plot-TimeMaxInfected_",label,".pdf")
+df.plot <- pivot_longer(time.infect.max.df,cols=colnames(time.infect.max.df)) # Transform long format
+colnames(df.plot)=c("class","time")
+pdf(file=filePlotOut,width=17,height = 8)
+gg=ggplot(data = df.plot,
+          aes(x = class,y = time)) +  # assign columns to axes and groups
+  geom_boxplot(notch = TRUE)+
+  #geom_bar(stat="identity") +                  # represent data as lines
+  xlab("Population class")+           # add label for x axis
+  ylab("Time to peak (days)") +     # add label for y axis
+  theme(axis.title = element_text(size=16),
+        axis.text = element_text(size=12),
+        legend.text = element_text(size=16))+ # Increase fonts size
+  theme_bw()+
+  labs(title = paste("Model =",descr),
+       subtitle = paste("Total deaths =",death.total))
+print(gg)
+dev.off( )
+
 
 # #Plotting the proportion of people in each compartment over time
 # 
