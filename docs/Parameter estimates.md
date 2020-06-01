@@ -38,3 +38,7 @@
 
 ### 1/gamma_H (average time from hospitalization H to recovery R)
 * 1/gamma_H = 10 days (IQR: 7-14) [Chinese study, n = 138 patients](https://jamanetwork.com/journals/jama/fullarticle/2761044)
+
+### Estimation of R0 in densely populated settings
+* R0 fitted with real data in Buenos Aires and neighboring cities pre-lockdown measures = 3.33 [Buenos Aires](https://arxiv.org/abs/2005.06297) Note: the area includes favelas but also wealthier neighborhoods. 
+* R0 fitted with real data in Nigeria = 2.25 at the national level; R0 = 3.44 in Lagos; R0 = 2.77 in Abuja [Nigeria](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3596095).
