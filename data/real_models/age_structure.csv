@@ -1,2 +1,2 @@
-age1_healthy,age1_vulnerable,age2_healthy,age2_vulnerable,age3_healthy,age3_vulnerable
-814,0,1067,0,0,119
+age1_no_comorbid,age1_comorbid,age2_no_comorbid,age2_comorbid,age3_no_comorbid,age3_comorbid
+814,0,942,125,44,75

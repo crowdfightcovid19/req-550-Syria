@@ -1,2 +1,2 @@
-age1_healthy,age1_vulnerable,age2_healthy,age2_vulnerable,age3_healthy,age3_vulnerable
-0.001,0.001,0.012,0.012,0.166,0.166
+age1_no_comorbid_lowCI,age1_comorbid_lowCI,age2_no_comorbid_lowCI,age2_comorbid_lowCI,age3_no_comorbid_lowCI,age3_comorbid_lowCI,age1_no_comorbid,age1_comorbid,age2_no_comorbid,age2_comorbid,age3_no_comorbid,age3_comorbid,age1_no_comorbid_highCI,age1_comorbid_highCI,age2_no_comorbid_highCI,age2_comorbid_highCI,age3_no_comorbid_highCI,age3_comorbid_highCI
+0,0,0.0062,0.0062,0.07,0.07,0,0,0.011,0.011,0.118,0.118,0,0,0.021,0.021,0.24,0.24
