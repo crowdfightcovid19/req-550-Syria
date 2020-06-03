@@ -176,6 +176,7 @@ names(fracAI_structure) <- c(paste0(names(age_structure), "_lowCI"),
 # Assume average in age group 0-12 approx % aged 0-9 requiring hospitalization in paper
 # Assume average in age group 13-50 approx % aged 20-29 requiring hospitalization in paper
 # Assume average in age group over 50 approx % aged 60-69 requiring hospitalization in paper
+
 zeta_structure <- c(rep(0, 2), rep(.0062, 2), rep(.07, 2), 
                     rep(0, 2), rep(.011, 2), rep(.118, 2), 
                     rep(0, 2), rep(.021, 2), rep(.24, 2)) %>% 
