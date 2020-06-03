@@ -171,19 +171,17 @@ names(fracAI_structure) <- c(paste0(names(age_structure), "_lowCI"),
                              paste0(names(age_structure), "_highCI"))
 
 ## Hospitalization rate/proportion of sympotatic cases requiring hospitalization (zeta)
-# Using estimates from paper cited in ICL report:
-# https://www.medrxiv.org/content/10.1101/2020.03.09.20033357v1
-# Assume average in age group 0-12 approx % aged 0-9 requiring hospitalization in paper
-# Assume average in age group 13-50 approx % aged 20-29 requiring hospitalization in paper
-# Assume average in age group over 50 approx % aged 60-69 requiring hospitalization in paper
+# Using data from the Spanish ministry of health:
+# https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/Actualizacion_52_COVID-19.pdf
+# Assume average in age group 0-12 approx % aged 0-9 requiring hospitalization in Spain
+# Assume average in age group 13-50 approx % aged 20-29 requiring hospitalization in Spain
+# Assume average in age group over 50 approx % aged 60-69 requiring hospitalization in Spain
 
-zeta_structure <- c(rep(0, 2), rep(.0062, 2), rep(.07, 2), 
-                    rep(0, 2), rep(.011, 2), rep(.118, 2), 
-                    rep(0, 2), rep(.021, 2), rep(.24, 2)) %>% 
+zeta_structure <- c(rep(.005, 2), rep(.0269, 2), rep(.1805, 2)) %>% 
   t() %>% 
   as.data.frame()
 
-names(zeta_structure) <- names(fracAI_structure)
+names(zeta_structure) <- names(age_structure)
 
 ## Case fatality rate (alpha)
 # Using estimates from the ICL report:

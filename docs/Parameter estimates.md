@@ -6,11 +6,11 @@
 * 95% CI = (.8, .88)
 
 ### Hospitalization rate/proportion of symptomatic requiring hospitalization (zeta)
-* [Paper cited by ICL](https://www.medrxiv.org/content/10.1101/2020.03.09.20033357v1.full.pdf) used as source
+* [Data from Spanish ministry of health](https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/Actualizacion_52_COVID-19.pdf) used as source (known parameter, no probability distribution- data covers all cases in Spain where age is known as of 22.03)
 * Age specific
-  * Age 1 (0-12)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 0-9 age group in the paper: 0%, 95% CI (0%, 0%)
-  * Age 2 (13-50)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 20-29 age group in the paper: 1.1%, 95% CI (0.62%, 2.1%)
-  * Age 3 (over 50)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 60-69 age group in the paper: 11.8%, 95% CI (7%, 24%)
+  * Age 1 (0-12)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 0-9 age group in Spain: .50%
+  * Age 2 (13-50)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 20-29 age group in Spain: 2.69%
+  * Age 3 (over 50)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 60-69 age group in Spain: 18.05%
 
 ### CFR/fatality rate among hospitalized (alpha- may not need for our purposes)
 * [ICL paper](https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf) used estimates for proportion of hospitalized cases requiring critical care (assuming all cases requiring critical care will die)
