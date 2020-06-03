@@ -4,6 +4,7 @@
 * [Meta-analysis](https://www.medrxiv.org/content/10.1101/2020.05.10.20097543v1) estimates .16 asymptomatic (not age-specific)
 * We use: fracAI = .84
 * 95% CI = (.8, .88)
+* Distributed binomially with exact Clopper–Pearson confidence intervals.
 
 ### Hospitalization rate/proportion of symptomatic requiring hospitalization (zeta)
 * [Data from Spanish ministry of health](https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/Actualizacion_52_COVID-19.pdf) used as source (known parameter, no probability distribution- data covers all cases in Spain where age is known as of 22.03)
