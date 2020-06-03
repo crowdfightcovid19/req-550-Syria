@@ -3,12 +3,16 @@
 ### Proportion symptomatic (fracAI)
 * [Meta-analysis](https://www.medrxiv.org/content/10.1101/2020.05.10.20097543v1) estimates .16 asymptomatic (not age-specific)
 * We use: fracAI = .84
+* 95% CI = (.8, .88)
 
 ### Hospitalization rate/proportion of symptomatic requiring hospitalization (zeta)
-* [ICL paper](https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf) used as source
-* Age group 1 = .001, age group 2 = .012, age group 3 = .166
+* [Paper cited by ICL](https://www.medrxiv.org/content/10.1101/2020.03.09.20033357v1.full.pdf) used as source
+* Age specific
+** Age 1 (0-12)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 0-9 age group in the paper: 0%, 95% CI (0%, 0%)
+** Age 2 (13-50)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 20-29 age group in the paper: 1.1%, 95% CI (0.62%, 2.1%)
+** Age 3 (over 50)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 60-69 age group in the paper: 11.8%, 95% CI (7%, 24%)
 
-### CFR/fatality rate among hospitalized (alpha)
+### CFR/fatality rate among hospitalized (alpha- may not need for our purposes)
 * [ICL paper](https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf) used estimates for proportion of hospitalized cases requiring critical care (assuming all cases requiring critical care will die)
 * Age group 1 = .05, age group 2 = .05, age group 3 = .274
 
