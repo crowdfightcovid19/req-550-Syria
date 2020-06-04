@@ -24,6 +24,7 @@
 ### 1/delta_E (average duration of the latent period E)
 * [Nature paper on temporal dynamics in viral shedding and transmissibility of COVID-19, n = 94 patients](https://www.nature.com/articles/s41591-020-0869-5#citeas)
 * 1/delta_E = average incubation period (5.2 days, 95% CI: 4.1-7.0, lognormal) - pre-symptomatic period (2.3 days, 95% CI: 0.8-3.0) 
+    * Ref. incubation: Li, Q. et al. Early transmission dynamics in Wuhan, China, of novel coronavirus-infected pneumonia. _N. Engl. J. Med._ **382**, 1199–1207 (2020).
 * 1/delta_E = 2.9 days (95% CI: tbd, see https://github.com/crowdfightcovid19/req-550-Syria/issues/8#issuecomment-636537245)
 
 ### 1/delta_P (average duration of the pre-symptomatic period P)
