@@ -7,13 +7,17 @@
 * Distributed binomially with exact Clopper–Pearson confidence intervals.
 
 ### Hospitalization rate/proportion of symptomatic requiring hospitalization (zeta)
-* [Data from Spanish ministry of health](https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/Actualizacion_52_COVID-19.pdf) used as source (known parameter, no probability distribution- data covers all cases in Spain where age is known as of 22.03)
-* Age specific
-  * Age 1 (0-12)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 0-9 age group in Spain: .50%
-  * Age 2 (13-50)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 20-29 age group in Spain: 2.69%
-  * Age 3 (over 50)- assume hospitalization rate for the age group as a whole follows a distribution most similar to the 60-69 age group in Spain: 18.05%
+* [Data from Spanish ministry of health](https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/Actualizacion_52_COVID-19.pdf) used for children (0-12)
+* [Data from US CDC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7119513/) used for adults (13+)
+* Parameter is fixed with known age and comorbidity specific values, no probability distribution
+  * Age 1 (0-12), no comorbidities- set to proportion hospitalized aged 0-9 in Spain (.50%)
+  * Age 1 (0-12), comorbidities- set to proportion hospitalized aged 0-9 in Spain (.50%) (*irrelevant, assuming no comorbidities in this age group*)
+  * Age 2 (13-50), no comorbidities- set to sum of proportions hospitalized with & without ICU admission with known outcomes aged 19-64 with no comorbidities in the US (6.7% + 2.0% = 8.7%)
+  * Age 2 (13-50), comorbidities- set to sum of proportions hospitalized with & without ICU admission with known outcomes aged 19-64 with comorbidities in the US (19.9% + 9.4% = 29.3%)
+  * Age 3 (over 50), no comorbidities- set to sum of proportions hospitalized with & without ICU admission with known outcomes aged 65+ with no comorbidities in the US (18.3% + 6.3% = 24.6%)
+  * Age 3 (over 50), comorbidities- set to sum of proportions hospitalized with & without ICU admission with known outcomes aged 65+ with comorbidities in the US (44.5% + 22.2% = 66.7%)
 
-### CFR/fatality rate among hospitalized (alpha- may not need for our purposes)
+### CFR/fatality rate among hospitalized (alpha- not using in model)
 * [ICL paper](https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf) used estimates for proportion of hospitalized cases requiring critical care (assuming all cases requiring critical care will die)
 * Age group 1 = .05, age group 2 = .05, age group 3 = .274
 
