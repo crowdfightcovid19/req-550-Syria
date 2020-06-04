@@ -171,13 +171,17 @@ names(fracAI_structure) <- c(paste0(names(age_structure), "_lowCI"),
                              paste0(names(age_structure), "_highCI"))
 
 ## Hospitalization rate/proportion of sympotatic cases requiring hospitalization (zeta)
-# Using data from the Spanish ministry of health:
+# Using data from the Spanish ministry of health for children:
 # https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/Actualizacion_52_COVID-19.pdf
-# Assume average in age group 0-12 approx % aged 0-9 requiring hospitalization in Spain
-# Assume average in age group 13-50 approx % aged 20-29 requiring hospitalization in Spain
-# Assume average in age group over 50 approx % aged 60-69 requiring hospitalization in Spain
+# Set proportion requiring hospitalization in age group 0-12 to proportion aged 0-9 in Spain
+# Using data from US CDC for adults:
+# https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7119513/
+# Set proportion requiring hospitalization in age group 13-50 w/o comorbidities to proportion aged 19-64 w/o comorbitidies in the US
+# Set proportion requiring hospitalization in age group 13-50 w comorbidities to proportion aged 19-64 w comorbitidies in the US
+# Set proportion requiring hospitalization in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies in the US
+# Set proportion requiring hospitalization in age group over 50 w comorbidities to proportion aged 65+ w comorbitidies in the US
 
-zeta_structure <- c(rep(.005, 2), rep(.0269, 2), rep(.1805, 2)) %>% 
+zeta_structure <- c(rep(.005, 2), .067+.02, .199+.094, .183+.063, .445+.222) %>% 
   t() %>% 
   as.data.frame()
 
