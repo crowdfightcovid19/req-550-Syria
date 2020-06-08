@@ -109,11 +109,15 @@ The aim of this model is to provide a solid basis to explore the impact
 \end_layout
 
 \begin_layout Standard
-There are a number of considerations with respect to models developed in
- the context of high income countries that we need to take into account 
- to make them applicable to the Syrian context.
- Firstly, the inaccessibilty to any kind of health system, makes the considerati
-on of compartments such as 
+In our modeling approach, we need to take several key distinctions between
+ the Syrian context and the high-income country contexts in which previous
+ COVID-19 models have been developed into account.
+ 
+\end_layout
+
+\begin_layout Standard
+Firstly, the inaccessibilty to any kind of health system, makes consideration
+ of a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -121,39 +125,36 @@ hospitalized
 \begin_inset Quotes erd
 \end_inset
 
- meaningless, and will not be considered here.
- Also along these lines, we note that epidemiologic parameters found in
- the literature should be reconsidered to account from a more severe impact
- of the disease at all levels.
- Since there is no existing data a careful sensitivity analysis of the model
- under different scenarios must be performed.
- To continue with, social interactions within the camps is itself compartmentali
-zed, segregating the activities by gender and age [APG: How true is this
- assertion, I show an example below], which may be considered when the frequency
- of contacts are modelled.
- Lastly, any actions intended to minimize the impact of the spread of the
- virus should be designed considering these limitations and the social structure.
+ comparment meaningless; it will therefore be omitted.
+ Additionally, epidemiological parameters found in the literature should
+ be reconsidered to account from a more severe impact of the disease at
+ all levels.
+ Since there is no existing data, a careful sensitivity analysis of the
+ model under different scenarios must be performed.
+ To account for the social context of Syrian refugee camps, social interactions,
+ and thus frequency of contacts, will be compartmentalized by age.
+ Finally, any actions to mitigate a COVID-19 outbreak in Syrian refugee
+ camps should be designed that take these considerations and their social
+ structure into account.
  Since the most feasible actions are related to shielding strategies, the
- complexity of the living conditions should be considered in the models.
+ complexity of living conditions should be considered in the models.
 \end_layout
 
 \begin_layout Standard
-To address these challenges, we incorporate in the model the concept of
- 
+To address these challenges, our model incorporates the concept of 
 \shape italic
 population class
 \shape default
-, which is a subset of the population that we may want to distinguish either
- because it has different epidemiological parameters (e.g.
+, a subset of the population that we may want to distinguish because it
+ either has different epidemiological parameters (e.g.
  fatality rates), significantly different frequency in the number of contacts
  with members that do not belong to their own class, or both.
  Population classes allow us to generalize previous models that considered
  stratification of population in classes [REF] or locations [REF], that
  we can implicitly model via different subsets of parameters.
- In this way, we can also model the impact of potential management measures
- like shielding a vulnerable population, or subsetting the population classes
- like a quarantined population in a separated area of the camp, controlling
- the probability of contacts with potential carers.
+ In this way, we can also model the impact of potential mitigation measures,
+ such as shielding vulnerable members of the population, and controlling
+ their probability of contacts with potential carers.
 \end_layout
 
 \begin_layout Section*
