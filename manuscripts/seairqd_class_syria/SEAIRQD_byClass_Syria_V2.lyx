@@ -102,7 +102,7 @@ Motivation
 
 \begin_layout Standard
 The aim of this model is to provide a solid basis to explore the impact
- of a possible outbreak in Syrian refugees' camps.
+ of a possible COVID-19 outbreak in Syrian refugee camps.
  The model should have sufficient complexity to bring reliable results while
  being sufficiently general to embrace the diversity of situations that
  exist in the different camps.
@@ -110,7 +110,8 @@ The aim of this model is to provide a solid basis to explore the impact
 
 \begin_layout Standard
 There are a number of considerations with respect to models developed in
- the context of high income countries.
+ the context of high income countries that we need to take into account 
+ to make them applicable to the Syrian context.
  Firstly, the inaccessibilty to any kind of health system, makes the considerati
 on of compartments such as 
 \begin_inset Quotes eld
