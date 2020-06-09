@@ -176,12 +176,14 @@ The model starts considers a generic population class
 \dot{S}_{i} & = & -\lambda_{i}S_{i}\\
 \dot{E}_{i} & = & \lambda_{i}S_{i}-\delta_{\mathrm{E}}E_{i}\\
 \dot{P}_{i} & = & \delta_{\mathrm{E}}E_{i}-\delta_{\mathrm{P}}P_{i}\\
-\dot{A}_{i} & = & (1-f_{i})\delta_{\mathrm{P}}P_{i}-\gamma_{\mathrm{A}}A_{i}\\
-\dot{I_{i}} & = & f_{i}\delta_{\mathrm{P}}P_{i}-(\gamma_{\mathrm{I}}+\eta)I_{i}\\
-\dot{M_{i}} & = & g_{i}(1-h_{i})\eta I_{i}-\gamma_{\mathrm{\M}}M_{i}\\
-\dot{V_{i}} & = & g_{i}h_{i}\eta I_{i}-\alpha V_{i}\\
-\dot{R_{i}} & = & \gamma_{\mathrm{A}}A+(1-g_{i})\gamma_{\mathrm{I}i}I_{i}+\gamma_{\mathrm{\M}}M_{i}\\
-\dot{D_{i}} & = & \alpha V_{i}
+\dot{A}_{i} & = & (1-f)\delta_{\mathrm{P}}P_{i}-\gamma_{\mathrm{A}}A_{i}\\
+\dot{I_{R_{i}}} & = & f(1-g_{i}-h_{i})\delta_{\mathrm{P}}P_{i}-\gamma_{I_{R}}I_{R_{i}}\\
+\dot{I_{H_{i}}} & = & fh_{i}\delta_{\mathrm{P}}P_{i}-\eta I_{H_{i}}\\
+\dot{I_{C_{i}}} & = & fg_{i}\delta_{\mathrm{P}}P_{i}-\alpha I_{C_{i}}\\
+\dot{H_{i}} & = & \eta I_{H_{i}}-\gamma_{H}H_{i}\\
+\dot{R_{i}} & = & \gamma_{\mathrm{A}}A_{i}+\gamma_{I_{R}}I_{R_{i}}\\
+\dot{R_{i}}/\dot{D_{i}} & = & \gamma_{H}H_{i}\\
+\dot{D_{i}} & = & \alpha I_{C_{i}}
 \end{eqnarray}
 
 \end_inset
@@ -248,7 +250,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/docs/SEIAQRD Model graph.jpg
+	filename /Users/jdklein/Documents/Documents - opr-jdklein-mac/Projects/Syria/req-550-Syria/docs/Model schematic.png
 	width 70text%
 
 \end_inset
@@ -269,20 +271,6 @@ name "fig:Scheme_oneClass"
 
 \series bold
 Schematic representation of the model.
-
-\series default
- [APG Replace this figure] Note that the model does not represent the distinctio
-n in classes.
- In particular, the rate 
-\begin_inset Formula $\beta_{\A}A+\beta_{\I}I$
-\end_inset
-
- is only valid if there is one class only.
- See definition of 
-\begin_inset Formula $\lambda_{i}$
-\end_inset
-
- in the text.
 \end_layout
 
 \end_inset
