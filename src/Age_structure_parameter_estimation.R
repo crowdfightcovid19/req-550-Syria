@@ -7,7 +7,7 @@
 # description = Generates a file with a simulated population for the model split up into classes 
 #        based on age/comorbidity estimates from the entire idp population.
 #        Generates files for parameter estimates for each population class: 
-#        proportion symptomatic (fracAI), hospitalization rate (zeta), & case-fatality rate (alpha). 
+#        fraction symptomatic (f), fraction requiring non-ICU hospitalization (h), & fraction requiring ICU (g). 
 # usage = script should be run within the folder "data". 
 #### Load packages & data ####
 
@@ -158,53 +158,55 @@ names(age_structure) <- c("age1_no_comorbid", "age1_comorbid", "age2_no_comorbid
                           "age2_comorbid", "age3_no_comorbid", "age3_comorbid")
 
 #### Parameter estimates ####
-## Proportion symptomatic (fracAI)
+## Fraction symptomatic (f)
 # Proportion asymptomatic (.16) from meta analysis:
 # https://www.medrxiv.org/content/10.1101/2020.05.10.20097543v1
 
-fracAI_structure <- c(rep(1-.2, 6), rep(1-.16, 6), rep(1-.12, 6)) %>% 
+f_structure <- c(rep(1-.2, 6), rep(1-.16, 6), rep(1-.12, 6)) %>% 
   t() %>% 
   as.data.frame()
 
-names(fracAI_structure) <- c(paste0(names(age_structure), "_lowCI"), 
+names(f_structure) <- c(paste0(names(age_structure), "_lowCI"), 
                              names(age_structure), 
                              paste0(names(age_structure), "_highCI"))
 
-## Hospitalization rate/proportion of sympotatic cases requiring hospitalization (zeta)
-# Using data from the Spanish ministry of health for children:
-# https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/Actualizacion_52_COVID-19.pdf
-# Set proportion requiring hospitalization in age group 0-12 to proportion aged 0-9 in Spain
-# Using data from US CDC for adults:
+## Fraction of sympotatic cases requiring hospitalization (non-ICU, h)
+# Data for children:
+# https://www.cdc.gov/mmwr/volumes/69/wr/mm6914e4.htm?s_cid=mm6914e4_e&deliveryName=USCDC_921-DM25115#T1_down
+# Set proportion requiring hospitalization in age group 0-12 to proportion aged <18
+# Data for adults:
 # https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7119513/
-# Set proportion requiring hospitalization in age group 13-50 w/o comorbidities to proportion aged 19-64 w/o comorbitidies in the US
-# Set proportion requiring hospitalization in age group 13-50 w comorbidities to proportion aged 19-64 w comorbitidies in the US
-# Set proportion requiring hospitalization in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies in the US
-# Set proportion requiring hospitalization in age group over 50 w comorbidities to proportion aged 65+ w comorbitidies in the US
+# Set proportion requiring hospitalization in age group 13-50 w/o comorbidities to proportion aged 19-64 w/o comorbitidies
+# Set proportion requiring hospitalization in age group 13-50 w comorbidities to proportion aged 19-64 w comorbitidies
+# Set proportion requiring hospitalization in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies
+# Set proportion requiring hospitalization in age group over 50 w comorbidities to proportion aged 65+ w comorbitidies
 
-zeta_structure <- c(rep(.005, 2), .067+.02, .199+.094, .183+.063, .445+.222) %>% 
+h_structure <- c(rep(.18, 2), .067, .199, .183, .445) %>% 
   t() %>% 
   as.data.frame()
 
-names(zeta_structure) <- names(age_structure)
+names(h_structure) <- names(age_structure)
 
-## Case fatality rate (alpha)
-# Using estimates from the ICL report:
-# https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf
-# Assume all hospitalized cases requiring critical care will die
-# Assume average CFR in age group 0-12 approx % hospitalized aged 0-9 requiring critical care
-# Assume average CFR in age group 13-50 approx % hospitalized aged 20-29 requiring critical care
-# Assume average CFR in age group over 50 approx % hospitalized aged 60-69 requiring critical care
+## Fraction of cases requiring ICU (g)
+# Data for children:
+# https://www.cdc.gov/mmwr/volumes/69/wr/mm6914e4.htm?s_cid=mm6914e4_e&deliveryName=USCDC_921-DM25115#T1_down
+# Set proportion requiring hospitalization in age group 0-12 to proportion aged <18
+# Data for adults:
+# https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7119513/
+# Set proportion requiring hospitalization in age group 13-50 w/o comorbidities to proportion aged 19-64 w/o comorbitidies
+# Set proportion requiring hospitalization in age group 13-50 w comorbidities to proportion aged 19-64 w comorbitidies
+# Set proportion requiring hospitalization in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies
 
-#alpha_structure <- c(rep(.05, 4), rep(.274, 2)) %>% 
-#  t() %>% 
-#  as.data.frame()
+g_structure <- c(rep(.02, 2), .02, .094, .063, .222) %>% 
+  t() %>% 
+  as.data.frame()
 
-#names(alpha_structure) <- names(age_structure)
+names(g_structure) <- names(age_structure)
 
 #### Export data ####
 
 setwd(dirOut)
 write_csv(age_structure, "age_structure.csv")
-write_csv(fracAI_structure, "fracAI_structure.csv")
-write_csv(zeta_structure, "zeta_structure.csv")
-#write_csv(alpha_structure, "alpha_structure.csv")
+write_csv(f_structure, "f_structure.csv")
+write_csv(h_structure, "h_structure.csv")
+write_csv(g_structure, "g_structure.csv")
