@@ -171,4 +171,51 @@ infection for orange adults is
 \]
 We can assume that $n_c > n_a$ (more contacts in an urban environment).
 
+\section{Null model (well-mixed)}
+
+From Chamseys original slide, the overall distribution of the population is
+represented in Table \ref{tab:pop_total}.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ |c|c| } 
+ \hline
+          & Population fraction\\ 
+\hline
+Young     & 0.5 \\ 
+\hline
+Adult     & 0.45 \\ 
+\hline
+Elderly   & 0.05 \\ 
+\hline
+\end{tabular}
+\caption{Fractions of the population in each age group, in a well-mixed
+scenario.}
+\label{tab:pop_distro}
+\end{center}
+\end{table}
+
+Using the assumption that contacts are distributed across the age groups
+according to the population, we get the contacts per day/person in Table
+\ref{tab:contact_wellmixed}.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+          & Young & Adult & Elderly \\ 
+\hline
+Young     & 10    & 9     & 1       \\ 
+\hline
+Adult     &  5    & 4.5   & 1.5     \\ 
+\hline
+Elderly   &  5    & 4.5   & 1.5      \\ 
+\hline
+\end{tabular}
+\caption{Contacts per day/person between age groups.}
+\label{tab:contact_wellmixed}
+\end{center}
+\end{table}
+
+
 \end{document}
