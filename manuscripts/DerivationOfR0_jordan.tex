@@ -21,10 +21,10 @@ We use 4 steps to find the basic reproduction number of a system.
 We also reference the description of R0 in metapopulations in Philipps S, Rossi D. Mathematical Models of Infectious Diseases: Two-Strain Infections in Metapopulations, and the methodology for calculating R0 used by the authors in Gatto M, Bertuzzo E, Mari L, Miccoli S, Carraro L, Casagrandi R, et al. Spread and dynamics of the COVID-19 epidemic in Italy: Effects of emergency containment measures. PNAS. 2020 May 12;117(19):10484–91.
 
 
-\subsection*{Derivation}
+\subsection*{Infected subsystem}
 
 The infected subsystem is the following: 
-
+\\
 \begin{gather*}
     \dot{E}_i =  \lambda_i S_i - \delta_E E_i \\
     \dot{P}_i = \delta_E E_i - \delta_p P_i \\
@@ -32,16 +32,52 @@ The infected subsystem is the following:
     \dot{I}_i = f \delta_p P_i - ((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha) I_i \\   
     \dot{H}_i = h_i \eta I_i - \gamma_H H_i   
 \end{gather*}
+\\
 
 Where, 
+\\
 \begin{gather*}
    \lambda_i = \sum_{j = 1}^n C_{ij} \frac{\beta_P P_j + \beta_A A_j + \beta_I I_j + \beta_H H_j}{N_j}
 \end{gather*}
+\\
 
-And $C_{ij}$ is the contact matrix, the probability that individuals who are from population class $i$ come into contact with individuals who are from population class $j$.
+\subsection*{Contact matrix}
+
+$C_{ij}$ in the above equation is the contact matrix, the probability that individuals who are from population class $i$ come into contact with individuals who are from population class $j$. More specifically, if all population classes had the same size, if an individual from class $i$ were to make a single contact, $C_{ij}$ measures the probability that it would be with an individual from class $j$. $i$ and $j$ can overlap and rows of the matrix sum to 1. $C_{ij}$  is dimensionless and is independent of both  absolute number of contacts and relative population size of each class. \\
+
+To illustrate with our model of 5 population classes, we construct the contact matrix from the product of two matrices, an unscaled contact matrix we will denote $\boldsymbol{U_{ij}}$ and a scaling matrix we will deonte $\boldsymbol{S}$. $\boldsymbol{U_{ij}}$ is a symmetric matrix describing the inter-class contact rate, $\epsilon_{i,j}$ relative to intra-class contact, set to a value of 1. The diagonals of the matrix quantify intra-class contact while the off-diagonals quantify inter-class contact.
+
+\begin{gather}
+   \boldsymbol{U_{ij}} = 
+   \begin{bmatrix}
+1 & \epsilon_{1,2} & \epsilon_{1,3} & \epsilon_{1,4} & \epsilon_{1,5} \\
+\epsilon_{1,2} & 1 & \epsilon_{2,3} & \epsilon_{2,4} & \epsilon_{2,5} \\
+\epsilon_{1,3} & \epsilon_{2,3} & 1 & \epsilon_{3,4} & \epsilon_{3,5} \\
+\epsilon_{1,4} & \epsilon_{2,4} & \epsilon_{3,4} & 1 & \epsilon_{4,5} \\
+\epsilon_{1,5} & \epsilon_{2,5} & \epsilon_{3,5} & \epsilon_{4,5} & 1 
+\end{bmatrix}
+\end{gather}
+
+$\boldsymbol{S}$ is a diagonal matrix whose nonzero values are the inverse of the sum of each row in $\boldsymbol{U_{ij}}$. $\boldsymbol{S} =$ 
+
 
 \noindent
-After linearizing we can write it in the form of $\dot{x} = (T + \Sigma) x$, this gives us:
+\[
+\begin{bmatrix}
+\frac{1}{1+\epsilon_{1,2}+\epsilon_{1,3}+\epsilon_{1,4}+\epsilon_{1,5}} & 0 & 0 & 0 & 0 \\
+0 & \frac{1}{\epsilon_{1,2} + 1 + \epsilon_{2,3} + \epsilon_{2,4} + \epsilon_{2,5}} & 0 & 0 & 0 \\
+0 & 0 & \frac{1}{\epsilon_{1,3}+\epsilon_{2,3}+1+\epsilon_{3,4}+\epsilon_{3,5}} & 0 & 0 \\
+0 & 0 & 0 & \frac{1}{\epsilon_{1,4}+\epsilon_{2,4}+\epsilon_{3,4}+1+\epsilon_{4,5}} \\
+0 & 0 & 0 & 0 & \frac{1}{\epsilon_{1,5}+\epsilon_{2,5}+\epsilon_{3,5}+\epsilon_{4,5}+1} 
+   \end{bmatrix}
+\]
+
+
+$\boldsymbol{S}$ scales $\boldsymbol{U_{ij}}$ such that each value in $C_{ij} \in [0,1]$ and $\boldsymbol{S}\boldsymbol{U_{ij}}=C_{ij}$. This gives us a dimensionless measure of contact probability independent of both population structure and other parameters, that is easy to interpret and modify. For additional information on this method, see page 7 of Philipps S, Rossi D. Mathematical Models of Infectious Diseases: Two-Strain Infections in Metapopulations.\\
+
+\subsection*{Linearize the subsystem}
+
+Returning to our infected subsystem, we linearize it and write it in the form of $\dot{x} = (T + \Sigma) x$, this gives us:
 
 \begin{gather}
  T =
@@ -56,7 +92,6 @@ After linearizing we can write it in the form of $\dot{x} = (T + \Sigma) x$, thi
    \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0}
    \end{bmatrix}
 \end{gather}
-
 \begin{gather}
  \Sigma =
   \begin{bmatrix}
@@ -70,7 +105,10 @@ After linearizing we can write it in the form of $\dot{x} = (T + \Sigma) x$, thi
 
 Where $\boldsymbol{I}$ and $\boldsymbol{0}$ are the identity and null matrices of size n. \\
 
+\subsection*{Define the $\beta$ matrices}
+
 $\boldsymbol{\beta_P}$, $\boldsymbol{\beta_A}$, $\boldsymbol{\beta_I}$, and $\boldsymbol{\beta_H}$ are diagonal matrices whose nonzero elements are the transmission parameters, $\beta$, for each population class for that specific infectious compartment. To illustrate using the 5 population classes in our model:
+\\
 \begin{gather}
    \boldsymbol{\beta_i} (i \in \{P,A,I,H\}) = 
    \begin{bmatrix}
@@ -81,18 +119,28 @@ $\boldsymbol{\beta_P}$, $\boldsymbol{\beta_A}$, $\boldsymbol{\beta_I}$, and $\bo
    0 & 0 & 0 & 0 & \beta_{i,age3comorbid}
    \end{bmatrix}
 \end{gather}
+\\
 
-Since children in our model on average make twice as many contacts as adults and the elderly, we have:
+In our model, children on average have twice as many contacts as adults and the elderly. Therefore, 
+\\
 \begin{gather*}
    \beta_{i,age1} = 2\beta_{i,age2nocomorbid} =  2\beta_{i,age2comorbid} = 2\beta_{i,age3nocomorbid} = 2\beta_{i,age3comorbid}
 \end{gather*}\\
 \newpage
 
+\subsection*{Define the $\Theta$ matrix}
+
 Let $\boldsymbol{\Theta} = \boldsymbol{N} \boldsymbol{C} \boldsymbol{N}^{-1}$\\
 
-Where $\boldsymbol{N}$ is a diagonal matrix whose nonzero elements are the relative sizes of each population class, $N_i$, and $\boldsymbol{C}$ is the contact matrix whose rows are the contact probabilities for each population class, $C_{ij}$, each summing to 1.\\
+Where $\boldsymbol{N}$ is a diagonal matrix whose nonzero elements are the relative sizes of each population class, $N_i$, and $\boldsymbol{C}$ is the contact matrix $C_{ij}$. \\
 
-Now we can find the inverse of $\Sigma$, $\Sigma^{-1} = $
+The dimensionless contact matrix needs to be adjusted for the relative population size of each population class that come into contact in our model. We do this by taking the product of $\boldsymbol{N}$ and $\boldsymbol{C}$ and then taking the product of the resulting matrix and $\boldsymbol{N}^{-1}$. Only taking the product of $\boldsymbol{N}$ and $\boldsymbol{C}$ or $\boldsymbol{C}$ and $\boldsymbol{N}^{-1}$ will yield a $\boldsymbol{\Theta}$ matrix that will either inflate or deflate our derived $R_0$.\\
+
+To test, the spectral radius of $\boldsymbol{\Theta}$ absent any other parameters should be 1; this is analogous to a steady state disease system in which new cases enter and leave the infected state at the same rate. Using a perfectly well-mixed population and our model's population structure, we find $\rho(\boldsymbol{C} \boldsymbol{N}^{-1}) > 1$, $\rho(\boldsymbol{N} \boldsymbol{C}) < 1$, and $\rho(\boldsymbol{N} \boldsymbol{C} \boldsymbol{N}^{-1}) = 1$. For further details on this method of computing a $\boldsymbol{\Theta}$ matrix, see the supplementary materials in Gatto M, Bertuzzo E, Mari L, Miccoli S, Carraro L, Casagrandi R, et al. Spread and dynamics of the COVID-19 epidemic in Italy: Effects of emergency containment measures. PNAS. 2020 May 12;117(19):10484–91.\\  
+
+\subsection*{Finding the NGM and deriving $R_0$}
+
+Returning to $\Sigma$, we find its inverse $\Sigma^{-1} = $
 \\
 \noindent
 \[
@@ -113,14 +161,10 @@ We then find:
 \boldsymbol{K} = \frac{1}{\delta_P} \boldsymbol{\beta_P} \boldsymbol{\Theta} + \frac{(1-f)}{\gamma_A} \boldsymbol{\beta_A} \boldsymbol{\Theta} + \frac{f}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)} \boldsymbol{\beta_I} \boldsymbol{\Theta} + \frac{fh_i \eta}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)\gamma_H} \boldsymbol{\beta_H} \boldsymbol{\Theta}
 \end{gather*}
 
-Therefore, 
+Since $R_0$ is the spectral radius of the NGM $K$,\\
 
 \begin{gather}
 R_0 = \rho(\boldsymbol{K})
 \end{gather}
-
-\subsection*{Generalization}
-
-This method can be generalized for a structured population by including all subpopulations in the matrix notation. For instance for 6 different population classes (taking into account 3 age groups and comorbidity status), we would obtain a NGM with small domain of 6x6, as an individual can end up in one of those stages after getting infected. 
 
 \end{document}
