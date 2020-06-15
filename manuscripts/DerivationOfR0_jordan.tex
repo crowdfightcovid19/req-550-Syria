@@ -18,6 +18,7 @@ We use 4 steps to find the basic reproduction number of a system.
 2) Linearize the subsystem in the disease free equilibrium. 
 3) Find the next generation matrix (NGM) with large domain ($K_L$) by writing the linear system as: $\dot{x} = (T + \Sigma) x$, here $x$ is a vector containing all states where individuals can get infected, $T$ contains all terms corresponding to transmission and $\Sigma$ all terms corresponding to duration of stay in a compartment. Then: $NGM = -T \Sigma^{-1}. $
 4) The reproduction number is now the dominant eigenvalue of the NGM. 
+We also reference the description of R0 in metapopulations in Philipps S, Rossi D. Mathematical Models of Infectious Diseases: Two-Strain Infections in Metapopulations, and the methodology for calculating R0 used by the authors in Gatto M, Bertuzzo E, Mari L, Miccoli S, Carraro L, Casagrandi R, et al. Spread and dynamics of the COVID-19 epidemic in Italy: Effects of emergency containment measures. PNAS. 2020 May 12;117(19):10484–91.
 
 
 \subsection*{Derivation}
@@ -37,7 +38,7 @@ Where,
    \lambda_i = \sum_{j = 1}^n C_{ij} \frac{\beta_P P_j + \beta_A A_j + \beta_I I_j + \beta_H H_j}{N_j}
 \end{gather*}
 
-And $C_{ij}$ is the probability that individuals who are from population class $i$ come into contact with individuals who are from population class $j$.
+And $C_{ij}$ is the contact matrix, the probability that individuals who are from population class $i$ come into contact with individuals who are from population class $j$.
 
 \noindent
 After linearizing we can write it in the form of $\dot{x} = (T + \Sigma) x$, this gives us:
@@ -45,10 +46,10 @@ After linearizing we can write it in the form of $\dot{x} = (T + \Sigma) x$, thi
 \begin{gather}
  T =
   \begin{bmatrix}
-   \boldsymbol{0} & \beta_P \boldsymbol{\Theta} & 
-   \beta_A {\Theta} &
-   \beta_I {\Theta} &
-   \beta_H {\Theta} \\
+   \boldsymbol{0} & \boldsymbol{\beta_P} \boldsymbol{\Theta} & 
+   \boldsymbol{\beta_A} \boldsymbol{\Theta} &
+   \boldsymbol{\beta_I} \boldsymbol{\Theta} &
+   \boldsymbol{\beta_H} \boldsymbol{\Theta} \\
    \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} \\
    \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} \\
    \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} \\
@@ -67,33 +68,50 @@ After linearizing we can write it in the form of $\dot{x} = (T + \Sigma) x$, thi
    \end{bmatrix}
 \end{gather}
 
-Where $\boldsymbol{I}$ and $\boldsymbol{0}$ are the identity and null matrices of size n, and 
-\begin{gather*}
-   \boldsymbol{\Theta} = \boldsymbol{C} diag(\boldsymbol{N})^{-1}
-\end{gather*}
+Where $\boldsymbol{I}$ and $\boldsymbol{0}$ are the identity and null matrices of size n. \\
 
-Where $\boldsymbol{N}$ is a diagonal matrix whose nonzero elements are the population sizes of each population class, $N_i$, and $\boldsymbol{C}$ is the contact matrix whose rows are the contact probabilities for each population class, $C_{ij}$, each summing to 1
+$\boldsymbol{\beta_P}$, $\boldsymbol{\beta_A}$, $\boldsymbol{\beta_I}$, and $\boldsymbol{\beta_H}$ are diagonal matrices whose nonzero elements are the transmission parameters, $\beta$, for each population class for that specific infectious compartment. To illustrate using the 5 population classes in our model:
+\begin{gather}
+   \boldsymbol{\beta_i} (i \in \{P,A,I,H\}) = 
+   \begin{bmatrix}
+   \beta_{i,age1} & 0 & 0 & 0 & 0 \\
+   0 & \beta_{i,age2nocomorbid} & 0 & 0 & 0 \\
+   0 & 0 & \beta_{i,age2comorbid} & 0 & 0 \\
+   0 & 0 & 0 & \beta_{i,age3nocomorbid} & 0 \\
+   0 & 0 & 0 & 0 & \beta_{i,age3comorbid}
+   \end{bmatrix}
+\end{gather}
+
+Since children in our model on average make twice as many contacts as adults and the elderly, we have:
+\begin{gather*}
+   \beta_{i,age1} = 2\beta_{i,age2nocomorbid} =  2\beta_{i,age2comorbid} = 2\beta_{i,age3nocomorbid} = 2\beta_{i,age3comorbid}
+\end{gather*}\\
+\newpage
+
+Let $\boldsymbol{\Theta} = \boldsymbol{N} \boldsymbol{C} \boldsymbol{N}^{-1}$\\
+
+Where $\boldsymbol{N}$ is a diagonal matrix whose nonzero elements are the relative sizes of each population class, $N_i$, and $\boldsymbol{C}$ is the contact matrix whose rows are the contact probabilities for each population class, $C_{ij}$, each summing to 1.\\
 
 Now we can find the inverse of $\Sigma$, $\Sigma^{-1} = $
 \\
 \noindent
 \[
-  \begin{bmatrix*} [5] 
+  \begin{bmatrix}  
    - \frac{1}{\delta_E} \boldsymbol{I} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} \\
    -\frac{1}{\delta_p} \boldsymbol{I} & -\frac{1}{\delta_p} \boldsymbol{I} & \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{0} \\
    -\frac{(1-f)}{\gamma_A} \boldsymbol{I} & -\frac{(1-f)}{\gamma_A} \boldsymbol{I} & -\frac{1}{\gamma_A} \boldsymbol{I} & \boldsymbol{0} & \boldsymbol{0} \\
    -\frac{f}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)} \boldsymbol{I} & -\frac{f}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)} \boldsymbol{I} & \boldsymbol{0} & -\frac{1}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)} \boldsymbol{I} & \boldsymbol{0} \\
    -\frac{fh_i \eta}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)\gamma_H} \boldsymbol{I} & -\frac{fh_i \eta}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)\gamma_H} \boldsymbol{I} & \boldsymbol{0} & -\frac{h_i \eta}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)\gamma_H} \boldsymbol{I} & -\frac{1}{\gamma_H} \boldsymbol{I} 
-   \end{bmatrix*}
+   \end{bmatrix}
 \]
 \\
 The NGM with large domain can now be found by $K_L = - T \Sigma^{-1}$, however, as we know that each individual that gets infected first will go to the $E$ compartment we can instead calculate the NGM with small domain that only consists of the $E$ compartment.
 We do this by removing from $T$ the rows that correspond to the other compartments and from $\Sigma^{-1}$ the columns. 
 We then find: 
 
-\begin{gather}
-\boldsymbol{K} = \frac{\beta_P}{\delta_P} \boldsymbol{\Theta} + \frac{(1-f)\beta_A}{\gamma_A} \boldsymbol{\Theta} + \frac{f \beta_I}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)} \boldsymbol{\Theta} + \frac{fh_i \eta \beta_H}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)\gamma_H} \boldsymbol{\Theta}
-\end{gather}
+\begin{gather*}
+\boldsymbol{K} = \frac{1}{\delta_P} \boldsymbol{\beta_P} \boldsymbol{\Theta} + \frac{(1-f)}{\gamma_A} \boldsymbol{\beta_A} \boldsymbol{\Theta} + \frac{f}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)} \boldsymbol{\beta_I} \boldsymbol{\Theta} + \frac{fh_i \eta}{((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)\gamma_H} \boldsymbol{\beta_H} \boldsymbol{\Theta}
+\end{gather*}
 
 Therefore, 
 
