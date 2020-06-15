@@ -3,26 +3,31 @@
 # ****************************************
 # 
 # 
-# author = Alberto Pascual-García, expanding a version from Eduard Campillo-Funollet
+# author = Alberto Pascual-García, built from minimal SIR code from Eduard Campillo-Funollet
 # email = alberto.pascual.garcia@gmail.com (Eduard: e.campillo-funollet@sussex.ac.uk)
 # date = 27th May 2020
-# description = This script expands the script SimpleSIR.R to account for a structured population
+# description = This script computes a deterministic epidemiological model with different
+#        compartments, further accounting for a structured population
 #        in which the transition probabilities from one compartment to another depend on features
 #        of the population that the user may want to define, for instance the age,
-#        sex or comorbidities of the individuals, hereafter population "classes".
-# usage = you have to create a directory in /data/models including the following files describing
+#        sex or comorbidities of the individuals, hereafter population "classes". The
+#        scripts also implements a routine to run simulations multiple times with
+#        different realizations of the parameters.
+# usage = Create a directory in /data/models including the following files describing
 #         parameters for the classes. Not all the parameters are implemented in this way
 #         because the distinction between community classes is possibly not relevant, but
-#         implementing them would be straighforward. The remainder parameters should be fixed
-#         by the user below in the space indicated. The name of the directory is expected to
+#         implementing them would be straighforward. The remainder epidemiological parameters are generated
+#         in the code "input_parameters_SEPAIHRD.R" where vectors for the different realizations
+#         of the noise are created. There are finally some computational parameters (e.g. number of realizations)
+#         to be fixed by the user below in the space indicated. The name of the directory is expected to
 #         be meaningful (related to the model implemented) and will be used for the output
 #         files. No other actions are needed from the user, once the parameters are fixed 
 #         and the files exist simply "source".
 # input_files = Examples of models are located in data/fake_models
-#    a) 4 tab separated files with a single row and one column for each class. The
+#    a) 4 tab separated files with a single row and one column for each class plus the column names. The
 #         classes (i.e. column names) must be the same in all files.
 #   * classes_structure.csv: A file describing the starting values of the populations for each class defined
-#   * fracPtoI_structure.csv: A file describing the expected fraction of P going to I for each class
+#   *Not in current version fracPtoI_structure.csv: A file describing the expected fraction of P going to I for each class
 #   * fracItoH_structure.csv: A file describing the fraction of infected that would be hospitalized
 #   * fracItoD_structure.csv: A file describing the fraction of infected that would die
 #    b) 1 tab-separated file with a matrix of dimensions Nclass x Nclass. The rownames and
@@ -91,7 +96,7 @@ scenario=1 # if scenario = 0, all hopsitalized will recover, if = 1 all will die
 
 # --- Parameters read from file
 file.age="classes_structure.csv" # Starting population sizes by classes
-file.fracPtoI="fracPtoI_structure.csv"  # fraction of presymptomatic becoming symptomatic, class dependent
+#file.fracPtoI="fracPtoI_structure.csv"  # fraction of presymptomatic becoming symptomatic, class dependent
 file.fracItoH="fracItoH_structure.csv"  # fraction of symptomatic that would be hospitalized
 file.fracItoD="fracItoD_structure.csv"  # fraction of symptomatic that will die
 
@@ -126,7 +131,7 @@ label=paste(CompModel,"dynamics",descr,"cont",ContMatType,sep="_") # a label for
 setwd(dirDataIn)
 age.str=read.table(file=file.age,sep="\t",header = TRUE)
 Nclass=dim(age.str)[2] # number of classes in the population structure
-fracPtoI=as.vector(read.table(file=file.fracPtoI,sep="\t",header = TRUE)) 
+#fracPtoI=as.vector(read.table(file=file.fracPtoI,sep="\t",header = TRUE)) 
 fracItoH=as.vector(read.table(file=file.fracItoH,sep="\t",header = TRUE))
 fracItoD=as.vector(read.table(file=file.fracItoD,sep="\t",header = TRUE))
 class.names=colnames(age.str) # Store the name of the classes
@@ -197,7 +202,7 @@ for(i in 1:Nrand){ # Launch the script Nrand times
   eta=eta.vec[i]
   alpha=alpha.vec[i]
 
-  fracPtoI=fracPtoI
+  fracPtoI=fracPtoI.vec[i]
   fracItoH=fracItoH
   fracItoD=fracItoD
   Cont=Cont
