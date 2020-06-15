@@ -13,6 +13,9 @@ t.P.param1=0.028 # presymptomatic time, gompertz first param
 t.P.param2=1.73 # gompertz second param
 
 # ..... Symptomatic compartments
+f.S.mean=0.84
+f.S.param=240 # Number of trials needed to fit the CI reported
+
 t.A.mean=7 # time to recover for assymptomatic 1/t.A=gamma_A
 t.ItoR.mean=7 # mild symptomatic to recover, no distro here 1/t.I=gamma_I
 
@@ -41,6 +44,7 @@ t.E.toolow.vec=rnorm(Ntoolow,mean=t.min.incub.mean,sd=t.min.incub.std) # and gen
 t.E.vec[t.E.toolow.index]=t.E.toolow.vec # and substitute
 #
 # ..... Symptomatic
+fracPtoI.vec=rbinom(Nrand,prob = f.S.mean,size=f.S.param)/f.S.param
 t.ItoH.vec=rgamma(Nrand,shape=t.ItoH.shape,scale=t.ItoH.scale)
 t.H.vec=rgamma(Nrand,shape=t.H.shape,scale=t.H.scale)
 t.ItoD.vec=rgamma(Nrand,shape=t.ItoD.shape,scale=t.ItoD.scale)
