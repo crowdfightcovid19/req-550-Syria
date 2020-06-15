@@ -1,2 +1,2 @@
-age1_no_comorbid_lowCI,age1_comorbid_lowCI,age2_no_comorbid_lowCI,age2_comorbid_lowCI,age3_no_comorbid_lowCI,age3_comorbid_lowCI,age1_no_comorbid,age1_comorbid,age2_no_comorbid,age2_comorbid,age3_no_comorbid,age3_comorbid,age1_no_comorbid_highCI,age1_comorbid_highCI,age2_no_comorbid_highCI,age2_comorbid_highCI,age3_no_comorbid_highCI,age3_comorbid_highCI
-0.8,0.8,0.8,0.8,0.8,0.8,0.84,0.84,0.84,0.84,0.84,0.84,0.88,0.88,0.88,0.88,0.88,0.88
+age1_lowCI,age2_no_comorbid_lowCI,age2_comorbid_lowCI,age3_no_comorbid_lowCI,age3_comorbid_lowCI,age1,age2_no_comorbid,age2_comorbid,age3_no_comorbid,age3_comorbid,age1_highCI,age2_no_comorbid_highCI,age2_comorbid_highCI,age3_no_comorbid_highCI,age3_comorbid_highCI
+0.8,0.8,0.8,0.8,0.8,0.84,0.84,0.84,0.84,0.84,0.88,0.88,0.88,0.88,0.88
