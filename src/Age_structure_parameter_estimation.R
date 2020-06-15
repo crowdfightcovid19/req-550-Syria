@@ -153,7 +153,7 @@ pop_str_NCDs[3, 6:9] <- pop_str_NCDs[3, 2:5]*age[1, 3]
 age_structure <- data.frame(age[, 1]-sum(pop_str_NCDs[1, 6:9]), sum(pop_str_NCDs[1, 6:9]), 
                             age[, 2]-sum(pop_str_NCDs[2, 6:9]), sum(pop_str_NCDs[2, 6:9]), 
                             age[, 3]-sum(pop_str_NCDs[3, 6:9]), sum(pop_str_NCDs[3, 6:9])) %>% 
-  round_preserve_sum()
+  round_preserve_sum()/2000
 
 names(age_structure) <- c("age1_no_comorbid", "age1_comorbid", "age2_no_comorbid", 
                           "age2_comorbid", "age3_no_comorbid", "age3_comorbid")
