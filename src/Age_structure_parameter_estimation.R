@@ -7,7 +7,8 @@
 # description = Generates a file with a simulated population for the model split up into classes 
 #        based on age/comorbidity estimates from the entire idp population.
 #        Generates files for parameter estimates for each population class: 
-#        fraction symptomatic (f), fraction requiring non-ICU hospitalization (h), & fraction requiring ICU (g). 
+#        fraction symptomatic (fracPtoI), fraction requiring non-ICU hospitalization (fracItoH), 
+#        & fraction requiring ICU (fracItoD). 
 # usage = script should be run within the folder "data". 
 #### Load packages & data ####
 
@@ -158,19 +159,19 @@ names(age_structure) <- c("age1_no_comorbid", "age1_comorbid", "age2_no_comorbid
                           "age2_comorbid", "age3_no_comorbid", "age3_comorbid")
 
 #### Parameter estimates ####
-## Fraction symptomatic (f)
+## Fraction symptomatic (fracPtoI)
 # Proportion asymptomatic (.16) from meta analysis:
 # https://www.medrxiv.org/content/10.1101/2020.05.10.20097543v1
 
-f_structure <- c(rep(1-.2, 6), rep(1-.16, 6), rep(1-.12, 6)) %>% 
+fracPtoI_structure <- c(rep(1-.2, 6), rep(1-.16, 6), rep(1-.12, 6)) %>% 
   t() %>% 
   as.data.frame()
 
-names(f_structure) <- c(paste0(names(age_structure), "_lowCI"), 
+names(fracPtoI_structure) <- c(paste0(names(age_structure), "_lowCI"), 
                              names(age_structure), 
                              paste0(names(age_structure), "_highCI"))
 
-## Fraction of sympotatic cases requiring hospitalization (non-ICU, h)
+## Fraction of sympotatic cases requiring hospitalization (non-ICU, fracItoH)
 # Data for children:
 # https://www.cdc.gov/mmwr/volumes/69/wr/mm6914e4.htm?s_cid=mm6914e4_e&deliveryName=USCDC_921-DM25115#T1_down
 # Set proportion requiring hospitalization in age group 0-12 to proportion aged <18
@@ -181,13 +182,13 @@ names(f_structure) <- c(paste0(names(age_structure), "_lowCI"),
 # Set proportion requiring hospitalization in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies
 # Set proportion requiring hospitalization in age group over 50 w comorbidities to proportion aged 65+ w comorbitidies
 
-h_structure <- c(rep(.18, 2), .067, .199, .183, .445) %>% 
+fracItoH_structure <- c(rep(.18, 2), .067, .199, .183, .445) %>% 
   t() %>% 
   as.data.frame()
 
-names(h_structure) <- names(age_structure)
+names(fracItoH_structure) <- names(age_structure)
 
-## Fraction of cases requiring ICU (g)
+## Fraction of cases requiring ICU (fracItoD)
 # Data for children:
 # https://www.cdc.gov/mmwr/volumes/69/wr/mm6914e4.htm?s_cid=mm6914e4_e&deliveryName=USCDC_921-DM25115#T1_down
 # Set proportion requiring hospitalization in age group 0-12 to proportion aged <18
@@ -197,16 +198,16 @@ names(h_structure) <- names(age_structure)
 # Set proportion requiring hospitalization in age group 13-50 w comorbidities to proportion aged 19-64 w comorbitidies
 # Set proportion requiring hospitalization in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies
 
-g_structure <- c(rep(.02, 2), .02, .094, .063, .222) %>% 
+fracItoD_structure <- c(rep(.02, 2), .02, .094, .063, .222) %>% 
   t() %>% 
   as.data.frame()
 
-names(g_structure) <- names(age_structure)
+names(fracItoD_structure) <- names(age_structure)
 
 #### Export data ####
 
 setwd(dirOut)
 write_csv(age_structure, "age_structure.csv")
-write_csv(f_structure, "f_structure.csv")
-write_csv(h_structure, "h_structure.csv")
-write_csv(g_structure, "g_structure.csv")
+write_csv(fracPtoI_structure, "fracPtoI_structure.csv")
+write_csv(fracItoH_structure, "fracItoH_structure.csv")
+write_csv(fracItoD_structure, "fracItoD_structure.csv")
