@@ -150,12 +150,12 @@ pop_str_NCDs[3, 6:9] <- pop_str_NCDs[3, 2:5]*age[1, 3]
 
 ## Generate dataframe with age & comorbidity structure
 
-age_structure <- data.frame(age[, 1]-sum(pop_str_NCDs[1, 6:9]), sum(pop_str_NCDs[1, 6:9]), 
+age_structure <- data.frame(age[, 1], 
                             age[, 2]-sum(pop_str_NCDs[2, 6:9]), sum(pop_str_NCDs[2, 6:9]), 
                             age[, 3]-sum(pop_str_NCDs[3, 6:9]), sum(pop_str_NCDs[3, 6:9])) %>% 
   round_preserve_sum()/2000
 
-names(age_structure) <- c("age1_no_comorbid", "age1_comorbid", "age2_no_comorbid", 
+names(age_structure) <- c("age1", "age2_no_comorbid", 
                           "age2_comorbid", "age3_no_comorbid", "age3_comorbid")
 
 #### Parameter estimates ####
@@ -163,7 +163,7 @@ names(age_structure) <- c("age1_no_comorbid", "age1_comorbid", "age2_no_comorbid
 # Proportion asymptomatic (.16) from meta analysis:
 # https://www.medrxiv.org/content/10.1101/2020.05.10.20097543v1
 
-fracPtoI_structure <- c(rep(1-.2, 6), rep(1-.16, 6), rep(1-.12, 6)) %>% 
+fracPtoI_structure <- c(rep(1-.2, 5), rep(1-.16, 5), rep(1-.12, 5)) %>% 
   t() %>% 
   as.data.frame()
 
@@ -182,7 +182,7 @@ names(fracPtoI_structure) <- c(paste0(names(age_structure), "_lowCI"),
 # Set proportion requiring hospitalization in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies
 # Set proportion requiring hospitalization in age group over 50 w comorbidities to proportion aged 65+ w comorbitidies
 
-fracItoH_structure <- c(rep(.18, 2), .067, .199, .183, .445) %>% 
+fracItoH_structure <- c(.18, .067, .199, .183, .445) %>% 
   t() %>% 
   as.data.frame()
 
@@ -198,7 +198,7 @@ names(fracItoH_structure) <- names(age_structure)
 # Set proportion requiring hospitalization in age group 13-50 w comorbidities to proportion aged 19-64 w comorbitidies
 # Set proportion requiring hospitalization in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies
 
-fracItoD_structure <- c(rep(.02, 2), .02, .094, .063, .222) %>% 
+fracItoD_structure <- c(.02, .02, .094, .063, .222) %>% 
   t() %>% 
   as.data.frame()
 
