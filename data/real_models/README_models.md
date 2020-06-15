@@ -1,6 +1,6 @@
 ## Description of the files
 
-These files contain outputs from the script `Age_stucture_parameter_estimation.R`
+These files contain outputs from the scripts `Age_stucture_parameter_estimation.R` and `Theta_matrix_computation.R`
 
 * **age_structure.csv**
     * 5 population classes: ages (0-12, 13-50 no comorbidities, 13-50 comorbidities, over 50 no comorbidities, over 50 comorbidities)
@@ -29,6 +29,6 @@ These files contain outputs from the script `Age_stucture_parameter_estimation.R
     * No confidence intervals
 
 * **Theta_matrix.csv**
-    * A 5x5 matrix where Theta = NC(N)^(-1), N = is a diagonal matrix whose nonzero elements are the values in age_structure.csv, and C is contact_matrix.csv
+    * A 5x5 matrix where Theta = NC(N)^(-1), N is a diagonal matrix whose nonzero elements are the values in age_structure.csv, and C is contact_matrix.csv
     * This matrix is used for computing R0 as described [here](https://github.com/crowdfightcovid19/req-550-Syria/blob/master/manuscripts/DerivationOfR0_jordan.pdf)
     * 5 population classes: ages (0-12, 13-50 no comorbidities, 13-50 comorbidities, over 50 no comorbidities, over 50 comorbidities)
