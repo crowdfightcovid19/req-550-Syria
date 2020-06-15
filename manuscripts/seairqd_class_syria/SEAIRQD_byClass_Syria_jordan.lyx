@@ -488,7 +488,7 @@ The transmission rate
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\lambda_{i}=\frac{1}{N}\sum_{j}C_{ij}(\beta_{P}P_{j}+\beta_{\A}A_{j}+\beta_{\I}I_{j}+\beta_{H}H_{j})
+\lambda_{i}=\sum_{j}C_{ij}\frac{(\beta_{P}P_{j}+\beta_{\A}A_{j}+\beta_{\I}I_{j}+\beta_{H}H_{j})}{N_{j}}
 \end{equation}
 
 \end_inset
