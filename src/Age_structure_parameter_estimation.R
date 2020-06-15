@@ -16,7 +16,7 @@ library(tidyverse)
 library(rvest)
 
 setwd("data")
-dirOut="real_models"
+dirOut="estimation_parameters/class_structured_data"
 
 pop <- read.csv("age_structure_and_NCDprevalence/entire_population.csv")
 

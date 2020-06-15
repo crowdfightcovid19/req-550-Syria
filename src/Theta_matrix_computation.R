@@ -9,12 +9,12 @@
 #        this contact matrix and the relative sizes of each population class, necessary for the computation 
 #        of R0 as described here: https://github.com/crowdfightcovid19/req-550-Syria/blob/master/manuscripts/DerivationOfR0_jordan.pdf
 #        Outputs files for the contact matrix and Theta matrix.
-# usage = script should be run within the folder "data/real_models". 
+# usage = script should be run within the folder "data/estimation_parameters/class_structured_data". 
 ### Setup
 
 library(tidyverse)
 library(matlib)
-setwd("data/real_models")
+setwd("data/estimation_parameters/class_structured_data")
 
 ### Contact/mixing matrix
 
