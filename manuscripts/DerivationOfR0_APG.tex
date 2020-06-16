@@ -45,17 +45,17 @@ Where,
 \end{gather}
 \\
 
-where $\beta_{ij}=\tau C_{ij}$ with $\tau$ being the probability of infection for a contact with an infectious person, and $C_{ij}$ is the average number of contacts of an individual of class $i$ with an individual of class $j$. 
+where $\beta_{ij}=\tau C_{ij}$ with $\tau$ being the probability of infection for a contact with an infected person, and $C_{ij}$ is the average number of contacts of an individual of class $i$ with an individual of class $j$. 
 
 \subsection*{Parametrization of the contact matrix}
 
-We estimated the average number of contacts of individuals of class $i$ in the camps, $\bar{c}_i$ and we parametrized the contact matrix assuming that, in a well-mixed population, these contacts will be distributed among classes relative to the fraction of individuals in each class, i.e.
+We estimated the average number of contacts of individuals of class $i$ in the camps, $\bar{c}_i$, and we parametrized the contact matrix assuming that, in a well-mixed population, these contacts will be distributed among classes relative to the fraction of individuals within each class, i.e.
 
 \begin{equation}
 C_{ij} = \hat{c}_i N_j/N,
 \end{equation}
 
-with $N$ the total population size. The well-mixed population model will be considered the null model, and parameters derived under null model assumptions are indexed with the superscript $0$, e.g. the null contact matrix: $C^0_{ij}$. The type of interventions that we consider, aim to reduce either the average number of contacts a class $i$ (e.g. through isolation) or the accessibility of class $i$ to class $j$. We model the first type of intervention introducing the parameter $\epsilon$, representing the fraction of the average number of contacts observed in the null model that prevail after the intervention: $\bar{c}_i = \epsilon \bar{c}^0_i$. Similarly, we model the second type of intervention with the management matrix $m_{ij}$, representing the fraction of population $j$ visible to population $i$ after the intervention. The contact matrix resulting from management strategies can therefore be written with respect to the null model as:
+with $N$ the total population size. A well-mixed population will be considered the null model, and parameters derived under the null model assumptions are indexed with the superscript $0$, e.g. the null contact matrix is $C^0_{ij}$. The type of interventions that we consider, aim to reduce either the average number of contacts a class $i$ (e.g. self-isolation) or the accessibility of class $i$ to class $j$ (e.g. shielding strategies). We model the first type of intervention introducing the parameter $\epsilon$, representing the fraction of the average number of contacts observed in the null model that prevail after the intervention: $\bar{c}_i = \epsilon \bar{c}^0_i$. Similarly, we model the second type of intervention with the management matrix $m_{ij}$, representing the fraction of population $j$ visible to population $i$ after the intervention. The contact matrix resulting from management strategies can therefore be written with respect to the null model as:
 
 \begin{equation}
 C_{ij} =\epsilon m_{ij} \bar{c}^0_i N_j/N = \epsilon m_{ij} C^0_{ij}.
