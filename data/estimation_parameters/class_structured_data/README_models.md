@@ -2,7 +2,7 @@
 
 These files contain outputs from the scripts `Age_stucture_parameter_estimation.R` and `Theta_matrix_computation.R`
 
-* **age_structure.csv**
+* **classes_structure.csv**
     * 5 population classes: ages (age1 = 0-12, age2_no_comorbid = 13-50 no comorbidities, age2_comorbid = 13-50 with comorbidities, age3_no_comorbid = over 50 no comorbidities, age3_comorbid = over 50 with comorbidities)
 
 * **contact_matrix.csv**
