@@ -432,63 +432,13 @@ The transmission rate
 \begin_inset Formula $\lambda_{i}$
 \end_inset
 
- depends on the average contacts between the different classes.
- To determine its value, we define the maximum transmission rates of latent,
- 
-\begin_inset Formula $\beta_{P}$
-\end_inset
-
-, asymptomatic, 
-\begin_inset Formula $\beta_{A}$
-\end_inset
-
-, symptomatic, 
-\begin_inset Formula $\beta_{I}$
-\end_inset
-
-, and severe (requiring hospitalization), 
-\begin_inset Formula $\beta_{H}$
-\end_inset
-
-, and the reduction of these transmission values between the class 
-\begin_inset Formula $i$
-\end_inset
-
- and class 
-\begin_inset Formula $j$
-\end_inset
-
- with the matrix 
-\begin_inset Formula $C_{ij}\in[0,1]$
-\end_inset
-
-.
- This reduction may be motivated by social factors (e.g.
- different contact patterns of children and adults) or management actions
- (e.g.
- a class is shielded from the remaining population).
- Its value represents the fraction of contacts that the classes 
-\begin_inset Formula $i$
-\end_inset
-
- and 
-\begin_inset Formula $j$
-\end_inset
-
- have with respect to the mean contacts between two individuals in the whole
- population.
- Taking these considerations we define the transmission rate of the class
- 
-\begin_inset Formula $i$
-\end_inset
-
- as:
+, is expressed by the equation:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\lambda_{i}=\sum_{j}C_{ij}\frac{(\beta_{P}P_{j}+\beta_{\A}A_{j}+\beta_{\I}I_{j}+\beta_{H}H_{j})}{N_{j}}
+\lambda_{i}=\sum_{j}\beta_{ij}\frac{(P+A_{j}+I+H_{j})}{N_{j}}
 \end{equation}
 
 \end_inset
@@ -498,14 +448,69 @@ The transmission rate
 
 \begin_layout Standard
 where 
-\begin_inset Formula $j$
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+beta_{ij}=
+\backslash
+tau C_{ij}$
+\end_layout
+
 \end_inset
 
- runs across all classes including the reference class 
-\begin_inset Formula $i$
+ with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+tau$
+\end_layout
+
+\end_inset
+
+ being the probability of infection for a contact with an infected person,
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$C_{ij}$
+\end_layout
+
+\end_inset
+
+ is the average number of contacts of an individual of class 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$i$
+\end_layout
+
+\end_inset
+
+ with an individual of class
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$j$
+\end_layout
+
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
