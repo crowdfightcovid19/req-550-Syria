@@ -1,124 +1,187 @@
+%% LyX 2.3.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage{amsmath}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{xcolor}
+
 
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 \newcommand{\add}[1]{\textcolor{red}{#1}}
 
 \title{Derivation of R0}
 
-\begin{document}
 
+
+\makeatother
+
+\begin{document}
 \maketitle
 
 \subsection*{Reference and general idea}
 
-The derivation of R0 for a SIR type model following description of 'Mathematical Tools for Understanding Infectious Disease Dynamics' written by Odo Diekmann, Hans Heesterbeek and Tom Britton. 
-See chapter 7, section 2 'Next-generation matrix for compartmental systems'. 
-We use 4 steps to find the basic reproduction number of a system.
-1) Define the infected subsystem, i.e. all equations that include compartments where individuals can get infected. 
-2) Linearize the subsystem in the disease free equilibrium. 
-3) Find the next generation matrix (NGM) with large domain ($K_L$) by writing the linear system as: $\bs{\dot{x}} = (\bs{T} + \bs{\Sigma}) \bs{x}$, here $\bs{x}$ is a vector containing all states where individuals can get infected, $\bs{T}$ contains all terms corresponding to transmission and $\bs{\Sigma}$ all terms corresponding to transitions between compartments. Then: $\bs{K} = -\bs{T} \bs{\Sigma}^{-1}. $
-4) The reproduction number is now the dominant eigenvalue of the NGM. 
-We also reference the description of R0 in metapopulations in Philipps S, Rossi D. Mathematical Models of Infectious Diseases: Two-Strain Infections in Metapopulations, and the methodology for calculating R0 used by the authors in Gatto M, Bertuzzo E, Mari L, Miccoli S, Carraro L, Casagrandi R, et al. Spread and dynamics of the COVID-19 epidemic in Italy: Effects of emergency containment measures. PNAS. 2020 May 12;117(19):10484–91.
-
+The derivation of R0 for a SIR type model following description of
+'Mathematical Tools for Understanding Infectious Disease Dynamics'
+written by Odo Diekmann, Hans Heesterbeek and Tom Britton. See chapter
+7, section 2 'Next-generation matrix for compartmental systems'. We
+use 4 steps to find the basic reproduction number of a system. 1)
+Define the infected subsystem, i.e. all equations that include compartments
+where individuals can get infected. 2) Linearize the subsystem in
+the disease free equilibrium. 3) Find the next generation matrix (NGM)
+with large domain ($K_{L}$) by writing the linear system as: $\bs{\dot{x}}=(\bs{T}+\bs{\Sigma})\bs{x}$,
+here $\bs{x}$ is a vector containing all states where individuals
+can get infected, $\bs{T}$ contains all terms corresponding to transmission
+and $\bs{\Sigma}$ all terms corresponding to transitions between
+compartments. Then: $\bs{K}=-\bs{T}\bs{\Sigma}^{-1}.$ 4) The reproduction
+number is now the dominant eigenvalue of the NGM. We also reference
+the description of R0 in metapopulations in Philipps S, Rossi D. Mathematical
+Models of Infectious Diseases: Two-Strain Infections in Metapopulations,
+and the methodology for calculating R0 used by the authors in Gatto
+M, Bertuzzo E, Mari L, Miccoli S, Carraro L, Casagrandi R, et al.
+Spread and dynamics of the COVID-19 epidemic in Italy: Effects of
+emergency containment measures. PNAS. 2020 May 12;117(19):10484--91.
 
 \subsection*{Infected subsystem}
 
-The infected subsystem is the following: 
-\\
+The infected subsystem is the following: \\
+ 
 \begin{gather}
-    \dot{E}_i =  \lambda_i S_i - \delta_E E_i \\
-    \dot{P}_i = \delta_E E_i - \delta_p P_i \\
-    \dot{A}_i = (1-f) \delta_p P_i - \gamma_A A_i \\
-    \dot{I}_i = f \delta_p P_i - \kappa_i I_i \\   
-    \dot{H}_i = h_i \eta I_i - \gamma_H H_i   
+\dot{E}_{i}=\lambda_{i}S_{i}-\delta_{E}E_{i}\\
+\dot{P}_{i}=\delta_{E}E_{i}-\delta_{p}P_{i}\\
+\dot{A}_{i}=(1-f)\delta_{p}P_{i}-\gamma_{A}A_{i}\\
+\dot{I}_{i}=f\delta_{p}P_{i}-\kappa_{i}I_{i}\\
+\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{H}H_{i}
 \end{gather}
 \\
 
-Where, 
-\\
+Where, \\
+ 
 \begin{gather}
-   \lambda_i = \sum_{j = 1}^n \beta_{ij} \frac{P_j + A_j + I_j + H_j}{N_j}
+\lambda_{i}=\sum_{j=1}^{n}\beta_{ij}\frac{P_{j}+A_{j}+I_{j}+H_{j}}{N_{j}}\label{eq:lambda}
 \end{gather}
 \\
 
-where $\beta_{ij}=\tau C_{ij}$ with $\tau$ being the probability of infection for a contact with an infected person, and $C_{ij}$ is the average number of contacts of an individual of class $i$ with an individual of class $j$. 
+where $\beta_{ij}=\tau C_{ij}$ with $\tau$ being the probability
+of infection for a contact with an infected person, and $C_{ij}$
+is the average number of contacts of an individual of class $i$ with
+an individual of class $j$.
 
 \subsection*{Parametrization of the contact matrix}
 
-We estimated the average number of contacts of individuals of class $i$ in the camps, $\bar{c}_i$, and we parametrized the contact matrix assuming that, in a well-mixed population, these contacts will be distributed among classes relative to the fraction of individuals within each class, i.e.
+We estimated the average number of contacts of individuals of class
+$i$ in the camps, $\bar{c}_{i}$, and we parametrized the contact
+matrix assuming that, in a well-mixed population, these contacts will
+be distributed among classes relative to the fraction of individuals
+within each class, i.e.
 
 \begin{equation}
-C_{ij} = \hat{c}_i N_j/N,
+C_{ij}=\bar{c}_{i}N_{j}/N,
 \end{equation}
 
-with $N$ the total population size. A well-mixed population will be considered the null model, and parameters derived under the null model assumptions are indexed with the superscript $0$, e.g. the null contact matrix is $C^0_{ij}$. The type of interventions that we consider, aim to reduce either the average number of contacts a class $i$ (e.g. self-isolation) or the accessibility of class $i$ to class $j$ (e.g. shielding strategies). We model the first type of intervention introducing the parameter $\epsilon$, representing the fraction of the average number of contacts observed in the null model that prevail after the intervention: $\bar{c}_i = \epsilon \bar{c}^0_i$. Similarly, we model the second type of intervention with the management matrix $m_{ij}$, representing the fraction of population $j$ visible to population $i$ after the intervention. The contact matrix resulting from management strategies can therefore be written with respect to the null model as:
+with $N$ the total population size. A well-mixed population will
+be considered the null model, and parameters derived under the null
+model assumptions are indexed with the superscript $0$, e.g. the
+null contact matrix is $C_{ij}^{0}$. The type of interventions that
+we consider, aim to reduce either the average number of contacts a
+class $i$ (e.g. self-isolation) or the accessibility of class $i$
+to class $j$ (e.g. shielding strategies). We model the first type
+of intervention introducing the parameter $\epsilon$, representing
+the fraction of the average number of contacts observed in the null
+model that prevail after the intervention: $\bar{c}_{i}=\epsilon\bar{c}_{i}^{0}$.
+Similarly, we model the second type of intervention with the management
+matrix $m_{ij}$, representing the fraction of population $j$ visible
+to population $i$ after the intervention. The contact matrix resulting
+from management strategies can therefore be written with respect to
+the null model as:
 
 \begin{equation}
-C_{ij} =\epsilon m_{ij} \bar{c}^0_i N_j/N = \epsilon m_{ij} C^0_{ij}.
+C_{ij}=\epsilon m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon m_{ij}C_{ij}^{0}.
 \end{equation}
+
+Given the parametrization for the null model, we substitute in the
+expression for lambda (Eq. \ref{eq:lambda}) to obtain
+
+\begin{gather}
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\bar{c}_{i}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda-1}
+\end{gather}
+
 
 \subsection*{Estimation of the Next Generation Matrix}
 
-We start considering the subsystem containing the infectious population and, to facilitate notation, let us consider the following ordering of the variables in the vector $x = (E_1,...,E_M,P_1,...,P_M,A_1,...,A_M,I_1,...,I_M,H_1,...,H_M)$, with $M$ the number of population classes. Following this notation, the linearized system can be written in the form $\bs{\dot{x}} = (\bs{T} + \bs{\Sigma}) \bs{x}$, where:
+We start considering the subsystem containing the infectious population
+and, to facilitate notation, let us consider the following ordering
+of the variables in the vector $x=(E_{1},...,E_{M},P_{1},...,P_{M},A_{1},...,A_{M},I_{1},...,I_{M},H_{1},...,H_{M})$,
+with $M$ the number of population classes. Following this notation,
+the linearized system can be written in the form $\bs{\dot{x}}=(\bs{T}+\bs{\Sigma})\bs{x}$,
+where:
 
 \begin{gather}
- \bs{T} = \tau
-  \begin{bmatrix}
-   \bs{0} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta} \\
-   \bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0} \\
-   \bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0} \\
-   \bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0} \\
-   \bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}
-   \end{bmatrix}
+\bs{T}=\tau\begin{bmatrix}\bs{0} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}
+\end{bmatrix}
 \end{gather}
 
-is the transmission matrix, with $\bs{\Theta}=\bs{C}\mathrm{diag}(\bf{N})^{-1}$ and $\bs{C}$ and $\bs{N}$ being the contact matrix and the vector containing the number of individuals per class, respectively. The transition matrix is
+is the transmission matrix, with $\bs{\Theta}=\mathrm{diag}(p_{i}\bar{c}_{i})\bs{\bs{U}}$,
+$p_{i}=N_{i}/N$, and $\bs{U}$ being the all-ones matrix of size
+$M$. The transition matrix is
 
 \begin{gather}
- \bs{\Sigma} =
-  \begin{bmatrix}
-   - \delta_E \bs{I} & \bs{0} & \bs{0} & \bs{0} & \bs{0} \\
-   \delta_E \bs{I}& -\delta_p \bs{I} & \bs{0} & \bs{0} & \bs{0} \\
-   \bs{0} & (1-f) \delta_p \bs{I} & -\gamma_A \bs{I} & \bs{0} & \bs{0} \\
-   \bs{0} & f \delta_p \bs{I} & \bs{0} & - \kappa_i \bs{I} & \bs{0} \\
-   \bs{0} & \bs{0} & \bs{0} & h_i \eta \bs{I} & -\gamma_H \bs{I}
-   \end{bmatrix}
+\bs{\Sigma}=\begin{bmatrix}-\delta_{E}\bs{I} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\delta_{E}\bs{I} & -\delta_{p}\bs{I} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & (1-f)\delta_{p}\bs{I} & -\gamma_{A}\bs{I} & \bs{0} & \bs{0}\\
+\bs{0} & f\delta_{p}\bs{I} & \bs{0} & -\mathrm{diag}(\kappa_{i})\bs{I} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \eta\mathrm{diag}(h_{i})\bs{I} & -\gamma_{H}\bs{I}
+\end{bmatrix}
 \end{gather}
 
-Where $\bs{I}$ and $\bs{0}$ are the identity and null matrices of size $M$, and $\kappa_i= ((1-g_i-h_i) \gamma_{I} + h_i \eta + g_i \alpha)$. We next compute the inverse of the transition matrix
-
+Where $\bs{I}$ and $\bs{0}$ are the identity and null matrices of
+size $M$, and $\kappa_{i}=((1-g_{i}-h_{i})\gamma_{I}+h_{i}\eta+g_{i}\alpha)$.
+We next compute the inverse of the transition matrix
 
 \begin{gather}
-\bs{\Sigma^{-1}} = 
-  \begin{bmatrix}  
-   - \frac{1}{\delta_E} \bs{I} & \bs{0} & \bs{0} & \bs{0} & \bs{0} \\
-   -\frac{1}{\delta_p} \bs{I} & -\frac{1}{\delta_p} \bs{I} & \bs{0} & \bs{0} & \bs{0} \\
-   -\frac{(1-f)}{\gamma_A} \bs{I} & -\frac{(1-f)}{\gamma_A} \bs{I} & -\frac{1}{\gamma_A} \bs{I} & \bs{0} & \bs{0} \\
-   -\frac{f}{\kappa_i} \bs{I} & -\frac{f}{\kappa_i} \bs{I} & \bs{0} & -\frac{1}{\kappa_i} \bs{I} & \bs{0} \\
-   -\frac{fh_i \eta}{\kappa_i\gamma_H} \bs{I} & -\frac{fh_i \eta}{\kappa_i\gamma_H} \bs{I} & \bs{0} & -\frac{h_i \eta}{\kappa_i\gamma_H} \bs{I} & -\frac{1}{\gamma_H} \bs{I} 
-   \end{bmatrix}
+\bs{\Sigma^{-1}}=\begin{bmatrix}-\frac{1}{\delta_{E}}\bs{I} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+-\frac{1}{\delta_{p}}\bs{I} & -\frac{1}{\delta_{p}}\bs{I} & \bs{0} & \bs{0} & \bs{0}\\
+-\frac{(1-f)}{\gamma_{A}}\bs{I} & -\frac{(1-f)}{\gamma_{A}}\bs{I} & -\frac{1}{\gamma_{A}}\bs{I} & \bs{0} & \bs{0}\\
+-f\mathrm{diag}(\frac{1}{\kappa_{i}})\bs{I} & -f\mathrm{diag}(\frac{1}{\kappa_{i}})\bs{I} & \bs{0} & -\mathrm{diag}(\frac{1}{\kappa_{i}})\bs{I} & \bs{0}\\
+-\frac{f\eta}{\gamma_{H}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & -\frac{f\eta}{\gamma_{H}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & \bs{0} & -\frac{\eta}{\gamma_{H}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & -\frac{1}{\gamma_{H}}\bs{I}
+\end{bmatrix}
 \end{gather}
 
-The NGM with large domain can now be found by $\bs{K_\mathrm{L}} = - \bs{T} \bs{\Sigma}^{-1}$, however, as we know that each individual that gets infected first will go to the $E$ compartment we can instead calculate the NGM with small domain, $\bf{K_\mathrm{S}}$ that only consists of the $E$ compartment \add{[Heffernan]}.
-We do this by removing from $T$ the rows that correspond to the other compartments and from $\Sigma^{-1}$ the columns \add{APG: This could be more elegantly explained defining an epsilon matrix}
-We then find: 
+The NGM with large domain can now be found by $\bs{K_{\mathrm{L}}}=-\bs{T}\bs{\Sigma}^{-1}$,
+however, as we know that each individual that gets infected first
+will go to the $E$ compartment we can instead calculate the NGM with
+small domain, ${\bf {K_{\mathrm{S}}}}$ that only consists of the
+$E$ compartment \add{{[}Heffernan{]}}. We do this by removing from
+$T$ the rows that correspond to the other compartments and from $\Sigma^{-1}$
+the columns \add{APG: This could be more elegantly explained defining
+an epsilon matrix} We then find:
 
 \begin{gather*}
-\bs{K_\mathrm{S}} = \tau \left(\frac{1}{\delta_P} \bs{\Theta} + \frac{(1-f)}{\gamma_A} \bs{\Theta} + \frac{f}{\kappa_i}\bs{\Theta} + \frac{fh_i \eta}{\kappa_i\gamma_H} \bs{\Theta}\right).
+\bs{K_{\mathrm{S}}}=\tau\left[\left(\frac{1}{\delta_{P}}+\frac{(1-f)}{\gamma_{A}}\right)\bs{\Theta}+\mathrm{diag}\left(\frac{f}{\kappa_{i}}(1+\frac{h_{i}\eta}{\gamma_{H}})\right)\bs{\Theta}\right].
 \end{gather*}
+
 
 \subsection*{Estimation of $\tau$}
 
-The reproduction number can be obtained from the maximum of the absolute value of all eigenvalues of $\bs{K_\mathrm{S}}$,  i.e. $R_0 = |\lambda_1|$. In our model all parameters are known except the probability of infection per contact, $\tau$. We estimate the probability distribution of $\tau$ generating realizations of $R_0$ and $\tilde{K_\mathrm{S}}=K_\mathrm{S}/\tau$ assuming a well mixed population as null model and solving for $\tau$:
+The reproduction number can be obtained from the maximum of the absolute
+value of all eigenvalues of $\bs{K_{\mathrm{S}}}$, i.e. $R_{0}=|\lambda_{1}|$.
+In our model all parameters are known except the probability of infection
+per contact, $\tau$. We estimate the probability distribution of
+$\tau$ generating realizations of $R_{0}$ and $\tilde{K_{\mathrm{S}}}=K_{\mathrm{S}}/\tau$
+assuming a well mixed population as null model and solving for $\tau$:
 
 \begin{equation}
-\tau = \frac{R_0}{|\tilde{\lambda}^0_1|},
+\tau=\frac{R_{0}}{|\tilde{\lambda}_{1}^{0}|},
 \end{equation}
 
-where $|\tilde{\lambda}^0_1|$ is the maximum of the absolute values of all eigenvalues of  $\tilde{K_\mathrm{S}}$, when the contact matrix is estimated under the null model, i.e. $C_{ij}=C^0_{ij}$. 
-
+where $|\tilde{\lambda}_{1}^{0}|$ is the maximum of the absolute
+values of all eigenvalues of $\tilde{K_{\mathrm{S}}}$, when the contact
+matrix is estimated under the null model, i.e. $C_{ij}=C_{ij}^{0}$.
 \end{document}
