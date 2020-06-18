@@ -1,8 +1,10 @@
+require(extraDistr) # fits gompertz distribution
 
 # This function considers the epidemiological parameters estimated and creates
 # vectors with random number with size the number of simulations. 
 
 ### START EDITING
+set.seed(18062020) # today 
 # ..... Incubation and presymptomatic (the difference will estimate t.Exposed)
 t.incub.mean=5.2 # incubation time
 t.incub.std=0.18 # lognormal
@@ -49,7 +51,11 @@ t.ItoH.vec=rgamma(Nrand,shape=t.ItoH.shape,scale=t.ItoH.scale)
 t.H.vec=rgamma(Nrand,shape=t.H.shape,scale=t.H.scale)
 t.ItoD.vec=rgamma(Nrand,shape=t.ItoD.shape,scale=t.ItoD.scale)
 #
-# ..... Fractions
+# ..... R0
+R0.mean=4
+R0.param=0.43
+R0.vec=rnorm(Nrand,mean=R0.mean,sd=R0.param)
+
 
 # --- Transform to rates
 deltaE.vec=1/t.E.vec
@@ -57,5 +63,5 @@ deltaP.vec=1/t.P.vec
 gammaA=1/t.A.mean
 gammaI=1/t.ItoR.mean
 gammaH.vec=1/t.H.vec
-eta.vec=1/t.ItoH.mean
-alpha.vec=1/t.ItoD.mean
+eta.vec=1/t.ItoH.vec
+alpha.vec=1/t.ItoD.vec
