@@ -100,11 +100,12 @@ the null model as:
 C_{ij}=\epsilon_{i}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon m_{ij}C_{ij}^{0}.
 \end{equation}
 
-Given the parametrization for the null model, we substitute in the
-expression for lambda (Eq. \ref{eq:lambda}) to obtain
+Given this parameterization, we substitute in the expression for lambda
+(Eq. \ref{eq:lambda}) to obtain for a model including management
+strategies
 
 \begin{gather}
-\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\epsilon_{i}\bar{c}_{i}^{0}m_{ij}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda-1}
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\epsilon_{i}\bar{c}_{i}^{0}m_{ij}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda_simplified}
 \end{gather}
 
 
@@ -113,9 +114,18 @@ expression for lambda (Eq. \ref{eq:lambda}) to obtain
 We start considering the subsystem containing the infectious population
 and, to facilitate notation, let us consider the following ordering
 of the variables in the vector $x=(E_{1},...,E_{M},P_{1},...,P_{M},A_{1},...,A_{M},I_{1},...,I_{M},H_{1},...,H_{M})$,
-with $M$ the number of population classes. Following this notation,
-the linearized system can be written in the form $\bs{\dot{x}}=(\bs{T}+\bs{\Sigma})\bs{x}$,
-where:
+with $M$ the number of population classes. We are interested in the
+parametrization of the null model, which will serve as a baseline
+to estimate the parameter $\tau$, which is unknown, and that does
+not change when interventions are introduced. For the null model,
+Eq. \ref{eq:lambda_simplified} becomes
+
+\[
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\bar{c}_{i}^{0}\left(P_{j}+A_{j}+I_{j}+H_{j}\right).
+\]
+
+Following this notation, the linearized system can be written in the
+form $\bs{\dot{x}}=(\bs{T}+\bs{\Sigma})\bs{x}$, where:
 
 \begin{gather}
 \bs{T}=\tau\begin{bmatrix}\bs{0} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta}\\
@@ -126,7 +136,7 @@ where:
 \end{bmatrix}
 \end{gather}
 
-is the transmission matrix, with $\bs{\Theta}=\mathrm{diag}(p_{i}\bar{c}_{i})\bs{\bs{U}}$,
+is the transmission matrix, with $\bs{\Theta}=\mathrm{diag}(p_{i}\bar{c}_{i}^{0})\bs{\bs{U}}$,
 $p_{i}=N_{i}/N$, and $\bs{U}$ being the all-ones matrix of size
 $M$. The transition matrix is
 
@@ -181,5 +191,5 @@ assuming a well mixed population as null model and solving for $\tau$:
 
 where $|\tilde{\lambda}_{1}^{0}|$ is the maximum of the absolute
 values of all eigenvalues of $\tilde{K_{\mathrm{S}}}$, when the contact
-matrix is estimated under the null model, i.e. $C_{ij}=C_{ij}^{0}$.
+matrix is estimated under the null model, i.e. $\bar{c}_{i}=\bar{c}_{i}^{0}$.
 \end{document}

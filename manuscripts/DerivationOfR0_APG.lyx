@@ -328,8 +328,8 @@ C_{ij}=\epsilon_{i}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon m_{ij}C_{ij}^{0}.
 \end_layout
 
 \begin_layout Standard
-Given the parametrization for the null model, we substitute in the expression
- for lambda (Eq.
+Given this parameterization, we substitute in the expression for lambda
+ (Eq.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -340,13 +340,13 @@ noprefix "false"
 
 \end_inset
 
-) to obtain
+) to obtain for a model including management strategies
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\epsilon_{i}\bar{c}_{i}^{0}m_{ij}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda-1}
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\epsilon_{i}\bar{c}_{i}^{0}m_{ij}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda_simplified}
 \end{gather}
 
 \end_inset
@@ -370,7 +370,39 @@ We start considering the subsystem containing the infectious population
 \end_inset
 
  the number of population classes.
- Following this notation, the linearized system can be written in the form
+ We are interested in the parametrization of the null model, which will
+ serve as a baseline to estimate the parameter 
+\begin_inset Formula $\tau$
+\end_inset
+
+, which is unknown, and that does not change when interventions are introduced.
+ For the null model, Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambda_simplified"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\bar{c}_{i}^{0}\left(P_{j}+A_{j}+I_{j}+H_{j}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Following this notation, the linearized system can be written in the form
  
 \begin_inset Formula $\bs{\dot{x}}=(\bs{T}+\bs{\Sigma})\bs{x}$
 \end_inset
@@ -396,7 +428,7 @@ We start considering the subsystem containing the infectious population
 
 \begin_layout Standard
 is the transmission matrix, with 
-\begin_inset Formula $\bs{\Theta}=\mathrm{diag}(p_{i}\bar{c}_{i})\bs{\bs{U}}$
+\begin_inset Formula $\bs{\Theta}=\mathrm{diag}(p_{i}\bar{c}_{i}^{0})\bs{\bs{U}}$
 \end_inset
 
 , 
@@ -624,7 +656,7 @@ where
 
 , when the contact matrix is estimated under the null model, i.e.
  
-\begin_inset Formula $C_{ij}=C_{ij}^{0}$
+\begin_inset Formula $\bar{c}_{i}=\bar{c}_{i}^{0}$
 \end_inset
 
 .
