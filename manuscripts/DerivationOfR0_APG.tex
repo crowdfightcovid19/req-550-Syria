@@ -15,8 +15,6 @@
 
 \title{Derivation of R0}
 
-
-
 \makeatother
 
 \begin{document}
@@ -89,9 +87,9 @@ null contact matrix is $C_{ij}^{0}$. The type of interventions that
 we consider, aim to reduce either the average number of contacts a
 class $i$ (e.g. self-isolation) or the accessibility of class $i$
 to class $j$ (e.g. shielding strategies). We model the first type
-of intervention introducing the parameter $\epsilon$, representing
+of intervention introducing the parameter $\epsilon_{i}$, representing
 the fraction of the average number of contacts observed in the null
-model that prevail after the intervention: $\bar{c}_{i}=\epsilon\bar{c}_{i}^{0}$.
+model that prevail after the intervention: $\bar{c}_{i}=\epsilon_{i}\bar{c}_{i}^{0}$.
 Similarly, we model the second type of intervention with the management
 matrix $m_{ij}$, representing the fraction of population $j$ visible
 to population $i$ after the intervention. The contact matrix resulting
@@ -99,14 +97,14 @@ from management strategies can therefore be written with respect to
 the null model as:
 
 \begin{equation}
-C_{ij}=\epsilon m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon m_{ij}C_{ij}^{0}.
+C_{ij}=\epsilon_{i}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon m_{ij}C_{ij}^{0}.
 \end{equation}
 
 Given the parametrization for the null model, we substitute in the
 expression for lambda (Eq. \ref{eq:lambda}) to obtain
 
 \begin{gather}
-\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\bar{c}_{i}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda-1}
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\epsilon_{i}\bar{c}_{i}^{0}m_{ij}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda-1}
 \end{gather}
 
 
