@@ -26,7 +26,7 @@
 # input_files = Examples of models are located in data/fake_models
 #    a) 4 tab separated files with a single row and one column for each class plus the column names. The
 #         classes (i.e. column names) must be the same in all files.
-#   * classes_structure.csv: A file describing the starting values of the populations for each class defined
+#   * classes_structure.csv: A file describing the fraction of the population that each class represents
 #   *Not in current version fracPtoI_structure.csv: A file describing the expected fraction of P going to I for each class
 #   * fracItoH_structure.csv: A file describing the fraction of infected that would be hospitalized
 #   * fracItoD_structure.csv: A file describing the fraction of infected that would die
@@ -82,25 +82,18 @@ library(tidyverse) # another package to reshape data for ggplot
 # .... and are not expected to be changed.
 ###### START EDITING
 # --- Structure of directories and labelling 
-fake=1 # fix to 1 if you are working with fake data (used for storage only)
+fake=1 # fix to 1 if you are working with test data 
 descr="age3_gender2_com2" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
 class.infected="age2_M_healthy" # string with the name of the class in which the first infection is detected
 
 # --- Model type
-CompModel="SEPAIHRD" # One of "SEAIRQD" (basic), "SEPAVIRD" (+latent+severe) 
+CompModel="SEPAIHRD" # Only "SEPAIHRD" implemented 
 ContMatType="mean" # one of "mean"= mean field, "external"= read from file
 strat=0 # if ContMatType="mean" and strat= 1 it will source contact_matrix.R, where you can create manually a contacts matrix
-scenario=1 # if scenario = 0, all hopsitalized will recover, if = 1 all will die.
-
-# --- Epidemiological parameters
-
-# --- Parameters read from file
-file.age="classes_structure.csv" # Starting population sizes by classes
-#file.fracPtoI="fracPtoI_structure.csv"  # fraction of presymptomatic becoming symptomatic, class dependent
-file.fracItoH="fracItoH_structure.csv"  # fraction of symptomatic that would be hospitalized
-file.fracItoD="fracItoD_structure.csv"  # fraction of symptomatic that will die
+scenario=1 # if scenario = 0, all hospitalized will recover, if = 1 all will die.
 
 # --- Computational parameters
+Npop=6000 # Population size
 Ndays=365 # Number of days simulated
 Nrand=100 # number of realizations of parameters
 
@@ -114,50 +107,34 @@ Nfull=5 # Number of simulations whose results will be fully reported (1 to Nrand
 if(fake == 1){
   dirTmp="/fake_models/"
 }else{
-  dirTmp="/models/"
+  dirTmp="/real_models/"
 }
 # --- The following lines edit the input and output directories
 # You may have problems with the following line in Windows, or if you do not run from rstudio 
-this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit comment if problems...
+this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit, just comment it if problems...
 #this.dir="/pathToRepo" # ...path to the root path of your repo if the above command does not work, comment otherwise
 dirDataIn=paste(this.dir,"/data",dirTmp,descr,sep="") # Directory for the input data
-dirFun=paste(this.dir,"/src",sep="") # Directory where the function with the derivatives is coded
+dirCodeBase=paste(this.dir,"/src",sep="") # Directory where the function with the basic code is found
+dirCodeSpec=paste(this.dir,"/src/",CompModel,sep="") # Directory where code specific to this model
 dirDataOut=paste(this.dir,"/data",dirTmp,descr,"/results",sep="") # directory for the simulation output
 dirPlotOut=paste(this.dir,"/data",dirTmp,descr,"/figures",sep="") # directory for the figure
 
 label=paste(CompModel,"dynamics",descr,"cont",ContMatType,sep="_") # a label for your output  files
 
 # Read input data ---------
-setwd(dirDataIn)
-age.str=read.table(file=file.age,sep="\t",header = TRUE)
-Nclass=dim(age.str)[2] # number of classes in the population structure
-#fracPtoI=as.vector(read.table(file=file.fracPtoI,sep="\t",header = TRUE)) 
-fracItoH=as.vector(read.table(file=file.fracItoH,sep="\t",header = TRUE))
-fracItoD=as.vector(read.table(file=file.fracItoD,sep="\t",header = TRUE))
-class.names=colnames(age.str) # Store the name of the classes
-if(ContMatType != "mean"){ # Read contacts file
-  Cont=as.matrix(read.table(file=file.contacts,sep="\t")) # format to determine
-  rownames(Cont)=class.names
-  colnames(Cont)=class.names
-}else{ # or create a mean field matrix
-  Cont=matrix(1,nrow = Nclass,ncol=Nclass)
-  rownames(Cont)=class.names
-  colnames(Cont)=class.names
-  if(strat==1){ # create a specific contact matrix
-    setwd(dirFun)
-    source("contacts_matrix.R")
-    setwd(dirDataIn)
-  }
-}
+setwd(dirCodeBase)
+source("read_classStructuredData_function.R")
+struct.param=read_classStructuredData_function(dirDataIn)
+class.str=unlist(struct.param["class.str"][[1]])
+fracItoH.str=unlist(struct.param["fracItoH.str"][[1]])
+fracItoD.str=unlist(struct.param["fracItoD.str"][[1]])
+class.names=unlist(struct.param["class.names"][[1]])
+C=(unlist(struct.param["C"][[1]]))
 
 # Initialize the model and data  ----------
 # .... Select the model and source it
-setwd(dirFun)
-if(CompModel == "SEAIRQD"){
-  compartments=c("S","E","A","I","R","Q","D") # Declare the compartments
-  source("dxdt_SEAIRD_str.R")
-  dxdtfun=dxdt_SEAIRD_str
-}else if(CompModel == "SEPAIHRD"){ # Include P
+setwd(dirCodeSpec)
+if(CompModel == "SEPAIHRD"){ # Only this model implemented so far
   compartments=c("S","E","P","A","I","H","R","D") # 
   source("dxdt_SEPAIHRD_str.R")
   source("input_parameters_SEPAIHRD.R")
@@ -172,7 +149,7 @@ y.start=matrix(0, nrow= Ncomp*Nclass,ncol=1)
 var.names=c()
 for(var in compartments){ # Create a vector with all the variables
   if(var == "E"){ # starting exposed
-    y.start[1:Nclass,1]=as.numeric(age.str[1,])
+    y.start[1:Nclass,1]=as.numeric(class.str[1,])*Npop
   }
   var.names=c(var.names,paste(class.names,var,sep="."))
 }
@@ -192,8 +169,8 @@ k=1 # labels the number of fully reported results
 rand2report=vector(mode="integer",length=Nfull) # store realization that will be reported
 output.list=list()
 for(i in 1:Nrand){ # Launch the script Nrand times
-  betaI=betaI.vec[i]
-  betaA=betaA.vec[i]
+  #betaI=betaI.vec[i]
+  #betaA=betaA.vec[i]
   deltaE=deltaE.vec[i]
   deltaP=deltaP.vec[i]
   gammaA=gammaA
@@ -201,14 +178,15 @@ for(i in 1:Nrand){ # Launch the script Nrand times
   gammaH=gammaH.vec[i]
   eta=eta.vec[i]
   alpha=alpha.vec[i]
+  tau=tau.vec[i]
 
   fracPtoI=fracPtoI.vec[i]
-  fracItoH=fracItoH
-  fracItoD=fracItoD
+  fracItoH.str=fracItoH.str
+  fracItoD.str=fracItoD.str
   Cont=Cont
-  parms.list=list(betaI=betaI,betaA=betaA,deltaE=deltaE,deltaP=deltaP,
+  parms.list=list(tau=tau,deltaE=deltaE,deltaP=deltaP,
                   gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,
-                  fracPtoI=fracPtoI,fracItoH=fracItoH,fracItoD=fracItoD,Cont=Cont,
+                  fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,Cont=Cont,
                 scenario=scenario,classes=class.names,vars=var.names,compartments=compartments)
   
   # Run the ODE solver
@@ -245,7 +223,7 @@ for(i in 1:Nrand){ # Launch the script Nrand times
   death.tolls=model.output[Ndays,death.vars]
   death.tolls.df[i,]=death.tolls
   death.total[i]=round(sum(death.tolls))
-  death.frac.df[i,]=100*death.tolls/age.str
+  death.frac.df[i,]=100*death.tolls/class.str
   infect.max=apply(model.output[,infect.vars],2,max)
   infect.max.df[i,]=infect.max
   time.max=apply(model.output[,infect.vars],2,which.max)
