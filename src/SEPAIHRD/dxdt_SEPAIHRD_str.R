@@ -6,19 +6,20 @@ dxdt_SEAIRD_str = function(t, y, parms){
   #y=y.start # DEBUG
   #t=times_vector # DEBUG
   scenario=params["scenario"][[1]]
-  betaI=parms["betaI"][[1]]
-  betaA=parms["betaA"][[1]]
+  #betaI=parms["betaI"][[1]]
+  #betaA=parms["betaA"][[1]]
+  tau=parms["tau"][[1]]
   deltaE=parms["deltaE"][[1]]
-  deltaP=parms["deltaE"][[1]]
+  deltaP=parms["deltaP"][[1]]
   gammaA=parms["gammaA"][[1]]
   gammaI=parms["gammaI"][[1]]
   gammaH=parms["gammaH"][[1]]
   eta=parms["eta"][[1]]
   alpha=parms["alpha"][[1]]
   
-  fracPtoI.vec=unlist(parms["fracPtoI.str"][[1]])
-  fracItoH.vec=unlist(parms["fracItoH.str"][[1]])
-  fracItoD.vec=unlist(parms["fracItoD.str"][[1]])
+  fracPtoI=parms["fracPtoI.str"]
+  fracItoH.str=unlist(parms["fracItoH.str"][[1]])
+  fracItoD.str=unlist(parms["fracItoD.str"][[1]])
 
   C=parms["Cont"][[1]]
   classes=unlist(parms["classes"][[1]])
@@ -41,9 +42,9 @@ dxdt_SEAIRD_str = function(t, y, parms){
     H=paste(Ref,"H",sep=".")
     R=paste(Ref,"R",sep=".")
     D=paste(Ref,"D",sep=".")
-    f=fracPtoI.vec[Ref]
-    h=fracItoH.vec[Ref]
-    g=fracItoD.vec[Ref]
+    f=fracPtoI # double check no age structure
+    h=fracItoH.str[Ref]
+    g=fracItoD.str[Ref]
     for(var in compartments){ # Compute the derivative in the correspondent compartment
       if(var == "S"){ # susceptibles
         lambda=0 # To estimate lambda
@@ -51,13 +52,11 @@ dxdt_SEAIRD_str = function(t, y, parms){
           classP=paste(class,"P",sep=".") # Only for infectious compartments, presymptomatic
           classA=paste(class,"A",sep=".") # asymptomatic
           classP=paste(class,"H",sep=".") # hospitalized
-          classI=paste(class,"I",sep=".") # and infected 
-          lambda= lambda+(betaA*y[classA]*C[Ref,class]+
-                            betaP*y[classP]*C[Ref,class]+
-                            betaI*y[classI]*C[Ref,class]+
-                            betaH*y[classH]*C[Ref,class])
+          classI=paste(class,"I",sep=".") # and infected
+          # Double check the following, there is no beta any more
+          lambda= lambda+C[Ref,class](y[classA]+y[classP]+y[classI]+y[classH])
         }
-        lambda=lambda/N
+        lambda=tau*lambda/N
         dy[S] = -lambda*y[S]
       }else if(var == "E"){ # Exposed
         dy[E] = lambda*y[S]-deltaE*y[E]
