@@ -55,8 +55,12 @@ t.ItoD.vec=rgamma(Nrand,shape=t.ItoD.shape,scale=t.ItoD.scale)
 R0.mean=4
 R0.param=0.43
 R0.vec=rnorm(Nrand,mean=R0.mean,sd=R0.param)
-
-
+#
+# ..... tau
+tau.mean=0.0059
+tau.param=0.0009
+tau.vec=rnorm(Nrand,mean = tau.mean,sd=tau.param)
+#
 # --- Transform to rates
 deltaE.vec=1/t.E.vec
 deltaP.vec=1/t.P.vec

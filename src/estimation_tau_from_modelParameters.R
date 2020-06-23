@@ -9,57 +9,67 @@
 #               after contact with an infected person) from the remaining parameters of the model
 #               through the computation of the Next Generation Matrix spectrum, and an estimation
 #               of the reproduction number.
-# usage = I
+# usage = Parameters are sourced from input_parameters_SEPAIHRD.R, the class-structured read from
+#         files in read_classStructuredData_function.R , so it can simply be sourced
 #
+library(MASS)
 rm(list=ls())
+
+# --- Fix parameters
+Nrand=1000 # Determine number of randomizations to estimate tau
+
 # --- Fix directories and file
 this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit comment if problems...
 #this.dir="/pathToRepo" # ...path to the root path of your repo if the above command does not work, comment otherwise
 dirDataIn=paste(this.dir,"/data/real_models/null_model/",sep="") # Directory for the input data
+dirCodeBase=paste(this.dir,"/src",sep="") # Directory where the function with the basic code is found
 dirParams=paste(this.dir,"/src/SEPAIHRD",sep="") # Directory where the function with the derivatives is coded
 pathOut="data/estimation_parameters/figures_prob_distros"
 dirPathOut=paste(this.dir,pathOut,sep="/")
-file.class="classes_structure" # Fraction of the population that each class represents
-file.fracItoH="fracItoH_structure"  # fraction of symptomatic that would be hospitalized
-file.fracItoD="fracItoD_structure" # fraction that will directly die
-file.contacts="contacts_structure" # contact matrix
-fileParams="input_parameters_SEPAIHRD.R"
 
+file.contclass="classes_contacts" # bar(c)_i average number of contacts per class, all the remaining files and params are generated externally
+fileParams="input_parameters_SEPAIHRD.R"
+fileStrParams="read_classStructuredData_function.R"
 
 # --- Read input data
+setwd(dirCodeBase)
+source(fileStrParams)
+struct.param=read_classStructuredData_function(dirDataIn)
+class.str=unlist(struct.param["class.str"][[1]])
+fracItoH.str=unlist(struct.param["fracItoH.str"][[1]])
+fracItoD.str=unlist(struct.param["fracItoD.str"][[1]])
+class.names=unlist(struct.param["class.names"][[1]])
+C=(unlist(struct.param["C"][[1]]))
+
 setwd(dirDataIn)
-sep="\t"
-class.str=read.table(file=file.class,sep=sep,header = TRUE)
-Nclass=dim(class.str)[2] # number of classes in the population structure
-#fracPtoI=as.vector(read.table(file=file.fracPtoI,sep=sep,header = TRUE)) 
-fracItoH=as.vector(read.table(file=file.fracItoH,sep=sep,header = TRUE))
-fracItoD=as.vector(read.table(file=file.fracItoD,sep=sep,header = TRUE))
-class.names=colnames(class.str) # Store the name of the classes
-C=as.matrix(read.csv(file=file.contacts,sep = sep))
-rownames(C)=colnames(C)
+av.cont=as.matrix(read.csv(file=file.contclass,sep="\t"))
+#rownames(C)=colnames(C)
 
 # --- Source parameters
-N=6000
-Nrand=1000 # Determine number of randomizations
+#N=6000
 setwd(dirParams)
 source(fileParams)
 
-# --- Compute scope of class i
-N.str=as.matrix(N*class.str)
-scope=C#/as.vector(N.str)
+# --- Compute NGM
+# ..... Create the matrix of contacts
+av.cont.mat=as.vector(av.cont)*matrix(1,nrow=dim(C)[1],ncol=dim(C)[2])
+#N.str=as.matrix(N*class.str)
 tau=vector(mode="numeric",length = Nrand)
 for(k in 1:Nrand){
-  kappa=(1-fracItoH-fracItoD)*gammaI+fracItoH*eta.vec[k]+fracItoD*alpha.vec[k]
+  scope=av.cont.mat*as.vector(fracPtoI.vec[k])
+  kappa=(1-fracItoH.str-fracItoD.str)*gammaI+
+    fracItoH.str*eta.vec[k]+
+    fracItoD.str*alpha.vec[k]
   A1=1/deltaP.vec[k]
   A2=(1-fracPtoI.vec[k])/gammaA
   A3=as.vector(as.matrix(fracPtoI.vec[k]/kappa))
-  A4=as.vector(as.matrix((fracPtoI.vec[k]*fracItoH*eta.vec[k])/
+  A4=as.vector(as.matrix((fracPtoI.vec[k]*fracItoH.str*eta.vec[k])/
                            (kappa*gammaH.vec[k])))
   
   Ks.red= (A1+A2+A3+A4)*scope
   spectra=eigen(Ks.red)
   lambdas=spectra$values
-  lambdas.sort=sort(abs(lambdas),decreasing = TRUE)
+  lambdas.sort=sort(abs(Re(lambdas)),decreasing = TRUE)
   radius=lambdas.sort[1]
   
   tau[k]=R0.vec[k]/radius
@@ -77,7 +87,7 @@ fit$loglik # show loglike
 # --- Plot results
 xlabel="tau"
 labelPlot="Tau"
-plotOut=paste("Plot_",labelPlot,"_",distribution,"Distro.pdf",sep="")
+plotOut=paste("Plot_",labelPlot,"_",distribution,"Distro_v2.pdf",sep="")
 pdf(file = plotOut,width=10)
 hist(tau, 100, freq = FALSE, main=paste(distribution," distribution"),
      xlab=xlabel)
@@ -86,4 +96,4 @@ curve(dnorm(x, mean = mean, sd=sd), seq(0,1,0.01),  col = "red", add = TRUE)
 #curve(dlnorm(x, meanlog = mean, sdlog=sd), seq(0,1,0.01),  col = "red", add = TRUE)
 #curve(dgamma(x, shape = mean, rate=sd), seq(0,1,0.01),  col = "red", add = TRUE)
 dev.off()
-
+# 
