@@ -6,7 +6,7 @@
 * [Data from a Chinese study](https://pediatrics.aappublications.org/content/pediatrics/early/2020/03/16/peds.2020-0702.full.pdf) (very similar to the [US CDC report on COVID-19 in children](https://www.cdc.gov/mmwr/volumes/69/wr/mm6914e4.htm?s_cid=mm6914e4_e&deliveryName=USCDC_921-DM25115#T1_down) but without missing data) used for children (0-12)
 * [Data from US CDC report on underlying health conditions and COVID-19 in adults](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7119513/) used for adults (13+)
 * Parameter is fixed with known age and comorbidity specific values, no probability distribution
-  * Age 1 (0-12), no comorbidities- set to proportion hospitalized-proportion admitted to ICU aged <18 with known outcomes (6.4% - 0.65% = 5.75%)
+  * Age 1 (0-12), no comorbidities- set to proportion hospitalized-proportion admitted to ICU aged <18 with known outcomes (7.05% - 0.65% = 6.4%)
   * Age 2 (13-50), no comorbidities- set to proportion hospitalized without ICU admission aged 19-64 with no comorbidities & known outcomes (6.7%)
   * Age 2 (13-50), comorbidities- set to proportion hospitalized without ICU admission aged 19-64 with comorbidities & known outcomes (19.9%)
   * Age 3 (over 50), no comorbidities- set to proportion hospitalized without ICU admission aged 65+ with no comorbidities & known outcomes (18.3%)
