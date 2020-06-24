@@ -82,15 +82,15 @@ library(tidyverse) # another package to reshape data for ggplot
 # .... and are not expected to be changed.
 ###### START EDITING
 # --- Structure of directories and labelling 
-fake=1 # fix to 1 if you are working with test data 
-descr="age3_gender2_com2" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
-class.infected="age2_M_healthy" # string with the name of the class in which the first infection is detected
+fake=0 # fix to 1 if you are working with test data 
+descr="null_model" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
+class.infected="age2_no_comorbid" # string with the name of the class in which the first infection is detected
 
 # --- Model type
 CompModel="SEPAIHRD" # Only "SEPAIHRD" implemented 
 ContMatType="mean" # one of "mean"= mean field, "external"= read from file
 strat=0 # if ContMatType="mean" and strat= 1 it will source contact_matrix.R, where you can create manually a contacts matrix
-scenario=1 # if scenario = 0, all hospitalized will recover, if = 1 all will die.
+scenario=0 # if scenario = 0, all hospitalized will recover, if = 1 all will die.
 
 # --- Computational parameters
 Npop=6000 # Population size
@@ -138,18 +138,19 @@ if(CompModel == "SEPAIHRD"){ # Only this model implemented so far
   compartments=c("S","E","P","A","I","H","R","D") # 
   source("dxdt_SEPAIHRD_str.R")
   source("input_parameters_SEPAIHRD.R")
-  dxdtfun=dxdt_SEPAIRQD_str
+  dxdtfun=dxdt_SEAIRD_str
 }
 
 
 # --- Starting population values
 setwd(dirDataIn)
 Ncomp=length(compartments)
+Nclass=length(class.names)
 y.start=matrix(0, nrow= Ncomp*Nclass,ncol=1)
 var.names=c()
 for(var in compartments){ # Create a vector with all the variables
   if(var == "E"){ # starting exposed
-    y.start[1:Nclass,1]=as.numeric(class.str[1,])*Npop
+    y.start[1:Nclass,1]=as.numeric(class.str)*Npop
   }
   var.names=c(var.names,paste(class.names,var,sep="."))
 }
@@ -183,14 +184,14 @@ for(i in 1:Nrand){ # Launch the script Nrand times
   fracPtoI=fracPtoI.vec[i]
   fracItoH.str=fracItoH.str
   fracItoD.str=fracItoD.str
-  Cont=Cont
+  C=C
   parms.list=list(tau=tau,deltaE=deltaE,deltaP=deltaP,
                   gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,
-                  fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,Cont=Cont,
+                  fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,alpha=alpha,C=C,
                 scenario=scenario,classes=class.names,vars=var.names,compartments=compartments)
   
   # Run the ODE solver
-  model.output <- as.data.frame(lsoda(y=y.start, 
+  model.output <- as.data.frame(deSolve::lsoda(y=y.start, 
                                        times=times_vector, 
                                        func=dxdtfun, 
                                        parms=parms.list))
