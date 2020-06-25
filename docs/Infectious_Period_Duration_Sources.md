@@ -1,0 +1,17 @@
+# Infectious Period Duration Sources
+
+The most extensive study on the subject is this one from [Canada](https://watermark.silverchair.com/ciaa638.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAAoUwggKBBgkqhkiG9w0BBwagggJyMIICbgIBADCCAmcGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMghBRn1unZjPy3EIMAgEQgIICODxHXFdJdU4wS58vdkWYSp47ibxh07fw-5Q4DWutWjB-gMLU3HDwQaRaxcGl5AZVkZj-liBAcEaFquGNj0LjTL7D3zhDk2N_pSvxYW4Cawo9BPB2AavAqaqLMoUhk6aO5YqgHW4tI5YRFjZc1-vQrMWSTgCY34F-1AXu2aKOoG5oNTOGEnqaZ4QW6TWq12oOCcXIYkW45JwNRBWybYlzzSjvEUEN8S5GEVe3vLB4BDzyJeYgpqBPUG2qxkqaGc18FBff51CLwVbhhPbKhuF4-50OhKCw7d6azr6htAEVTa5yMJWE_35hvbfr-kF-rs1L8NhiFkcIha7NKRa8PCVEX4nBBDQ4GxSM6RKQSQ_j10COTOAgdcZ26o7S7s08x4F9QLob3bsZ5jIdozr3LEZJTYTJL_Kv8Jj091-FqSZQaxTHiMEuHpvh9eSDVb7Yts8LWwAOjQpFVytdylrqLl13kigabaJyKbnKqXa8kJd9tY_Sd2T3qRvvHLkcP3ph5pIBo5lt3Cl2Tp-hctMaYxP_fGqv_u0UM1UO0twy0ZOgRcWkZ_m52kx93NrpJKWGnh6oGv1ijhULXABj1n9AgcZjFPFBSsSuCGrD-s24xTAf6u_dUgP7ADa_KX1Qi7WJFXkYROIp_M_ewA5pUkNaQ4c_yu-bpEFXYCSirw1Pk2DWqdxshEHcNoUdPjPomXu6yzlFTyNV6osHHZB2xjsTnz9KFYdozynnb4bG0FhX6-XVuyfWM3tX2D-7xYE). They analyzed samples from 90 patients and here are their conclusions: 
+- Positive cultures of the virus were only observed up to 8 days post symptom onset (they tried to cultivate virus collected up to 21 days post symptom onset).
+- They determined that for every one day increase in time between symptom onset and test, the odds ratio of being cultured positive was decreased by 37%. 
+
+The limitations of this study: 
+- they could only successfully cultivate viral samples from 26 patients (not 90)
+- they don't specify the clinical severity of the symptoms of the patients but they specify that immunocompromised individuals and children may be underrepresented in their study.
+
+Another source of information on the subject is the US CDC. Their key findings are the following:
+1. Viral burden measured in upper respiratory specimens declines after onset of illness (CDC unpublished data, Midgely 2020, Young 2020, Zou 2020, Wölfel 2020).
+2. **At this time, replication-competent virus has not been successfully cultured more than 9 days after onset of illness. The statistically estimated likelihood of recovering replication-competent virus approaches zero by 10 days** (CDC unpublished data, Wölfel 2020, Arons 2020).
+3. As the likelihood of isolating replication-competent virus decreases, anti-SARS-CoV-2 IgM and IgG can be detected in an increasing number of persons recovering from infection (Wölfel 2020).
+4. Attempts to culture virus from upper respiratory specimens have been largely unsuccessful when viral burden is in low but detectable ranges (i.e., Ct values higher than 33-35[1])(CDC unpublished data).
+5. Following recovery from clinical illness, many patients no longer have detectable viral RNA in upper respiratory specimens. Among those who continue to have detectable RNA, concentrations of detectable RNA 3 days following recovery are generally in the range at which replication-competent virus has not been reliably isolated by CDC (CDC unpublished data, Young 2020).
+6. No clear correlation has been described between length of illness and duration of post-recovery shedding of detectable viral RNA in upper respiratory specimens (CDC unpublished data, Midgely 2020, Wölfel 2020).
