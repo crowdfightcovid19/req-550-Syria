@@ -56,7 +56,9 @@ av.cont.mat=as.vector(av.cont)*matrix(1,nrow=dim(C)[1],ncol=dim(C)[2])
 #N.str=as.matrix(N*class.str)
 tau=vector(mode="numeric",length = Nrand)
 for(k in 1:Nrand){
-  scope=av.cont.mat*as.vector(fracPtoI.vec[k])
+  # scope=av.cont.mat*as.vector(fracPtoI.vec[k])
+  scope=C
+  # scope=diag(as.vector(av.cont)*as.vector(class.str))
   kappa=(1-fracItoH.str-fracItoD.str)*gammaI+
     fracItoH.str*eta.vec[k]+
     fracItoD.str*alpha.vec[k]
