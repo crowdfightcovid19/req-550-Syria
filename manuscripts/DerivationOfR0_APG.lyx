@@ -11,8 +11,14 @@
 
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 \newcommand{\add}[1]{\textcolor{red}{#1}}
+\newcommand{\oran}{\mathrm{o}}
+\newcommand{\g}{\mathrm{g}}
+\newcommand{\X}{\mathrm{X}}
 
-\title{Derivation of R0}
+\newcommand{\sh}{\mathrm{sh}}
+\newcommand{\nullm}{\mathrm{null}}
+\newcommand{\intv}{\mathrm{intv}}
+\newcommand{\family}{\mathrm{fam}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -86,20 +92,8 @@
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-maketitle
-\end_layout
-
-\end_inset
-
-
+\begin_layout Title
+Analytical results
 \end_layout
 
 \begin_layout Subsection*
@@ -289,12 +283,12 @@ with
  (e.g.
  shielding strategies).
  We model the first type of intervention introducing the parameter 
-\begin_inset Formula $\epsilon_{i}$
+\begin_inset Formula $\epsilon_{ij}$
 \end_inset
 
 , representing the fraction of the average number of contacts observed in
  the null model that prevail after the intervention: 
-\begin_inset Formula $\bar{c}_{i}=\epsilon_{i}\bar{c}_{i}^{0}$
+\begin_inset Formula $\bar{c}_{i}=\epsilon_{ij}\bar{c}_{i}^{0}$
 \end_inset
 
 .
@@ -319,7 +313,7 @@ with
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C_{ij}=\epsilon_{i}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon m_{ij}C_{ij}^{0}.
+C_{ij}=\epsilon_{ij}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon_{ij}m_{ij}C_{ij}^{0}.
 \end{equation}
 
 \end_inset
@@ -346,7 +340,7 @@ noprefix "false"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\epsilon_{i}\bar{c}_{i}^{0}m_{ij}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda_simplified}
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\epsilon_{ij}\bar{c}_{i}^{0}m_{ij}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda_simplified}
 \end{gather}
 
 \end_inset
@@ -660,6 +654,234 @@ where
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection*
+Parametrization of the interventions
+\end_layout
+
+\begin_layout Subsubsection*
+Shielding a population
+\end_layout
+
+\begin_layout Standard
+In the following, we analyse the effect of shielding certain fraction 
+\begin_inset Formula $f_{\mathrm{S}}$
+\end_inset
+
+ of the population, mostly vulnerable.
+ In practice, this is made dividing the camp in two areas, a 
+\begin_inset Quotes eld
+\end_inset
+
+green
+\begin_inset Quotes erd
+\end_inset
+
+ zone (denoted 
+\begin_inset Formula $\g$
+\end_inset
+
+) for vulnerable population and an 
+\begin_inset Quotes eld
+\end_inset
+
+orange
+\begin_inset Quotes erd
+\end_inset
+
+ zone (
+\begin_inset Formula $\oran$
+\end_inset
+
+) for the remaining population.
+ These two populations could eventually interact via a 
+\begin_inset Quotes eld
+\end_inset
+
+neutral
+\begin_inset Quotes erd
+\end_inset
+
+ zone under controlled conditions.
+ In particular, we will consider that members of both populations will meet
+ maintaining 2m of distance and using contention measures such as masks,
+ reducing the infectivity an 80% [Ref], i.e.
+ 
+\begin_inset Formula $\hat{\tau}=0.2\tau$
+\end_inset
+
+.
+ In addition, only a limited number of family members 
+\begin_inset Formula $c_{\family}$
+\end_inset
+
+ will be allowed to interact per each person shielded in the green area
+ per day.
+ Finally, people getting into the neutral zone will be tested (how?), and
+ hence symptomatic patients will be excluded from the zone, reducing the
+ transmission probability.
+\end_layout
+
+\begin_layout Standard
+The model implies a reduction in the number of contacts between classes
+ of the green zone and the orange zone, but not in the mean number of contacts
+ that each individual has per day, therefore 
+\begin_inset Formula $\bar{c}_{i}$
+\end_inset
+
+ does not vary.
+ We model this redistribution of the contacts with the parameter 
+\begin_inset Formula $\epsilon_{ij}$
+\end_inset
+
+ as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\epsilon_{ij} & = & c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in different areas})\\
+\epsilon_{ij} & = & 1-c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in same area}).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The next step is to model the probability of interaction between a member
+ of the class 
+\begin_inset Formula $i$
+\end_inset
+
+ and the class 
+\begin_inset Formula $j$
+\end_inset
+
+, depending on whether they belong to the same or a different area.
+ Members of the same area have an increased likelihood of encountering,
+ since the proportion 
+\begin_inset Formula $N_{i}/N$
+\end_inset
+
+ of individuals for class 
+\begin_inset Formula $i$
+\end_inset
+
+ now become 
+\begin_inset Formula $N_{i}/N_{\X}$
+\end_inset
+
+ with 
+\begin_inset Formula $N_{\X}$
+\end_inset
+
+ the total number of individuals in the area 
+\begin_inset Formula $X=\{\oran,\g\}$
+\end_inset
+
+.
+ This increase can be expressed as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+m_{ij}=\nicefrac{\left(\frac{N_{i}}{N_{\X}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{X}}\quad(i,j\textrm{ in same area}\ X).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The intervention has an assymmetric effect for individuals belonging to
+ different areas.
+ All individuals from the green zone will meet individuals of the orange
+ zone.
+ On the other hand, only a fraction 
+\begin_inset Formula $c_{\family}N_{\g}/N_{\oran}$
+\end_inset
+
+ of individuals of the orange zone will meet individuals from the green
+ zone.
+ This can be thought as the probability of finding a relative in a well-mixed
+ population, that would lead to a reduced probability of encountering between
+ members of both classes, hence reducing the probability of infection.
+ With these considerations in mind, we obtain the following terms for the
+ management matrix:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+m_{ij} & = & c_{\family}\frac{N_{\g}}{N_{\oran}}\frac{N_{i}}{N_{\oran}}\frac{N}{N_{i}}=c_{\family}\frac{N_{\g}N}{N_{\oran}^{2}}\quad(i\in\g,j\in\oran).\\
+m_{ij} & = & c_{\family}\frac{N_{\g}}{N_{\oran}}\frac{N_{i}}{N_{\g}}\frac{N}{N_{i}}=c_{\family}\frac{N}{N_{\oran}}\quad(i\in\oran,j\in\g).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The intervention will be effective if and only if 
+\begin_inset Formula $0.2\epsilon_{ij}m_{ij}<1$
+\end_inset
+
+.
+ This allow us to give an estimation of the maximum number of relatives
+ that can be visited per day.
+ The most restrictive condition results for the orange population, for which
+ we obtain
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+c_{\family}<5\sqrt{\bar{c}_{i}\frac{N_{\oran}}{N}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with a value 
+\begin_inset Formula $\approx17$
+\end_inset
+
+ for the adult class and assuming 20% of the population shielded.
+\end_layout
+
+\begin_layout Subsubsection*
+The clan's dilemma
+\end_layout
+
+\begin_layout Standard
+In the previous section, we considered that the family members visiting
+ were always different.
+ However, if the population in the camps is structured in large families
+ (hereafter clans) it opens the question of whether it would be more beneficial
+ to keep all members of the same clan in the same area or in different areas.
+ If all members of the same clan live in the same zone, there would be little
+ need to interact with members of the other zone, hence reducing 
+\begin_inset Formula $c_{\family}$
+\end_inset
+
+.
+ However, since the capacity of the green zone is limited, shielding whole
+ clans may lead to leaving other clans completely outside of the green zone,
+ even if the strategy may be better to minimize the overall impact in the
+ population.
+ On the other hand, if clans are split, it increases the chances that the
+ same relatives visit the neutral zone several times.
+ Under the assumption that minimizing the number of different people would
+ reduce the probability of infection, this could also be a positive strategy.
 \end_layout
 
 \end_body
