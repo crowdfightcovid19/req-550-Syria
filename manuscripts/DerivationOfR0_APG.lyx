@@ -746,7 +746,7 @@ The model implies a reduction in the number of contacts between classes
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\epsilon_{ij} & =\rho & c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in different areas})\\
+\epsilon_{ij} & = & \rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in different areas})\\
 \epsilon_{ij} & = & 1-\rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in same area}).
 \end{eqnarray*}
 
@@ -758,21 +758,38 @@ The model implies a reduction in the number of contacts between classes
 \begin_layout Standard
 If we assume that the relatives from the orange zone visiting the neutral
  zone are always different, 
-\begin_inset Formula $\rho=c_{\family}\frac{N_{\g}}{N_{\oran}}$
+\begin_inset Formula $f_{\oran,\family}=c_{\family}\frac{N_{\g}}{N_{\oran}}$
 \end_inset
 
  will be the fraction of the orange population susceptible of visiting the
- neutral zone.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-We could saturate this fraction calling 
-\begin_inset Formula $f_{\o,\family}=c_{\family}\frac{N_{\g}}{N_{\oran}}$
+ neutral zone and we define 
+\begin_inset Formula $\rho$
 \end_inset
 
- and making it equal to one when every member eventually visits the neutral
- zone:
+ as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho=\begin{cases}
+1 & \textrm{if }i\in\g\\
+f_{\oran,\family} & \textrm{if }i\in\oran
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+We could saturate this fraction making it equal to one when every member
+ eventually visits the neutral zone:
 \end_layout
 
 \begin_layout Plain Layout
@@ -780,7 +797,7 @@ We could saturate this fraction calling
 \[
 \rho=\begin{cases}
 1 & \textrm{if }i\in\g\\
-f_{\o,\family}\left(1-\textrm{H}(f_{\o,\family}-1)\frac{f_{\o,\family}-1}{f_{\o,\family}}\right) & \textrm{if }i\in\oran
+f_{\o,\family}\left(1-\textrm{H}(f_{\oran,\family}-1)\frac{f_{\oran,\family}-1}{f_{\oran,\family}}\right) & \textrm{if }i\in\oran
 \end{cases}
 \]
 
@@ -791,11 +808,11 @@ f_{\o,\family}\left(1-\textrm{H}(f_{\o,\family}-1)\frac{f_{\o,\family}-1}{f_{\o,
 
 \begin_layout Plain Layout
 with the Heaviside function 
-\begin_inset Formula $\textrm{H}(f_{\o,\family}-1)=1$
+\begin_inset Formula $\textrm{H}(f_{\oran,\family}-1)=1$
 \end_inset
 
  if 
-\begin_inset Formula $f_{\o,\family}\geq1$
+\begin_inset Formula $f_{\oran,\family}\geq1$
 \end_inset
 
 .
