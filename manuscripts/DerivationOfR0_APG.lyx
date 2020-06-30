@@ -14,6 +14,7 @@
 \newcommand{\oran}{\mathrm{o}}
 \newcommand{\g}{\mathrm{g}}
 \newcommand{\X}{\mathrm{X}}
+\newcommand{\Y}{\mathrm{Y}}
 
 \newcommand{\sh}{\mathrm{sh}}
 \newcommand{\nullm}{\mathrm{null}}
@@ -292,8 +293,7 @@ with
 \end_inset
 
 .
- Similarly, we model the second type of intervention with the management
- matrix 
+ Similarly, we model the second type of intervention with the matrix 
 \begin_inset Formula $m_{ij}$
 \end_inset
 
@@ -313,7 +313,7 @@ with
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C_{ij}=\epsilon_{ij}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon_{ij}m_{ij}C_{ij}^{0}.
+C_{ij}=\epsilon_{ij}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon_{ij}m_{ij}C_{ij}^{0}=M_{ij}C_{ij}^{0},
 \end{equation}
 
 \end_inset
@@ -322,7 +322,12 @@ C_{ij}=\epsilon_{ij}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon_{ij}m_{ij}C_{ij}^{0}.
 \end_layout
 
 \begin_layout Standard
-Given this parameterization, we substitute in the expression for lambda
+and the matrix 
+\begin_inset Formula $M_{ij}$
+\end_inset
+
+ will be called the managament matrix.
+ Given this parameterization, we substitute in the expression for lambda
  (Eq.
  
 \begin_inset CommandInset ref
@@ -741,9 +746,60 @@ The model implies a reduction in the number of contacts between classes
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\epsilon_{ij} & = & c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in different areas})\\
-\epsilon_{ij} & = & 1-c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in same area}).
+\epsilon_{ij} & =\rho & c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in different areas})\\
+\epsilon_{ij} & = & 1-\rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in same area}).
 \end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we assume that the relatives from the orange zone visiting the neutral
+ zone are always different, 
+\begin_inset Formula $\rho=c_{\family}\frac{N_{\g}}{N_{\oran}}$
+\end_inset
+
+ will be the fraction of the orange population susceptible of visiting the
+ neutral zone.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+We could saturate this fraction calling 
+\begin_inset Formula $f_{\o,\family}=c_{\family}\frac{N_{\g}}{N_{\oran}}$
+\end_inset
+
+ and making it equal to one when every member eventually visits the neutral
+ zone:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\rho=\begin{cases}
+1 & \textrm{if }i\in\g\\
+f_{\o,\family}\left(1-\textrm{H}(f_{\o,\family}-1)\frac{f_{\o,\family}-1}{f_{\o,\family}}\right) & \textrm{if }i\in\oran
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with the Heaviside function 
+\begin_inset Formula $\textrm{H}(f_{\o,\family}-1)=1$
+\end_inset
+
+ if 
+\begin_inset Formula $f_{\o,\family}\geq1$
+\end_inset
+
+.
+\end_layout
 
 \end_inset
 
@@ -761,8 +817,11 @@ The next step is to model the probability of interaction between a member
 \end_inset
 
 , depending on whether they belong to the same or a different area.
- Members of the same area have an increased likelihood of encountering,
- since the proportion 
+ Since in the intervention classes are constrained to interact in the demarcated
+ areas, once one individual is within a given area she will observe an increased
+ likelihood of finding members of the classes permitted to visit that area
+ with respect to the null model.
+ In particular, the proportion 
 \begin_inset Formula $N_{i}/N$
 \end_inset
 
@@ -770,7 +829,7 @@ The next step is to model the probability of interaction between a member
 \begin_inset Formula $i$
 \end_inset
 
- now become 
+ in the null model will become 
 \begin_inset Formula $N_{i}/N_{\X}$
 \end_inset
 
@@ -783,43 +842,18 @@ The next step is to model the probability of interaction between a member
 \end_inset
 
 .
- This increase can be expressed as:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-m_{ij}=\nicefrac{\left(\frac{N_{i}}{N_{\X}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{X}}\quad(i,j\textrm{ in same area}\ X).
-\]
-
+ This leads to the following factors for 
+\begin_inset Formula $m_{ij}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-The intervention has an assymmetric effect for individuals belonging to
- different areas.
- All individuals from the green zone will meet individuals of the orange
- zone.
- On the other hand, only a fraction 
-\begin_inset Formula $c_{\family}N_{\g}/N_{\oran}$
-\end_inset
-
- of individuals of the orange zone will meet individuals from the green
- zone.
- This can be thought as the probability of finding a relative in a well-mixed
- population, that would lead to a reduced probability of encountering between
- members of both classes, hence reducing the probability of infection.
- With these considerations in mind, we obtain the following terms for the
- management matrix:
+:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-m_{ij} & = & c_{\family}\frac{N_{\g}}{N_{\oran}}\frac{N_{i}}{N_{\oran}}\frac{N}{N_{i}}=c_{\family}\frac{N_{\g}N}{N_{\oran}^{2}}\quad(i\in\g,j\in\oran).\\
-m_{ij} & = & c_{\family}\frac{N_{\g}}{N_{\oran}}\frac{N_{i}}{N_{\g}}\frac{N}{N_{i}}=c_{\family}\frac{N}{N_{\oran}}\quad(i\in\oran,j\in\g).
+m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\X}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\X}}\quad(i,j\textrm{ in same area}\ X)\\
+m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\Y}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\Y}}\quad(i\in X\textrm{ and}\ j\in Y)
 \end{eqnarray*}
 
 \end_inset
@@ -827,16 +861,37 @@ m_{ij} & = & c_{\family}\frac{N_{\g}}{N_{\oran}}\frac{N_{i}}{N_{\g}}\frac{N}{N_{
 
 \end_layout
 
+\begin_layout Subsubsection*
+Maximum number of family members permitted
+\end_layout
+
 \begin_layout Standard
-The intervention will be effective if and only if 
-\begin_inset Formula $0.2\epsilon_{ij}m_{ij}<1$
+[APG, the following should be reviewed, it is unfinished] We considered
+ until now that people from the orange area visiting the neutral zone will
+ be always different within the same week.
+ An interesting question for management is how to keep the fraction of the
+ orange population using the neutral zone as small as possible to minimize
+ the spread of the infection.
+ This relies on the assumption that, since symptomatic members are excluded
+ from the neutral zone, increasing this fraction increases the chances for
+ assymptomatic individuals to visit the neutral zone.
+ As we will see immediately, this observation could be used to improve the
+ management strategies.
+\end_layout
+
+\begin_layout Standard
+To illustrate this point we note that the fraction of the orange population
+ getting in contact with the green population can be estimated through the
+ quantity 
+\begin_inset Formula $0.2\epsilon_{ij}m_{ij}$
 \end_inset
 
-.
- This allow us to give an estimation of the maximum number of relatives
- that can be visited per day.
- The most restrictive condition results for the orange population, for which
- we obtain
+ (
+\begin_inset Formula $i\in\oran$
+\end_inset
+
+), which we aim to keep lower than one.
+ Expanding this expression we obtain
 \end_layout
 
 \begin_layout Standard
@@ -851,11 +906,14 @@ c_{\family}<5\sqrt{\bar{c}_{i}\frac{N_{\oran}}{N}}
 \end_layout
 
 \begin_layout Standard
-with a value 
+with a value of 
 \begin_inset Formula $\approx17$
 \end_inset
 
- for the adult class and assuming 20% of the population shielded.
+ individuals per day for the adult class and assuming 20% of the population
+ shielded.
+ Note that the estimation heavily relies on the efficiency of the protection
+ measures.
 \end_layout
 
 \begin_layout Subsubsection*
