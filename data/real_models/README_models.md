@@ -1,6 +1,6 @@
 ## Description of the models and directory contents
 
-* **null_model**
+* **null_model_mixed**
   * Description: 5 population classes, well-mixed (age1 = ages 0-12, age2_no_comorbid = ages 13-50 with no comorbidities, age2_comorbid = ages 13-50 with comorbidities, age3_no_comorbid = aged over 50 with no comorbidities, age3_comorbid = aged over 50 with comorbidities). No intervention.  
   * Directory contents: 
     * **classes_structure**- proportion of the population in each class (N_j/N)
@@ -9,6 +9,18 @@
     * **classes_contacts**- average number of contacts of individuals in class i per day (cbar_i)
     * **Contacts_matrix_construction.R**- uses **classes_structure** and **classes_contacts** to compute the contact matrix (C_ij) for the null model as described [here](https://github.com/crowdfightcovid19/req-550-Syria/blob/master/manuscripts/DerivationOfR0_APG.pdf)
     * **contacts_structure**- the contact matrix (average number of contacts of an individual of class i with an individual of class j, C_ij)
+
+
+* **null_model_shield**
+  * Description: 7 population classes, well-mixed (age1_orange = 0-12 in orange zone, age1_green = 0-12 in green zone, age2_no_comorbid_orange = 13-50 no comorbidities in orange zone, age2_no_comorbid_green = 13-50 no comorbidities in green zone, age2_comorbid_green = 13-50 with comorbidities in green zone, age3_no_comorbid_green = over 50 no comorbidities in green zone, age3_comorbid = over 50 with comorbidities in green zone). No intervention. Green and orange zones do not exist under no intervention but including them in the population structure makes it easier to directly translate the null model into models with interventions. The model is used to estimate the contact matrix of the interventions and, although the simulations were run, since the number or variables are higher than for the pure null model (see dir **null_model_mixed**) simulations for the latter are preferred.
+  * Directory contents: 
+    * **classes_structure**- proportion of the population in each class (N_j/N)
+    * **fracItoH_structure**- proportion of symptomatic cases who will have symptoms that are severe enough to require hospitalization, but not severe enough to require ICU admission in each class
+    * **fracItoD_structure**- proportion of symptomatic cases who will have symptoms that are severe enough to require ICU admission in each class; in this setting these cases will all die
+    * **classes_contacts**- average number of contacts of individuals in class i per day (cbar_i)
+    * **Contacts_matrix_construction.R**- uses **classes_structure** and **classes_contacts** to compute the contact matrix (C_ij) for the null model as described [here](https://github.com/crowdfightcovid19/req-550-Syria/blob/master/manuscripts/DerivationOfR0_APG.pdf)
+    * **contacts_structure**- the contact matrix (average number of contacts of an individual of class i with an individual of class j, C_ij)
+
     
 * **model_1_1**
 * Shielding with shielded population permitted to have visits from 2 family members per week
@@ -23,6 +35,7 @@
     * **management_matrix**- the proportional change in class i's contact rate with class j resulting from the intervention (m_ij)
     * **contacts_structure_null**- the contact matrix under the null model without the intervention (average number of contacts of an individual of class i with an individual of class j, C_ij)
     * **contacts_structure_intervention**- (C_ij_interv) the contact matrix resulting from the effect of the intervention, m_ij, on the contacts in the null model, C_ij. Computed by-  **(diag(as.vector(m_ij)) %*% diag(as.vector(C_ij)) %>% diag() %>% matrix(ncol = 7))**
+  * `UPDATE (APG, June 30th, 2020)`: I created again the same files following the parametrization described in [this document](https://github.com/crowdfightcovid19/req-550-Syria/blob/master/manuscripts/DerivationOfR0_APG.pdf) and a new script in `src/Management_matrix_construction.R`. The new files have the label `.csv` added and include the management and epsilon matrices. Also, the contact matrix has been renamed as **contacts_matrix.csv** to follow the name used in the "null model mixed".
     
 * **model_1_2**
 * Shielding with shielded population permitted to have visits from 10 family members per week
@@ -38,4 +51,4 @@
     * **management_matrix**- the proportional change in class i's contact rate with class j resulting from the intervention (m_ij)
     * **contacts_structure_null**- the contact matrix under the null model without the intervention (average number of contacts of an individual of class i with an individual of class j, C_ij)
     * **contacts_structure_intervention**- (C_ij_interv) the contact matrix resulting from the effect of the intervention, m_ij, on the contacts in the null model, C_ij. Computed by-  **(diag(as.vector(m_ij)) %*% diag(as.vector(C_ij)) %>% diag() %>% matrix(ncol = 7))**
-    
+   * `UPDATE (APG, June 30th, 2020)`: I created again the same files following the parametrization described in [this document](https://github.com/crowdfightcovid19/req-550-Syria/blob/master/manuscripts/DerivationOfR0_APG.pdf) and a new script in `src/Management_matrix_construction.R`. The new files have the label `.csv` added and include the management and epsilon matrices. Also, the contact matrix has been renamed as **contacts_matrix.csv** to follow the name used in the "null model mixed".   
