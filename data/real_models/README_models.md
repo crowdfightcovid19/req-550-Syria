@@ -1,7 +1,7 @@
 ## Description of the models and directory contents
 
 * **null_model**
-  * Description: 7 population classes, well-mixed (age1_orange = 0-12 in orange zone, age1_green = 0-12 in green zone, age2_no_comorbid_orange = 13-50 no comorbidities in orange zone, age2_no_comorbid_green = 13-50 no comorbidities in green zone, age2_comorbid_green = 13-50 with comorbidities in green zone, age3_no_comorbid_green = over 50 no comorbidities in green zone, age3_comorbid = over 50 with comorbidities in green zone). No intervention. Green and orange zones do not exist under no intervention but including them in the population structure makes it easier to directly translate the null model into models with interventions.
+  * Description: 5 population classes, well-mixed (age1 = ages 0-12, age2_no_comorbid = ages 13-50 with no comorbidities, age2_comorbid = ages 13-50 with comorbidities, age3_no_comorbid = aged over 50 with no comorbidities, age3_comorbid = aged over 50 with comorbidities). No intervention.  
   * Directory contents: 
     * **classes_structure**- proportion of the population in each class (N_j/N)
     * **fracItoH_structure**- proportion of symptomatic cases who will have symptoms that are severe enough to require hospitalization, but not severe enough to require ICU admission in each class
