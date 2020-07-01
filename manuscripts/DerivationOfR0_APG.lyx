@@ -723,9 +723,9 @@ neutral
 
  will be allowed to interact per each person shielded in the green area
  per day.
- Finally, people getting into the neutral zone will be tested (how?), and
- hence symptomatic patients will be excluded from the zone, reducing the
- transmission probability.
+ Finally, people entering the neutral zone will be have their temperature
+ taken, and hence symptomatic patients will be excluded from the zone, reducing
+ the transmission probability.
 \end_layout
 
 \begin_layout Standard
@@ -891,7 +891,7 @@ Maximum number of family members permitted
  the spread of the infection.
  This relies on the assumption that, since symptomatic members are excluded
  from the neutral zone, increasing this fraction increases the chances for
- assymptomatic individuals to visit the neutral zone.
+ assymptomatic or presymptomatic individuals to visit the neutral zone.
  As we will see immediately, this observation could be used to improve the
  management strategies.
 \end_layout
