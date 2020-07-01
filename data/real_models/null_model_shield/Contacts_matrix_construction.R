@@ -14,7 +14,7 @@
 ### Setup
 
 library(tidyverse)
-setwd("data/real_models/null_model_mixed")
+setwd("data/real_models/null_model_shield")
 
 cbar_i <- read.table("classes_contacts", sep = "\t")
 `N_j/N` <- read.table("classes_structure", sep = "\t")
