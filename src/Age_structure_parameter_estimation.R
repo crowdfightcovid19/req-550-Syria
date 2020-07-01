@@ -4,10 +4,11 @@
 # author = Jordan Klein
 # email = jdklein@princeton.edu
 # date = 27th May 2020
-# description = Generates a file with a simulated population for the model split up into classes 
-#        based on age/comorbidity estimates from the entire idp population.
+# description = Generates files with simulated populations for a model with a well-mixed (classes_structure_mixed) and  
+#        shielded population (classes_structure_shield) split up into classes based on age/comorbidity estimates from the entire idp population. 
+#        Provides a description of how to simulate population structures for models of camps with different population sizes. 
 #        Generates files for parameter estimates for each population class: 
-#        fraction symptomatic (fracPtoI), fraction requiring non-ICU hospitalization (fracItoH), 
+#        fraction requiring non-ICU hospitalization (fracItoH), 
 #        & fraction requiring ICU (fracItoD). 
 # usage = script should be run within the folder "data". 
 #### Load packages & data ####
@@ -32,15 +33,17 @@ round_preserve_sum <- function(x, digits = 0) {
 
 #### Population structure/simulated pop ####
 ## Age groups 
-# Estimate pop size in each age group in simulated refugee population of 2000
-# (6 groups: age = 0-12/13-50/over 50)
+# Estimate proportion of population in each age group
+# (3 groups: age = 0-12/13-50/over 50)
 
 age <- list(select(pop, total_0_6_months:total_6_12), 
                      select(pop, total_13_17:total_18_50), 
                      select(pop, total_over50)) %>% 
   lapply(function(x) {
-    sum(x)/pop$Total_pop*2000
+    sum(x)/pop$Total_pop
   }) %>% cbind.data.frame()
+
+names(age) <- c("age1", "age2", "age3")
 
 #### Estimate NCD prevalence in simulated population
 ## 4 NCDs = hypertension, cardiovascular disease, diabetes, chronic respiratory disease
@@ -153,28 +156,89 @@ pop_str_NCDs[3, 6:9] <- pop_str_NCDs[3, 2:5]*age[1, 3]
 age_structure <- data.frame(age[, 1], 
                             age[, 2]-sum(pop_str_NCDs[2, 6:9]), sum(pop_str_NCDs[2, 6:9]), 
                             age[, 3]-sum(pop_str_NCDs[3, 6:9]), sum(pop_str_NCDs[3, 6:9])) %>% 
-  round_preserve_sum()/2000
+  signif(digits = 3)
 
 names(age_structure) <- c("age1", "age2_no_comorbid", 
                           "age2_comorbid", "age3_no_comorbid", "age3_comorbid")
 
-#### Parameter estimates ####
-## Fraction symptomatic (fracPtoI)
-# Proportion asymptomatic (.16) from meta analysis:
-# https://www.medrxiv.org/content/10.1101/2020.05.10.20097543v1
+### Population structure of a well-mixed population with 5 population classes
 
-fracPtoI_structure <- c(rep(1-.2, 5), rep(1-.16, 5), rep(1-.12, 5)) %>% 
-  t() %>% 
+classes_structure_mixed <- age_structure
+
+### Population structure of a shielded population with 7 classes
+
+# Create dataframe
+
+classes_structure_shield <- matrix(nrow = 1, ncol = 7) %>% 
   as.data.frame()
+names(classes_structure_shield) <- c("age1_orange", "age1_green", "age2_no_comorbid_orange", "age2_no_comorbid_green", 
+                                     "age2_comorbid_green", "age3_no_comorbid_green", "age3_comorbid_green")
 
-names(fracPtoI_structure) <- c(paste0(names(age_structure), "_lowCI"), 
-                             names(age_structure), 
-                             paste0(names(age_structure), "_highCI"))
+## All adults with comorbidities 13-50 and elderly aged over 50 go in green zone
+
+classes_structure_shield[, 5:7] <- age_structure[, 3:5]
+
+## Calculate remainder of capacity in shielded (green) zone
+# (Green zone capacity = 20% of camp)
+
+green_rem <- .2-sum(classes_structure_shield[, 5:7])
+
+# 55% of remainder of green zone capacity will be allocated to child family members of adults aged 13-50 with comorbidities
+
+green_rem_chil <- .55*green_rem
+
+# 45% of remainder of green zone capacity will be allocated to non-comorbid adult family members of adults aged 13-50 with comorbidities
+
+green_rem_ad <- .45*green_rem
+
+## Allocate children & non-comorbid adults to orange & green zones
+
+# Green zone
+
+classes_structure_shield[, c(2, 4)] <- c(green_rem_chil, green_rem_ad)
+
+# Orange zone
+
+classes_structure_shield[, c(1, 3)] <- c(age_structure[, 1]-green_rem_chil, age_structure[, 2]-green_rem_ad)
+
+## Round proportions
+
+classes_structure_shield <- classes_structure_shield %>% signif(digits = 3)
+
+# #### To produce a simulated population structure for the model, for a camp with population size n ####
+# ## With camp n lognormally distributed with mean = 6.886 & sd = .611
+# # Well-mixed population with 5 classes
+# rlnorm(n, 6.886, .611) %>% 
+#   round() %>% 
+#   lapply(function(x) {
+#     x*classes_structure_mixed
+#     }) %>% 
+#   lapply(round_preserve_sum)
+# # Shielded population with 7 classes
+# rlnorm(n, 6.886, .611) %>% 
+#   round() %>% 
+#   lapply(function(x) {
+#     x*classes_structure_shield
+#     }) %>% 
+#   lapply(round_preserve_sum)
+
+#### Parameter estimates ####
+# ## Fraction symptomatic (fracPtoI) (*not a class-specific parameter in final version of model*)
+# # Proportion asymptomatic (.16) from meta analysis:
+# # https://www.medrxiv.org/content/10.1101/2020.05.10.20097543v1
+# 
+# fracPtoI_structure <- c(rep(1-.2, 5), rep(1-.16, 5), rep(1-.12, 5)) %>% 
+#   t() %>% 
+#   as.data.frame()
+# 
+# names(fracPtoI_structure) <- c(paste0(names(age_structure), "_lowCI"), 
+#                              names(age_structure), 
+#                              paste0(names(age_structure), "_highCI"))
 
 ## Fraction of sympotatic cases requiring hospitalization (non-ICU, fracItoH)
 # Data for children:
-# https://www.cdc.gov/mmwr/volumes/69/wr/mm6914e4.htm?s_cid=mm6914e4_e&deliveryName=USCDC_921-DM25115#T1_down
-# Set proportion requiring hospitalization in age group 0-12 to proportion aged <18
+# https://pediatrics.aappublications.org/content/pediatrics/early/2020/03/16/peds.2020-0702.full.pdf
+# Set proportion requiring hospitalization in age group 0-12 to proportion severe aged <11
 # Data for adults:
 # https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7119513/
 # Set proportion requiring hospitalization in age group 13-50 w/o comorbidities to proportion aged 19-64 w/o comorbitidies
@@ -182,32 +246,54 @@ names(fracPtoI_structure) <- c(paste0(names(age_structure), "_lowCI"),
 # Set proportion requiring hospitalization in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies
 # Set proportion requiring hospitalization in age group over 50 w comorbidities to proportion aged 65+ w comorbitidies
 
-fracItoH_structure <- c(.18, .067, .199, .183, .445) %>% 
+# Well-mixed 5 class population structure
+
+fracItoH_structure_mixed <- c(.064, .067, .199, .183, .445) %>% 
   t() %>% 
   as.data.frame()
 
-names(fracItoH_structure) <- names(age_structure)
+names(fracItoH_structure_mixed) <- names(classes_structure_mixed)
+
+# 7 class population structure with shielding
+
+fracItoH_structure_shield <- c(.064, .064, .067, .067, .199, .183, .445) %>% 
+  t() %>% 
+  as.data.frame()
+
+names(fracItoH_structure_shield) <- names(classes_structure_shield)
 
 ## Fraction of cases requiring ICU (fracItoD)
 # Data for children:
-# https://www.cdc.gov/mmwr/volumes/69/wr/mm6914e4.htm?s_cid=mm6914e4_e&deliveryName=USCDC_921-DM25115#T1_down
-# Set proportion requiring hospitalization in age group 0-12 to proportion aged <18
+# https://pediatrics.aappublications.org/content/pediatrics/early/2020/03/16/peds.2020-0702.full.pdf
+# Set proportion requiring ICU in age group 0-12 to proportion critical aged <11
 # Data for adults:
 # https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7119513/
-# Set proportion requiring hospitalization in age group 13-50 w/o comorbidities to proportion aged 19-64 w/o comorbitidies
-# Set proportion requiring hospitalization in age group 13-50 w comorbidities to proportion aged 19-64 w comorbitidies
-# Set proportion requiring hospitalization in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies
+# Set proportion requiring ICU in age group 13-50 w/o comorbidities to proportion aged 19-64 w/o comorbitidies
+# Set proportion requiring ICU in age group 13-50 w comorbidities to proportion aged 19-64 w comorbitidies
+# Set proportion requiring ICU in age group over 50 w/o comorbidities to proportion aged 65+ w/o comorbitidies
 
-fracItoD_structure <- c(.02, .02, .094, .063, .222) %>% 
+# Well-mixed 5 class population structure
+
+fracItoD_structure_mixed <- c(.0065, .02, .094, .063, .222) %>% 
   t() %>% 
   as.data.frame()
 
-names(fracItoD_structure) <- names(age_structure)
+names(fracItoD_structure_mixed) <- names(classes_structure_mixed)
+
+# 7 class population structure with shielding
+
+fracItoD_structure_shield <- c(.0065, .0065, .02, .02, .094, .063, .222) %>% 
+  t() %>% 
+  as.data.frame()
+
+names(fracItoD_structure_shield) <- names(classes_structure_shield)
 
 #### Export data ####
 
 setwd(dirOut)
-write_csv(age_structure, "age_structure.csv")
-write_csv(fracPtoI_structure, "fracPtoI_structure.csv")
-write_csv(fracItoH_structure, "fracItoH_structure.csv")
-write_csv(fracItoD_structure, "fracItoD_structure.csv")
+write.table(classes_structure_mixed, "classes_structure_mixed", sep = "\t")
+write.table(classes_structure_shield, "classes_structure_shield", sep = "\t")
+write.table(fracItoH_structure_mixed, "fracItoH_structure_mixed", sep = "\t")
+write.table(fracItoH_structure_shield, "fracItoH_structure_shield", sep = "\t")
+write.table(fracItoD_structure_mixed, "fracItoD_structure_mixed", sep = "\t")
+write.table(fracItoD_structure_shield, "fracItoD_structure_shield", sep = "\t")
