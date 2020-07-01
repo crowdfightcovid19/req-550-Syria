@@ -1,34 +1,33 @@
 ## Description of the files
 
-These files contain outputs from the scripts `Age_stucture_parameter_estimation.R` and `Theta_matrix_computation.R`
+These files contain outputs from the script `Age_stucture_parameter_estimation.R`
 
-* **classes_structure.csv**
-    * 5 population classes: ages (age1 = 0-12, age2_no_comorbid = 13-50 no comorbidities, age2_comorbid = 13-50 with comorbidities, age3_no_comorbid = over 50 no comorbidities, age3_comorbid = over 50 with comorbidities)
+* **classes_structure_mixed**
+    * 5 population classes, for well-mixed null model: (age1 = 0-12, age2_no_comorbid = 13-50 no comorbidities, age2_comorbid = 13-50 with comorbidities, age3_no_comorbid = over 50 no comorbidities, age3_comorbid = over 50 with comorbidities)
 
-* **contact_matrix.csv**
-    * 5 population classes: ages (0-12, 13-50 no comorbidities, 13-50 comorbidities, over 50 no comorbidities, over 50 comorbidities)
-    * Rows are the contact probabilities for each population class, each summing to 1
-    * User can change [here](https://github.com/crowdfightcovid19/req-550-Syria/blob/master/src/Theta_matrix_computation.R)
+* **classes_structure_shield**
+    * 7 population classes, for null model with shielded population structure and intervention models: (age1_orange = 0-12 in orange zone, age1_green = 0-12 in green zone, age2_no_comorbid_orange = 13-50 no comorbidities in orange zone, age2_no_comorbid_green = 13-50 no comorbidities in green zone, age2_comorbid_green = 13-50 with comorbidities in green zone, age3_no_comorbid_green = over 50 no comorbidities in green zone, age3_comorbid = over 50 with comorbidities in green zone)
 
-* **fracItoD_structure.csv**
+* **fracItoD_structure_mixed**
     * Fraction requiring ICU
-    * 5 population classes: ages (0-12, 13-50 no comorbidities, 13-50 comorbidities, over 50 no comorbidities, over 50 comorbidities)
+    * 5 population classes, for well-mixed null model: (0-12, 13-50 no comorbidities, 13-50 comorbidities, over 50 no comorbidities, over 50 comorbidities)
     * Age & comorbidity dependent
     * No confidence intervals
     
-* **fracPtoI_structure.csv**
-    * Fraction symptomatic estimates
-    * 5 population classes: ages (0-12, 13-50 no comorbidities, 13-50 comorbidities, over 50 no comorbidities, over 50 comorbidities)
-    * Not age nor comorbidity dependent
-    * Confidence intervals
-
-* **fracItoH_structure.csv**
-    * Fraction requiring hospitalization but not ICU estimates
-    * 5 population classes: ages (0-12, 13-50 no comorbidities, 13-50 comorbidities, over 50 no comorbidities, over 50 comorbidities)
+* **fracItoD_structure_shield**
+    * Fraction requiring ICU
+    * 7 population classes, for null model with shielded population structure and intervention models: (age1_orange = 0-12 in orange zone, age1_green = 0-12 in green zone, age2_no_comorbid_orange = 13-50 no comorbidities in orange zone, age2_no_comorbid_green = 13-50 no comorbidities in green zone, age2_comorbid_green = 13-50 with comorbidities in green zone, age3_no_comorbid_green = over 50 no comorbidities in green zone, age3_comorbid = over 50 with comorbidities in green zone)
     * Age & comorbidity dependent
     * No confidence intervals
 
-* **Theta_matrix.csv**
-    * A 5x5 matrix where Theta = NC(N)^(-1), N is a diagonal matrix whose nonzero elements are the values in age_structure.csv, and C is contact_matrix.csv
-    * This matrix is used for computing R0 as described [here](https://github.com/crowdfightcovid19/req-550-Syria/blob/master/manuscripts/DerivationOfR0_jordan.pdf)
-    * 5 population classes: ages (0-12, 13-50 no comorbidities, 13-50 comorbidities, over 50 no comorbidities, over 50 comorbidities)
+* **fracItoH_structure_mixed**
+    * Fraction requiring hospitalization but not ICU estimates
+    * 5 population classes, for well-mixed null model: (0-12, 13-50 no comorbidities, 13-50 comorbidities, over 50 no comorbidities, over 50 comorbidities)
+    * Age & comorbidity dependent
+    * No confidence intervals
+
+* **fracItoH_structure_shield**
+    * Fraction requiring hospitalization but not ICU estimates
+    * 7 population classes, for null model with shielded population structure and intervention models: (age1_orange = 0-12 in orange zone, age1_green = 0-12 in green zone, age2_no_comorbid_orange = 13-50 no comorbidities in orange zone, age2_no_comorbid_green = 13-50 no comorbidities in green zone, age2_comorbid_green = 13-50 with comorbidities in green zone, age3_no_comorbid_green = over 50 no comorbidities in green zone, age3_comorbid = over 50 with comorbidities in green zone)
+    * Age & comorbidity dependent
+    * No confidence intervals
