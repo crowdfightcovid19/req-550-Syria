@@ -15,11 +15,16 @@
 
 library(tidyverse)
 library(rvest)
+library(readxl)
 
 setwd("data")
 dirOut="estimation_parameters/class_structured_data"
 
 pop <- read.csv("age_structure_and_NCDprevalence/entire_population.csv")
+camps <- read_excel("idps_in_camps_syria_april_2020.xlsx")
+
+#*Set capacity of green zone*
+green_cap <- .2
 
 # Write rounding function to preserve sum
 round_preserve_sum <- function(x, digits = 0) {
@@ -179,17 +184,31 @@ names(classes_structure_shield) <- c("age1_orange", "age1_green", "age2_no_comor
 classes_structure_shield[, 5:7] <- age_structure[, 3:5]
 
 ## Calculate remainder of capacity in shielded (green) zone
-# (Green zone capacity = 20% of camp)
 
-green_rem <- .2-sum(classes_structure_shield[, 5:7])
+green_rem <- green_cap-sum(classes_structure_shield[, 5:7])
 
-# 55% of remainder of green zone capacity will be allocated to child family members of adults aged 13-50 with comorbidities
+## Calculate proportion of non-comorbid adults that will go to green zone
 
-green_rem_chil <- .55*green_rem
+# Calculate P(married)
 
-# 45% of remainder of green zone capacity will be allocated to non-comorbid adult family members of adults aged 13-50 with comorbidities
+P_married <- 1- sum(camps$`Female-headed households`)/sum(camps$`Total number of households living in the camp`)
 
-green_rem_ad <- .45*green_rem
+# Calculate P(age2 = comorbid)
+
+P_comorbid <- age_structure[, 3]/sum(age_structure[, 2:3])
+
+# Calculate P(age2_comorbid bring age2_no_comorbid spouse)
+
+P_bringspouse <- P_married*(1-P_comorbid)
+
+# Remainder of green zone capacity allocated to age2_no_comorbid
+
+green_rem_ad <- age_structure[, 3]*P_bringspouse
+
+## Calculate proportion of children that will go to green zone
+# Remainder of green zone capacity allocated to age1
+
+green_rem_chil <- green_rem-green_rem_ad
 
 ## Allocate children & non-comorbid adults to orange & green zones
 
