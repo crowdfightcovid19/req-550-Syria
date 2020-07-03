@@ -57,8 +57,8 @@ R0.param=0.43
 R0.vec=rnorm(Nrand,mean=R0.mean,sd=R0.param)
 #
 # ..... tau
-tau.mean=0.0059
-tau.param=0.0009
+tau.mean=0.0196 # old value 0.00608
+tau.param=0.00305 # old value  0.0009
 tau.vec=rnorm(Nrand,mean = tau.mean,sd=tau.param)
 #
 # --- Transform to rates

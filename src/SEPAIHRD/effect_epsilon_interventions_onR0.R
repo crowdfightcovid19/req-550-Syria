@@ -95,9 +95,9 @@ R0.df$decrease=(1-R0.df$epsilon)*100
 
 setwd(dirPathOut)
 ticks=(1-intervention)*100
-plotOut=paste("Plot_effectEpsilonIntervOnR0_by",labelOut,".pdf")
+plotOut=paste("Plot_effectEpsilonIntervOnR0_by",labelOut,".pdf",sep="")
 pdf(file=plotOut,width=12)
-gg=ggplot(R0.df,aes(x=decrease,y=R0,fill=class))+
+gg=ggplot(R0.df,aes(x=decrease,y=R0,color=class))+
   geom_point()+geom_line()+
   geom_errorbar(aes(ymin=R0-R0.err, ymax=R0+R0.err), width=.3) +
   xlab("Reduction mean num. contacts (%)")+
