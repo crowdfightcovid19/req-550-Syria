@@ -6,7 +6,7 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
   #y=y.start # DEBUG
   #t=times_vector # DEBUG
   #browser() # DEBUG
-  neutral.mat=parms["neutral.mat"][[1]]
+  Tcheck.mat=parms["Tcheck.mat"][[1]]
   hospitalized2=parms["hospitalized2"][[1]]
   isolation=parms["isolation"][[1]]
   isoThr=parms["isoThr"][[1]]
@@ -77,11 +77,11 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
             }else{
               yFrac=(y[classH]/Htot)*isoDiff # distribute infectivity of those that cannot be isolated proportionally to their number across classes
             }
-            yClassH=Hinf*neutral.mat[Ref,class]*yFrac # considers both isolation and neutral zone (if it exists)
+            yClassH=Hinf*Tcheck.mat[Ref,class]*yFrac # considers both isolation and symptomatic interacting if tests are put in place
           }else{
-            yClassH=neutral.mat[Ref,class]*y[classH] # only affects neutral zone, if it exists
+            yClassH=Tcheck.mat[Ref,class]*y[classH] # only affects classes being tested
           }
-          yClassI=neutral.mat[Ref,class]*y[classI] # symptomatic do not visit the neutral zone
+          yClassI=Tcheck.mat[Ref,class]*y[classI] # only affects classes being tested
           # ... Compute lambda
           lambda = lambda+C[Ref,class]*(y[classP]+y[classA]+
                                          yClassI+yClassH)/Nsubpop[class]
