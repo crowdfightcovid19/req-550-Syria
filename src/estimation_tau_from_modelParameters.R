@@ -21,7 +21,7 @@ Nrand=1000 # Determine number of randomizations to estimate tau
 # --- Fix directories and file
 this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit comment if problems...
 #this.dir="/pathToRepo" # ...path to the root path of your repo if the above command does not work, comment otherwise
-dirDataIn=paste(this.dir,"/data/real_models/null_model/",sep="") # Directory for the input data
+dirDataIn=paste(this.dir,"/data/real_models/null_model_mixed/",sep="") # Directory for the input data
 dirCodeBase=paste(this.dir,"/src",sep="") # Directory where the function with the basic code is found
 dirParams=paste(this.dir,"/src/SEPAIHRD",sep="") # Directory where the function with the derivatives is coded
 pathOut="data/estimation_parameters/figures_prob_distros"
@@ -52,19 +52,26 @@ source(fileParams)
 
 # --- Compute NGM
 # ..... Create the matrix of contacts
-av.cont.mat=as.vector(av.cont)*matrix(1,nrow=dim(C)[1],ncol=dim(C)[2])
+av.cont.mat=as.vector(class.str)*as.vector(av.cont)*matrix(1,nrow=dim(C)[1],ncol=dim(C)[2])
 #N.str=as.matrix(N*class.str)
+h=fracItoH.str
+g=fracItoD.str
 tau=vector(mode="numeric",length = Nrand)
 for(k in 1:Nrand){
-  scope=av.cont.mat*as.vector(fracPtoI.vec[k])
-  kappa=(1-fracItoH.str-fracItoD.str)*gammaI+
-    fracItoH.str*eta.vec[k]+
-    fracItoD.str*alpha.vec[k]
-  A1=1/deltaP.vec[k]
-  A2=(1-fracPtoI.vec[k])/gammaA
-  A3=as.vector(as.matrix(fracPtoI.vec[k]/kappa))
-  A4=as.vector(as.matrix((fracPtoI.vec[k]*fracItoH.str*eta.vec[k])/
-                           (kappa*gammaH.vec[k])))
+  scope=av.cont.mat # *as.vector(fracPtoI.vec[k])
+  # ... clean the code to avoid mistakes
+  f=fracPtoI.vec[k] 
+  gammaH=gammaH.vec[k]
+  eta=eta.vec[k]
+  alpha=alpha.vec[k]
+  deltaP=deltaE.vec[k]
+  # ... compute coefficients
+  kappa=(1-h-g)*gammaI+h*eta+g*alpha
+  A1=1/deltaP
+  A2=(1-f)/gammaA
+  A3=as.vector(as.matrix(f/kappa))
+  A4=as.vector(as.matrix((f*h*eta)/
+                           (kappa*gammaH)))
   
   Ks.red= (A1+A2+A3+A4)*scope
   spectra=eigen(Ks.red)
