@@ -53,12 +53,13 @@
 #     is determined by "isoThr", all hospitalized above that value become infectious because we assume
 #     they will stay in the camp. Their fate is then determined by the variable "hospitalized2".
 #   "hospitalized2" = (mandatory) Determine whether all hospitalized will become recovered (=0) or death (=1) 
-#   "neutral" (optional) = Determine whether there exist a neutral zone in which two types of classes, identified
-#     by two keywords (keywordA and keywordB) interact. It is assumed that to get into this zone
-#     there is some testing to exclude symptomatic individuals, which will reduce the probability of
-#     infection. The two keywords should be present in the names of the classes given in the 
-#     input files, and will be searched with grep during the integration at every step for each
-#     pair of classes, so this option may significantly increase computation times.
+#   "Tcheck" (optional) = Determine whether there exist a test check (most likely Temperture) that 
+#     will prevent the interaction of symptomatic people between two types of classes, identified
+#     by two keywords (keywordA and keywordB). An example may be if it is created a neutral zone, in 
+#     which it is assumed that to access this zone there is some testing to exclude symptomatic
+#     individuals, which will reduce the probability of infection. The two keywords should be present in the names of the classes given in the 
+#     input files, and will be searched with grep, so its limitations should be considered or the
+#     code modified if complex regular expressions must be used.
 #     
 # warning = note that the structure of directories is strict. However, there is a command
 #    to automatically retrieve the path of the user in the repo which may not work in Windows/Mac.
@@ -115,9 +116,9 @@ CompModel="SEPAIHRD" # Only "SEPAIHRD" implemented
 isolation=1 # if hospitalized leaves the camp =1, stays in the camp = 0.
 isoThr=2000 # If isolation=1, maximum capacity of H people isolation, the difference H-isoThr becomes infectious
 hospitalized2=1 # if hospitalized2 = 0, all hospitalized will recover, if = 1 all will die.
-neutral=0 # if neutral zone implemented, classes in that zone will not get infected by symptomatic
-keywordA="orange" # keyword to identify the first type of users of the neutral zone
-keywordB="green" # keyword to identify the second type of users.
+Tcheck=0 # if tests are implemented, symptomatic individuals will be excluded from the interaction between two classes
+keywordA="orange" # keyword to identify the first population class affected by Tcheck.
+keywordB="green" # keyword to identify the second population class affected by Tcheck.
 # The following are obsolete options, can be recovered from SIRQ model if needed
 #ContMatType="mean" # one of "mean"= mean field, "external"= read from file
 #strat=0 # if ContMatType="mean" and strat= 1 it will source contact_matrix.R, where you can create manually a contacts matrix
@@ -139,12 +140,12 @@ if(hospitalized2 == 1){
 }else{
   hospitalized2="R"
 }
-if(neutral == 1){
-  neutral="YES"
+if(Tcheck == 1){
+  Tcheck="YES"
 }else{
-  neutral="NO"
+  Tcheck="NO"
 }
-optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Fate",hospitalized2,"_Neutral",neutral,"_PopSize",Npop,sep="")
+optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Fate",hospitalized2,"_Tcheck",Tcheck,"_PopSize",Npop,sep="")
 
 # Fix directories ------------
 if(fake == 1){
@@ -211,14 +212,14 @@ y.start[first.inf]=y.start[first.inf]-1 # substract from susceptible
 hosp.idx=grep(".H$",names(y.start),perl = TRUE) # take indexes hospitalized variables, needed to estimate capacity isolation centers
 
 # --- Create a matrix to limit the interaction of symptomatic people between certain classes
-neutral.mat=matrix(1,ncol=ncol(C),nrow=nrow(C)) # Same size and names than the contacts matrix
-rownames(neutral.mat)=rownames(C)
-colnames(neutral.mat)=colnames(C)
-if(neutral=="YES"){ # if neutral space exist
-  idx.classA=grep(keywordA,colnames(neutral.mat)) # identify the classes not allowed to interact if symptoms
-  idx.classB=grep(keywordB,colnames(neutral.mat))
-  neutral.mat[idx.classA,idx.classB]=0 # turn them to zero
-  neutral.mat[idx.classB,idx.classA]=0 # will only  be applied to H and I
+Tcheck.mat=matrix(1,ncol=ncol(C),nrow=nrow(C)) # Same size and names than the contacts matrix
+rownames(Tcheck.mat)=rownames(C)
+colnames(Tcheck.mat)=colnames(C)
+if(Tcheck=="YES"){ # if Tcheck space exist
+  idx.classA=grep(keywordA,colnames(Tcheck.mat)) # identify the classes not allowed to interact if symptoms
+  idx.classB=grep(keywordB,colnames(Tcheck.mat))
+  Tcheck.mat[idx.classA,idx.classB]=0 # turn them to zero
+  Tcheck.mat[idx.classB,idx.classA]=0 # will only  be applied to H and I
 }
 
 
@@ -251,7 +252,7 @@ for(i in 1:Nrand){ # Launch the script Nrand times
   parms.list=list(Nsubpop=Nsubpop,tau=tau,deltaE=deltaE,deltaP=deltaP,
                   gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,eta=eta,alpha=alpha,
                   fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,
-                  Cont=C,neutral.mat=neutral.mat,
+                  Cont=C,Tcheck.mat=Tcheck.mat,
                  hospitalized2=hospitalized2,isolation=isolation,isoThr=isoThr,hosp.idx=hosp.idx,
                 classes=class.names,vars=var.names,compartments=compartments)
   
