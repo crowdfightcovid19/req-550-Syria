@@ -108,7 +108,7 @@ class.infected="age2_no_comorbid_orange" # string with the name of the class in 
 # --- Computational parameters
 Npop=2000 # Population size
 Ndays=365 # Number of days simulated
-Nrand=100 # number of realizations of parameters
+Nrand=10 # number of realizations of parameters
 
 
 # --- Model type
@@ -272,36 +272,64 @@ for(i in 1:Nrand){ # Launch the script Nrand times
     k=k+1
   }
   # ..... Retrieve deaths, infectious, or any other data you may want to process across realizations
-  if(i == 1){
-    death.vars=grep(".D",colnames(model.output))
-    death.names=colnames(model.output)[death.vars]
-    death.tolls.df=data.frame(matrix(ncol = length(death.vars), nrow = Nrand))
-    colnames(death.tolls.df)=death.names
-    death.total=vector(mode="numeric",length=Nrand)
-    death.frac.df=data.frame(matrix(ncol = length(death.vars), nrow = Nrand))
-    colnames(death.frac.df)=death.names
-    infect.vars=grep(".I",colnames(model.output))
-    infect.names=colnames(model.output)[infect.vars]
-    infect.max.df=data.frame(matrix(ncol = length(infect.vars), nrow = Nrand)) # We will add the time
-    colnames(infect.max.df)=infect.names
-    time.infect.max.df=data.frame(matrix(ncol = length(infect.vars), nrow = Nrand))
-    colnames(time.infect.max.df)=infect.names
-    susc.vars=grep(".S",colnames(model.output))
-    susc.names=colnames(model.output)[susc.vars]
-    susc.min.df=data.frame(matrix(ncol = length(susc.vars), nrow = Nrand))
-    colnames(susc.min.df)=susc.names
+  if(i == 1){ # Prepare the dataframes in the first iteration
+    u=0
+    v=0
+    comp.vars.list=list()
+    comp.df.list=list()
+    comp.time.df.list=list()
+    compartments.time=c()
+    for(comp in compartments){ # We will collect all max/min of variables
+      u=u+1
+      comp.id=paste(".",comp,"$",sep="")
+      comp.vars=grep(comp.id,colnames(model.output))
+      comp.vars.list[[u]]=comp.vars
+      comp.names=colnames(model.output)[comp.vars]
+      comp.df=data.frame(matrix(ncol = length(comp.vars), nrow = Nrand))
+      colnames(comp.df)=comp.names
+      comp.df.list[[u]]=comp.df
+      if((comp=="S")||(comp=="I")||(comp=="H")){ # and the times in which relevant events happen
+        v=v+1
+        if(comp=="S"){ # only steady state time for all susceptible
+          Nvars=1
+        }else{ # max for all classes
+          Nvars=length(comp.vars)
+        }
+        compartments.time[v]=comp
+        comp.time.df=data.frame(matrix(ncol = Nvars, nrow = Nrand))
+        colnames(comp.time.df)=comp.names
+        comp.time.df.list[[v]]=comp.time.df
+      }
+    }
   }
-  death.tolls=model.output[Ndays,death.vars]
-  death.tolls.df[i,]=death.tolls
-  death.total[i]=round(sum(death.tolls))
-  death.frac.df[i,]=100*death.tolls/Nsubpop
-  infect.max=apply(model.output[,infect.vars],2,max)
-  infect.max.df[i,]=infect.max
-  time.max=apply(model.output[,infect.vars],2,which.max)
-  time.infect.max.df[i,]=time.max
-  susc.min=apply(model.output[,susc.vars],2,min)
-  
+  # ... When each simulation finishes
+  u=0
+  v=0
+  for(comp in compartments){ # We collect all max/min of variables
+    u=u+1
+    comp.vars=comp.vars.list[[u]]
+    if((comp=="I")||(comp=="H")){ # and the times in which relevant events happen
+      v=v+1
+      comp.max=apply(model.output[,comp.vars],2,max)
+      comp.df.list[[u]][i,]=comp.max
+      time.max=apply(model.output[,comp.vars],2,which.max)
+      comp.time.df.list[[v]][i,]=time.max
+    }else{
+      comp.out=model.output[Ndays,comp.vars]
+      comp.df.list[[u]][i,]=comp.out
+      if(comp=="S"){ # for susceptible
+        v=v+1
+        susc.total=rowSums(model.output[,comp.vars]) # take the total across classes
+        susc.diff=susc.total-sum(comp.out) # compute the differences with the end of the simulation
+        susc.steady.vec=which(susc.diff<1) # identify the time in which there is no decrease with respect to the end (<1 person)
+        time.steady=min(susc.steady.vec) # this is the candidate time to steady state
+        comp.time.df.list[[v]][i]=time.steady # store it
+      }
+    }
+  }
 }
+death.total[i]=round(sum(death.tolls))
+death.frac.df[i,]=100*death.tolls/Nsubpop
 
 # Plots and outputs ------------------------
 # --- Check the output, and plot dynamics
