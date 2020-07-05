@@ -17,7 +17,7 @@ library(gplots)
 #rm(list=ls())
 
 ### START EDITING
-descr="model_1_3" # A string describing the model, input data should be created in a directory with this name in /data/real_models
+descr="model_1_1" # A string describing the model, input data should be created in a directory with this name in /data/real_models
 
 # --- Set up parameters
 # ..... Relative risk of infection from contact in neutral zone compared to contacts in orange/green zones
@@ -25,7 +25,7 @@ descr="model_1_3" # A string describing the model, input data should be created 
 RR <- .2
 
 # ..... Family members people in green zone can visit per week
-fam_vis <- 17*7
+fam_vis <- 2
 ### STOP EDITING
 
 # Read data --------
@@ -62,7 +62,7 @@ colnames(cbar_i_mat)=names(cbar_i)
 
 # estimation of rho
 rho=c_fam*frac_g/frac_o
-# if(rho >=1){
+# if(rho >=1){ # this is very unlikely, it would be needed something like 28 contacts per week
 #   rho=1
 # }
 
@@ -105,7 +105,7 @@ critical=(1/RR)*sqrt(frac_o*cbar_i$age2_no_comorbid_orange)
 diff_crit=c_fam/critical # % of allowed family members permitted
 
 ### Export file
-stop()
+#stop()
 write.table(m_ij, "management_matrix.csv", sep = "\t")
 write.table(epsilon_ij, "epsilon_matrix.csv", sep = "\t")
 write.table(C_ij_interv, "contacts_structure.csv", sep = "\t")
