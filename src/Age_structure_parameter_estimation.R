@@ -187,26 +187,29 @@ classes_structure_shield[, 5:7] <- age_structure[, 3:5]
 
 green_rem <- green_cap-sum(classes_structure_shield[, 5:7])
 
-## Calculate proportion spouses of people in the green zone that will be brought into the green zone
+### Remainder of green zone: children = 40%, adults = 60%
 
-# Calculate P(person aged 13-50 married to someone aged 13-50)
-
-m13_50 <- sum(camps$`Males from 13 to 17 years of age`) + sum(camps$`Males from 18 to 50 years of age`)
-f13_50 <- sum(camps$`Females from 13 to 17 years of age`) + sum(camps$`Females from 18 to 50 years of age`)
-
-P_married <- (2*m13_50)/(m13_50+f13_50)
-
-# Calculate P(age2 = outside green zone)
-
-P_no_comorbid <- age_structure[, 2]/sum(age_structure[, 2:3])
-
-# Calculate P(age2_comorbid bring age2_no_comorbid spouse)
-
-P_bringspouse <- P_married*P_no_comorbid
+## *don't run the following* ##
+# ## Calculate proportion spouses of people in the green zone that will be brought into the green zone
+# 
+# # Calculate P(person aged 13-50 married to someone aged 13-50)
+# 
+# m13_50 <- sum(camps$`Males from 13 to 17 years of age`) + sum(camps$`Males from 18 to 50 years of age`)
+# f13_50 <- sum(camps$`Females from 13 to 17 years of age`) + sum(camps$`Females from 18 to 50 years of age`)
+# 
+# P_married <- (2*m13_50)/(m13_50+f13_50)
+# 
+# # Calculate P(age2 = outside green zone)
+# 
+# P_no_comorbid <- age_structure[, 2]/sum(age_structure[, 2:3])
+# 
+# # Calculate P(age2_comorbid bring age2_no_comorbid spouse)
+# 
+# P_bringspouse <- P_married*P_no_comorbid
 
 # Remainder of green zone capacity allocated to age2_no_comorbid
 
-green_rem_ad <- age_structure[, 3]*P_bringspouse
+green_rem_ad <- green_rem*.6
 
 ## Calculate proportion of children that will go to green zone
 # Remainder of green zone capacity allocated to age1
