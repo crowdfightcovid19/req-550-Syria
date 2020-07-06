@@ -10,10 +10,10 @@
 #   be shielded considering that age2 with comorbidities plus their spouses and their kids < 13
 #   are moved to the green zone
 ########
-
+rm(list=ls())
 # --- Fix the probability of getting married
 
-P_married=0.95
+P_married=0.85
 
 # --- Set up working directories
 this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit, just comment it if problems...
