@@ -17,7 +17,7 @@ library(gplots)
 #rm(list=ls())
 
 ### START EDITING
-descr="shield_fam_vis10" # A string describing the model, input data should be created in a directory with this name in /data/real_models
+descr="shield_fam_vis28" # A string describing the model, input data should be created in a directory with this name in /data/real_models
 
 fileContacts="classes_contacts_shield" # File with the number of contacts of the model per class
 filePopStr="classes_structure_shield" # File with the fraction of population each class represents
@@ -28,7 +28,7 @@ filePopStr="classes_structure_shield" # File with the fraction of population eac
 RR <- .2
 
 # ..... Family members people in green zone can visit per week
-fam_vis <- 10
+fam_vis <- 28
 ### STOP EDITING
 
 # Read data --------
@@ -114,9 +114,12 @@ labelOut=descr
 fileManagement=paste("management_matrix",labelOut,sep="_")
 fileEpsilon=paste("epsilon_matrix",labelOut,sep="_")
 fileContacts=paste("contacts_matrix",labelOut,sep="_")
+fileContNull="contacts_matrix_null_shield"
+
 write.table(m_ij, fileManagement, sep = "\t")
 write.table(epsilon_ij, fileEpsilon, sep = "\t")
 write.table(C_ij_interv, fileContacts, sep = "\t")
+write.table(C_ij, fileContNull, sep = "\t")
 
 ## Plot matrices
 PlotOut=paste("heatmap_ContactsMatrix_intervention_",descr,".pdf",sep="")
