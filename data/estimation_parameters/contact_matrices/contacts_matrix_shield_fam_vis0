@@ -1,0 +1,8 @@
+"age1_orange"	"age1_green"	"age2_no_comorbid_orange"	"age2_no_comorbid_green"	"age2_comorbid_green"	"age3_no_comorbid_green"	"age3_comorbid_green"
+"age1_orange"	11.75	0	13.25	0	0	0	0
+"age1_green"	0	3.9	0	5.8625	7.825	2.75	4.6625
+"age2_no_comorbid_orange"	7.05	0	7.95	0	0	0	0
+"age2_no_comorbid_green"	0	2.34	0	3.5175	4.695	1.65	2.7975
+"age2_comorbid_green"	0	2.34	0	3.5175	4.695	1.65	2.7975
+"age3_no_comorbid_green"	0	1.56	0	2.345	3.13	1.1	1.865
+"age3_comorbid_green"	0	1.56	0	2.345	3.13	1.1	1.865
