@@ -1,0 +1,8 @@
+"age1_orange"	"age1_green"	"age2_no_comorbid_orange"	"age2_no_comorbid_green"	"age2_comorbid_green"	"age3_no_comorbid_green"	"age3_comorbid_green"
+"age1_orange"	1.25	1	1.25	1	1	1	1
+"age1_green"	0.25	5	0.25	5	5	5	5
+"age2_no_comorbid_orange"	1.25	1	1.25	1	1	1	1
+"age2_no_comorbid_green"	0.25	5	0.25	5	5	5	5
+"age2_comorbid_green"	0.25	5	0.25	5	5	5	5
+"age3_no_comorbid_green"	0.25	5	0.25	5	5	5	5
+"age3_comorbid_green"	0.25	5	0.25	5	5	5	5
