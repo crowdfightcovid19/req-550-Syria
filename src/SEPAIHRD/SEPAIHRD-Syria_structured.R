@@ -1,5 +1,5 @@
 # ****************************************
-# SIR-Syria_structured.R
+# SEPAIHRD-Syria_structured.R
 # ****************************************
 # 
 # 
@@ -16,14 +16,16 @@
 # usage = Create a directory in /data/$type_models including the following files describing
 #         parameters for the classes. Not all the parameters are implemented in this way
 #         because the distinction between community classes is possibly not relevant, but
-#         implementing them would be straighforward. The remainder epidemiological parameters are generated
+#         implementing them would be straighforward. Please note that the name of the directory is expected to
+#         be meaningful (related to the model implemented) and will be used for the output
+#         files. The remainder epidemiological parameters are generated
 #         in the code "input_parameters_SEPAIHRD.R" where vectors for the different realizations
 #         of the noise are created. There are some options for the simulation explained in the section
 #         options below. There are finally some computational parameters (e.g. number of realizations)
-#         to be fixed by the user below in the space indicated. The name of the directory is expected to
-#         be meaningful (related to the model implemented) and will be used for the output
-#         files. No other actions are needed from the user, once the parameters are fixed 
-#         and the files exist simply "source".
+#         to be fixed by the user. These parameters are coded in a script named 
+#         launch_SEPAIHRD-Syria_structured.R which should be sourced to run the present code. There
+#         are other scripts labelled multiple_launch_SEPAIHRD_$experiment.R, to run the script
+#         multiple times. 
 # input_files = Examples of models are located in data/fake_models
 #    a) 4 tab separated files with a single row and one column for each class plus the column names. The
 #         classes (i.e. column names) must be the same in all files.
@@ -87,7 +89,7 @@
 # ... "mean" -> mean field approach, C=1.
 # ... "ext" -> the matrix is read from an external file
 
-rm(list=ls())
+#rm(list=ls())
 # Load libraries ---------
 library(deSolve)   # package to solve the model
 library(reshape2)  # package to change the shape of the model output
@@ -101,31 +103,31 @@ library(tidyverse) # another package to reshape data for ggplot
 # .... and are not expected to be changed.
 ###### START EDITING
 # --- Structure of directories and labelling 
-fake=0 # fix to 1 if you are working with test data 
-descr="null_model_shield" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
-class.infected="age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
-
-# --- Computational parameters
-Npop=2000 # Population size
-Ndays=365 # Number of days simulated
-Nrand=100 # number of realizations of parameters
-
-
-# --- Model type
-CompModel="SEPAIHRD" # Only "SEPAIHRD" implemented 
-isolation=1 # if hospitalized leaves the camp =1, stays in the camp = 0.
-isoThr=2000 # If isolation=1, maximum capacity of H people isolation, the difference H-isoThr becomes infectious
-hospitalized2=1 # if hospitalized2 = 0, all hospitalized will recover, if = 1 all will die.
-Tcheck=0 # if tests are implemented, symptomatic individuals will be excluded from the interaction between two classes
-keywordA="orange" # keyword to identify the first population class affected by Tcheck.
-keywordB="green" # keyword to identify the second population class affected by Tcheck.
-# The following are obsolete options, can be recovered from SIRQ model if needed
-#ContMatType="mean" # one of "mean"= mean field, "external"= read from file
-#strat=0 # if ContMatType="mean" and strat= 1 it will source contact_matrix.R, where you can create manually a contacts matrix
-
-# --- Output options
-Nfull=2 # Number of simulations whose results will be fully reported (1 to Nrand)
-
+# fake=0 # fix to 1 if you are working with test data 
+# descr="null_model_shield" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
+# class.infected="age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
+# 
+# # --- Computational parameters
+# Npop=2000 # Population size
+# Ndays=365 # Number of days simulated
+# Nrand=100 # number of realizations of parameters
+# 
+# 
+# # --- Model type
+# CompModel="SEPAIHRD" # Only "SEPAIHRD" implemented 
+# isolation=1 # if hospitalized leaves the camp =1, stays in the camp = 0.
+# isoThr=2000 # If isolation=1, maximum capacity of H people isolation, the difference H-isoThr becomes infectious
+# hospitalized2=1 # if hospitalized2 = 0, all hospitalized will recover, if = 1 all will die.
+# Tcheck=0 # if tests are implemented, symptomatic individuals will be excluded from the interaction between two classes
+# keywordA="orange" # keyword to identify the first population class affected by Tcheck.
+# keywordB="green" # keyword to identify the second population class affected by Tcheck.
+# # The following are obsolete options, can be recovered from SIRQ model if needed
+# #ContMatType="mean" # one of "mean"= mean field, "external"= read from file
+# #strat=0 # if ContMatType="mean" and strat= 1 it will source contact_matrix.R, where you can create manually a contacts matrix
+# 
+# # --- Output options
+# Nfull=2 # Number of simulations whose results will be fully reported (1 to Nrand)
+#
 ######### STOP EDITING
 
 # Build a label with the options ---------
@@ -420,7 +422,7 @@ colnames(df.plot)=c("class","time")
 pdf(file=filePlotOut,width=17,height = 8)
 gg=ggplot(data = df.plot,
           aes(x = class,y = time)) +  # assign columns to axes and groups
-  geom_boxplot(notch = TRUE)+
+  geom_boxplot(notch = FALSE)+
   #geom_bar(stat="identity") +                  # represent data as lines
   xlab("Population class")+           # add label for x axis
   ylab("Time to peak (days)") +     # add label for y axis
