@@ -1,0 +1,53 @@
+# ****************************************
+# launch_SEPAIHRD-Syria_structured.R
+# ****************************************
+# 
+# 
+# author = Alberto Pascual-García 
+# email = alberto.pascual.garcia@gmail.com 
+# date = 6th July 2020
+# description = This script simply provides the input for the parameters of the script 
+#    SEPAIHRD-Syria_structured.R. These parameters are related to input and output files
+#    some simulation options and computational variables such as the number of realizations.
+#    Details about the simulations are described in the header of SEPAIHRD-Syria_structured.R
+#    and scripts for running multiple times are named multiple_launch_SEPAIHRD_$experiment.R
+# usage = Fix the parameters below and source.
+#
+# Fix parameters ----------------------
+# .... These are the parameters related to input and output of files and computational
+# .... options. Epidemiological parameters are hardcoded in the file "input_parameters_$model.R"
+# .... and are not expected to be changed.
+###### START EDITING
+# --- Structure of directories and labelling 
+fake=0 # fix to 1 if you are working with test data 
+descr="null_model_shield" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
+class.infected="age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
+
+# --- Computational parameters
+Npop=2000 # Population size
+Ndays=365 # Number of days simulated
+Nrand=10 # number of realizations of parameters
+
+
+# --- Model type
+CompModel="SEPAIHRD" # Only "SEPAIHRD" implemented 
+isolation=1 # if hospitalized leaves the camp =1, stays in the camp = 0.
+isoThr=2000 # If isolation=1, maximum capacity of H people isolation, the difference H-isoThr becomes infectious
+hospitalized2=1 # if hospitalized2 = 0, all hospitalized will recover, if = 1 all will die.
+Tcheck=0 # if tests are implemented, symptomatic individuals will be excluded from the interaction between two classes
+keywordA="orange" # keyword to identify the first population class affected by Tcheck.
+keywordB="green" # keyword to identify the second population class affected by Tcheck.
+# The following are obsolete options, can be recovered from SIRQ model if needed
+#ContMatType="mean" # one of "mean"= mean field, "external"= read from file
+#strat=0 # if ContMatType="mean" and strat= 1 it will source contact_matrix.R, where you can create manually a contacts matrix
+
+# --- Output options
+Nfull=2 # Number of simulations whose results will be fully reported (1 to Nrand)
+
+######### STOP EDITING
+
+this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit, just comment it if problems...
+dirCodeSpec=paste(this.dir,"/src/",CompModel,sep="") # Directory where code specific to this model
+setwd(dirCodeSpec)
+source("SEPAIHRD-Syria_structured.R")
+
