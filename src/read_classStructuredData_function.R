@@ -15,7 +15,7 @@ read_classStructuredData_function=function(dirDataIn){
   file.class="classes_structure" # Fraction of the population that each class represents
   file.fracItoH="fracItoH_structure"  # fraction of symptomatic that would be hospitalized
   file.fracItoD="fracItoD_structure" # fraction that will directly die
-  file.contmat="contacts_structure" # contact matrix
+  file.contmat="contacts_matrix" # contact matrix
   setwd(dirDataIn)
   sep="\t" # separator of input files
   class.str=read.table(file=file.class,sep=sep,header = TRUE)
