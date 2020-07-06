@@ -39,7 +39,7 @@ Men_50plus_married_to_a_50plus_woman <- Married_Women_50plus                # ma
 Men_50plus_married_to_a_13_49_woman <- Men_50plus - Married_Women_50plus    # married with a woman aged 13-49
 
 # Calculating proportion of population that are men aged 50+ married with a woman aged 13-49 with comorbidities (already in the green zone)
-Men_50plus_married_to_a_13_49_COM_woman <- Men_50plus_married_to_a_13_49_woman * Proba_comorbidities_if_ages_13_49 
+Men_50plus_married_to_a_13_49_COM_woman <- Men_50plus_married_to_a_13_49_woman * Proba_comorbidities_if_aged_13_49 
 
 # Calculating proportion of population that are women aged 13-49 without comorbidities brought from the orange zone by a 50+ spouse
 Men_50plus_married_to_a_13_49_healthy_woman <- Men_50plus_married_to_a_13_49_woman - Men_50plus_married_to_a_13_49_COM_woman   
@@ -48,7 +48,7 @@ Men_50plus_married_to_a_13_49_healthy_woman <- Men_50plus_married_to_a_13_49_wom
 
 ## Calculating proportion of population that are women aged 13_49 with comorbidities that are single or married 
 
-COM_Women_13_49 <- Women_13_49 * Proba_comorbidities_if_ages_13_49        
+COM_Women_13_49 <- Women_13_49 * Proba_comorbidities_if_aged_13_49        
 Single_COM_Women_13_49 <- COM_Women_13_49 * Proba_Single_if_woman_35_49     # single
 Married_COM_Women_13_49 <- COM_Women_13_49 - Single_COM_Women_13_49         # married
 
@@ -59,7 +59,7 @@ COM_Women_13_49_married_to_man_50plus <- Men_50plus_married_to_a_13_49_COM_woman
 COM_Women_13_49_married_to_man_13_49 <- Married_COM_Women_13_49 - COM_Women_13_49_married_to_man_50plus
 
 # Calculating proportion of population that are women aged 13_49 with comorbidities that are married to a 13-49 man with comorbidities (already in the green zone)
-COM_Women_13_49_married_to_COM_man_13_49 <- COM_Women_13_49_married_to_man_13_49 * Proba_comorbidities_if_ages_13_49
+COM_Women_13_49_married_to_COM_man_13_49 <- COM_Women_13_49_married_to_man_13_49 * Proba_comorbidities_if_aged_13_49
 
 #Calculating proportion of population that are men aged 13-49 without comorbidities brought from the orange zone by a comorbid spouse aged 13-49
 COM_Women_13_49_married_to_healthy_man_13_49 <- COM_Women_13_49_married_to_man_13_49 - COM_Women_13_49_married_to_COM_man_13_49
@@ -68,7 +68,7 @@ COM_Women_13_49_married_to_healthy_man_13_49 <- COM_Women_13_49_married_to_man_1
 
 ## Calculating proportion of population that are men aged 13-49 with comorbidities that are married to a 13-49 woman 
 
-COM_Men_13_49 <- Men_13_49 * Proba_comorbidities_if_ages_13_49
+COM_Men_13_49 <- Men_13_49 * Proba_comorbidities_if_aged_13_49
 
 # Calculating proportion of population that are men aged 13-49 with comorbidities that are married to a 13-49 woman with comorbidities (already in the green zone)
 COM_Men_13_49_married_to_COM_woman_13_49 <- COM_Women_13_49_married_to_COM_man_13_49
