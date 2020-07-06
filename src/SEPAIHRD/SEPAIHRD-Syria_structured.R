@@ -235,6 +235,7 @@ setwd(dirDataOut)
 k=1 # labels the number of fully reported results
 rand2report=vector(mode="integer",length=Nfull) # store realization that will be reported
 output.list=list()
+output.aggr.list=list()
 for(i in 1:Nrand){ # Launch the script Nrand times
   #betaI=betaI.vec[i]
   #betaA=betaA.vec[i]
@@ -271,181 +272,317 @@ for(i in 1:Nrand){ # Launch the script Nrand times
     write.table(model.output,file=fileOut,row.names = FALSE)
     output.list[[k]]=model.output
     rand2report[k]=i
+    if(i == 1){
+      warning("More than one randomization required to run this code")
+    }
+    u=0
+    model.aggr.output=data.frame(matrix(ncol = length(compartments), 
+                                        nrow = dim(model.output)[1]))
+    for(comp in compartments){
+      u=u+1
+      comp.vars=comp.vars.list[[u]]
+      var.aggr=rowSums(model.output[,comp.vars])
+      model.aggr.output[,u]=var.aggr
+    }
+    output.aggr.list[[k]]=model.aggr.output
     k=k+1
   }
   # ..... Retrieve deaths, infectious, or any other data you may want to process across realizations
-  if(i == 1){
-    death.vars=grep(".D",colnames(model.output))
-    death.names=colnames(model.output)[death.vars]
-    death.tolls.df=data.frame(matrix(ncol = length(death.vars), nrow = Nrand))
-    colnames(death.tolls.df)=death.names
-    death.total=vector(mode="numeric",length=Nrand)
-    death.frac.df=data.frame(matrix(ncol = length(death.vars), nrow = Nrand))
-    colnames(death.frac.df)=death.names
-    infect.vars=grep(".I",colnames(model.output))
-    infect.names=colnames(model.output)[infect.vars]
-    infect.max.df=data.frame(matrix(ncol = length(infect.vars), nrow = Nrand)) # We will add the time
-    colnames(infect.max.df)=infect.names
-    time.infect.max.df=data.frame(matrix(ncol = length(infect.vars), nrow = Nrand))
-    colnames(time.infect.max.df)=infect.names
-    susc.vars=grep(".S",colnames(model.output))
-    susc.names=colnames(model.output)[susc.vars]
-    susc.min.df=data.frame(matrix(ncol = length(susc.vars), nrow = Nrand))
-    colnames(susc.min.df)=susc.names
+  if(i == 1){ # Prepare the dataframes in the first iteration
+    u=0
+    v=0
+    comp.vars.list=list()
+    comp.df.list=list()
+    comp.time.df.list=list()
+    compartments.time=c()
+    for(comp in compartments){ # We will collect all max/min of variables
+      u=u+1
+      comp.id=paste(".",comp,"$",sep="")
+      comp.vars=grep(comp.id,colnames(model.output))
+      comp.vars.list[[u]]=comp.vars
+      comp.names=colnames(model.output)[comp.vars]
+      comp.df=data.frame(matrix(ncol = length(comp.vars), nrow = Nrand))
+      colnames(comp.df)=comp.names
+      comp.df.list[[u]]=comp.df
+      if((comp!="D")&&(comp!="R")){ # and the times in which relevant events happen
+        v=v+1
+        # if(comp=="S"){ # only steady state time for all susceptible
+        #   Nvars=1
+        #   names.tmp=comp
+        # }else{ # max for all classes
+          Nvars=length(comp.vars)
+          names.tmp=comp.names
+        #}
+        compartments.time[v]=comp
+        comp.time.df=data.frame(matrix(ncol = Nvars, nrow = Nrand))
+        colnames(comp.time.df)=names.tmp
+        comp.time.df.list[[v]]=comp.time.df
+      }
+    }
   }
-  death.tolls=model.output[Ndays,death.vars]
-  death.tolls.df[i,]=death.tolls
-  death.total[i]=round(sum(death.tolls))
-  death.frac.df[i,]=100*death.tolls/Nsubpop
-  infect.max=apply(model.output[,infect.vars],2,max)
-  infect.max.df[i,]=infect.max
-  time.max=apply(model.output[,infect.vars],2,which.max)
-  time.infect.max.df[i,]=time.max
-  susc.min=apply(model.output[,susc.vars],2,min)
-  
+  # ... When each simulation finishes
+  u=0
+  v=0
+  for(comp in compartments){ # We collect all max/min of variables
+    u=u+1
+    comp.vars=comp.vars.list[[u]]
+    if((comp=="S")||(comp=="R")||(comp=="D")){ # and the times in which relevant events happen
+      comp.out=model.output[Ndays,comp.vars]
+      comp.df.list[[u]][i,]=comp.out
+      if(comp=="S"){ # for susceptible
+        v=v+1
+        susc.traject=model.output[,comp.vars] # take the total across classes
+        susc.diff=mapply(`-`,susc.traject,comp.out) # compute the differences with the end of the simulation
+        susc.steady.vec=apply(susc.diff,2,function(x){min(which(x<1))}) # identify the time in which the difference with final state <1 person)
+        comp.time.df.list[[v]][i,]=susc.steady.vec # store it
+      }
+    }else{
+      v=v+1
+      comp.max=apply(model.output[,comp.vars],2,max)
+      comp.df.list[[u]][i,]=comp.max
+      time.max=apply(model.output[,comp.vars],2,which.max)
+      comp.time.df.list[[v]][i,]=time.max
+    }
+  }
 }
+# ... Retrieve some totals
+u=which(compartments=="D")
+death.total=round(rowSums(comp.df.list[[u]]))
+u=which(compartments=="S")
+susc.total=round(rowSums(comp.df.list[[u]]))
+u=which(compartments=="R")
+recov.total=round(rowSums(comp.df.list[[u]]))
 
 # Plots and outputs ------------------------
+# --- Prepare some aesthetics and labels
+library(RColorBrewer)
+n <- (Nclass*Ncomp)+5 # there is always one too light
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_qual = rainbow(Ncomp) # unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
+col_class = rainbow(n) #  c(brewer.pal(Nclass,"Set2"),brewer.pal(Nclass,"Dark2"),
+              #              brewer.pal(Nclass,"Spectral"),brewer.pal(Nclass,"Accent"), 
+              #             brewer.pal(Nclass,"Paired"),brewer.pal(Nclass,"Pastel1"),
+              #             brewer.pal(Nclass,"Set1"),brewer.pal(Nclass,"Set3"))
+#col_qual[4]="red" # col_qual[n+2] # change yellow
+#col_qual[8]="black"
+  # c(brewer.pal(Nclass,"Set2"),brewer.pal(Nclass,"Dark2"),
+  #              brewer.pal(Nclass,"Spectral"),brewer.pal(Nclass,"Accent"), 
+  #             brewer.pal(Nclass,"Paired"),brewer.pal(Nclass,"Pastel1"),
+  #             brewer.pal(Nclass,"Set1"),brewer.pal(Nclass,"Set3")) # other palette
+comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
+             "Infected","Hospitalized","Recovered","Deaths")
 # --- Check the output, and plot dynamics
 dir.create(dirPlotOut)
 setwd(dirPlotOut)
-for(k in 1:Nfull){
-  model.output=output.list[[k]]
-  output_long <- melt(as.data.frame(model.output), id = "time")
-  labelTmp=paste(label,"_rand-",rand2report[k],sep="")
-  filePlotOut=paste("Plot-Dynamics_",labelTmp,".pdf",sep="")
-  pdf(file=filePlotOut,width=30,height = 8)
-  gg=ggplot(data = output_long,
-            aes(x = time,
-                y = value,
-                colour = variable,
-                group = variable)) +  # assign columns to axes and groups
-    geom_line() +                  # represent data as lines
-    xlab("Time (days)")+           # add label for x axis
-    ylab("Number of people") +     # add label for y axis
-    theme(axis.title = element_text(size=16),
-          axis.text = element_text(size=12),
-          legend.text = element_text(size=16))+ # Increase fonts size
+for(k in 1:Nfull){ # For each realization completely recorded
+  for(u in 1:2){
+    if(u==1){ # Plot the whole dynamics
+      model.output=output.list[[k]]
+      model.names=colnames(model.output)
+      filePlotOut=paste("Plot-Dynamics_",labelTmp,".pdf",sep="")
+      varcolor="Class/Compartment"
+      widthPlot=30
+      heightPlot=12
+      col_vector=col_class
+    }else{ # Plot the aggregated dynamics
+      model.output=output.aggr.list[[k]]
+      model.output=cbind(times_vector,model.output)
+      colnames(model.output)=c("time",comp.descr)
+      filePlotOut=paste("Plot-DynamicsAggreg_",labelTmp,".pdf",sep="")
+      varcolor="Compartment"
+      heightPlot=8
+      widthPlot=10
+      col_vector=col_qual
+    }
+    output_long <- melt(as.data.frame(model.output), id = "time")
+    labelTmp=paste(label,"_rand-",rand2report[k],sep="")
+    pdf(file=filePlotOut,width=widthPlot,height = heightPlot)
+    gg=ggplot(data = output_long,
+              aes(x = time,
+                  y = value,
+                  colour = variable,
+                  group = variable)) +  # assign columns to axes and groups
+      geom_line(size=1.5) +                  # represent data as lines
+      xlab("Time (days)")+           # add label for x axis
+      ylab("Number of people") +     # add label for y axis
+      theme_bw()+
+      theme(axis.title = element_text(size=20),
+            axis.text = element_text(size=14),
+            legend.text = element_text(size=16),
+            legend.title = element_text(size=22),
+            title = element_text(size=20))+ # Increase fonts size 
+      scale_colour_manual(values=col_vector)+ #and choose palette
+      labs(title = paste("Model =",descr),
+           subtitle = paste("Total deaths = ",death.total[rand2report[k]],
+                            "; Total susceptibles = ",susc.total[rand2report[k]],
+                            "; Total recovered = ",recov.total[rand2report[k]]),
+           colour=varcolor) # add title
+    print(gg)
+    dev.off( )
+  }
+ 
+}
+
+# --- Plot the final value for each variable
+# --- Plot the proportion relative to the subpopulation for each variable
+u=0
+for(comp in compartments){ # We collect all max/min of variables
+  u=u+1
+  #fillCol=col_qual[u]
+  Compartment=comp.descr[u]
+  df.out=comp.df.list[[u]]
+  if((comp=="S")||(comp=="R")||(comp=="D")){
+    labelOut=paste("NumFinal",Compartment,"_",sep="")
+  }else{
+    labelOut=paste("NumMax",Compartment,"_",sep="")
+  }
+  setwd(dirDataOut)
+  fileDataOut=paste(labelOut,label,".dat",sep="")
+  write.csv(df.out,file = fileDataOut)
+  setwd(dirPlotOut)
+  filePlotOut=paste("Plot-",labelOut,label,".pdf",sep="")
+  df.plot <- pivot_longer(df.out,cols=colnames(df.out)) # Transform long format
+  colnames(df.plot)=c("class","Y")
+  pdf(file=filePlotOut,width=10,height = 7)
+  gg=ggplot(data = df.plot,
+            aes(x = class,y = Y,fill=class)) +  # assign columns to axes and groups
+    geom_boxplot()+
+    #geom_bar(stat="identity") +                  # represent data as lines
+    xlab("Population Class")+           # add label for x axis
+    ylab(paste("Number of ",Compartment,sep="")) +     # add label for y axis
+    theme_bw()+
+    theme(axis.title = element_text(size=22),
+          axis.text = element_text(size=16), # ,angle=90, hjust = 1,vjust=0.5),
+          legend.text = element_text(size=22),
+          legend.title = element_text(size=28),
+          title=element_text(size=14))+ # Increase fonts size
+    scale_colour_manual(values=col_qual)+
+    scale_x_discrete(labels=as.character(seq(from=1,to=Nclass,by=1)))+
     labs(title = paste("Model =",descr),
-         subtitle = paste("Total deaths =",death.total[rand2report[k]]),
-         colour="Class/Compartment") # add title
+         subtitle = paste("Pop. size = ",Npop, 
+                          "; Mean tot. deaths =",mean(death.total),
+                          "; Mean tot. susc. =",mean(susc.total),
+                          "; Mean tot. recov. =",mean(recov.total),sep=""))
+  print(gg)
+  dev.off( )
+}
+# --- Plot the proportion relative to the subpopulation for each variable
+u=0
+for(comp in compartments){ # We collect all max/min of variables
+  u=u+1
+  #fillCol=col_qual[u]
+  Compartment=comp.descr[u]
+  df.tmp=comp.df.list[[u]]
+  df.out=100*data.frame(mapply(`/`,df.tmp,Nsubpop)) # Transform into fractions
+  if((comp=="S")||(comp=="R")||(comp=="D")){
+    labelOut=paste("FracFinal",Compartment,"_",sep="")
+  }else{
+    labelOut=paste("FracMax",Compartment,"_",sep="")
+  }
+  setwd(dirDataOut)
+  fileDataOut=paste(labelOut,label,".dat",sep="")
+  write.csv(df.out,file = fileDataOut)
+  setwd(dirPlotOut)
+  filePlotOut=paste("Plot-",labelOut,label,".pdf",sep="")
+  df.plot <- pivot_longer(df.out,cols=colnames(df.out)) # Transform long format
+  colnames(df.plot)=c("class","Y")
+  pdf(file=filePlotOut,width=10,height = 7)
+  gg=ggplot(data = df.plot,
+            aes(x = class,y = Y,fill=class)) +  # assign columns to axes and groups
+    geom_boxplot()+
+    #geom_bar(stat="identity") +                  # represent data as lines
+    xlab("Population Class")+           # add label for x axis
+    ylab(paste(Compartment," (% of the class)",sep="")) +     # add label for y axis
+    theme_bw()+
+    theme(axis.title = element_text(size=22),
+          axis.text = element_text(size=16), # ,angle=90, hjust = 1,vjust=0.5),
+          legend.text = element_text(size=22),
+          legend.title = element_text(size=28),
+          title=element_text(size=14))+ # Increase fonts size
+    scale_colour_manual(values=col_qual)+
+    scale_x_discrete(labels=as.character(seq(from=1,to=Nclass,by=1)))+
+    labs(title = paste("Model =",descr),
+         subtitle = paste("Pop. size = ",Npop, 
+                          "; Mean tot. deaths =",mean(death.total),
+                          "; Mean tot. susc. =",mean(susc.total),
+                          "; Mean tot. recov. =",mean(recov.total),sep=""))
   print(gg)
   dev.off( )
 }
 
-# --- Fraction of Deaths 
-setwd(dirDataOut)
-fileDataOut=paste("FracDeathTolls_",label,".dat",sep="")
-write.csv(death.frac.df,file = fileDataOut)
-setwd(dirPlotOut)
-filePlotOut=paste("Plot-FracDeathTolls_",label,".pdf",sep="")
-nodeath=which(colSums(death.frac.df)!=0) # Exclude classes with no deaths
-death.frac.df=death.frac.df[,nodeath]
-df.plot <- pivot_longer(death.frac.df,cols=colnames(death.frac.df)) # Transform long format
-colnames(df.plot)=c("class","deaths")
-pdf(file=filePlotOut,width=17,height = 8)
-gg=ggplot(data = df.plot,
-          aes(x = class,y = deaths)) +  # assign columns to axes and groups
-  geom_boxplot()+
-  #geom_bar(stat="identity") +                  # represent data as lines
-  xlab("Population class")+           # add label for x axis
-  ylab("Fraction of deaths (%)") +     # add label for y axis
-  theme_bw()+
-  theme(axis.title = element_text(size=16),
-        axis.text = element_text(size=12),
-        legend.text = element_text(size=16))+ # Increase fonts size
-  labs(title = paste("Model =",descr),
-       subtitle = paste("Mean total deaths =",mean(death.total)))
-print(gg)
-dev.off( )
 
-# --- Total number of Deaths 
-setwd(dirDataOut)
-fileDataOut=paste("DeathTolls_",label,".dat",sep="")
-write.csv(death.tolls.df,file = fileDataOut)
-setwd(dirPlotOut)
-filePlotOut=paste("Plot-DeathTolls_",label,".pdf",sep="")
-nodeath=which(colSums(death.tolls.df)!=0) # Exclude classes with no deaths
-death.tolls.df=death.tolls.df[,nodeath]
-df.plot <- pivot_longer(death.tolls.df,cols=colnames(death.tolls.df)) # Transform long format
-colnames(df.plot)=c("class","deaths")
-pdf(file=filePlotOut,width=17,height = 8)
-gg=ggplot(data = df.plot,
-          aes(x = class,y = deaths)) +  # assign columns to axes and groups
-  geom_boxplot()+
-  #geom_bar(stat="identity") +                  # represent data as lines
-  xlab("Population class")+           # add label for x axis
-  ylab("Number of deaths") +     # add label for y axis
-  theme_bw()+
-  theme(axis.title = element_text(size=16),
-        axis.text = element_text(size=12),
-        legend.text = element_text(size=16))+ # Increase fonts size
-  labs(title = paste("Model =",descr),
-       subtitle = paste("Mean total deaths =",mean(death.total)))
-print(gg)
-dev.off( )
-
-
-
-# --- Maximum number of infected
-setwd(dirDataOut)
-fileDataOut=paste("MaxInfected_",label,".dat",sep="")
-write.csv(infect.max.df,file = fileDataOut)
-setwd(dirPlotOut)
-filePlotOut=paste("Plot-MaxInfected_",label,".pdf",sep="")
-df.plot <- pivot_longer(infect.max.df,cols=colnames(infect.max.df)) # Transform long format
-colnames(df.plot)=c("class","infections")
-pdf(file=filePlotOut,width=17,height = 8)
-gg=ggplot(data = df.plot,
-          aes(x = class,y = infections)) +  # assign columns to axes and groups
-  geom_boxplot(notch = TRUE)+
-  #geom_bar(stat="identity") +                  # represent data as lines
-  xlab("Population class")+           # add label for x axis
-  ylab("Max. infected") +     # add label for y axis
-  theme_bw()+
-  theme(axis.title = element_text(size=16),
-        axis.text = element_text(size=12),
-        legend.text = element_text(size=16))+ # Increase fonts size
-  labs(title = paste("Model =",descr),
-       subtitle = paste("Mean total deaths =",mean(death.total)))
-print(gg)
-dev.off( )
-
-# --- Days from first infection to peak
-setwd(dirDataOut)
-fileDataOut=paste("TimeMaxInfected_",label,".dat",sep="")
-write.csv(time.infect.max.df,file = fileDataOut)
-setwd(dirPlotOut)
-filePlotOut=paste("Plot-TimeMaxInfected_",label,".pdf",sep="")
-df.plot <- pivot_longer(time.infect.max.df,cols=colnames(time.infect.max.df)) # Transform long format
-colnames(df.plot)=c("class","time")
-pdf(file=filePlotOut,width=17,height = 8)
-gg=ggplot(data = df.plot,
-          aes(x = class,y = time)) +  # assign columns to axes and groups
-  geom_boxplot(notch = FALSE)+
-  #geom_bar(stat="identity") +                  # represent data as lines
-  xlab("Population class")+           # add label for x axis
-  ylab("Time to peak (days)") +     # add label for y axis
-  theme_bw()+
-  theme(axis.title = element_text(size=16),
-        axis.text = element_text(size=12),
-        legend.text = element_text(size=16))+ # Increase fonts size
-  labs(title = paste("Model =",descr),
-       subtitle = paste("Mean total deaths =",mean(death.total)))
-print(gg)
-dev.off( )
-
-
-# #Plotting the proportion of people in each compartment over time
+# --- Plot the times at which some relevant events happen
+v=0
+for(comp in compartments.time){ 
+  v=v+1
+  Compartment.time=compartments.time[v]
+  u=which(compartments==Compartment.time)
+  #fillCol=col_qual[u]
+  Compartment=comp.descr[u]
+  df.out=comp.time.df.list[[v]]
+  if(comp=="S"){
+    labelOut=paste("TimeSteadyState",Compartment,"_",sep="")
+    ylab="Time to steady state (days)"
+  }else{
+    labelOut=paste("TimePeak",Compartment,"_",sep="")
+    ylab=paste("Time to maximum of",Compartment,"(days)")
+  }
+  setwd(dirDataOut)
+  fileDataOut=paste(labelOut,label,".dat",sep="")
+  write.csv(df.out,file = fileDataOut)
+  setwd(dirPlotOut)
+  filePlotOut=paste("Plot-",labelOut,label,".pdf",sep="")
+  df.plot <- pivot_longer(df.out,cols=colnames(df.out)) # Transform long format
+  colnames(df.plot)=c("class","Y")
+  pdf(file=filePlotOut,width=10,height = 7)
+  gg=ggplot(data = df.plot,
+            aes(x = class,y = Y,fill=class)) +  # assign columns to axes and groups
+    geom_boxplot()+
+    #geom_bar(stat="identity") +                  # represent data as lines
+    xlab("Population Class")+           # add label for x axis
+    ylab(ylab) +     # add label for y axis
+    theme_bw()+
+    theme(axis.title = element_text(size=22),
+          axis.text = element_text(size=16), # ,angle=90, hjust = 1,vjust=0.5),
+          legend.text = element_text(size=22),
+          legend.title = element_text(size=28),
+          title=element_text(size=14))+ # Increase fonts size
+    scale_colour_manual(values=col_qual)+
+    scale_x_discrete(labels=as.character(seq(from=1,to=Nclass,by=1)))+
+    labs(title = paste("Model =",descr),
+         subtitle = paste("Pop. size = ",Npop, 
+                          "; Mean tot. deaths =",mean(death.total),
+                          "; Mean tot. susc. =",mean(susc.total),
+                          "; Mean tot. recov. =",mean(recov.total),sep=""))
+  print(gg)
+  dev.off( )
+}
+## Continue here, include frac death tolls, think if plots for aggregated, clean, test and go
 # 
-# output_long$proportion <- output_long$value/START.N
-# 
-# ggplot(data = output_long,
-#        aes(x = time,
-#            y = proportion,
-#            colour = variable,
-#            group = variable)) +  # assign columns to axes and groups
-#   geom_line() +                  # represent data as lines
-#   xlab("Time (days)")+           # add label for x axis
-#   ylab("Number of people") +     # add label for y axis
-#   labs(title = paste("Proportion of susceptible, infected and recovered over time")) # add title
+# # --- Plot the fraction of deaths
+# setwd(dirDataOut)
+# fileDataOut=paste("FracDeaths_",label,".dat",sep="")
+# write.csv(death.frac.df,file = fileDataOut)
+# setwd(dirPlotOut)
+# filePlotOut=paste("Plot-FracDeaths_",label,".pdf",sep="")
+# nodeath=which(colSums(death.frac.df)!=0) # Exclude classes with no deaths
+# death.frac.df=death.frac.df[,nodeath]
+# df.plot <- pivot_longer(death.frac.df,cols=colnames(death.frac.df)) # Transform long format
+# colnames(df.plot)=c("class","deaths")
+# pdf(file=filePlotOut,width=17,height = 8)
+# gg=ggplot(data = df.plot,
+#           aes(x = class,y = deaths)) +  # assign columns to axes and groups
+#   geom_boxplot()+
+#   #geom_bar(stat="identity") +                  # represent data as lines
+#   xlab("Population class")+           # add label for x axis
+#   ylab("Fraction of deaths (%)") +     # add label for y axis
+#   theme_bw()+
+#   theme(axis.title = element_text(size=16),
+#         axis.text = element_text(size=12),
+#         legend.text = element_text(size=16))+ # Increase fonts size
+#   labs(title = paste("Model =",descr),
+#        subtitle = paste("Mean total deaths =",mean(death.total),
+#                         "Mean total susceptibles =",mean(susc.total),
+#                         "Mean total recovered =",mean(recov.total)))
+# print(gg)
+# dev.off( )
