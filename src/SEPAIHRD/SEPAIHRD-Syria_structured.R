@@ -353,6 +353,14 @@ susc.total=round(rowSums(comp.df.list[[u]]))
 u=which(compartments=="R")
 recov.total=round(rowSums(comp.df.list[[u]]))
 
+if(test_sim == 1){ # stop the simulation here
+  cat("** Simulation finished:",label)
+  cat("Mean death total",mean(death.total))
+  cat("Mean death total",mean(death.total))
+  cat("Mean death total",mean(death.total))
+  stop(">> Testing mode enabled, finishing...")
+}
+
 # Plots and outputs ------------------------
 # --- Prepare some aesthetics and labels
 library(RColorBrewer)
