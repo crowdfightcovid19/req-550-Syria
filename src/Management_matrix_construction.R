@@ -17,26 +17,29 @@ library(gplots)
 #rm(list=ls())
 
 ### START EDITING
-descr="model_1_1" # A string describing the model, input data should be created in a directory with this name in /data/real_models
+descr="shield_fam_vis10" # A string describing the model, input data should be created in a directory with this name in /data/real_models
 
+fileContacts="classes_contacts_shield" # File with the number of contacts of the model per class
+filePopStr="classes_structure_shield" # File with the fraction of population each class represents
+  
 # --- Set up parameters
 # ..... Relative risk of infection from contact in neutral zone compared to contacts in orange/green zones
 # (Assumed .2, lack of consensus in literature of precise effect of masks/distance on transmission)
 RR <- .2
 
 # ..... Family members people in green zone can visit per week
-fam_vis <- 2
+fam_vis <- 10
 ### STOP EDITING
 
 # Read data --------
 this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit, just comment it if problems...
 #this.dir="/pathToRepo" # ...path to the root path of your repo if the above command does not work, comment otherwise
-dirDataIn=paste(this.dir,"/data/real_models/",descr,sep="") # Directory for the input data
-
+dirDataIn=paste(this.dir,"/data/estimation_parameters/class_structured_data",sep="") # Directory for the input data
+dirDataOut=paste(this.dir,"/data/estimation_parameters/contact_matrices",sep="") #
 setwd(dirDataIn)
 
-cbar_i <- read.table("classes_contacts", sep = "\t")
-frac_i <- read.table("classes_structure", sep = "\t")
+cbar_i <- read.table(fileContacts, sep = "\t")
+frac_i <- read.table(filePopStr, sep = "\t")
 
 Nclass=dim(cbar_i)[2]
 
@@ -106,9 +109,14 @@ diff_crit=c_fam/critical # % of allowed family members permitted
 
 ### Export file
 #stop()
-write.table(m_ij, "management_matrix.csv", sep = "\t")
-write.table(epsilon_ij, "epsilon_matrix.csv", sep = "\t")
-write.table(C_ij_interv, "contacts_structure.csv", sep = "\t")
+setwd(dirDataOut)
+labelOut=descr
+fileManagement=paste("management_matrix",labelOut,sep="_")
+fileEpsilon=paste("epsilon_matrix",labelOut,sep="_")
+fileContacts=paste("contacts_matrix",labelOut,sep="_")
+write.table(m_ij, fileManagement, sep = "\t")
+write.table(epsilon_ij, fileEpsilon, sep = "\t")
+write.table(C_ij_interv, fileContacts, sep = "\t")
 
 ## Plot matrices
 PlotOut=paste("heatmap_ContactsMatrix_intervention_",descr,".pdf",sep="")
