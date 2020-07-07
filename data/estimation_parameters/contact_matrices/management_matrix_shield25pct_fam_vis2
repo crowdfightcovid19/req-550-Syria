@@ -1,0 +1,8 @@
+"age1_orange"	"age1_green"	"age2_no_comorbid_orange"	"age2_no_comorbid_green"	"age2_comorbid_green"	"age3_no_comorbid_green"	"age3_comorbid_green"
+"age1_orange"	1.33333333333333	0.8	1.33333333333333	0.8	0.8	0.8	0.8
+"age1_green"	0.266666666666667	4	0.266666666666667	4	4	4	4
+"age2_no_comorbid_orange"	1.33333333333333	0.8	1.33333333333333	0.8	0.8	0.8	0.8
+"age2_no_comorbid_green"	0.266666666666667	4	0.266666666666667	4	4	4	4
+"age2_comorbid_green"	0.266666666666667	4	0.266666666666667	4	4	4	4
+"age3_no_comorbid_green"	0.266666666666667	4	0.266666666666667	4	4	4	4
+"age3_comorbid_green"	0.266666666666667	4	0.266666666666667	4	4	4	4
