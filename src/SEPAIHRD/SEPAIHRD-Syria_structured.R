@@ -211,6 +211,7 @@ first.inf=paste(class.infected,"E",sep=".") # The class infected is initialized 
 y.start[first.inf]=1 # we initialize the first case
 first.inf=paste(class.infected,"S",sep=".")
 y.start[first.inf]=y.start[first.inf]-1 # substract from susceptible
+inf.idx=grep(".I$",names(y.start),perl = TRUE) # take indexes infectious variables, needed to estimate capacity isolation centers
 hosp.idx=grep(".H$",names(y.start),perl = TRUE) # take indexes hospitalized variables, needed to estimate capacity isolation centers
 
 # --- Create a matrix to limit the interaction of symptomatic people between certain classes
@@ -256,7 +257,8 @@ for(i in 1:Nrand){ # Launch the script Nrand times
                   gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,eta=eta,alpha=alpha,
                   fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,
                   Cont=C,Tcheck.mat=Tcheck.mat,
-                 hospitalized2=hospitalized2,isolation=isolation,isoThr=isoThr,hosp.idx=hosp.idx,
+                 hospitalized2=hospitalized2,isolation=isolation,isoThr=isoThr,
+                 inf.idx=inf.idx,hosp.idx=hosp.idx,
                 classes=class.names,vars=var.names,compartments=compartments)
   
   # Run the ODE solver
@@ -354,10 +356,10 @@ u=which(compartments=="R")
 recov.total=round(rowSums(comp.df.list[[u]]))
 
 if(test_sim == 1){ # stop the simulation here
-  cat("** Simulation finished:",label)
-  cat("Mean death total",mean(death.total))
-  cat("Mean death total",mean(death.total))
-  cat("Mean death total",mean(death.total))
+  cat("** Simulation finished:",label,"\n")
+  cat("Mean death total",mean(death.total),"\n")
+  cat("Mean susc total",mean(susc.total),"\n")
+  cat("Mean recov total",mean(recov.total),"\n")
   stop(">> Testing mode enabled, finishing...")
 }
 

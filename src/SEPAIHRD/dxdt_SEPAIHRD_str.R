@@ -11,6 +11,7 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
   isolation=parms["isolation"][[1]]
   isoThr=parms["isoThr"][[1]]
   hosp.idx=parms["hosp.idx"][[1]]
+  inf.idx=parms["inf.idx"][[1]]
   #betaI=parms["betaI"][[1]]
   #betaA=parms["betaA"][[1]]
   tau=parms["tau"][[1]]
@@ -37,13 +38,15 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
   N = sum(y) # Total population size
   
   # --- Quantify people at the H compartment
-  Htot = sum(y[hosp.idx]) # people which needs to be in isolation
-  isoDiff = isoThr-Htot # check if there is space in isolation camps
+  Htot = sum(y[hosp.idx]) # people which needs to be in isolation, heavy symptoms
+  Itot = sum(y[inf.idx]) # mild symptoms
+  Qtot = Htot+Itot  # total should be quarantined
+  isoDiff = isoThr-Qtot # check if there is space in isolation camps
   if(isoDiff > 0){ # if it is
-    Hinf=0 # They will be removed, so they are not infectious
+    Qinf=0 # They will be removed, so they are not infectious
   }else{ # if there is no space
     isoDiff=abs(isoDiff) # the difference will stay in the camp
-    Hinf=1 # so they are infectious
+    Qinf=1 # so they are infectious
   }
   
   dy=as.vector(matrix(0,nrow=1,ncol=length(y))) # Getting a vector ordered in the same way than y
@@ -72,16 +75,20 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
           classI=paste(class,"I",sep=".") # and infected
           # ... Reduce the infectivity of symptomatic under some scenarios
           if(isolation == "YES"){ # If there is the possibility of isolation
-            if(Htot==0){
-              yFrac=0
+            if(Qtot==0){
+              yFracI=0
+              yFracH=0
             }else{
-              yFrac=(y[classH]/Htot)*isoDiff # distribute infectivity of those that cannot be isolated proportionally to their number across classes
+              yFracI=(y[classI]/Qtot)*isoDiff
+              yFracH=(y[classH]/Qtot)*isoDiff # distribute infectivity of those that cannot be isolated proportionally to their number across classes
             }
-            yClassH=Hinf*Tcheck.mat[Ref,class]*yFrac # considers both isolation and symptomatic interacting if tests are put in place
+            yClassI=Qinf*Tcheck.mat[Ref,class]*yFracI
+            yClassH=Qinf*Tcheck.mat[Ref,class]*yFracH # considers both isolation and symptomatic interacting if tests are put in place
           }else{
+            yClassI=Tcheck.mat[Ref,class]*y[classI]
             yClassH=Tcheck.mat[Ref,class]*y[classH] # only affects classes being tested
           }
-          yClassI=Tcheck.mat[Ref,class]*y[classI] # only affects classes being tested
+          #yClassI=Tcheck.mat[Ref,class]*y[classI] # only affects classes being tested
           # ... Compute lambda
           lambda = lambda+C[Ref,class]*(y[classP]+y[classA]+
                                          yClassI+yClassH)/Nsubpop[class]
