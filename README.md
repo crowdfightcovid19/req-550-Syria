@@ -5,12 +5,10 @@ Repository to host the code of request 550 coming from the Pax Syriana Foundatio
 
 * Chamsy Sarkis, Chairman Pax Syriana Foundation (chamsy.sarkis@paxsyriana.com)
 * Jean Jaques Py, IT Pax Syriana Foundation (jean-jacques.py@paxsyriana.com)
-* Sylvie Diane, Stellenbosch University, South Africa. (sylvie@sun.ac.za)
-* Morgane Salines, Ministry of Agriculture in France. (morgane.salines@gmail.com)
 * Eduard Campillo-Funollet, University of Sussex, UK. (e.campillo-funollet@sussex.ac.uk)
-* Lauren White,	National Socio-Environmental Synthesis Center, Maryland, USA.
 * Jennifer Villers, Princeton University (villers.jennifer@gmail.com)
 * Jordan Klein, Princeton University (jdklein@princeton.edu)
+* Judith Bouman, ETH-Zürich (judith.bouman@env.ethz.ch)
 * Alberto Pascual-García, ETH-Zürich and crowdfight (alberto.pascual.garcia@gmail.com)
 
 ### Tools at your disposal
