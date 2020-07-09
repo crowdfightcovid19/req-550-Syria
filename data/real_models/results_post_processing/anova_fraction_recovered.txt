@@ -1,0 +1,167 @@
+[1] "exp_A_fateD"
+# A tibble: 3 x 4
+  Model                                                       count  mean     sd
+  <fct>                                                       <int> <dbl>  <dbl>
+1 null_model_mixed/IsolateNO_Limit0_FateD_TcheckNO_PopSize20…   500 0.843 0.0468
+2 shield_cont10_age3_age2_20/IsolateNO_Limit0_FateD_TcheckYE…   500 0.835 0.0493
+3 shield_cont2_age3_age2_20/IsolateNO_Limit0_FateD_TcheckYES…   500 0.842 0.0473
+              Df Sum Sq  Mean Sq F value Pr(>F)  
+Model          2  0.018 0.008787   3.843 0.0216 *
+Residuals   1497  3.422 0.002286                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] "*****************"
+[1] "exp_A_fateR"
+# A tibble: 3 x 4
+  Model                                                       count  mean     sd
+  <fct>                                                       <int> <dbl>  <dbl>
+1 null_model_mixed/IsolateNO_Limit0_FateR_TcheckNO_PopSize20…   500 0.924 0.0362
+2 shield_cont10_age3_age2_20/IsolateNO_Limit0_FateR_TcheckYE…   500 0.915 0.0408
+3 shield_cont2_age3_age2_20/IsolateNO_Limit0_FateR_TcheckYES…   500 0.924 0.0372
+              Df Sum Sq  Mean Sq F value   Pr(>F)    
+Model          2 0.0254 0.012676   8.713 0.000173 ***
+Residuals   1497 2.1778 0.001455                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] "*****************"
+[1] "exp_B_10conts"
+# A tibble: 7 x 4
+  Model                                                        count  mean    sd
+  <fct>                                                        <int> <dbl> <dbl>
+1 shield_cont10_age3_age2_20/IsolateYES_Limit10_FateD_TcheckY…   500 0.517 0.403
+2 shield_cont10_age3_age2_20/IsolateYES_Limit100_FateD_Tcheck…   500 0.254 0.238
+3 shield_cont10_age3_age2_20/IsolateYES_Limit2000_FateD_Tchec…   500 0.235 0.202
+4 shield_cont10_age3_age2_20/IsolateYES_Limit25_FateD_TcheckY…   500 0.437 0.390
+5 shield_cont10_age3_age2_20/IsolateYES_Limit250_FateD_Tcheck…   500 0.235 0.202
+6 shield_cont10_age3_age2_20/IsolateYES_Limit50_FateD_TcheckY…   500 0.329 0.330
+7 shield_cont10_age3_age2_20/IsolateYES_Limit500_FateD_Tcheck…   500 0.235 0.202
+              Df Sum Sq Mean Sq F value Pr(>F)    
+Model          6  39.42   6.571   76.37 <2e-16 ***
+Residuals   3493 300.54   0.086                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] "*****************"
+[1] "exp_B_2conts"
+# A tibble: 7 x 4
+  Model                                                        count  mean    sd
+  <fct>                                                        <int> <dbl> <dbl>
+1 shield_cont2_age3_age2_20/IsolateYES_Limit10_FateD_TcheckYE…   500 0.538 0.401
+2 shield_cont2_age3_age2_20/IsolateYES_Limit100_FateD_TcheckY…   500 0.270 0.241
+3 shield_cont2_age3_age2_20/IsolateYES_Limit2000_FateD_Tcheck…   500 0.251 0.208
+4 shield_cont2_age3_age2_20/IsolateYES_Limit25_FateD_TcheckYE…   500 0.456 0.389
+5 shield_cont2_age3_age2_20/IsolateYES_Limit250_FateD_TcheckY…   500 0.251 0.208
+6 shield_cont2_age3_age2_20/IsolateYES_Limit50_FateD_TcheckYE…   500 0.351 0.334
+7 shield_cont2_age3_age2_20/IsolateYES_Limit500_FateD_TcheckY…   500 0.251 0.208
+              Df Sum Sq Mean Sq F value Pr(>F)    
+Model          6  40.57   6.761    77.5 <2e-16 ***
+Residuals   3493 304.75   0.087                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] "*****************"
+[1] "exp_b_isocap100"
+# A tibble: 3 x 4
+  Model                                                        count  mean    sd
+  <fct>                                                        <int> <dbl> <dbl>
+1 null_model_mixed/IsolateYES_Limit100_FateD_TcheckNO_PopSize…   500 0.274 0.266
+2 shield_cont10_age3_age2_20/IsolateYES_Limit100_FateD_Tcheck…   500 0.254 0.238
+3 shield_cont2_age3_age2_20/IsolateYES_Limit100_FateD_TcheckY…   500 0.270 0.241
+              Df Sum Sq Mean Sq F value Pr(>F)
+Model          2   0.12 0.05966   0.963  0.382
+Residuals   1497  92.69 0.06192               
+[1] "*****************"
+[1] "exp_b_isocap10"
+# A tibble: 3 x 4
+  Model                                                        count  mean    sd
+  <fct>                                                        <int> <dbl> <dbl>
+1 null_model_mixed/IsolateYES_Limit10_FateD_TcheckNO_PopSize2…   500 0.510 0.411
+2 shield_cont10_age3_age2_20/IsolateYES_Limit10_FateD_TcheckY…   500 0.517 0.403
+3 shield_cont2_age3_age2_20/IsolateYES_Limit10_FateD_TcheckYE…   500 0.538 0.401
+              Df Sum Sq Mean Sq F value Pr(>F)
+Model          2   0.21  0.1037   0.633  0.531
+Residuals   1497 245.29  0.1638               
+[1] "*****************"
+[1] "exp_b_isocap2000"
+# A tibble: 3 x 4
+  Model                                                        count  mean    sd
+  <fct>                                                        <int> <dbl> <dbl>
+1 null_model_mixed/IsolateYES_Limit2000_FateD_TcheckNO_PopSiz…   500 0.246 0.217
+2 shield_cont10_age3_age2_20/IsolateYES_Limit2000_FateD_Tchec…   500 0.235 0.202
+3 shield_cont2_age3_age2_20/IsolateYES_Limit2000_FateD_Tcheck…   500 0.251 0.208
+              Df Sum Sq Mean Sq F value Pr(>F)
+Model          2   0.07 0.03704   0.848  0.429
+Residuals   1497  65.40 0.04369               
+[1] "*****************"
+[1] "exp_b_isocap250"
+# A tibble: 3 x 4
+  Model                                                        count  mean    sd
+  <fct>                                                        <int> <dbl> <dbl>
+1 null_model_mixed/IsolateYES_Limit250_FateD_TcheckNO_PopSize…   500 0.246 0.218
+2 shield_cont10_age3_age2_20/IsolateYES_Limit250_FateD_Tcheck…   500 0.235 0.202
+3 shield_cont2_age3_age2_20/IsolateYES_Limit250_FateD_TcheckY…   500 0.251 0.208
+              Df Sum Sq Mean Sq F value Pr(>F)
+Model          2   0.07 0.03719    0.85  0.428
+Residuals   1497  65.47 0.04373               
+[1] "*****************"
+[1] "exp_b_isocap25"
+# A tibble: 3 x 4
+  Model                                                        count  mean    sd
+  <fct>                                                        <int> <dbl> <dbl>
+1 null_model_mixed/IsolateYES_Limit25_FateD_TcheckNO_PopSize2…   500 0.440 0.398
+2 shield_cont10_age3_age2_20/IsolateYES_Limit25_FateD_TcheckY…   500 0.437 0.390
+3 shield_cont2_age3_age2_20/IsolateYES_Limit25_FateD_TcheckYE…   500 0.456 0.389
+              Df Sum Sq Mean Sq F value Pr(>F)
+Model          2   0.11 0.05316   0.345  0.708
+Residuals   1497 230.35 0.15387               
+[1] "*****************"
+[1] "exp_b_isocap500"
+# A tibble: 3 x 4
+  Model                                                        count  mean    sd
+  <fct>                                                        <int> <dbl> <dbl>
+1 null_model_mixed/IsolateYES_Limit500_FateD_TcheckNO_PopSize…   500 0.246 0.217
+2 shield_cont10_age3_age2_20/IsolateYES_Limit500_FateD_Tcheck…   500 0.235 0.202
+3 shield_cont2_age3_age2_20/IsolateYES_Limit500_FateD_TcheckY…   500 0.251 0.208
+              Df Sum Sq Mean Sq F value Pr(>F)
+Model          2   0.07 0.03704   0.848  0.429
+Residuals   1497  65.40 0.04369               
+[1] "*****************"
+[1] "exp_b_isocap50"
+# A tibble: 3 x 4
+  Model                                                        count  mean    sd
+  <fct>                                                        <int> <dbl> <dbl>
+1 null_model_mixed/IsolateYES_Limit50_FateD_TcheckNO_PopSize2…   500 0.345 0.346
+2 shield_cont10_age3_age2_20/IsolateYES_Limit50_FateD_TcheckY…   500 0.329 0.330
+3 shield_cont2_age3_age2_20/IsolateYES_Limit50_FateD_TcheckYE…   500 0.351 0.334
+              Df Sum Sq Mean Sq F value Pr(>F)
+Model          2   0.13 0.06365   0.561  0.571
+Residuals   1497 169.92 0.11351               
+[1] "*****************"
+[1] "exp_B_null"
+# A tibble: 7 x 4
+  Model                                                        count  mean    sd
+  <fct>                                                        <int> <dbl> <dbl>
+1 null_model_mixed/IsolateYES_Limit10_FateD_TcheckNO_PopSize2…   500 0.510 0.411
+2 null_model_mixed/IsolateYES_Limit100_FateD_TcheckNO_PopSize…   500 0.274 0.266
+3 null_model_mixed/IsolateYES_Limit2000_FateD_TcheckNO_PopSiz…   500 0.246 0.217
+4 null_model_mixed/IsolateYES_Limit25_FateD_TcheckNO_PopSize2…   500 0.440 0.398
+5 null_model_mixed/IsolateYES_Limit250_FateD_TcheckNO_PopSize…   500 0.246 0.218
+6 null_model_mixed/IsolateYES_Limit50_FateD_TcheckNO_PopSize2…   500 0.345 0.346
+7 null_model_mixed/IsolateYES_Limit500_FateD_TcheckNO_PopSize…   500 0.246 0.217
+              Df Sum Sq Mean Sq F value Pr(>F)    
+Model          6   34.6   5.773   61.26 <2e-16 ***
+Residuals   3493  329.2   0.094                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] "*****************"
+[1] "exp_C"
+# A tibble: 5 x 4
+  Model                                                       count  mean     sd
+  <fct>                                                       <int> <dbl>  <dbl>
+1 shield_cont2_age3_age2_20/IsolateNO_Limit0_FateD_TcheckYES…   500 0.842 0.0473
+2 shield_cont2_age3_age2_25/IsolateNO_Limit0_FateD_TcheckYES…   500 0.842 0.0473
+3 shield_cont2_age3_age2_30/IsolateNO_Limit0_FateD_TcheckYES…   500 0.842 0.0473
+4 shield_cont2_age3_age2/IsolateNO_Limit0_FateD_TcheckYES_Po…   500 0.842 0.0475
+5 shield_cont2_age3/IsolateNO_Limit0_FateD_TcheckYES_PopSize…   500 0.842 0.0477
+              Df Sum Sq   Mean Sq F value Pr(>F)
+Model          4  0.000 0.0000294   0.013      1
+Residuals   2495  5.608 0.0022475               
+[1] "*****************"
