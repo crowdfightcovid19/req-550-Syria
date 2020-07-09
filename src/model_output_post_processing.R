@@ -12,7 +12,7 @@
 #         2. Fraction of final total population recovered- "Final_fraction_recovered"
 #         3. Time to peak number of infections in age3 with comorbidities- "Time_to_peak_infections_age3_comorbid"
 #         4. Time to steady state of susceptibles, maximum out of all pop classes- "Time_to_steady_state"
-#       **Currently performs post-processing for experiments A, B, and C
+#       **Currently performs post-processing for experiments A, B, and C**
 # usage = script should be run within the folder "data/real_models". 
 #### Setup ####
 
@@ -20,9 +20,75 @@ setwd("data/real_models")
 
 library(readr)
 library(tidyverse)
-library(rstatix)
-library(ggpubr)
-library(fitdistrplus)
+library(miscset)
+
+##*List names of directories to pull from & character strings to match subdirectories*##
+
+## Experiment A (fate R/D constant, vary shielding strategy)
+
+exp_A_dirs <- c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20")
+
+# Fate D (simulations 1, 3, 5)
+
+exp_A_fateD_char_match <- c("IsolateNO", "FateD")
+
+# Fate R (simulations 2, 4, 6)
+
+exp_A_fateR_char_match <- c("IsolateNO", "FateR")
+
+## Experiment B.1 (shielding strategy constant, vary isolation capacity)
+
+exp_B1_char_match <- c("IsolateYES")
+
+# Null Mixed pop structure (simulations 7-13)
+
+exp_B1_null_dirs <- c("null_model_mixed")
+
+# Shielding w 2 contacts per week (simulations 14-20)
+
+exp_B1_2conts_dirs <- c("shield_cont2_age3_age2_20")
+
+# Shielding w 10 contacts per week (simulations 21-27)
+
+exp_B1_10conts_dirs <- c("shield_cont10_age3_age2_20")
+
+## Experiment B.2 (isolation capacity constant, vary shielding strategy)
+
+exp_B2_dirs <- c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20")
+
+# Isolation capacity = 10 (simulations 7, 14, 21)
+
+exp_B2_Limit10_char_match <- c("Limit10_")
+
+# Isolation capacity = 25 (simulations 8, 15, 22)
+
+exp_B2_Limit25_char_match <- c("Limit25_")
+
+# Isolation capacity = 50 (simulations 9, 16, 23)
+
+exp_B2_Limit50_char_match <- c("Limit50_")
+
+# Isolation capacity = 100 (simulations 10, 17, 24)
+
+exp_B2_Limit100_char_match <- c("Limit100_")
+
+# Isolation capacity = 250 (simulations 11, 18, 25)
+
+exp_B2_Limit250_char_match <- c("Limit250_")
+
+# Isolation capacity = 500 (simulations 12, 19, 26)
+
+exp_B2_Limit500_char_match <- c("Limit500_")
+
+# Isolation capacity = 2000 (simulations 13, 20, 27)
+
+exp_B2_Limit2000_char_match <- c("Limit2000_")
+
+## Experiment C (vary percent of population shielded, simulations 28-32)
+
+exp_C_dirs <- c("shield_cont2_age3_age2_20", "shield_cont2_age3_age2_25", "shield_cont2_age3_age2_30", "shield_cont2_age3_age2", "shield_cont2_age3")
+
+exp_C_char_match <- c("IsolateNO", "FateD")
 
 #### Data wrangling ####
 
@@ -35,57 +101,54 @@ get_output_directories <- function(directory) {
     .[grepl("/", .) & !grepl("figures", .)]
 }
 
+# Function to get character vector of output directories
+
+get_dir_char <- function(dir_names, subdir_char_match) {
+  lapply(dir_names, get_output_directories) %>% unlist() %>% 
+    .[mgrepl(subdir_char_match, .)]
+}
+
 ## Get directories
-#*List names of directories to pull from*
 
 # Experiment A
 
-exp_A_fateD <- lapply(c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20"), get_output_directories) %>% unlist() %>% 
-  .[grepl("IsolateNO", .) & grepl("FateD", .)]
+exp_A_fateD_varShieldStrategy <- get_dir_char(exp_A_dirs, exp_A_fateD_char_match)
 
-exp_A_fateR <- lapply(c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20"), get_output_directories) %>% unlist() %>% 
-  .[grepl("IsolateNO", .) & grepl("FateR", .)]
+exp_A_fateR_varShieldStrategy <- get_dir_char(exp_A_dirs, exp_A_fateR_char_match)
 
-# Experiment B
+# Experiment B.1
 
-exp_B_null <- get_output_directories("null_model_mixed") %>%
-  .[grepl("IsolateYES", .)]
-exp_B_2conts <- get_output_directories("shield_cont2_age3_age2_20") %>%
-  .[grepl("IsolateYES", .)]
-exp_B_10conts <- get_output_directories("shield_cont10_age3_age2_20") %>%
-  .[grepl("IsolateYES", .)]
+exp_B1_null_varLimit <- get_dir_char(exp_B1_null_dirs, exp_B1_char_match)
+exp_B1_2conts_varLimit <- get_dir_char(exp_B1_2conts_dirs, exp_B1_char_match)
+exp_B1_10conts_varLimit <- get_dir_char(exp_B1_10conts_dirs, exp_B1_char_match)
 
-exp_b_isocap10 <- lapply(c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20"), get_output_directories) %>% unlist() %>% 
-  .[grepl("Limit10_", .)]
-exp_b_isocap25 <- lapply(c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20"), get_output_directories) %>% unlist() %>% 
-  .[grepl("Limit25_", .)]
-exp_b_isocap50 <- lapply(c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20"), get_output_directories) %>% unlist() %>% 
-  .[grepl("Limit50_", .)]
-exp_b_isocap100 <- lapply(c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20"), get_output_directories) %>% unlist() %>% 
-  .[grepl("Limit100_", .)]
-exp_b_isocap250 <- lapply(c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20"), get_output_directories) %>% unlist() %>% 
-  .[grepl("Limit250_", .)]
-exp_b_isocap500 <- lapply(c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20"), get_output_directories) %>% unlist() %>% 
-  .[grepl("Limit500_", .)]
-exp_b_isocap2000 <- lapply(c("null_model_mixed", "shield_cont10_age3_age2_20", "shield_cont2_age3_age2_20"), get_output_directories) %>% unlist() %>% 
-  .[grepl("Limit2000_", .)]
+# Experiment B.2
+
+exp_B2_Limit10_varShieldStrategy <- get_dir_char(exp_B2_dirs, exp_B2_Limit10_char_match)
+exp_B2_Limit25_varShieldStrategy <- get_dir_char(exp_B2_dirs, exp_B2_Limit25_char_match)
+exp_B2_Limit50_varShieldStrategy <- get_dir_char(exp_B2_dirs, exp_B2_Limit50_char_match)
+exp_B2_Limit100_varShieldStrategy <- get_dir_char(exp_B2_dirs, exp_B2_Limit100_char_match)
+exp_B2_Limit250_varShieldStrategy <- get_dir_char(exp_B2_dirs, exp_B2_Limit250_char_match)
+exp_B2_Limit500_varShieldStrategy <- get_dir_char(exp_B2_dirs, exp_B2_Limit500_char_match)
+exp_B2_Limit2000_varShieldStrategy <- get_dir_char(exp_B2_dirs, exp_B2_Limit2000_char_match)
 
 # Experiment C
 
-exp_C <- lapply(c("shield_cont2_age3_age2_20", "shield_cont2_age3_age2_25", "shield_cont2_age3_age2_30", "shield_cont2_age3_age2", "shield_cont2_age3"), 
-                get_output_directories) %>% unlist() %>% 
-  .[grepl("IsolateNO", .)& grepl("FateD", .)]
+exp_C_varPercentShielded <- get_dir_char(exp_C_dirs, exp_C_char_match)
 
 ## List of all experiments
 
-exp_list <- list(exp_A_fateD, exp_A_fateR, 
-                 exp_B_null, exp_B_2conts, exp_B_10conts, 
-                 exp_b_isocap10, exp_b_isocap25, exp_b_isocap50, exp_b_isocap100, exp_b_isocap250, exp_b_isocap500, exp_b_isocap2000, 
-                 exp_C)
-names(exp_list) <- c("exp_A_fateD", "exp_A_fateR", 
-                "exp_B_null", "exp_B_2conts", "exp_B_10conts", 
-                "exp_b_isocap10", "exp_b_isocap25", "exp_b_isocap50", "exp_b_isocap100", "exp_b_isocap250", "exp_b_isocap500", "exp_b_isocap2000",
-                "exp_C")
+exp_list <- list(exp_A_fateD_varShieldStrategy, exp_A_fateR_varShieldStrategy, 
+                 exp_B1_null_varLimit, exp_B1_2conts_varLimit, exp_B1_10conts_varLimit, 
+                 exp_B2_Limit10_varShieldStrategy, exp_B2_Limit25_varShieldStrategy, exp_B2_Limit50_varShieldStrategy, 
+                 exp_B2_Limit100_varShieldStrategy, exp_B2_Limit250_varShieldStrategy, exp_B2_Limit500_varShieldStrategy, exp_B2_Limit2000_varShieldStrategy, 
+                 exp_C_varPercentShielded)
+
+names(exp_list) <- c("exp_A_fateD_varShieldStrategy", "exp_A_fateR_varShieldStrategy", 
+                     "exp_B1_null_varLimit", "exp_B1_2conts_varLimit", "exp_B1_10conts_varLimit", 
+                     "exp_B2_Limit10_varShieldStrategy", "exp_B2_Limit25_varShieldStrategy", "exp_B2_Limit50_varShieldStrategy", 
+                     "exp_B2_Limit100_varShieldStrategy", "exp_B2_Limit250_varShieldStrategy", "exp_B2_Limit500_varShieldStrategy", "exp_B2_Limit2000_varShieldStrategy", 
+                     "exp_C_varPercentShielded")
 
 ### Import output data files & generate tidy dataframes of key variables from models
 
