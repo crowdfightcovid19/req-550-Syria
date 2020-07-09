@@ -1,0 +1,53 @@
+Variable,Experiment,P-value,Sig
+Time_steady_state,exp_A_fateD,<2e-16, ***
+Time_steady_state,exp_A_fateR,<2e-16, ***
+Time_steady_state,exp_B_10conts,<2e-16, ***
+Time_steady_state,exp_B_2conts,<2e-16, ***
+Time_steady_state,exp_b_isocap100,0.000643, ***
+Time_steady_state,exp_b_isocap10,0.209,
+Time_steady_state,exp_b_isocap2000,5.07E-05, ***
+Time_steady_state,exp_b_isocap250,5.00E-05, ***
+Time_steady_state,exp_b_isocap25,0.293,
+Time_steady_state,exp_b_isocap500,5.07E-05, ***
+Time_steady_state,exp_b_isocap50,0.493,
+Time_steady_state,exp_B_null,<2e-16, ***
+Time_steady_state,exp_C,<2e-16, ***
+Fraction_Dead,exp_A_fateD,0.558,
+Fraction_Dead,exp_A_fateR,0.609,
+Fraction_Dead,exp_B_10conts,<2e-16, ***
+Fraction_Dead,exp_B_2conts,<2e-16, ***
+Fraction_Dead,exp_b_isocap100,0.00389, **
+Fraction_Dead,exp_b_isocap10,0.639,
+Fraction_Dead,exp_b_isocap2000,0.00255, **
+Fraction_Dead,exp_b_isocap250,0.00244, **
+Fraction_Dead,exp_b_isocap25,0.714,
+Fraction_Dead,exp_b_isocap500,0.00255, **
+Fraction_Dead,exp_b_isocap50,0.206,
+Fraction_Dead,exp_B_null,<2e-16, ***
+Fraction_Dead,exp_C,1,
+Fraction_Recovered,exp_A_fateD,0.0216, *
+Fraction_Recovered,exp_A_fateR,0.000173, ***
+Fraction_Recovered,exp_B_10conts,<2e-16, ***
+Fraction_Recovered,exp_B_2conts,<2e-16, ***
+Fraction_Recovered,exp_b_isocap100,0.382,
+Fraction_Recovered,exp_b_isocap10,0.531,
+Fraction_Recovered,exp_b_isocap2000,0.429,
+Fraction_Recovered,exp_b_isocap250,0.428,
+Fraction_Recovered,exp_b_isocap25,0.708,
+Fraction_Recovered,exp_b_isocap500,0.429,
+Fraction_Recovered,exp_b_isocap50,0.571,
+Fraction_Recovered,exp_B_null,<2e-16, ***
+Fraction_Recovered,exp_C,1,
+Time_age3_comorbid,exp_A_fateD,<2e-16, ***
+Time_age3_comorbid,exp_A_fateR,<2e-16, ***
+Time_age3_comorbid,exp_B_10conts,0.0429, *
+Time_age3_comorbid,exp_B_2conts,<2e-16, ***
+Time_age3_comorbid,exp_b_isocap100,3.32E-13, ***
+Time_age3_comorbid,exp_b_isocap10,0.000185, ***
+Time_age3_comorbid,exp_b_isocap2000,<2e-16, ***
+Time_age3_comorbid,exp_b_isocap250,<2e-16, ***
+Time_age3_comorbid,exp_b_isocap25,8.00E-04, ***
+Time_age3_comorbid,exp_b_isocap500,<2e-16, ***
+Time_age3_comorbid,exp_b_isocap50,1.50E-05, ***
+Time_age3_comorbid,exp_B_null,0.157,
+Time_age3_comorbid,exp_C,<2e-16, ***
