@@ -1,0 +1,28 @@
+Model,variable,n,mean,sd
+"Experiment A, null, isocap0, FateD",CFR,500,0.12,0.047
+"Experiment A, null, isocap0, FateR",CFR,500,0.019,0.01
+"Experiment A, shield 10 conts/week, isocap0, FateD",CFR,500,0.119,0.047
+"Experiment A, shield 10 conts/week, isocap0, FateR",CFR,500,0.019,0.01
+"Experiment A, shield 2 conts/week, isocap0, FateD",CFR,500,0.12,0.047
+"Experiment A, shield 2 conts/week, isocap0, FateR",CFR,500,0.019,0.01
+"Experiment B, null, isocap10, FateD",CFR,500,0.113,0.045
+"Experiment B, null, isocap100, FateD",CFR,500,0.108,0.044
+"Experiment B, null, isocap2000, FateD",CFR,500,0.108,0.044
+"Experiment B, null, isocap25, FateD",CFR,500,0.112,0.045
+"Experiment B, null, isocap250, FateD",CFR,500,0.108,0.044
+"Experiment B, null, isocap50, FateD",CFR,500,0.11,0.045
+"Experiment B, null, isocap500, FateD",CFR,500,0.108,0.044
+"Experiment B, shield 10 conts/week, isocap10, FateD",CFR,500,0.105,0.045
+"Experiment B, shield 10 conts/week, isocap100, FateD",CFR,500,0.09,0.041
+"Experiment B, shield 10 conts/week, isocap2000, FateD",CFR,500,0.089,0.04
+"Experiment B, shield 10 conts/week, isocap25, FateD",CFR,500,0.1,0.044
+"Experiment B, shield 10 conts/week, isocap250, FateD",CFR,500,0.089,0.04
+"Experiment B, shield 10 conts/week, isocap50, FateD",CFR,500,0.094,0.043
+"Experiment B, shield 10 conts/week, isocap500, FateD",CFR,500,0.089,0.04
+"Experiment B, shield 2 conts/week, isocap10, FateD",CFR,500,0.105,0.046
+"Experiment B, shield 2 conts/week, isocap100, FateD",CFR,500,0.088,0.041
+"Experiment B, shield 2 conts/week, isocap2000, FateD",CFR,500,0.088,0.04
+"Experiment B, shield 2 conts/week, isocap25, FateD",CFR,500,0.1,0.045
+"Experiment B, shield 2 conts/week, isocap250, FateD",CFR,500,0.088,0.04
+"Experiment B, shield 2 conts/week, isocap50, FateD",CFR,500,0.093,0.043
+"Experiment B, shield 2 conts/week, isocap500, FateD",CFR,500,0.088,0.04

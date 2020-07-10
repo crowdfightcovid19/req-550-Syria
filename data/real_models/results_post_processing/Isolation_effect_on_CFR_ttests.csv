@@ -1,0 +1,10 @@
+Structure,.y.,group1,group2,n1,n2,p,p.signif,p.adj,p.adj.signif
+null,CFR,isocap0,isocap10,500,500,0.0174,*,0.0521,ns
+null,CFR,isocap0,isocap25,500,500,0.0035,**,0.0105,*
+null,CFR,isocap10,isocap25,500,500,0.587,ns,1,ns
+shield 10 conts/week,CFR,isocap0,isocap10,500,500,5.86e-7,****,1.76e-6,****
+shield 10 conts/week,CFR,isocap0,isocap25,500,500,6.62e-11,****,1.99e-10,****
+shield 10 conts/week,CFR,isocap10,isocap25,500,500,0.119,ns,0.357,ns
+shield 2 conts/week,CFR,isocap0,isocap10,500,500,2.75e-7,****,8.26e-7,****
+shield 2 conts/week,CFR,isocap0,isocap25,500,500,4.78e-12,****,1.43e-11,****
+shield 2 conts/week,CFR,isocap10,isocap25,500,500,0.0712,ns,0.214,ns
