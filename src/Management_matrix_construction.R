@@ -14,27 +14,28 @@
 
 library(tidyverse)
 library(gplots)
-#rm(list=ls())
+rm(list=ls())
 
 ### START EDITING
-descr="shield_fam_vis28" # A string describing the model, input data should be created in a directory with this name in /data/real_models
+descr="shield30pct_fam_vis2" # A string describing the model, input data should be created in a directory with this name in /data/real_models
 
 fileContacts="classes_contacts_shield" # File with the number of contacts of the model per class
-filePopStr="classes_structure_shield" # File with the fraction of population each class represents
-  
+filePopStr="classes_structure_shield30pct" # File with the fraction of population each class represents
+
+
 # --- Set up parameters
 # ..... Relative risk of infection from contact in neutral zone compared to contacts in orange/green zones
 # (Assumed .2, lack of consensus in literature of precise effect of masks/distance on transmission)
 RR <- .2
 
 # ..... Family members people in green zone can visit per week
-fam_vis <- 28
+fam_vis <- 2
 ### STOP EDITING
 
 # Read data --------
 this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit, just comment it if problems...
 #this.dir="/pathToRepo" # ...path to the root path of your repo if the above command does not work, comment otherwise
-dirDataIn=paste(this.dir,"/data/estimation_parameters/class_structured_data",sep="") # Directory for the input data
+dirDataIn=paste(this.dir,"/data/estimation_parameters/class_structured_data/",sep="") # Directory for the input data
 dirDataOut=paste(this.dir,"/data/estimation_parameters/contact_matrices",sep="") #
 setwd(dirDataIn)
 
@@ -70,7 +71,7 @@ rho=c_fam*frac_g/frac_o
 # }
 
 ### Estimation of epsilon
-epsilon_ij <- matrix(nrow = 7, ncol = 7)
+epsilon_ij <- matrix(nrow = Nclass, ncol = Nclass)
 rownames(epsilon_ij) <- names(cbar_i)
 colnames(epsilon_ij) <- names(cbar_i)
 
@@ -85,7 +86,7 @@ epsilon_ij[idx.green,idx.green]=1-c_fam_norm[idx.green,idx.green]
 # m_ig,jg = N/N_g
 # m_io,jg = RR *N/N_o
 # m_io,jo = N/N_o
-m_ij <- matrix(nrow = 7, ncol = 7)
+m_ij <- matrix(nrow = Nclass, ncol = Nclass)
 rownames(m_ij) <- names(cbar_i)
 colnames(m_ij) <- names(cbar_i)
 
@@ -114,7 +115,7 @@ labelOut=descr
 fileManagement=paste("management_matrix",labelOut,sep="_")
 fileEpsilon=paste("epsilon_matrix",labelOut,sep="_")
 fileContacts=paste("contacts_matrix",labelOut,sep="_")
-fileContNull="contacts_matrix_null_shield"
+fileContNull=paste("contacts_matrix_null",labelOut,sep="_")
 
 write.table(m_ij, fileManagement, sep = "\t")
 write.table(epsilon_ij, fileEpsilon, sep = "\t")

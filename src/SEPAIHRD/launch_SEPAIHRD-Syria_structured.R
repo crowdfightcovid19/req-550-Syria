@@ -23,7 +23,8 @@ rm(list=ls())
 
 # --- Options used for testing mode only
 fake=0 # fix to 1 if you are working with test data 
-test_sim=0 # fix to 1 to avoid generating output directories and files (debug purposes)
+test_sim=1 # fix to 1 to avoid generating output directories and files (debug purposes)
+model.type="deterministic" # one of "deterministic" or "stochastic"
 
 # --- Structure of directories and labelling 
 descr="shield_cont2_age3_age2_20" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
