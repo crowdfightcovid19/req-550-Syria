@@ -1,53 +1,53 @@
-Variable,Experiment,P-value,Sig
-Time_steady_state,exp_A_fateD,<2e-16, ***
-Time_steady_state,exp_A_fateR,<2e-16, ***
-Time_steady_state,exp_B_10conts,<2e-16, ***
-Time_steady_state,exp_B_2conts,<2e-16, ***
-Time_steady_state,exp_b_isocap100,0.000643, ***
-Time_steady_state,exp_b_isocap10,0.209,
-Time_steady_state,exp_b_isocap2000,5.07E-05, ***
-Time_steady_state,exp_b_isocap250,5.00E-05, ***
-Time_steady_state,exp_b_isocap25,0.293,
-Time_steady_state,exp_b_isocap500,5.07E-05, ***
-Time_steady_state,exp_b_isocap50,0.493,
-Time_steady_state,exp_B_null,<2e-16, ***
-Time_steady_state,exp_C,<2e-16, ***
-Fraction_Dead,exp_A_fateD,0.558,
-Fraction_Dead,exp_A_fateR,0.609,
-Fraction_Dead,exp_B_10conts,<2e-16, ***
-Fraction_Dead,exp_B_2conts,<2e-16, ***
-Fraction_Dead,exp_b_isocap100,0.00389, **
-Fraction_Dead,exp_b_isocap10,0.639,
-Fraction_Dead,exp_b_isocap2000,0.00255, **
-Fraction_Dead,exp_b_isocap250,0.00244, **
-Fraction_Dead,exp_b_isocap25,0.714,
-Fraction_Dead,exp_b_isocap500,0.00255, **
-Fraction_Dead,exp_b_isocap50,0.206,
-Fraction_Dead,exp_B_null,<2e-16, ***
-Fraction_Dead,exp_C,1,
-Fraction_Recovered,exp_A_fateD,0.0216, *
-Fraction_Recovered,exp_A_fateR,0.000173, ***
-Fraction_Recovered,exp_B_10conts,<2e-16, ***
-Fraction_Recovered,exp_B_2conts,<2e-16, ***
-Fraction_Recovered,exp_b_isocap100,0.382,
-Fraction_Recovered,exp_b_isocap10,0.531,
-Fraction_Recovered,exp_b_isocap2000,0.429,
-Fraction_Recovered,exp_b_isocap250,0.428,
-Fraction_Recovered,exp_b_isocap25,0.708,
-Fraction_Recovered,exp_b_isocap500,0.429,
-Fraction_Recovered,exp_b_isocap50,0.571,
-Fraction_Recovered,exp_B_null,<2e-16, ***
-Fraction_Recovered,exp_C,1,
-Time_age3_comorbid,exp_A_fateD,<2e-16, ***
-Time_age3_comorbid,exp_A_fateR,<2e-16, ***
-Time_age3_comorbid,exp_B_10conts,0.0429, *
-Time_age3_comorbid,exp_B_2conts,<2e-16, ***
-Time_age3_comorbid,exp_b_isocap100,3.32E-13, ***
-Time_age3_comorbid,exp_b_isocap10,0.000185, ***
-Time_age3_comorbid,exp_b_isocap2000,<2e-16, ***
-Time_age3_comorbid,exp_b_isocap250,<2e-16, ***
-Time_age3_comorbid,exp_b_isocap25,8.00E-04, ***
-Time_age3_comorbid,exp_b_isocap500,<2e-16, ***
-Time_age3_comorbid,exp_b_isocap50,1.50E-05, ***
-Time_age3_comorbid,exp_B_null,0.157,
-Time_age3_comorbid,exp_C,<2e-16, ***
+"","variable","experiment","pvalue","significance"
+"1","Final_fraction_dead","exp_A_fateD_varShieldStrategy","0.558443748979131"," "
+"2","Final_fraction_dead","exp_A_fateR_varShieldStrategy","0.609239303749889"," "
+"3","Final_fraction_dead","exp_B1_10conts_varLimit","2.60309505363716e-107","***"
+"4","Final_fraction_dead","exp_B1_2conts_varLimit","2.35476764778136e-111","***"
+"5","Final_fraction_dead","exp_B1_null_varLimit","9.4770702023892e-72","***"
+"6","Final_fraction_dead","exp_B2_Limit10_varShieldStrategy","0.639354290244309"," "
+"7","Final_fraction_dead","exp_B2_Limit100_varShieldStrategy","0.00389339975920688","**"
+"8","Final_fraction_dead","exp_B2_Limit2000_varShieldStrategy","0.00255151977219106","**"
+"9","Final_fraction_dead","exp_B2_Limit25_varShieldStrategy","0.713747655945824"," "
+"10","Final_fraction_dead","exp_B2_Limit250_varShieldStrategy","0.00244033982207369","**"
+"11","Final_fraction_dead","exp_B2_Limit50_varShieldStrategy","0.206413528562742"," "
+"12","Final_fraction_dead","exp_B2_Limit500_varShieldStrategy","0.00255151977219106","**"
+"13","Final_fraction_dead","exp_C_varPercentShielded","0.999837055666242"," "
+"14","Final_fraction_recovered","exp_A_fateD_varShieldStrategy","0.0216319750941787","*"
+"15","Final_fraction_recovered","exp_A_fateR_varShieldStrategy","0.000172877075928887","***"
+"16","Final_fraction_recovered","exp_B1_10conts_varLimit","6.66422282689761e-90","***"
+"17","Final_fraction_recovered","exp_B1_2conts_varLimit","3.44554379440722e-91","***"
+"18","Final_fraction_recovered","exp_B1_null_varLimit","1.8334734246536e-72","***"
+"19","Final_fraction_recovered","exp_B2_Limit10_varShieldStrategy","0.53105743805914"," "
+"20","Final_fraction_recovered","exp_B2_Limit100_varShieldStrategy","0.381803134778148"," "
+"21","Final_fraction_recovered","exp_B2_Limit2000_varShieldStrategy","0.428505406741423"," "
+"22","Final_fraction_recovered","exp_B2_Limit25_varShieldStrategy","0.707948773206545"," "
+"23","Final_fraction_recovered","exp_B2_Limit250_varShieldStrategy","0.427507467156397"," "
+"24","Final_fraction_recovered","exp_B2_Limit50_varShieldStrategy","0.570896441309576"," "
+"25","Final_fraction_recovered","exp_B2_Limit500_varShieldStrategy","0.428505406741423"," "
+"26","Final_fraction_recovered","exp_C_varPercentShielded","0.99966288198797"," "
+"27","Time_to_peak_infections_age3_comorbid","exp_A_fateD_varShieldStrategy","5.08204908723269e-149","***"
+"28","Time_to_peak_infections_age3_comorbid","exp_A_fateR_varShieldStrategy","5.08204908723269e-149","***"
+"29","Time_to_peak_infections_age3_comorbid","exp_B1_10conts_varLimit","0.0429274610673931","*"
+"30","Time_to_peak_infections_age3_comorbid","exp_B1_2conts_varLimit","2.09110727892929e-19","***"
+"31","Time_to_peak_infections_age3_comorbid","exp_B1_null_varLimit","0.156998979921379"," "
+"32","Time_to_peak_infections_age3_comorbid","exp_B2_Limit10_varShieldStrategy","0.00018541958984035","***"
+"33","Time_to_peak_infections_age3_comorbid","exp_B2_Limit100_varShieldStrategy","3.31806443793613e-13","***"
+"34","Time_to_peak_infections_age3_comorbid","exp_B2_Limit2000_varShieldStrategy","2.59985094982737e-17","***"
+"35","Time_to_peak_infections_age3_comorbid","exp_B2_Limit25_varShieldStrategy","0.000800360856173268","***"
+"36","Time_to_peak_infections_age3_comorbid","exp_B2_Limit250_varShieldStrategy","2.64323419030885e-17","***"
+"37","Time_to_peak_infections_age3_comorbid","exp_B2_Limit50_varShieldStrategy","1.50442034780615e-05","***"
+"38","Time_to_peak_infections_age3_comorbid","exp_B2_Limit500_varShieldStrategy","2.59985094982737e-17","***"
+"39","Time_to_peak_infections_age3_comorbid","exp_C_varPercentShielded","2.56305401237919e-85","***"
+"40","Time_to_steady_state","exp_A_fateD_varShieldStrategy","1.7324862410887e-34","***"
+"41","Time_to_steady_state","exp_A_fateR_varShieldStrategy","1.7324862410887e-34","***"
+"42","Time_to_steady_state","exp_B1_10conts_varLimit","2.5674140838875e-35","***"
+"43","Time_to_steady_state","exp_B1_2conts_varLimit","6.32688272481665e-59","***"
+"44","Time_to_steady_state","exp_B1_null_varLimit","5.08619944507732e-26","***"
+"45","Time_to_steady_state","exp_B2_Limit10_varShieldStrategy","0.208861100408287"," "
+"46","Time_to_steady_state","exp_B2_Limit100_varShieldStrategy","0.000643038512914514","***"
+"47","Time_to_steady_state","exp_B2_Limit2000_varShieldStrategy","5.07038265222366e-05","***"
+"48","Time_to_steady_state","exp_B2_Limit25_varShieldStrategy","0.292980096366898"," "
+"49","Time_to_steady_state","exp_B2_Limit250_varShieldStrategy","5.00214767749788e-05","***"
+"50","Time_to_steady_state","exp_B2_Limit50_varShieldStrategy","0.493051039246022"," "
+"51","Time_to_steady_state","exp_B2_Limit500_varShieldStrategy","5.07038265222366e-05","***"
+"52","Time_to_steady_state","exp_C_varPercentShielded","1.03481225167696e-88","***"
