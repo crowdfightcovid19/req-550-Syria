@@ -97,6 +97,91 @@
 Analytical results
 \end_layout
 
+\begin_layout Section*
+Model
+\end_layout
+
+\begin_layout Standard
+We consider a model with the following ODEs:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\dot{S}_{i}=-\lambda_{i}S_{i}\\
+\dot{E}_{i}=\lambda_{i}S_{i}-\delta_{E}E_{i}\\
+\dot{P}_{i}=\delta_{E}E_{i}-\delta_{p}P_{i}\\
+\dot{A}_{i}=(1-f)\delta_{p}P_{i}-\gamma_{A}A_{i}\\
+\dot{I}_{i}=f\delta_{p}P_{i}-((1-g_{i}-h_{i})\gamma_{I}+h_{i}\eta+g_{i}\alpha)I_{i}\\
+\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{H}H_{i}\\
+\dot{(R/D)_{i}}=\gamma_{H}H_{i}\\
+\dot{R}_{i}=\gamma_{A}A_{i}+(1-g_{i}-h_{i})\gamma_{I}I_{i}\\
+\dot{D_{i}}=g_{i}\alpha I_{i}
+\end{gather}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{gather}
+\lambda_{i}=\sum_{j=1}^{n}\beta_{ij}\frac{P_{j}+A_{j}+I_{j}+H_{j}}{N_{j}}\label{eq:lambda-1}
+\end{gather}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $\beta_{ij}=\tau C_{ij}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau$
+\end_inset
+
+ being the probability of infection for a contact with an infected person,
+ and 
+\begin_inset Formula $C_{ij}$
+\end_inset
+
+ is the average number of contacts of an individual of class 
+\begin_inset Formula $i$
+\end_inset
+
+ with an individual of class 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ In the following, to simplify the notation we define 
+\begin_inset Formula $\kappa_{i}=((1-g_{i}-h_{i})\gamma_{I}+h_{i}\eta+g_{i}\alpha)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Derivation of R0
+\end_layout
+
 \begin_layout Subsection*
 Reference and general idea
 \end_layout
@@ -175,51 +260,6 @@ The infected subsystem is the following:
 
 \end_layout
 
-\begin_layout Standard
-Where, 
-\begin_inset Newline newline
-\end_inset
-
- 
-\begin_inset Formula 
-\begin{gather}
-\lambda_{i}=\sum_{j=1}^{n}\beta_{ij}\frac{P_{j}+A_{j}+I_{j}+H_{j}}{N_{j}}\label{eq:lambda}
-\end{gather}
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $\beta_{ij}=\tau C_{ij}$
-\end_inset
-
- with 
-\begin_inset Formula $\tau$
-\end_inset
-
- being the probability of infection for a contact with an infected person,
- and 
-\begin_inset Formula $C_{ij}$
-\end_inset
-
- is the average number of contacts of an individual of class 
-\begin_inset Formula $i$
-\end_inset
-
- with an individual of class 
-\begin_inset Formula $j$
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Subsection*
 Parametrization of the contact matrix
 \end_layout
@@ -241,7 +281,7 @@ We estimated the average number of contacts of individuals of class
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C_{ij}=\bar{c}_{i}N_{j}/N,
+C_{ij}^{0}=\bar{c}_{i}^{0}N_{j}/N,
 \end{equation}
 
 \end_inset
@@ -661,7 +701,7 @@ where
 .
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section*
 Parametrization of the interventions
 \end_layout
 

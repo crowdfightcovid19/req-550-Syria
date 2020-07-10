@@ -1,5 +1,9 @@
 ## Description of the models and directory contents
 
+Isolation centers: Are isolation centers available? (yes/no) and the capacity (number, I am considering 50 people or the whole population). When the number of infectious people exceeds this value, the excess is considered that remains in the camp and that is infectious.
+Neutral zone: Is a neutral zone available? (yes/no) and the number of interactions allowed per person per week plus contention measures (at the moment I consider the null model, 2 per week and 10 per week). 
+Fate of hospitalized population: Independently of whether they go to isolation centers or not (which would be change the infectiousness but not their fate) there are two scenarios D/R.
+
 * **null_model_mixed**
   * Description: 5 population classes, well-mixed (age1 = ages 0-12, age2_no_comorbid = ages 13-50 with no comorbidities, age2_comorbid = ages 13-50 with comorbidities, age3_no_comorbid = aged over 50 with no comorbidities, age3_comorbid = aged over 50 with comorbidities). No intervention.  
   * Directory contents: 

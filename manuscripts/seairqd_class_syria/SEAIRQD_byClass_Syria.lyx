@@ -10,6 +10,7 @@
 \newcommand{\I}{\mathrm{I}}
 \newcommand{\A}{\mathrm{A}}
 \newcommand{\Q}{\mathrm{Q}}
+\newcommand{\P}{\mathrm{P}}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -168,15 +169,16 @@ The model starts considers a generic population class
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
 \dot{S}_{i} & = & -\lambda_{i}S_{i}\\
 \dot{E}_{i} & = & \lambda_{i}S_{i}-\delta_{\mathrm{E}}E_{i}\\
-\dot{A}_{i} & = & \sigma_{i}\delta_{\mathrm{E}}E_{i}-\gamma_{\mathrm{A}}A_{i}\\
-\dot{I_{i}} & = & (1-\sigma_{i})\delta_{\mathrm{E}}E_{i}-(\gamma_{\mathrm{I}i}+\alpha_{\mathrm{I}i}+\eta q)I_{i}\\
+\dot{P}_{i} & = & \delta_{\mathrm{E}}E_{i}-\delta_{\mathrm{P}}P_{i}\\
+\dot{A}_{i} & = & \sigma_{i}\delta_{\mathrm{P}}P_{i}-\gamma_{\mathrm{A}}A_{i}\\
+\dot{I_{i}} & = & (1-\sigma_{i})\delta_{\mathrm{P}}P_{i}-(\gamma_{\mathrm{I}i}+\alpha_{\mathrm{I}i}+\eta)I_{i}\\
 \dot{Q_{i}} & = & \eta qI_{i}-(\gamma_{\mathrm{Q}i}+\alpha_{\mathrm{Q}i})Q_{i}\\
 \dot{R_{i}} & = & \gamma_{\mathrm{A}}A+\gamma_{\mathrm{I}i}I_{i}+\gamma_{Qi}Q_{i}\\
 \dot{D_{i}} & = & \alpha_{\mathrm{I}i}I_{i}+\alpha_{\mathrm{Q}i}Q_{i}
-\end{eqnarray*}
+\end{eqnarray}
 
 \end_inset
 
@@ -305,11 +307,7 @@ Some of the parameters are also class-specific and are labelled with the
 \begin_inset Formula $\gamma_{\A}$
 \end_inset
 
-, the rate at which a fraction of the population 
-\begin_inset Formula $q$
-\end_inset
-
- is quarantined and the rate 
+, and the rate at which the population is quarantained 
 \begin_inset Formula $\eta$
 \end_inset
 
@@ -407,7 +405,7 @@ c,
 \end_inset
 
  with the matrix 
-\begin_inset Formula $C_{ij}\qquad\in[0,1]$
+\begin_inset Formula $C_{ij}\in[0,1]$
 \end_inset
 
 .
@@ -435,9 +433,9 @@ t actions (e.g.
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\lambda_{i}=\frac{1}{N}\sum_{j}C_{ij}(\beta_{\A}A_{j}+\beta_{\I}I_{j})
-\]
+\begin{equation}
+\lambda_{i}=\frac{1}{N}\sum_{j}C_{ij}(\beta_{\A}A_{j}+\beta_{\I}I_{j}+\beta_{\P}P_{j})
+\end{equation}
 
 \end_inset
 
@@ -454,6 +452,145 @@ where
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection*
+Estimation of parameters
+\end_layout
+
+\begin_layout Subsubsection*
+The basic reproduction number
+\end_layout
+
+\begin_layout Standard
+To estimate the basic reproduction number 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ we note that it is an adimensional quantity composed of three factors:
+ the transmissibility (i.e.
+ the infection between infected and susceptible given there is a contact),
+ the average rate of contacts and the duration of infectiousness.
+ The first two factors are encoded for each population class in the infection
+ rate 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+.
+ The duration of infection for each class, 
+\begin_inset Formula $\tau_{i},$
+\end_inset
+
+ can be estimated as the inverse of the (weighted) average rates of recovery
+ of symptomatic and assymptomatic compartments for each population class:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau_{i}=\left(\frac{\sigma_{i}\gamma_{\mathrm{A}i}+(1-\sigma_{i})(\gamma_{\mathrm{I}i}+\alpha_{\mathrm{I}i}+\eta)}{\sigma_{i}+(1-\sigma_{i})}\right)^{-1}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Multiplying for each population class 
+\begin_inset Formula $\lambda_{i}\tau_{i}$
+\end_inset
+
+ and summing up we get that 
+\begin_inset Formula $R_{0}=\sum_{i}\lambda_{i}\tau_{i}$
+\end_inset
+
+, or more explicitly:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{0}=\frac{1}{N}\sum_{i}\frac{\sum_{j}C_{ij}(\beta_{\A}A_{j}+\beta_{\I}I_{j}+\beta_{\P}P_{j})}{\sigma_{i}\gamma_{\mathrm{A}i}+(1-\sigma_{i})(\gamma_{\mathrm{I}i}+\alpha_{\mathrm{I}i}+\eta)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since the 
+\begin_inset Formula $\beta$
+\end_inset
+
+ parameters are interpreted as the probability of infection 
+\shape italic
+given
+\shape default
+ that there is a contact, we considered that these values do not differ
+ from what is found in the literature, and we focus on the values of the
+ matrix 
+\begin_inset Formula $C_{ij}$
+\end_inset
+
+ as the main difference with respect to more developed human settlements.
+ The rational is that the expected increase in the infection rates is driven
+ by an increase in the average rate of contacts due to the crowded living
+ conditions rather than in an increase of the probability of infection.
+ This approximation will allow us to concentrate in the reduction in the
+ average mean of contacts as the main strategy to control the spread of
+ the infection.
+\end_layout
+
+\begin_layout Standard
+More specifically, we factorize the contacts matrix as 
+\begin_inset Formula $C_{ij}=\bar{C}m_{ij}$
+\end_inset
+
+ with 
+\begin_inset Formula $\bar{C}$
+\end_inset
+
+ being the average contacts rate of the population in the absence of infection
+ and 
+\begin_inset Formula $m_{ij}$
+\end_inset
+
+ the management matrix, representing the reduction in the average contacts
+ rate between class 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ due to an intervention in which both subpopulations reduce their contact.
+ In the absence of any intervention, 
+\begin_inset Formula $m_{ij}=1\quad\forall i,j$
+\end_inset
+
+ so if an estimation of 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ is given and assuming that 
+\begin_inset Formula $\beta_{\A}=\beta_{\I}=\beta_{\P}$
+\end_inset
+
+ we can estimate the average contacts rate with the expression:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{C}=\frac{NR_{0}}{\beta}\left(\sum_{i}\frac{\sum_{j}A_{j}+I_{j}+P_{j}}{\sigma_{i}\gamma_{\mathrm{A}i}+(1-\sigma_{i})(\gamma_{\mathrm{I}i}+\alpha_{\mathrm{I}i}+\eta)}\right)^{-1}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*

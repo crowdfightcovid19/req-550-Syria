@@ -111,10 +111,11 @@ The aim of this model is to provide a solid basis to explore the impact
 \end_layout
 
 \begin_layout Standard
-In our modeling approach, we need to take several key distinctions between
- the Syrian context and the high income country contexts in which previous
- COVID-19 models have been developed into account.
- The lack of access to healthcare makes consideration of a 
+There are a number of considerations with respect to models developed in
+ the context of high income countries that we need to take into account 
+ to make them applicable to the Syrian context.
+ Firstly, the inaccessibilty to any kind of health system, makes the considerati
+on of compartments such as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -122,40 +123,39 @@ hospitalized
 \begin_inset Quotes erd
 \end_inset
 
- compartment meaningless; it will be omitted from our model and we will
- assume that all cases requiring hospitalization will die.
- Since we expect increased disease severity in Syrian refugee compared to
- high income country populations, epidemiological parameters found in the
- literature from high income countries should be reconsidered.
- Since there is no existing data on COVID-19 outbreaks in similar settings,
- a careful sensitivity analysis of the model under different scenarios must
- be performed.
- The social contexts of Syrian refugee camps suggest social interaction
- and contact be compartmentalized by age.
- Any interventions to mitigate a COVID-19 outbreak in Syrian refugee camps
- should therefore take these and other relevant considerations of their
- social contexts into account.
- Since the most feasible interventions are related to shielding strategies,
- the complexity of living conditions should be considered in models of these
- interventions.
+ meaningless, and will not be considered here.
+ Also along these lines, we note that epidemiologic parameters found in
+ the literature should be reconsidered to account from a more severe impact
+ of the disease at all levels.
+ Since there is no existing data a careful sensitivity analysis of the model
+ under different scenarios must be performed.
+ To continue with, social interactions within the camps is itself compartmentali
+zed, segregating the activities by gender and age [APG: How true is this
+ assertion, I show an example below], which may be considered when the frequency
+ of contacts are modelled.
+ Lastly, any actions intended to minimize the impact of the spread of the
+ virus should be designed considering these limitations and the social structure.
+ Since the most feasible actions are related to shielding strategies, the
+ complexity of the living conditions should be considered in the models.
 \end_layout
 
 \begin_layout Standard
-To address some of these challenges, our model incorporates the concept
- of 
+To address these challenges, we incorporate in the model the concept of
+ 
 \shape italic
 population class
 \shape default
-, a subset of the population that we distinguish because it either has different
- epidemiological parameters (e.g.
- proportion requiring hospitalization), a significantly different frequency
- of contact with individuals in other classes, or both.
+, which is a subset of the population that we may want to distinguish either
+ because it has different epidemiological parameters (e.g.
+ fatality rates), significantly different frequency in the number of contacts
+ with members that do not belong to their own class, or both.
  Population classes allow us to generalize previous models that considered
- stratification of population by classes [REF] or locations [REF], that
+ stratification of population in classes [REF] or locations [REF], that
  we can implicitly model via different subsets of parameters.
- This approach will allow us to model the impact of potential mitigation
- measures, such as shielding vulnerable members of the population, and controlli
-ng their contact with potential carers.
+ In this way, we can also model the impact of potential management measures
+ like shielding a vulnerable population, or subsetting the population classes
+ like a quarantined population in a separated area of the camp, controlling
+ the probability of contacts with potential carers.
 \end_layout
 
 \begin_layout Section*
@@ -176,14 +176,12 @@ The model starts considers a generic population class
 \dot{S}_{i} & = & -\lambda_{i}S_{i}\\
 \dot{E}_{i} & = & \lambda_{i}S_{i}-\delta_{\mathrm{E}}E_{i}\\
 \dot{P}_{i} & = & \delta_{\mathrm{E}}E_{i}-\delta_{\mathrm{P}}P_{i}\\
-\dot{A}_{i} & = & (1-f)\delta_{\mathrm{P}}P_{i}-\gamma_{\mathrm{A}}A_{i}\\
-\dot{I_{R_{i}}} & = & f(1-g_{i}-h_{i})\delta_{\mathrm{P}}P_{i}-\gamma_{I_{R}}I_{R_{i}}\\
-\dot{I_{H_{i}}} & = & fh_{i}\delta_{\mathrm{P}}P_{i}-\eta I_{H_{i}}\\
-\dot{I_{C_{i}}} & = & fg_{i}\delta_{\mathrm{P}}P_{i}-\alpha I_{C_{i}}\\
-\dot{H_{i}} & = & \eta I_{H_{i}}-\gamma_{H}H_{i}\\
-\dot{R_{i}} & = & \gamma_{\mathrm{A}}A_{i}+\gamma_{I_{R}}I_{R_{i}}\\
-\dot{R_{i}}/\dot{D_{i}} & = & \gamma_{H}H_{i}\\
-\dot{D_{i}} & = & \alpha I_{C_{i}}
+\dot{A}_{i} & = & (1-f_{i})\delta_{\mathrm{P}}P_{i}-\gamma_{\mathrm{A}}A_{i}\\
+\dot{I_{i}} & = & f_{i}\delta_{\mathrm{P}}P_{i}-(\gamma_{\mathrm{I}}+\eta)I_{i}\\
+\dot{M_{i}} & = & g_{i}(1-h_{i})\eta I_{i}-\gamma_{\mathrm{\M}}M_{i}\\
+\dot{V_{i}} & = & g_{i}h_{i}\eta I_{i}-\alpha V_{i}\\
+\dot{R_{i}} & = & \gamma_{\mathrm{A}}A+(1-g_{i})\gamma_{\mathrm{I}i}I_{i}+\gamma_{\mathrm{\M}}M_{i}\\
+\dot{D_{i}} & = & \alpha V_{i}
 \end{eqnarray}
 
 \end_inset
@@ -250,7 +248,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Users/jdklein/Documents/Documents - opr-jdklein-mac/Projects/Syria/req-550-Syria/docs/Model schematic.png
+	filename /home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/docs/SEIAQRD Model graph.jpg
 	width 70text%
 
 \end_inset
@@ -271,6 +269,20 @@ name "fig:Scheme_oneClass"
 
 \series bold
 Schematic representation of the model.
+
+\series default
+ [APG Replace this figure] Note that the model does not represent the distinctio
+n in classes.
+ In particular, the rate 
+\begin_inset Formula $\beta_{\A}A+\beta_{\I}I$
+\end_inset
+
+ is only valid if there is one class only.
+ See definition of 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ in the text.
 \end_layout
 
 \end_inset

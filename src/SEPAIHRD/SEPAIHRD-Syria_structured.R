@@ -283,11 +283,18 @@ for(i in 1:Nrand){ # Launch the script Nrand times
                                        times=times_vector, 
                                        func=dxdtfun, 
                                        parms=parms.list))
-  model.output=ssa.adaptivetau(init.values =y.start,
+  if(model.type=="stochastic"){
+<<<<<<< Updated upstream
+    dxdtfun=rates_SEPAIHRD_str
+    model.output=ssa.adaptivetau(init.values =y.start,
+=======
+      model.output=ssa.adaptivetau(init.values =y.start,
+>>>>>>> Stashed changes
                     transitions=transitions,
                     rateFunc =dxdtfun, 
                     params=parms.list, 
                     tf=Ndays)
+  }
   # --- Process output
   if(i == round(k*Nrand/Nfull)){
     labelTmp=paste(label,"_rand-",i,sep="")
