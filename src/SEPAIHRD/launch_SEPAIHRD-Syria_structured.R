@@ -23,23 +23,24 @@ rm(list=ls())
 
 # --- Options used for testing mode only
 fake=0 # fix to 1 if you are working with test data 
-test_sim=1 # fix to 1 to avoid generating output directories and files (debug purposes)
+test_sim=0 # fix to 1 to avoid generating output directories and files (debug purposes)
 
 # --- Structure of directories and labelling 
-descr="null_model_shield" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
+descr="shield_cont2_age3_age2_20" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
 class.infected="age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
 
 # --- Computational parameters
 Npop=2000 # Population size
 Ndays=365 # Number of days simulated
-Nrand=10 # number of realizations of parameters
+Nrand=50 # number of realizations of parameters
 
 
 # --- Model type
-isolation=1 # if hospitalized leaves the camp =1, stays in the camp = 0.
-isoThr=2000 # If isolation=1, maximum capacity of H people isolation, the difference H-isoThr becomes infectious
+isolation=0 # if hospitalized leaves the camp =1, stays in the camp = 0.
+isoThr=0 # If isolation=1, maximum capacity of H people isolation, the difference H-isoThr becomes infectious
 hospitalized2=1 # if hospitalized2 = 0, all hospitalized will recover, if = 1 all will die.
-Tcheck=0 # if tests are implemented, symptomatic individuals will be excluded from the interaction between two classes
+Tcheck=1 # if tests are implemented, symptomatic individuals will be excluded from the interaction between two classes
+lockDown=1 # if there is one infection, apply lockdown to the shielded zone
 keywordA="orange" # keyword to identify the first population class affected by Tcheck.
 keywordB="green" # keyword to identify the second population class affected by Tcheck.
 # The following are obsolete options, can be recovered from SIRQ model if needed

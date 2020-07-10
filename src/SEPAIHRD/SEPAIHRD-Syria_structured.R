@@ -147,7 +147,13 @@ if(Tcheck == 1){
 }else{
   Tcheck="NO"
 }
-optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Fate",hospitalized2,"_Tcheck",Tcheck,"_PopSize",Npop,sep="")
+if(lockDown == 1){
+  lockDown="YES"
+}else{
+  lockDown="NO"
+}
+optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Fate",hospitalized2,
+               "_Tcheck",Tcheck,"_PopSize",Npop,"_lock",lockDown,sep="")
 
 # Fix directories ------------
 if(fake == 1){
@@ -224,11 +230,22 @@ if(Tcheck=="YES"){ # if Tcheck space exist
   Tcheck.mat[idx.classA,idx.classB]=0 # turn them to zero
   Tcheck.mat[idx.classB,idx.classA]=0 # will only  be applied to H and I
 }
-
+lock.mat=matrix(1,ncol=ncol(C),nrow=nrow(C)) # Same size and names than the contacts matrix
+rownames(lock.mat)=rownames(C)
+colnames(lock.mat)=colnames(C)
+if(lockDown=="YES"){ # if it is possible a lockdown
+  lock.mat[idx.classA,idx.classB]=0 # turn them to zero
+  lock.mat[idx.classB,idx.classA]=0 # will be applied to all classes
+}
 
 # --- Finally, initialize times 
 # (here, we do daily for Ndays days - you can change this value)
 times_vector <- seq(from=0, to=Ndays, by=1)
+if(model.type="stochastic"){
+  transitions=make_transitions(var.names,hospitalized2)
+  y.start=round(y.start)
+}
+
 
 # Run the model Nrand times ----------------
 dir.create(dirDataOut)
@@ -256,17 +273,21 @@ for(i in 1:Nrand){ # Launch the script Nrand times
   parms.list=list(Nsubpop=Nsubpop,tau=tau,deltaE=deltaE,deltaP=deltaP,
                   gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,eta=eta,alpha=alpha,
                   fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,
-                  Cont=C,Tcheck.mat=Tcheck.mat,
-                 hospitalized2=hospitalized2,isolation=isolation,isoThr=isoThr,
-                 inf.idx=inf.idx,hosp.idx=hosp.idx,
-                classes=class.names,vars=var.names,compartments=compartments)
+                  Cont=C,Tcheck.mat=Tcheck.mat,lockDown=lockDown,lock.mat=lock.mat,
+                  hospitalized2=hospitalized2,isolation=isolation,isoThr=isoThr,
+                  inf.idx=inf.idx,hosp.idx=hosp.idx,
+                  classes=class.names,vars=var.names,compartments=compartments)
   
   # Run the ODE solver
   model.output <- as.data.frame(lsoda(y=y.start, 
                                        times=times_vector, 
                                        func=dxdtfun, 
                                        parms=parms.list))
-  
+  model.output=ssa.adaptivetau(init.values =y.start,
+                    transitions=transitions,
+                    rateFunc =dxdtfun, 
+                    params=parms.list, 
+                    tf=Ndays)
   # --- Process output
   if(i == round(k*Nrand/Nfull)){
     labelTmp=paste(label,"_rand-",i,sep="")
