@@ -197,6 +197,37 @@ ttp_shield_eff_tests[, -2] %>%
   kable()
 ```
 
+\pagebreak
+
+# Case Fatality Ratio   
+## Summary Statistics  
+
+```{r cfr_sum, echo=FALSE, results='asis', message=FALSE}
+cfr_sumstats <- read_csv("CFR_summarystats_fateD_limitedIsocap.csv")
+
+kable(cfr_sumstats)
+```
+
+## Effect of isolation capacity under each shielding strategy (pairwise t-tests)  
+
+```{r iso_eff_cfr_ttest, echo=FALSE, results='asis', message=FALSE}
+cfr_iso_eff_tests <- read_csv("Isolation_effect_on_CFR_ttests.csv")
+
+cfr_iso_eff_tests[, -2] %>% 
+  kable()
+```
+
+## Effect of shielding strategy in each isolation capacity scenario (pairwise t-tests)  
+
+```{r shield_eff_cfr_ttest, echo=FALSE, results='asis', message=FALSE}
+cfr_shield_eff_tests <- read_csv("Shield_effect_on_CFR_ttests.csv")
+
+cfr_shield_eff_tests[, -2] %>% 
+  kable()
+```
+
+\pagebreak
+
 ```{r plots_death_iso, echo=FALSE}
 death_iso_eff_tests <- death_iso_eff_tests %>% 
   add_xy_position(x = "Isolation_capacity")
@@ -265,10 +296,11 @@ ggpar(ttp_shield_eff_plot, legend = "right", main = "Effect of shielding strateg
 
 Isolation of symptomatic cases is the single most effective intervention for preventing deaths. The fraction of a camp's population that dies in our models is statistically significantly reduced each time the level of isolation capacity is increased; from 0 to 10 beds per camp of 2,000, and from 10 to 25 beds per camp of 2,000, regardless of the shielding strategy that is implemented. We also find that isolating symptomatic cases should slow down outbreaks. Case isolation significantly delays the date at which infections peak, most importantly in more vulnerable populations such as older individuals and those with comorbidities; any, even a small ammount of case isolation has this delaying effect.  
 
-We find that shielding vulnerable populations in designated "green zones" alone has no effect on the number of deaths, as long as there is even a small amount of contact between shielded and non-shielded populations. Shielding does however significantly slow down outbreaks, especially in the vulnerable populations who are being shielded. While any shielding strategy has this delaying effect compared to no shielding, the more close contact between shielded and non-shielded individuals is restricted, the greater this delaying effect is, especially at very low levels of isolation capacity.
+We find that shielding vulnerable populations in designated "green zones" alone has no effect on the number of deaths, as long as there is even a small amount of contact between shielded and non-shielded populations. Shielding does however significantly slow down outbreaks, especially in the vulnerable populations who are being shielded. While any shielding strategy has this delaying effect compared to no shielding, the more close contact between shielded and non-shielded individuals is restricted, the greater this delaying effect is, especially at very low levels of isolation capacity.  
 
-Based on these findings, we recommend the following:  
-  1. Preventing deaths by placing a significant focus on increasing isolation capacity as soon as possible, and promptly isolating any individuals with symptoms common to COVID-19 (fever, cough, loss of smell, etc) as soon as the capacity exists to do so.  
-  2. Buying time to build up more capacity to manage an outbreak by shielding vulnerable people in "green zones", as well as isolating symptomatic cases. This additional time obtained should be used to further increase isolation capacity, and to improve screening for common COVID-19 symptoms.
+Perhaps our most important finding is that while neither of these interventions, isolation or shielding, have an effect on their own, when implemented together they significantly reduce the case fatality ratio we may expect from an outbreak in a camp. It appears that this works by shifting the overall burden of infections away from more vulnerable segments of the population with higher mortality risk from an infection onto less vulnerable segments of the population with lower mortality risk from an infection. This finding highlights the complimentary nature of these two interventions and the necessity of implementing them in tandem.  
 
-
+Based on these findings, with the three goals in mind of 1) Preventing deaths, 2) Reducing the overall case fatality rate, and 3) Buying additional time to improve capacity to manage an outbreak, we recommend the following:  
+  1. Placing a significant focus on increasing isolation capacity as soon as possible, and promptly isolating any individuals with symptoms common to COVID-19 (fever, cough, loss of smell, etc) as soon as the capacity exists to do so.  
+  2. Promplty moving vulnerable people (people aged over 50, people aged 13-50 with comorbidities, and limited numbers of their immediate family members) into shielded "green zones".  
+  3. Using additional time obtained from these measures to further increase isolation capacity, and to improve screening for common COVID-19 symptoms.  
