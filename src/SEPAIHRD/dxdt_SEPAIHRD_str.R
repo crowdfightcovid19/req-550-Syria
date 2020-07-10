@@ -7,9 +7,11 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
   #t=times_vector # DEBUG
   #browser() # DEBUG
   Tcheck.mat=parms["Tcheck.mat"][[1]]
+  lock.mat=parms["lock.mat"][[1]]
   hospitalized2=parms["hospitalized2"][[1]]
   isolation=parms["isolation"][[1]]
   isoThr=parms["isoThr"][[1]]
+  lockDown=parms["lockDown"][[1]]
   hosp.idx=parms["hosp.idx"][[1]]
   inf.idx=parms["inf.idx"][[1]]
   #betaI=parms["betaI"][[1]]
@@ -48,7 +50,15 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
     isoDiff=abs(isoDiff) # the difference will stay in the camp
     Qinf=1 # so they are infectious
   }
-  
+  lock.mat.local=matrix(1,ncol=ncol(lock.mat),nrow=nrow(lock.mat))
+  rownames(lock.mat.local)=rownames(lock.mat)
+  colnames(lock.mat.local)=colnames(lock.mat)
+  if(lockDown == "YES"){ # If there is a possible lockdown 
+    if(Itot > 1){ # As soon as there is one case
+      lock.mat.local=lock.mat # apply lockdown
+    }
+  }
+
   dy=as.vector(matrix(0,nrow=1,ncol=length(y))) # Getting a vector ordered in the same way than y
   names(dy)=names(y) # requires these steps if then we aim to fill it by name below
   i=0
@@ -90,7 +100,7 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
           }
           #yClassI=Tcheck.mat[Ref,class]*y[classI] # only affects classes being tested
           # ... Compute lambda
-          lambda = lambda+C[Ref,class]*(y[classP]+y[classA]+
+          lambda = lambda+C[Ref,class]*lock.mat.local[Ref,class]*(y[classP]+y[classA]+
                                          yClassI+yClassH)/Nsubpop[class]
         }
         lambda=tau*lambda
@@ -124,6 +134,6 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
   # y[idx] # DEBUG
   # lambda
   # y=y+dy # DEBUG
-  return(list(dy))
+  return(list(dy)) # Deterministic version
 }
 
