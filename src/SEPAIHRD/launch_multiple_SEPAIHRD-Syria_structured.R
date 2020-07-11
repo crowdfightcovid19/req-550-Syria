@@ -21,15 +21,17 @@ rm(list=ls())
 ###### START EDITING
 
 # --- Name of the input file with parameters
-File_multiple="input_parameters_multiple_launch_experimentC.csv"
+File_multiple="input_parameters_multiple_launch_experimentD.csv"
 
 # --- Options used for testing mode only
 fake=0 # fix to 1 if you are working with test data 
 test_sim=0 # fix to 1 to avoid generating output directories and files (debug purposes)
+model.type="deterministic" # one of "deterministic" or "stochastic"
 
 # --- Computational parameters
 Ndays=365 # Number of days simulated
 Nrand=500 # number of realizations of parameters
+lockDown=0  # if there is one infection, apply lockdown to the shielded zone, should be enconded in the files
 
 # --- Output options
 Nfull=10 # Number of simulations whose results will be fully reported (1 to Nrand)

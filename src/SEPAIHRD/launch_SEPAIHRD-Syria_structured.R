@@ -23,17 +23,17 @@ rm(list=ls())
 
 # --- Options used for testing mode only
 fake=0 # fix to 1 if you are working with test data 
-test_sim=1 # fix to 1 to avoid generating output directories and files (debug purposes)
-model.type="deterministic" # one of "deterministic" or "stochastic"
+test_sim=0 # fix to 1 to avoid generating output directories and files (debug purposes)
+model.type="stochastic" # one of "deterministic" or "stochastic"
 
 # --- Structure of directories and labelling 
-descr="shield_cont2_age3_age2_20" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
-class.infected="age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
+descr="shield_cont2_age3_age2_20" #"null_model_mixed" # "shield_cont2_age3_age2_20" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
+class.infected="age2_no_comorbid_orange" # "age2_no_comorbid" # "age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
 
 # --- Computational parameters
 Npop=2000 # Population size
 Ndays=365 # Number of days simulated
-Nrand=50 # number of realizations of parameters
+Nrand=100 # number of realizations of parameters
 
 
 # --- Model type
@@ -41,7 +41,7 @@ isolation=0 # if hospitalized leaves the camp =1, stays in the camp = 0.
 isoThr=0 # If isolation=1, maximum capacity of H people isolation, the difference H-isoThr becomes infectious
 hospitalized2=1 # if hospitalized2 = 0, all hospitalized will recover, if = 1 all will die.
 Tcheck=1 # if tests are implemented, symptomatic individuals will be excluded from the interaction between two classes
-lockDown=1 # if there is one infection, apply lockdown to the shielded zone
+lockDown=0 # if there is one infection, apply lockdown to the shielded zone
 keywordA="orange" # keyword to identify the first population class affected by Tcheck.
 keywordB="green" # keyword to identify the second population class affected by Tcheck.
 # The following are obsolete options, can be recovered from SIRQ model if needed
@@ -49,7 +49,7 @@ keywordB="green" # keyword to identify the second population class affected by T
 #strat=0 # if ContMatType="mean" and strat= 1 it will source contact_matrix.R, where you can create manually a contacts matrix
 
 # --- Output options
-Nfull=2 # Number of simulations whose results will be fully reported (1 to Nrand)
+Nfull=10 # Number of simulations whose results will be fully reported (1 to Nrand)
 
 ######### STOP EDITING
 

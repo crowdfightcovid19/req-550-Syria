@@ -152,8 +152,13 @@ if(lockDown == 1){
 }else{
   lockDown="NO"
 }
+if(model.type=="deterministic"){
+  MT="D"
+}else{
+  MT="S"
+}
 optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Fate",hospitalized2,
-               "_Tcheck",Tcheck,"_PopSize",Npop,"_lock",lockDown,sep="")
+               "_Tcheck",Tcheck,"_PopSize",Npop,"_lock",lockDown,"_mod",MT,sep="")
 
 # Fix directories ------------
 if(fake == 1){
@@ -192,9 +197,14 @@ Nclass=length(class.str)
 setwd(dirCodeSpec)
 if(CompModel == "SEPAIHRD"){ # Only this model implemented so far
   compartments=c("S","E","P","A","I","H","R","D") # 
-  source("dxdt_SEPAIHRD_str.R")
+  if(model.type=="deterministic"){
+    source("dxdt_SEPAIHRD_str.R")
+    dxdtfun=dxdt_SEPAIHRD_str
+  }else{
+    source("rates_SEPAIHRD_str.R")
+    dxdtfun=rates_SEPAIHRD_str
+  }
   source("input_parameters_SEPAIHRD.R")
-  dxdtfun=dxdt_SEPAIHRD_str
 }
 
 
@@ -238,11 +248,13 @@ if(lockDown=="YES"){ # if it is possible a lockdown
   lock.mat[idx.classB,idx.classA]=0 # will be applied to all classes
 }
 
-# --- Finally, initialize times 
+# --- Finally, initialize times and stochastic transitions
 # (here, we do daily for Ndays days - you can change this value)
 times_vector <- seq(from=0, to=Ndays, by=1)
-if(model.type="stochastic"){
-  transitions=make_transitions(var.names,hospitalized2)
+if(model.type=="stochastic"){
+  setwd(dirCodeSpec)
+  source("make_transitions.R")
+  transitions=make_transitions(class.names,var.names,hospitalized2)
   y.start=round(y.start)
 }
 
@@ -279,21 +291,18 @@ for(i in 1:Nrand){ # Launch the script Nrand times
                   classes=class.names,vars=var.names,compartments=compartments)
   
   # Run the ODE solver
-  model.output <- as.data.frame(lsoda(y=y.start, 
-                                       times=times_vector, 
-                                       func=dxdtfun, 
-                                       parms=parms.list))
   if(model.type=="stochastic"){
-<<<<<<< Updated upstream
-    dxdtfun=rates_SEPAIHRD_str
-    model.output=ssa.adaptivetau(init.values =y.start,
-=======
-      model.output=ssa.adaptivetau(init.values =y.start,
->>>>>>> Stashed changes
+    #dxdtfun=rates_SEPAIHRD_str
+      model.output=as.data.frame(ssa.adaptivetau(init.values =y.start,
                     transitions=transitions,
                     rateFunc =dxdtfun, 
                     params=parms.list, 
-                    tf=Ndays)
+                    tf=Ndays))
+  }else{
+    model.output <- as.data.frame(lsoda(y=y.start, 
+                                        times=times_vector, 
+                                        func=dxdtfun, 
+                                        parms=parms.list))
   }
   # --- Process output
   if(i == round(k*Nrand/Nfull)){
@@ -307,7 +316,7 @@ for(i in 1:Nrand){ # Launch the script Nrand times
     }
     u=0
     model.aggr.output=data.frame(matrix(ncol = length(compartments), 
-                                        nrow = dim(model.output)[1]))
+                                      nrow = dim(model.output)[1]))
     for(comp in compartments){
       u=u+1
       comp.vars=comp.vars.list[[u]]
@@ -357,20 +366,26 @@ for(i in 1:Nrand){ # Launch the script Nrand times
     u=u+1
     comp.vars=comp.vars.list[[u]]
     if((comp=="S")||(comp=="R")||(comp=="D")){ # and the times in which relevant events happen
-      comp.out=model.output[Ndays,comp.vars]
+      time_final_local=length(model.output$time)
+      comp.out=model.output[time_final_local,comp.vars]
       comp.df.list[[u]][i,]=comp.out
       if(comp=="S"){ # for susceptible
         v=v+1
         susc.traject=model.output[,comp.vars] # take the total across classes
         susc.diff=mapply(`-`,susc.traject,comp.out) # compute the differences with the end of the simulation
-        susc.steady.vec=apply(susc.diff,2,function(x){min(which(x<1))}) # identify the time in which the difference with final state <1 person)
+        if(model.type=="deterministic"){
+          susc.steady.vec=apply(susc.diff,2,function(x){min(which(x<1))}) # identify the time in which the difference with final state <1 person)
+        }else{
+          susc.steady.vec=apply(susc.diff,2,function(x){min(which(x==0))}) # identify the time in which the difference with final state <1 person)
+        }
         comp.time.df.list[[v]][i,]=susc.steady.vec # store it
       }
     }else{
       v=v+1
       comp.max=apply(model.output[,comp.vars],2,max)
       comp.df.list[[u]][i,]=comp.max
-      time.max=apply(model.output[,comp.vars],2,which.max)
+      id.time.max=apply(model.output[,comp.vars],2,which.max)
+      time.max=model.output$time[id.time.max]
       comp.time.df.list[[v]][i,]=time.max
     }
   }
@@ -378,6 +393,9 @@ for(i in 1:Nrand){ # Launch the script Nrand times
 # ... Retrieve some totals
 u=which(compartments=="D")
 death.total=round(rowSums(comp.df.list[[u]]))
+frac.nodeath=apply(comp.df.list[[u]],2,function(x){length(which(x==0))})/Nrand
+# frac.nodeath.df=data.frame(names(frac.nodeath),frac.nodeath,-2) # The df must be created within the loops below to gather the vars appropriately
+#colnames(frac.nodeath.df)=c("class","nodeath","Y")
 u=which(compartments=="S")
 susc.total=round(rowSums(comp.df.list[[u]]))
 u=which(compartments=="R")
@@ -422,9 +440,10 @@ for(k in 1:Nfull){ # For each realization completely recorded
       widthPlot=30
       heightPlot=12
       col_vector=col_class
+      times_vector_local=model.output$time
     }else{ # Plot the aggregated dynamics
       model.output=output.aggr.list[[k]]
-      model.output=cbind(times_vector,model.output)
+      model.output=cbind(times_vector_local,model.output)
       colnames(model.output)=c("time",comp.descr)
       filePlotOut=paste("Plot-DynamicsAggreg_",labelTmp,".pdf",sep="")
       varcolor="Compartment"
@@ -469,6 +488,8 @@ for(comp in compartments){ # We collect all max/min of variables
   #fillCol=col_qual[u]
   Compartment=comp.descr[u]
   df.out=comp.df.list[[u]]
+  frac.nodeath.df=data.frame(colnames(df.out),frac.nodeath,-10) # to annotate this properly, the names should be the same
+  colnames(frac.nodeath.df)=c("class","nodeath","Y")
   if((comp=="S")||(comp=="R")||(comp=="D")){
     labelOut=paste("NumFinal",Compartment,"_",sep="")
   }else{
@@ -481,10 +502,19 @@ for(comp in compartments){ # We collect all max/min of variables
   filePlotOut=paste("Plot-",labelOut,label,".pdf",sep="")
   df.plot <- pivot_longer(df.out,cols=colnames(df.out)) # Transform long format
   colnames(df.plot)=c("class","Y")
+  df.plot.drop=df.plot
+  df.plot.drop[df.plot==0]=NA # Exclude zeros for the boxplot
   pdf(file=filePlotOut,width=10,height = 7)
   gg=ggplot(data = df.plot,
-            aes(x = class,y = Y,fill=class)) +  # assign columns to axes and groups
-    geom_boxplot()+
+            aes(x = class,y = Y)) +  # assign columns to axes and groups
+    geom_boxplot(data = df.plot.drop,
+                 aes(x = class,y = Y))+
+    geom_jitter(show.legend = TRUE,
+                aes(colour=class),height = 0,width=0.2)+
+    geom_text(data=frac.nodeath.df,
+              aes(x=class,
+              y=Y,
+              label=nodeath),inherit.aes = TRUE)+
     #geom_bar(stat="identity") +                  # represent data as lines
     xlab("Population Class")+           # add label for x axis
     ylab(paste("Number of ",Compartment,sep="")) +     # add label for y axis
@@ -512,6 +542,8 @@ for(comp in compartments){ # We collect all max/min of variables
   Compartment=comp.descr[u]
   df.tmp=comp.df.list[[u]]
   df.out=100*data.frame(mapply(`/`,df.tmp,Nsubpop)) # Transform into fractions
+  frac.nodeath.df=data.frame(colnames(df.out),frac.nodeath,-2) # to annotate this properly, the names should be the same
+  colnames(frac.nodeath.df)=c("class","nodeath","Y")
   if((comp=="S")||(comp=="R")||(comp=="D")){
     labelOut=paste("FracFinal",Compartment,"_",sep="")
   }else{
@@ -524,10 +556,19 @@ for(comp in compartments){ # We collect all max/min of variables
   filePlotOut=paste("Plot-",labelOut,label,".pdf",sep="")
   df.plot <- pivot_longer(df.out,cols=colnames(df.out)) # Transform long format
   colnames(df.plot)=c("class","Y")
+  df.plot.drop=df.plot
+  df.plot.drop[df.plot==0]=NA # Exclude zeros for the boxplot
   pdf(file=filePlotOut,width=10,height = 7)
   gg=ggplot(data = df.plot,
-            aes(x = class,y = Y,fill=class)) +  # assign columns to axes and groups
-    geom_boxplot()+
+            aes(x = class,y = Y)) +  # assign columns to axes and groups
+    geom_boxplot(data = df.plot.drop,
+                 aes(x = class,y = Y))+
+    geom_jitter(show.legend = TRUE,
+                aes(colour=class),height = 0,width=0.2)+
+    geom_text(data=frac.nodeath.df,
+              aes(x=class,
+                  y=Y,
+                  label=nodeath),inherit.aes = TRUE)+
     #geom_bar(stat="identity") +                  # represent data as lines
     xlab("Population Class")+           # add label for x axis
     ylab(paste(Compartment," (% of the class)",sep="")) +     # add label for y axis
@@ -558,6 +599,8 @@ for(comp in compartments.time){
   #fillCol=col_qual[u]
   Compartment=comp.descr[u]
   df.out=comp.time.df.list[[v]]
+  frac.nodeath.df=data.frame(colnames(df.out),frac.nodeath,-10) # to annotate this properly, the names should be the same
+  colnames(frac.nodeath.df)=c("class","nodeath","Y")
   if(comp=="S"){
     labelOut=paste("TimeSteadyState",Compartment,"_",sep="")
     ylab="Time to steady state (days)"
@@ -571,11 +614,20 @@ for(comp in compartments.time){
   setwd(dirPlotOut)
   filePlotOut=paste("Plot-",labelOut,label,".pdf",sep="")
   df.plot <- pivot_longer(df.out,cols=colnames(df.out)) # Transform long format
+  df.plot.drop=df.plot
+  df.plot.drop[df.plot==0]=NA # Exclude zeros for the boxplot
   colnames(df.plot)=c("class","Y")
   pdf(file=filePlotOut,width=10,height = 7)
   gg=ggplot(data = df.plot,
-            aes(x = class,y = Y,fill=class)) +  # assign columns to axes and groups
-    geom_boxplot()+
+            aes(x = class,y = Y)) +  # assign columns to axes and groups
+    geom_boxplot(data = df.plot.drop,
+                 aes(x = class,y = Y))+
+    geom_jitter(show.legend = TRUE,
+                aes(colour=class),height = 0,width=0.2)+
+    geom_text(data=frac.nodeath.df,
+              aes(x=class,
+                  y=Y,
+                  label=nodeath),inherit.aes = TRUE)+
     #geom_bar(stat="identity") +                  # represent data as lines
     xlab("Population Class")+           # add label for x axis
     ylab(ylab) +     # add label for y axis
