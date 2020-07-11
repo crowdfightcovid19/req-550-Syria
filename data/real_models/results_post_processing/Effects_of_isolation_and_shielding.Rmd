@@ -302,5 +302,5 @@ Neither of these interventions, isolation or shielding, have an effect on case f
 
 Based on these findings, with the three goals in mind of 1) Preventing deaths, 2) Reducing the overall case fatality rate, and 3) Buying additional time to improve capacity to manage an outbreak, we recommend the following:  
   1. Placing a significant focus on increasing isolation capacity as soon as possible, and promptly isolating any individuals with symptoms common to COVID-19 (fever, cough, loss of smell, etc) as soon as the capacity exists to do so.  
-  2. Promplty moving vulnerable people (people aged over 50, people aged 13-50 with comorbidities, and limited numbers of their immediate family members) into shielded "green zones".  
+  2. Promptly moving vulnerable people (people aged over 50, people aged 13-50 with comorbidities, and limited numbers of their immediate family members) into shielded "green zones".  
   3. Using additional time obtained from these measures to further increase isolation capacity, and to improve screening for common COVID-19 symptoms.  
