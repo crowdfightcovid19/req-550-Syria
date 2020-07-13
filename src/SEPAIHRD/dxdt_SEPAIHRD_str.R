@@ -12,6 +12,7 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
   isolation=parms["isolation"][[1]]
   isoThr=parms["isoThr"][[1]]
   lockDown=parms["lockDown"][[1]]
+  selfValue=parms["selfValue"][[1]]
   hosp.idx=parms["hosp.idx"][[1]]
   inf.idx=parms["inf.idx"][[1]]
   #betaI=parms["betaI"][[1]]
@@ -100,7 +101,7 @@ dxdt_SEPAIHRD_str = function(t, y, parms){
           }
           #yClassI=Tcheck.mat[Ref,class]*y[classI] # only affects classes being tested
           # ... Compute lambda
-          lambda = lambda+C[Ref,class]*lock.mat.local[Ref,class]*(y[classP]+y[classA]+
+          lambda = lambda+selfValue*C[Ref,class]*lock.mat.local[Ref,class]*(y[classP]+y[classA]+
                                          yClassI+yClassH)/Nsubpop[class]
         }
         lambda=tau*lambda
