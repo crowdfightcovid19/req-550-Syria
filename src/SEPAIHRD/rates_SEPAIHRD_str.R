@@ -1,37 +1,53 @@
 # --- This function models a time step for the stochastic model, 
 #     see dxdt_SEPAIHRD_str for the deterministic version
 rates_SEPAIHRD_str = function(y, parms,t){
-  # Unwrap parmseters: this slows the code, but accessing lists is also very slow)
-  # This function should be coded in FORTRAN or C
-  #parms=parms.list # DEBUG
-  #y=y.start # DEBUG
+  # parms=parms.list # DEBUG
+  # y=y.start # DEBUG
+  # t=2 # DEBUG
   #t=times_vector # DEBUG
   #browser() # DEBUG
-  Ntrans=9 # number of transitions, see github issue 26
+  
+  # --- Extract  parameters
+  # .... Single-value parameters
+  Ntrans=9 # dirty way to fix the number of transitions, see github issue 26
+  model.type=parms["model.type"][[1]]
   Tcheck.mat=parms["Tcheck.mat"][[1]]
   lock.mat=parms["lock.mat"][[1]]
   hospitalized2=parms["hospitalized2"][[1]]
+  self=parms["self"][[1]]
   isolation=parms["isolation"][[1]]
   isoThr=parms["isoThr"][[1]]
   lockDown=parms["lockDown"][[1]]
   hosp.idx=parms["hosp.idx"][[1]]
   inf.idx=parms["inf.idx"][[1]]
-  #betaI=parms["betaI"][[1]]
-  #betaA=parms["betaA"][[1]]
-  tau=parms["tau"][[1]]
-  deltaE=parms["deltaE"][[1]]
-  deltaP=parms["deltaP"][[1]]
   gammaA=parms["gammaA"][[1]]
   gammaI=parms["gammaI"][[1]]
-  gammaH=parms["gammaH"][[1]]
-  eta=parms["eta"][[1]]
-  alpha=parms["alpha"][[1]]
-  
+  # ... Single-value parameters for "stochastic_fixed" and vectors for "stochastic_variable"
+  if(model.type=="stochastic_fixed"){ 
+    tau=parms["tau"][[1]] # Simply unwrap, there is one value
+    deltaE=parms["deltaE"][[1]]
+    deltaP=parms["deltaP"][[1]]
+    gammaH=parms["gammaH"][[1]]
+    eta=parms["eta"][[1]]
+    alpha=parms["alpha"][[1]]
+    fracPtoI=parms["fracPtoI"][[1]]
+  }else{ # There is one vector of parameters, and we want to pick a different value each time
+    t.int <<- t.int+1 # This becomes a global variable
+    time=t.int
+    tau=unlist(parms["tau"][[1]])[time]
+    deltaE=unlist(parms["deltaE"][[1]])[time]
+    deltaP=unlist(parms["deltaP"][[1]])[time]
+    gammaH=unlist(parms["gammaH"][[1]])[time]
+    eta=unlist(parms["eta"][[1]])[time]
+    alpha=unlist(parms["alpha"][[1]])[time]
+    fracPtoI=unlist(parms["fracPtoI"][[1]])[time]
+  }
+  # .... Parameters dependent on population structure
   Nsubpop=unlist(parms["Nsubpop"][[1]])
-  fracPtoI=parms["fracPtoI"][[1]]
   fracItoH.str=unlist(parms["fracItoH.str"][[1]])
   fracItoD.str=unlist(parms["fracItoD.str"][[1]])
-
+  
+  # .... Contact matrix, classes and compartments
   C=parms["Cont"][[1]] 
   classes=unlist(parms["classes"][[1]])
   #vars=unlist(parms["vars"][[1]])
@@ -102,9 +118,9 @@ rates_SEPAIHRD_str = function(y, parms,t){
       }
       #yClassI=Tcheck.mat[Ref,class]*y[classI] # only affects classes being tested
       # ... Compute lambda
-      #lambda = lambda+C[Ref,class]*lock.mat.local[Ref,class]*(y[classP]+y[classA]+
-                                                          #      yClassI+yClassH)/Nsubpop[class]
-      lambda = lambda+C[Ref,class]*(y[classP]+y[classA]+yClassI+yClassH)/Nsubpop[class]
+      lambda = lambda+C[Ref,class]*self*lock.mat.local[Ref,class]*(y[classP]+y[classA]+
+                                                                yClassI+yClassH)/Nsubpop[class]
+      #lambda = lambda+C[Ref,class]*(y[classP]+y[classA]+yClassI+yClassH)/Nsubpop[class]
     }
     lambda=tau*lambda
     k=k+1 # see github issue 26
