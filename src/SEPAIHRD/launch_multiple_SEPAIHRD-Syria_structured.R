@@ -21,31 +21,35 @@ rm(list=ls())
 ###### START EDITING
 
 # --- Name of the input file with parameters
-File_multiple="input_parameters_multiple_launch_experimentD.csv"
+File_multiple="input_parameters_multiple_launch_experimentH.csv"
 
 # --- Options used for testing mode only
 fake=0 # fix to 1 if you are working with test data 
 test_sim=0 # fix to 1 to avoid generating output directories and files (debug purposes)
-model.type="deterministic" # one of "deterministic" or "stochastic"
+model.type="stochastic_variable" # one of "deterministic", "stochastic_fixed" or "stochastic_variable"
+
 
 # --- Computational parameters
 Ndays=365 # Number of days simulated
-Nrand=500 # number of realizations of parameters
-lockDown=0  # if there is one infection, apply lockdown to the shielded zone, should be enconded in the files
+Nrealiz=500 # Number of realizations of ALL parameters
+Nrand=10000 # number of random values generated per realization for each parameter. Can be fixed to Nrealiz if "deterministic" or
+# "stochastic_fixed" but  it is ~30 times larger for "stochastic_var", e.g. 10K for 365 days
 
 # --- Output options
-Nfull=10 # Number of simulations whose results will be fully reported (1 to Nrand)
+Nfull=1 # Number of simulations whose results will be fully reported (1 to Nrand)
 
 
 ######### STOP EDITING
 CompModel="SEPAIHRD" # Only "SEPAIHRD" implemented, but this string is required
 
-this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit, just comment it if problems...
+#this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit, just comment it if problems...
+this.dir="~/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria"
 dirCodeSpec=paste(this.dir,"/src/",CompModel,sep="") # Directory where code specific to this model
 setwd(dirCodeSpec)
 
 params.df=read.table(file=File_multiple,header = TRUE)# col_types=c("cciiiicc"))#c("c","c","i","i","i","i","c","c"))
 Nsim=dim(params.df)[1]
+cat(" ** Running experiment: ",File_multiple,"\n")
 
 for(i in 1:Nsim){
   descr=as.character(params.df$descr[i])
@@ -57,6 +61,8 @@ for(i in 1:Nsim){
   Tcheck=params.df$Tcheck[i]
   keywordA=as.character(params.df$keywordA[i])
   keywordB=as.character(params.df$keywordB[i])
+  lockDown=params.df$lockDown[i]
+  self=params.df$self[i]
   cat(" ** Running set of parameters #",i,"\n")
   source("SEPAIHRD-Syria_structured.R")
   setwd(dirCodeSpec)
