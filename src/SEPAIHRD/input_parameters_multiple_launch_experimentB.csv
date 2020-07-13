@@ -1,22 +1,22 @@
-"descr"	"class.infected"	"Npop"	"isolation"	"isoThr"	"hospitalized2"	"Tcheck"	"keywordA"	"keywordB"
-"null_model_mixed"	"age2_no_comorbid"	2000	1	10	1	0	"none"	"none"
-"null_model_mixed"	"age2_no_comorbid"	2000	1	25	1	0	"none"	"none"
-"null_model_mixed"	"age2_no_comorbid"	2000	1	50	1	0	"none"	"none"
-"null_model_mixed"	"age2_no_comorbid"	2000	1	100	1	0	"none"	"none"
-"null_model_mixed"	"age2_no_comorbid"	2000	1	250	1	0	"none"	"none"
-"null_model_mixed"	"age2_no_comorbid"	2000	1	500	1	0	"none"	"none"
-"null_model_mixed"	"age2_no_comorbid"	2000	1	2000	1	0	"none"	"none"
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	10	1	1	"orange"	"green"
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	25	1	1	"orange"	"green"
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	1	1	"orange"	"green"
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	100	1	1	"orange"	"green"
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	250	1	1	"orange"	"green"
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	500	1	1	"orange"	"green"
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	2000	1	1	"orange"	"green"
-"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	10	1	1	"orange"	"green"
-"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	25	1	1	"orange"	"green"
-"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	1	1	"orange"	"green"
-"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	100	1	1	"orange"	"green"
-"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	250	1	1	"orange"	"green"
-"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	500	1	1	"orange"	"green"
-"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	2000	1	1	"orange"	"green"
+"descr"	"class.infected"	"Npop"	"isolation"	"isoThr"	"hospitalized2"	"Tcheck"	"keywordA"	"keywordB"	"lockDown"	"self"
+"null_model_mixed"	"age2_no_comorbid"	2000	1	10	1	0	"none"	"none"	0	0
+"null_model_mixed"	"age2_no_comorbid"	2000	1	25	1	0	"none"	"none"	0	0
+"null_model_mixed"	"age2_no_comorbid"	2000	1	50	1	0	"none"	"none"	0	0
+"null_model_mixed"	"age2_no_comorbid"	2000	1	100	1	0	"none"	"none"	0	0
+"null_model_mixed"	"age2_no_comorbid"	2000	1	250	1	0	"none"	"none"	0	0
+"null_model_mixed"	"age2_no_comorbid"	2000	1	500	1	0	"none"	"none"	0	0
+"null_model_mixed"	"age2_no_comorbid"	2000	1	2000	1	0	"none"	"none"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	10	1	1	"orange"	"green"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	25	1	1	"orange"	"green"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	1	1	"orange"	"green"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	100	1	1	"orange"	"green"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	250	1	1	"orange"	"green"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	500	1	1	"orange"	"green"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	2000	1	1	"orange"	"green"	0	0
+"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	10	1	1	"orange"	"green"	0	0
+"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	25	1	1	"orange"	"green"	0	0
+"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	1	1	"orange"	"green"	0	0
+"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	100	1	1	"orange"	"green"	0	0
+"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	250	1	1	"orange"	"green"	0	0
+"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	500	1	1	"orange"	"green"	0	0
+"shield_cont10_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	2000	1	1	"orange"	"green"	0	0

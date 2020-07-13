@@ -1,5 +1,5 @@
-"descr"	"class.infected"	"Npop"	"isolation"	"isoThr"	"hospitalized2"	"Tcheck"	"keywordA"	"keywordB"
-"null_model_mixed"	"age2_no_comorbid"	500	0	0	1	0	"none"	"none"
-"null_model_mixed"	"age2_no_comorbid"	1000	0	0	1	0	"none"	"none"
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	500	0	0	1	1	"orange"	"green"
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	1000	0	0	1	1	"orange"	"green"
+"descr"	"class.infected"	"Npop"	"isolation"	"isoThr"	"hospitalized2"	"Tcheck"	"keywordA"	"keywordB"	"lockDown"	"self"
+"null_model_mixed"	"age2_no_comorbid"	500	0	0	1	0	"none"	"none"	0	0
+"null_model_mixed"	"age2_no_comorbid"	1000	0	0	1	0	"none"	"none"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	500	0	0	1	1	"orange"	"green"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	1000	0	0	1	1	"orange"	"green"	0	0
