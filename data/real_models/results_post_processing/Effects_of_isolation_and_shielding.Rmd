@@ -127,8 +127,8 @@ df_ttp <- map_df(isocap_var_shield_ttp, I, .id = "Isolation_capacity")
 names(df_ttp)[2] <- c("Shielding_strategy")
 ```
 
-# Fraction Dead   
-## Summary Statistics  
+# 1. Fraction Dead   
+**Table 1.1. Death toll in each intervention scenario** (mean and standard deviation from n = 500 realizations). List of interventions: *isolation cap x* = isolation of symptomatic people up to a maximum of *x* beds, *shield y conts/wk* = shielding strategy where people from the green zone are authorized to see *y* people from the orange zone per week.
 
 ```{r frdead_sum, echo=FALSE, results='asis'}
 death_sumstats <- df_death %>% 
@@ -139,7 +139,7 @@ death_sumstats[, -3] %>%
   kable()
 ```
 
-## Effect of isolation capacity under each shielding strategy (pairwise t-tests)  
+**Table 1.2. Effect of isolation capacity on the death toll under each shielding strategy.** Pairwise t-tests comparing the effect of isolation capacity (0, 10 or 25 beds) on the death toll under each shielding strategy (no shielding, shielding with 2 weekly contacts, or shielding with 10 weekly contacts). *n* = number of realizations. *p* = p-value. *p.adj* = p-value adjusted for multiple testing (Bonferroni correction). Significance: (\*) p < 0.05, (\*\*) p < 0.01, (\*\*\*) p < 0.001, (\*\*\*\*) p < 0.0001.
 
 ```{r iso_eff_frdead_ttest, echo=FALSE, results='asis'}
 death_iso_eff_tests <- df_death %>% 
@@ -150,7 +150,7 @@ death_iso_eff_tests[, -2] %>%
   kable()
 ```
 
-## Effect of shielding strategy in each isolation capacity scenario (pairwise t-tests)  
+**Table 1.3. Effect of shielding strategies on the death toll in each isolation capacity scenario.** . Pairwise t-tests comparing the effect of shielding strategies (no shielding, shielding with 2 weekly contacts, or shielding with 10 weekly contacts) on the death toll in each isolation capacity scenario (0, 10, or 25 beds). *n* = number of realizations. *p* = p-value. *p.adj* = p-value adjusted for multiple testing (Bonferroni correction). Significance: (\*) p < 0.05, (\*\*) p < 0.01, (\*\*\*) p < 0.001, (\*\*\*\*) p < 0.0001.   
 
 ```{r shield_eff_frdead_ttest, echo=FALSE, results='asis'}
 death_shield_eff_tests <- df_death %>% 
@@ -160,73 +160,6 @@ death_shield_eff_tests <- df_death %>%
 death_shield_eff_tests[, -2] %>% 
   kable()
 ```
-  
-\pagebreak  
-
-# Time to Peak Number of Infections   
-## Summary Statistics  
-
-```{r ttp_sum, echo=FALSE, results='asis'}
-ttp_sumstats <- df_ttp %>% 
-  group_by(Isolation_capacity, Shielding_strategy) %>% 
-  get_summary_stats(Time_peak_infected, type = "mean_sd")
-
-ttp_sumstats[, -3] %>% 
-  kable()
-```
-
-## Effect of isolation capacity under each shielding strategy (pairwise t-tests)  
-
-```{r iso_eff_ttp_ttest, echo=FALSE, results='asis'}
-ttp_iso_eff_tests <- df_ttp %>% 
-  group_by(Shielding_strategy) %>% 
-  pairwise_t_test(Time_peak_infected ~ Isolation_capacity, p.adjust.method = "bonferroni")
-
-ttp_iso_eff_tests[, -2] %>% 
-  kable()
-```
-
-## Effect of shielding strategy in each isolation capacity scenario (pairwise t-tests)  
-
-```{r shield_eff_ttp_ttest, echo=FALSE, results='asis'}
-ttp_shield_eff_tests <- df_ttp %>% 
-  group_by(Isolation_capacity) %>% 
-  pairwise_t_test(Time_peak_infected ~ Shielding_strategy, p.adjust.method = "bonferroni")
-
-ttp_shield_eff_tests[, -2] %>% 
-  kable()
-```
-
-\pagebreak
-
-# Case Fatality Ratio   
-## Summary Statistics  
-
-```{r cfr_sum, echo=FALSE, results='asis', message=FALSE}
-cfr_sumstats <- read_csv("CFR_summarystats_fateD_limitedIsocap.csv")
-
-kable(cfr_sumstats)
-```
-
-## Effect of isolation capacity under each shielding strategy (pairwise t-tests)  
-
-```{r iso_eff_cfr_ttest, echo=FALSE, results='asis', message=FALSE}
-cfr_iso_eff_tests <- read_csv("Isolation_effect_on_CFR_ttests.csv")
-
-cfr_iso_eff_tests[, -2] %>% 
-  kable()
-```
-
-## Effect of shielding strategy in each isolation capacity scenario (pairwise t-tests)  
-
-```{r shield_eff_cfr_ttest, echo=FALSE, results='asis', message=FALSE}
-cfr_shield_eff_tests <- read_csv("Shield_effect_on_CFR_ttests.csv")
-
-cfr_shield_eff_tests[, -2] %>% 
-  kable()
-```
-
-\pagebreak
 
 ```{r plots_death_iso, echo=FALSE}
 death_iso_eff_tests <- death_iso_eff_tests %>% 
@@ -242,6 +175,7 @@ ggpar(death_iso_eff_plot, legend = "right", main = "Effect of isolation capacity
       subtitle = "Under each shielding strategy, based on a camp of 2,000 people", ylab = "Fraction of population dead", 
       legend.title = "Isolation capacity")
 ```
+**Figure 1.1. Effect of isolation capacity on death toll under each shielding strategy.** List of interventions: *isolation cap x* = isolation of symptomatic people up to a maximum of *x* beds, *shield y conts/wk* = shielding strategy where people from the green zone are authorized to see *y* people from the orange zone per week. Significance: (\*) p < 0.05, (\*\*) p < 0.01, (\*\*\*) p < 0.001, (\*\*\*\*) p < 0.0001.
 
 ```{r plots_death_shield, echo=FALSE}
 death_shield_eff_tests <- death_shield_eff_tests %>% 
@@ -256,6 +190,43 @@ death_shield_eff_plot <- ggboxplot(as_tibble(df_death), x = "Shielding_strategy"
 ggpar(death_shield_eff_plot, legend = "right", main = "Effect of shielding strategy on deaths from an outbreak", 
       subtitle = "Under each isolation capacity scenario, based on a camp of 2,000 people", ylab = "Fraction of population dead", 
       legend.title = "Shielding strategy")
+```
+**Figure 1.2. Effect of shielding strategies on death toll in each isolation capacity scenario.** List of interventions: *isolation cap x* = isolation of symptomatic people up to a maximum of *x* beds, *shield y conts/wk* = shielding strategy where people from the green zone are authorized to see *y* people from the orange zone per week. Significance: (\*) p < 0.05, (\*\*) p < 0.01, (\*\*\*) p < 0.001, (\*\*\*\*) p < 0.0001. 
+
+\pagebreak  
+
+# 2. Time to Peak Number of Infections   
+**Table 2.1. Time from first case to peak infections among people aged 50+ with comorbidities in each intervention scenario** (mean and standard deviation from n = 500 realizations). List of interventions: *isolation cap x* = isolation of symptomatic people up to a maximum of *x* beds, *shield y conts/wk* = shielding strategy where people from the green zone are authorized to see *y* people from the orange zone per week.   
+
+```{r ttp_sum, echo=FALSE, results='asis'}
+ttp_sumstats <- df_ttp %>% 
+  group_by(Isolation_capacity, Shielding_strategy) %>% 
+  get_summary_stats(Time_peak_infected, type = "mean_sd")
+
+ttp_sumstats[, -3] %>% 
+  kable()
+```
+
+**Table 2.2. Effect of isolation capacity on the time from first case to peak infections among people aged 50+ with comorbidities under each shielding strategy.** Pairwise t-tests comparing the effect of isolation capacity (0, 10 or 25 beds) on the time from the first case in the camp to the peak of infections among people aged 50+ with comorbidities under each shielding strategy (no shielding, shielding with 2 weekly contacts, or shielding with 10 weekly contacts). *n* = number of realizations. *p* = p-value. *p.adj* = p-value adjusted for multiple testing (Bonferroni correction). Significance: (\*) p < 0.05, (\*\*) p < 0.01, (\*\*\*) p < 0.001, (\*\*\*\*) p < 0.0001.
+
+```{r iso_eff_ttp_ttest, echo=FALSE, results='asis'}
+ttp_iso_eff_tests <- df_ttp %>% 
+  group_by(Shielding_strategy) %>% 
+  pairwise_t_test(Time_peak_infected ~ Isolation_capacity, p.adjust.method = "bonferroni")
+
+ttp_iso_eff_tests[, -2] %>% 
+  kable()
+```
+
+**Table 2.3. Effect of shielding strategies on the time from first case to peak infections among people aged 50+ with comorbidities in each isolation capacity scenario.** Pairwise t-tests comparing the effect of shielding strategies (no shielding, shielding with 2 weekly contacts, or shielding with 10 weekly contacts) on the time from the first case in the camp to the peak of infections among people aged 50+ with comorbidities in each isolation capacity scenario (0, 10, or 25 beds). *n* = number of realizations. *p* = p-value. *p.adj* = p-value adjusted for multiple testing (Bonferroni correction). Significance: (\*) p < 0.05, (\*\*) p < 0.01, (\*\*\*) p < 0.001, (\*\*\*\*) p < 0.0001. 
+
+```{r shield_eff_ttp_ttest, echo=FALSE, results='asis'}
+ttp_shield_eff_tests <- df_ttp %>% 
+  group_by(Isolation_capacity) %>% 
+  pairwise_t_test(Time_peak_infected ~ Shielding_strategy, p.adjust.method = "bonferroni")
+
+ttp_shield_eff_tests[, -2] %>% 
+  kable()
 ```
 
 ```{r plots_ttp_iso, echo=FALSE}
@@ -273,6 +244,7 @@ ggpar(ttp_iso_eff_plot, legend = "right", main = "Effect of isolation capacity o
       ylab = "Time to peak number of infections (days)", 
       legend.title = "Isolation capacity")
 ```
+**Figure 2.1. Effect of isolation capacity on the time from first case to peak infections among people aged 50+ with comorbidities under each shielding strategy.** List of interventions: *isolation cap x* = isolation of symptomatic people up to a maximum of *x* beds, *shield y conts/wk* = shielding strategy where people from the green zone are authorized to see *y* people from the orange zone per week. Significance: (\*) p < 0.05, (\*\*) p < 0.01, (\*\*\*) p < 0.001, (\*\*\*\*) p < 0.0001.
 
 ```{r plots_ttp_shield, echo=FALSE}
 ttp_shield_eff_tests <- ttp_shield_eff_tests %>% 
@@ -289,16 +261,43 @@ ggpar(ttp_shield_eff_plot, legend = "right", main = "Effect of shielding strateg
       ylab = "Time to peak number of infections (days)", 
       legend.title = "Shielding strategy")
 ```
+**Figure 2.2. Effect of shielding strategies on the time from first case to peak infections among people aged 50+ with comorbidities in each isolation capacity scenario.** List of interventions: *isolation cap x* = isolation of symptomatic people up to a maximum of *x* beds, *shield y conts/wk* = shielding strategy where people from the green zone are authorized to see *y* people from the orange zone per week. Significance: (\*) p < 0.05, (\*\*) p < 0.01, (\*\*\*) p < 0.001, (\*\*\*\*) p < 0.0001. 
+
+\pagebreak
+# 3. Case Fatality Ratio   
+**Table 3.1. Case fatality ratio in each intervention scenario** (mean and standard deviation from n = 500 realizations). List of interventions: *isolation cap x* = isolation of symptomatic people up to a maximum of *x* beds, *shield y conts/wk* = shielding strategy where people from the green zone are authorized to see *y* people from the orange zone per week. 
+```{r cfr_sum, echo=FALSE, results='asis', message=FALSE}
+cfr_sumstats <- read_csv("CFR_summarystats_fateD_limitedIsocap.csv")
+
+kable(cfr_sumstats)
+```
+
+**Table 3.2. Effect of isolation capacity on the case fatality ratio under each shielding strategy.** Pairwise t-tests comparing the effect of isolation capacity (0, 10 or 25 beds) on the case fatality ratio under each shielding strategy (no shielding, shielding with 2 weekly contacts, or shielding with 10 weekly contacts). *n* = number of realizations. *p* = p-value. *p.adj* = p-value adjusted for multiple testing (Bonferroni correction). Significance: (\*) p < 0.05, (\*\*) p < 0.01, (\*\*\*) p < 0.001, (\*\*\*\*) p < 0.0001.
+```{r iso_eff_cfr_ttest, echo=FALSE, results='asis', message=FALSE}
+cfr_iso_eff_tests <- read_csv("Isolation_effect_on_CFR_ttests.csv")
+
+cfr_iso_eff_tests[, -2] %>% 
+  kable()
+```
+
+**Table 3.3. Effect of shielding strategies on the case fatality ratio in each isolation capacity scenario.** Pairwise t-tests comparing the effect of shielding strategies (no shielding, shielding with 2 weekly contacts, or shielding with 10 weekly contacts) on case fatality ratio in each isolation capacity scenario (0, 10, or 25 beds). *n* = number of realizations. *p* = p-value. *p.adj* = p-value adjusted for multiple testing (Bonferroni correction). Significance: (\*) p < 0.05, (\*\*) p < 0.01, (\*\*\*) p < 0.001, (\*\*\*\*) p < 0.0001. 
+```{r shield_eff_cfr_ttest, echo=FALSE, results='asis', message=FALSE}
+cfr_shield_eff_tests <- read_csv("Shield_effect_on_CFR_ttests.csv")
+
+cfr_shield_eff_tests[, -2] %>% 
+  kable()
+```
+
 
 \newpage
 
 ## Analysis/recommendations
 
-We find that isolation of symptomatic cases is an effective intervention for preventing deaths. The fraction of a camp's population that dies in our models is statistically significantly reduced each time the level of isolation capacity is increased; from 0 to 10 beds per camp of 2,000, and from 10 to 25 beds per camp of 2,000, regardless of the shielding strategy that is implemented. We also find that isolating symptomatic cases should slow down outbreaks. Case isolation significantly delays the date at which infections peak, most importantly in more vulnerable populations such as older individuals and those with comorbidities; any, even a small ammount of case isolation has this delaying effect.  
+We find that isolation of symptomatic cases is an effective intervention for preventing deaths. The fraction of a camp's population that dies in our models is statistically significantly reduced each time the level of isolation capacity is increased; from 0 to 10 beds per camp of 2,000, and from 10 to 25 beds per camp of 2,000, regardless of the shielding strategy that is implemented (Table 1.2 and Figure 1.1). We also find that isolating symptomatic cases should slow down outbreaks. Case isolation significantly delays the date at which infections peak, most importantly in more vulnerable populations such as older individuals and those with comorbidities; any, even a small ammount of case isolation has this delaying effect (Table 2.2 and Figure 2.1).  
 
-Shielding also significantly slows down outbreaks, especially in vulnerable populations who are being shielded. While any shielding strategy has this delaying effect compared to no shielding, the more close contact between shielded and non-shielded individuals is restricted, the greater this delaying effect is, especially at very low levels of isolation capacity.  
+Shielding also significantly slows down outbreaks, especially in vulnerable populations who are being shielded. While any shielding strategy has this delaying effect compared to no shielding, the more close contact between shielded and non-shielded individuals is restricted, the greater this delaying effect is, especially at very low levels of isolation capacity (Table 2.3 and Figure 2.2).  
 
-Neither of these interventions, isolation or shielding, have an effect on case fatality ratio (CFR) on their own. But, our most important finding is that when implemented together, they irrefutably have a significant effect on reducing the CFR we may expect from an outbreak. It appears that this works by shifting the overall burden of infections away from more vulnerable segments of the population with higher mortality risk from an infection onto less vulnerable segments of the population with lower mortality risk from an infection. This finding highlights the complimentary nature of these two interventions and the necessity of implementing them in tandem.  
+Neither of these interventions, isolation or shielding, have an effect on case fatality ratio (CFR) on their own. But, our most important finding is that when implemented together, they irrefutably have a significant effect on reducing the CFR we may expect from an outbreak (Table 3.2 and 3.3). It appears that this works by shifting the overall burden of infections away from more vulnerable segments of the population with higher mortality risk from an infection onto less vulnerable segments of the population with lower mortality risk from an infection. This finding highlights the complimentary nature of these two interventions and the necessity of implementing them in tandem.  
 
 Based on these findings, with the three goals in mind of 1) Preventing deaths, 2) Reducing the overall case fatality rate, and 3) Buying additional time to improve capacity to manage an outbreak, we recommend the following:  
   1. Placing a significant focus on increasing isolation capacity as soon as possible, and promptly isolating any individuals with symptoms common to COVID-19 (fever, cough, loss of smell, etc) as soon as the capacity exists to do so.  
