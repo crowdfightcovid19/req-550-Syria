@@ -12,7 +12,10 @@
 #        of the population that the user may want to define, for instance the age,
 #        sex or comorbidities of the individuals, hereafter population "classes". The
 #        scripts also implements a routine to run simulations multiple times with
-#        different realizations of the parameters.
+#        different realizations of the parameters. There are three modes of simulation, either
+#        deterministic, stochastic with the parameters fixed for each realization, or stochastic
+#        with the parameter varying for each time step. The latter version is the one
+#        possibly closer to reality but it also takes longer times to run.
 # usage = Create a directory in /data/$type_models including the following files describing
 #         parameters for the classes. Not all the parameters are implemented in this way
 #         because the distinction between community classes is possibly not relevant, but
@@ -50,19 +53,25 @@
 #       The files are named: $Model_dynamics_$options_$realizationNum.dat, and there is also a plot with
 #       the dynamics.
 # options = There are different types of simulations that can be run:
-#   "isolation" (mandatory) = Determine if hospitalized stay in the camp (and hence are still infectious) or
+#   "isolation" = Determine if hospitalized stay in the camp (and hence are still infectious) or
 #     if are isolated outside the camp. The maximum capacity of people isolated outside the camp
 #     is determined by "isoThr", all hospitalized above that value become infectious because we assume
 #     they will stay in the camp. Their fate is then determined by the variable "hospitalized2".
-#   "hospitalized2" = (mandatory) Determine whether all hospitalized will become recovered (=0) or death (=1) 
-#   "Tcheck" (optional) = Determine whether there exist a test check (most likely Temperture) that 
+#   "hospitalized2" =  Determine whether all hospitalized will become recovered (=0) or if they die (=1) 
+#   "Tcheck" (optional) = Determine whether there exist a test check (most likely "T"emperature, = 1) that 
 #     will prevent the interaction of symptomatic people between two types of classes, identified
-#     by two keywords (keywordA and keywordB). An example may be if it is created a neutral zone, in 
+#     by two keywords (keywordA and keywordB). Set to (=0) otherwise. An example may be if it is created a neutral zone, in 
 #     which it is assumed that to access this zone there is some testing to exclude symptomatic
 #     individuals, which will reduce the probability of infection. The two keywords should be present in the names of the classes given in the 
 #     input files, and will be searched with grep, so its limitations should be considered or the
 #     code modified if complex regular expressions must be used.
-#     
+#   "lockDown" = Determines if the shielded zone is locked after the first symptomatic case in the non-shielded
+#       zone is provided. Set it to (=0) if there is no lockdown and to a number between 0 and 1 if there is
+#       lockDown. This number should represent you estimation on which would be the reduction in the number
+#       of contacts between both populations (shielded or not) due to the lockdown, e.g. 0.9 for 90% reduction
+#    "self" = Self is similar in spirit to lockDown, but it applies to the whole population. It is a parameter
+#      modelling the reduction in the number of contacts that each individual will experience if self-distancing
+#      measures were implemented. Set self=0 for no self-distancing and 1>self>0 for the %-reduced.
 # warning = note that the structure of directories is strict. However, there is a command
 #    to automatically retrieve the path of the user in the repo which may not work in Windows/Mac.
 #    See comments below around the variable "this.dir", comment that specific command and fix
@@ -90,6 +99,8 @@
 # ... "ext" -> the matrix is read from an external file
 
 #rm(list=ls())
+
+
 # Load libraries ---------
 library(deSolve)   # package to solve the model
 library(reshape2)  # package to change the shape of the model output
@@ -97,38 +108,6 @@ library(ggplot2)
 library(rstudioapi) # package to retrieve current path, fix manually if working in Windows or outside Rstudio
 library(tidyverse) # another package to reshape data for ggplot
 
-# Fix parameters ----------------------
-# .... These are the parameters related to input and output of files and computational
-# .... options. Epidemiological parameters are hardcoded in the file "input_parameters_$model.R"
-# .... and are not expected to be changed.
-###### START EDITING
-# --- Structure of directories and labelling 
-# fake=0 # fix to 1 if you are working with test data 
-# descr="null_model_shield" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
-# class.infected="age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
-# 
-# # --- Computational parameters
-# Npop=2000 # Population size
-# Ndays=365 # Number of days simulated
-# Nrand=100 # number of realizations of parameters
-# 
-# 
-# # --- Model type
-# CompModel="SEPAIHRD" # Only "SEPAIHRD" implemented 
-# isolation=1 # if hospitalized leaves the camp =1, stays in the camp = 0.
-# isoThr=2000 # If isolation=1, maximum capacity of H people isolation, the difference H-isoThr becomes infectious
-# hospitalized2=1 # if hospitalized2 = 0, all hospitalized will recover, if = 1 all will die.
-# Tcheck=0 # if tests are implemented, symptomatic individuals will be excluded from the interaction between two classes
-# keywordA="orange" # keyword to identify the first population class affected by Tcheck.
-# keywordB="green" # keyword to identify the second population class affected by Tcheck.
-# # The following are obsolete options, can be recovered from SIRQ model if needed
-# #ContMatType="mean" # one of "mean"= mean field, "external"= read from file
-# #strat=0 # if ContMatType="mean" and strat= 1 it will source contact_matrix.R, where you can create manually a contacts matrix
-# 
-# # --- Output options
-# Nfull=2 # Number of simulations whose results will be fully reported (1 to Nrand)
-#
-######### STOP EDITING
 
 # Build a label with the options ---------
 if(isolation == 1){
@@ -147,13 +126,30 @@ if(Tcheck == 1){
 }else{
   Tcheck="NO"
 }
-if(lockDown == 1){
+if(lockDown > 0){
+  lockValue=1-lockDown
   lockDown="YES"
 }else{
+  lockValue="NO"
   lockDown="NO"
 }
+if(self > 0){
+  selfLabel=self
+  self=1-self # A factor multiplying the number of contacts
+}else{
+  self=1
+  selfLabel="NO"
+}
+if(model.type=="deterministic"){
+  MT="D"
+}else if(model.type=="stochastic_fixed"){
+  MT="SF"
+}else{ # stochastic variable
+  MT="SV"
+}
 optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Fate",hospitalized2,
-               "_Tcheck",Tcheck,"_PopSize",Npop,"_lock",lockDown,sep="")
+               "_Tcheck",Tcheck,"_PopSize",Npop,
+               "_lock",lockValue,"_self",selfLabel,"_mod",MT,sep="")
 
 # Fix directories ------------
 if(fake == 1){
@@ -163,15 +159,15 @@ if(fake == 1){
 }
 
 # --- The following lines edit the input and output directories
-# You may have problems with the following line in Windows, or if you do not run from rstudio 
-this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit, just comment it if problems...
+# You may have problems with the following line in Windows, or if you do not run from rstudio
+#this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] # don't edit, just comment it if problems...
+this.dir="~/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria"
 #this.dir="/pathToRepo" # ...path to the root path of your repo if the above command does not work, comment otherwise
 dirDataIn=paste(this.dir,"/data",dirTmp,descr,sep="") # Directory for the input data
 dirCodeBase=paste(this.dir,"/src",sep="") # Directory where the function with the basic code is found
 dirCodeSpec=paste(this.dir,"/src/",CompModel,sep="") # Directory where code specific to this model
 dirDataOut=paste(this.dir,"/data",dirTmp,descr,"/",optLabel,sep="") # directory for the simulation output
 dirPlotOut=paste(dirDataOut,"/figures",sep="") # directory for the figure
-
 
 label=paste(CompModel,"dynamics",descr,optLabel,sep="_") # a label for your output  files
 #label=paste(CompModel,"dynamics",descr,"cont",ContMatType,"PopSize",Npop,"scenario",outcome,sep="_") # a label for your output  files
@@ -192,9 +188,16 @@ Nclass=length(class.str)
 setwd(dirCodeSpec)
 if(CompModel == "SEPAIHRD"){ # Only this model implemented so far
   compartments=c("S","E","P","A","I","H","R","D") # 
-  source("dxdt_SEPAIHRD_str.R")
+  if(model.type=="deterministic"){
+    source("dxdt_SEPAIHRD_str.R")
+    dxdtfun=dxdt_SEPAIHRD_str
+  }else{ # the model is stochastic
+    source("rates_SEPAIHRD_str.R")
+    dxdtfun=rates_SEPAIHRD_str
+  }
+  #set.seed(18062020) # Today, store for reproducibility
+  set.seed(13072020) # Today, store for reproducibility
   source("input_parameters_SEPAIHRD.R")
-  dxdtfun=dxdt_SEPAIHRD_str
 }
 
 
@@ -234,69 +237,81 @@ lock.mat=matrix(1,ncol=ncol(C),nrow=nrow(C)) # Same size and names than the cont
 rownames(lock.mat)=rownames(C)
 colnames(lock.mat)=colnames(C)
 if(lockDown=="YES"){ # if it is possible a lockdown
-  lock.mat[idx.classA,idx.classB]=0 # turn them to zero
-  lock.mat[idx.classB,idx.classA]=0 # will be applied to all classes
+  lock.mat[idx.classA,idx.classB]=lockValue # turn them to zero
+  lock.mat[idx.classB,idx.classA]=lockValue # will be applied to all classes
 }
 
-# --- Finally, initialize times 
+# --- Finally, initialize times and stochastic transitions
 # (here, we do daily for Ndays days - you can change this value)
 times_vector <- seq(from=0, to=Ndays, by=1)
-if(model.type="stochastic"){
-  transitions=make_transitions(var.names,hospitalized2)
+if((model.type=="stochastic_fixed")||(model.type=="stochastic_variable")){
+  setwd(dirCodeSpec)
+  source("make_transitions.R")
+  transitions=make_transitions(class.names,var.names,hospitalized2)
   y.start=round(y.start)
 }
 
 
-# Run the model Nrand times ----------------
+# Run the model Nrealiz times ----------------
 dir.create(dirDataOut)
 setwd(dirDataOut)
 k=1 # labels the number of fully reported results
 rand2report=vector(mode="integer",length=Nfull) # store realization that will be reported
 output.list=list()
 output.aggr.list=list()
-for(i in 1:Nrand){ # Launch the script Nrand times
+for(i in 1:Nrealiz){ # Launch the script Nrealiz times
   #betaI=betaI.vec[i]
   #betaA=betaA.vec[i]
-  deltaE=deltaE.vec[i]
-  deltaP=deltaP.vec[i]
+  if((model.type=="deterministic")||(model.type=="stochastic_fixed")){
+    deltaE=deltaE.vec[i]
+    deltaP=deltaP.vec[i]
+    gammaH=gammaH.vec[i]
+    eta=eta.vec[i]
+    alpha=alpha.vec[i]
+    tau=tau.vec[i]
+    fracPtoI=fracPtoI.vec[i]
+  }else{ # stochastic variable
+    setwd(dirCodeSpec) # These three lines should be optimized
+    source("input_parameters_SEPAIHRD.R") # should be converted into a function
+    setwd(dirDataOut)
+    t.int=0 # this variable will be global
+    # Generates new parameters each realization
+    deltaE=deltaE.vec
+    deltaP=deltaP.vec
+    gammaH=gammaH.vec
+    eta=eta.vec
+    alpha=alpha.vec
+    tau=tau.vec
+    fracPtoI=fracPtoI.vec
+  }
+
   gammaA=gammaA
   gammaI=gammaI
-  gammaH=gammaH.vec[i]
-  eta=eta.vec[i]
-  alpha=alpha.vec[i]
-  tau=tau.vec[i]
-
-  fracPtoI=fracPtoI.vec[i]
-  #fracItoH.str=fracItoH.str
-  #fracItoD.str=fracItoD.str
   Cont=C
   parms.list=list(Nsubpop=Nsubpop,tau=tau,deltaE=deltaE,deltaP=deltaP,
                   gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,eta=eta,alpha=alpha,
                   fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,
-                  Cont=C,Tcheck.mat=Tcheck.mat,lockDown=lockDown,lock.mat=lock.mat,
+                  Cont=C,Tcheck.mat=Tcheck.mat,lockDown=lockDown,lock.mat=lock.mat,self=self,
                   hospitalized2=hospitalized2,isolation=isolation,isoThr=isoThr,
-                  inf.idx=inf.idx,hosp.idx=hosp.idx,
+                  inf.idx=inf.idx,hosp.idx=hosp.idx,model.type=model.type,
                   classes=class.names,vars=var.names,compartments=compartments)
   
   # Run the ODE solver
-  model.output <- as.data.frame(lsoda(y=y.start, 
-                                       times=times_vector, 
-                                       func=dxdtfun, 
-                                       parms=parms.list))
-  if(model.type=="stochastic"){
-<<<<<<< Updated upstream
-    dxdtfun=rates_SEPAIHRD_str
-    model.output=ssa.adaptivetau(init.values =y.start,
-=======
-      model.output=ssa.adaptivetau(init.values =y.start,
->>>>>>> Stashed changes
+  if((model.type=="stochastic_fixed")||(model.type=="stochastic_variable")){
+    #dxdtfun=rates_SEPAIHRD_str
+      model.output=as.data.frame(ssa.adaptivetau(init.values =y.start,
                     transitions=transitions,
                     rateFunc =dxdtfun, 
                     params=parms.list, 
-                    tf=Ndays)
+                    tf=Ndays))
+  }else{
+    model.output <- as.data.frame(lsoda(y=y.start, 
+                                        times=times_vector, 
+                                        func=dxdtfun, 
+                                        parms=parms.list))
   }
   # --- Process output
-  if(i == round(k*Nrand/Nfull)){
+  if(i == round(k*Nrealiz/Nfull)){
     labelTmp=paste(label,"_rand-",i,sep="")
     fileOut=paste(labelTmp,"dat",sep=".")
     write.table(model.output,file=fileOut,row.names = FALSE)
@@ -307,7 +322,7 @@ for(i in 1:Nrand){ # Launch the script Nrand times
     }
     u=0
     model.aggr.output=data.frame(matrix(ncol = length(compartments), 
-                                        nrow = dim(model.output)[1]))
+                                      nrow = dim(model.output)[1]))
     for(comp in compartments){
       u=u+1
       comp.vars=comp.vars.list[[u]]
@@ -331,7 +346,7 @@ for(i in 1:Nrand){ # Launch the script Nrand times
       comp.vars=grep(comp.id,colnames(model.output))
       comp.vars.list[[u]]=comp.vars
       comp.names=colnames(model.output)[comp.vars]
-      comp.df=data.frame(matrix(ncol = length(comp.vars), nrow = Nrand))
+      comp.df=data.frame(matrix(ncol = length(comp.vars), nrow = Nrealiz))
       colnames(comp.df)=comp.names
       comp.df.list[[u]]=comp.df
       if((comp!="D")&&(comp!="R")){ # and the times in which relevant events happen
@@ -344,7 +359,7 @@ for(i in 1:Nrand){ # Launch the script Nrand times
           names.tmp=comp.names
         #}
         compartments.time[v]=comp
-        comp.time.df=data.frame(matrix(ncol = Nvars, nrow = Nrand))
+        comp.time.df=data.frame(matrix(ncol = Nvars, nrow = Nrealiz))
         colnames(comp.time.df)=names.tmp
         comp.time.df.list[[v]]=comp.time.df
       }
@@ -357,20 +372,26 @@ for(i in 1:Nrand){ # Launch the script Nrand times
     u=u+1
     comp.vars=comp.vars.list[[u]]
     if((comp=="S")||(comp=="R")||(comp=="D")){ # and the times in which relevant events happen
-      comp.out=model.output[Ndays,comp.vars]
+      time_final_local=length(model.output$time)
+      comp.out=model.output[time_final_local,comp.vars]
       comp.df.list[[u]][i,]=comp.out
       if(comp=="S"){ # for susceptible
         v=v+1
         susc.traject=model.output[,comp.vars] # take the total across classes
         susc.diff=mapply(`-`,susc.traject,comp.out) # compute the differences with the end of the simulation
-        susc.steady.vec=apply(susc.diff,2,function(x){min(which(x<1))}) # identify the time in which the difference with final state <1 person)
+        if(model.type=="deterministic"){
+          susc.steady.vec=apply(susc.diff,2,function(x){min(which(x<1))}) # identify the time in which the difference with final state <1 person)
+        }else{
+          susc.steady.vec=apply(susc.diff,2,function(x){min(which(x==0))}) # identify the time in which the difference with final state <1 person)
+        }
         comp.time.df.list[[v]][i,]=susc.steady.vec # store it
       }
     }else{
       v=v+1
       comp.max=apply(model.output[,comp.vars],2,max)
       comp.df.list[[u]][i,]=comp.max
-      time.max=apply(model.output[,comp.vars],2,which.max)
+      id.time.max=apply(model.output[,comp.vars],2,which.max)
+      time.max=model.output$time[id.time.max]
       comp.time.df.list[[v]][i,]=time.max
     }
   }
@@ -378,6 +399,9 @@ for(i in 1:Nrand){ # Launch the script Nrand times
 # ... Retrieve some totals
 u=which(compartments=="D")
 death.total=round(rowSums(comp.df.list[[u]]))
+frac.nodeath=apply(comp.df.list[[u]],2,function(x){length(which(x==0))})/Nrealiz
+# frac.nodeath.df=data.frame(names(frac.nodeath),frac.nodeath,-2) # The df must be created within the loops below to gather the vars appropriately
+#colnames(frac.nodeath.df)=c("class","nodeath","Y")
 u=which(compartments=="S")
 susc.total=round(rowSums(comp.df.list[[u]]))
 u=which(compartments=="R")
@@ -422,9 +446,10 @@ for(k in 1:Nfull){ # For each realization completely recorded
       widthPlot=30
       heightPlot=12
       col_vector=col_class
+      times_vector_local=model.output$time
     }else{ # Plot the aggregated dynamics
       model.output=output.aggr.list[[k]]
-      model.output=cbind(times_vector,model.output)
+      model.output=cbind(times_vector_local,model.output)
       colnames(model.output)=c("time",comp.descr)
       filePlotOut=paste("Plot-DynamicsAggreg_",labelTmp,".pdf",sep="")
       varcolor="Compartment"
@@ -448,9 +473,9 @@ for(k in 1:Nfull){ # For each realization completely recorded
             axis.text = element_text(size=14),
             legend.text = element_text(size=16),
             legend.title = element_text(size=22),
-            title = element_text(size=20))+ # Increase fonts size 
+            title = element_text(size=10))+ # Increase fonts size 
       scale_colour_manual(values=col_vector)+ #and choose palette
-      labs(title = paste("Model =",descr),
+      labs(title = paste("Model =",descr,optLabel),
            subtitle = paste("Total deaths = ",death.total[rand2report[k]],
                             "; Total susceptibles = ",susc.total[rand2report[k]],
                             "; Total recovered = ",recov.total[rand2report[k]]),
@@ -469,6 +494,8 @@ for(comp in compartments){ # We collect all max/min of variables
   #fillCol=col_qual[u]
   Compartment=comp.descr[u]
   df.out=comp.df.list[[u]]
+  frac.nodeath.df=data.frame(colnames(df.out),frac.nodeath,-10) # to annotate this properly, the names should be the same
+  colnames(frac.nodeath.df)=c("class","nodeath","Y")
   if((comp=="S")||(comp=="R")||(comp=="D")){
     labelOut=paste("NumFinal",Compartment,"_",sep="")
   }else{
@@ -481,10 +508,19 @@ for(comp in compartments){ # We collect all max/min of variables
   filePlotOut=paste("Plot-",labelOut,label,".pdf",sep="")
   df.plot <- pivot_longer(df.out,cols=colnames(df.out)) # Transform long format
   colnames(df.plot)=c("class","Y")
+  df.plot.drop=df.plot
+  df.plot.drop[df.plot==0]=NA # Exclude zeros for the boxplot
   pdf(file=filePlotOut,width=10,height = 7)
   gg=ggplot(data = df.plot,
-            aes(x = class,y = Y,fill=class)) +  # assign columns to axes and groups
-    geom_boxplot()+
+            aes(x = class,y = Y)) +  # assign columns to axes and groups
+    geom_boxplot(data = df.plot.drop,
+                 aes(x = class,y = Y))+
+    geom_jitter(show.legend = TRUE,
+                aes(colour=class),height = 0,width=0.2)+
+    geom_text(data=frac.nodeath.df,
+              aes(x=class,
+              y=Y,
+              label=nodeath),inherit.aes = TRUE)+
     #geom_bar(stat="identity") +                  # represent data as lines
     xlab("Population Class")+           # add label for x axis
     ylab(paste("Number of ",Compartment,sep="")) +     # add label for y axis
@@ -493,10 +529,10 @@ for(comp in compartments){ # We collect all max/min of variables
           axis.text = element_text(size=16), # ,angle=90, hjust = 1,vjust=0.5),
           legend.text = element_text(size=22),
           legend.title = element_text(size=28),
-          title=element_text(size=14))+ # Increase fonts size
+          title=element_text(size=10))+ # Increase fonts size
     scale_colour_manual(values=col_qual)+
     scale_x_discrete(labels=as.character(seq(from=1,to=Nclass,by=1)))+
-    labs(title = paste("Model =",descr),
+    labs(title = paste("Model =",descr,optLabel),
          subtitle = paste("Pop. size = ",Npop, 
                           "; Mean tot. deaths =",mean(death.total),
                           "; Mean tot. susc. =",mean(susc.total),
@@ -512,6 +548,8 @@ for(comp in compartments){ # We collect all max/min of variables
   Compartment=comp.descr[u]
   df.tmp=comp.df.list[[u]]
   df.out=100*data.frame(mapply(`/`,df.tmp,Nsubpop)) # Transform into fractions
+  frac.nodeath.df=data.frame(colnames(df.out),frac.nodeath,-2) # to annotate this properly, the names should be the same
+  colnames(frac.nodeath.df)=c("class","nodeath","Y")
   if((comp=="S")||(comp=="R")||(comp=="D")){
     labelOut=paste("FracFinal",Compartment,"_",sep="")
   }else{
@@ -524,10 +562,19 @@ for(comp in compartments){ # We collect all max/min of variables
   filePlotOut=paste("Plot-",labelOut,label,".pdf",sep="")
   df.plot <- pivot_longer(df.out,cols=colnames(df.out)) # Transform long format
   colnames(df.plot)=c("class","Y")
+  df.plot.drop=df.plot
+  df.plot.drop[df.plot==0]=NA # Exclude zeros for the boxplot
   pdf(file=filePlotOut,width=10,height = 7)
   gg=ggplot(data = df.plot,
-            aes(x = class,y = Y,fill=class)) +  # assign columns to axes and groups
-    geom_boxplot()+
+            aes(x = class,y = Y)) +  # assign columns to axes and groups
+    geom_boxplot(data = df.plot.drop,
+                 aes(x = class,y = Y))+
+    geom_jitter(show.legend = TRUE,
+                aes(colour=class),height = 0,width=0.2)+
+    geom_text(data=frac.nodeath.df,
+              aes(x=class,
+                  y=Y,
+                  label=nodeath),inherit.aes = TRUE)+
     #geom_bar(stat="identity") +                  # represent data as lines
     xlab("Population Class")+           # add label for x axis
     ylab(paste(Compartment," (% of the class)",sep="")) +     # add label for y axis
@@ -536,10 +583,10 @@ for(comp in compartments){ # We collect all max/min of variables
           axis.text = element_text(size=16), # ,angle=90, hjust = 1,vjust=0.5),
           legend.text = element_text(size=22),
           legend.title = element_text(size=28),
-          title=element_text(size=14))+ # Increase fonts size
+          title=element_text(size=10))+ # Increase fonts size
     scale_colour_manual(values=col_qual)+
     scale_x_discrete(labels=as.character(seq(from=1,to=Nclass,by=1)))+
-    labs(title = paste("Model =",descr),
+    labs(title = paste("Model =",descr,optLabel),
          subtitle = paste("Pop. size = ",Npop, 
                           "; Mean tot. deaths =",mean(death.total),
                           "; Mean tot. susc. =",mean(susc.total),
@@ -558,6 +605,8 @@ for(comp in compartments.time){
   #fillCol=col_qual[u]
   Compartment=comp.descr[u]
   df.out=comp.time.df.list[[v]]
+  frac.nodeath.df=data.frame(colnames(df.out),frac.nodeath,-10) # to annotate this properly, the names should be the same
+  colnames(frac.nodeath.df)=c("class","nodeath","Y")
   if(comp=="S"){
     labelOut=paste("TimeSteadyState",Compartment,"_",sep="")
     ylab="Time to steady state (days)"
@@ -572,10 +621,19 @@ for(comp in compartments.time){
   filePlotOut=paste("Plot-",labelOut,label,".pdf",sep="")
   df.plot <- pivot_longer(df.out,cols=colnames(df.out)) # Transform long format
   colnames(df.plot)=c("class","Y")
+  df.plot.drop=df.plot
+  df.plot.drop[df.plot==0]=NA # Exclude zeros for the boxplot
   pdf(file=filePlotOut,width=10,height = 7)
   gg=ggplot(data = df.plot,
-            aes(x = class,y = Y,fill=class)) +  # assign columns to axes and groups
-    geom_boxplot()+
+            aes(x = class,y = Y)) +  # assign columns to axes and groups
+    geom_boxplot(data = df.plot.drop,
+                 aes(x = class,y = Y))+
+    geom_jitter(show.legend = TRUE,
+                aes(colour=class),height = 0,width=0.2)+
+    geom_text(data=frac.nodeath.df,
+              aes(x=class,
+                  y=Y,
+                  label=nodeath),inherit.aes = TRUE)+
     #geom_bar(stat="identity") +                  # represent data as lines
     xlab("Population Class")+           # add label for x axis
     ylab(ylab) +     # add label for y axis
@@ -584,10 +642,10 @@ for(comp in compartments.time){
           axis.text = element_text(size=16), # ,angle=90, hjust = 1,vjust=0.5),
           legend.text = element_text(size=22),
           legend.title = element_text(size=28),
-          title=element_text(size=14))+ # Increase fonts size
+          title=element_text(size=10))+ # Increase fonts size
     scale_colour_manual(values=col_qual)+
     scale_x_discrete(labels=as.character(seq(from=1,to=Nclass,by=1)))+
-    labs(title = paste("Model =",descr),
+    labs(title = paste("Model =",descr,optLabel),
          subtitle = paste("Pop. size = ",Npop, 
                           "; Mean tot. deaths =",mean(death.total),
                           "; Mean tot. susc. =",mean(susc.total),
@@ -595,6 +653,8 @@ for(comp in compartments.time){
   print(gg)
   dev.off( )
 }
+
+
 ## Continue here, include frac death tolls, think if plots for aggregated, clean, test and go
 # 
 # # --- Plot the fraction of deaths

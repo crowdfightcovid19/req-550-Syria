@@ -4,7 +4,7 @@ require(extraDistr) # fits gompertz distribution
 # vectors with random number with size the number of simulations. 
 
 ### START EDITING
-set.seed(18062020) # today 
+#set.seed(18062020) # today 
 # ..... Incubation and presymptomatic (the difference will estimate t.Exposed)
 t.incub.mean=5.2 # incubation time
 t.incub.std=0.18 # lognormal
