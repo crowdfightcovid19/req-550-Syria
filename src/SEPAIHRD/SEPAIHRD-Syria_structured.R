@@ -127,11 +127,13 @@ if(Tcheck == 1){
   Tcheck="NO"
 }
 if(lockDown > 0){
+  lockLabel=lockDown
   lockValue=1-lockDown
   lockDown="YES"
 }else{
-  lockValue="NO"
+  lockValue=1
   lockDown="NO"
+  lockLabel="NO"
 }
 if(self > 0){
   selfLabel=self
@@ -149,7 +151,7 @@ if(model.type=="deterministic"){
 }
 optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Fate",hospitalized2,
                "_Tcheck",Tcheck,"_PopSize",Npop,
-               "_lock",lockValue,"_self",selfLabel,"_mod",MT,sep="")
+               "_lock",lockLabel,"_self",selfLabel,"_mod",MT,sep="")
 
 # Fix directories ------------
 if(fake == 1){
@@ -382,7 +384,8 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
         if(model.type=="deterministic"){
           susc.steady.vec=apply(susc.diff,2,function(x){min(which(x<1))}) # identify the time in which the difference with final state <1 person)
         }else{
-          susc.steady.vec=apply(susc.diff,2,function(x){min(which(x==0))}) # identify the time in which the difference with final state <1 person)
+          time.tmp=apply(susc.diff,2,function(x){min(which(x==0))}) # identify the time in which the difference with final state <1 person)
+          susc.steady.vec=model.output$time[time.tmp]
         }
         comp.time.df.list[[v]][i,]=susc.steady.vec # store it
       }
