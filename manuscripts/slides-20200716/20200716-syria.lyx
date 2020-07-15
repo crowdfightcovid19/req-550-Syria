@@ -17,16 +17,16 @@
 
 %Title configuration.
 \title[COVID-19 interventions]{Modelling of COVID-19 epidemic and interventions in IPDCs}
-\author{Dr. Eduard Campillo-Funollet\inst{1} \\ \and Jordan Klein\inst{2} \\ \and Dr. Alberto Pascual-Garcia\inst{3} \\ \and Dr. Jennifer Villers\inst{2}}
-\institute{ \inst{1} PhD, University of Sussex, UK \and \inst{2} MPh,Princeton University, USA \and \inst{3} PhD, ETH Z\"urich, Switzerland }
+\author{Dr. Eduard Campillo-Funollet\inst{1} \\ \and Jordan Klein\inst{2} \\ \and Dr. Alberto Pascual-Garcia\inst{3} \\ \and Dr. Jennifer Villers\inst{4}}
+\institute{ \inst{1} PhD, University of Sussex, UK \and \inst{2} MPh,Princeton University, USA \and \inst{3} PhD, ETH Z\"urich, Switzerland \and \inst{4} PhD,Princeton University, USA }
 
 
 
 \titlegraphic{
   \begin{figure}[ht]
  \begin{center}
-    \includegraphics[height=0.15\textwidth]{paxsyriana} \quad
-    \includegraphics[height=0.15\textwidth]{crowdfight} 
+    \includegraphics[height=0.1\textwidth]{paxsyriana} \quad
+    \includegraphics[height=0.1\textwidth]{crowdfight} 
  \end{center}
 \end{figure}}
 
