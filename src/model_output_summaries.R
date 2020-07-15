@@ -48,6 +48,7 @@ fileOut=paste("Summary_interventions_",idDir,".csv",sep="")
 #### STOP EDITING
 
 header.names=c("contacts","Isolate","Limit","Fate","Tcheck","PopSize","lock","self","mod")
+Nparam=length(header.names)
 # --- Source Functions 
 # ..... Function to get output directories
 get_output_directories <- function(directory) {
@@ -120,15 +121,22 @@ for(file2proc in files.list){
 
 # --- Move to directory and retrieve list of directories
 this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] 
+dirCode=paste(this.dir,"/src",sep="")
 dirData=paste(this.dir,"/data/real_models/",sep="")
 dirOut=paste(dirData,"results_post_processing",sep="")
+dirPlotOut=paste(dirOut,"/Summary_figures",sep="")
 setwd(dirData)
 subLabel="_SEPAIHRD_dynamics"
 dir.list=get_output_directories(".")
 
 # --- Start processing
-df.output=data.frame(stringsAsFactors = FALSE)
-df.output=matrix(NA,nrow=length(dir.list),ncol=length(header.names))
+#df.output=data.frame(stringsAsFactors = FALSE)
+Nhead=length(header.names)
+Nvals=Nhead-Nparam
+df.output=matrix(NA,nrow=length(dir.list),ncol=Nhead)
+df.output.char=matrix(NA,nrow=length(dir.list),ncol=Nparam)
+df.output.vals=matrix(NA,nrow=length(dir.list),ncol=Nvals)
+
 k=0
 for(dirIn in dir.list){
   k=k+1
@@ -148,7 +156,8 @@ for(dirIn in dir.list){
   otherLab=stri_split_fixed(fileLabel,shieldLab)[[1]][2]
   otherLab=gsub("^_","",otherLab)
   otherLabList=unlist(stri_split_fixed(otherLab,"_"))
-  outputLine=c(shieldLab,otherLabList)
+  outputParam=c(shieldLab,otherLabList)
+  outputLine=c()
   
   # ... Process Files
   i=0
@@ -169,7 +178,8 @@ for(dirIn in dir.list){
       nodeath.obs = which(death.totals > 0) # and create an index to work only with them
     }
     df = df.all[nodeath.obs, ] # gather statistics only for cases where deaths are observed
-    Nrealiz = dim(df)[1] # this will reduce the number of realizations
+    Nrealiz.all=dim(df.all)[1] # store the original number of realizations
+    Nrealiz = dim(df)[1] # this will reduce the number of realizations to those with no deaths
     df.E = df[, idx.classE] # only exposed
     df.S = df[, idx.classS] # only susceptible
     if(files.code[i] == "Frac"){
@@ -190,8 +200,13 @@ for(dirIn in dir.list){
     }
     df.mean = stat.list[[1]]
     df.stdErr = stat.list[[2]]
-    df.mean.E = stat.list.E[[1]]
-    df.stdErr.E = stat.list.E[[2]]
+    if(is_empty(idx.classE)){
+      df.mean.E = df.mean
+      df.stdErr.E = df.stdErr
+    }else{
+      df.mean.E = stat.list.E[[1]]
+      df.stdErr.E = stat.list.E[[2]]
+    }
     df.mean.S = stat.list.S[[1]]
     df.stdErr.S = stat.list.S[[2]]
     
@@ -204,9 +219,8 @@ for(dirIn in dir.list){
       death.totals.E = mean(rowSums(df.E)) 
       death.totals.S = mean(rowSums(df.S)) 
       # in addition, we estimate the probability of outbreak
-      frac.nodeath = apply(df, 2, function(x) {
-        length(which(x == 0))
-      }) / Nrealiz
+      frac.nodeath = apply(df.all, 2, function(x) {
+        length(which(x == 0))})/Nrealiz.all
       if (is_empty(idx.classS)) {
         # there is no shielding
         p.outbrk.E = signif(1 - min(frac.nodeath), digits = 2)
@@ -221,16 +235,37 @@ for(dirIn in dir.list){
       recov.totals.E = mean(rowSums(df.E)) 
       recov.totals.S = mean(rowSums(df.S)) 
       CFR.all=signif(death.totals.all/(death.totals.all+recov.totals.all),digits=2)
-      CFR.E=signif(death.totals.E/(death.totals.E+recov.totals.E),digits=2)
-      CFR.S=signif(death.totals.S/(death.totals.E+recov.totals.S),digits=2)
+      if (is_empty(idx.classS)){
+        CFR.E=CFR.all
+        CFR.S=NA
+      }else{
+        CFR.E=signif(death.totals.E/(death.totals.E+recov.totals.E),digits=2)
+        CFR.S=signif(death.totals.S/(death.totals.E+recov.totals.S),digits=2)
+      }
+      
       outputLine = c(outputLine,CFR.E,CFR.S)
     }
-    
   }
-  df.output[k, ] = outputLine
+  df.output.char[k,]=outputParam
+  df.output.vals[k,]=outputLine
+  # N1=length(outputParam)
+  # N2=length(outputLine)
+  # df.tmp=as.data.frame(cbind(outputParam,outputLine))
+  # df.output.char[k, 1:N1] = as.data.frame(outputParam)
+  # df.output[k, (N1+1):(N1+N2)] = as.data.frame(outputLine)
   setwd(dirData)
 }
 
+mode(df.output.vals)="numeric"
+df.output.vals=as.data.frame(df.output.vals)
+df.output.fact=as.data.frame(unclass(df.output.char))
+df.output=data.frame(df.output.fact,df.output.vals)
+
+# --- Write output
 colnames(df.output)=header.names
+
 setwd(dirOut)
-write.table(df.output,file=fileOut,quote=FALSE,sep="\t",row.names = FALSE)
+write.table(df.output,file=fileOut,quote=FALSE,sep=",",row.names = FALSE)
+
+
+
