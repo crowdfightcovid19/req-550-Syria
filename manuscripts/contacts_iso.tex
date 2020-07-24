@@ -1,0 +1,30 @@
+\documentclass{article}
+
+%\usepackage{amsmath}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{graphicx}
+%\graphicspath{{fig/}}
+
+
+\title{Contacts carers-isolation}
+\author{Req 550 Syria Team}
+
+\begin{document}
+
+\maketitle 
+
+Assume one carer per isolated, and assume $n$ contacts per day between carer and isolated. Let $N_{Iso}$ be the total number of people in isolation. The fraction of the population (total $N$) that will be in contact with isolated is $N_{Iso} / N$. Therefore, we will have $ n N_{Iso} / N$ contacts between the population and isolated, per day, per individual. 
+Using the same coefficient for the reduction of the probability of infection per contact as we did in the "neutral zone" (0.2), we get $ 0.2 n N_{Iso} / N $. 
+
+This computation is independent of the contact matrix/management matrix, since we assume that carers will keep their normal behaviour whilst taking care of the isolated.
+
+Although it is not clean in terms of the implementation, the carer population should be among age2-nocomorbid-orange (that is, excluding kids or people in the green zone).
+
+In terms of the implementation, this means that lambda must have an extra term
+\[
+0.2 n N_{Iso} / N_{age2-nocomorbid-orange} ,
+\]
+only for the class age2-nocomorbid-orange. Note that this term is NOT multiplied by the management matrix term, but it is multiplied by $\tau$ as usual.
+
+
+\end{document}
