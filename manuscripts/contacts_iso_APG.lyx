@@ -1,0 +1,247 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\newcommand{\care}{\mathrm{care}}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.3cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Estimation of infectivity from isolated population
+\end_layout
+
+\begin_layout Author
+Req 550 Syria Team
+\end_layout
+
+\begin_layout Standard
+To estimate the infectivity of the population isolated we depart from the
+ following assumptions.
+ Firstly, the population class taking care of the isolated individuals belong
+ to the one of adults with no comorbidities, and we considered a number
+ 
+\begin_inset Formula $N_{\textrm{care}}$
+\end_inset
+
+ of carers having 
+\begin_inset Formula $c_{\care}$
+\end_inset
+
+ contacts per day and carer with the isolated population.
+ To continue with, we considered that the number of symptomatic individuals
+ exceeding the isolation capacity 
+\begin_inset Formula $\tilde{N}$
+\end_inset
+
+ are fully infectious (note that we use a tilde to denote variables related
+ to the isolated population).
+ In addition, the occupancy of the isolation beds is distributed among classes
+ proportionally to the number symptomatic individuals that each class contribute
+s, i.e.
+ 
+\begin_inset Formula $\tilde{N}_{j}=\tilde{N}\left(I_{j}/\sum_{j}I_{j}\right)$
+\end_inset
+
+.
+ Finally, symptomatic individuals developing symptoms that would require
+ a hospitalization, are either evacuated or they become fully infectious.
+ The rationale behind the latter choice is that, if an individual requires
+ a more dedicated care, the available means in the camps to protect the
+ population from these patients would be insufficient.
+ We model the evacuation considering a parameter 
+\begin_inset Formula $\epsilon=0$
+\end_inset
+
+ if evacuation is put in place and 
+\begin_inset Formula $\epsilon=1$
+\end_inset
+
+ otherwise.
+\end_layout
+
+\begin_layout Standard
+Given these assumptions, the number of contacts that the healthy adult populatio
+n class, indexed 
+\begin_inset Formula $k$
+\end_inset
+
+, will have with the isolated population will be 
+\begin_inset Formula $c_{\care}N_{\care}/(N_{k}-\tilde{N}_{k})$
+\end_inset
+
+ per individual and day.
+ The expression clearly shows that, increasing the number of carers, the
+ number of isolated individuals, and the number of contacts per day between
+ carers and individuals, will increase the rate of infection.
+ Hence, we expect that, for fixed 
+\begin_inset Formula $N_{\care}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{\care}$
+\end_inset
+
+, the positive effects coming from isolating individuals will be less pronounced
+ for increasingly large 
+\begin_inset Formula $\tilde{N}$
+\end_inset
+
+ values.
+ We further assume that this interaction is regulated following the guidelines
+ introduced for a safety zone, and the infectivity becomes thus reduced
+ by a factor 
+\begin_inset Formula $\xi=0.2$
+\end_inset
+
+.
+ Finally, we should note that the probability of finding an isolated individual
+ belonging to class 
+\begin_inset Formula $j$
+\end_inset
+
+ is equal to 
+\begin_inset Formula $(N_{j}/N)(\tilde{N}_{j}/N_{j})$
+\end_inset
+
+, but this probability is equal to one for the healthy adult population
+ (due to their role of carers) and equals zero for the remainer classes
+ (since they have no access to the isolation area).
+ Assuming that there is one carer for each infected person in the class
+ 
+\begin_inset Formula $j,$
+\end_inset
+
+ (
+\begin_inset Formula $N_{\care,j}=\tilde{N}_{j}$
+\end_inset
+
+), the rate of infection for the healthy adult population class 
+\begin_inset Formula $k$
+\end_inset
+
+ becomes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{k}=\tau\sum_{j}\xi c_{\care}\frac{\tilde{N}_{j}}{N_{k}-\tilde{N}_{k}}+C_{kj}\frac{P_{j}+A_{j}+\varTheta(N_{I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon H_{j}}{N_{j}},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\varTheta$
+\end_inset
+
+ is the Heaviside function and 
+\begin_inset Formula $N_{I}$
+\end_inset
+
+ the total number of symptomatic individuals at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ For the remainder classes (
+\begin_inset Formula $i\neq k$
+\end_inset
+
+) the rate of infection becomes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{i}=\tau\sum_{j}C_{ij}\frac{P_{j}+A_{j}+\varTheta(N_{I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon H_{j}}{N_{j}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
