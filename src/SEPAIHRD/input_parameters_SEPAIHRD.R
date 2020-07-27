@@ -11,9 +11,10 @@ t.incub.std=0.18 # lognormal
 t.min.incub.mean=16/24 # mean of minimum incubation time
 t.min.incub.std=0.14 # 
 incub.thr=8/24 # minimum incubation threshold
-t.P.param1=0.028 # presymptomatic time, gompertz first param
-t.P.param2=1.73 # gompertz second param
-
+#t.P.param1=0.028 # presymptomatic time, gompertz first param
+#t.P.param2=1.73 # gompertz second param
+t.P.param1=2.3 # presymptomatic time, gaussian first param
+t.P.param2=0.91 # gaussian second param
 # ..... Symptomatic compartments
 f.S.mean=0.84
 f.S.param=240 # Number of trials needed to fit the CI reported
@@ -38,7 +39,8 @@ t.ItoD.shape=t.ItoD.mean/t.ItoD.scale
 #
 # ..... Presymptomatic and exposed
 t.incub.vec=rlnorm(Nrand,mean=log(t.incub.mean),sd=t.incub.std) # generate incubation
-t.P.vec=rgompertz(Nrand, t.P.param1, t.P.param2) # then presymptomatic
+#t.P.vec=rgompertz(Nrand, t.P.param1, t.P.param2) # then presymptomatic
+t.P.vec=rnorm(Nrand,mean=t.P.param1,sd=t.P.param2)
 t.E.vec=t.incub.vec-t.P.vec # and the remainder will be exposed
 t.E.toolow.index=which(t.E.vec<incub.thr) # however, values <7h are not acceptable
 Ntoolow=length(t.E.toolow.index) # identify those
@@ -64,6 +66,8 @@ tau.vec=rnorm(Nrand,mean = tau.mean,sd=tau.param)
 # --- Transform to rates
 deltaE.vec=1/t.E.vec
 deltaP.vec=1/t.P.vec
+idx.neg=which(deltaP.vec<0) # if there are negative values, the presymptomatic does not exist
+deltaP.vec[idx.neg]=max(deltaP.vec) # fix to the highest rate
 gammaA=1/t.A.mean
 gammaI=1/t.ItoR.mean
 gammaH.vec=1/t.H.vec
