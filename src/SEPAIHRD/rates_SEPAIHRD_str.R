@@ -60,13 +60,10 @@ rates_SEPAIHRD_str = function(y, parms,t){
   # --- Quantify people at the H compartment
   Htot = sum(y[hosp.idx]) # people which needs to be in isolation, heavy symptoms
   Itot = sum(y[inf.idx]) # mild symptoms
-  Qtot = Htot+Itot  # total should be quarantined
-  isoDiff = isoThr-Qtot # check if there is space in isolation camps
-  if(isoDiff > 0){ # if it is
-    Qinf=0 # They will be removed, so they are not infectious
-  }else{ # if there is no space
-    isoDiff=abs(isoDiff) # the difference will stay in the camp
-    Qinf=1 # so they are infectious
+  Niso = isoThr*y[inf.idx]
+  names(Niso)=classes
+  if(Itot > 0){ # Niso will be zero otherwise for all classes
+    Niso = Niso/Itot
   }
   lock.mat.local=matrix(1,ncol=ncol(lock.mat),nrow=nrow(lock.mat))
   rownames(lock.mat.local)=rownames(lock.mat)
@@ -95,6 +92,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
     f=fracPtoI # double check no age structure
     h=fracItoH.str[Ref]
     g=fracItoD.str[Ref]
+    Nexp=y[S]+y[E]+y[P]+y[A]+y[R] # exposed individuals (may interact with infected in isolation, i.e. become carers)
     lambda=0 # To estimate lambda
     for(class in classes){ # Consider the probability of contact with own and other pop. classes
       classP=paste(class,"P",sep=".") # Only for infectious compartments, presymptomatic
@@ -103,24 +101,31 @@ rates_SEPAIHRD_str = function(y, parms,t){
       classI=paste(class,"I",sep=".") # and infected
       # ... Reduce the infectivity of symptomatic under some scenarios
       if(isolation == "YES"){ # If there is the possibility of isolation
-        if(Qtot==0){
-          yFracI=0
-          yFracH=0
-        }else{
-          yFracI=(y[classI]/Qtot)*isoDiff
-          yFracH=(y[classH]/Qtot)*isoDiff # distribute infectivity of those that cannot be isolated proportionally to their number across classes
+        # .... Address the infectivity of non-isolated
+        if(Itot > isoThr){ # they are considered only if the capacity of isolation is insufficient
+          Nfree=y[classI]-Niso[class] # number of non-isolated exceeds the capacity
+        }else{ 
+          Nfree=0
         }
-        yClassI=Qinf*Tcheck.mat[Ref,class]*yFracI
-        yClassH=Qinf*Tcheck.mat[Ref,class]*yFracH # considers both isolation and symptomatic interacting if tests are put in place
-      }else{
-        yClassI=Tcheck.mat[Ref,class]*y[classI]
-        yClassH=Tcheck.mat[Ref,class]*y[classH] # only affects classes being tested
+        yClassI=Tcheck.mat[Ref,class]*Nfree # they are infectious
+        # .... Now address the infectivity of isolated.
+        #      The following condition should not be needed with carers.mat, just to prevent weird things to happen
+        if(Nexp > Niso[Ref]){ # If there are more potential carers than isolated
+          frac.exp=Niso[class]/(Nexp-Niso[Ref]) # the prob. of exposure is lower
+        }else{ # otherwise
+          frac.exp=1 # all are exposed
+        }
+        iso.transm = xi*carers.mat[Ref,class]*frac.exp # isolation transmission
+      }else{ # no isolation
+        yClassI=Tcheck.mat[Ref,class]*y[classI] # all are fully infectious
+        iso.transm=0 # the isolation transmission does not hold
       }
-      #yClassI=Tcheck.mat[Ref,class]*y[classI] # only affects classes being tested
+      yClassH=Tcheck.mat[Ref,class]*y[classH] # these individuals do not pass a check
       # ... Compute lambda
-      lambda = lambda+C[Ref,class]*self*lock.mat.local[Ref,class]*(y[classP]+y[classA]+
-                                                                yClassI+yClassH)/Nsubpop[class]
-      #lambda = lambda+C[Ref,class]*(y[classP]+y[classA]+yClassI+yClassH)/Nsubpop[class]
+      lambda = lambda+
+               iso.transm+
+               C[Ref,class]*self*lock.mat.local[Ref,class]*
+                      (y[classP]+y[classA]+yClassI+evac*yClassH)/Nsubpop[class]
     }
     lambda=tau*lambda
     k=k+1 # see github issue 26
