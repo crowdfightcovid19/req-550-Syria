@@ -1,0 +1,6 @@
+"contacts","Npop","Isolate","Limit","Fate","Tcheck","lock","self"
+"null_model_mixed",2000,"NO",0,"D","NO","NO","NO"
+"null_model_mixed",2000,"YES",10,"D","NO","NO","NO"
+"null_model_mixed",2000,"YES",25,"D","NO","NO","NO"
+"null_model_mixed",2000,"YES",50,"D","NO","NO","NO"
+"null_model_mixed",2000,"YES",100,"D","NO","NO","NO"
