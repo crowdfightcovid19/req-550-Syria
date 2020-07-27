@@ -14,6 +14,9 @@ rates_SEPAIHRD_str = function(y, parms,t){
   Tcheck.mat=parms["Tcheck.mat"][[1]]
   lock.mat=parms["lock.mat"][[1]]
   hospitalized2=parms["hospitalized2"][[1]]
+  carers.mat=parms["carers.mat"][[1]]
+  evac=parms["evac"][[1]]
+  xi=parms["xi"]
   self=parms["self"][[1]]
   isolation=parms["isolation"][[1]]
   isoThr=parms["isoThr"][[1]]
@@ -145,7 +148,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
     k=k+1
     dy[k] = g*alpha*y[I] # Infected to death
     k=k+1
-    dy[k] = gammaH*y[H] # Hospitalized in W countries, the fate of these is uncertain
+    dy[k] = gammaH*y[H] # Hospitalized in W countries, the fate of these is uncertain, it is controlled in the transitions
   }
   # idx=grep("age2_no_comorbid_orange",names(y)) # DEBUG
   # y[idx] # DEBUG
