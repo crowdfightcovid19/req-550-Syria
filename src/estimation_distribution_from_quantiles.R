@@ -22,7 +22,11 @@
 # ** Presymptomatic
 # gompertz, mean = 2.3, CI=[0.8,3.0], 95%
 # For parameters a = 0.028, b = 1.73 (gompertz distribution)
-# ** Fraction assymptomatic
+# After Ashcroft article this seem to be unrealistic, we take now a gaussian
+# of mean 2.3 and CIhigh=2.3+(2.3-0.8)=3.8
+# gaussian, mean = 2.3, CI=[0.8,3.8]
+# For parameter = 0.91
+# ** Fraction asymptomatic
 # binomial, mean = 0.84, CI=[0.8,0.88], 95%
 # For parameter = 240 minimization value = 0.0019 (binomial distribution)
 # ** Symptoms onset to hospital 
@@ -43,15 +47,15 @@ library(extraDistr) # fits gompertz distribution
 rm(list=ls())
 
 ### START EDITING
-distribution="binomial" #"normal" "lognormal" "gamma" "binomial" and "gompertz"
-meanIn=0.84 # mean of the distribution 
+distribution="normal" #"normal" "lognormal" "gamma" "binomial" and "gompertz"
+meanIn=2.3 # mean of the distribution 
 CIlow=0.8 # lower CI (not log-transformed here if lognormal)
-CIhigh=0.88 # upper CI
-param=c(10) # a vector with the starting parameters to explore in the optimization, only gompertz requires two values
+CIhigh=3.8 # upper CI
+param=c(1) # a vector with the starting parameters to explore in the optimization, only gompertz requires two values
 N=10e5 # number of randomizations generated for a plot
 Level=0.95 # confidence level, implemented 0.95, 0.99 and 0.75 (interquartile)
-xlabel="Fraction of symptomatic" # a string for the xaxis with the units (e.g "incubation time (days)")
-labelPlot="FractionSymptomatic" # And a label for the plot
+xlabel="Presymptomatic time (days)" # a string for the xaxis with the units (e.g "incubation time (days)")
+labelPlot="Presymptomatic" # And a label for the plot
 pathOut="data/estimation_parameters/figures_prob_distros" # path for the plots from the root of the repo
 ### STOP EDITING
 
