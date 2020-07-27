@@ -27,7 +27,7 @@ File_multiple="input_parameters_multiple_launch_experimentH.csv"
 fake=0 # fix to 1 if you are working with test data 
 test_sim=0 # fix to 1 to avoid generating output directories and files (debug purposes)
 model.type="stochastic_variable" # one of "deterministic", "stochastic_fixed" or "stochastic_variable"
-
+xi=0.2 # additional reduction in the probability of infection between carers and isolated in tents, considering use of mask, etc and additional distancing
 
 # --- Computational parameters
 Ndays=365 # Number of days simulated
@@ -36,7 +36,7 @@ Nrand=10000 # number of random values generated per realization for each paramet
 # "stochastic_fixed" but  it is ~30 times larger for "stochastic_var", e.g. 10K for 365 days
 
 # --- Output options
-Nfull=1 # Number of simulations whose results will be fully reported (1 to Nrand)
+Nfull=10 # Number of simulations whose results will be fully reported (1 to Nrand)
 
 
 ######### STOP EDITING
@@ -54,6 +54,7 @@ cat(" ** Running experiment: ",File_multiple,"\n")
 for(i in 1:Nsim){
   descr=as.character(params.df$descr[i])
   class.infected=as.character(params.df$class.infected[i])
+  class.carers=class.infected # structure of input file should change with other choices
   Npop=params.df$Npop[i]
   isolation=params.df$isolation[i]
   isoThr=params.df$isoThr[i]
