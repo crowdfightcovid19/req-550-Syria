@@ -1,5 +1,5 @@
 # ****************************************
-# launch_SEPAIHRD-Syria_structured.R
+# make_transitions.R
 # ****************************************
 # 
 # 
