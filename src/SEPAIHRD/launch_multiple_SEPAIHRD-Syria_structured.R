@@ -21,7 +21,7 @@ rm(list=ls())
 ###### START EDITING
 
 # --- Name of the input file with parameters
-File_multiple="input_parameters_multiple_launch_experimentH.csv"
+File_multiple="input_parameters_multiple_launch_experimentB.csv"
 
 # --- Options used for testing mode only
 fake=0 # fix to 1 if you are working with test data 
@@ -31,12 +31,12 @@ xi=0.2 # additional reduction in the probability of infection between carers and
 
 # --- Computational parameters
 Ndays=365 # Number of days simulated
-Nrealiz=500 # Number of realizations of ALL parameters
+Nrealiz=5 # Number of realizations of ALL parameters
 Nrand=10000 # number of random values generated per realization for each parameter. Can be fixed to Nrealiz if "deterministic" or
 # "stochastic_fixed" but  it is ~30 times larger for "stochastic_var", e.g. 10K for 365 days
 
 # --- Output options
-Nfull=10 # Number of simulations whose results will be fully reported (1 to Nrand)
+Nfull=1 # Number of simulations whose results will be fully reported (1 to Nrand)
 
 
 ######### STOP EDITING

@@ -54,13 +54,14 @@
 #       the dynamics.
 # options = There are different types of simulations that can be run:
 #   "isolation" = Determine if hospitalized stay in the camp (and hence are still infectious) or
-#     if are isolated outside the camp. The maximum capacity of people isolated outside the camp
-#     is determined by "isoThr", all hospitalized above that value become infectious because we assume
+#     if are evacuated outside the camp. all hospitalized above that value become infectious because we assume
 #     they will stay in the camp. Their fate is then determined by the variable "hospitalized2".
+#   "isoThr" =  This parameter determine if there are individual tents available to facilitate the quarantine
+#      of mild symptomatic individuals. It should  be a number between 1 and the total population size.
 #   "hospitalized2" =  Determine whether all hospitalized will become recovered (=0) or if they die (=1) 
 #   "Tcheck" (optional) = Determine whether there exist a test check (most likely "T"emperature, = 1) that 
 #     will prevent the interaction of symptomatic people between two types of classes, identified
-#     by two keywords (keywordA and keywordB). Set to (=0) otherwise. An example may be if it is created a neutral zone, in 
+#     by two keywords (keywordA and keywordB). Set to (=0) otherwise. An example comes from safety zones, in 
 #     which it is assumed that to access this zone there is some testing to exclude symptomatic
 #     individuals, which will reduce the probability of infection. The two keywords should be present in the names of the classes given in the 
 #     input files, and will be searched with grep, so its limitations should be considered or the
@@ -72,6 +73,11 @@
 #    "self" = Self is similar in spirit to lockDown, but it applies to the whole population. It is a parameter
 #      modelling the reduction in the number of contacts that each individual will experience if self-distancing
 #      measures were implemented. Set self=0 for no self-distancing and 1>self>0 for the %-reduced.
+#    "xi" = Is a parameter to determine the reduction in the probability of infection per contact if contention
+#      measures (masks, gloves, additional distance) are put in place between carers and people isolated in tents.
+#      The same parameter is used in the estimation of the contacts between classes in the safety zone when
+#      shielding is implemented. This estimation is performed in Management_matrix_construction.R and the equivalent
+#      parameter there is called RR and fixed to 0.2, which is teh default also here.
 # warning = note that the structure of directories is strict. However, there is a command
 #    to automatically retrieve the path of the user in the repo which may not work in Windows/Mac.
 #    See comments below around the variable "this.dir", comment that specific command and fix
@@ -112,10 +118,16 @@ library(tidyverse) # another package to reshape data for ggplot
 # Build a label with the options ---------
 if(isolation == 1){
   isolation="YES"
+  Hinfect=0 # Hospitalized become non-infectious
 }else{
   isolation="NO"
-  isoThr=0
+  Hinfect=1 # Hospitalized are infectious
 }
+# if(isoThr > 0){
+#   tents="YES"
+# }else{
+#   tents="NO"
+# }
 if(hospitalized2 == 1){
   hospitalized2="D"
 }else{
@@ -225,7 +237,7 @@ y.start[first.inf]=y.start[first.inf]-1 # substract from susceptible
 inf.idx=grep(".I$",names(y.start),perl = TRUE) # take indexes infectious variables, needed to estimate capacity isolation centers
 hosp.idx=grep(".H$",names(y.start),perl = TRUE) # take indexes hospitalized variables, needed to estimate capacity isolation centers
 
-# --- Create a matrix to limit the interaction of symptomatic people between certain classes
+# --- Create a matrix to limit contacts between symptomatic people of one class and population of selected classes
 Tcheck.mat=matrix(1,ncol=ncol(C),nrow=nrow(C)) # Same size and names than the contacts matrix
 rownames(Tcheck.mat)=rownames(C)
 colnames(Tcheck.mat)=colnames(C)
@@ -235,6 +247,16 @@ if(Tcheck=="YES"){ # if Tcheck space exist
   Tcheck.mat[idx.classA,idx.classB]=0 # turn them to zero
   Tcheck.mat[idx.classB,idx.classA]=0 # will only  be applied to H and I
 }
+
+# --- Create a matrix to limit contacts between selected classes if a lockdown is imposed
+carers.mat=matrix(0,ncol=ncol(C),nrow=nrow(C)) # Same size and names than the contacts matrix
+rownames(carers.mat)=rownames(C)
+colnames(carers.mat)=colnames(C)
+if(isoThr > 0){ # if there are tents available, we need carers
+  carers.mat[class.carers,]=1 # turn them to one the interaction between the carers class and all the others
+}
+
+# --- Create a matrix to determine the interaction between isolated in tents and the class assigned as carers
 lock.mat=matrix(1,ncol=ncol(C),nrow=nrow(C)) # Same size and names than the contacts matrix
 rownames(lock.mat)=rownames(C)
 colnames(lock.mat)=colnames(C)
@@ -294,7 +316,8 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
                   gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,eta=eta,alpha=alpha,
                   fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,
                   Cont=C,Tcheck.mat=Tcheck.mat,lockDown=lockDown,lock.mat=lock.mat,self=self,
-                  hospitalized2=hospitalized2,isolation=isolation,isoThr=isoThr,
+                  hospitalized2=hospitalized2,Hinfect=Hinfect,
+                  isoThr=isoThr,xi=xi,carers.mat=carers.mat,
                   inf.idx=inf.idx,hosp.idx=hosp.idx,model.type=model.type,
                   classes=class.names,vars=var.names,compartments=compartments)
   
@@ -312,28 +335,7 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
                                         func=dxdtfun, 
                                         parms=parms.list))
   }
-  # --- Process output
-  if(i == round(k*Nrealiz/Nfull)){
-    labelTmp=paste(label,"_rand-",i,sep="")
-    fileOut=paste(labelTmp,"dat",sep=".")
-    write.table(model.output,file=fileOut,row.names = FALSE)
-    output.list[[k]]=model.output
-    rand2report[k]=i
-    if(i == 1){
-      warning("More than one randomization required to run this code")
-    }
-    u=0
-    model.aggr.output=data.frame(matrix(ncol = length(compartments), 
-                                      nrow = dim(model.output)[1]))
-    for(comp in compartments){
-      u=u+1
-      comp.vars=comp.vars.list[[u]]
-      var.aggr=rowSums(model.output[,comp.vars])
-      model.aggr.output[,u]=var.aggr
-    }
-    output.aggr.list[[k]]=model.aggr.output
-    k=k+1
-  }
+  
   # ..... Retrieve deaths, infectious, or any other data you may want to process across realizations
   if(i == 1){ # Prepare the dataframes in the first iteration
     u=0
@@ -366,6 +368,28 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
         comp.time.df.list[[v]]=comp.time.df
       }
     }
+  }
+  # --- Process output
+  if(i == round(k*Nrealiz/Nfull)){
+    labelTmp=paste(label,"_rand-",i,sep="")
+    fileOut=paste(labelTmp,"dat",sep=".")
+    write.table(model.output,file=fileOut,row.names = FALSE)
+    output.list[[k]]=model.output
+    rand2report[k]=i
+    if((i == 1)&(Nrealiz != Nfull)){
+      warning("More than one randomization required to run this code")
+    }
+    u=0
+    model.aggr.output=data.frame(matrix(ncol = length(compartments), 
+                                        nrow = dim(model.output)[1]))
+    for(comp in compartments){
+      u=u+1
+      comp.vars=comp.vars.list[[u]]
+      var.aggr=rowSums(model.output[,comp.vars])
+      model.aggr.output[,u]=var.aggr
+    }
+    output.aggr.list[[k]]=model.aggr.output
+    k=k+1
   }
   # ... When each simulation finishes
   u=0

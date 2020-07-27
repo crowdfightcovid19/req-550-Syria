@@ -15,10 +15,10 @@ rates_SEPAIHRD_str = function(y, parms,t){
   lock.mat=parms["lock.mat"][[1]]
   hospitalized2=parms["hospitalized2"][[1]]
   carers.mat=parms["carers.mat"][[1]]
-  evac=parms["evac"][[1]]
-  xi=parms["xi"]
+  Hinfect=parms["Hinfect"][[1]]
+  xi=parms["xi"][[1]]
   self=parms["self"][[1]]
-  isolation=parms["isolation"][[1]]
+  # isolation=parms["isolation"][[1]] # No longer used, the relevant param is now Hinfect
   isoThr=parms["isoThr"][[1]]
   lockDown=parms["lockDown"][[1]]
   hosp.idx=parms["hosp.idx"][[1]]
@@ -60,14 +60,17 @@ rates_SEPAIHRD_str = function(y, parms,t){
   # }
   N = sum(y) # Total population size
   
-  # --- Quantify people at the H compartment
-  Htot = sum(y[hosp.idx]) # people which needs to be in isolation, heavy symptoms
-  Itot = sum(y[inf.idx]) # mild symptoms
+  # --- Initialize vars for isolation in tents
+  # ..... Quantify people at the symptomatic compartments
+  #Htot = sum(y[hosp.idx]) # people which needs to be in isolation, heavy symptoms
+  Itot = sum(y[inf.idx]) # mild symptoms, these are the only ones that can stay in tents
   Niso = isoThr*y[inf.idx]
   names(Niso)=classes
   if(Itot > 0){ # Niso will be zero otherwise for all classes
     Niso = Niso/Itot
   }
+  
+  # --- Initialize vars for lockdown
   lock.mat.local=matrix(1,ncol=ncol(lock.mat),nrow=nrow(lock.mat))
   rownames(lock.mat.local)=rownames(lock.mat)
   colnames(lock.mat.local)=colnames(lock.mat)
@@ -76,6 +79,8 @@ rates_SEPAIHRD_str = function(y, parms,t){
       lock.mat.local=lock.mat # apply lockdown
     }
   }
+  
+  # --- Initialize vector of derivatives
   # see github issue 26 related to how dy is built
   dy=as.vector(matrix(0,nrow=1,
                       ncol=(length(classes)*Ntrans))) # Getting a vector ordered in the same way than y
@@ -95,6 +100,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
     f=fracPtoI # double check no age structure
     h=fracItoH.str[Ref]
     g=fracItoD.str[Ref]
+    
     Nexp=y[S]+y[E]+y[P]+y[A]+y[R] # exposed individuals (may interact with infected in isolation, i.e. become carers)
     lambda=0 # To estimate lambda
     for(class in classes){ # Consider the probability of contact with own and other pop. classes
@@ -103,32 +109,35 @@ rates_SEPAIHRD_str = function(y, parms,t){
       classH=paste(class,"H",sep=".") # hospitalized
       classI=paste(class,"I",sep=".") # and infected
       # ... Reduce the infectivity of symptomatic under some scenarios
-      if(isolation == "YES"){ # If there is the possibility of isolation
+      if(isoThr > 0){ # If there are tents for isolation
+        # .... Address the infectivity of isolated first.
+        #      The following condition should not be needed with carers.mat, just to prevent weird things to happen
+        if(Nexp > 0){ # There are available carers 
+          frac.exp=Niso[class]/Nexp # Note that it could be > 0
+        }else{ # otherwise it means all carers died (very unlikely)
+          isoThr=0 # so isolation does no longer make sense
+          Niso=Niso*0
+          frac.exp=0 # all are exposed
+        }
+        iso.transm = xi*carers.mat[Ref,class]*frac.exp # transmission from isolated
+        
         # .... Address the infectivity of non-isolated
-        if(Itot > isoThr){ # they are considered only if the capacity of isolation is insufficient
-          Nfree=y[classI]-Niso[class] # number of non-isolated exceeds the capacity
+        if(Itot > isoThr){ # this happens if the capacity of isolation is insufficient
+          Nfree=y[classI]-Niso[class] # number of non-isolated exceeding the capacity
         }else{ 
           Nfree=0
         }
         yClassI=Tcheck.mat[Ref,class]*Nfree # they are infectious
-        # .... Now address the infectivity of isolated.
-        #      The following condition should not be needed with carers.mat, just to prevent weird things to happen
-        if(Nexp > Niso[Ref]){ # If there are more potential carers than isolated
-          frac.exp=Niso[class]/(Nexp-Niso[Ref]) # the prob. of exposure is lower
-        }else{ # otherwise
-          frac.exp=1 # all are exposed
-        }
-        iso.transm = xi*carers.mat[Ref,class]*frac.exp # isolation transmission
       }else{ # no isolation
         yClassI=Tcheck.mat[Ref,class]*y[classI] # all are fully infectious
         iso.transm=0 # the isolation transmission does not hold
       }
-      yClassH=Tcheck.mat[Ref,class]*y[classH] # these individuals do not pass a check
+      yClassH=Tcheck.mat[Ref,class]*y[classH] # these individuals do not pass a symptoms' check
       # ... Compute lambda
       lambda = lambda+
                iso.transm+
                C[Ref,class]*self*lock.mat.local[Ref,class]*
-                      (y[classP]+y[classA]+yClassI+evac*yClassH)/Nsubpop[class]
+                      (y[classP]+y[classA]+yClassI+Hinfect*yClassH)/Nsubpop[class]
     }
     lambda=tau*lambda
     k=k+1 # see github issue 26
