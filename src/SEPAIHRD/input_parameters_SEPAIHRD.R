@@ -80,6 +80,7 @@ deltaE.vec=1/t.E.vec
 deltaP.vec=1/t.P.vec
 idx.neg=which(deltaP.vec<0) # if there are negative values, the presymptomatic does not exist
 deltaP.vec[idx.neg]=max(deltaP.vec) # fix to the highest rate
+deltaPI.vec=1/t.PI.vec
 gammaA=1/t.A.mean
 gammaI=1/t.ItoR.mean
 gammaH.vec=1/t.H.vec
