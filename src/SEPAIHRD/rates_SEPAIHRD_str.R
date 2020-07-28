@@ -9,7 +9,6 @@ rates_SEPAIHRD_str = function(y, parms,t){
   
   # --- Extract  parameters
   # .... Single-value parameters
-  Ntrans=9 # dirty way to fix the number of transitions, see github issue 26
   model.type=parms["model.type"][[1]]
   Tcheck.mat=parms["Tcheck.mat"][[1]]
   lock.mat=parms["lock.mat"][[1]]
@@ -30,6 +29,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
     tau=parms["tau"][[1]] # Simply unwrap, there is one value
     deltaE=parms["deltaE"][[1]]
     deltaP=parms["deltaP"][[1]]
+    deltaPI=parms["deltaPI"][[1]]
     gammaH=parms["gammaH"][[1]]
     eta=parms["eta"][[1]]
     alpha=parms["alpha"][[1]]
@@ -40,6 +40,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
     tau=unlist(parms["tau"][[1]])[time]
     deltaE=unlist(parms["deltaE"][[1]])[time]
     deltaP=unlist(parms["deltaP"][[1]])[time]
+    deltaPI=unlist(parms["deltaPI"][[1]])[time]
     gammaH=unlist(parms["gammaH"][[1]])[time]
     eta=unlist(parms["eta"][[1]])[time]
     alpha=unlist(parms["alpha"][[1]])[time]
@@ -49,6 +50,13 @@ rates_SEPAIHRD_str = function(y, parms,t){
   Nsubpop=unlist(parms["Nsubpop"][[1]])
   fracItoH.str=unlist(parms["fracItoH.str"][[1]])
   fracItoD.str=unlist(parms["fracItoD.str"][[1]])
+  
+  # .... Set up the number of compartments
+  if(isoThr == 0){
+    Ntrans=9 # dirty way to fix the number of transitions, see github issue 26
+  }else{
+    Ntrans=10
+  }
   
   # .... Contact matrix, classes and compartments
   C=parms["Cont"][[1]] 
@@ -92,6 +100,9 @@ rates_SEPAIHRD_str = function(y, parms,t){
     S=paste(Ref,"S",sep=".") # Create labels to handle variables and transitions
     E=paste(Ref,"E",sep=".")
     P=paste(Ref,"P",sep=".")
+    if(isoThr>0){
+      PI=paste(Ref,"PI",sep=".") # only used if isoThr>0
+    }
     A=paste(Ref,"A",sep=".")
     I=paste(Ref,"I",sep=".")
     H=paste(Ref,"H",sep=".")
@@ -105,6 +116,9 @@ rates_SEPAIHRD_str = function(y, parms,t){
     lambda=0 # To estimate lambda
     for(class in classes){ # Consider the probability of contact with own and other pop. classes
       classP=paste(class,"P",sep=".") # Only for infectious compartments, presymptomatic
+      if(isoThr>0){
+        classPI=paste(class,"PI",sep=".") # symptomatic, not isolated (only)
+      }
       classA=paste(class,"A",sep=".") # asymptomatic
       classH=paste(class,"H",sep=".") # hospitalized
       classI=paste(class,"I",sep=".") # and infected
@@ -127,7 +141,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
         }else{ 
           Nfree=0
         }
-        yClassI=Tcheck.mat[Ref,class]*Nfree # they are infectious
+        yClassI=Tcheck.mat[Ref,class]*(Nfree+y[classPI]) # they are infectious
       }else{ # no isolation
         yClassI=Tcheck.mat[Ref,class]*y[classI] # all are fully infectious
         iso.transm=0 # the isolation transmission does not hold
@@ -147,15 +161,19 @@ rates_SEPAIHRD_str = function(y, parms,t){
     k=k+1
     dy[k] = (1-f)*deltaP*y[P] # P to A
     k=k+1
-    dy[k] = f*deltaP*y[P] # P to I
+    dy[k] = f*deltaP*y[P] # P to I if isoThr=0, to PI otherwise
     k=k+1
     dy[k] = gammaA*y[A] # Asymptomatic to R
+    if(isoThr>0){
+      k=k+1
+      dy[k] = deltaPI*y[PI]
+    }
     k=k+1
     dy[k] = (1-g-h)*gammaI*y[I] # Infected to R
     k=k+1
     dy[k] = h*eta*y[I] # Infected to H
     k=k+1
-    dy[k] = g*alpha*y[I] # Infected to death
+    dy[k] = g*alpha*y[I] # Infected to D
     k=k+1
     dy[k] = gammaH*y[H] # Hospitalized in W countries, the fate of these is uncertain, it is controlled in the transitions
   }

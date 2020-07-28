@@ -270,8 +270,14 @@ if(lockDown=="YES"){ # if it is possible a lockdown
 times_vector <- seq(from=0, to=Ndays, by=1)
 if((model.type=="stochastic_fixed")||(model.type=="stochastic_variable")){
   setwd(dirCodeSpec)
-  source("make_transitions.R")
-  transitions=make_transitions(class.names,var.names,hospitalized2)
+  if(isoThr == 0){
+    source("make_transitions.R")
+    transitions=make_transitions(class.names,var.names,hospitalized2)
+  }else{
+    source("make_transitions_iso.R")
+    transitions=make_transitions_iso(class.names,var.names,hospitalized2)
+  }
+
   y.start=round(y.start)
 }
 
@@ -289,6 +295,7 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
   if((model.type=="deterministic")||(model.type=="stochastic_fixed")){
     deltaE=deltaE.vec[i]
     deltaP=deltaP.vec[i]
+    deltaPI=deltaPI.vec[i]
     gammaH=gammaH.vec[i]
     eta=eta.vec[i]
     alpha=alpha.vec[i]
@@ -302,6 +309,7 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     # Generates new parameters each realization
     deltaE=deltaE.vec
     deltaP=deltaP.vec
+    deltaPI=deltaPI.vec
     gammaH=gammaH.vec
     eta=eta.vec
     alpha=alpha.vec
@@ -312,7 +320,7 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
   gammaA=gammaA
   gammaI=gammaI
   Cont=C
-  parms.list=list(Nsubpop=Nsubpop,tau=tau,deltaE=deltaE,deltaP=deltaP,
+  parms.list=list(Nsubpop=Nsubpop,tau=tau,deltaE=deltaE,deltaP=deltaP,deltaPI=deltaPI,
                   gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,eta=eta,alpha=alpha,
                   fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,
                   Cont=C,Tcheck.mat=Tcheck.mat,lockDown=lockDown,lock.mat=lock.mat,self=self,
