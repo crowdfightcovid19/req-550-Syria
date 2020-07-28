@@ -21,7 +21,7 @@ rm(list=ls())
 ###### START EDITING
 
 # --- Name of the input file with parameters
-File_multiple="input_parameters_multiple_launch_experimentB.csv"
+File_multiple="input_parameters_multiple_launch_experimentA.csv"
 
 # --- Options used for testing mode only
 fake=0 # fix to 1 if you are working with test data 
