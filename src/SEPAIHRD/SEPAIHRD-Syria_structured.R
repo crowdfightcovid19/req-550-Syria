@@ -531,7 +531,7 @@ for(k in 1:Nfull){ # For each realization completely recorded
             axis.text = element_text(size=14),
             legend.text = element_text(size=16),
             legend.title = element_text(size=22),
-            title = element_text(size=10))+ # Increase fonts size 
+            title = element_text(size=9))+ # Increase fonts size 
       scale_colour_manual(values=col_vector)+ #and choose palette
       labs(title = paste("Model =",descr,optLabel),
            subtitle = paste("Total deaths = ",death.total[rand2report[k]],
@@ -591,7 +591,7 @@ for(comp in compartments){ # We collect all max/min of variables
           axis.text = element_text(size=16), # ,angle=90, hjust = 1,vjust=0.5),
           legend.text = element_text(size=22),
           legend.title = element_text(size=28),
-          title=element_text(size=10))+ # Increase fonts size
+          title=element_text(size=9))+ # Increase fonts size
     scale_colour_manual(values=col_qual)+
     scale_x_discrete(labels=as.character(seq(from=1,to=Nclass,by=1)))+
     labs(title = paste("Model =",descr,optLabel),
@@ -645,7 +645,7 @@ for(comp in compartments){ # We collect all max/min of variables
           axis.text = element_text(size=16), # ,angle=90, hjust = 1,vjust=0.5),
           legend.text = element_text(size=22),
           legend.title = element_text(size=28),
-          title=element_text(size=10))+ # Increase fonts size
+          title=element_text(size=9))+ # Increase fonts size
     scale_colour_manual(values=col_qual)+
     scale_x_discrete(labels=as.character(seq(from=1,to=Nclass,by=1)))+
     labs(title = paste("Model =",descr,optLabel),
@@ -704,7 +704,7 @@ for(comp in compartments.time){
           axis.text = element_text(size=16), # ,angle=90, hjust = 1,vjust=0.5),
           legend.text = element_text(size=22),
           legend.title = element_text(size=28),
-          title=element_text(size=10))+ # Increase fonts size
+          title=element_text(size=9))+ # Increase fonts size
     scale_colour_manual(values=col_qual)+
     scale_x_discrete(labels=as.character(seq(from=1,to=Nclass,by=1)))+
     labs(title = paste("Model =",descr,optLabel),
