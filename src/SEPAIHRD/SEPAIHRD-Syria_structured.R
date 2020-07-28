@@ -204,7 +204,7 @@ if(CompModel == "SEPAIHRD"){ # Only this model implemented so far
   if(isoThr==0){
     compartments=c("S","E","P","A","I","H","R","D") # 
   }else{
-    compartments=c("S","E","P","A","PI","I","H","R","D") # isolation requires one more comp.
+    compartments=c("S","E","P","A","O","I","H","R","D") # isolation requires one more comp.
   }
   if(model.type=="deterministic"){
     source("dxdt_SEPAIHRD_str.R")
@@ -281,7 +281,7 @@ if((model.type=="stochastic_fixed")||(model.type=="stochastic_variable")){
     source("make_transitions_iso.R")
     transitions=make_transitions_iso(class.names,var.names,hospitalized2)
   }
-
+  Ntrans=length(transitions)[1]/Nclass
   y.start=round(y.start)
 }
 
@@ -299,7 +299,7 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
   if((model.type=="deterministic")||(model.type=="stochastic_fixed")){
     deltaE=deltaE.vec[i]
     deltaP=deltaP.vec[i]
-    deltaPI=deltaPI.vec[i]
+    deltaO=deltaO.vec[i]
     gammaH=gammaH.vec[i]
     eta=eta.vec[i]
     alpha=alpha.vec[i]
@@ -313,7 +313,7 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     # Generates new parameters each realization
     deltaE=deltaE.vec
     deltaP=deltaP.vec
-    deltaPI=deltaPI.vec
+    deltaO=deltaO.vec
     gammaH=gammaH.vec
     eta=eta.vec
     alpha=alpha.vec
@@ -324,13 +324,14 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
   gammaA=gammaA
   gammaI=gammaI
   Cont=C
-  parms.list=list(Nsubpop=Nsubpop,tau=tau,deltaE=deltaE,deltaP=deltaP,deltaPI=deltaPI,
+  parms.list=list(Nsubpop=Nsubpop,Ntrans=Ntrans,model.type=model.type,
+                  tau=tau,deltaE=deltaE,deltaP=deltaP,deltaO=deltaO,
                   gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,eta=eta,alpha=alpha,
                   fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,
                   Cont=C,Tcheck.mat=Tcheck.mat,lockDown=lockDown,lock.mat=lock.mat,self=self,
                   hospitalized2=hospitalized2,Hinfect=Hinfect,
                   isoThr=isoThr,xi=xi,carers.mat=carers.mat,
-                  inf.idx=inf.idx,hosp.idx=hosp.idx,model.type=model.type,
+                  inf.idx=inf.idx,hosp.idx=hosp.idx,
                   classes=class.names,vars=var.names,compartments=compartments)
   
   # Run the ODE solver
@@ -358,7 +359,7 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     compartments.time=c()
     for(comp in compartments){ # We will collect all max/min of variables
       u=u+1
-      comp.id=paste(".",comp,"$",sep="")
+      comp.id=paste("\\.",comp,"$",sep="")
       comp.vars=grep(comp.id,colnames(model.output))
       comp.vars.list[[u]]=comp.vars
       comp.names=colnames(model.output)[comp.vars]
@@ -470,8 +471,14 @@ col_class = rainbow(n) #  c(brewer.pal(Nclass,"Set2"),brewer.pal(Nclass,"Dark2")
   #              brewer.pal(Nclass,"Spectral"),brewer.pal(Nclass,"Accent"), 
   #             brewer.pal(Nclass,"Paired"),brewer.pal(Nclass,"Pastel1"),
   #             brewer.pal(Nclass,"Set1"),brewer.pal(Nclass,"Set3")) # other palette
-comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
-             "Infected","Hospitalized","Recovered","Deaths")
+if(isoThr==0){
+  comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
+               "Symptomatic","Hospitalized","Recovered","Deaths")
+}else{
+  comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
+               "Symp_Onset-stage","Symp_Iso-stage","Hospitalized","Recovered","Deaths")
+}
+
 # --- Check the output, and plot dynamics
 dir.create(dirPlotOut)
 setwd(dirPlotOut)
@@ -693,7 +700,10 @@ for(comp in compartments.time){
   dev.off( )
 }
 
-
+cat("** Simulation finished:",label,"\n")
+cat("Mean death total",mean(death.total),"\n")
+cat("Mean susc total",mean(susc.total),"\n")
+cat("Mean recov total",mean(recov.total),"\n")
 ## Continue here, include frac death tolls, think if plots for aggregated, clean, test and go
 # 
 # # --- Plot the fraction of deaths

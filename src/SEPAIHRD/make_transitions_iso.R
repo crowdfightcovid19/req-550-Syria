@@ -20,7 +20,7 @@ make_transitions_iso = function(class.names,var.names,hospitalized2){
     E.vars=paste(Ref,"E",sep=".")
     P.vars=paste(Ref,"P",sep=".")
     A.vars=paste(Ref,"A",sep=".")
-    PI.vars=paste(Ref,"PI",sep=".")
+    O.vars=paste(Ref,"O",sep=".")
     I.vars=paste(Ref,"I",sep=".")
     H.vars=paste(Ref,"H",sep=".")
     R.vars=paste(Ref,"R",sep=".")
@@ -33,9 +33,9 @@ make_transitions_iso = function(class.names,var.names,hospitalized2){
     A.tmp=cbind(rbind(S.vars,-1,E.vars,+1), # This matrix lists all the transitions for class Ref
                 rbind(E.vars,-1,P.vars,+1), 
                 rbind(P.vars,-1,A.vars,+1),
-                rbind(P.vars,-1,PI.vars,+1),
+                rbind(P.vars,-1,O.vars,+1),
                 rbind(A.vars,-1,R.vars,+1), 
-                rbind(PI.vars,-1,I.vars,+1),
+                rbind(O.vars,-1,I.vars,+1),
                 rbind(I.vars,-1,R.vars,+1),
                 rbind(I.vars,-1,H.vars,+1),   
                 rbind(I.vars,-1,D.vars,+1),   

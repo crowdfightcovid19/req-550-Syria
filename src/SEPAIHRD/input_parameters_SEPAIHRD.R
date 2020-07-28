@@ -17,8 +17,8 @@ t.P.param1=2.3 # presymptomatic time, gaussian first param
 t.P.param2=0.91 # gaussian second param
 
 # ..... Time between symptom's onset and taking the decision of isolating in a tent
-t.PI.param1=2
-t.PI.param2=0.43
+t.O.param1=2
+t.O.param2=0.43
   
 # ..... Symptomatic compartments
 f.S.mean=0.84
@@ -54,12 +54,12 @@ t.E.vec[t.E.toolow.index]=t.E.toolow.vec # and substitute
 
 # ..... Symptomatic
 fracPtoI.vec=rbinom(Nrand,prob = f.S.mean,size=f.S.param)/f.S.param
-t.PI.vec=rnorm(Nrand,mean=t.PI.param1,sd=t.PI.param2)
+t.O.vec=rnorm(Nrand,mean=t.O.param1,sd=t.O.param2)
 t.ItoH.vec=rgamma(Nrand,shape=t.ItoH.shape,scale=t.ItoH.scale)
 if(isoThr > 0){ # if they are isolated
-  t.ItoH.tmp=t.ItoH.vec-t.PI.vec  # the time that remain in I once they decide isolate
+  t.ItoH.tmp=t.ItoH.vec-t.O.vec  # this is the time that should remain in "I" once they decide isolate
   idx.neg=which(t.ItoH.tmp<0) # if it is negative it means that all the time till going to H
-  t.PI.vec[idx.neg]=t.ItoH.vec[idx.neg] # they are in the fully infectious compartment
+  t.O.vec[idx.neg]=t.ItoH.vec[idx.neg] # they are in the fully infectious compartment
   t.ItoH.vec=t.ItoH.tmp # then we will make them basically skip I below and jump to H
 }
 t.H.vec=rgamma(Nrand,shape=t.H.shape,scale=t.H.scale)
@@ -80,7 +80,7 @@ deltaE.vec=1/t.E.vec
 deltaP.vec=1/t.P.vec
 idx.neg=which(deltaP.vec<0) # if there are negative values, the presymptomatic does not exist
 deltaP.vec[idx.neg]=max(deltaP.vec) # fix to the highest rate
-deltaPI.vec=1/t.PI.vec
+deltaO.vec=1/t.O.vec
 gammaA=1/t.A.mean
 gammaI=1/t.ItoR.mean
 gammaH.vec=1/t.H.vec
