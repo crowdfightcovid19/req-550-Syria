@@ -1,0 +1,7 @@
+"descr"	"class.infected"	"Npop"	"isolation"	"isoThr"	"onset"	"hospitalized2"	"Tcheck"	"keywordA"	"keywordB"	"lockDown"	"self"
+"null_model_mixed"	"age2_no_comorbid"	2000	0	50	12	1	0	"none"	"none"	0	0
+"null_model_mixed"	"age2_no_comorbid"	2000	0	50	24	1	0	"none"	"none"	0	0
+"null_model_mixed"	"age2_no_comorbid"	2000	0	50	48	1	0	"none"	"none"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	0	50	12	1	1	"orange"	"green"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	0	50	24	1	1	"orange"	"green"	0	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	0	50	48	1	1	"orange"	"green"	0	0
