@@ -11,13 +11,17 @@
 
 create_palette = function(descr){
   if(descr == "null_model_mixed"){ # five classes considered
-    col_qual=c("brown4","red","deeppink1", "orange","gold") # age1, age2NC, age2C, age3NC, age3C
+    # age1, age2NC, age2C, age3NC, age3C
+    col_qual=c("brown4","red","deeppink1", "orange","gold")
   }else if(descr == "shield_cont2_age3"){
+    # age1, age2NC, age2C, age3NC_g, age3C_g
     col_qual=c("brown4","red","deeppink1","green4","green3")
   }else if(descr == "shield_cont2_age3_age2"){
-    col_qual=c("brown4","red","olivedrab3","green4","green3")
+    # age1, age2NC, age2C_g, age3NC_g, age3C_g
+    col_qual=c("brown4","red","gold","green4","green3")
   }else{
-    col_qual=c("brown4","greenyellow","red","olivedrab4","olivedrab3","green4","green3")
+    # age1_g, age1_o, age2_c_g, age2_nc_g, age2_nc_o, age3_c_g, age3_nc_g 
+    col_qual=c("greenyellow","brown4","gold","khaki1","red","green4","green3")
   }
   return(col_qual)
 }
