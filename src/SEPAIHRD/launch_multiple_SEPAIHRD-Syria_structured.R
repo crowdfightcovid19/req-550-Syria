@@ -58,6 +58,7 @@ for(i in 1:Nsim){
   Npop=params.df$Npop[i]
   isolation=params.df$isolation[i]
   isoThr=params.df$isoThr[i]
+  onset=params.df$onset[i]
   hospitalized2=params.df$hospitalized2[i]
   Tcheck=params.df$Tcheck[i]
   keywordA=as.character(params.df$keywordA[i])
