@@ -201,7 +201,11 @@ Nclass=length(class.str)
 # .... Select the model and source it
 setwd(dirCodeSpec)
 if(CompModel == "SEPAIHRD"){ # Only this model implemented so far
-  compartments=c("S","E","P","A","I","H","R","D") # 
+  if(isoThr==0){
+    compartments=c("S","E","P","A","I","H","R","D") # 
+  }else{
+    compartments=c("S","E","P","A","PI","I","H","R","D") # isolation requires one more comp.
+  }
   if(model.type=="deterministic"){
     source("dxdt_SEPAIHRD_str.R")
     dxdtfun=dxdt_SEPAIHRD_str
