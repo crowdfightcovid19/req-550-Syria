@@ -534,6 +534,10 @@ for(k in 1:Nfull){ # For each realization completely recorded
 
 # --- Plot the final value for each variable
 # --- Plot the proportion relative to the subpopulation for each variable
+setwd(dirCodeBase)
+source("create_palette.R")
+setwd(dirPlotOut)
+col_qual=create_palette(descr)
 u=0
 for(comp in compartments){ # We collect all max/min of variables
   u=u+1
