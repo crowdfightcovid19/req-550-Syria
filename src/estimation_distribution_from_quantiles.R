@@ -32,6 +32,10 @@
 # ** Symptoms onset to decision of self-isolation
 # mean = 2 and CI=[1,3], 99% 
 # For parameter = 0.43 value = 1.19e-08 (normal distribution)"
+# mean = 1 and CI=[1/2,3/2], 99% 
+# For parameter = 0.21 minimization value = 1.17e-08 (normal distribution)
+# mean = 1/2 and CI=[1/4,3/4], 99% 
+# For parameter = 0.11 mimization value = 1.40e-09 (normal distribution)
 # ** Symptoms onset to hospital 
 #  7 days (IQR: 4-8) (Chinese study 138 patients) 
 #  For parameter = 0.14 minimization value = 1.75 (lognormal distribution)
@@ -51,14 +55,14 @@ rm(list=ls())
 
 ### START EDITING
 distribution="normal" #"normal" "lognormal" "gamma" "binomial" and "gompertz"
-meanIn=2 # mean of the distribution 
-CIlow=1 # lower CI (not log-transformed here if lognormal)
-CIhigh=3 # upper CI
+meanIn=1/2 # mean of the distribution 
+CIlow=1/4 # lower CI (not log-transformed here if lognormal)
+CIhigh=3/4 # upper CI
 param=c(1) # a vector with the starting parameters to explore in the optimization, only gompertz requires two values
 N=10e5 # number of randomizations generated for a plot
 Level=0.99 # confidence level, implemented 0.95, 0.99 and 0.75 (interquartile)
 xlabel="Time from onset to self-isolation (days)" # a string for the xaxis with the units (e.g "incubation time (days)")
-labelPlot="OnsetToSelfIsolation" # And a label for the plot
+labelPlot="OnsetToSelfIsolation3" # And a label for the plot
 pathOut="data/estimation_parameters/figures_prob_distros" # path for the plots from the root of the repo
 ### STOP EDITING
 
