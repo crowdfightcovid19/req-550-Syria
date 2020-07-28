@@ -123,11 +123,23 @@ if(isolation == 1){
   isolation="NO"
   Hinfect=1 # Hospitalized are infectious
 }
-# if(isoThr > 0){
-#   tents="YES"
-# }else{
-#   tents="NO"
-# }
+if(isoThr > 0){
+  if(onset == 12){
+    t.O.param1=1/2
+    t.O.param2=0.11
+  }else if(onset == 24){
+    t.O.param1=1
+    t.O.param2=0.21
+  }else{
+    t.O.param1=2
+    t.O.param2=0.43
+  }
+  #tents="YES"
+}else{ # these values are arbitrary, will not be used but are computed, so we prevent errors
+  t.O.param1=1/2
+  t.O.param2=0.11
+  #tents="NO"
+}
 if(hospitalized2 == 1){
   hospitalized2="D"
 }else{
@@ -161,7 +173,7 @@ if(model.type=="deterministic"){
 }else{ # stochastic variable
   MT="SV"
 }
-optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Fate",hospitalized2,
+optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Onset",onset,"_Fate",hospitalized2,
                "_Tcheck",Tcheck,"_PopSize",Npop,
                "_lock",lockLabel,"_self",selfLabel,"_mod",MT,sep="")
 

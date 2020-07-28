@@ -23,25 +23,27 @@ rm(list=ls())
 
 # --- Options used for testing mode only
 fake=0 # fix to 1 if you are working with test data 
-test_sim=0 # fix to 1 to avoid generating output directories and files (debug purposes)
+test_sim=0# fix to 1 to avoid generating output directories and files (debug purposes)
 model.type="stochastic_variable" # one of "deterministic", "stochastic_fixed" or "stochastic_variable"
 
 # --- Structure of directories and labelling 
-descr="null_model_mixed" #"null_model_mixed" # "shield_cont2_age3_age2_20" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
-class.infected="age2_no_comorbid" # "age2_no_comorbid" # "age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
+descr="shield_cont2_age3_age2_20" #"null_model_mixed" # "shield_cont2_age3_age2_20" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
+class.infected="age2_no_comorbid_orange" # "age2_no_comorbid" # "age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
 class.carers=class.infected # determine the class that will take care of those isolated in tents, typically health adults
 
 # --- Computational parameters
 Npop=2000 # Population size
 Ndays=365 # Number of days simulated
-Nrealiz=100 # Number of realizations of parameters
+Nrealiz=50 # Number of realizations of parameters
 Nrand=10000 #  number of random values generated per realization for each parameter. Can be fixed to Nrealiz if "deterministic" or
           # "stochastic_fixed" but  it is ~30 times larger for "stochastic_var", e.g. 10K for 365 days
 
 
 # --- Model type
 isolation=0 # if hospitalized leaves the camp =1, stays in the camp = 0.
-isoThr=10 # Number of individual tents for self-isolation of mild symptomatic, the difference Itot-isoThr becomes infectious
+isoThr=50 # Number of individual tents for self-isolation of mild symptomatic, the difference Itot-isoThr becomes infectious
+onset=12 # one of 12, 24 or 48, being the mean number of hours an individual takes to identify symptoms and self-isolate
+         # it requires isoThr > 0 to make any effect. 
 hospitalized2=1 # if hospitalized2 = 0, all hospitalized will recover, if = 1 all will die.
 Tcheck=0 # if tests are implemented, symptomatic individuals will be excluded from the interaction between two classes
 lockDown=0 # if there is one infection, apply lockdown to the shielded zone (1>lockDown>0, fraction of contacts reduced by
