@@ -7,6 +7,7 @@
 \textclass article
 \begin_preamble
 \newcommand{\care}{\mathrm{care}}
+\newcommand{\Exp}{\mathrm{exp}}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -106,6 +107,12 @@ To estimate the infectivity of the population isolated we depart from the
 \end_inset
 
  contacts per day and carer with the isolated population.
+ More specifically, these individuals should not be symptomatic nor death,
+ and we denote the number of individuals fulfilling this required 
+\begin_inset Formula $N_{\Exp}$
+\end_inset
+
+ (number of exposed).
  To continue with, we considered that the number of symptomatic individuals
  exceeding the isolation capacity 
 \begin_inset Formula $\tilde{N}$
@@ -139,12 +146,8 @@ s, i.e.
 
 \begin_layout Standard
 Given these assumptions, the number of contacts that the healthy adult populatio
-n class, indexed 
-\begin_inset Formula $k$
-\end_inset
-
-, will have with the isolated population will be 
-\begin_inset Formula $c_{\care}N_{\care}/(N_{k}-\tilde{N}_{k})$
+n class will have with the isolated population will be 
+\begin_inset Formula $c_{\care}N_{\care}/N_{\Exp}$
 \end_inset
 
  per individual and day.
@@ -184,8 +187,11 @@ n class, indexed
 , but this probability is equal to one for the healthy adult population
  (due to their role of carers) and equals zero for the remainer classes
  (since they have no access to the isolation area).
- Assuming that there is one carer for each infected person in the class
- 
+\end_layout
+
+\begin_layout Standard
+For simplicity, we assum that there is one carer for each infected person
+ in the class 
 \begin_inset Formula $j,$
 \end_inset
 
@@ -193,17 +199,31 @@ n class, indexed
 \begin_inset Formula $N_{\care,j}=\tilde{N}_{j}$
 \end_inset
 
-), the rate of infection for the healthy adult population class 
+), having only one contact per day (
+\begin_inset Formula $c_{\care}$
+\end_inset
+
+).
+ Note the convenience of this choice, since if the number of infectious
+ is larger than the number of available individuals to be carers the ratio
+ 
+\begin_inset Formula $\tilde{N}_{j}/N_{\Exp}>1$
+\end_inset
+
+, meaning that more than one contact per day is needed to care that population
+ class.
+ With these considerations, the rate of infection for the healthy adult
+ population class (indexed 
 \begin_inset Formula $k$
 \end_inset
 
- becomes:
+) becomes:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\lambda_{k}=\tau\sum_{j}\xi c_{\care}\frac{\tilde{N}_{j}}{N_{k}-\tilde{N}_{k}}+C_{kj}\frac{P_{j}+A_{j}+\varTheta(N_{I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon H_{j}}{N_{j}},
+\lambda_{k}=\tau\sum_{j}\xi\frac{\tilde{N}_{j}}{N_{\Exp}}+C_{kj}\frac{P_{j}+A_{j}+\varTheta(N_{I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon H_{j}}{N_{j}},
 \]
 
 \end_inset
