@@ -165,7 +165,11 @@ rates_SEPAIHRD_str = function(y, parms,t){
     dy[k] = gammaA*y[A] # Asymptomatic to R
     if(isoThr>0){
       k=k+1
-      dy[k] = deltaO*y[O]
+      dy[k] = (1-g-h)*gammaI*y[O] # Onset-Infected to R
+      k=k+1
+      dy[k] = h*deltaO*y[O] # Onset-Infected to Late-Infected
+      k=k+1
+      dy[k] = g*alpha*y[O] # Onset-Infected to D
     }
     k=k+1
     dy[k] = (1-g-h)*gammaI*y[I] # Infected to R

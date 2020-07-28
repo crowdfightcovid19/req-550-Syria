@@ -17,8 +17,9 @@ t.P.param1=2.3 # presymptomatic time, gaussian first param
 t.P.param2=0.91 # gaussian second param
 
 # ..... Time between symptom's onset and taking the decision of isolating in a tent
-t.O.param1=2
-t.O.param2=0.43
+# ..... these values are set now in the main code with the option onset, uncomment if you use this script only
+# t.O.param1=2
+# t.O.param2=0.43
   
 # ..... Symptomatic compartments
 f.S.mean=0.84
