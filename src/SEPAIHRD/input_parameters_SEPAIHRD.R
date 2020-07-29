@@ -56,6 +56,8 @@ t.E.vec[t.E.toolow.index]=t.E.toolow.vec # and substitute
 # ..... Symptomatic
 fracPtoI.vec=rbinom(Nrand,prob = f.S.mean,size=f.S.param)/f.S.param
 t.O.vec=rnorm(Nrand,mean=t.O.param1,sd=t.O.param2)
+t.O.toolow.index=which(t.O.vec<1/4) # we consider at least 6h of symptoms
+t.O.vec[t.O.toolow.index]=1/4
 t.ItoH.vec=rgamma(Nrand,shape=t.ItoH.shape,scale=t.ItoH.scale)
 if(isoThr > 0){ # if they are isolated
   t.ItoH.tmp=t.ItoH.vec-t.O.vec  # this is the time that should remain in "I" once they decide isolate
