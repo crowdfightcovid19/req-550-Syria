@@ -7,6 +7,7 @@ null_model_mixed,IsolateNO,Limit0,Onset0,FateD,TcheckNO,PopSize500,lockNO,selfNO
 null_model_mixed,IsolateNO,Limit0,Onset0,FateR,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.018,0.00017,0.018,0.00017,NA,NA,0.79,NA,0.92,0.0041,0.92,0.0041,NA,NA,0.019,NA,55,0.45,55,0.45,NA,NA
 null_model_mixed,IsolateNO,Limit10,Onset24,FateD,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.07,0.00049,0.07,0.00049,NA,NA,0.78,NA,0.86,0.0049,0.86,0.0049,NA,NA,0.075,NA,62,0.57,62,0.57,NA,NA
 null_model_mixed,IsolateNO,Limit100,Onset24,FateD,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.066,4e-04,0.066,4e-04,NA,NA,0.8,NA,0.83,0.0036,0.83,0.0036,NA,NA,0.074,NA,61,0.48,61,0.48,NA,NA
+null_model_mixed,IsolateNO,Limit2000,Onset24,FateD,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.069,0.00041,0.069,0.00041,NA,NA,0.82,NA,0.87,0.0037,0.87,0.0037,NA,NA,0.073,NA,47,0.41,47,0.41,NA,NA
 null_model_mixed,IsolateNO,Limit25,Onset24,FateD,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.069,0.00055,0.069,0.00055,NA,NA,0.75,NA,0.84,0.006,0.84,0.006,NA,NA,0.076,NA,63,0.67,63,0.67,NA,NA
 null_model_mixed,IsolateNO,Limit250,Onset24,FateD,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.066,0.00036,0.066,0.00036,NA,NA,0.81,NA,0.83,0.003,0.83,0.003,NA,NA,0.074,NA,57,0.41,57,0.41,NA,NA
 null_model_mixed,IsolateNO,Limit50,Onset12,FateD,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.073,0.00042,0.073,0.00042,NA,NA,0.79,NA,0.83,0.0037,0.83,0.0037,NA,NA,0.081,NA,67,0.55,67,0.55,NA,NA
@@ -14,7 +15,7 @@ null_model_mixed,IsolateNO,Limit50,Onset24,FateD,TcheckNO,PopSize2000,lockNO,sel
 null_model_mixed,IsolateNO,Limit50,Onset24,FateD,TcheckNO,PopSize2000,lockNO,self0.5,modSV,0.032,0.00059,0.032,0.00059,NA,NA,0.55,NA,0.42,0.0073,0.42,0.0073,NA,NA,0.069,NA,110,2.3,110,2.3,NA,NA
 null_model_mixed,IsolateNO,Limit50,Onset24,FateD,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.068,0.00046,0.068,0.00046,NA,NA,0.8,NA,0.84,0.0047,0.84,0.0047,NA,NA,0.075,NA,61,0.52,61,0.52,NA,NA
 null_model_mixed,IsolateNO,Limit50,Onset48,FateD,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.094,0.00062,0.094,0.00062,NA,NA,0.78,NA,0.83,0.0043,0.83,0.0043,NA,NA,0.1,NA,58,0.52,58,0.52,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+null_model_mixed,IsolateNO,Limit500,Onset24,FateD,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.067,0.00027,0.067,0.00027,NA,NA,0.83,NA,0.84,0.00047,0.84,0.00047,NA,NA,0.074,NA,55,0.33,55,0.33,NA,NA
 null_model_mixed,IsolateYES,Limit0,Onset0,FateD,TcheckNO,PopSize2000,lockNO,selfNO,modSV,0.098,0.00094,0.098,0.00094,NA,NA,0.82,NA,0.81,0.0072,0.81,0.0072,NA,NA,0.11,NA,56,0.64,56,0.64,NA,NA
 null_model_mixed,IsolateYES,Limit50,Onset24,FateD,TcheckNO,PopSize2000,lockNO,self0.2,modSV,0.058,0.00052,0.058,0.00052,NA,NA,0.74,NA,0.73,0.0057,0.73,0.0057,NA,NA,0.074,NA,75,0.81,75,0.81,NA,NA
 null_model_mixed,IsolateYES,Limit50,Onset24,FateD,TcheckNO,PopSize2000,lockNO,self0.5,modSV,0.027,6e-04,0.027,6e-04,NA,NA,0.48,NA,0.37,0.0077,0.37,0.0077,NA,NA,0.069,NA,110,2.8,110,2.8,NA,NA
@@ -31,6 +32,11 @@ shield_cont2_age3_age2_20,IsolateNO,Limit0,Onset0,FateD,TcheckYES,PopSize2000,lo
 shield_cont2_age3_age2_20,IsolateNO,Limit0,Onset0,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.084,0.0012,0.058,0.00049,0.041,0.00066,0.85,0.52,0.77,0.0064,0.69,0.005,0.13,0.002,0.078,0.22,57,1.7,51,0.51,92,1.5
 shield_cont2_age3_age2_20,IsolateNO,Limit0,Onset0,FateD,TcheckYES,PopSize500,lockNO,selfNO,modSV,0.066,0.00096,0.059,0.00055,0.042,0.0012,0.83,0.14,0.72,0.0036,0.7,0.0025,0.13,0.0029,0.078,0.22,23,1.1,44,0.41,81,2.9
 shield_cont2_age3_age2_20,IsolateNO,Limit0,Onset0,FateR,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.014,0.00027,0.0075,9.5e-05,0.01,0.00017,0.85,0.53,0.86,0.004,0.76,0.00026,0.17,0.0018,0.0098,0.057,59,1.6,52,0.4,94,1.3
+shield_cont2_age3_age2_20,IsolateNO,Limit10,Onset24,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.055,0.00096,0.033,0.00025,0.034,0.00053,0.76,0.49,0.8,0.005,0.72,0.0033,0.13,0.0019,0.044,0.21,63,1.9,58,0.5,99,1.8
+shield_cont2_age3_age2_20,IsolateNO,Limit100,Onset24,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.049,0.00084,0.032,0.00022,0.029,0.00063,0.8,0.43,0.76,0.0037,0.7,0.0018,0.11,0.0023,0.044,0.2,59,2,58,0.43,100,2.1
+shield_cont2_age3_age2_20,IsolateNO,Limit2000,Onset24,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.051,0.00082,0.034,0.00021,0.029,0.00066,0.86,0.5,0.81,0.0037,0.74,0.0018,0.11,0.0024,0.044,0.2,52,1.7,46,0.36,89,2.1
+shield_cont2_age3_age2_20,IsolateNO,Limit25,Onset24,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.053,0.00089,0.033,0.00023,0.032,0.00049,0.8,0.5,0.79,0.0042,0.71,0.0026,0.12,0.0016,0.044,0.21,64,1.9,60,0.5,100,1.5
+shield_cont2_age3_age2_20,IsolateNO,Limit250,Onset24,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.049,0.00084,0.033,0.00021,0.029,7e-04,0.83,0.46,0.77,0.0037,0.71,0.0018,0.11,0.0026,0.044,0.2,57,1.9,55,0.38,96,2.1
 shield_cont2_age3_age2_20,IsolateNO,Limit50,Onset12,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.053,0.00083,0.036,0.00027,0.027,0.00057,0.8,0.47,0.75,0.0044,0.69,0.003,0.1,0.0021,0.05,0.19,63,2,62,0.5,100,2.1
 shield_cont2_age3_age2_20,IsolateNO,Limit50,Onset24,FateD,TcheckYES,PopSize2000,lock0.5,self0.2,modSV,0.036,0.00059,0.03,0.00025,0.02,0.0011,0.73,0.18,0.66,0.0035,0.64,0.0026,0.082,0.0042,0.045,0.18,43,2.2,70,0.59,110,5.3
 shield_cont2_age3_age2_20,IsolateNO,Limit50,Onset24,FateD,TcheckYES,PopSize2000,lock0.5,self0.5,modSV,0.02,0.00029,0.019,0.00028,0.0026,0.00052,0.54,0.046,0.41,0.0041,0.41,0.0041,0.01,0.0022,0.045,0.087,39,1.6,110,1.8,88,12
@@ -40,6 +46,7 @@ shield_cont2_age3_age2_20,IsolateNO,Limit50,Onset24,FateD,TcheckYES,PopSize2000,
 shield_cont2_age3_age2_20,IsolateNO,Limit50,Onset24,FateD,TcheckYES,PopSize2000,lockNO,self0.2,modSV,0.039,0.00073,0.03,0.00024,0.021,0.00098,0.71,0.26,0.68,0.0038,0.65,0.0027,0.078,0.0036,0.045,0.19,53,2.3,72,0.66,110,4.3
 shield_cont2_age3_age2_20,IsolateNO,Limit50,Onset24,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.05,0.00085,0.032,0.00023,0.031,0.00051,0.83,0.47,0.77,0.0045,0.7,0.003,0.12,0.0017,0.044,0.2,61,1.9,59,0.48,100,1.8
 shield_cont2_age3_age2_20,IsolateNO,Limit50,Onset48,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.079,0.0012,0.055,0.00046,0.038,0.00071,0.79,0.48,0.77,0.0054,0.69,0.0039,0.12,0.0022,0.074,0.21,60,1.9,55,0.5,97,1.9
+shield_cont2_age3_age2_20,IsolateNO,Limit500,Onset24,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.05,0.00084,0.033,0.00025,0.029,0.00063,0.85,0.48,0.78,0.0049,0.71,0.0034,0.11,0.0023,0.045,0.2,57,1.9,53,0.42,98,2.1
 shield_cont2_age3_age2_20,IsolateYES,Limit0,Onset0,FateD,TcheckYES,PopSize2000,lockNO,selfNO,modSV,0.081,0.0012,0.058,0.00049,0.038,0.00074,0.8,0.48,0.76,0.0066,0.69,0.0049,0.12,0.0023,0.078,0.21,58,1.8,52,0.51,95,1.8
 shield_cont2_age3_age2_20,IsolateYES,Limit50,Onset24,FateD,TcheckYES,PopSize2000,lock0.5,self0.2,modSV,0.032,0.00045,0.029,0.00028,0.0097,0.00092,0.74,0.18,0.64,0.0046,0.62,0.0042,0.04,0.0039,0.045,0.14,38,1.8,70,0.7,81,5.6
 shield_cont2_age3_age2_20,IsolateYES,Limit50,Onset24,FateD,TcheckYES,PopSize2000,lock0.5,self0.5,modSV,0.018,0.00032,0.017,0.00031,0.0011,0.00028,0.55,0.02,0.37,0.0056,0.37,0.0056,0.0041,0.0017,0.045,0.051,36,1.3,110,2.3,66,13
