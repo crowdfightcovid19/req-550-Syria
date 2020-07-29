@@ -1,5 +1,5 @@
 # Plots for model_output_summaries.R
-# all interventions
+# Experiment K --- all interventions
 
 # --- Now you can create some plots
 setwd(dirCode)
@@ -10,23 +10,10 @@ Ncomp=dim(params.df)[1]
 # ... convert into df to subset
 df.out=df.output # just preventive as.data.frame(df.output,stringsAsFactors = FALSE)
 
-df.sub=data.frame()
-for(i in 1:Ncomp){
-  contacts.var=as.character(params.df$contacts[i])
-  PopSize.var=paste("PopSize",params.df$Npop[i],sep="")
-  Isolate.var=paste("Isolate",params.df$Isolate[i],sep="")
-  Limit.var=paste("Limit",params.df$Limit[i],sep="")
-  Fate.var=paste("Fate",params.df$Fate[i],sep="")
-  Tcheck.var=paste("Tcheck",params.df$Tcheck[i],sep="")
-  lock.var=paste("lock",params.df$lock[i],sep="")
-  self.var=paste("self",params.df$self[i],sep="")
-  
-  df.tmp=subset(df.out, contacts==contacts.var &  Isolate==Isolate.var &
-                  Limit==Limit.var & Fate==Fate.var & Tcheck==Tcheck.var &
-                  PopSize==PopSize.var & lock==lock.var & self==self.var)
-  
-  df.sub=rbind(df.sub,df.tmp)
-}
+# --- Subset table
+df.sub = extract_subtable_output_summaries(Ncomp,df.out,params.df)
+
+# --- Reorder levels if needed and create labels
 dim(df.sub)
 intervention=as.factor(seq(from=1,to=dim(df.sub)[1],by=1))
 intervention.label=c("none","self 20%","isol 10","self 20% + isol 10",

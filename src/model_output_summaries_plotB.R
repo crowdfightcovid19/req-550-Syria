@@ -1,33 +1,19 @@
 # Plots for model_output_summaries.R
-# shielding
+# Experiment A -- shielding
 
 # --- Now you can create some plots
 setwd(dirCode)
-fileExp="input_parameters_multiple_output_summaries_B.csv" # A file with the comparisons you want to do
+fileExp="input_parameters_multiple_output_summaries_A.csv" # A file with the comparisons you want to do
 params.df=read.table(file=fileExp,header = TRUE,sep=",") 
 Ncomp=dim(params.df)[1]
 
 # ... convert into df to subset
 df.out=df.output # just preventive as.data.frame(df.output,stringsAsFactors = FALSE)
 
-df.sub=data.frame()
-for(i in 1:Ncomp){
-  contacts.var=as.character(params.df$contacts[i])
-  PopSize.var=paste("PopSize",params.df$Npop[i],sep="")
-  Isolate.var=paste("Isolate",params.df$Isolate[i],sep="")
-  Limit.var=paste("Limit",params.df$Limit[i],sep="")
-  Fate.var=paste("Fate",params.df$Fate[i],sep="")
-  Tcheck.var=paste("Tcheck",params.df$Tcheck[i],sep="")
-  lock.var=paste("lock",params.df$lock[i],sep="")
-  self.var=paste("self",params.df$self[i],sep="")
-  
-  df.tmp=subset(df.out, contacts==contacts.var &  Isolate==Isolate.var &
-                  Limit==Limit.var & Fate==Fate.var & Tcheck==Tcheck.var &
-                  PopSize==PopSize.var & lock==lock.var & self==self.var)
-  
-  df.sub=rbind(df.sub,df.tmp)
-}
+# --- Subset table
+df.sub = extract_subtable_output_summaries(Ncomp,df.out,params.df)
 
+# --- Reorder levels if needed
 setwd(dirPlotOut)
 levels(df.sub$contacts)
 # idx.self=c(1,1,2) # not needed
@@ -130,6 +116,7 @@ varX=df.sub[,"contacts"]
 varY1=df.sub[,"P.outbrk.E"] #"`P.outbrk.E`"
 #errY1=df.sub[,"P.outbrk.stderr.E"]
 varY2=df.sub[,"P.outbrk.S"] #"`P.outbrk.E`"
+#browser()
 #errY2=df.sub[,"P.outbrk.stderr.S"]
 xlabel="Number of contacts per week/individual"
 ylabel="Probability outbreak"
