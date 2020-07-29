@@ -17,7 +17,7 @@
 #   across the different  simulations ="Time". The latter case should be used to estimate the times
 #   in which, e.g. a peak of infection, occur.
 #   In addition, the file NumFinalDeaths and NumFinalRecovered must always be processed, because are
-#   used to narrow the statistics to simulations in which at least one death is observed, and to compute
+#   used to narrow the statisticsd down to simulations in which at least one death is observed, and to compute
 #   the CFR. The file NumFinalDeaths must be located before NumFinalRecovered.
 # note = The files.code could be avoided having a look at the name of the file, if it contains Num, we
 #   typically want to compute fractions, if it contains Frac, we must sum values, and if it contains Time
@@ -140,10 +140,16 @@ df.output.char=matrix(NA,nrow=length(dir.list),ncol=Nparam)
 df.output.vals=matrix(NA,nrow=length(dir.list),ncol=Nvals)
 
 k=0
+Nitems=30 # number of expected items in a directory if the simulation finished correctly
 for(dirIn in dir.list){
   k=k+1
   cat(">> Processing directory: ",dirIn,"\n")
-  
+  # ... Control that the directory has finished the simulations
+  contents=list.files(path = dirIn)
+  if(length(contents) < 30){
+    warning(paste("Skipping directory, it contains less than ",Nitems," items: ",dirIn)) 
+    next
+  } 
   # ... Extract population size and create some labels
   str.PopSize=stri_split_fixed(dirIn,"PopSize")[[1]][2] # Identify ppopulation size from dir name step 1
   PopSize=as.numeric(unlist(stri_split_fixed(str.PopSize,"_")[[1]][1])) # step2
