@@ -6,6 +6,7 @@ setwd(dirCode)
 fileExp="input_parameters_multiple_output_summaries_B.csv" # A file with the comparisons you want to do
 params.df=read.table(file=fileExp,header = TRUE,sep=",") 
 Ncomp=dim(params.df)[1]
+cat(">> Plotting results from experiment: ",fileExp,"\n")
 
 # ... convert into df to subset
 df.out=df.output # just preventive as.data.frame(df.output,stringsAsFactors = FALSE)
@@ -60,10 +61,10 @@ dev.off( )
 
 #  time to peak
 varX="Limit"
-varY="TimePeakInfected.mean" #"`P.outbrk.E`"
-errY="TimePeakInfected.stderr"
+varY="TimePeakSymptomatic.mean" #"`P.outbrk.E`"
+errY="TimePeakSymptomatic.stderr"
 xlabel="Isolation capacity (individuals)"
-ylabel="Time to peak of infected (days)"
+ylabel="Time to peak of Symptomatic (days)"
 titlelabel="Isolation"
 
 Npop=2000
@@ -99,7 +100,7 @@ dev.off( )
 #  Probability outbreak
 varX="Limit"
 varY="P.outbrk.E" #"`P.outbrk.E`"
-#errY="TimePeakInfected.stderr"
+#errY="TimePeakSymptomatic.stderr"
 xlabel="Isolation capacity (individuals)"
 ylabel="Probability outbreak"
 titlelabel="Isolation"

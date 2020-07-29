@@ -1,11 +1,11 @@
 # Plots for model_output_summaries.R
 # Experiment A -- shielding
-
 # --- Now you can create some plots
 setwd(dirCode)
 fileExp="input_parameters_multiple_output_summaries_A.csv" # A file with the comparisons you want to do
 params.df=read.table(file=fileExp,header = TRUE,sep=",") 
 Ncomp=dim(params.df)[1]
+cat(">> Plotting results from experiment: ",fileExp,"\n")
 
 # ... convert into df to subset
 df.out=df.output # just preventive as.data.frame(df.output,stringsAsFactors = FALSE)
@@ -60,14 +60,14 @@ dev.off( )
 
 #  Self distancing for the null model, time to peak
 labX="contacts"
-labY="TimePeakInfected"
+labY="TimePeakSymptomatic"
 varX=df.sub[,"contacts"]
-varY1=df.sub[,"TimePeakInfected.mean.E"] #"`P.outbrk.E`"
-errY1=df.sub[,"TimePeakInfected.stderr.E"]
-varY2=df.sub[,"TimePeakInfected.mean.S"] #"`P.outbrk.E`"
-errY2=df.sub[,"TimePeakInfected.stderr.S"]
+varY1=df.sub[,"TimePeakSymptomatic.mean.E"] #"`P.outbrk.E`"
+errY1=df.sub[,"TimePeakSymptomatic.stderr.E"]
+varY2=df.sub[,"TimePeakSymptomatic.mean.S"] #"`P.outbrk.E`"
+errY2=df.sub[,"TimePeakSymptomatic.stderr.S"]
 xlabel="Number of contacts per week/individual"
-ylabel="Time to peak of infected (days)"
+ylabel="Time to peak of symptomatic (days)"
 titlelabel="Shielding"
 Npop=2000
 
