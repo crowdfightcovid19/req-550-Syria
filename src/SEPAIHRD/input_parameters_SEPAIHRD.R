@@ -46,12 +46,14 @@ t.ItoD.shape=t.ItoD.mean/t.ItoD.scale
 # ..... Presymptomatic and exposed
 t.incub.vec=rlnorm(Nrand,mean=log(t.incub.mean),sd=t.incub.std) # generate incubation
 #t.P.vec=rgompertz(Nrand, t.P.param1, t.P.param2) # then presymptomatic
-t.P.vec=rnorm(Nrand,mean=t.P.param1,sd=t.P.param2)
+t.P.vec=rnorm(Nrand,mean=t.P.param1,sd=t.P.param2) # then presymptomatic
 t.E.vec=t.incub.vec-t.P.vec # and the remainder will be exposed
 t.E.toolow.index=which(t.E.vec<incub.thr) # however, values <7h are not acceptable
 Ntoolow=length(t.E.toolow.index) # identify those
 t.E.toolow.vec=rnorm(Ntoolow,mean=t.min.incub.mean,sd=t.min.incub.std) # and generate minimum values compatible with literature
 t.E.vec[t.E.toolow.index]=t.E.toolow.vec # and substitute
+t.E.vec.neg=which(t.E.vec<0) # still, this may happen with prob. ~10^(-7) so not neglectable if many simulations are run
+t.E.vec[t.E.vec.neg]=t.min.incub.mean
 
 # ..... Symptomatic
 fracPtoI.vec=rbinom(Nrand,prob = f.S.mean,size=f.S.param)/f.S.param
