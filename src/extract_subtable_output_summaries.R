@@ -25,7 +25,7 @@ extract_subtable_output_summaries = function(Ncomp,df.out,params.df){
     self.var=paste("self",params.df$self[i],sep="")
     
     df.tmp=subset(df.out, contacts==contacts.var &  Isolate==Isolate.var & 
-                    Onset = Onset.var & Limit==Limit.var & Fate==Fate.var & Tcheck==Tcheck.var &
+                    Onset == Onset.var & Limit==Limit.var & Fate==Fate.var & Tcheck==Tcheck.var &
                     PopSize==PopSize.var & lock==lock.var & self==self.var)
     
     df.sub=rbind(df.sub,df.tmp)
