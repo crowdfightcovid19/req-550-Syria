@@ -28,6 +28,7 @@ rm(list=ls())
 library(tidyverse)
 library(ggplot2)
 library(stringi)
+library(stringr)
 
 
 #### START EDITING
@@ -36,7 +37,7 @@ keywordS="green" # a keyword to identify (S)hielded pop
 keywordE="orange" # non-shielded pop (E)xposed 
 
 # .... Enumerate the header of the files you want to process
-files.list=c("NumFinalDeaths","NumFinalRecovered","TimePeakInfected")#,"TimeSteadyStateSusceptible")
+files.list=c("NumFinalDeaths","NumFinalRecovered","TimePeakSymptomatic")#,"TimeSteadyStateSusceptible")
 files.code=c("Frac","Frac","Time")#,"Time") # A vector determining which kind of statistics you want to
        # retrieve for each file (should have the same order than file.list). See header of script for details
 
@@ -150,6 +151,17 @@ for(dirIn in dir.list){
   fileLabel=gsub("/","_",dirIn) # Retrieve the label that all files have, related to the directory
   fileLabel=gsub("^\\.","",fileLabel) # but some processing needed
   
+  # ... Identify if the intervention involves setting up isolation tents (isoThr>0)
+  files.list.local=files.list # From now we will use different names depending on the scenario
+  isoThr.key=grep("Limit0",fileLabel) # If this search is non-empty 
+  if(is_empty(isoThr.key)){ # It means the intervention is active
+    file.class=apply(as.matrix(unlist(files.list)),MARGIN = 1,   # Symptomatic files change their name
+                     FUN=function(x){!is_empty(grep("Symptomatic",x))}) # identify these files
+    file.idx=which(file.class==TRUE) # only for the positions with these files
+    files.list.local[file.idx]=lapply(files.list.local[file.idx], # apply the change in the names
+                            FUN=function(x){str_replace(x,"Symptomatic","Symp_Iso-stage")})
+  }
+  
   # ... Extract all the parameters from directory description
   shieldLab=stri_split_fixed(fileLabel,"Isolate")[[1]][1] # retrieve the label identifying the contacts matrix
   shieldLab=gsub("^_","",shieldLab) # remove starting and final "_"
@@ -162,7 +174,7 @@ for(dirIn in dir.list){
   
   # ... Process Files
   i=0
-  for(file2proc in files.list){
+  for(file2proc in files.list.local){
     cat("... Processing file: ", file2proc)
     i = i + 1
     fileIn = paste(file2proc, subLabel, fileLabel, ".dat", sep = "")
@@ -283,11 +295,11 @@ source("model_output_summaries_plotA.R")
 setwd(dirCode)
 source("model_output_summaries_plotB.R")
 setwd(dirCode)
-source("model_output_summaries_plotC.R")
+source("model_output_summaries_plotJ.R")
 setwd(dirCode)
-source("model_output_summaries_plotD.R")
+source("model_output_summaries_plotH.R")
 setwd(dirCode)
-source("model_output_summaries_plotE.R")
+source("model_output_summaries_plotK.R")
 
 
 
