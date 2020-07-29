@@ -6,6 +6,7 @@ setwd(dirCode)
 fileExp="input_parameters_multiple_output_summaries_H.csv" # A file with the comparisons you want to do
 params.df=read.table(file=fileExp,header = TRUE,sep=",") 
 Ncomp=dim(params.df)[1]
+cat(">> Plotting results from experiment: ",fileExp,"\n")
 
 # ... convert into df to subset
 df.out=df.output # just preventive as.data.frame(df.output,stringsAsFactors = FALSE)
@@ -60,10 +61,10 @@ dev.off( )
 
 #  Self distancing for the null model, time to peak
 varX="self"
-varY="TimePeakInfected.mean" #"`P.outbrk.E`"
-errY="TimePeakInfected.stderr"
+varY="TimePeakSymptomatic.mean" #"`P.outbrk.E`"
+errY="TimePeakSymptomatic.stderr"
 xlabel="Reduction personal contact (%)"
-ylabel="Time to peak of infected (days)"
+ylabel="Time to peak of symptomatic (days)"
 titlelabel="Self-distancing"
 Npop=2000
 
