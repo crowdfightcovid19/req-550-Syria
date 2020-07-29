@@ -27,8 +27,8 @@ test_sim=0# fix to 1 to avoid generating output directories and files (debug pur
 model.type="stochastic_variable" # one of "deterministic", "stochastic_fixed" or "stochastic_variable"
 
 # --- Structure of directories and labelling 
-descr="shield_cont2_age3_age2_20" #"null_model_mixed" # "shield_cont2_age3_age2_20" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
-class.infected="age2_no_comorbid_orange" # "age2_no_comorbid" # "age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
+descr="null_model_mixed" #"null_model_mixed" # "shield_cont2_age3_age2_20" # A string describing the model, input data should be created in a directory with that name in /data, outputs will be located there
+class.infected="age2_no_comorbid" # "age2_no_comorbid" # "age2_no_comorbid_orange" # string with the name of the class in which the first infection is detected
 class.carers=class.infected # determine the class that will take care of those isolated in tents, typically health adults
 
 # --- Computational parameters
