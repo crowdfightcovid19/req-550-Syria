@@ -1,33 +1,19 @@
 # Plots for model_output_summaries.R
-# self-distancing
+# Experiment H -- self-distancing
 
 # --- Now you can create some plots
 setwd(dirCode)
-fileExp="input_parameters_multiple_output_summaries_A.csv" # A file with the comparisons you want to do
+fileExp="input_parameters_multiple_output_summaries_H.csv" # A file with the comparisons you want to do
 params.df=read.table(file=fileExp,header = TRUE,sep=",") 
 Ncomp=dim(params.df)[1]
 
 # ... convert into df to subset
 df.out=df.output # just preventive as.data.frame(df.output,stringsAsFactors = FALSE)
 
-df.sub=data.frame()
-for(i in 1:Ncomp){
-  contacts.var=as.character(params.df$contacts[i])
-  PopSize.var=paste("PopSize",params.df$Npop[i],sep="")
-  Isolate.var=paste("Isolate",params.df$Isolate[i],sep="")
-  Limit.var=paste("Limit",params.df$Limit[i],sep="")
-  Fate.var=paste("Fate",params.df$Fate[i],sep="")
-  Tcheck.var=paste("Tcheck",params.df$Tcheck[i],sep="")
-  lock.var=paste("lock",params.df$lock[i],sep="")
-  self.var=paste("self",params.df$self[i],sep="")
-  
-  df.tmp=subset(df.out, contacts==contacts.var &  Isolate==Isolate.var &
-                  Limit==Limit.var & Fate==Fate.var & Tcheck==Tcheck.var &
-                  PopSize==PopSize.var & lock==lock.var & self==self.var)
-  
-  df.sub=rbind(df.sub,df.tmp)
-}
+# --- Subset table
+df.sub = extract_subtable_output_summaries(Ncomp,df.out,params.df)
 
+# --- Determine if your analysis require any transformation, e.g. reodering levels  
 setwd(dirPlotOut)
 levels(df.sub$self)
 idx.self=c(3,1,2) # reorder levels
