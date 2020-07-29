@@ -10,8 +10,8 @@
 #    SEPAIHRD-Syria_structured.R, and creates a single table computing means and standard errors
 #    for some variables of interest, specified by the user. For some variables (e.g. time to
 #    steady state) these means are computed differentiating shielded and exposed population. It
-#    is also estimated the probability of observing an outbreak (i.e. at least one death) and the Case
-#    fatality ratio.
+#    is also estimated the probability of observing an outbreak (i.e. at least one death, a more strict
+#    criteria could be used but should be recoded) and the Case fatality ratio.
 # usage = Determine the files that you want to process and add, for each file, a code to determine
 #   if you want to retrieve relative numbers files.codes="Frac", total numbers ="Num" or means
 #   across the different  simulations ="Time". The latter case should be used to estimate the times
@@ -47,7 +47,7 @@ idDir="modSV" # this is a string contained in all the directories that should be
 fileOut=paste("Summary_interventions_",idDir,".csv",sep="")
 #### STOP EDITING
 
-header.names=c("contacts","Isolate","Limit","Fate","Tcheck","PopSize","lock","self","mod")
+header.names=c("contacts","Isolate","Limit","Onset","Fate","Tcheck","PopSize","lock","self","mod")
 Nparam=length(header.names)
 # --- Source Functions 
 # ..... Function to get output directories
@@ -84,6 +84,7 @@ get_statistics_total <- function(df,Nrealiz,idx){
   return(as.list(c(Mean,stdErr)))
 }
 get_statistics_peaks <- function(df,Nrealiz,idx){
+  #browser()
   if(!is_empty(idx)){
     df.total=rowMeans(df) # raw numbers, divide by PopSize to take fractions
     Mean=mean(df.total) # Mean total deaths
@@ -170,33 +171,39 @@ for(dirIn in dir.list){
     # fileT = grep("^Time", fileIn) # and totals for Frac files would be wrong
     df.all = read_csv(file = fileIn)
     df.all = subset(df.all, select = -c(X1))
+    Nrealiz.all=dim(df.all)[1] # store the original number of realizations
     idx.classS = grep(keywordS, colnames(df.all)) # cols for shielded population
     idx.classE = grep(keywordE, colnames(df.all)) # remaining pop
     if (file2proc == "NumFinalDeaths") {
       # this file should be the first
       death.totals = rowSums(df.all) # because we will identify simulations with no deaths
       nodeath.obs = which(death.totals > 0) # and create an index to work only with them
+      death.totals.E=rowSums(df.all[,idx.classE])
+      nodeath.obs.E = which(death.totals.E > 0)
+      death.totals.S=rowSums(df.all[,idx.classS])
+      nodeath.obs.S = which(death.totals.S > 0)
     }
     df = df.all[nodeath.obs, ] # gather statistics only for cases where deaths are observed
-    Nrealiz.all=dim(df.all)[1] # store the original number of realizations
-    Nrealiz = dim(df)[1] # this will reduce the number of realizations to those with no deaths
-    df.E = df[, idx.classE] # only exposed
-    df.S = df[, idx.classS] # only susceptible
+    Nrealiz=dim(df)[1] # Number realizations for all set
+    df.E = df.all[nodeath.obs.E, idx.classE] # only exposed
+    df.S = df.all[nodeath.obs.S, idx.classS] # only susceptible
+    Nrealiz.E = dim(df.E)[1] # this will reduce the number of realizations to those with no deaths
+    Nrealiz.S = dim(df.S)[1] # this will reduce the number of realizations to those with no deaths
     if(files.code[i] == "Frac"){
       # files for which we want to gather fractions
       stat.list = get_statistics_frac_total(df, PopSize, Nrealiz, 1)
-      stat.list.E = get_statistics_frac_total(df.E, PopSize, Nrealiz, idx.classE)
-      stat.list.S = get_statistics_frac_total(df.S, PopSize, Nrealiz, idx.classS)
+      stat.list.E = get_statistics_frac_total(df.E, PopSize, Nrealiz.E, idx.classE)
+      stat.list.S = get_statistics_frac_total(df.S, PopSize, Nrealiz.S, idx.classS)
     } else if(files.code[i] == "Num"){
       # we want total numbers
       stat.list = get_statistics_total(df, Nrealiz, 1)
-      stat.list.E = get_statistics_total(df.E, Nrealiz, idx.classE)
-      stat.list.S = get_statistics_total(df.S, Nrealiz, idx.classS)
+      stat.list.E = get_statistics_total(df.E, Nrealiz.E, idx.classE)
+      stat.list.S = get_statistics_total(df.S, Nrealiz.S, idx.classS)
     } else if(files.code[i] == "Time"){
       # we want mean peak times
       stat.list = get_statistics_peaks(df, Nrealiz, 1)
-      stat.list.E = get_statistics_peaks(df.E, Nrealiz, idx.classE)
-      stat.list.S = get_statistics_peaks(df.S, Nrealiz, idx.classS)
+      stat.list.E = get_statistics_peaks(df.E, Nrealiz.E, idx.classE)
+      stat.list.S = get_statistics_peaks(df.S, Nrealiz.S, idx.classS)
     }
     df.mean = stat.list[[1]]
     df.stdErr = stat.list[[2]]
@@ -266,6 +273,21 @@ colnames(df.output)=header.names
 
 setwd(dirOut)
 write.table(df.output,file=fileOut,quote=FALSE,sep=",",row.names = FALSE)
+
+# Plots ----------
+# Plots are prepared in external files, and each of them reads from an input
+# file determining the interventions to be processed simultaneoulsy.
+setwd(dirCode)
+source("extract_subtable_output_summaries.R")
+source("model_output_summaries_plotA.R")
+setwd(dirCode)
+source("model_output_summaries_plotB.R")
+setwd(dirCode)
+source("model_output_summaries_plotC.R")
+setwd(dirCode)
+source("model_output_summaries_plotD.R")
+setwd(dirCode)
+source("model_output_summaries_plotE.R")
 
 
 
