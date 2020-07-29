@@ -31,165 +31,179 @@ now it may be considered a guide for the development of flexible downstream
 post-processing scripts.
 
 \begin{table}[H]
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline 
-Simul. & Experim. & Structure & Npop & Isolation & Thr. & Contacts & Tcheck & lock & self & H-fate\tabularnewline
+Simul. & Experim. & Structure & Npop & Evac. & N.Tents & Onset & Contacts & Tcheck & lock & self & H-fate\tabularnewline
 \hline 
 \hline 
-1 & \multirow{6}{*}{A. Basic intervention} & \multirow{2}{*}{Null Mixed} & \multirow{6}{*}{2000} & \multirow{6}{*}{No} & \multirow{6}{*}{0} & \multirow{2}{*}{MF} & \multirow{2}{*}{No} & \multirow{6}{*}{No} & \multirow{6}{*}{No} & D\tabularnewline
-\cline{1-1} \cline{11-11} 
-2 &  &  &  &  &  &  &  &  &  & R\tabularnewline
-\cline{1-1} \cline{3-3} \cline{7-8} \cline{8-8} \cline{11-11} 
-3 &  & \multirow{4}{*}{Shield (20\%)} &  &  &  & \multirow{2}{*}{2/7} & \multirow{4}{*}{Yes} &  &  & D\tabularnewline
-\cline{1-1} \cline{11-11} 
-4 &  &  &  &  &  &  &  &  &  & R\tabularnewline
-\cline{1-1} \cline{7-7} \cline{11-11} 
-5 &  &  &  &  &  & \multirow{2}{*}{10/7} &  &  &  & D\tabularnewline
-\cline{1-1} \cline{11-11} 
-6 &  &  &  &  &  &  &  &  &  & R\tabularnewline
+1 & \multirow{6}{*}{A. Shielding and limits} & \multirow{2}{*}{Null Mixed} & \multirow{6}{*}{2000} & \multirow{6}{*}{No} & \multirow{6}{*}{0} & \multirow{6}{*}{0} & \multirow{2}{*}{MF} & \multirow{2}{*}{No} & \multirow{6}{*}{No} & \multirow{6}{*}{No} & D\tabularnewline
+\cline{1-1} \cline{12-12} 
+2 &  &  &  &  &  &  &  &  &  &  & R\tabularnewline
+\cline{1-1} \cline{3-3} \cline{8-9} \cline{9-9} \cline{12-12} 
+3 &  & \multirow{4}{*}{Shield (20\%)} &  &  &  &  & \multirow{2}{*}{2/7} & \multirow{4}{*}{Yes} &  &  & D\tabularnewline
+\cline{1-1} \cline{12-12} 
+4 &  &  &  &  &  &  &  &  &  &  & R\tabularnewline
+\cline{1-1} \cline{8-8} \cline{12-12} 
+5 &  &  &  &  &  &  & \multirow{2}{*}{10/7} &  &  &  & D\tabularnewline
+\cline{1-1} \cline{12-12} 
+6 &  &  &  &  &  &  &  &  &  &  & R\tabularnewline
 \hline 
-7 & \multirow{21}{*}{B. Role isolation centers} & \multirow{7}{*}{Null Mixed} & \multirow{21}{*}{2000} & \multirow{21}{*}{Yes} & 10 & \multirow{7}{*}{MF} & \multirow{7}{*}{No} & \multirow{21}{*}{No} & \multirow{21}{*}{No} & \multirow{21}{*}{D}\tabularnewline
+7 & \multirow{14}{*}{B. Role individual tents} & \multirow{7}{*}{Null Mixed} & \multirow{14}{*}{2000} & \multirow{14}{*}{No} & 10 & \multirow{14}{*}{24} & \multirow{7}{*}{MF} & \multirow{7}{*}{No} & \multirow{14}{*}{No} & \multirow{14}{*}{No} & \multirow{14}{*}{D}\tabularnewline
 \cline{1-1} \cline{6-6} 
-8 &  &  &  &  & 20 &  &  &  &  & \tabularnewline
+8 &  &  &  &  & 20 &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-9 &  &  &  &  & 50 &  &  &  &  & \tabularnewline
+9 &  &  &  &  & 50 &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-10 &  &  &  &  & 100 &  &  &  &  & \tabularnewline
+10 &  &  &  &  & 100 &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-11 &  &  &  &  & 250 &  &  &  &  & \tabularnewline
+11 &  &  &  &  & 250 &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-12 &  &  &  &  & 500 &  &  &  &  & \tabularnewline
+12 &  &  &  &  & 500 &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-13 &  &  &  &  & $\infty$ &  &  &  &  & \tabularnewline
-\cline{1-1} \cline{3-3} \cline{6-8} \cline{7-8} \cline{8-8} 
-14 &  & \multirow{14}{*}{Shield (20\%)} &  &  & 10 & \multirow{7}{*}{2/7} & \multirow{14}{*}{Yes} &  &  & \tabularnewline
+13 &  &  &  &  & $\infty$ &  &  &  &  &  & \tabularnewline
+\cline{1-1} \cline{3-3} \cline{6-6} \cline{8-9} \cline{9-9} 
+14 &  & \multirow{7}{*}{Shield (20\%)} &  &  & 10 &  & \multirow{7}{*}{2/7} & \multirow{7}{*}{Yes} &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-15 &  &  &  &  & 20 &  &  &  &  & \tabularnewline
+15 &  &  &  &  & 20 &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-16 &  &  &  &  & 50 &  &  &  &  & \tabularnewline
+16 &  &  &  &  & 50 &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-17 &  &  &  &  & 100 &  &  &  &  & \tabularnewline
+17 &  &  &  &  & 100 &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-18 &  &  &  &  & 250 &  &  &  &  & \tabularnewline
+18 &  &  &  &  & 250 &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-19 &  &  &  &  & 500 &  &  &  &  & \tabularnewline
+19 &  &  &  &  & 500 &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{6-6} 
-20 &  &  &  &  & $\infty$ &  &  &  &  & \tabularnewline
-\cline{1-1} \cline{6-7} \cline{7-7} 
-21 &  &  &  &  & 10 & \multirow{7}{*}{10/7} &  &  &  & \tabularnewline
-\cline{1-1} \cline{6-6} 
-22 &  &  &  &  & 20 &  &  &  &  & \tabularnewline
-\cline{1-1} \cline{6-6} 
-23 &  &  &  &  & 50 &  &  &  &  & \tabularnewline
-\cline{1-1} \cline{6-6} 
-24 &  &  &  &  & 100 &  &  &  &  & \tabularnewline
-\cline{1-1} \cline{6-6} 
-25 &  &  &  &  & 250 &  &  &  &  & \tabularnewline
-\cline{1-1} \cline{6-6} 
-26 &  &  &  &  & 500 &  &  &  &  & \tabularnewline
-\cline{1-1} \cline{6-6} 
-27 &  &  &  &  & $\infty$ &  &  &  &  & \tabularnewline
+20 &  &  &  &  & $\infty$ &  &  &  &  &  & \tabularnewline
 \hline 
-28 & \multirow{5}{*}{C. Population shielded} & Shield (age3) & \multirow{5}{*}{2000} & \multirow{5}{*}{No} & \multirow{5}{*}{0} & \multirow{5}{*}{2/7} & \multirow{5}{*}{Yes} & \multirow{5}{*}{No} & \multirow{5}{*}{No} & \multirow{5}{*}{D}\tabularnewline
+21 & \multirow{6}{*}{C. Time to isolation} & \multirow{3}{*}{Null Mixed} & \multirow{6}{*}{2000} & \multirow{6}{*}{No} & \multirow{6}{*}{50} & 12 & \multirow{3}{*}{MF} & \multirow{3}{*}{No} & \multirow{6}{*}{No} & \multirow{6}{*}{No} & \multirow{6}{*}{D}\tabularnewline
+\cline{1-1} \cline{7-7} 
+22 &  &  &  &  &  & 24 &  &  &  &  & \tabularnewline
+\cline{1-1} \cline{7-7} 
+23 &  &  &  &  &  & 48 &  &  &  &  & \tabularnewline
+\cline{1-1} \cline{3-3} \cline{7-9} \cline{8-9} \cline{9-9} 
+24 &  & \multirow{3}{*}{Shield (20\%)} &  &  &  & 12 & \multirow{3}{*}{2/7} & \multirow{3}{*}{Yes} &  &  & \tabularnewline
+\cline{1-1} \cline{7-7} 
+25 &  &  &  &  &  & 24 &  &  &  &  & \tabularnewline
+\cline{1-1} \cline{7-7} 
+26 &  &  &  &  &  & 48 &  &  &  &  & \tabularnewline
+\hline 
+27 & \multirow{5}{*}{D. Population shielded} & Shield (age3) & \multirow{5}{*}{2000} & \multirow{5}{*}{No} & \multirow{5}{*}{0} & \multirow{5}{*}{0} & \multirow{5}{*}{2/7} & \multirow{5}{*}{Yes} & \multirow{5}{*}{No} & \multirow{5}{*}{No} & \multirow{5}{*}{D}\tabularnewline
 \cline{1-1} \cline{3-3} 
-29 &  & Shield (age2) &  &  &  &  &  &  &  & \tabularnewline
+28 &  & Shield (age2) &  &  &  &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{3-3} 
-30 &  & Shield (20\%) &  &  &  &  &  &  &  & \tabularnewline
+29 &  & Shield (20\%) &  &  &  &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{3-3} 
-31 &  & Shield (25\%) &  &  &  &  &  &  &  & \tabularnewline
+30 &  & Shield (25\%) &  &  &  &  &  &  &  &  & \tabularnewline
 \cline{1-1} \cline{3-3} 
-32 &  & Shield (30\%) &  &  &  &  &  &  &  & \tabularnewline
+31 &  & Shield (30\%) &  &  &  &  &  &  &  &  & \tabularnewline
 \hline 
-33 & \multirow{4}{*}{D. Population size} & \multirow{2}{*}{Null Mixed} & 500 & \multirow{4}{*}{No} & \multirow{4}{*}{0} & \multirow{2}{*}{MF} & \multirow{2}{*}{No} & \multirow{4}{*}{No} & \multirow{4}{*}{No} & \multirow{4}{*}{D}\tabularnewline
+32 & \multirow{4}{*}{E. Population size} & \multirow{2}{*}{Null Mixed} & 500 & \multirow{4}{*}{No} & \multirow{4}{*}{0} & \multirow{4}{*}{} & \multirow{2}{*}{MF} & \multirow{2}{*}{No} & \multirow{4}{*}{No} & \multirow{4}{*}{No} & \multirow{4}{*}{D}\tabularnewline
 \cline{1-1} \cline{4-4} 
-34 &  &  & 1000 &  &  &  &  &  &  & \tabularnewline
-\cline{1-1} \cline{3-4} \cline{4-4} \cline{7-8} \cline{8-8} 
-35 &  & \multirow{2}{*}{Shield (20\%)} & 500 &  &  & \multirow{2}{*}{2/7} & \multirow{2}{*}{Yes} &  &  & \tabularnewline
+33 &  &  & 1000 &  &  &  &  &  &  &  & \tabularnewline
+\cline{1-1} \cline{3-4} \cline{4-4} \cline{8-9} \cline{9-9} 
+34 &  & \multirow{2}{*}{Shield (20\%)} & 500 &  &  &  & \multirow{2}{*}{2/7} & \multirow{2}{*}{Yes} &  &  & \tabularnewline
 \cline{1-1} \cline{4-4} 
-36 &  &  & 1000 &  &  &  &  &  &  & \tabularnewline
+35 &  &  & 1000 &  &  &  &  &  &  &  & \tabularnewline
 \hline 
-37 & \multirow{4}{*}{E. Checks neutral zone} & \multirow{4}{*}{Shield (20\%)} & \multirow{4}{*}{2000} & \multirow{4}{*}{No} & \multirow{4}{*}{0} & \multirow{2}{*}{2/7} & No & \multirow{4}{*}{No} & \multirow{4}{*}{No} & \multirow{4}{*}{D}\tabularnewline
-\cline{1-1} \cline{8-8} 
-38 &  &  &  &  &  &  & Yes &  &  & \tabularnewline
-\cline{1-1} \cline{7-8} \cline{8-8} 
-39 &  &  &  &  &  & \multirow{2}{*}{10/7} & No &  &  & \tabularnewline
-\cline{1-1} \cline{8-8} 
-40 &  &  &  &  &  &  & Yes &  &  & \tabularnewline
+36 & \multirow{4}{*}{F. Safety zone testing} & \multirow{4}{*}{Shield (20\%)} & \multirow{4}{*}{2000} & \multirow{4}{*}{No} & \multirow{4}{*}{0} & \multirow{4}{*}{0} & \multirow{2}{*}{2/7} & No & \multirow{4}{*}{No} & \multirow{4}{*}{No} & \multirow{4}{*}{D}\tabularnewline
+\cline{1-1} \cline{9-9} 
+37 &  &  &  &  &  &  &  & Yes &  &  & \tabularnewline
+\cline{1-1} \cline{8-9} \cline{9-9} 
+38 &  &  &  &  &  &  & \multirow{2}{*}{10/7} & No &  &  & \tabularnewline
+\cline{1-1} \cline{9-9} 
+39 &  &  &  &  &  &  &  & Yes &  &  & \tabularnewline
 \hline 
 \end{tabular}
 
-\caption{\textbf{List of simulations performed. }Npop = Population size.	Isolation
-= Are isolation centers available?	Thr. = Maximum capacity of isolation
-centers per camp.	Contacts = Number of contacts per day between populations
-shielded.	Tcheck = Are temperature checks performed?	Lock=Is lockdown
-applied after first symptomatic case is identified? self = Fraction
-of contacts remaining after self-distancing implemented. H-fate =
-Final compartment for hospitalized people. MF = Mean field. Shield
-= Population shielded. age3 = elderly population. age2 = adults with
-comorbidities and spouses. (20-30\%) = kids from adults shielded up
-to x\% of total population.}
+\caption{\textbf{List of simulations performed. }Npop = Population size.	Evac.
+= Is people requiring hospitalization evacuated?	N. tents = Number
+self-isolation tents per camp. Onset = Mean time that an individual
+takes to self-isolate from onset of symptoms. Contacts = Number of
+contacts per day between populations shielded.	Tcheck = Are temperature
+checks performed?	Lock = Is lockdown applied after first symptomatic
+case is identified? self = Fraction of contacts remaining after self-distancing
+is implemented. H-fate = Final compartment for hospitalized people.
+MF = Mean field. Shield = Population shielded. age3 = elderly population.
+age2 = adults with comorbidities and spouses. (20-30\%) = kids from
+adults shielded up to x\% of total population.}
 \end{table}
 
 \begin{table}
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline 
-Simul. & Experim. & Structure & Npop & Isolation & Thr. & Contacts & Tcheck & lock & self & H-fate\tabularnewline
+Simul. & Experim. & Structure & Npop & Evac. & N. tents & Onset & Contacts & Tcheck & lock & self & H-fate\tabularnewline
 \hline 
 \hline 
-41 & \multirow{3}{*}{F. Lockdown} & \multirow{3}{*}{Shield (20\%)} & \multirow{3}{*}{2000} & \multirow{3}{*}{No} & \multirow{3}{*}{0} & \multirow{3}{*}{2/7} & \multirow{3}{*}{Yes} & 0.5 & \multirow{3}{*}{No} & \multirow{3}{*}{D}\tabularnewline
-\cline{1-1} \cline{9-9} 
-42 &  &  &  &  &  &  &  & 0.9 &  & \tabularnewline
-\cline{1-1} \cline{9-9} 
-43 &  &  &  &  &  &  &  & 0.99 &  & \tabularnewline
+40 & \multirow{3}{*}{G. Lockdown} & \multirow{3}{*}{Shield (20\%)} & \multirow{3}{*}{2000} & \multirow{3}{*}{No} & \multirow{3}{*}{0} & \multirow{3}{*}{0} & \multirow{3}{*}{2/7} & \multirow{3}{*}{Yes} & 0.5 & \multirow{3}{*}{No} & \multirow{3}{*}{D}\tabularnewline
+\cline{1-1} \cline{10-10} 
+41 &  &  &  &  &  &  &  &  & 0.9 &  & \tabularnewline
+\cline{1-1} \cline{10-10} 
+42 &  &  &  &  &  &  &  &  & 0.99 &  & \tabularnewline
 \hline 
-44 & \multirow{4}{*}{G. Self-distancing} & \multirow{2}{*}{Null Mixed} & \multirow{4}{*}{2000} & \multirow{4}{*}{No} & \multirow{4}{*}{0} & \multirow{2}{*}{MF} & \multirow{2}{*}{No} & \multirow{4}{*}{No} & 0.2 & \multirow{4}{*}{D}\tabularnewline
-\cline{1-1} \cline{10-10} 
-45 &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
-\cline{1-1} \cline{3-3} \cline{7-8} \cline{8-8} \cline{10-10} 
-46 &  & \multirow{2}{*}{Shield (20\%)} &  &  &  & \multirow{2}{*}{2/7} & \multirow{2}{*}{Yes} &  & 0.2 & \tabularnewline
-\cline{1-1} \cline{10-10} 
-47 &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
+43 & \multirow{4}{*}{H. Self-distancing} & \multirow{2}{*}{Null Mixed} & \multirow{4}{*}{2000} & \multirow{4}{*}{No} & \multirow{4}{*}{0} & \multirow{4}{*}{0} & \multirow{2}{*}{MF} & \multirow{2}{*}{No} & \multirow{4}{*}{No} & 0.2 & \multirow{4}{*}{D}\tabularnewline
+\cline{1-1} \cline{11-11} 
+44 &  &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
+\cline{1-1} \cline{3-3} \cline{8-9} \cline{9-9} \cline{11-11} 
+45 &  & \multirow{2}{*}{Shield (20\%)} &  &  &  &  & \multirow{2}{*}{2/7} & \multirow{2}{*}{Yes} &  & 0.2 & \tabularnewline
+\cline{1-1} \cline{11-11} 
+46 &  &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
 \hline 
-48 & \multirow{14}{*}{H. Combined interventions} & \multirow{4}{*}{Null Mixed} & \multirow{12}{*}{2000} & \multirow{14}{*}{Yes} & \multirow{2}{*}{10} & \multirow{4}{*}{MF} & \multirow{4}{*}{No} & \multirow{4}{*}{No} & 0.2 & \multirow{14}{*}{D}\tabularnewline
-\cline{1-1} \cline{10-10} 
-49 &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
-\cline{1-1} \cline{6-6} \cline{10-10} 
-50 &  &  &  &  & \multirow{2}{*}{50} &  &  &  & 0.2 & \tabularnewline
-\cline{1-1} \cline{10-10} 
-51 &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
-\cline{1-1} \cline{3-3} \cline{6-10} \cline{7-10} \cline{8-10} \cline{9-10} \cline{10-10} 
-52 &  & \multirow{10}{*}{Shield (20\%)} &  &  & \multirow{2}{*}{10} & \multirow{10}{*}{2/7} & \multirow{10}{*}{Yes} & \multirow{4}{*}{No} & 0.2 & \tabularnewline
-\cline{1-1} \cline{10-10} 
-53 &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
-\cline{1-1} \cline{6-6} \cline{10-10} 
-54 &  &  &  &  & \multirow{2}{*}{50} &  &  &  & 0.2 & \tabularnewline
-\cline{1-1} \cline{10-10} 
-55 &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
-\cline{1-1} \cline{6-6} \cline{9-10} \cline{10-10} 
-56 &  &  &  &  & \multirow{6}{*}{10} &  &  & \multirow{2}{*}{0.5} & 0.2 & \tabularnewline
-\cline{1-1} \cline{10-10} 
-57 &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
-\cline{1-1} \cline{9-10} \cline{10-10} 
-58 &  &  &  &  &  &  &  & \multirow{2}{*}{0.9} & 0.2 & \tabularnewline
-\cline{1-1} \cline{10-10} 
-59 &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
-\cline{1-1} \cline{4-4} \cline{9-10} \cline{10-10} 
-60 &  &  & \multirow{2}{*}{500} &  &  &  &  & \multirow{2}{*}{0.5} & 0.2 & \tabularnewline
-\cline{1-1} \cline{10-10} 
-61 &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
+47 & \multirow{2}{*}{J. Evacuation} & Null Mixed & \multirow{2}{*}{2000} & \multirow{2}{*}{Yes} & \multirow{2}{*}{0} & \multirow{2}{*}{0} & MF & No & \multirow{2}{*}{No} & \multirow{2}{*}{No} & \multirow{2}{*}{D}\tabularnewline
+\cline{1-1} \cline{3-3} \cline{8-9} \cline{9-9} 
+48 &  & Shield (20\%) &  &  &  &  & 2/7 & Yes &  &  & \tabularnewline
 \hline 
+49 & \multirow{19}{*}{K. Combined interventions} & \multirow{2}{*}{Null Mixed} & \multirow{8}{*}{2000} & \multirow{8}{*}{No} & \multirow{8}{*}{50} & \multirow{8}{*}{24} & \multirow{2}{*}{MF} & \multirow{2}{*}{No} & \multirow{2}{*}{No} & 0.2 & \multirow{8}{*}{D}\tabularnewline
+\cline{1-1} \cline{11-11} 
+50 &  &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
+\cline{1-1} \cline{3-3} \cline{8-11} \cline{9-11} \cline{10-11} \cline{11-11} 
+52 &  & \multirow{6}{*}{Shield (20\%)} &  &  &  &  & \multirow{6}{*}{2/7} & \multirow{6}{*}{Yes} & No & 0.2 & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+53 &  &  &  &  &  &  &  &  & 0.5 & No & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+54 &  &  &  &  &  &  &  &  & 0.5 & 0.2 & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+55 &  &  &  &  &  &  &  &  & 0.9 & 0.2 & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+56 &  &  &  &  &  &  &  &  & 0.5 & 0.5 & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+57 &  &  &  &  &  &  &  &  & 0.9 & 0.5 & \tabularnewline
+\cline{1-1} \cline{3-12} \cline{4-12} \cline{5-12} \cline{6-12} \cline{7-12} \cline{8-12} \cline{9-12} \cline{10-12} \cline{11-12} \cline{12-12} 
+58 &  & \multirow{2}{*}{Null Mixed} & \multirow{8}{*}{2000} & \multirow{11}{*}{Yes} & \multirow{11}{*}{50} & \multirow{11}{*}{24} & \multirow{2}{*}{MF} & \multirow{2}{*}{No} & \multirow{2}{*}{No} & 0.2 & \multirow{11}{*}{D}\tabularnewline
+\cline{1-1} \cline{11-11} 
+59 &  &  &  &  &  &  &  &  &  & 0.5 & \tabularnewline
+\cline{1-1} \cline{3-3} \cline{8-11} \cline{9-11} \cline{10-11} \cline{11-11} 
+61 &  & \multirow{9}{*}{Shield (20\%)} &  &  &  &  & \multirow{9}{*}{2/7} & \multirow{9}{*}{Yes} & No & 0.2 & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+62 &  &  &  &  &  &  &  &  & 0.5 & No & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+63 &  &  &  &  &  &  &  &  & 0.5 & 0.2 & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+64 &  &  &  &  &  &  &  &  & 0.9 & 0.2 & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+65 &  &  &  &  &  &  &  &  & 0.5 & 0.5 & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+66 &  &  &  &  &  &  &  &  & 0.9 & 0.5 & \tabularnewline
+\cline{1-1} \cline{4-4} \cline{10-11} \cline{11-11} 
+67 &  &  & \multirow{3}{*}{500} &  &  &  &  &  & No & 0.2 & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+68 &  &  &  &  &  &  &  &  & 0.5 & No & \tabularnewline
+\cline{1-1} \cline{10-11} \cline{11-11} 
+69 &  &  &  &  &  &  &  &  & 0.5 & 0.2 & \tabularnewline
+\cline{1-1} \cline{3-12} \cline{4-12} \cline{5-12} \cline{6-12} \cline{7-12} \cline{8-12} \cline{9-12} \cline{10-12} \cline{11-12} \cline{12-12} 
 \end{tabular}
 
-\caption{\textbf{List of simulations performed (II). }Npop = Population size.	Isolation
-= Are isolation centers available?	Thr. = Maximum capacity of isolation
-centers per camp.	Contacts = Number of contacts per day between populations
-shielded.	Tcheck = Are temperature checks performed? Lock=Is lockdown
-applied after first symptomatic case is identified? self = Fraction
-of contacts remaining after self-distancing implemented.	H-fate =
-Final compartment for hospitalized people. MF = Mean field. Shield
-= Is population shielded. age3 = elderly population. age2 = adults
-with comorbidities and spouses. (20-30\%) = kids from adults shielded
-up to x\% of total population.}
+\caption{\textbf{List of simulations performed (II). }Npop = Population size.	Evac.
+= Is people requiring hospitalization evacuated?	N. tents = Number
+self-isolation tents per camp. Onset = Mean time that an individual
+takes to self-isolate from onset of symptoms. Contacts = Number of
+contacts per day between populations shielded.	Tcheck = Are temperature
+checks performed?	Lock = Is lockdown applied after first symptomatic
+case is identified? self = Fraction of contacts remaining after self-distancing
+is implemented. H-fate = Final compartment for hospitalized people.
+MF = Mean field. Shield = Population shielded. age3 = elderly population.
+age2 = adults with comorbidities and spouses. (20-30\%) = kids from
+adults shielded up to x\% of total population.}
 
 \end{table}
 
