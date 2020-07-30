@@ -12,6 +12,7 @@
 #  the parameters to identify the experiments (params.df)
 #
 extract_subtable_output_summaries = function(Ncomp,df.out,params.df){
+  #browser()
   df.sub=data.frame()
   for(i in 1:Ncomp){
     contacts.var=as.character(params.df$contacts[i])
@@ -27,6 +28,7 @@ extract_subtable_output_summaries = function(Ncomp,df.out,params.df){
     df.tmp=subset(df.out, contacts==contacts.var &  Isolate==Isolate.var & 
                     Onset == Onset.var & Limit==Limit.var & Fate==Fate.var & Tcheck==Tcheck.var &
                     PopSize==PopSize.var & lock==lock.var & self==self.var)
+    if(dim(df.tmp)[1]==0){warning(paste("File in line",i,"of the input file not found"))}
     
     df.sub=rbind(df.sub,df.tmp)
   }
