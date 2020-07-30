@@ -1,9 +1,9 @@
 # Plots for model_output_summaries.R
-# Experiment B --- self-isolation in tents -- null model
+# Experiment C --- Time to self-isolation in tents -- null model
 
 # --- Now you can create some plots
 setwd(dirCode)
-fileExp="input_parameters_multiple_output_summaries_B.csv" # A file with the comparisons you want to do
+fileExp="input_parameters_multiple_output_summaries_C.csv" # A file with the comparisons you want to do
 params.df=read.table(file=fileExp,header = TRUE,sep=",") 
 Ncomp=dim(params.df)[1]
 cat(">> Plotting results from experiment: ",fileExp,"\n")
@@ -16,19 +16,19 @@ df.sub = extract_subtable_output_summaries(Ncomp,df.out,params.df)
 
 # --- Reorder levels if needed
 setwd(dirPlotOut)
-levels(df.sub$Limit)
-idx.Limit=c(1,2,5,7,3,6,8,4) # reorder levels
-df.sub$Limit=factor(df.sub$Limit,levels(df.sub$Limit)[idx.Limit])
-levels(df.sub$Limit)
-scale.label=c("0","10","25","50","100","250","500","2000") # 
+levels(df.sub$Onset)
+#idx.Limit=c(1,2,5,7,3,6,8,4) # reorder levels
+#df.sub$Limit=factor(df.sub$Limit,levels(df.sub$Limit)[idx.Limit])
+#levels(df.sub$Limit)
+scale.label=c("No isol.","12","24","48") # 
 
 #  Self distancing for the null model, fraction of deaths
-varX="Limit"
+varX="Onset"
 varY="NumFinalDeaths.mean" #"`P.outbrk.E`"
 errY="NumFinalDeaths.stderr"
-xlabel="Number self-isolation tents"
+xlabel="Time to self-isolation (h)"
 ylabel="Fraction of population dying"
-titlelabel="Self-isolation"
+titlelabel="Time to self-isolation"
 Npop=2000
 
 filePlotOut=paste(varX,"Vs",varY,".pdf",sep="")
@@ -60,13 +60,12 @@ dev.off( )
 
 
 #  time to peak
-varX="Limit"
+varX="Onset"
 varY="TimePeakSymptomatic.mean" #"`P.outbrk.E`"
 errY="TimePeakSymptomatic.stderr"
-xlabel="Number self-isolation tents"
 ylabel="Time to peak of Symptomatic (days)"
-titlelabel="Isolation"
-
+xlabel="Time to self-isolation (h)"
+titlelabel="Time to self-isolation"
 Npop=2000
 
 filePlotOut=paste(varX,"Vs",varY,".pdf",sep="")
@@ -98,12 +97,12 @@ dev.off( )
 
 
 #  Probability outbreak
-varX="Limit"
+varX="Onset"
 varY="P.outbrk.E" #"`P.outbrk.E`"
 #errY="TimePeakSymptomatic.stderr"
-xlabel="Number self-isolation tents"
+xlabel="Time to self-isolation (h)"
 ylabel="Probability outbreak"
-titlelabel="Isolation"
+titlelabel="Time to self-isolation"
 
 Npop=2000
 
