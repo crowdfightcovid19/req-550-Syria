@@ -23,6 +23,7 @@
 #   typically want to compute fractions, if it contains Frac, we must sum values, and if it contains Time
 #   we compute means per line. There are some greps implemented and commented, just substitute the
 #   conditions to use the functions by e.g. !is_empty(fileF) do --> function_total
+# note = Plots can be generated with model_output_summaries_plotMaster.R
 rm(list=ls())
 
 library(tidyverse)
@@ -295,17 +296,20 @@ write.table(df.output,file=fileOut,quote=FALSE,sep=",",row.names = FALSE)
 # Plots ----------
 # Plots are prepared in external files, and each of them reads from an input
 # file determining the interventions to be processed simultaneoulsy.
-setwd(dirCode)
-source("extract_subtable_output_summaries.R")
-source("model_output_summaries_plotA.R")
-setwd(dirCode)
-source("model_output_summaries_plotB.R")
-setwd(dirCode)
-source("model_output_summaries_plotJ.R")
-setwd(dirCode)
-source("model_output_summaries_plotH.R")
-setwd(dirCode)
-source("model_output_summaries_plotK.R")
+
+# See model_output_summaries_plotMaster.R to create plots
+
+# setwd(dirCode)
+# source("extract_subtable_output_summaries.R")
+# source("model_output_summaries_plotA.R")
+# setwd(dirCode)
+# source("model_output_summaries_plotB.R")
+# setwd(dirCode)
+# source("model_output_summaries_plotG.R")
+# setwd(dirCode)
+# source("model_output_summaries_plotH.R")
+# setwd(dirCode)
+# source("model_output_summaries_plotK.R")
 
 
 
