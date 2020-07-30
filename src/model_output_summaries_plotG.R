@@ -3,7 +3,7 @@
 
 # --- Now you can create some plots
 setwd(dirCode)
-fileExp="input_parameters_multiple_output_summaries_J.csv" # A file with the comparisons you want to do
+fileExp="input_parameters_multiple_output_summaries_G.csv" # A file with the comparisons you want to do
 params.df=read.table(file=fileExp,header = TRUE,sep=",") 
 Ncomp=dim(params.df)[1]
 cat(">> Plotting results from experiment: ",fileExp,"\n")
