@@ -23,7 +23,7 @@ rm(list=ls())
 
 # --- Options used for testing mode only
 fake=0 # fix to 1 if you are working with test data 
-test_sim=0# fix to 1 to avoid generating output directories and files (debug purposes)
+test_sim=1# fix to 1 to avoid generating output directories and files (debug purposes)
 model.type="stochastic_variable" # one of "deterministic", "stochastic_fixed" or "stochastic_variable"
 
 # --- Structure of directories and labelling 
@@ -41,8 +41,8 @@ Nrand=10000 #  number of random values generated per realization for each parame
 
 # --- Model type
 isolation=0 # if hospitalized leaves the camp =1, stays in the camp = 0.
-isoThr=50 # Number of individual tents for self-isolation of mild symptomatic, the difference Itot-isoThr becomes infectious
-onset=12 # one of 12, 24 or 48, being the mean number of hours an individual takes to identify symptoms and self-isolate
+isoThr=100 # Number of individual tents for self-isolation of mild symptomatic, the difference Itot-isoThr becomes infectious
+onset=24 # one of 12, 24 or 48, being the mean number of hours an individual takes to identify symptoms and self-isolate
          # it requires isoThr > 0 to make any effect. 
 hospitalized2=1 # if hospitalized2 = 0, all hospitalized will recover, if = 1 all will die.
 Tcheck=0 # if tests are implemented, symptomatic individuals will be excluded from the interaction between two classes
