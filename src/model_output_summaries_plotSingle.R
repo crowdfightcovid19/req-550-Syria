@@ -104,7 +104,8 @@ model_output_summaries_plotSingle = function(experiment,dirCode,dirPlotOut){
       ylab(ylabel) +     # add label for y axis
       theme_bw()+
       theme(axis.title = element_text(size=22),
-            axis.text = element_text(size=20, angle=angle.lab, hjust = hjust.lab,vjust=1),
+            axis.text.y = element_text(size=20),
+            axis.text.x = element_text(size=20, angle=angle.lab, hjust = hjust.lab,vjust=1),
             legend.text = element_text(size=22),
             legend.title = element_text(size=28),
             title=element_text(size=16))+ # Increase fonts size

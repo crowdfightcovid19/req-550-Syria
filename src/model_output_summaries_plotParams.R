@@ -125,11 +125,21 @@ experiments.list[[10]]=list(data.frame(fileIn="input_parameters_multiple_output_
                                       subtitle.lab=paste("Population size = ",Npop),
                                       varX="Combined",
                                       xlabel.lab="Intervention",
-                                      plot.type="single",
-                                      pdf.width=pdf.width.default,
-                                      pdf.height=pdf.height.default),
-                           scale.manual.lab=c("none","self 20%","isol 10","self 20% + isol 10",
-                                              "shield","shield + self 20%","shield + lock 50%","shield + isol 10",
-                                              "shield + self 20% + isol 10",
-                                              "shield + self 20% + isol 10 + lock 50"))
+                                      plot.type="double",
+                                      pdf.width=12,
+                                      pdf.height=9),
+                           scale.manual.lab=c("none","self 20%","self 50%",
+                                              "50 tents","evac",
+                                              "self 20% + 50 tents","self 50% + 50 tents",
+                                              "self 20% + 50 tents + evac",
+                                              "safety",
+                                              "safety + self 20%","safety + self 50%",
+                                              "safety + 50 tents","safety + evac",
+                                              "safety + lock 50%",
+                                              "safety + 50 tents + self 20%",
+                                              "safety + 50 tents + lock 50%",
+                                              "safety + 50 tents + evac",
+                                              "safety + 50 tents + self 20% + lock 50%",
+                                              "safety + 50 tents + self 20% + lock 90%"))
+
 
