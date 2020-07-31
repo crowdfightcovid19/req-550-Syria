@@ -37,6 +37,8 @@ source("model_output_summaries_plotDouble.R")
 source("extract_subtable_output_summaries.R")
 
 for(experiment in experiments.list){
+  df.local=experiment[[1]]
+  plot.type=df.local$plot.type
   if(plot.type == "single"){ # first type of plot
       model_output_summaries_plotSingle(experiment,dirCode,dirPlotOut)  
   }else{ # second type of plot
