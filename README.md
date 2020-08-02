@@ -3,13 +3,25 @@ Repository to host the code of request 550 coming from the Pax Syriana Foundatio
 
 ### Participants
 
-* Chamsy Sarkis, Chairman Pax Syriana Foundation (chamsy.sarkis@paxsyriana.com)
-* Jean Jaques Py, IT Pax Syriana Foundation (jean-jacques.py@paxsyriana.com)
+#### Modellers
+
 * Eduard Campillo-Funollet, University of Sussex, UK. (e.campillo-funollet@sussex.ac.uk)
 * Jennifer Villers, Princeton University (villers.jennifer@gmail.com)
 * Jordan Klein, Princeton University (jdklein@princeton.edu)
 * Judith Bouman, ETH-Zürich (judith.bouman@env.ethz.ch)
 * Alberto Pascual-García, ETH-Zürich and crowdfight (alberto.pascual.garcia@gmail.com)
+
+#### Pax Syriana Foundation
+
+* Chamsy Sarkis, Chairman Pax Syriana Foundation (chamsy.sarkis@paxsyriana.com)
+* Jean Jaques Py, IT Pax Syriana Foundation (jean-jacques.py@paxsyriana.com)
+
+#### Public dissemination
+
+* Megan Naidoo, University of Stellenbosch.	(megan.naidoo4266@gmail.com)
+* Laure Gicquel, (logicquel@hotmail.com)
+* Juan A. Garcia, French National Institute of Health and Medical Research. (jags4595@gmail.com)
+* Om Chabra, (omchabra@gmail.com)
 
 ### Tools at your disposal
 
