@@ -58,8 +58,9 @@ get_output_directories <- function(directory) {
     .[grepl(idDir, .) & !grepl("figures", .)]
 }
 
-# ..... Function to compute mean and stdErr of a given dataframe
+# ..... Functions to compute mean and stdErr of a given dataframe
 get_statistics_frac_total <- function(df,PopSize,Nrealiz,idx){
+  #browser()
   if(!is_empty(idx)){
     df.total=rowSums(df)/PopSize # fractions
     Mean=mean(df.total) # Mean total deaths
@@ -100,6 +101,36 @@ get_statistics_peaks <- function(df,Nrealiz,idx){
   return(as.list(c(Mean,stdErr)))
 }
 
+# .... Function to fix relative size of exposed and shielded population
+get_relative_sizes <- function(PopStructure,PopSize){
+  if(PopStructure == "null_model_mixed"){
+    PopSize.E=1
+    PopSize.S=0 
+  }else if(PopStructure == "shield_cont2_age3"){
+    PopSize.E=0.9406
+    PopSize.S=0.0594
+  }else if(PopStructure == "shield_cont2_age3_age2"){
+    PopSize.E=0.878
+    PopSize.S=0.122
+  }else if((PopStructure == "shield_cont2_age3_age2_20")||
+           (PopStructure == "shield_cont0_age3_age2_20")||
+           (PopStructure == "shield_cont10_age3_age2_20")){
+    PopSize.E=0.8
+    PopSize.S=0.2
+  }else if(PopStructure == "shield_cont2_age3_age2_25"){
+    PopSize.E=0.75
+    PopSize.S=0.25
+  }else if(PopStructure == "shield_cont2_age3_age2_30"){
+    PopSize.E=0.7
+    PopSize.S=0.3
+  }
+  PopSize.E=PopSize.E*PopSize
+  PopSize.S=PopSize.S*PopSize
+  PopSize.sub=c(PopSize.E,PopSize.S)
+  names(PopSize.sub)=c("PopSize.E","PopSize.S")
+  return(PopSize.sub)
+}
+
 # --- Create a header for the output
 i=0
 for(file2proc in files.list){
@@ -112,13 +143,15 @@ for(file2proc in files.list){
   col6=paste(file2proc,"stderr.S",sep=".")
   header.names=c(header.names,col1,col2,col3,col4,col5,col6)
   if(file2proc=="NumFinalDeaths"){
-    col7="P.outbrk.E"
-    col8="P.outbrk.S"
-    header.names=c(header.names,col7,col8)
+    col7="P.outbrk"  
+    col8="P.outbrk.E"
+    col9="P.outbrk.S"
+    header.names=c(header.names,col7,col8,col9)
   }else if(file2proc=="NumFinalRecovered"){
-    col7="CFR.E"
-    col8="CFR.S"
-    header.names=c(header.names,col7,col8)
+    col7="CFR"
+    col8="CFR.E"
+    col9="CFR.S"
+    header.names=c(header.names,col7,col8,col9)
   }
 }
 
@@ -208,11 +241,14 @@ for(dirIn in dir.list){
     df.S = df.all[nodeath.obs.S, idx.classS] # only susceptible
     Nrealiz.E = dim(df.E)[1] # this will reduce the number of realizations to those with no deaths
     Nrealiz.S = dim(df.S)[1] # this will reduce the number of realizations to those with no deaths
+    PopSize.sub=get_relative_sizes(shieldLab,PopSize)
+    PopSize.E=PopSize.sub["PopSize.E"]
+    PopSize.S=PopSize.sub["PopSize.S"]
     if(files.code[i] == "Frac"){
       # files for which we want to gather fractions
       stat.list = get_statistics_frac_total(df, PopSize, Nrealiz, 1)
-      stat.list.E = get_statistics_frac_total(df.E, PopSize, Nrealiz.E, idx.classE)
-      stat.list.S = get_statistics_frac_total(df.S, PopSize, Nrealiz.S, idx.classS)
+      stat.list.E = get_statistics_frac_total(df.E, PopSize.E, Nrealiz.E, idx.classE)
+      stat.list.S = get_statistics_frac_total(df.S, PopSize.S, Nrealiz.S, idx.classS)
     } else if(files.code[i] == "Num"){
       # we want total numbers
       stat.list = get_statistics_total(df, Nrealiz, 1)
@@ -227,8 +263,8 @@ for(dirIn in dir.list){
     df.mean = stat.list[[1]]
     df.stdErr = stat.list[[2]]
     if(is_empty(idx.classE)){
-      df.mean.E = df.mean
-      df.stdErr.E = df.stdErr
+      df.mean.E = NA # df.mean
+      df.stdErr.E = NA # df.stdErr
     }else{
       df.mean.E = stat.list.E[[1]]
       df.stdErr.E = stat.list.E[[2]]
@@ -247,29 +283,30 @@ for(dirIn in dir.list){
       # in addition, we estimate the probability of outbreak
       frac.nodeath = apply(df.all, 2, function(x) {
         length(which(x == 0))})/Nrealiz.all
+      p.outbrk = signif(1 - min(frac.nodeath), digits = 2)
       if (is_empty(idx.classS)) {
         # there is no shielding
-        p.outbrk.E = signif(1 - min(frac.nodeath), digits = 2)
+        p.outbrk.E = NA
         p.outbrk.S = NA
       } else{
         p.outbrk.E = signif(1 - min(frac.nodeath[idx.classE]), digits = 2)
         p.outbrk.S = signif(1 - min(frac.nodeath[idx.classS]), digits = 2)
       }
-      outputLine = c(outputLine, p.outbrk.E, p.outbrk.S)
+      outputLine = c(outputLine,p.outbrk, p.outbrk.E, p.outbrk.S)
     }else if (file2proc == "NumFinalRecovered") {
       recov.totals.all = mean(rowSums(df)) 
       recov.totals.E = mean(rowSums(df.E)) 
       recov.totals.S = mean(rowSums(df.S)) 
       CFR.all=signif(death.totals.all/(death.totals.all+recov.totals.all),digits=2)
       if (is_empty(idx.classS)){
-        CFR.E=CFR.all
+        CFR.E=NA
         CFR.S=NA
       }else{
         CFR.E=signif(death.totals.E/(death.totals.E+recov.totals.E),digits=2)
         CFR.S=signif(death.totals.S/(death.totals.E+recov.totals.S),digits=2)
       }
       
-      outputLine = c(outputLine,CFR.E,CFR.S)
+      outputLine = c(outputLine,CFR.all,CFR.E,CFR.S)
     }
   }
   df.output.char[k,]=outputParam
