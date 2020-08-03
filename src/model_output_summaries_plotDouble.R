@@ -16,7 +16,7 @@
 #   plots differentiating the "shielded" (a.k.a isolated in safety zone) and "exposed" populations.
 
 
-model_output_summaries_plotDouble = function(experiment,dirCode,dirPlotOut){
+model_output_summaries_plotDouble = function(df.output,experiment,dirCode,dirPlotOut){
   
   setwd(dirCode) # needed to load the table with the set of simulations 
   
