@@ -60,27 +60,36 @@ model_output_summaries_plotDouble = function(df.output,experiment,dirCode,dirPlo
   
   # --- List of plots that will be defined
   vars.list=list()
-  vars.list[[1]]=data.frame(varY1="NumFinalDeaths.mean.E", 
+  vars.list[[1]]=data.frame(varY0="NumFinalDeaths.mean", 
+                            errY0="NumFinalDeaths.stderr",
+                            varY1="NumFinalDeaths.mean.E", 
                             errY1="NumFinalDeaths.stderr.E",
                             varY2="NumFinalDeaths.mean.S", 
                             errY2="NumFinalDeaths.stderr.S",
                             ylabel="Fraction of population dying")
-  vars.list[[2]]=data.frame(varY1="TimePeakSymptomatic.mean.E",
+  vars.list[[2]]=data.frame(varY0="TimePeakSymptomatic.mean",
+                            errY0="TimePeakSymptomatic.stderr",
+                            varY1="TimePeakSymptomatic.mean.E",
                             errY1="TimePeakSymptomatic.stderr.E",
                             varY2="TimePeakSymptomatic.mean.S",
                             errY2="TimePeakSymptomatic.stderr.S",
                             ylabel="Time to peak of symptomatic (days)")
-  vars.list[[3]]=data.frame(varY1="NumFinalRecovered.mean.E",
+  vars.list[[3]]=data.frame(varY0="NumFinalRecovered.mean",
+                            errY0="NumFinalRecovered.stderr",
+                            varY1="NumFinalRecovered.mean.E",
                             errY1="NumFinalRecovered.stderr.E",
                             varY2="NumFinalRecovered.mean.S",
                             errY2="NumFinalRecovered.stderr.S",
                             ylabel="Fraction of population recovered")
-  vars.list[[4]]=data.frame(varY1="CFR.E",
+  vars.list[[4]]=data.frame(varY0="CFR",
+                            varY1="CFR.E",
                             varY2="CFR.S",
                             ylabel="Case Fatality Rate")
-  vars.list[[5]]=data.frame(varY1="P.outbrk.E",
+  vars.list[[5]]=data.frame(varY0="P.outbrk",
+                            varY1="P.outbrk.E",
                             varY2="P.outbrk.S",
                             ylabel="Probability of outbreak")
+  
   # --- Redefine varX, initialize  and plot
   setwd(dirPlotOut)
   varX.out=varX # we will use it just for output files
@@ -90,36 +99,43 @@ model_output_summaries_plotDouble = function(df.output,experiment,dirCode,dirPlo
     i=i+1
     # ... Retrieve te var to plot and its labels
     df.vars=vars.list[[i]]
+    varY0.char=as.character(df.vars$varY0)
     varY1.char=as.character(df.vars$varY1)
     varY2.char=as.character(df.vars$varY2)
     varX=df.sub[,varX.char]
+    varY0=df.sub[,varY0.char]
     varY1=df.sub[,varY1.char] # This is needed because I am unable to use aes_string with colour="string", as I
     varY2=df.sub[,varY2.char] #"`P.outbrk.E`"
     ylabel=as.character(df.vars$ylabel)
     # ... set the output file
-    filePlotOut=paste(varX.out,"Vs",varY1.char,"_byClass.pdf",sep="")
+    filePlotOut=paste(varX.out,"Vs",varY0.char,"_byClass.pdf",sep="")
     # ... prepare the main plot
     gg=ggplot(data = df.sub) +  # assign columns to axes and groups
-      geom_point(aes(x = varX, y = varY1, colour="exposed"),size=2)+
-      geom_line(aes(x = varX, y = varY1, colour = "exposed", group=1))+
-      geom_point(aes(x = varX, y = varY2,colour ="shielded"),size=2)+
-      geom_line(aes(x = varX, y = varY2, colour = "shielded", group=1),show.legend = TRUE)
+      geom_point(aes(x = varX, y = varY0, colour="total"),size=2)+
+      geom_line(aes(x = varX, y = varY0, colour = "total", group=1))+
+      geom_point(aes(x = varX, y = varY1, colour="exposed zone"),size=2)+
+      geom_line(aes(x = varX, y = varY1, colour = "exposed zone", group=1))+
+      geom_point(aes(x = varX, y = varY2,colour ="safety zone"),size=2)+
+      geom_line(aes(x = varX, y = varY2, colour = "safety zone", group=1),show.legend = TRUE)
     # ... add error bars if needed
     if(!((varY1.char=="P.outbrk.E")||(varY1.char=="CFR.E"))){ # error bars needed
       errY1.char=as.character(df.vars$errY1)
       errY2.char=as.character(df.vars$errY2)
       errX=varX
+      errMin0=df.sub[,varY0.char]-df.sub[,errY0.char]
+      errMax0=df.sub[,varY0.char]+df.sub[,errY0.char]
       errMin1=df.sub[,varY1.char]-df.sub[,errY1.char]
       errMax1=df.sub[,varY1.char]+df.sub[,errY1.char]
       errMin2=df.sub[,varY2.char]-df.sub[,errY2.char]
       errMax2=df.sub[,varY2.char]+df.sub[,errY2.char]
-      gg=gg+geom_errorbar(aes(x=errX,ymin=errMin1, ymax=errMax1,colour="exposed"), width=.1)+
-        geom_errorbar(aes(x=errX,ymin=errMin2, ymax=errMax2,colour="shielded"), width=.1)
+      gg=gg+geom_errorbar(aes(x=errX,ymin=errMin0, ymax=errMax0,colour="total"), width=.1)+
+        geom_errorbar(aes(x=errX,ymin=errMin1, ymax=errMax1,colour="exposed zone"), width=.1)+
+        geom_errorbar(aes(x=errX,ymin=errMin2, ymax=errMax2,colour="safety zone"), width=.1)
     }
     # ... rest of aesthetics
     gg=gg+scale_color_manual("",
-                             breaks=c("exposed","shielded"),
-                             values =c("orange","green"))+
+                             breaks=c("total","exposed zone","safety zone"),
+                             values =c("black","orange","green"))+
       #geom_bar(stat="identity") +                  # represent data as lines
       xlab(xlabel.lab)+           # add label for x axis
       ylab(ylabel) +     # add label for y axis
