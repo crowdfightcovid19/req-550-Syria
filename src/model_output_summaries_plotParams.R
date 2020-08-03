@@ -29,7 +29,8 @@ pdf.height.default=7
 Npop=2000
 
 # --- Create one list for each experiment, and add it to the list of lists "experiments.list"
-experiments.list[[1]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_A.csv",
+i=1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_A.csv",
                                       title.lab="Safety zone",
                                       subtitle.lab=paste("Population size = ",Npop),
                                       varX="contacts",
@@ -38,8 +39,18 @@ experiments.list[[1]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                       pdf.width=pdf.width.default,
                                       pdf.height=pdf.height.default),
                            scale.manual.lab=c("No isol.","10","2"))
-
-experiments.list[[2]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_B.csv",
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_A.csv",
+                                      title.lab="Safety zone",
+                                      subtitle.lab=paste("Population size = ",Npop),
+                                      varX="contacts",
+                                      xlabel.lab="Number of contacts per week/individual",
+                                      plot.type="double",
+                                      pdf.width=pdf.width.default,
+                                      pdf.height=pdf.height.default),
+                           scale.manual.lab=c("No isol.","10","2"))
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_B.csv",
                                       title.lab="Self-isolation",
                                       subtitle.lab=paste("Population size = ",Npop),
                                       varX="Limit",
@@ -48,8 +59,8 @@ experiments.list[[2]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                       pdf.width=pdf.width.default,
                                       pdf.height=pdf.height.default),
                            scale.manual.lab=c("0","10","25","50","100","250","500","2000"))
-
-experiments.list[[3]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_C.csv",
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_C.csv",
                                       title.lab="Self-isolation",
                                       subtitle.lab=paste("Population size = ",Npop),
                                       varX="Onset",
@@ -58,8 +69,8 @@ experiments.list[[3]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                       pdf.width=pdf.width.default,
                                       pdf.height=pdf.height.default),
                            scale.manual.lab=c("No isol.","12","24","48"))
-
-experiments.list[[4]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_D.csv",
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_D.csv",
                                       title.lab="Population in safety zone",
                                       subtitle.lab=paste("Population size = ",Npop),
                                       varX="popShielded",
@@ -71,9 +82,24 @@ experiments.list[[4]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                               "Elder. + adults + kids (<20%)",
                                               "Elder. + adults + kids (<25%)",
                                               "Elder. + adults + kids (<30%)"))
-experiments.list[[5]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_E.csv",
+i=i+1
+
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_D.csv",
+                                      title.lab="Population in safety zone",
+                                      subtitle.lab=paste("Population size = ",Npop),
+                                      varX="popShielded",
+                                      xlabel.lab="Population classes in safety zone",
+                                      plot.type="single",
+                                      pdf.width=pdf.width.default,
+                                      pdf.height=pdf.height.default),
+                           scale.manual.lab=c("Elderly","Elder. + adult w.comorb.",
+                                              "Elder. + adults + kids (<20%)",
+                                              "Elder. + adults + kids (<25%)",
+                                              "Elder. + adults + kids (<30%)"))
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_E.csv",
                                       title.lab="Population size",
-                                      subtitle.lab="Safety zone: 2 contacts per week and individual",
+                                      subtitle.lab="2 contacts/week and individual in buffering zone",
                                       varX="popSize",
                                       xlabel.lab="Model/Number of individuals in the camp",
                                       plot.type="double",
@@ -81,7 +107,30 @@ experiments.list[[5]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                       pdf.height=pdf.height.default),
                            scale.manual.lab=c("null/500","null/1000","null/2000",
                                               "safety 2/500","safety 2/1000","safety 2/2000"))
-experiments.list[[6]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_F.csv",
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_E.csv",
+                                      title.lab="Population size",
+                                      subtitle.lab="2 contacts/week and individual in buffering zone",
+                                      varX="popSize",
+                                      xlabel.lab="Model/Number of individuals in the camp",
+                                      plot.type="single",
+                                      pdf.width=pdf.width.default,
+                                      pdf.height=pdf.height.default),
+                           scale.manual.lab=c("null/500","null/1000","null/2000",
+                                              "safety 2/500","safety 2/1000","safety 2/2000"))
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_F.csv",
+                                      title.lab="Health checks in buffer zone",
+                                      subtitle.lab=paste("Population size = ",Npop),
+                                      varX="Tcheck",
+                                      xlabel.lab="Contacts per week and individual/Health checks",
+                                      plot.type="single",
+                                      pdf.width=pdf.width.default,
+                                      pdf.height=pdf.height.default),
+                           scale.manual.lab=c("10 cont. (no checks)","10 cont.+ checks",
+                                              "2 cont. (no checks)","2 cont.+ checks"))
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_F.csv",
                                       title.lab="Health checks in buffer zone",
                                       subtitle.lab=paste("Population size = ",Npop),
                                       varX="Tcheck",
@@ -91,7 +140,18 @@ experiments.list[[6]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                       pdf.height=pdf.height.default),
                            scale.manual.lab=c("10 cont. (no checks)","10 cont.+ checks",
                                               "2 cont. (no checks)","2 cont.+ checks"))
-experiments.list[[7]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_G.csv",
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_G.csv",
+                                      title.lab="Lockdown of safety zone",
+                                      subtitle.lab=paste("Population size = ",Npop),
+                                      varX="lock",
+                                      xlabel.lab="Reduction number of contacts buffering zone (%)",
+                                      plot.type="single",
+                                      pdf.width=pdf.width.default,
+                                      pdf.height=pdf.height.default),
+                           scale.manual.lab=c("0","50","90"))
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_G.csv",
                                       title.lab="Lockdown of safety zone",
                                       subtitle.lab=paste("Population size = ",Npop),
                                       varX="lock",
@@ -100,7 +160,8 @@ experiments.list[[7]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                       pdf.width=pdf.width.default,
                                       pdf.height=pdf.height.default),
                            scale.manual.lab=c("0","50","90"))
-experiments.list[[8]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_H.csv",
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_H.csv",
                                       title.lab="Self-distancing",
                                       subtitle.lab=paste("Population size = ",Npop),
                                       varX="self",
@@ -109,7 +170,8 @@ experiments.list[[8]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                       pdf.width=pdf.width.default,
                                       pdf.height=pdf.height.default),
                            scale.manual.lab=c("0","20","50"))
-experiments.list[[9]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_J.csv",
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_J.csv",
                                       title.lab="Evacuation",
                                       subtitle.lab=paste("Population size = ",Npop),
                                       varX="Isolate",
@@ -119,13 +181,35 @@ experiments.list[[9]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                       pdf.height=pdf.height.default),
                            scale.manual.lab=c("null/NO","null/YES",
                                               "safety 2/NO","safety 2/YES"))
-
-experiments.list[[10]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_K.csv",
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_K.csv",
                                       title.lab="Combined",
                                       subtitle.lab=paste("Population size = ",Npop),
                                       varX="Combined",
                                       xlabel.lab="Intervention",
                                       plot.type="double",
+                                      pdf.width=12,
+                                      pdf.height=9),
+                           scale.manual.lab=c("none","self 20%","self 50%",
+                                              "50 tents","evac",
+                                              "self 20% + 50 tents","self 50% + 50 tents",
+                                              "self 20% + 50 tents + evac",
+                                              "safety",
+                                              "safety + self 20%","safety + self 50%",
+                                              "safety + 50 tents","safety + evac",
+                                              "safety + lock 50%",
+                                              "safety + 50 tents + self 20%",
+                                              "safety + 50 tents + lock 50%",
+                                              "safety + 50 tents + evac",
+                                              "safety + 50 tents + self 20% + lock 50%",
+                                              "safety + 50 tents + self 20% + lock 90%"))
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_K.csv",
+                                      title.lab="Combined",
+                                      subtitle.lab=paste("Population size = ",Npop),
+                                      varX="Combined",
+                                      xlabel.lab="Intervention",
+                                      plot.type="single",
                                       pdf.width=12,
                                       pdf.height=9),
                            scale.manual.lab=c("none","self 20%","self 50%",

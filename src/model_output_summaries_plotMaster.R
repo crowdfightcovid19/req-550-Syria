@@ -14,7 +14,7 @@
 #   for an example of the format)
 # usage = Once the experiments are defined, simply provide the name of the Summary file and source. 
 #
-
+library(ggplot2)
 # ---- Define the input file
 file.all.exp="Summary_interventions_modSV.csv"
 
@@ -23,7 +23,7 @@ this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1]
 dirCode=paste(this.dir,"/src",sep="")
 dirData=paste(this.dir,"/data/real_models/",sep="")
 dirDataIn=paste(dirData,"results_post_processing",sep="")
-dirPlotOut=paste(dirOut,"/Summary_figures",sep="")
+dirPlotOut=paste(dirDataIn,"/Summary_figures",sep="")
 
 # --- Read file with the summary of results
 setwd(dirDataIn)
@@ -40,9 +40,9 @@ for(experiment in experiments.list){
   df.local=experiment[[1]]
   plot.type=df.local$plot.type
   if(plot.type == "single"){ # first type of plot
-      model_output_summaries_plotSingle(experiment,dirCode,dirPlotOut)  
+      model_output_summaries_plotSingle(df.all,experiment,dirCode,dirPlotOut)  
   }else{ # second type of plot
-    model_output_summaries_plotDouble(experiment,dirCode,dirPlotOut)  
+    model_output_summaries_plotDouble(df.all,experiment,dirCode,dirPlotOut)  
   }
   
 }
