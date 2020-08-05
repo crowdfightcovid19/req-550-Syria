@@ -32,7 +32,11 @@ model_output_summaries_plotDouble = function(df.output,experiment,dirCode,dirPlo
   pdf.width=df.exp$pdf.width
   pdf.height=df.exp$pdf.height
   
-  # .... vector of labels for the scale
+  # .... vector of labels and colors
+  # ...... named colors for the legend
+  values.lab =c("black","orange","green")
+  names(values.lab)=c("total","exposed zone","safety zone")
+  # ...... labels for the scale
   scale.manual.lab=experiment[[2]]
   n.scale=length(scale.manual.lab) # inspect  the scale manual labs
   tot.chars=nchar(scale.manual.lab[n.scale]) # if the last element has more than 5 chars (typically the longest)
@@ -119,6 +123,7 @@ model_output_summaries_plotDouble = function(df.output,experiment,dirCode,dirPlo
       geom_line(aes(x = varX, y = varY2, colour = "safety zone", group=1),show.legend = TRUE)
     # ... add error bars if needed
     if(!((varY1.char=="P.outbrk.E")||(varY1.char=="CFR.E"))){ # error bars needed
+      errY0.char=as.character(df.vars$errY0)
       errY1.char=as.character(df.vars$errY1)
       errY2.char=as.character(df.vars$errY2)
       errX=varX
@@ -135,7 +140,7 @@ model_output_summaries_plotDouble = function(df.output,experiment,dirCode,dirPlo
     # ... rest of aesthetics
     gg=gg+scale_color_manual("",
                              breaks=c("total","exposed zone","safety zone"),
-                             values =c("black","orange","green"))+
+                             values = values.lab)+
       #geom_bar(stat="identity") +                  # represent data as lines
       xlab(xlabel.lab)+           # add label for x axis
       ylab(ylabel) +     # add label for y axis

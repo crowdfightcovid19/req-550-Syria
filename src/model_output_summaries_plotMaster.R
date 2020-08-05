@@ -14,6 +14,7 @@
 #   for an example of the format)
 # usage = Once the experiments are defined, simply provide the name of the Summary file and source. 
 #
+rm(list=ls())
 library(ggplot2)
 # ---- Define the input file
 file.all.exp="Summary_interventions_modSV.csv"

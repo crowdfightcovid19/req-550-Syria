@@ -89,9 +89,10 @@ get_statistics_total <- function(df,Nrealiz,idx){
 get_statistics_peaks <- function(df,Nrealiz,idx){
   #browser()
   if(!is_empty(idx)){
-    df.total=rowMeans(df) # raw numbers, divide by PopSize to take fractions
-    Mean=mean(df.total) # Mean total deaths
-    stdErr=sd(df.total)/sqrt(Nrealiz) # Standard error
+    df[df == 0]=NA # we exclude this way peaks for classes with no infections
+    df.total=rowMeans(df,na.rm = TRUE) # raw numbers, divide by PopSize to take fractions
+    Mean=mean(df.total,na.rm = TRUE) # Mean total deaths. It may happen that there is no peak if there is just one death, we can safely exclude those simulations
+    stdErr=sd(df.total,na.rm = TRUE)/sqrt(Nrealiz) # Standard error
     Mean=signif(Mean,digits=2)
     stdErr=signif(stdErr,digits=2)
   }else{
@@ -237,10 +238,10 @@ for(dirIn in dir.list){
     }
     df = df.all[nodeath.obs, ] # gather statistics only for cases where deaths are observed
     Nrealiz=dim(df)[1] # Number realizations for all set
-    df.E = df.all[nodeath.obs.E, idx.classE] # only exposed
-    df.S = df.all[nodeath.obs.S, idx.classS] # only susceptible
-    Nrealiz.E = dim(df.E)[1] # this will reduce the number of realizations to those with no deaths
-    Nrealiz.S = dim(df.S)[1] # this will reduce the number of realizations to those with no deaths
+    df.E = df.all[nodeath.obs.E, idx.classE] # another possibility, more difficult to intepret: df.all[nodeath.obs.E, idx.classE] # only exposed
+    df.S = df.all[nodeath.obs.S, idx.classS] # another possibility, more difficult to intepret:df.all[nodeath.obs.S, idx.classS] # only susceptible
+    Nrealiz.E = dim(df.E)[1] #Nrealiz # dim(df.E)[1] # this will reduce the number of realizations to those with no deaths
+    Nrealiz.S = dim(df.S)[1] #Nrealiz # dim(df.S)[1] # this will reduce the number of realizations to those with no deaths
     PopSize.sub=get_relative_sizes(shieldLab,PopSize)
     PopSize.E=PopSize.sub["PopSize.E"]
     PopSize.S=PopSize.sub["PopSize.S"]
