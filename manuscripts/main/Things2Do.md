@@ -44,4 +44,5 @@
 * Avoid repeating contents across sections.
 * Pay more attention to herd immunity
 * More focused discussion.
+* Supplementary Material
 
