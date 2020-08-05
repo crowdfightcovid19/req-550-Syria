@@ -1,0 +1,146 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.3cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection*
+Research in context
+\end_layout
+
+\begin_layout Subsubsection*
+Evidence before this study
+\end_layout
+
+\begin_layout Standard
+Since the onset of the COVID-19 pandemic, many studies provided evidence
+ for the effectiveness of strategies such as self-distancing and improved
+ hygiene to reduce the spread of the disease.
+ These studies are underlying the recommendations of the World Health Organisati
+on, but the actual implementation of the intervention is affected by the
+ local conditions and resources.
+\end_layout
+
+\begin_layout Standard
+Mathematical model is the basis of many epidemiological studies and policies
+ about COVID-19.
+ Models applied at the national level suggest that the Syrian health system
+ will be saturated just four weeks after an outbreak.
+ The situation of the small Internally Displaced People (IDP) camps---more
+ self-contained, but with less access to services and facilities typically
+ available in cities---limits the applicability of national-scale studies.
+\end_layout
+
+\begin_layout Standard
+The conditions in IDP camps is similar, in some aspects, to Rohingya refugee
+ camps in Bangladesh, for which existing studies forecast a significant
+ impact of COVID-19.
+\end_layout
+
+\begin_layout Subsubsection*
+Added value of this study
+\end_layout
+
+\begin_layout Standard
+We developed a mathematical model to study the dynamics of COVID-19 accounting
+ for the demographics and living conditions in Syrian Internally Displaced
+ People (IDP) camps.
+ We performed extensive simulations for a range of parameter values to provide
+ statistically robust recommendations on the impact of several strategies
+ to prevent the spread of COVID in IDP camps.
+ We designed the intervention strategies ---self-distancing, shielding,
+ isolation---in a conversation with camp workers and directors to ensure
+ the feasibility of its implementation.
+\end_layout
+
+\begin_layout Subsubsection*
+Implications of all the available evidence
+\end_layout
+
+\begin_layout Standard
+Evidence points to the effectiveness of simple, realistic strategies to
+ mitigate the impact of COVID in Syrian IDP camps.
+ A combination of strategies that can be implemented in a context of limited
+ resources will have a significant effect on the impact of COVID-19 on the
+ population of IDP.
+\end_layout
+
+\end_body
+\end_document
