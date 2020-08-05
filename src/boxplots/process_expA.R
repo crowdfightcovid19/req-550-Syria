@@ -56,13 +56,13 @@ df <- extract_subtable_output_summaries(df.all,params.df)
 
 #Pre-process table: null model mixed everyone is exposed. We do not want totals.
 
-idx.nullmixed <- which( df$contacts == "null_model_mixed" )
-df$group[ idx.nullmixed ] <- rep("E",length(idx.nullmixed) )
-
-df.tmp <- subset(df, group != "T")
-
-df<- rbind(data.frame(),df.tmp) 
-
+#idx.nullmixed <- which( df$contacts == "null_model_mixed" )
+#df$group[ idx.nullmixed ] <- rep("E",length(idx.nullmixed) )
+#
+#df.tmp <- subset(df, group != "T")
+#
+#df<- rbind(data.frame(),df.tmp) 
+#
 setwd(codeDir)
 
 fn = "FracFinalDeaths"
