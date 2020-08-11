@@ -1,7 +1,9 @@
 
 
+
 ## Tables and figures
-* Take decisions about the panels.
+
+* Create panels for composite figures.
     * Option 1:
     * Table + scheme of the interventions
     * Panel 1. A 3rows x 4cols figures. 
@@ -21,14 +23,15 @@
     * Panel 3. 
         * 4 rows with each combination of interventions, with a single x axis.
 
-* Create a nice Table summarizing the interventions, as the Table 1 in Zandvoort.
-* Create a decent diagram illustrating the shielding intervention, isolation and evacuation.
+* Create a nice Table summarizing the interventions, as the Table 1 in Zandvoort et al. Ours has more details though.
+* Double check the diagram in Fig. 1 of the SM
+* Create a decent diagram illustrating the creation of a safety zone, isolation and evacuation.
 * Create new figures if needed.
-* Create panels for composite figures.
 
-## Statistical analysis.
-* Have a look at the figures and look for potential issues. Simplified version of all figures are located at  `data/real_models/results_post_processing/Summary_figures`. There is a README file explaining the names.
-* From these figures, double check all percentages of increase/decrease of variables stated in the text.
+
+## Results review and statistical analysis.
+* Have a look at the figures and look for potential issues. Simplified version of all figures are located at  `data/real_models/results_post_processing/Summary_figures`. There is a README file explaining the names convention.
+* From these figures, double check all percentages of increase/decrease of variables stated in the text. We could consider as a possibility creating a summary table.
 * Test if the difference in the fraction of deaths is significant for 24h vs. 12h in the Onset variable
 * Posthoc test for isolation tents, increasing numbers the tents reduces significantly the fraction of deaths? What about CFR?
 * Identify any other differences in the intervention 
