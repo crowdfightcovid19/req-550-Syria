@@ -127,6 +127,8 @@ Add your affiliation here.
 \end_layout
 
 \begin_layout Abstract
+Background, Methods, Findings, Interpretation, and Funding.
+ 
 \begin_inset ERT
 status open
 
@@ -292,6 +294,13 @@ We considered data from the NW of Syria as a reference to parametrize the
 , respectively.
  Therefore, in the absence of interventions, we considered 5 population
  classes, whose proportions are shown in Table [create Table].
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $ $
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
