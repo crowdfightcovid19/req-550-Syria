@@ -19,9 +19,10 @@
 \newcommand{\sh}{\mathrm{sh}}
 \newcommand{\nullm}{\mathrm{null}}
 \newcommand{\intv}{\mathrm{intv}}
-\newcommand{\family}{\mathrm{fam}}
+\newcommand{\family}{\mathrm{visit}}
 \newcommand{\care}{\mathrm{care}}
 \newcommand{\Exp}{\mathrm{exp}}
+\newcommand{\onset}{\mathrm{onset}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -213,8 +214,8 @@ with
 \begin_inset Formula $\tau$
 \end_inset
 
- being the probability of infection for a contact with an infected person,
- and 
+ the probability of infection if there is a contact between a susceptible
+ and an infected person, and 
 \begin_inset Formula $C_{ij}$
 \end_inset
 
@@ -226,10 +227,20 @@ with
 \begin_inset Formula $j$
 \end_inset
 
-.
+ per day.
  The rest of parameters are described in Table [Table], and the model is
  illustrated in Fig.
- .
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
  In the following, to simplify the notation we define 
 \begin_inset Formula $\kappa_{i}=((1-g_{i}-h_{i})\gamma_{I}+h_{i}\eta+g_{i}\alpha)$
 \end_inset
@@ -260,16 +271,24 @@ status open
 \begin_layout Plain Layout
 
 \series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagram"
+
+\end_inset
+
 Diagram of the model.
  
 \series default
-The model considers the following compartments: susceptible (S), exposed
- (E), presymptomatic (P), asymptomatic (A), symptomatic (S), recovered (R)
- and dead (D).
+The model considers the following compartments, related to epidemiologically
+ relevant stages: susceptible (S), exposed (E), presymptomatic (P), asymptomatic
+ (A), symptomatic (I), recovered (R) and dead (D).
  In our model, individuals requiring ICU care immediately after the symptomatic
- period would die, and those requiring hospitalization are considered infectious
- for a longer period.
- To model the latter type of individuals, we included the compartment H.
+ period will die, and those requiring just hospitalization (but not ICU
+ care) will move the H compartment.
+ The aim of this compartment is to consider a longer infectivity period
+ for individuals that requiring hospitalization will not have it, hence
+ staying in the hospital.
  Since the fate of individuals in the H compartment is uncertain if health
  care is not available, we run simulations considering two limiting possibilitie
 s, either all the individuals in H are recovered, or all die.
@@ -295,11 +314,11 @@ Parametrization of the contact matrix
 \end_layout
 
 \begin_layout Standard
-We estimated the average number of contacts of individuals of class 
+We estimated the average number of contacts that individuals of class 
 \begin_inset Formula $i$
 \end_inset
 
- in the camps, 
+ have in a camp, 
 \begin_inset Formula $\bar{c}_{i}$
 \end_inset
 
@@ -324,7 +343,15 @@ with
 \begin_inset Formula $N$
 \end_inset
 
- the total population size.
+ the total population size and 
+\begin_inset Formula $N_{j}$
+\end_inset
+
+ the population size of class 
+\begin_inset Formula $j$
+\end_inset
+
+.
  A well-mixed population will be considered the null model, and parameters
  derived under the null model assumptions are indexed with the superscript
  
@@ -337,29 +364,29 @@ with
 \end_inset
 
 .
- The type of interventions that we consider, aim to reduce either the average
- number of contacts a class 
+ Some of the inetrventions we considered, either reduce the average number
+ of contacts a class 
 \begin_inset Formula $i$
 \end_inset
 
  (e.g.
- self-isolation) or the accessibility of class 
+ self-isolation) or the probability that individuals of class 
 \begin_inset Formula $i$
 \end_inset
 
- to class 
+ interact with those of class 
 \begin_inset Formula $j$
 \end_inset
 
  (e.g.
- shielding strategies).
+ safety zone strategies).
  We model the first type of intervention introducing the parameter 
 \begin_inset Formula $\epsilon_{ij}$
 \end_inset
 
 , representing the fraction of the average number of contacts observed in
  the null model that prevail after the intervention: 
-\begin_inset Formula $\bar{c}_{i}=\epsilon_{ij}\bar{c}_{i}^{0}$
+\begin_inset Formula $\bar{c}_{i}=\epsilon_{i}\bar{c}_{i}^{0}$
 \end_inset
 
 .
@@ -383,7 +410,7 @@ with
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C_{ij}=\epsilon_{ij}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon_{ij}m_{ij}C_{ij}^{0}=M_{ij}C_{ij}^{0},
+C_{ij}=\epsilon_{i}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon_{i}m_{ij}C_{ij}^{0}=M_{ij}C_{ij}^{0}.\label{eq:ManagementMatrix}
 \end{equation}
 
 \end_inset
@@ -392,13 +419,23 @@ C_{ij}=\epsilon_{ij}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon_{ij}m_{ij}C_{ij}^{0}=M
 \end_layout
 
 \begin_layout Standard
-and the matrix 
+We name the matrix 
 \begin_inset Formula $M_{ij}$
 \end_inset
 
- will be called the managament matrix.
- Given this parameterization, we substitute it in the explicit expression
- of 
+ the managament matrix.
+ Substituting Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ManagementMatrix"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ in the explicit expression of 
 \begin_inset Formula $\lambda$
 \end_inset
 
@@ -406,14 +443,15 @@ and the matrix
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:lambda"
+reference "eq:lambda-1"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-) to obtain a model including management strategies
+) leads to a general expression for management strategies acting on the
+ contact matrix:
 \end_layout
 
 \begin_layout Standard
@@ -428,16 +466,29 @@ noprefix "false"
 \end_layout
 
 \begin_layout Subsection*
-Derivation of the transmissivity
+Derivation of the transmissivity parameter 
+\begin_inset Formula $\tau$
+\end_inset
+
+
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection*
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 Overall strategy
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The derivation of R0 for a SIR type model following description of 'Mathematical
@@ -448,14 +499,14 @@ The derivation of R0 for a SIR type model following description of 'Mathematical
 
 \end_inset
 
- To estimate the probability of infection if there is a contact between
- a symptomatic and an infected individual (parameter 
-\begin_inset Formula $\tau$
-\end_inset
+ 
+\begin_inset Note Comment
+status collapsed
 
-) we proceed as follows [Ref]: 1) Define the infected subsystem, i.e.
+\begin_layout Plain Layout
+1) Define the infected subsystem, i.e.
  all equations that include compartments where individuals can get infected.
- 2) Linearize the subsystem in the disease free equilibrium.
+ 2) Linearize the subsystem in the disease-free equilibrium.
  3) Find the next generation matrix (NGM) with large domain (
 \begin_inset Formula $K_{L}$
 \end_inset
@@ -464,7 +515,8 @@ The derivation of R0 for a SIR type model following description of 'Mathematical
 \begin_inset Formula $\bs{\dot{x}}=(\bs{T}+\bs{\Sigma})\bs{x}$
 \end_inset
 
-, here 
+.
+ Here 
 \begin_inset Formula $\bs{x}$
 \end_inset
 
@@ -481,14 +533,18 @@ The derivation of R0 for a SIR type model following description of 'Mathematical
 \begin_inset Formula $\bs{K}=-\bs{T}\bs{\Sigma}^{-1}.$
 \end_inset
 
- 4) The parameter 
+ 4) Particularize the solution to the NGM with small domain (
+\begin_inset Formula $K_{S}$
+\end_inset
+
+) and estimate 
 \begin_inset Formula $\tau$
 \end_inset
 
- can be estimated relating the ominant eigenvalue of the NGM to an estimation
- of the basic reproduction number obtained from the literature.
+ by relating the dominant eigenvalue of the NGM to an estimation of the
+ basic reproduction number obtained from the literature.
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 We also reference the description of R0 in metapopulations in Philipps S,
@@ -507,12 +563,23 @@ tions, and the methodology for calculating R0 used by the authors in Gatto
 
 \end_layout
 
-\begin_layout Subsection*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
 Estimation of the Next Generation Matrix
 \end_layout
 
 \begin_layout Standard
-We start considering the subsystem containing the infectious population:
+To estimate the probability of infection if there is a contact between a
+ susceptible and an infected individual (parameter 
+\begin_inset Formula $\tau$
+\end_inset
+
+) we proceed as follows [Ref].
+ We start considering the subsystem containing the infectious population:
 \end_layout
 
 \begin_layout Standard
@@ -677,12 +744,12 @@ The NGM with large domain can now be found by
 \end_inset
 
 .
- hHowever, as we know that each individual that gets infected first will
- become an exposed individual (
+ However, as we know that each individual that gets infected will become
+ an exposed individual (
 \begin_inset Formula $E$
 \end_inset
 
- compartment), we can calculate instead the NGM with small domain, 
+ compartment), we focus on the NGM with small domain, 
 \begin_inset Formula ${\bf {K_{\mathrm{S}}}}$
 \end_inset
 
@@ -771,6 +838,10 @@ We then find:
 \end_layout
 
 \begin_layout Subsection*
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 Estimation of 
 \begin_inset Formula $\tau$
 \end_inset
@@ -778,9 +849,13 @@ Estimation of
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-The reproduction number can be obtained from the maximum of the absolute
- value of all eigenvalues of 
+The reproduction number is related to the main eigenvalue of 
 \begin_inset Formula $\bs{K_{\mathrm{S}}}$
 \end_inset
 
@@ -789,58 +864,30 @@ The reproduction number can be obtained from the maximum of the absolute
 \begin_inset Formula $R_{0}=|\lambda_{1}|$
 \end_inset
 
-.
- In our model all parameters are known except the probability of infection
- per contact, 
+, and 
 \begin_inset Formula $\tau$
 \end_inset
 
-.
- We estimate the probability distribution of 
-\begin_inset Formula $\tau$
-\end_inset
-
- generating realizations of 
-\begin_inset Formula $R_{0}$
-\end_inset
-
- and 
+ is estimated from the main eigenvalue of 
 \begin_inset Formula $\tilde{K_{\mathrm{S}}}=K_{\mathrm{S}}/\tau$
 \end_inset
 
- assuming a well mixed population as null model and solving for 
-\begin_inset Formula $\tau$
+, and considering the null model parameters (
+\begin_inset Formula $\tilde{\lambda}_{1}^{0}$
 \end_inset
 
-:
+), following the expression:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\tau=\frac{R_{0}}{|\tilde{\lambda}_{1}^{0}|},
+\tau=\frac{R_{0}}{|\tilde{\lambda}_{1}^{0}|}.
 \end{equation}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $|\tilde{\lambda}_{1}^{0}|$
-\end_inset
-
- is the maximum of the absolute values of all eigenvalues of 
-\begin_inset Formula $\tilde{K_{\mathrm{S}}}$
-\end_inset
-
-, when the contact matrix is estimated under the null model, i.e.
- 
-\begin_inset Formula $\bar{c}_{i}=\bar{c}_{i}^{0}$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section*
@@ -852,12 +899,12 @@ Safety zone
 \end_layout
 
 \begin_layout Standard
-In the following, we analyse the effect of creating a safety zone to isolate
- certain fraction 
+We considered the existence of a safety zone to isolate certain fraction
+ 
 \begin_inset Formula $f_{\mathrm{S}}$
 \end_inset
 
- of the population, mostly vulnerable.
+ of the population, mostly those more vulnerable.
  In practice, this is made dividing the camp in two areas, a 
 \begin_inset Quotes eld
 \end_inset
@@ -870,7 +917,7 @@ green
 \begin_inset Formula $\g$
 \end_inset
 
-) for vulnerable population and an 
+) for the vulnerable population and an 
 \begin_inset Quotes eld
 \end_inset
 
@@ -891,56 +938,70 @@ buffering
 \begin_inset Quotes erd
 \end_inset
 
- zone under controlled conditions.
- In particular, we will consider that members of both populations will meet
- in an open space, maintaining 2m of distance and using contention measures
- such as masks, reducing the infectivity an 80% [Ref], i.e.
+ zone, under controlled conditions.
+ In particular, we considered that indifividuals entering in this zone will
+ meet in an open space, maintaining 2m of distance and using contention
+ measures such as masks.
+ We estimated that these measures would reduce the infectivity by an 80%
+ [Ref], i.e.
  
 \begin_inset Formula $\hat{\tau}=0.2\tau$
 \end_inset
 
 .
- In addition, only a limited number of members 
+ In addition, each individual of the green zone, will be allowed to interact
+ with a limited number 
 \begin_inset Formula $c_{\family}$
 \end_inset
 
- will be allowed to interact per each individual in the green area per day.
+ of members (hereafter 
+\begin_inset Quotes eld
+\end_inset
+
+visitors
+\begin_inset Quotes erd
+\end_inset
+
+) from the orange zone per day.
  Finally, in some interventions we considered that individuals visiting
  the buffering zone will have a health check (e.g.
  temperature measurement), aimed at excluding symptomatic patients from
  the buffering zone.
- In the model, this intervention reduces the transmission probability of
- individuals from the 
+ In the model, the transmission probability between individuals from the
+ orange zone at an 
 \begin_inset Formula $I$
 \end_inset
 
- and 
+ or 
 \begin_inset Formula $H$
 \end_inset
 
- compartments to zero in this zone.
+ stage and individuals from the green zone is set to zero.
 \end_layout
 
 \begin_layout Standard
-The intervention implies a reduction in the number of contacts between classes
- of the green zone and the orange zone, but not in the mean number of contacts
- that each individual has per day, therefore 
+As we said, setting a safety zone implies a reduction in the number of contacts
+ between classes of the green zone and the orange zone, but not in the mean
+ number of contacts that each individual has per day, therefore 
 \begin_inset Formula $\bar{c}_{i}$
 \end_inset
 
  does not vary.
+ Therefore, it is needed to estimate how the contacts will be redistributed
+ from those occuring in a well-mixed model with individuals from a different
+ zone towards members living in the same zone.
  We model this redistribution of the contacts with the parameter 
-\begin_inset Formula $\epsilon_{ij}$
+\begin_inset Formula $\epsilon_{i}$
 \end_inset
 
- as follows:
+:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\epsilon_{ij} & = & \rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in different areas})\\
-\epsilon_{ij} & = & 1-\rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in same area}).
+\epsilon_{i} & = & \rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in different areas})\\
+\epsilon_{i} & = & 1-\rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in same area}).
 \end{eqnarray*}
 
 \end_inset
@@ -949,41 +1010,32 @@ The intervention implies a reduction in the number of contacts between classes
 \end_layout
 
 \begin_layout Standard
-If we assume that the relatives from the orange zone visiting the buffering
- zone are always different, 
+If we assume that visitors are always different, the quantity 
 \begin_inset Formula $f_{\oran,\family}=c_{\family}\frac{N_{\g}}{N_{\oran}}$
 \end_inset
 
- will be the fraction of the orange population susceptible of visiting the
- buffering zone and we define 
+ is the fraction of the orange population susceptible of visiting the buffering
+ zone.
+ We define 
 \begin_inset Formula $\rho$
 \end_inset
 
- as:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\rho=\begin{cases}
-1 & \textrm{if }i\in\g\\
-f_{\oran,\family} & \textrm{if }i\in\oran
-\end{cases}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+ as
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-[APG: Double check implementation] Note that it could be considered that
- this function saturates if every member of the orange zone eventually visits
- the buffering zone:
+If 
+\begin_inset Formula $c_{\family}$
+\end_inset
+
+ is large enough ( 
+\begin_inset Formula $c_{\family}\approx28$
+\end_inset
+
+ contacts per week) it should be considered that this function saturates,
+ because every member of the orange zone would eventually visits the buffering
+ zone:
 \end_layout
 
 \begin_layout Plain Layout
@@ -1010,7 +1062,22 @@ with the Heaviside function
 \end_inset
 
 .
+ We chose values well below these values.
 \end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho=\begin{cases}
+1 & \textrm{if }i\in\g\\
+f_{\oran,\family} & \textrm{if }i\in\oran
+\end{cases}
+\]
 
 \end_inset
 
@@ -1018,8 +1085,8 @@ with the Heaviside function
 \end_layout
 
 \begin_layout Standard
-The next step is to model the probability of interaction between a member
- of the class 
+Next, we model the probability of interaction between a member of the class
+ 
 \begin_inset Formula $i$
 \end_inset
 
@@ -1027,12 +1094,12 @@ The next step is to model the probability of interaction between a member
 \begin_inset Formula $j$
 \end_inset
 
-, depending on whether they belong to the same or a different area.
- Since in the intervention classes are constrained to interact in the demarcated
- areas, once one individual is within a given area she will observe an increased
- likelihood of finding members of the classes permitted to visit that area
- with respect to the null model.
- In particular, the proportion 
+, depending on whether they belong to the same or to different areas.
+ Since in the intervention classes are constrained to interact within their
+ own area, compared to the null model any individual will experience an
+ increased likelihood of finding members of the classes staying in the same
+ area.
+ More specifically, the proportion 
 \begin_inset Formula $N_{i}/N$
 \end_inset
 
@@ -1053,7 +1120,7 @@ The next step is to model the probability of interaction between a member
 \end_inset
 
 .
- This leads to the following factors for 
+ This leads to the following values for 
 \begin_inset Formula $m_{ij}$
 \end_inset
 
@@ -1064,12 +1131,20 @@ The next step is to model the probability of interaction between a member
 \begin_inset Formula 
 \begin{eqnarray*}
 m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\X}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\X}}\quad(i,j\textrm{ in same area}\ X)\\
-m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\Y}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\Y}}\quad(i\in X\textrm{ and}\ j\in Y)
+m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\Y}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\Y}}\quad(i\in X\textrm{ and}\ j\in Y).
 \end{eqnarray*}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+We finally define the management matrix as 
+\begin_inset Formula $M_{ij}=\epsilon_{i}m_{ij}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1079,9 +1154,9 @@ Estimation of the infectivity of the isolated and evacuated populations
 \begin_layout Standard
 To estimate the infectivity of the population isolated we depart from the
  following assumptions.
- Firstly, the population class taking care of the isolated individuals belong
- to the one of adults with no comorbidities, and we considered a number
- 
+ Firstly, the population class taking care of the isolated individuals belongs
+ to the one of adults with no comorbidities.
+ We considered a number 
 \begin_inset Formula $N_{\textrm{care}}$
 \end_inset
 
@@ -1090,30 +1165,31 @@ To estimate the infectivity of the population isolated we depart from the
 \end_inset
 
  contacts per day and carer with the isolated population.
- More specifically, these individuals should not be symptomatic (nor death),
- and we denote the number of individuals fulfilling this requirements with
+ The individuals that can belong to the group of carers are those alive
+ individuals having no symptoms.
+ We denote the number of individuals fulfilling these requirements with
  
 \begin_inset Formula $N_{\Exp}$
 \end_inset
 
  (number of exposed).
- To continue with, we considered that the number of symptomatic individuals
- exceeding the isolation capacity 
-\begin_inset Formula $\tilde{N}$
+ To continue with, we considered that when the number of symptomatic individuals
+ exceeds the isolation capacity, 
+\begin_inset Formula $\tilde{N},$
 \end_inset
 
- are fully infectious (note that we use a tilde to denote variables related
- to the isolated population).
+the individuals in excess are fully infectious (note that we use a tilde
+ to denote variables related to the isolated population).
  In addition, the occupancy of the isolation beds is distributed among classes
- proportionally to the number symptomatic individuals that each class contribute
-s, i.e.
+ proportionally to the number of symptomatic individuals that each class
+ contributes, i.e.
  
 \begin_inset Formula $\tilde{N}_{j}=\tilde{N}\left(I_{j}/\sum_{j}I_{j}\right)$
 \end_inset
 
 .
  Finally, symptomatic individuals developing symptoms that would require
- a hospitalization, are either evacuated or they become fully infectious.
+ hospitalization, are either evacuated or they become fully infectious.
  The rationale behind the latter choice is that, if an individual requires
  a more dedicated care, the available means in the camps to protect the
  population from these patients would be insufficient.
@@ -1127,11 +1203,12 @@ s, i.e.
 \end_inset
 
  otherwise.
+ Evacuated individuals are no longer infectious.
 \end_layout
 
 \begin_layout Standard
-Given these assumptions, the number of contacts that the healthy adult populatio
-n class will have with the isolated population will be 
+Given these assumptions, the number of contacts that the adult and healthy
+ population class will have with the isolated population will be 
 \begin_inset Formula $c_{\care}N_{\care}/N_{\Exp}$
 \end_inset
 
@@ -1165,7 +1242,7 @@ n class will have with the isolated population will be
 \begin_inset Formula $j$
 \end_inset
 
- is equal to 
+, is equal to 
 \begin_inset Formula $(N_{j}/N)(\tilde{N}_{j}/N_{j})$
 \end_inset
 
@@ -1189,14 +1266,14 @@ For simplicity, we assume that there is one carer for each infected person
 \end_inset
 
 ).
- Note the convenience of this choice, since if the number of infectious
- is larger than the number of available individuals to be carers, the ratio
- 
+ Note the convenience of this choice, since if the number of symptomatic
+ individuals is larger than the number of individuals susceptible of being
+ carers, the ratio 
 \begin_inset Formula $\tilde{N}_{j}/N_{\Exp}>1$
 \end_inset
 
-, meaning that more than one contact per day is needed to care that population
- class.
+, meaning that more than one contact per day is needed to take care of that
+ population class.
  With these considerations, the rate of infection for the healthy adult
  population class (indexed 
 \begin_inset Formula $k$
@@ -1246,6 +1323,34 @@ where
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+A last consideration is that symptomatic individuals require some time time
+ to recognize their symptoms and to decide that self-isolation is needed.
+ To model this fact, we considered whenever the isolation intervention is
+ incorporated, that the symptomatic compartment is split in two compartments:
+ onset of symptoms, 
+\begin_inset Formula $I_{i}^{\onset}$
+\end_inset
+
+ and symptomatic, 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+.
+ We considered three that the time at 
+\begin_inset Formula $I_{i}^{\onset}$
+\end_inset
+
+ followed a gaussian distribution with means 12, 24 or 48 hours on average.
+ The time that the individual can isolate is then calculated as the difference
+ between the time at the symptomatic compartment if there is no isolation,
+ 
+\begin_inset Formula $\text{1/\ensuremath{\eta}}$
+\end_inset
+
+, and the time at the onset compartment.
 \end_layout
 
 \begin_layout Section*
