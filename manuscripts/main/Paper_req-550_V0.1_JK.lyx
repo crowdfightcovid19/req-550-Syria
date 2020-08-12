@@ -680,8 +680,19 @@ We considered data from the NW of Syria as a reference to parametrize the
  Unless stated otherwise, the results presented refer to populations of
  2000 individuals, because interventions tend to be less effective in larger
  camps.
- The original data was structured in three population ages: age 1 (0-13
- years old), age 2 (14-50 yrs.) and age 3 (>50 yrs).
+ The original data was structured in three population ages: age 1 (0-1
+\change_inserted 227091064 1597269893
+2
+\change_deleted 227091064 1597269891
+3
+\change_unchanged
+ years old), age 2 (1
+\change_inserted 227091064 1597269895
+3
+\change_deleted 227091064 1597269895
+4
+\change_unchanged
+-50 yrs.) and age 3 (>50 yrs).
  For the classes correspondent to age 2 and 3, we additionally considered
  two subclasses comprising health individuals and individuals with comorbidities
 , respectively.
