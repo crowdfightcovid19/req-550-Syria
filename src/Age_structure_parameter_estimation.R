@@ -22,6 +22,7 @@ dirOut="estimation_parameters/class_structured_data"
 
 pop <- read.csv("age_structure_and_NCDprevalence/entire_population.csv")
 camps <- read_excel("idps_in_camps_syria_april_2020.xlsx")
+census <- read.csv("Jordan_refugee_census_2015.csv")[, -5]
 
 #*Set capacity of green zone*
 green_cap <- .2
@@ -38,7 +39,7 @@ round_preserve_sum <- function(x, digits = 0) {
 
 #### Population structure/simulated pop ####
 ## Age groups 
-# Estimate proportion of population in each age group
+# Estimate proportion of population in each age group in idp pop
 # (3 groups: age = 0-12/13-50/over 50)
 
 age <- list(select(pop, total_0_6_months:total_6_12), 
@@ -84,6 +85,13 @@ leb_data[, c(2, 4, 6, 8, 10)] <- sapply(leb_data[, c(2, 4, 6, 8, 10)], function(
   substr(x, 1, nchar(x)-2) %>% 
     as.numeric()
 })
+
+#### Census of refugees in Jordan
+
+c(select(pop, Males.from.0.to.6.months.of.age:Males.from.6.to.12.months.of.age) %>% 
+    sum(), 
+  (pop$Males.from.1.to.2.years.of.age+.67*pop$Males.from.3.to.5.years.of.age), 
+  .33*pop$Males.from.3.to.5.years.of.age+4/7*pop$Males.from.6.to.12.years.of.age)/pop$Total_pop
 
 ## Estimate percent with each NCD in age groups 0-17, 18-50, over 50
 ## *Assume 50% of population & NCDs in 40-59 age group are at ages 40-50 & 50% at ages 51-59*
