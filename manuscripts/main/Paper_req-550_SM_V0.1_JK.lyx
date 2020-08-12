@@ -7,7 +7,8 @@
 \textclass article
 \begin_preamble
 \usepackage{xcolor}
-
+\usepackage{tikz}
+\usetikzlibrary{arrows}
 
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 \newcommand{\add}[1]{\textcolor{red}{#1}}
@@ -86,11 +87,12 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 227091064 "Klein"
 \end_header
 
 \begin_body
@@ -245,12 +247,275 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597269595
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+
+\backslash
+tikzstyle{int}=[draw, fill=blue!50, minimum size=2em] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+
+\backslash
+tikzstyle{init} = [pin edge={to-,thin,black}] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+
+\backslash
+begin{tikzpicture}[node distance=2.5cm,auto,>=latex']     
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+node [int] (S) {$
+\backslash
+dot{S_i}$};     
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+node (E) [int, right of=S] {$
+\backslash
+dot{E_i}$};     
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+node (P) [int, right of=E] {$
+\backslash
+dot{P_i}$};   
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+node (blank) [right of=P, coordinate]{};  
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+node (I) [int, below of=blank] {$
+\backslash
+dot{I_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+node (A) [int, above of=blank] {$
+\backslash
+dot{A_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+node (H) [int, right of=I] {$
+\backslash
+dot{H_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+node (R) [int, right of=blank] {$
+\backslash
+dot{R_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+node (D) [int, below of=H] {$
+\backslash
+dot{D_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+node (RD) [int, right of=H] {$
+\backslash
+dot{(R/D)_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+path[->] (S) edge node {$
+\backslash
+lambda_iS_i$} (E);     
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+path[->] (E) edge node {$
+\backslash
+delta_EE_i$} (P);    
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+path[->] (P) edge node [anchor=center, left, midway] {$f
+\backslash
+delta_PP_i$} (I);   
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, below, midway] {$h_i{
+\backslash
+eta}I_i$} (H);   
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, right, midway] {$(1-g_i-h_i)
+\backslash
+gamma_II_i$} (R);   
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+path[->] (A) edge node [anchor=center, right, midway] {$
+\backslash
+gamma_AA_i$} (R);   
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+path[->] (P) edge node [anchor=center, left, midway] {$(1-f)
+\backslash
+delta_PP_i$} (A);  
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, left, midway] {$g_i{
+\backslash
+alpha}I_i$} (D);  
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+	
+\backslash
+path[->] (H) edge node [anchor=center, below, midway] {$
+\backslash
+gamma_HH_i$} (RD);  
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597269596
+
+
+\backslash
+end{tikzpicture}
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted 227091064 1597269592
+
 \begin_inset Graphics
 	filename /home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/docs/Model_graph_APG.pdf
 	width 80text%
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
