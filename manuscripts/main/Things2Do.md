@@ -41,6 +41,7 @@
 * Incorporating literature (e.g. parametrizations) into the bib file. Search for more literature if needed and add the bibs.
 * Include refs in the manuscript.
 * Include cross references of figures between SM and MS and double check.
+* Check formulas. More specifically, there are many commands internally defined, e.g. subindexes that should appear with mathrm format, and if they are typed incorrectly may generate errors in the formulas.
 * Correct spelling and reduction word numbers (last thing to do)
 
 ## Contents
