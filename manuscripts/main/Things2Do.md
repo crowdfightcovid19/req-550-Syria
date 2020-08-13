@@ -9,6 +9,8 @@
     * I have also doubts on whether simulations with no deaths are excluded from the statistics.
     * The time to peak for isolation shows fraction of deaths.
     * Remove the theme with grey background
+    * Increase fonts, remove titles.
+    * If it is possible, create directly a panel with a faceting function to have a single legend and grid/wrap titles.
     
 
 * Create panels for composite figures.
