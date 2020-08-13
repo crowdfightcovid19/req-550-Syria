@@ -3,6 +3,14 @@
 
 ## Tables and figures
 
+* Fix figures
+    * Box plots figures do not render well in the panels, change to something like geom ribbon or similar: it is needed to see the trend.
+    * Isolation Figures are wrong. For number of deaths if there are no tents it should be around a 10%
+    * I have also doubts on whether simulations with no deaths are excluded from the statistics.
+    * The time to peak for isolation shows fraction of deaths.
+    * Remove the theme with grey background
+    
+
 * Create panels for composite figures.
     * Option 1:
     * Table + scheme of the interventions
