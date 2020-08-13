@@ -1,7 +1,7 @@
 ## How to contribute:
 
 * Open the file in lyx using the last version, indicated in the label e.g. V0.1
-* Rename the file using your initials, e.g. `Paper_req550_v0.1_APG.lyx`
+* Copy the last version to anoter file and rename it using your initials, e.g. `Paper_req550_v0.1_APG.lyx`
 * Edit the file using the **control of changes**  --> `Document -> Track changes`
 * Add comments if needed using `Insert --> Note --> Comment`
 * Save the file, push your changes and notify to Alberto
