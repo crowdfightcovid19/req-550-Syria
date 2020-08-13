@@ -7,6 +7,9 @@
 \textclass article
 \begin_preamble
 \usepackage{lipsum}
+\usepackage{xr}
+\externaldocument{Paper_req-550_V0.2_SM}
+\usepackage{lineno}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -75,7 +78,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -651,16 +654,19 @@ We considered a discrete-time stochastic model simulating the spread of
  The model is divided in compartments, containing individuals at different
  possible epidemiological stages along the progression of the disease (see
  Supplementary Material).
- The model additionally considers that the population is divided in different
- classes depending on the age-structure and comorbidities.
+ The model additionally considers that the population is split in classes,
+ dependent on the age-structure and comorbidities.
  The simulation starts with a population of susceptible individuals and
  then one individual becomes exposed.
  The progression of the disease in the individual goes through a series
- of infectious stages: a presymptomatic stage, and then either a symptomatic
- or asymptomatic stage, eventually infecting other suceptible individuals.
+ of infectious stages: a preclinical infectious stage, and then either a
+ clinical (symptomatic) or subclinical (asymptomatic) infectiousnessstage.
+ Susceptible individuals may become infected if they have a contact with
+ infectious individuals.
  Individuals are no longer infectious if they recover or if they die.
- The simulations run for 365 days, and we verified that a steady state was
- always reached before the limit of the simulation was achived.
+ The model simulates the development of the disease for a period of 12 months.
+ We verified that a steady state was always reached before the limit of
+ the simulation was achieved.
  We did not considered any additional entry of infectious individuals in
  the camp during the simulation.
  Births and deaths due to other causes were not considered in the model,
@@ -715,14 +721,12 @@ Epidemiological severity assumptions
 
 \begin_layout Standard
 An important question to consider in the model is the access to health care.
- In the case of the region we are considering as a reference, NW Syria,
- there are available XXX beds in hospitals (XXX UCIs) and XX ventilators
- for 4.5 million people [Ref].
+ In the NW of Syria, there are available XXX beds in hospitals (XXX UCIs)
+ and XX ventilators for 4.5 million people [Ref].
  Basic estimations predicted a collapse of the health facilities after 8
  weeks of the outbreak [].
- Given the additional difficulties that people living in the camps has to
- access these facilities [how to show this?], we considered a worst-case
- scenario in which individuals will not have access to health care.
+ Hence, we considered a worst-case scenario in which individuals will not
+ have access to health care.
  As a consequence, we assumed that symptomatic individuals requiring an
  ICU would die.
  More problematic is to estimate the fate of those individuals that would
@@ -730,15 +734,14 @@ An important question to consider in the model is the access to health care.
  ICU care, since in the absence of hospitalization their fate is uncertain.
  To address this point, and departing from previous models [Refs], we considered
  a hospitalization compartment.
- Since, as we said, hospitalization is unfeasible, these individuals are
- considered to stay in the camp and being infectious.
- Hence, the role of this compartment is to account for a longer infectious
- period for these individuals.
+ The role of this compartment is to account for a longer infectious period
+ for these individuals that, since there is no access to hospitals, will
+ stay in the camp.
  This compartment will also help us to model more realistically some interventio
 ns, for example noting that the severity of the symptoms for these individuals
  is incompatible with self-isolation.
  From this compartment, we simulated two possible extreme scenarios, one
- in which all these individuals would recover, and another in which these
+ in which all of these individuals would recover, and another in which these
  individuals will all die.
  This strategy allowed us to estimate upper and lower bounds for the different
  variables.
@@ -757,13 +760,11 @@ n that will suffer severe or very severe symptoms (parameters
 \end_inset
 
 , see Table [Table]).
- These parameters are class-specific, but we gathered this data from studies
- in countries in which the living conditions are more favourable [Refs],
- and in which there is access to health care.
- Following previous work [Zandvoort], we considered that in, our setting,
- the fraction of individuals showing severe symptoms will be larger, and
- we implemented this fact mapping the population-classes in our model to
- population-classes 10 years older in the studies we took as a reference.
+ These parameters are class-specific, but we gathered this data from wealthy
+ countries [Refs], with access to health care.
+ Following previous work [Zandvoort], we considered that severity in the
+ camps would correspond to the one observed in these countries for a population
+ 10 years older.
 \end_layout
 
 \begin_layout Subsection*
@@ -773,9 +774,20 @@ Transmissibility assumptions
 \begin_layout Standard
 In our model, individuals from the presymptomatic, asymptomatic, symptomatic
  and hospitalized compartments are equally infectious.
- Although asymptomatic individuals are often considered less infectious
- [Ref], the fraction of asymptomatic we considered was of 16% [Ref], which
- might be an underestimation after recent findings reporting up to 49% [Ref],
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+This is a weak point, and I think it could be rephrased better to be more
+ convincent:
+\end_layout
+
+\end_inset
+
+Although asymptomatic individuals are often considered less infectious [Ref],
+ the fraction of asymptomatic we considered was of 16% [Ref], which might
+ be an underestimation after recent findings reporting up to 49% [Ref],
  and hence we opt to considered them equally infectious than symptomatic
  ones.
  The length of the time intervals that individuals spend in each compartment
@@ -783,21 +795,22 @@ In our model, individuals from the presymptomatic, asymptomatic, symptomatic
 \end_layout
 
 \begin_layout Standard
-To model the contacts between individuals we considered that the number
- of contacts between individuals of different classes was the product of
- the mean number of contacts that an individual has per day (
+We modelled contacts between individuals considering that the number of
+ contacts between individuals belonging to different classes was the product
+ of the mean number of contacts that an individual has per day (
 \begin_inset Formula $\bar{c}_{i}$
 \end_inset
 
-, see Supplementary Materia) times the probability of finding an individual
- of other class, which is proportional to the proportion of that class in
- the total population.
+, see Supplementary Materia) times the probability of randomly interact
+ with an individual of a given class.
+ We estimated that this probability is proportional to the fraction of the
+ population that the class represents.
  The 
 \begin_inset Formula $\bar{c}_{i}$
 \end_inset
 
- values were estimated from direct conversations with people managing the
- camps, although it was not possible to perform a formal survey.
+ values were estimated from direct conversations with camp's managers in
+ NW Syria.
  We estimated that individuals of age 1 have 25 contacts per day on average,
  those of age 2 have 15 contacts per day, and we fix to 10 contacts per
  day those of age 3.
@@ -865,8 +878,8 @@ Self-distancing
 \end_layout
 
 \begin_layout Standard
-We considered a situation in which all the population reduce the mean number
- of contacts per day by a certain amount (20% and 50%).
+We considered a situation in which the whole population reduce the mean
+ number of contacts per day by a certain amount (20% or 50%).
  Since the mean number of people per tent in a camp is 7 [verify], we considered
  that the number of contacts per day cannot be reduced by more than a 50%.
  Note that, for an adult, this would mean having 7.5 contacts per day.
@@ -878,10 +891,9 @@ Buffering zone
 
 \begin_layout Standard
 When individual self-distancing cannot be achieved, a possible solution
- is to split the population in groups, and apply self-distancing measures
- to individuals belonging to different groups.
- We name the zones in which interactions between population groups occur
- 
+ is the split of the population in groups, and to apply self-distancing
+ measures between individuals belonging to different groups.
+ The interaction between groups is then limited to certain zones named 
 \begin_inset Quotes eld
 \end_inset
 
@@ -890,13 +902,13 @@ buffering zones
 \end_inset
 
 .
- We assume that these zones are always open spaces, not occupied by more
- than 4 individuals wearing masks, and in which 2 meters of distance between
+ We assumed that these zones are open spaces, not occupied by more than
+ 4 individuals wearing masks, and in which 2 meters of distance between
  individuals of different groups is guaranteed.
  This setting allowed us to assume a reduction in the probability of infection
  per contact of an 80% [Ref].
  An additional intervention we considered in some simulations, is that symptomat
-ic individuals cannot access to a buffering zone.
+ic individuals cannot access the buffering zones.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -904,9 +916,8 @@ Safety zone
 \end_layout
 
 \begin_layout Standard
-In this intervention, it is considered that the camp is divided in two areas:
- a safety zone, in which more vulnerable people lives (that we will refer
- to as 
+In this intervention, the camp is divided in two areas: a safety zone, in
+ which more vulnerable people lives (that we will refer to as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -918,8 +929,7 @@ green
  the remainder population.
  In the simulations, it is always considered that the first exposed individual
  belongs to the orange zone.
- Contrary to the nomenclature followed in other studies (see e.g.
- [Ref]), we avoided the use of the term 
+ We avoided the use of the term 
 \begin_inset Quotes eld
 \end_inset
 
@@ -927,11 +937,11 @@ shielding
 \begin_inset Quotes erd
 \end_inset
 
- for this intervention, since it may lead to a (misleading) picture in which
- it is believed that the vulnerable population is isolated into a closed
- space, such as a separated building.
+ for this intervention as in other studies, since it may lead to a (misleading)
+ picture in which it is believed that the vulnerable population is isolated
+ into a closed space, such as a separated building.
  Such intervention would require additional assumptions on how contacts
- occur in such a space 
+ occur in a closed space 
 \begin_inset Note Comment
 status collapsed
 
@@ -943,10 +953,11 @@ APG: Are we aware of any study that address this point? there has been much
 \end_inset
 
 .
- In our simulations, we instead assumed that the camp is split in two separated
- areas, and that the number of contacts between individuals living in different
- areas is reduced, while the living conditions within both areas remain
- otherwise the same.
+ In our simulations, we assumed that the camp is split in two separated
+ areas instead.
+ The number of contacts between individuals living in different areas is
+ reduced, while the living conditions within both areas remain otherwise
+ the same.
  Therefore, the number of contacts per day and individual does not change
  unless self-distancing is implemented.
  In practice, this means that, for every individual, reducing the number
@@ -959,9 +970,9 @@ tary Material).
 
 \begin_layout Standard
 We also considered that individuals living in the green zone cannot leave
- that area, which means that supplies for this population should be provided
- by individuals in the exposed zone, and hence the contacts between both
- populations never vanishes.
+ it, which means that supplies for this population should be provided by
+ individuals in the orange zone, and hence the contacts between both populations
+ never vanishes.
  However, we considered that this interaction will always occur in a buffering
  zone, and we assumed that each individual in the green zone can have a
  maximum number of contacts per week with individuals of the orange zone:
@@ -989,7 +1000,9 @@ Lockdown of the safety zone
 \begin_layout Standard
 An additional measure that can incorporated once the safety zone is implemented,
  is a further reduction in the number of contacts occuring in the buffering
- zone after the first symptomatic case in the orange zone is identified.
+ zone.
+ This occurs only after the first symptomatic case in the orange zone is
+ identified.
  We refer to this reduction as 
 \begin_inset Quotes eld
 \end_inset
@@ -1009,32 +1022,32 @@ Self-isolation
 \end_layout
 
 \begin_layout Standard
-A challenge in informal settlements is how self-isolation can be interpreted
- when households have a single, and often small space.
+A challenge in informal settlements is how self-isolation can be implemented
+ when households consist of a single, and often small, space.
  Moreover, water should be collected at specific locations, there are communal
- latrines and the scarcity of food supplies do not allow for the isolation
- of whole families.
+ latrines and the scarcity of food supplies do not allow for the complete
+ isolation of whole families.
  We considered the possibility that individuals showing symptoms self-isolate
  in individual tents in dedicated spaces of the camps, or next to the tents
- of their relatives.
- To simulate a more realistic scenario, we considered that there is a minimum
- time for an individual to recognize his/her own symptoms, within a period
- ranging from 12 to 48 hours (see Table XXX).
+ of their relatives.We modelled this intervention for an increasing number
+ of tents from 10 to an unlimited number (see Table XXX).
+ We also considered that there is a minimum time for an individual to recognize
+ his/her own symptoms.
+ We considered three possible time intervals with means of 12, 24 or 48
+ hours (see Table XXX).
  In addition, we considered that there are a number of carers dedicated
- to supply food and water to isolated individuals, interacting in a buffering
+ to supply food and water to isolated individuals, interacting via a buffering
  zone.
- In Supplementary Material we show that considering one carer per individual
+ In Supplementary Material, we show that considering one carer per individual
  having one contact per day, we account for both the positive effects of
  isolation and the negative effects derived from the contact with carers,
  since the probability of infection with the rest of the population cannot
  be neglected.
  In this respect, we considered that people moving to a severely symptomatic
  stage (hospitalized compartment) becomes fully infectious.
- The rationale behind this choice is that this individuals require a more
+ The rationale behind this choice is that these individuals require a more
  intensive care, and hence it is expected that the rules imposed for a buffering
  zone cannot be longer fulfilled.
- We modelled this intervention for an increasing number of tents from 10
- to an unlimited number (see Table XXX).
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1059,8 +1072,8 @@ ty considered by policy-makers.
 \end_inset
 
 .
- In this way, the measure will reduce the infectiousness of these individuals
- to zero.
+ In this way, the only effect of the intervention is a reduction of the
+ infectiousness of these individuals to zero.
 \end_layout
 
 \begin_layout Subsection*
@@ -1074,11 +1087,10 @@ For each implementation of the interventions, we run 500 simulations, analysing
  The main variables we considered in the comparisons were the fraction of
  casualties in the population, the case fatality rates (CFR), the fraction
  of population recovered and the time at which it is observed a peak in
- the number of symptomatic.
- We focused on the symptomatic population, because it is the most informative
- measure in settings in which there is no access to other tests.
+ the symptomatic population, which is the most informative population in
+ settings in which there is no access to other tests.
  We additionally considered the fraction of simulations in which at least
- one death is observed as a proxy for the probability of outbreak.
+ one death is observed, as a proxy for the probability of outbreak.
 \begin_inset Note Comment
 status collapsed
 
@@ -1106,7 +1118,16 @@ Results
 \begin_layout Standard
 When interventions are absent, the CFR takes values around 2% when we consider
  that individuals that would require hospitalization (but not ICU) are recovered
-, raising up to ~11% when we considered that all would die 
+ (Suppl.
+ Fig.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_DvsR"
+
+\end_inset
+
+), raising up to ~11% when we considered that all would die 
 \begin_inset Note Comment
 status open
 
@@ -1117,27 +1138,77 @@ APG: Verify these values
 \end_inset
 
 .
- Unless otherwise stated, in the following we consider the latter scenario
+ In the following and unless otherwise stated, we consider the latter scenario
  to evaluate the interventions.
  In such scenario, the probability of observing an outbreak is close to
- 0.85, having that 10% of the population in the camp would die and that ~83%
- of the population would recover, with the number of symptomatic cases peaking
- after 55 days.
+ 0.85, having that 10% of the population in the camp would die, with the
+ number of symptomatic cases peaking after 55 days.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+and that ~83% of the population would recover
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Self-distancing has a notable effect for the probability of outbreak, with
- a 10% decrease when just a reduction of a 20% in the number of contacts
+Self-distancing has a notable effect in reducing the probability of outbreak,
+ with a 10% decrease when just a reduction of a 20% in the number of contacts
  was considered (Fig.
- 2A).
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+A).
  It was, however, needed a reduction of up to 50% to observe a more nuanced
  decrease in the fraction of population dying, that could be reduced as
  much as a 35% (Fig.
- 2B).
- The same occurs for the time to the peak of symptomatics (Fig.
- 2C), which increases up to 110 days, hence doubling the values when there
- are no interventions in place.
  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+B).
+ The same occurs for the time to the peak of symptomatics (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+C), which increases up to 110 days, hence doubling the values when there
+ are no interventions in place.
+ As a counterpart, the proportion of population recovered is reduced a 35%
+ (Suppl.
+ Fig.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_DvsR-1"
+
+\end_inset
+
+) 
 \begin_inset Note Comment
 status open
 
@@ -1151,31 +1222,219 @@ Recovered?
 \end_layout
 
 \begin_layout Standard
-Self-isolation brings a strong decrease close to a 30% in the fraction of
- population dying, when only 10 tents are available for a population of
- 2000 individuals, i.e.
- a 0.5% of the total population (Fig.
- 2).
- Interestingly, increasing the number of tents does not improve much this
- reduction and, when the number of tents represent a 10% of the population,
- the fraction of deaths even increases.
- This effect is due to the assumption that each individual requires one
- carer (see Supplementary Material).
- A side effect of this policy is that, when the number of isolated population
- increases, it also increases the number of healthy individuals in contact
- with the isolated population.
- Still, the Case Fatality Rate experience a continuous, albeit small, reduction
- with an increasing number of tents (Supplementary Fig.
- XX).
- The probability of observing an outbreak and the time in whch the symptomatic
- cases peak have a minimum (maximum) when ~1% of tents are considered (Fig.
- 2).
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Fig2a.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2b.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2c.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Fig2d.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2e.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2f.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Fig2g.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2h.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2i.pdf
+	width 31text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Panel2"
+
+\end_inset
+
+ 
+\series bold
+Lower and upper bounds when interventions are absent.
+
+\series default
+ Probability of outbreak (left-column), fraction of casualties (middle-column)
+ and time in which the number of symptomatic cases peaks (right-column)
+ for the interventions incorporating self-distancing (top-row) self-isolation
+ (middle-row) and for the implementation of a safety-zone (bottom-row).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Importantly, these results hold when we assume that the time required for
- individuals to recognize their symptoms is of 24h on average, and the intervent
-ion becomes less effective when this time increases (Supplementary Fig.
+Self-isolation brings a modest decrease in the probability of observing
+ an outbreak (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+D), but it provides a strong reduction in the fraction of population dying
+ (~30%), when only 10 tents are available for a population of 2000 individuals,
+ i.e.
+ a 0.5% of the total population (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+E).
+ Interestingly, increasing the number of tents does not significantly[?]
+ enhance this reduction and, when the number of tents represent a 10% of
+ the population, the fraction of deaths even increases.
+ This effect is a consquence of having one carer per individual isolated
+ (see Supplementary Material), whose side effect is that, when the number
+ of isolated population increases, it also increases the number of adult
+ healthy individuals in contact with the infected population.
+ Still, the Case Fatality Rate experience a continuous, albeit small, reduction
+ with an increasing number of tents (Supplementary Fig.
+ XX).
+\end_layout
+
+\begin_layout Standard
+Importantly, these results hold when the time required for individuals to
+ recognize their symptoms is of 24h on average, and the intervention becomes
+ less effective when this time increases (Supplementary Fig.
  XX).
  On the other hand, reducing this time to 12h does not significantly reduce
  the fraction of people dying 
@@ -1203,15 +1462,24 @@ on only affects their infectivity.
 \end_layout
 
 \begin_layout Standard
-Creating a safety zone improves overall the effect of previous interventions,
+Creating a safety zone overall improves the effect of previous interventions,
  but sometimes with different outcomes for the exposed and protected populations.
- For instance, the probability of outbreak decreases very strongly (almost
- 40%) for the protected population (see Fig.
- XX).
+ For instance, the probability of outbreak strongly decreases (almost 40%)
+ for the protected population (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+G).
  Notably, approximately 16% of this reduction is due to the health checks
  performed to get into the buffering zone, which exclude symptomatic individuals
- (Suppl.
- Fig.
+ (Supplementary Fig.
  XX).
  On the other hand, the probability of outbreak may increase for the exposed
  population if the contacts per week and per individual occuring in the
@@ -1231,15 +1499,37 @@ Understand this.
 
 .
  Despite of this side-effect, the fraction of individuals dying for the
- protected subpopulation and, in turn, globally, is reduced.
- Another important observation from this intervention is the notable increase
+ protected subpopulation and, in turn, globally, is reduced (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+H).
+ Another important outcome of this intervention is the notable increase
  of the time to peak of symptomatics, raising up to 35% globally, and to
- 70% for the protected population.
- Regarding the population that should move to the safety zone, having only
- elderly or at most elderly and adults with comorbidities, guarantee a low
- probability of outbreak, which would otherwise increase the global fraction
- of population dying (Supplementary Fig.
- XX).
+ 70% for the protected population (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+I).
+ Regarding the population moving to the safety zone, having only elderly
+ or at most elderly and adults with comorbidities, guarantee a low probability
+ of outbreak, which would otherwise increase the global fraction of population
+ dying (Supplementary Fig.
+ XX and XX).
  Positive effects of the safety zone are even more marked for smaller population
  sizes, except for the time to peak of symptomatic, which has a weaker effect
  for smaller populations (Supplementary Fig.
@@ -1247,25 +1537,132 @@ Understand this.
 \end_layout
 
 \begin_layout Standard
-The incorporation of a lockdown again shows the side-effect in which if
- there is an outbreak in the safety zone, it has more negative effects,
- due to the increased number of contacts of individuals within the zone
- (Fig.
+The incorporation of a lockdown again shows the side-effect in which, if
+ there is an outbreak in the safety zone, it has a negative effect due to
+ the increased number of contacts of individuals within the zone (Supplementary
+ Fig.
  XXX).
  However, the probability of outbreak is very strongly reduced to a barely
  10% and, consequently, when there is an outbreak in the camp (which in
  most of the cases will not reach the safe zone) the fraction of deaths
- globally reduces (Fig.
+ decreases overall (Supplementary Fig.
  XXX).
 \end_layout
 
 \begin_layout Standard
 Finally, the combination of interventions add their effects approximately
- as it was shown when they were incorporated individually (Fig.
+ behave as they were shown when incorporated individually (Fig.
+ XXX and Supplementary Fig.
  XXX).
  In particular, the creation of a safety zone improves the benefits of the
  other interventions, and there are not noticeable side effects beyond those
  previously described.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/Fig3a.pdf
+	width 95text%
+	height 31pheight%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/Fig3b.pdf
+	width 95text%
+	height 31pheight%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/Fig3c.pdf
+	width 95text%
+	height 31pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Panel3"
+
+\end_inset
+
+ 
+\series bold
+Combination of interventions.
+
+\series default
+ Probability of outbreak (top), fraction of casualties (middle) and time
+ in which the number of symptomatic cases peaks (bottom) for different combinati
+on of interventions.
+ For interventions considering the inclusion of a safety-zone we distinguish
+ between the population living in the green zone, in the orange zone, and
+ the whole population.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
