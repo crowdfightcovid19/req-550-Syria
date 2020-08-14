@@ -3352,7 +3352,7 @@ s Among Patients with Coronavirus Disease 2019 - United States, February
 
 \begin_layout Section*
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Leftovers
@@ -3443,6 +3443,18 @@ In the previous section, we considered that the family members visiting
  Under the assumption that minimizing the number of different people would
  reduce the probability of infection, this could also be a positive strategy.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "req550-syria"
+options "plain"
 
 \end_inset
 
