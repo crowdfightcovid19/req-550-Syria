@@ -9,13 +9,15 @@
 #description = Generates a table of relevant simulations results in a format suitable for producing plots afterwards. Main structure based on Alberto Pascual-Garcia mean-stderr script.
 #usage = Run from src/
 
-setwd("/home/ec365/workbench/req-550-Syria/src")
+currentDir <- getwd()
+setwd("/home/ecam/workbench/req-550-Syria/src")
 
+library(rlang)
 library(dplyr)
 library(stringi)
 library(stringr)
 
-assemble_df <- function( deaths, reco, time, group, oParam){
+assemble_df <- function( deaths, reco, time, timesteady, group, oParam){
     l = length(deaths)
     df <- data.frame( rep(oParam[1],l),
                       rep(oParam[2],l),
@@ -30,7 +32,8 @@ assemble_df <- function( deaths, reco, time, group, oParam){
                       rep(group,l),
                       deaths,
                       reco,
-                      time )
+                      time,
+                      timesteady )
 
     return(df)
 }
@@ -39,7 +42,7 @@ keywordS="green" # a keyword to identify (S)hielded pop
 keywordE="orange" # non-shielded pop (E)xposed 
 
 # Files to process (header). Also variable col names.
-files.list=c("NumFinalDeaths","NumFinalRecovered","TimePeakSymptomatic")
+files.list=c("NumFinalDeaths","NumFinalRecovered","TimePeakSymptomatic","TimeSteadyStateSusceptible")
 
 idDir="modSV" # this is a string contained in all the directories that should be processed
 fileOut=paste("results_table_",idDir,".csv",sep="")
@@ -140,7 +143,12 @@ for(dirIn in dir.list){
             df.reco.E = rowSums(df.E)
             df.reco.S = rowSums(df.S)
         }
-        else{ #For time peak, we take the MEAN of the total/exposed/shielded
+        else if (file2proc == "TimeSteadyStateSusceptible"){#For time to steady, we take the MEAN of the total/exposed/shielded
+            df.timesteady= rowMeans(df)
+            df.timesteady.E = rowMeans(df.E)
+            df.timesteady.S = rowMeans(df.S)
+        } 
+        else {#For time peak, we take the MEAN of the total/exposed/shielded
             df.time= rowMeans(df)
             df.time.E = rowMeans(df.E)
             df.time.S = rowMeans(df.S)
@@ -148,18 +156,18 @@ for(dirIn in dir.list){
     }
 
     #Create temporal frame
-    df.tmp <- assemble_df(df.deaths,df.reco,df.time,"T",outputParam)
+    df.tmp <- assemble_df(df.deaths,df.reco,df.time,df.timesteady,"T",outputParam)
 
     #Add it to the output
     df.output <- rbind(df.output,df.tmp)
 
     if(length(df.deaths.E) > 0){
-        df.tmp <- assemble_df(df.deaths.E,df.reco.E,df.time.E,"E",outputParam)
+        df.tmp <- assemble_df(df.deaths.E,df.reco.E,df.time.E,df.timesteady.E,"E",outputParam)
         df.output <- rbind(df.output,df.tmp)
     }     
 
     if(length(df.deaths.S) > 0){
-        df.tmp <- assemble_df(df.deaths.S,df.reco.S,df.time.S,"S",outputParam)
+        df.tmp <- assemble_df(df.deaths.S,df.reco.S,df.time.S,df.timesteady.S,"S",outputParam)
         df.output <- rbind(df.output,df.tmp)
     }     
 
@@ -174,4 +182,4 @@ setwd(outDir)
 #Save the table
 write.csv(df.output,file=fileOut)
 
-setwd(codeDir) #Let's finish where we started.
+setwd(currentDir) #Let's finish where we started.
