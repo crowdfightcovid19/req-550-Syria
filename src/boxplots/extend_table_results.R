@@ -9,7 +9,14 @@
 #description = Extends the results table to include secondary statistics (population sizes, fraction deaths). Uses Alberto's code for E/S population sizes.
 #usage = Run from src/
 
-setwd("/home/ec365/workbench/req-550-Syria/src")
+library(rlang)
+library(dplyr)
+library(stringi)
+library(stringr)
+
+
+currentDir <- getwd()
+setwd("/home/ecam/workbench/req-550-Syria/src")
 
 #Directories
 setwd("..")
@@ -54,35 +61,46 @@ get_relative_sizes <- function(PopStructure,PopSize){
   return(PopSize.sub)
 }
 
+df.Summary <- read.csv("/home/ecam/workbench/req-550-Syria/data/real_models/results_post_processing/Summary_interventions_modSV.csv")
+
 #Going to do a for loop, this should not run often. Terribly slow.
 popSize.col <- c()
+POutbreak.col <- c()
 for(i in 1:length(df.results$group)){
     str.PopSize=stri_split_fixed(df.results$PopSize[i],"PopSize")[[1]][2]
     PopSize.T=as.numeric(str.PopSize)
     poplist = get_relative_sizes(df.results$contacts[i],PopSize.T)
 
+    df.aux <- subset(df.Summary, contacts == df.results$contacts[i] & Isolate == df.results$Isolate[i] &  Limit == df.results$Limit[i] &  Onset == df.results$Onset[i] & Fate == df.results$Fate[i] & Tcheck == df.results$Tcheck[i] & lock == df.results$lock[i] & self == df.results$self[i] & mod==df.results$mod[i])
+
     g <- df.results$group[i]
 
     if( g == "T" ){
         popSize.col <- c(popSize.col, PopSize.T)
+        POutbreak.col <- c(POutbreak.col, df.aux$P.outbrk[1])
     }
     else if (g == "S"){
         popSize.col <- c(popSize.col, poplist[2])
+        POutbreak.col <- c(POutbreak.col, df.aux$P.outbrk.S[1])
     }
     else{
         popSize.col <- c(popSize.col, poplist[1])
+        POutbreak.col <- c(POutbreak.col, df.aux$P.outbrk.E[1])
     }
+
 }
 
 FracFinalDeaths <- df.results$NumFinalDeaths / popSize.col
 FracFinalRecovered <- df.results$NumFinalRecovered/ popSize.col
 
+CFR <- df.results$NumFinalDeaths / (df.results$NumFinalDeaths + df.results$NumFinalRecovered)
+
 cnames <- colnames(df.results)
 
-df.output <- bind_cols(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered)
-colnames(df.output) <- c(cnames,"PopSizeNum","FracFinalDeaths","FracFinalRecovered")
+df.output <- bind_cols(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,CFR,POutbreak.col)
+colnames(df.output) <- c(cnames,"PopSizeNum","FracFinalDeaths","FracFinalRecovered","CFR","POutbreak")
 
 setwd(outDir)
 write.csv(df.output,file=fileOut)
 
-setwd(codeDir)
+setwd(currentDir) #Let's finish where we started.
