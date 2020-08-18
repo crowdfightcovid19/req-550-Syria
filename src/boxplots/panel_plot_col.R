@@ -76,9 +76,15 @@ for(i in 1:length(ptitle)){
     scale_fill_labels <- c("Total","Exposed", "Shielded")
     group_name = "Group"
 
-    gg.Poutbreak.shield <- do_line_plot(df.shield,varPoutbreak,varX,xlabel,ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
-    gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    #gg.Poutbreak.shield <- do_line_plot(df.shield,varPoutbreak,varX,xlabel,ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+    #gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    #gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+    gg.Poutbreak.shield <- do_line_plot(df.shield,varPoutbreak,varX,"",ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+    gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,"",ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+
 
     #Isolation
     varX="Limit"
@@ -87,9 +93,15 @@ for(i in 1:length(ptitle)){
     scale_fill_labels <- c("Total")
     group_name = "Group"
 
-    gg.Poutbreak.iso <- do_line_plot(df.iso,varPoutbreak,varX,xlabel,ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-    gg.FracDeath.iso <- fplot(df.iso,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-    gg.TimePeak.iso <- fplot(df.iso,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    #gg.Poutbreak.iso <- do_line_plot(df.iso,varPoutbreak,varX,xlabel,ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    #gg.FracDeath.iso <- fplot(df.iso,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    #gg.TimePeak.iso <- fplot(df.iso,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+    gg.Poutbreak.iso <- do_line_plot(df.iso,varPoutbreak,varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.FracDeath.iso <- fplot(df.iso,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.TimePeak.iso <- fplot(df.iso,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+
 
     #Self
     varX="self"
@@ -98,12 +110,19 @@ for(i in 1:length(ptitle)){
     scale_fill_labels <- c("Total")
     group_name = "Group"
 
-    gg.Poutbreak.self <- do_line_plot(df.self,varPoutbreak,varX,xlabel,ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-    gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-    gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    #gg.Poutbreak.self <- do_line_plot(df.self,varPoutbreak,varX,xlabel,ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    #gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    #gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-    pdf(file=paste(title,".pdf",sep=""),width=27,height = 21)
-    grid.arrange(gg.Poutbreak.shield,gg.FracDeath.shield,gg.TimePeak.shield,gg.Poutbreak.iso,gg.FracDeath.iso,gg.TimePeak.iso,gg.Poutbreak.self,gg.FracDeath.self,gg.TimePeak.self,nrow=3,ncol=3)
+    gg.Poutbreak.self <- do_line_plot(df.self,varPoutbreak,varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+
+    #pdf(file=paste(title,".pdf",sep=""),width=27,height = 21)
+    #grid.arrange(gg.Poutbreak.shield,gg.FracDeath.shield,gg.TimePeak.shield,gg.Poutbreak.iso,gg.FracDeath.iso,gg.TimePeak.iso,gg.Poutbreak.self,gg.FracDeath.self,gg.TimePeak.self,nrow=3,ncol=3)
+    pdf(file=paste(title,"_col.pdf",sep=""),width=27,height = 21)
+    grid.arrange(gg.Poutbreak.shield,gg.Poutbreak.iso,gg.Poutbreak.self,gg.FracDeath.shield,gg.FracDeath.iso,gg.FracDeath.self,gg.TimePeak.shield,gg.TimePeak.iso,gg.TimePeak.self,nrow=3,ncol=3)
     dev.off( )
 
 
