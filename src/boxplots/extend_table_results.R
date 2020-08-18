@@ -16,7 +16,7 @@ library(stringr)
 
 
 currentDir <- getwd()
-setwd("/home/ecam/workbench/req-550-Syria/src")
+setwd("/home/ec365/workbench/req-550-Syria/src")
 
 #Directories
 setwd("..")
@@ -61,7 +61,7 @@ get_relative_sizes <- function(PopStructure,PopSize){
   return(PopSize.sub)
 }
 
-df.Summary <- read.csv("/home/ecam/workbench/req-550-Syria/data/real_models/results_post_processing/Summary_interventions_modSV.csv")
+df.Summary <- read.csv("/home/ec365/workbench/req-550-Syria/data/real_models/results_post_processing/Summary_interventions_modSV.csv")
 
 #Going to do a for loop, this should not run often. Terribly slow.
 popSize.col <- c()
