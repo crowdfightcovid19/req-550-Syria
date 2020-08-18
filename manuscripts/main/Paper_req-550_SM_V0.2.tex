@@ -2,10 +2,15 @@
 %% Do not edit unless you really know what you are doing.
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2.5cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\usepackage{color}
 \usepackage{verbatim}
+\usepackage{float}
 \usepackage{units}
 \usepackage{mathtools}
 \usepackage{amsmath}
+\usepackage{graphicx}
 
 \makeatletter
 
@@ -21,8 +26,12 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{xr}
+\externaldocument{Paper_req-550_V0.2}
+\usepackage{lineno}
 \usepackage{xcolor}
-
+\usepackage{tikz}
+\usetikzlibrary{arrows}
 
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 \newcommand{\add}[1]{\textcolor{red}{#1}}
@@ -49,8 +58,8 @@
 
 \begin{document}
 \title{Supplementary Methods and Results\\Empowering the crowd: Feasible
-strategies \\ to minimize the spread of COVID-19 \\ in informal
-settlements}
+strategies \\ to minimize the spread of COVID-19 \\ in high-density
+informal settlements}
 \author{Authors names TBA}
 \maketitle
 
@@ -67,8 +76,8 @@ equations:
 \dot{P}_{i}=\delta_{\EE}E_{i}-\delta_{\PP}P_{i}\\
 \dot{A}_{i}=(1-f)\delta_{\PP}P_{i}-\gamma_{\A}A_{i}\\
 \dot{I}_{i}=f\delta_{\PP}P_{i}-((1-g_{i}-h_{i})\gamma_{I}+h_{i}\eta+g_{i}\alpha)I_{i}\\
-\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{\H}H_{i}\\
-\dot{(R/D)_{i}}=\gamma_{\H}H_{i}\\
+\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{\HH}H_{i}\\
+\dot{(R/D)_{i}}=\gamma_{\HH}H_{i}\\
 \dot{R}_{i}=\gamma_{\A}A_{i}+(1-g_{i}-h_{i})\gamma_{\I}I_{i}\\
 \dot{D_{i}}=g_{i}\alpha I_{i}
 \end{gather}
@@ -104,14 +113,14 @@ we define $\kappa_{i}=((1-g_{i}-h_{i})\gamma_{\I}+h_{i}\eta+g_{i}\alpha)$.\\
 	\node (D) [int, below of=H] {$\dot{D_i}$}; 
 	\node (RD) [int, right of=H] {$\dot{(R/D)_i}$}; 
 	\path[->] (S) edge node {$\lambda_iS_i$} (E);     
-	\path[->] (E) edge node {$\delta_EE_i$} (P);    
-	\path[->] (P) edge node [anchor=center, left, midway] {$f\delta_PP_i$} (I);   
+	\path[->] (E) edge node {$\delta_\EE E_i$} (P);    
+	\path[->] (P) edge node [anchor=center, left, midway] {$f\delta_\PP P_i$} (I);   
 	\path[->] (I) edge node [anchor=center, below, midway] {$h_i{\eta}I_i$} (H);   
-	\path[->] (I) edge node [anchor=center, right, midway] {$(1-g_i-h_i)\gamma_II_i$} (R);   
-	\path[->] (A) edge node [anchor=center, right, midway] {$\gamma_AA_i$} (R);   
-	\path[->] (P) edge node [anchor=center, left, midway] {$(1-f)\delta_PP_i$} (A);  
+	\path[->] (I) edge node [anchor=center, right, midway] {$(1-g_i-h_i)\gamma_\I I_i$} (R);   
+	\path[->] (A) edge node [anchor=center, right, midway] {$\gamma_\A A_i$} (R);   
+	\path[->] (P) edge node [anchor=center, left, midway] {$(1-f)\delta_\PP P_i$} (A);  
 	\path[->] (I) edge node [anchor=center, left, midway] {$g_i{\alpha}I_i$} (D);  
-	\path[->] (H) edge node [anchor=center, below, midway] {$\gamma_HH_i$} (RD);  
+	\path[->] (H) edge node [anchor=center, below, midway] {$\gamma_\HH H_i$} (RD);  
 \end{tikzpicture}
 
 \caption{\textbf{\label{fig:Diagram}Diagram of the model. }The model considers
@@ -131,10 +140,69 @@ indicated in the model with the variable R/D.}
 \end{figure}
 
 
-\subsection*{Parametrization of the contact matrix}
+\subsection*{Model parameters determining state transitions}
+
+The parameters considered in this work are summarized in Table \ref{tab:FixedParams}.
+To estimate the duration of latency we generated a random incubation
+time and subtracted an also randomly-generated presymptomatic time
+interval. The presymptomatic interval was estimated following the
+values reported in {[}Ref{]}, with mean 2.3 and CI 95\%: {[}0.8-3.0{]}.
+This interval is left-skewed, suggesting that the presymptomatic period
+cannot be much longer than 3.0, and we observed that a Gompertz distribution
+could be a good model of these results. It was, however, noted that
+the results presented in {[}Ref{]} were incorrect, and that the presymptomatic
+period could be longer. We accordingly decided to take a Gaussian
+distribution around the mean, i.e. CI 95\% {[}0.8-3.8{]}. With these
+values there is a non-vanishing probability to find a negative latency
+interval. For those cases, we considered that there is a minimum time
+for the virus to develop until the individual becomes infectious,
+that we fixed to 12h {[}Ref{]}.
+
+\begin{table}[h]
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+Parameter & Description & Value & Distribution & Reference\tabularnewline
+\hline 
+\hline 
+$\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}$ & Duration of incubation period in days & 5.2 (95\% CI: 4.1-7.0) & Lognormal & \cite{key-1}\tabularnewline
+\hline 
+$\nicefrac{1}{\delta_{\EE}}$ & Duration of latency in days & $\left(\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}\right)-\nicefrac{1}{\delta_{\PP}}$ &  & \cite{key-2}\tabularnewline
+\hline 
+$\nicefrac{1}{\delta_{\PP}}$ & Duration of preclinical infectiousness in days & 2.3 (95\% CI: 0.8-3.8) & Gaussian & \cite{key-2}\tabularnewline
+\hline 
+$\nicefrac{1}{\gamma_{\A}}=\nicefrac{1}{\gamma_{\I}}$ & Duration of clinical ($\nicefrac{1}{\gamma_{\I}}$) and subclinical
+($\nicefrac{1}{\gamma_{\A}}$) infectiousness in days & 7 &  & \cite{key-2,key-3}\tabularnewline
+\hline 
+$\nicefrac{1}{\eta}$ & Delay from symptoms onset to hospitalization in days & 7 (IQR: 4-8) & Gamma & \cite{key-4}\tabularnewline
+\hline 
+$\nicefrac{1}{\alpha}$ & Delay from symptoms onset to ICU (here death) in days & 10 (IQR: 6-12) & Gamma & \cite{key-4}\tabularnewline
+\hline 
+$\nicefrac{1}{\gamma_{\HH}}$ & Delay from hospitalization to recovery in days & 10 (IQR: 7-14) & Gamma & \cite{key-4}\tabularnewline
+\hline 
+$f$ & Fraction of infected people who develop symptoms & 0.84 (95\% CI: 0.8-0.88) & Binomial & \cite{key-5}\tabularnewline
+\hline 
+$h_{i}$ & Fraction of symptomatic people requiring hospitalization but not ICU & Age- and comorbidity-dependent &  & \cite{key-6,key-7}\tabularnewline
+\hline 
+$g_{i}$ & Fraction of symptomatic people requiring ICU & Age- and comorbidity-dependent &  & \cite{key-6,key-7}\tabularnewline
+\hline 
+ & Minimum time required to become infectious & 12h &  & \textcolor{red}{{[}REF{]}}\tabularnewline
+\hline 
+ & Reduction in the infectivity in the buffering zone & 80\% &  & \textcolor{red}{{[}REF{]}}\tabularnewline
+\hline 
+\end{tabular}
+
+\caption{\label{tab:FixedParams}\textbf{Parameters used in this work.}}
+\end{table}
+
+
+\subsection*{Population-structured parameters}
+
+{[}Please add description and tables{]}
+
+\subsection*{Parameterization of the contact matrix}
 
 We estimated the average number of contacts that individuals of class
-$i$ have in a camp, $\bar{c}_{i}$, and we parametrized the contact
+$i$ have in a camp, $\bar{c}_{i}$, and we parameterized the contact
 matrix assuming that, in a well-mixed population, these contacts will
 be distributed among classes relative to the fraction of individuals
 within each class, i.e.
@@ -147,7 +215,7 @@ with $N$ the total population size and $N_{j}$ the population size
 of class $j$. A well-mixed population will be considered the null
 model, and parameters derived under the null model assumptions are
 indexed with the superscript $0$, e.g. the null contact matrix is
-$C_{ij}^{0}$. Some of the inetrventions we considered, either reduce
+$C_{ij}^{0}$. Some of the interventions we considered, either reduce
 the average number of contacts a class $i$ (e.g. self-isolation)
 or the probability that individuals of class $i$ interact with those
 of class $j$ (e.g. safety zone strategies). We model the first type
@@ -164,7 +232,7 @@ the null model as:
 C_{ij}=\epsilon_{i}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon_{i}m_{ij}C_{ij}^{0}=M_{ij}C_{ij}^{0}.\label{eq:ManagementMatrix}
 \end{equation}
 
-We name the matrix $M_{ij}$ the managament matrix. Substituting Eq.
+We name the matrix $M_{ij}$ the management matrix. Substituting Eq.
 \ref{eq:ManagementMatrix} in the explicit expression of $\lambda$
 (Eq. \ref{eq:lambda-1}) leads to a general expression for management
 strategies acting on the contact matrix:
@@ -197,7 +265,8 @@ all terms corresponding to transitions between compartments. Then:
 $\bs{K}=-\bs{T}\bs{\Sigma}^{-1}.$ 4) Particularize the solution to
 the NGM with small domain ($K_{S}$) and estimate $\tau$ by relating
 the dominant eigenvalue of the NGM to an estimation of the basic reproduction
-number obtained from the literature.%
+number obtained from the literature.
+\end{comment}
 \begin{comment}
 We also reference the description of R0 in metapopulations in Philipps
 S, Rossi D. Mathematical Models of Infectious Diseases: Two-Strain
@@ -206,7 +275,6 @@ R0 used by the authors in Gatto M, Bertuzzo E, Mari L, Miccoli S,
 Carraro L, Casagrandi R, et al. Spread and dynamics of the COVID-19
 epidemic in Italy: Effects of emergency containment measures. PNAS.
 2020 May 12;117(19):10484--91.
-\end{comment}
 \end{comment}
 
 
@@ -222,13 +290,13 @@ the infectious population:
 \dot{P}_{i}=\delta_{\EE}E_{i}-\delta_{\PP}P_{i}\\
 \dot{A}_{i}=(1-f)\delta_{\PP}P_{i}-\gamma_{\A}A_{i}\\
 \dot{I}_{i}=f\delta_{\PP}P_{i}-\kappa_{i}I_{i}\\
-\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{\H}H_{i}.
+\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{\HH}H_{i}.
 \end{gather}
 
 For the sake of simplifying the notation, let us consider the following
 ordering of the variables in the vector $x=(E_{1},...,E_{\M},P_{1},...,P_{\M},A_{1},...,A_{\M},I_{1},...,I_{\M},H_{1},...,H_{\M})$,
 with $M$ the number of population classes. We are interested in the
-parametrization of the null model, which will serve as a baseline
+parameterization of the null model, which will serve as a baseline
 to estimate the parameter $\tau$, which is unknown, and that does
 not change when interventions are introduced. For the null model,
 Eq. \ref{eq:lambda_simplified} becomes
@@ -254,11 +322,11 @@ $p_{i}=N_{i}/N$, and $\bs{U}$ being the all-ones matrix of size
 $M$. The transition matrix is
 
 \begin{gather}
-\bs{\Sigma}=\begin{bmatrix}-\delta_{E}\bs{I} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
-\delta_{E}\bs{I} & -\delta_{p}\bs{I} & \bs{0} & \bs{0} & \bs{0}\\
-\bs{0} & (1-f)\delta_{p}\bs{I} & -\gamma_{A}\bs{I} & \bs{0} & \bs{0}\\
-\bs{0} & f\delta_{p}\bs{I} & \bs{0} & -\mathrm{diag}(\kappa_{i})\bs{I} & \bs{0}\\
-\bs{0} & \bs{0} & \bs{0} & \eta\mathrm{diag}(h_{i})\bs{I} & -\gamma_{H}\bs{I}
+\bs{\Sigma}=\begin{bmatrix}-\delta_{\EE}\bs{I} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\delta_{\EE}\bs{I} & -\delta_{\PP}\bs{I} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & (1-f)\delta_{\PP}\bs{I} & -\gamma_{\A}\bs{I} & \bs{0} & \bs{0}\\
+\bs{0} & f\delta_{\PP}\bs{I} & \bs{0} & -\mathrm{diag}(\kappa_{i})\bs{I} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \eta\mathrm{diag}(h_{i})\bs{I} & -\gamma_{\HH}\bs{I}
 \end{bmatrix}
 \end{gather}
 
@@ -271,7 +339,7 @@ We next compute the inverse of the transition matrix
 -\frac{1}{\delta_{\PP}}\bs{I} & -\frac{1}{\delta_{\PP}}\bs{I} & \bs{0} & \bs{0} & \bs{0}\\
 -\frac{(1-f)}{\gamma_{\A}}\bs{I} & -\frac{(1-f)}{\gamma_{\A}}\bs{I} & -\frac{1}{\gamma_{\A}}\bs{I} & \bs{0} & \bs{0}\\
 -f\mathrm{diag}(\frac{1}{\kappa_{i}})\bs{I} & -f\mathrm{diag}(\frac{1}{\kappa_{i}})\bs{I} & \bs{0} & -\mathrm{diag}(\frac{1}{\kappa_{i}})\bs{I} & \bs{0}\\
--\frac{f\eta}{\gamma_{\H}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & -\frac{f\eta}{\gamma_{\H}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & \bs{0} & -\frac{\eta}{\gamma_{\H}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & -\frac{1}{\gamma_{\H}}\bs{I}
+-\frac{f\eta}{\gamma_{\HH}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & -\frac{f\eta}{\gamma_{\HH}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & \bs{0} & -\frac{\eta}{\gamma_{\HH}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & -\frac{1}{\gamma_{\HH}}\bs{I}
 \end{bmatrix}
 \end{gather}
 
@@ -289,7 +357,7 @@ matrix}
 We then find:
 
 \begin{gather*}
-\bs{K_{\mathrm{S}}}=\tau\left[\left(\frac{1}{\delta_{P}}+\frac{(1-f)}{\gamma_{A}}\right)\bs{\Theta}+\mathrm{diag}\left(\frac{f}{\kappa_{i}}(1+\frac{h_{i}\eta}{\gamma_{H}})\right)\bs{\Theta}\right].
+\bs{K_{\mathrm{S}}}=\tau\left[\left(\frac{1}{\delta_{P}}+\frac{(1-f)}{\gamma_{A}}\right)\bs{\Theta}+\mathrm{diag}\left(\frac{f}{\kappa_{i}}(1+\frac{h_{i}\eta}{\gamma_{\HH}})\right)\bs{\Theta}\right].
 \end{gather*}
 
 
@@ -306,7 +374,7 @@ the expression:
 \end{equation}
 
 
-\section*{Parametrization of the interventions}
+\section*{Parameterization of the interventions}
 
 \subsubsection*{Safety zone}
 
@@ -316,7 +384,7 @@ In practice, this is made dividing the camp in two areas, a ``green''
 zone (denoted $\g$) for the vulnerable population and an ``orange''
 zone ($\oran$) for the remaining population. These two populations
 could eventually interact via a ``buffering'' zone, under controlled
-conditions. In particular, we considered that indifividuals entering
+conditions. In particular, we considered that individuals entering
 in this zone will meet in an open space, maintaining 2m of distance
 and using contention measures such as masks. We estimated that these
 measures would reduce the infectivity by an 80\% {[}Ref{]}, i.e. $\hat{\tau}=0.2\tau$.
@@ -333,7 +401,7 @@ As we said, setting a safety zone implies a reduction in the number
 of contacts between classes of the green zone and the orange zone,
 but not in the mean number of contacts that each individual has per
 day, therefore $\bar{c}_{i}$ does not vary. Therefore, it is needed
-to estimate how the contacts will be redistributed from those occuring
+to estimate how the contacts will be redistributed from those occurring
 in a well-mixed model with individuals from a different zone towards
 members living in the same zone. We model this redistribution of the
 contacts with the parameter $\epsilon_{i}$:
@@ -353,7 +421,7 @@ zone:
 \[
 \rho=\begin{cases}
 1 & \textrm{if }i\in\g\\
-f_{\o,\family}\left(1-\textrm{H}(f_{\oran,\family}-1)\frac{f_{\oran,\family}-1}{f_{\oran,\family}}\right) & \textrm{if }i\in\oran
+f_{\oran,\family}\left(1-\textrm{H}(f_{\oran,\family}-1)\frac{f_{\oran,\family}-1}{f_{\oran,\family}}\right) & \textrm{if }i\in\oran
 \end{cases}
 \]
 
@@ -455,63 +523,135 @@ is needed. To model this fact, we considered whenever the isolation
 intervention is incorporated, that the symptomatic compartment is
 split in two compartments: onset of symptoms, $I_{i}^{\onset}$ and
 symptomatic, $I_{i}$. We considered three that the time at $I_{i}^{\onset}$
-followed a gaussian distribution with means 12, 24 or 48 hours on
+followed a Gaussian distribution with means 12, 24 or 48 hours on
 average. The time that the individual can isolate is then calculated
 as the difference between the time at the symptomatic compartment
 if there is no isolation, $\text{1/\ensuremath{\eta}}$, and the time
 at the onset compartment.
 
-\subsection*{Model parameters}
+\newpage{}
 
-\subsubsection*{Parameters not varying across interventions}
+\section*{Supplementary figures}
 
-The parameters considered in this work are summarized in Table \ref{tab:FixedParams}.
-To estimate the duration of latency we generated a random incubation
-time and substracted an also randomly-generated presymptomatic time
-interval. The presymptomatic interval was estimated following the
-values reported in {[}Ref{]}, with mean 2.3 and CI 95\%: {[}0.8-3.0{]}.
-This interval is left-skewed, suggesting that the presymptomatic period
-cannot be much longer than 3.0, and we observed that a Gompertz distribution
-could be a good model of these results. It was, however, noted that
-the results presented in {[}Ref{]} were incorrect, and that the presymptomatic
-period could be longer. We accordingly decided to take a gaussian
-distribution around the mean, i.e. CI 95\% {[}0.8-3.8{]}. With these
-values there is a non-vanishing probability to find a negative latency
-interval. For those cases, we considered that there is a minimum time
-for the virus to develop until the individual becomes infectious,
-that we fixed to 12h {[}Ref{]}.
-\begin{table}[h]
-\begin{tabular}{|c|c|c|c|c|}
-\hline 
-Parameter & Description & Value & Distribution & Reference\tabularnewline
-\hline 
-\hline 
-$\nicefrac{1}{\delta_{\E}}+\nicefrac{1}{\delta_{\P}}$ & Duration of incubation period in days & 5.2 (95\% CI: 4.1-7.0) & Lognormal & \cite{key-1}\tabularnewline
-\hline 
-$\nicefrac{1}{\delta_{\E}}$ & Duration of latency in days & $\left(\nicefrac{1}{\delta_{E}}+\nicefrac{1}{\delta_{P}}\right)-\nicefrac{1}{\delta_{P}}$ &  & \cite{key-2}\tabularnewline
-\hline 
-$\nicefrac{1}{\delta_{\P}}$ & Duration of preclinical infectiousness in days & 2.3 (95\% CI: 0.8-3.8) & Gaussian & \cite{key-2}\tabularnewline
-\hline 
-$\nicefrac{1}{\gamma_{\A}}=\nicefrac{1}{\gamma_{\I}}$ & Duration of clinical ($\nicefrac{1}{\gamma_{\I}}$) and subclinical
-($\nicefrac{1}{\gamma_{\A}}$) infectiousness in days & 7 &  & \cite{key-2,key-3}\tabularnewline
-\hline 
-$\nicefrac{1}{\eta}$ & Delay from symptoms onset to hospitalization in days & 7 (IQR: 4-8) & Gamma & \cite{key-4}\tabularnewline
-\hline 
-$\nicefrac{1}{\alpha}$ & Delay from symptoms onset to ICU (here death) in days & 10 (IQR: 6-12) & Gamma & \cite{key-4}\tabularnewline
-\hline 
-$\nicefrac{1}{\gamma_{\H}}$ & Delay from hospitalization to recovery in days & 10 (IQR: 7-14) & Gamma & \cite{key-4}\tabularnewline
-\hline 
-$f$ & Fraction of infected people who develop symptoms & 0.84 (95\% CI: 0.8-0.88) & Binomial & \cite{key-5}\tabularnewline
-\hline 
-$h_{i}$ & Fraction of symptomatic people requiring hospitalization but not ICU & Age- and comorbidity-dependent &  & \cite{key-6,key-7}\tabularnewline
-\hline 
-$g_{i}$ & Fraction of symptomatic people requiring ICU & Age- and comorbidity-dependent &  & \cite{key-6,key-7}\tabularnewline
-\hline 
-\end{tabular}
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.31\textwidth]{figures/FigS2a}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS2b}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS2c}\\\medskip{}
+\includegraphics[width=0.31\textwidth]{figures/FigS2d}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS2e}\caption{\label{fig:Suppl_DvsR} \textbf{Lower and upper bounds when interventions
+are absent.} Probability of outbreak (top-left), fraction of casualties
+(top-middle), time in which the number of symptomatic cases peaks
+(top-right), CFR (bottom-left) and fraction of recovered individuals
+(bottom-right), as a function of the fate of the individuals in the
+H compartment, that may all recover or all die.}
+\par\end{centering}
+\end{figure}
 
-\caption{\label{tab:FixedParams}\textbf{Parameters used in this work.}}
+\medskip{}
 
-\end{table}
+\begin{figure}[H]
+\centering{}\includegraphics[width=0.31\textwidth]{figures/FigS3a}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS3b}\caption{\label{fig:Suppl_self} \textbf{Self-distancing.} CFR (left), and
+fraction of recovered population (right) as a function of the reduction
+in the fraction of contacts that the whole population experience self-distancing.}
+\end{figure}
+\medskip{}
+
+\begin{figure}[H]
+\centering{}\includegraphics[width=0.31\textwidth]{figures/FigS4a}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS4b}\caption{\label{fig:Suppl_isolation} \textbf{Self-isolation.} CFR (left),
+and fraction of recovered population (right) as a function of the
+number of tents available in the camp.}
+\end{figure}
+
+\medskip{}
+
+\begin{figure}[H]
+\centering{}\includegraphics[width=0.31\textwidth]{figures/FigS5a}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS5b}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS5c}\\\medskip{}
+\includegraphics[width=0.31\textwidth]{figures/FigS5d}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS5e}\caption{\label{fig:Suppl_onset} \textbf{Time to self-isolation.} Probability
+of outbreak (top-left), fraction of casualties (top-middle), time
+in which the number of symptomatic cases peaks (top-right), CFR (bottom-left)
+and fraction of recovered individuals (bottom-right), as a function
+of the time that individuals require to recognize their symptoms and
+self-isolate.}
+\end{figure}
+
+\medskip{}
+
+\begin{figure}[H]
+\centering{}\includegraphics[width=0.31\textwidth]{figures/FigS6a}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS6b}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS6c}\\\medskip{}
+\includegraphics[width=0.31\textwidth]{figures/FigS6d}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS6e}\caption{\label{fig:Suppl_evacuation} \textbf{Evacuation.} Probability of
+outbreak (top-left), fraction of casualties (top-middle), time in
+which the number of symptomatic cases peaks (top-right), CFR (bottom-left)
+and fraction of recovered individuals (bottom-right), depending on
+whether individuals requiring hospitalization are evacuated to isolation
+centers.}
+\end{figure}
+
+\medskip{}
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.31\textwidth]{figures/FigS7a}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS7b}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS7c}\\\medskip{}
+\includegraphics[width=0.31\textwidth]{figures/FigS7d}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS7e}
+\par\end{centering}
+\caption{\label{fig:Suppl_Tcheck} \textbf{Health-checks in the buffering zone.}
+Probability of outbreak (top-left), fraction of casualties (top-middle),
+time in which the number of symptomatic cases peaks (top-right), CFR
+(bottom-left) and fraction of recovered individuals (bottom-right),
+depending on whether health-checks are implemented to avoid that symptomatic
+individuals access to the buffering zone separating the orange and
+green zones.}
+\end{figure}
+
+\medskip{}
+
+\begin{figure}[H]
+\centering{}\includegraphics[width=0.31\textwidth]{figures/FigS8a}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS8b}\caption{\label{fig:Suppl_safety} \textbf{Number of contacts in the buffering
+zone.} CFR (left), and fraction of recovered population (right) as
+a function of the number of contacts per week and individual permitted
+in the buffering zone, in which the populations living in the green
+and orange zones are allowed to interact.}
+\end{figure}
+\medskip{}
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.31\textwidth]{figures/FigS9a}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS9b}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS9c}\\\medskip{}
+\includegraphics[width=0.31\textwidth]{figures/FigS9d}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS9e}
+\par\end{centering}
+\caption{\label{fig:Suppl_popClass} \textbf{Population moving to the safety
+zone.} Probability of outbreak (top-left), fraction of casualties
+(top-middle), time in which the number of symptomatic cases peaks
+(top-right), CFR (bottom-left) and fraction of recovered individuals
+(bottom-right), as a function of the population moving to the safety
+zone.}
+\end{figure}
+\medskip{}
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.31\textwidth]{figures/FigS10a}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS10b}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS10c}\\\medskip{}
+\includegraphics[width=0.31\textwidth]{figures/FigS10d}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS10e}
+\par\end{centering}
+\caption{\label{fig:Suppl_popSize} \textbf{Efficiency of safety zone for different
+population sizes.} Probability of outbreak (top-left), fraction of
+casualties (top-middle), time in which the number of symptomatic cases
+peaks (top-right), CFR (bottom-left) and fraction of recovered individuals
+(bottom-right), as a function of the total population size of the
+camp.}
+\end{figure}
+
+\medskip{}
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.31\textwidth]{figures/FigS11a}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS11b}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS11c}\\\medskip{}
+\includegraphics[width=0.31\textwidth]{figures/FigS11d}\hspace{2mm}\includegraphics[width=0.31\textwidth]{figures/FigS11e}
+\par\end{centering}
+\caption{\label{fig:Suppl_popSize-1} \textbf{Lockdown of the safety zone.}
+Probability of outbreak (top-left), fraction of casualties (top-middle),
+time in which the number of symptomatic cases peaks (top-right), CFR
+(bottom-left) and fraction of recovered individuals (bottom-right),
+as a function of the reduction in the number of contacts permitted
+in the buffering zone.}
+\end{figure}
 
 \begin{thebibliography}{1}
 \bibitem[1]{key-1}Li, Q., Guan, X., Wu, P., Wang, X., Zhou, L., Tong,
@@ -549,10 +689,9 @@ Apr 3. doi:10.15585/mmwr.mm6913e2
 
 \section*{%
 \begin{comment}
+Leftovers
 
-\section*{Leftovers}
-
-\subsubsection*{Maximum number of family members permitted}
+\textbf{Maximum number of family members permitted}
 
 {[}APG, the following should be reviewed, it is unfinished{]} We considered
 until now that people from the orange area visiting the buffering
@@ -578,7 +717,7 @@ with a value of $\approx17$ individuals per day for the adult class
 and assuming 20\% of the population shielded. Note that the estimation
 heavily relies on the efficiency of the protection measures.
 
-\subsubsection*{The clan's dilemma}
+\textbf{The clan's dilemma}
 
 In the previous section, we considered that the family members visiting
 were always different. However, if the population in the camps is
@@ -597,4 +736,8 @@ the number of different people would reduce the probability of infection,
 this could also be a positive strategy.
 \end{comment}
 }
+
+\bibliographystyle{plain}
+\bibliography{req550-syria}
+
 \end{document}
