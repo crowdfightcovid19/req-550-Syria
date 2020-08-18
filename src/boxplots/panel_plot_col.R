@@ -19,6 +19,8 @@ setwd("/home/ecam/workbench/req-550-Syria")
 ptitle <- c("boxplot","boxmean","boxmedian","vio","viomean","viomedian","ribbonsd","ribbonmedian","ribbonse")
 fplot.list <- c(do_box_plot,do_box_plot_mean,do_box_plot_median,do_vio_plot,do_vio_plot_mean,do_vio_plot_median,do_ribbon_sd,do_ribbon_quartile,do_ribbon_se)
 
+title.size = 35
+
 varPoutbreak <- "POutbreak"
 varFracDeath <- "FracFinalDeaths"
 varPeak <- "TimePeakSymptomatic"
@@ -73,16 +75,16 @@ for(i in 1:length(ptitle)){
     varX="contacts"
     xlabel="Number of contacts per week/individual"
     scale_x_labels <- c("No limit","10","2")
-    scale_fill_labels <- c("Total","Exposed", "Shielded")
+    scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
     group_name = "Group"
 
     #gg.Poutbreak.shield <- do_line_plot(df.shield,varPoutbreak,varX,xlabel,ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
     #gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     #gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-    gg.Poutbreak.shield <- do_line_plot(df.shield,varPoutbreak,varX,"",ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
-    gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,"",ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-    gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.Poutbreak.shield <- do_line_plot(df.shield,varPoutbreak,varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+    gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 
 
@@ -114,15 +116,16 @@ for(i in 1:length(ptitle)){
     #gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     #gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-    gg.Poutbreak.self <- do_line_plot(df.self,varPoutbreak,varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-    gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-    gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.Poutbreak.self <- do_line_plot(df.self,varPoutbreak,varX,"",ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,"",ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 
     #pdf(file=paste(title,".pdf",sep=""),width=27,height = 21)
     #grid.arrange(gg.Poutbreak.shield,gg.FracDeath.shield,gg.TimePeak.shield,gg.Poutbreak.iso,gg.FracDeath.iso,gg.TimePeak.iso,gg.Poutbreak.self,gg.FracDeath.self,gg.TimePeak.self,nrow=3,ncol=3)
-    pdf(file=paste(title,"_col.pdf",sep=""),width=27,height = 21)
-    grid.arrange(gg.Poutbreak.shield,gg.Poutbreak.iso,gg.Poutbreak.self,gg.FracDeath.shield,gg.FracDeath.iso,gg.FracDeath.self,gg.TimePeak.shield,gg.TimePeak.iso,gg.TimePeak.self,nrow=3,ncol=3)
+    pdf(file=paste(title,"_col.pdf",sep=""),width=32,height = 25)
+    #grid.arrange(gg.Poutbreak.shield,gg.Poutbreak.iso,gg.Poutbreak.self,gg.FracDeath.shield,gg.FracDeath.iso,gg.FracDeath.self,gg.TimePeak.shield,gg.TimePeak.iso,gg.TimePeak.self,nrow=3,ncol=3)
+    grid.arrange(arrangeGrob(gg.Poutbreak.self,top=textGrob("Self-distancing",gp=gpar(fontsize=title.size))),arrangeGrob(gg.Poutbreak.iso,top=textGrob("Isolation",gp=gpar(fontsize=title.size))),arrangeGrob(gg.Poutbreak.shield,top=textGrob("Safety zone",gp=gpar(fontsize=title.size))),gg.FracDeath.self,gg.FracDeath.iso,gg.FracDeath.shield,gg.TimePeak.self,gg.TimePeak.iso,gg.TimePeak.shield,nrow=3,ncol=3)
     dev.off( )
 
 
