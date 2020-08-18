@@ -156,7 +156,7 @@ status open
 
 \end_inset
 
- in informal settlements
+ in high-density informal settlements
 \end_layout
 
 \begin_layout Author
@@ -2415,8 +2415,9 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS2a.pdf
 	width 31text%
 
 \end_inset
@@ -2428,7 +2429,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS2b.pdf
 	width 31text%
 
 \end_inset
@@ -2440,7 +2441,45 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1c.pdf
+	filename figures/FigS2c.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/FigS2d.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/FigS2e.pdf
 	width 31text%
 
 \end_inset
@@ -2460,9 +2499,10 @@ name "fig:Suppl_DvsR"
 Lower and upper bounds when interventions are absent.
 
 \series default
- Probability of outbreak (left), fraction of casualties (middle) and time
- in which the number of symptomatic cases peaks (right), as a function of
- the fate of the individuals in the H compartment, that may all recover
+ Probability of outbreak (top-left), fraction of casualties (top-middle),
+ time in which the number of symptomatic cases peaks (top-right), CFR (bottom-le
+ft) and fraction of recovered individuals (bottom-right), as a function
+ of the fate of the individuals in the H compartment, that may all recover
  or all die.
 \end_layout
 
@@ -2497,7 +2537,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS3a.pdf
 	width 31text%
 
 \end_inset
@@ -2509,7 +2549,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS3b.pdf
 	width 31text%
 
 \end_inset
@@ -2558,7 +2598,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS4a.pdf
 	width 31text%
 
 \end_inset
@@ -2570,7 +2610,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS4b.pdf
 	width 31text%
 
 \end_inset
@@ -2619,8 +2659,9 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS5a.pdf
 	width 31text%
 
 \end_inset
@@ -2632,7 +2673,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS5b.pdf
 	width 31text%
 
 \end_inset
@@ -2644,7 +2685,45 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS5c.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/FigS5d.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/FigS5e.pdf
 	width 31text%
 
 \end_inset
@@ -2664,9 +2743,11 @@ name "fig:Suppl_onset"
 Time to self-isolation.
 
 \series default
- Probability of outbreak (left), fraction of casualties (middle) and time
- in which the number of symptomatic cases peaks (right), as a function of
- the time that individuals require to recognize their symptoms and self-isolate.
+ Probability of outbreak (top-left), fraction of casualties (top-middle),
+ time in which the number of symptomatic cases peaks (top-right), CFR (bottom-le
+ft) and fraction of recovered individuals (bottom-right), as a function
+ of the time that individuals require to recognize their symptoms and self-isola
+te.
 \end_layout
 
 \end_inset
@@ -2694,8 +2775,9 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS6a.pdf
 	width 31text%
 
 \end_inset
@@ -2707,7 +2789,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS6b.pdf
 	width 31text%
 
 \end_inset
@@ -2719,7 +2801,45 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS6c.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/FigS6d.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/FigS6e.pdf
 	width 31text%
 
 \end_inset
@@ -2739,8 +2859,9 @@ name "fig:Suppl_evacuation"
 Evacuation.
 
 \series default
- Probability of outbreak (left), fraction of casualties (middle) and time
- in which the number of symptomatic cases peaks (right), depending on whether
+ Probability of outbreak (top-left), fraction of casualties (top-middle),
+ time in which the number of symptomatic cases peaks (top-right), CFR (bottom-le
+ft) and fraction of recovered individuals (bottom-right), depending on whether
  individuals requiring hospitalization are evacuated to isolation centers.
 \end_layout
 
@@ -2769,8 +2890,9 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS7a.pdf
 	width 31text%
 
 \end_inset
@@ -2782,7 +2904,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS7b.pdf
 	width 31text%
 
 \end_inset
@@ -2794,12 +2916,53 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS7c.pdf
 	width 31text%
 
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/FigS7d.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/FigS7e.pdf
+	width 31text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -2814,8 +2977,9 @@ name "fig:Suppl_Tcheck"
 Health-checks in the buffering zone.
 
 \series default
- Probability of outbreak (left), fraction of casualties (middle) and time
- in which the number of symptomatic cases peaks (right), depending on whether
+ Probability of outbreak (top-left), fraction of casualties (top-middle),
+ time in which the number of symptomatic cases peaks (top-right), CFR (bottom-le
+ft) and fraction of recovered individuals (bottom-right), depending on whether
  health-checks are implemented to avoid that symptomatic individuals access
  to the buffering zone separating the orange and green zones.
 \end_layout
@@ -2847,7 +3011,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS8a.pdf
 	width 31text%
 
 \end_inset
@@ -2859,7 +3023,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS8b.pdf
 	width 31text%
 
 \end_inset
@@ -2904,12 +3068,12 @@ Number of contacts in the buffering zone.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS9a.pdf
 	width 31text%
 
 \end_inset
@@ -2921,7 +3085,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS9b.pdf
 	width 31text%
 
 \end_inset
@@ -2933,7 +3097,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS9c.pdf
 	width 31text%
 
 \end_inset
@@ -2954,8 +3118,12 @@ status open
 \end_inset
 
 
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS9d.pdf
 	width 31text%
 
 \end_inset
@@ -2967,7 +3135,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS9e.pdf
 	width 31text%
 
 \end_inset
@@ -3015,12 +3183,12 @@ ft) and fraction of recovered individuals (bottom-right), as a function
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS10a.pdf
 	width 31text%
 
 \end_inset
@@ -3032,7 +3200,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS10b.pdf
 	width 31text%
 
 \end_inset
@@ -3044,7 +3212,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS10c.pdf
 	width 31text%
 
 \end_inset
@@ -3065,8 +3233,12 @@ status open
 \end_inset
 
 
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS10d.pdf
 	width 31text%
 
 \end_inset
@@ -3078,7 +3250,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS10e.pdf
 	width 31text%
 
 \end_inset
@@ -3134,7 +3306,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS11a.pdf
 	width 31text%
 
 \end_inset
@@ -3146,7 +3318,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS11b.pdf
 	width 31text%
 
 \end_inset
@@ -3158,7 +3330,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS11c.pdf
 	width 31text%
 
 \end_inset
@@ -3179,8 +3351,12 @@ status open
 \end_inset
 
 
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/FigS11d.pdf
 	width 31text%
 
 \end_inset
@@ -3192,7 +3368,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS1b.pdf
+	filename figures/FigS11e.pdf
 	width 31text%
 
 \end_inset

@@ -9,7 +9,18 @@
 #description = Process plots for expA. TODO: significance
 #usage = Run from src/
 
-setwd("/home/ec365/workbench/req-550-Syria/src")
+
+currentDir <- getwd()
+setwd("/home/ecam/workbench/req-550-Syria/src")
+
+library(ggplot2)
+
+data.summary <- function(x){
+   m <- mean(x)
+   ymin <- m-sd(x)
+   ymax <- m+sd(x)
+   return(c(y=m,ymin=ymin,ymax=ymax))
+}
 
 #By Alberto
 extract_subtable_output_summaries = function(df.out,params.df){
@@ -78,7 +89,7 @@ pdf(file=filePlotOut,width=9,height = 7)
 dodge <- position_dodge(width = 0.9)
 gg=ggplot(data=df)+
   #geom_jitter(size=0.4,alpha=0.5,aes_string(x="contacts",y=fn,colour="group"),position=position_jitter(width=.05))+
-  geom_point(position=position_jitterdodge(dodge.width=0.9),aes_string(x="contacts",y=fn,colour="group"))+
+  geom_point(position=position_jitterdodge(dodge.width=0.9),aes_string(x="contacts",y=fn,colour="group",alpha=.2))+
   geom_boxplot(aes_string(x="contacts",y=fn,fill="group"),position=dodge)+
   xlab(xlabel)+
   ylab(ylabel)+
@@ -162,3 +173,4 @@ gg=ggplot(data=df)+
 print(gg)
 dev.off( )
 
+setwd(currentDir) #Let's finish where we started.

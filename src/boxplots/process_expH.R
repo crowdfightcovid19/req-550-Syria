@@ -9,7 +9,8 @@
 #description = Process plots for expA. TODO: significance
 #usage = Run from src/
 
-setwd("/home/ec365/workbench/req-550-Syria/src")
+currentDir <- getwd()
+setwd("/home/ecam/workbench/req-550-Syria/src")
 
 #By Alberto
 extract_subtable_output_summaries = function(df.out,params.df){
@@ -166,3 +167,4 @@ gg=ggplot(data=df)+
 print(gg)
 dev.off( )
 
+setwd(currentDir) #Let's finish where we started.

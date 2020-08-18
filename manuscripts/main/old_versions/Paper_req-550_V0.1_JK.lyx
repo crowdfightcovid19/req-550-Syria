@@ -1,0 +1,1792 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{lipsum}
+\usepackage{xr}
+\externaldocument{Paper_req-550_V0.2_SM}
+\usepackage{lineno}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.3cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author 227091064 "Klein"
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Empowering the crowd: Feasible strategies 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ to minimize the spread of COVID-19 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ in informal settlements
+\end_layout
+
+\begin_layout Author
+Authors names TBA
+\end_layout
+
+\begin_layout Address
+Add your affiliation here.
+\end_layout
+
+\begin_layout Abstract
+Background, Methods, Findings, Interpretation, and Funding.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Introduction
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1597167171
+There is still a substantial number of low-income countries in which the
+ COVID-19 pandemic has not reached its fullest potential.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+APG: the following is just an example, we are looking for a comparison that
+ allow us to warn that this work is important because in many places in
+ which our work is relevant, the virus has not appeared yet
+\end_layout
+
+\end_inset
+
+ In the beginning of August 2020, the number of cases reported in African
+ countries per inhabitant was XXX.
+ These numbers are still far from those reported in (XXX e.g.
+ Europe).
+ 
+\change_inserted 227091064 1597170388
+Regions of the world suffering from armed conflict are especially vulnerable
+ to the COVID-19 pandemic [Ref].
+ 
+\change_deleted 227091064 1597168714
+The 
+\change_inserted 227091064 1597169243
+These regions must not only contend with the public health challenges resulting
+ from violence [Ref], the deterioration of 
+\change_deleted 227091064 1597167343
+fragile 
+\change_unchanged
+health-systems
+\change_deleted 227091064 1597167188
+ in these countries
+\change_unchanged
+ [Ref], 
+\change_deleted 227091064 1597167352
+in particular regarding
+\change_unchanged
+ 
+\change_inserted 227091064 1597168572
+especially of 
+\change_unchanged
+critical care [Ref], 
+\change_deleted 227091064 1597167272
+and the often lack of
+\change_inserted 227091064 1597170415
+and the breeakdown of essential 
+\change_deleted 227091064 1597167510
+ access to basic services such as
+\change_inserted 227091064 1597169337
+infrastructure such as
+\change_unchanged
+ water 
+\change_inserted 227091064 1597167833
+and 
+\change_unchanged
+sanitation 
+\change_inserted 227091064 1597167833
+systems 
+\change_unchanged
+[Ref]
+\change_inserted 227091064 1597167833
+, 
+\change_deleted 227091064 1597168439
+, may have major implications in the spread of the disease [Ref].
+\change_inserted 227091064 1597261965
+but also those stemming from a large portion of their populations becoming
+ displaced.
+ In regions where the displaced population exceeds official resettlement
+ and refugee camp capacity, Internally Displaced Persons (IDPs) must live
+ in informal settlements (hereafter named 
+\begin_inset Quotes eld
+\end_inset
+
+camps
+\begin_inset Quotes erd
+\end_inset
+
+).
+ With living conditions often characterized by overcrowded tents with high
+ rates of inter-personal contact, such camps provide opportune environments
+ for the transmission of infectious disease [Ref].
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597262712
+I disagree with introducing our works' relevancy through the framing that
+ developed countries have been more impacted than developing countries thus
+ far, & that this situation with respect to developing countries is directly
+ comparable to the situation in NW Syria.
+ 2 main reasons:
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597262371
+1.
+ Our work is relevant to regions with ongoing armed conflicts and IDPs,
+ not to developing countries in general.
+ The reason this is such a challenge in NW Syria is because it is a conflict
+ zone with a large number of internal refugees, not because Syria is a developin
+g country.
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597263500
+2.
+ While it may have unequivocally been the case that developed countries
+ were more impacted than developing countries a few months ago, and there
+ certainly still are several developing countries that have not yet seen
+ large outbreaks, this is increasingly no longer the case.
+ The countries currently experiencing the largest outbreaks are developing
+ countries like South Africa, India, Russia, Latin American countries, and
+ the United States (which has been revealed to have many characteristics
+ of a developing country by this pandemic).
+ I think using this point will age increasingly poorly.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1597170625
+These figures become even worse in regions immerse in armed conflicts, in
+ which informal settlements of Internally Displaced Population (IDP) are
+ widespread.
+ In these settlements, the number of inter-personal contacts is very high,
+ with people often living in overcrowded tents.
+
+\change_unchanged
+ 
+\change_inserted 227091064 1597170508
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1597170704
+For the region we take as a reference in this study, the
+\change_inserted 227091064 1597170706
+In this study,
+\change_unchanged
+ 
+\change_inserted 227091064 1597170777
+we focus on the region of 
+\change_unchanged
+North
+\change_deleted 227091064 1597170719
+ West
+\change_inserted 227091064 1597258139
+western
+\change_deleted 227091064 1597170790
+ of
+\change_unchanged
+ Syria, 
+\change_inserted 227091064 1597170727
+where 
+\change_unchanged
+XX% of 
+\change_deleted 227091064 1597170729
+the 
+\change_unchanged
+households are IDP
+\change_inserted 227091064 1597170733
+s
+\change_unchanged
+ living in tents with XX people on average [Verify and Ref].
+ 
+\change_inserted 227091064 1597180636
+A 
+\change_deleted 227091064 1597258166
+Moreover, populations in these regions often have a 
+\change_unchanged
+high proportion of 
+\change_deleted 227091064 1597180662
+individuals
+\change_inserted 227091064 1597180666
+the population in this region
+\change_unchanged
+ suffer
+\change_inserted 227091064 1597180669
+s
+\change_deleted 227091064 1597180669
+ing
+\change_unchanged
+ from comorbidities.
+ In 
+\change_deleted 227091064 1597180685
+the 
+\change_unchanged
+NW Syria, 10% of the population has a chronic disease, with 17% of them
+ having no access to medicines [REF Reach doc], 
+\change_deleted 227091064 1597255587
+and it is often dependent
+\change_inserted 227091064 1597258218
+often entirely reliant
+\change_unchanged
+ on humanitarian 
+\change_deleted 227091064 1597255600
+organizations
+\change_inserted 227091064 1597258239
+assistance for their healthcare needs
+\change_unchanged
+ [data?].
+ 
+\change_deleted 227091064 1597255647
+At a regional scale, 
+\change_inserted 227091064 1597255652
+As in other conflict regions, 
+\change_unchanged
+the political instability in 
+\change_inserted 227091064 1597255661
+NW Syria
+\change_deleted 227091064 1597255666
+areas affected by armed conflicts
+\change_unchanged
+ hinders
+\change_deleted 227091064 1597258290
+ the efficiency of 
+\change_inserted 227091064 1597258405
+ 
+\change_unchanged
+coordinated 
+\change_inserted 227091064 1597255694
+public health 
+\change_unchanged
+actions
+\change_inserted 227091064 1597258311
+, and the ongoing movements of IDPs
+\change_deleted 227091064 1597258302
+, and military operations often prompt the exodus of the population.
+ These movements 
+\change_inserted 227091064 1597258414
+ 
+\change_unchanged
+c
+\change_inserted 227091064 1597258339
+reates ample opportunity for infectious disease transmission, while 
+\change_deleted 227091064 1597256848
+ould facilitate the transmission of the disease, also making
+\change_inserted 227091064 1597258344
+making
+\change_unchanged
+ 
+\change_inserted 227091064 1597256854
+contact 
+\change_unchanged
+tracing interventions 
+\change_inserted 227091064 1597258367
+i
+\change_deleted 227091064 1597258367
+u
+\change_unchanged
+nfeasible.
+ 
+\change_deleted 227091064 1597256896
+At the local scale, a large number of
+\change_inserted 227091064 1597256898
+Many
+\change_unchanged
+ informal camps (not registered by the WHO [APG, please precise]) have limited
+ or no management [REF Reach], 
+\change_deleted 227091064 1597256924
+again
+\change_inserted 227091064 1597256925
+further
+\change_unchanged
+ 
+\change_deleted 227091064 1597258506
+precluding
+\change_inserted 227091064 1597258507
+inhibiting
+\change_unchanged
+ the implementation of interventions to limit 
+\change_deleted 227091064 1597256942
+the spread of the virus
+\change_inserted 227091064 1597256945
+disease transmission
+\change_unchanged
+.
+\end_layout
+
+\begin_layout Standard
+To investigate feasible 
+\change_inserted 227091064 1597258875
+COVID-19 prevention 
+\change_unchanged
+interventions in
+\change_inserted 227091064 1597258902
+ the camps
+\change_deleted 227091064 1597180714
+ informal settlements (hereafter named 
+\begin_inset Quotes eld
+\end_inset
+
+camps
+\begin_inset Quotes erd
+\end_inset
+
+)
+\change_unchanged
+, we considered a Susceptible-Exposed-Infectious-Recovered model in which
+ t
+\change_inserted 227091064 1597261033
+he camps'
+\change_deleted 227091064 1597261028
+he 
+\change_inserted 227091064 1597258913
+ 
+\change_unchanged
+population
+\change_inserted 227091064 1597258946
+s
+\change_unchanged
+ 
+\change_inserted 227091064 1597258949
+are
+\change_deleted 227091064 1597258948
+is
+\change_unchanged
+ divided into classes, reflecting 
+\change_inserted 227091064 1597258953
+their
+\change_deleted 227091064 1597258692
+the
+\change_unchanged
+ 
+\change_inserted 227091064 1597258637
+estimated 
+\change_unchanged
+age-structure
+\change_inserted 227091064 1597258961
+s
+\change_unchanged
+ and 
+\change_deleted 227091064 1597258696
+the existence of 
+\change_unchanged
+comorbidit
+\change_inserted 227091064 1597258969
+y prevalences
+\change_deleted 227091064 1597258698
+ies
+\change_unchanged
+ [Ref].
+ We use this model to propose a number of interventions aimed at reducing
+ the 
+\change_inserted 227091064 1597258755
+number of 
+\change_unchanged
+contacts within and between population classes in general, and with symptomatic
+ individuals in particular.
+ 
+\change_inserted 227091064 1597261078
+We paid special attention to how the living conditions in informal camps
+ inform the assumptions underlying our proposed interventions.
+ We modelled interventions previously proposed for African cities [Zandvoort],
+ such as self-distancing, isolation of symptomatic individuals and the creation
+ of a 'safety zone' in which more vulnerable members of the population are
+ protected from exposure to the virus.
+ 
+\change_deleted 227091064 1597259724
+In order to
+\change_inserted 227091064 1597259742
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597259706
+Building upon the approach used to model the impact of these interventiosn
+ in African cities
+\change_deleted 227091064 1597259713
+ incorporate these interventions
+\change_unchanged
+, 
+\change_deleted 227091064 1597259713
+the
+\change_inserted 227091064 1597259396
+our
+\change_unchanged
+ model includes a
+\change_inserted 227091064 1597261704
+ 
+\change_deleted 227091064 1597261703
+n explicit 
+\change_unchanged
+parametrization of the contacts that 
+\change_deleted 227091064 1597259713
+the populations
+\change_inserted 227091064 1597259396
+each individual
+\change_unchanged
+ ha
+\change_inserted 227091064 1597259396
+s
+\change_deleted 227091064 1597259713
+ve
+\change_unchanged
+ per day
+\change_inserted 227091064 1597259726
+ 
+\change_deleted 227091064 1597259724
+, an approximation that was previously used to model the effect of similar
+ interventions in minimizing the spread of the COVID-19 in African cities
+ 
+\change_unchanged
+[Zandvoort].
+ We 
+\change_deleted 227091064 1597261131
+build
+\change_inserted 227091064 1597261152
+further elaborate
+\change_unchanged
+ upon this appr
+\change_deleted 227091064 1597259724
+oximation
+\change_inserted 227091064 1597261173
+oach by
+\change_unchanged
+ making a more explicit representation of 
+\change_deleted 227091064 1597259724
+the 
+\change_unchanged
+contacts
+\change_deleted 227091064 1597259724
+,
+\change_unchanged
+ and 
+\change_deleted 227091064 1597261178
+of 
+\change_unchanged
+other parameters in the model
+\change_inserted 227091064 1597261764
+.
+ We consider the micro-dynamics of contacts, the time that individuals take
+ to recognize their symptoms before self-isolating, the effect of having
+ carers to attend isolated individuals, and the existence of a buffer zone
+ in which exposed and protected population classes can interact under certain
+ rules, among other details.
+ We examine a potential worst-case scenario in which there is no access
+ to any health-care facility.
+ Since empowering local communities in conflict regions to understand how
+ to control COVID-19 is possibly the most (and perhaps only) effective way
+ to minimize its spread, our models are of utmost importance for informing
+ the implementation of realistic interventions in these regions.
+\change_deleted 227091064 1597261560
+.
+ We paid special attention on the assumptions that the different interventions
+ would have under the living conditions that exist in these camps.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1597261580
+We considered a worst-case scenario in which there is no access to any health-ca
+re facility.
+ We modelled previously proposed interventions [Zandvoort] such as self-distanci
+ng, isolation of symptomatic individuals and the creation of a 'safety zone'
+ in which more vulnerable population becomes less exposed to the virus.
+ We elaborated in more detail previous models [Ref, Zandvoort] to take into
+ account the micro-dynamics of the interactions, considering questions such
+ as the time than an individual takes to recognize the symptoms before self-isol
+ating, the effect of having carers to attend isolated individuals, or the
+ existence of a buffering zone in which exposed and protected population
+ classes could interact under certain rules, among other details.
+ Since empowering the local communities to understand how to control the
+ virus is possibly the most (and perhaps unique) effective way to minimize
+ its spread, the details we modelled become of outmost importance for a
+ realistic implementation of the interventions.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Section*
+Methods
+\end_layout
+
+\begin_layout Subsection*
+The model
+\end_layout
+
+\begin_layout Standard
+We considered a discrete-time stochastic model simulating the spread of
+ the virus in a single camp.
+ The model is divided in compartments, containing individuals at different
+ possible epidemiological stages along the progression of the disease (see
+ Supplementary Material).
+ The model additionally considers that the population is split in classes,
+ dependent on the age-structure and comorbidities.
+ The simulation starts with a population of susceptible individuals and
+ then one individual becomes exposed.
+ The progression of the disease in the individual goes through a series
+ of infectious stages: a preclinical infectious stage, and then either a
+ clinical (symptomatic) or subclinical (asymptomatic) infectiousnessstage.
+ Susceptible individuals may become infected if they have a contact with
+ infectious individuals.
+ Individuals are no longer infectious if they recover or if they die.
+ The model simulates the development of the disease for a period of 12 months.
+ We verified that a steady state was always reached before the limit of
+ the simulation was achieved.
+ We did not considered any additional entry of infectious individuals in
+ the camp during the simulation.
+ Births and deaths due to other causes were not considered in the model,
+ since populations changes due to the disease are much larger than those
+ related to these processes, provided that there are no conflicts during
+ the period simulated.
+\end_layout
+
+\begin_layout Subsection*
+Population structure
+\end_layout
+
+\begin_layout Standard
+We considered data from the NW of Syria as a reference to parametrize the
+ models [SOURCE].
+ The population size of informal camps was log-normally distributed, with
+ a mean size of 600 individuals.
+ We simulated population sizes of 500, 1000 and 2000 individuals.
+ Unless stated otherwise, the results presented refer to populations of
+ 2000 individuals, because interventions tend to be less effective in larger
+ camps.
+ The original data was structured in three population ages: age 1 (0-1
+\change_inserted 227091064 1597269893
+2
+\change_deleted 227091064 1597269891
+3
+\change_unchanged
+ years old), age 2 (1
+\change_inserted 227091064 1597269895
+3
+\change_deleted 227091064 1597269895
+4
+\change_unchanged
+-50 yrs.) and age 3 (>50 yrs).
+ For the classes correspondent to age 2 and 3, we additionally considered
+ two subclasses comprising health individuals and individuals with comorbidities
+, respectively.
+ Therefore, in the absence of interventions, we considered 5 population
+ classes, whose proportions are shown in Table [create Table].
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Epidemiological severity assumptions
+\end_layout
+
+\begin_layout Standard
+An important question to consider in the model is the access to health care.
+ In the NW of Syria, there are available XXX beds in hospitals (XXX UCIs)
+ and XX ventilators for 4.5 million people [Ref].
+ Basic estimations predicted a collapse of the health facilities after 8
+ weeks of the outbreak [].
+ Hence, we considered a worst-case scenario in which individuals will not
+ have access to health care.
+ As a consequence, we assumed that symptomatic individuals requiring an
+ ICU would die.
+ More problematic is to estimate the fate of those individuals that would
+ have symptoms with a severity requiring hospitalization but not necessarily
+ ICU care, since in the absence of hospitalization their fate is uncertain.
+ To address this point, and departing from previous models [Refs], we considered
+ a hospitalization compartment.
+ The role of this compartment is to account for a longer infectious period
+ for these individuals that, since there is no access to hospitals, will
+ stay in the camp.
+ This compartment will also help us to model more realistically some interventio
+ns, for example noting that the severity of the symptoms for these individuals
+ is incompatible with self-isolation.
+ From this compartment, we simulated two possible extreme scenarios, one
+ in which all of these individuals would recover, and another in which these
+ individuals will all die.
+ This strategy allowed us to estimate upper and lower bounds for the different
+ variables.
+ In the simulations presented in the Main Text, we considered a worst-case
+ scenario, namely the one in which all individuals die.
+\end_layout
+
+\begin_layout Standard
+Another consideration comes from the estimation of the fraction of the populatio
+n that will suffer severe or very severe symptoms (parameters 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+, see Table [Table]).
+ These parameters are class-specific, but we gathered this data from wealthy
+ countries [Refs], with access to health care.
+ Following previous work [Zandvoort], we considered that severity in the
+ camps would correspond to the one observed in these countries for a population
+ 10 years older.
+\end_layout
+
+\begin_layout Subsection*
+Transmissibility assumptions
+\end_layout
+
+\begin_layout Standard
+In our model, individuals from the presymptomatic, asymptomatic, symptomatic
+ and hospitalized compartments are equally infectious.
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+This is a weak point, and I think it could be rephrased better to be more
+ convincent:
+\end_layout
+
+\end_inset
+
+Although asymptomatic individuals are often considered less infectious [Ref],
+ the fraction of asymptomatic we considered was of 16% [Ref], which might
+ be an underestimation after recent findings reporting up to 49% [Ref],
+ and hence we opt to considered them equally infectious than symptomatic
+ ones.
+ The length of the time intervals that individuals spend in each compartment
+ was retrieved from literature (see Table [Table] and Supplementary Material).
+\end_layout
+
+\begin_layout Standard
+We modelled contacts between individuals considering that the number of
+ contacts between individuals belonging to different classes was the product
+ of the mean number of contacts that an individual has per day (
+\begin_inset Formula $\bar{c}_{i}$
+\end_inset
+
+, see Supplementary Materia) times the probability of randomly interact
+ with an individual of a given class.
+ We estimated that this probability is proportional to the fraction of the
+ population that the class represents.
+ The 
+\begin_inset Formula $\bar{c}_{i}$
+\end_inset
+
+ values were estimated from direct conversations with camp's managers in
+ NW Syria.
+ We estimated that individuals of age 1 have 25 contacts per day on average,
+ those of age 2 have 15 contacts per day, and we fix to 10 contacts per
+ day those of age 3.
+\end_layout
+
+\begin_layout Standard
+The probability of getting infected after a contact with an infectious individua
+l, 
+\begin_inset Formula $\tau$
+\end_inset
+
+, was estimated considering a Gaussian distribution of the basic reproduction
+ number 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ with mean 4 and 99% CI=(3–5).
+ These values were a compromise between values reported in the literature
+ from cities including favelas, ranging from 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+=2.77, 3.44 in Abuja and Lagos, respectively (Nigeria, [Ref]); 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ =3.3 in Buenos Aires (Argentina, [Ref]), to Rohinya's refugee camps that
+ were estimated to be as high as 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+=5 [Ref].
+ The probability distribution for 
+\begin_inset Formula $\tau$
+\end_inset
+
+ was estimated randomly generating a value for 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+, and dividing the value by the real part of the main eigenvalue of the
+ Next Generation Matrix (see Supplementary Material).
+\end_layout
+
+\begin_layout Subsection*
+Interventions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+APG: A table similar to Table 1 in Zandvoort et al.
+ would be great
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Self-distancing
+\end_layout
+
+\begin_layout Standard
+We considered a situation in which the whole population reduce the mean
+ number of contacts per day by a certain amount (20% or 50%).
+ Since the mean number of people per tent in a camp is 7 [verify], we considered
+ that the number of contacts per day cannot be reduced by more than a 50%.
+ Note that, for an adult, this would mean having 7.5 contacts per day.
+\end_layout
+
+\begin_layout Subsubsection*
+Buffering zone
+\end_layout
+
+\begin_layout Standard
+When individual self-distancing cannot be achieved, a possible solution
+ is the split of the population in groups, and to apply self-distancing
+ measures between individuals belonging to different groups.
+ The interaction between groups is then limited to certain zones named 
+\begin_inset Quotes eld
+\end_inset
+
+buffering zones
+\begin_inset Quotes erd
+\end_inset
+
+.
+ We assumed that these zones are open spaces, not occupied by more than
+ 4 individuals wearing masks, and in which 2 meters of distance between
+ individuals of different groups is guaranteed.
+ This setting allowed us to assume a reduction in the probability of infection
+ per contact of an 80% [Ref].
+ An additional intervention we considered in some simulations, is that symptomat
+ic individuals cannot access the buffering zones.
+\end_layout
+
+\begin_layout Subsubsection*
+Safety zone
+\end_layout
+
+\begin_layout Standard
+In this intervention, the camp is divided in two areas: a safety zone, in
+ which more vulnerable people lives (that we will refer to as 
+\begin_inset Quotes eld
+\end_inset
+
+green
+\begin_inset Quotes erd
+\end_inset
+
+ zone following previous studies [Ref]), and an exposed (orange) zone with
+ the remainder population.
+ In the simulations, it is always considered that the first exposed individual
+ belongs to the orange zone.
+ We avoided the use of the term 
+\begin_inset Quotes eld
+\end_inset
+
+shielding
+\begin_inset Quotes erd
+\end_inset
+
+ for this intervention as in other studies, since it may lead to a (misleading)
+ picture in which it is believed that the vulnerable population is isolated
+ into a closed space, such as a separated building.
+ Such intervention would require additional assumptions on how contacts
+ occur in a closed space 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+APG: Are we aware of any study that address this point? there has been much
+ controversy in the media around this
+\end_layout
+
+\end_inset
+
+.
+ In our simulations, we assumed that the camp is split in two separated
+ areas instead.
+ The number of contacts between individuals living in different areas is
+ reduced, while the living conditions within both areas remain otherwise
+ the same.
+ Therefore, the number of contacts per day and individual does not change
+ unless self-distancing is implemented.
+ In practice, this means that, for every individual, reducing the number
+ of contacts with individuals living in the other zone, implies an increase
+ in the number of contacts with the individuals in their own zone (see Supplemen
+tary Material).
+ This is important to investigate undesired side-effects that the split
+ may have.
+\end_layout
+
+\begin_layout Standard
+We also considered that individuals living in the green zone cannot leave
+ it, which means that supplies for this population should be provided by
+ individuals in the orange zone, and hence the contacts between both populations
+ never vanishes.
+ However, we considered that this interaction will always occur in a buffering
+ zone, and we assumed that each individual in the green zone can have a
+ maximum number of contacts per week with individuals of the orange zone:
+ either 10 or 2 contacts per week for each individual.
+\end_layout
+
+\begin_layout Standard
+An important social question to be addressed in this intervention is how
+ population will be distributed in the two zones, since different partitionings
+ may have a different reception in the population.
+ We considered the following isolation scenarios: i) elderly population
+ only (age 3); ii) elderly population and adults (age 2) with comorbidities;
+ and iii) elderly, adults with comorbidities, and other adults (e.g.
+ spouses or carers) and their young kids (< 13 yrs.
+ and not exceeding 40% of the population in the green zone).
+ For the scenario iii) we considered, in turn, three additional possibilities,
+ in which the total population in the green zone represent 20%, 25% or a
+ maximum of 30% of the total population.
+\end_layout
+
+\begin_layout Subsubsection*
+Lockdown of the safety zone
+\end_layout
+
+\begin_layout Standard
+An additional measure that can incorporated once the safety zone is implemented,
+ is a further reduction in the number of contacts occuring in the buffering
+ zone.
+ This occurs only after the first symptomatic case in the orange zone is
+ identified.
+ We refer to this reduction as 
+\begin_inset Quotes eld
+\end_inset
+
+lockdown
+\begin_inset Quotes erd
+\end_inset
+
+ (of the safety zone).
+ Again, since supplies for people living in the green zone cannot be disrupted,
+ we assumed that the number of contacts per week and individual is reduced
+ by a 50% or a maximum of a 90% (see Table XXX)
+\end_layout
+
+\begin_layout Subsubsection*
+Self-isolation
+\end_layout
+
+\begin_layout Standard
+A challenge in informal settlements is how self-isolation can be implemented
+ when households consist of a single, and often small, space.
+ Moreover, water should be collected at specific locations, there are communal
+ latrines and the scarcity of food supplies do not allow for the complete
+ isolation of whole families.
+ We considered the possibility that individuals showing symptoms self-isolate
+ in individual tents in dedicated spaces of the camps, or next to the tents
+ of their relatives.We modelled this intervention for an increasing number
+ of tents from 10 to an unlimited number (see Table XXX).
+ We also considered that there is a minimum time for an individual to recognize
+ his/her own symptoms.
+ We considered three possible time intervals with means of 12, 24 or 48
+ hours (see Table XXX).
+ In addition, we considered that there are a number of carers dedicated
+ to supply food and water to isolated individuals, interacting via a buffering
+ zone.
+ In Supplementary Material, we show that considering one carer per individual
+ having one contact per day, we account for both the positive effects of
+ isolation and the negative effects derived from the contact with carers,
+ since the probability of infection with the rest of the population cannot
+ be neglected.
+ In this respect, we considered that people moving to a severely symptomatic
+ stage (hospitalized compartment) becomes fully infectious.
+ The rationale behind this choice is that these individuals require a more
+ intensive care, and hence it is expected that the rules imposed for a buffering
+ zone cannot be longer fulfilled.
+\end_layout
+
+\begin_layout Subsubsection*
+Evacuation
+\end_layout
+
+\begin_layout Standard
+The last intervention refers to the possibility of evacuating severely symptomat
+ic individuals, i.e.
+ those in the hospitalization compartment.
+ This measure does not change the fate of the evacuated individuals.
+ Hence, we assume that the evacuation will not be to a hospital but to some
+ sort of isolation center 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+APG: Chamsy, I think it would be great to document here that this is a possibili
+ty considered by policy-makers.
+\end_layout
+
+\end_inset
+
+.
+ In this way, the only effect of the intervention is a reduction of the
+ infectiousness of these individuals to zero.
+\end_layout
+
+\begin_layout Subsection*
+Analysis of the interventions
+\end_layout
+
+\begin_layout Standard
+For each implementation of the interventions, we run 500 simulations, analysing
+ results arising from the incorporation of an intervention with respect
+ to a set of simulations in which the intervention was absent.
+ The main variables we considered in the comparisons were the fraction of
+ casualties in the population, the case fatality rates (CFR), the fraction
+ of population recovered and the time at which it is observed a peak in
+ the symptomatic population, which is the most informative population in
+ settings in which there is no access to other tests.
+ We additionally considered the fraction of simulations in which at least
+ one death is observed, as a proxy for the probability of outbreak.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+Note that interventions will affect CFR only when interventions have a different
+ial effect among population classes, and hence we will mostly refer to the
+ fraction of deaths in our analysis instead
+\end_layout
+
+\end_inset
+
+ For consistency, when we compared the statistics of a given variable between
+ two interventions, only simulations in which there was an outbreak were
+ considered.
+ When it was needed to individuate if differences between interventions
+ were significant, we conducted statistical analysis: t– or Welch–tests
+ for pairwise comparisons depending on whether normality is fulfilled, and
+ Tukey tests for multiple comparisons among non-orthogonal variables.
+\end_layout
+
+\begin_layout Subsection*
+Results
+\end_layout
+
+\begin_layout Standard
+When interventions are absent, the CFR takes values around 2% when we consider
+ that individuals that would require hospitalization (but not ICU) are recovered
+ (Suppl.
+ Fig.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_DvsR"
+
+\end_inset
+
+), raising up to ~11% when we considered that all would die 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+APG: Verify these values
+\end_layout
+
+\end_inset
+
+.
+ In the following and unless otherwise stated, we consider the latter scenario
+ to evaluate the interventions.
+ In such scenario, the probability of observing an outbreak is close to
+ 0.85, having that 10% of the population in the camp would die, with the
+ number of symptomatic cases peaking after 55 days.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+and that ~83% of the population would recover
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Self-distancing has a notable effect in reducing the probability of outbreak,
+ with a 10% decrease when just a reduction of a 20% in the number of contacts
+ was considered (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+A).
+ It was, however, needed a reduction of up to 50% to observe a more nuanced
+ decrease in the fraction of population dying, that could be reduced as
+ much as a 35% (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+B).
+ The same occurs for the time to the peak of symptomatics (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+C), which increases up to 110 days, hence doubling the values when there
+ are no interventions in place.
+ As a counterpart, the proportion of population recovered is reduced a 35%
+ (Suppl.
+ Fig.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_DvsR-1"
+
+\end_inset
+
+) 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Recovered?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Fig2a.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2b.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2c.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Fig2d.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2e.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2f.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Fig2g.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2h.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Fig2i.pdf
+	width 31text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Panel2"
+
+\end_inset
+
+ 
+\series bold
+Lower and upper bounds when interventions are absent.
+
+\series default
+ Probability of outbreak (left-column), fraction of casualties (middle-column)
+ and time in which the number of symptomatic cases peaks (right-column)
+ for the interventions incorporating self-distancing (top-row) self-isolation
+ (middle-row) and for the implementation of a safety-zone (bottom-row).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Self-isolation brings a modest decrease in the probability of observing
+ an outbreak (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+D), but it provides a strong reduction in the fraction of population dying
+ (~30%), when only 10 tents are available for a population of 2000 individuals,
+ i.e.
+ a 0.5% of the total population (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+E).
+ Interestingly, increasing the number of tents does not significantly[?]
+ enhance this reduction and, when the number of tents represent a 10% of
+ the population, the fraction of deaths even increases.
+ This effect is a consquence of having one carer per individual isolated
+ (see Supplementary Material), whose side effect is that, when the number
+ of isolated population increases, it also increases the number of adult
+ healthy individuals in contact with the infected population.
+ Still, the Case Fatality Rate experience a continuous, albeit small, reduction
+ with an increasing number of tents (Supplementary Fig.
+ XX).
+\end_layout
+
+\begin_layout Standard
+Importantly, these results hold when the time required for individuals to
+ recognize their symptoms is of 24h on average, and the intervention becomes
+ less effective when this time increases (Supplementary Fig.
+ XX).
+ On the other hand, reducing this time to 12h does not significantly reduce
+ the fraction of people dying 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+This should be tested
+\end_layout
+
+\end_inset
+
+, but it does increase the time in which the number of symptomatic cases
+ peak (Supplementary Figs.
+ XX and XX).
+ If we additionally consider that the symptomatic cases that would require
+ hospitalization are evacuated, it is only observed a 2% reduction in the
+ fraction of individuals dying (Supplementary Fig.
+ XXX).
+ Since we assumed that the evacuation does not change their fate, the interventi
+on only affects their infectivity.
+ Although the period between developing more important symptoms and dying
+ is relatively long (~10 days), the number of individuals under these conditions
+ is small, when compared to the rest of the infected population.
+\end_layout
+
+\begin_layout Standard
+Creating a safety zone overall improves the effect of previous interventions,
+ but sometimes with different outcomes for the exposed and protected populations.
+ For instance, the probability of outbreak strongly decreases (almost 40%)
+ for the protected population (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+G).
+ Notably, approximately 16% of this reduction is due to the health checks
+ performed to get into the buffering zone, which exclude symptomatic individuals
+ (Supplementary Fig.
+ XX).
+ On the other hand, the probability of outbreak may increase for the exposed
+ population if the contacts per week and per individual occuring in the
+ buffering zone are reduced to 2.
+ This is a consequence of an increased number of contacts within subpopulations,
+ which may also explain the increase in the CFR of the protected population
+ (Supplementary Fig.
+ XX), 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Understand this.
+\end_layout
+
+\end_inset
+
+.
+ Despite of this side-effect, the fraction of individuals dying for the
+ protected subpopulation and, in turn, globally, is reduced (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+H).
+ Another important outcome of this intervention is the notable increase
+ of the time to peak of symptomatics, raising up to 35% globally, and to
+ 70% for the protected population (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+I).
+ Regarding the population moving to the safety zone, having only elderly
+ or at most elderly and adults with comorbidities, guarantee a low probability
+ of outbreak, which would otherwise increase the global fraction of population
+ dying (Supplementary Fig.
+ XX and XX).
+ Positive effects of the safety zone are even more marked for smaller population
+ sizes, except for the time to peak of symptomatic, which has a weaker effect
+ for smaller populations (Supplementary Fig.
+ XXX and XXX).
+\end_layout
+
+\begin_layout Standard
+The incorporation of a lockdown again shows the side-effect in which, if
+ there is an outbreak in the safety zone, it has a negative effect due to
+ the increased number of contacts of individuals within the zone (Supplementary
+ Fig.
+ XXX).
+ However, the probability of outbreak is very strongly reduced to a barely
+ 10% and, consequently, when there is an outbreak in the camp (which in
+ most of the cases will not reach the safe zone) the fraction of deaths
+ decreases overall (Supplementary Fig.
+ XXX).
+\end_layout
+
+\begin_layout Standard
+Finally, the combination of interventions add their effects approximately
+ behave as they were shown when incorporated individually (Fig.
+ XXX and Supplementary Fig.
+ XXX).
+ In particular, the creation of a safety zone improves the benefits of the
+ other interventions, and there are not noticeable side effects beyond those
+ previously described.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/Fig3a.pdf
+	width 95text%
+	height 31pheight%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/Fig3b.pdf
+	width 95text%
+	height 31pheight%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/Fig3c.pdf
+	width 95text%
+	height 31pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Panel3"
+
+\end_inset
+
+ 
+\series bold
+Combination of interventions.
+
+\series default
+ Probability of outbreak (top), fraction of casualties (middle) and time
+ in which the number of symptomatic cases peaks (bottom) for different combinati
+on of interventions.
+ For interventions considering the inclusion of a safety-zone we distinguish
+ between the population living in the green zone, in the orange zone, and
+ the whole population.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Discussion
+\end_layout
+
+\begin_layout Standard
+In this article, we proposed a number of feasible interventions of immediate
+ applicability, for human informal settlements.
+ We took as reference settlements of IDP in the NW of Syria, and we discussed
+ the feasibility of the different interventions with local stakeholders,
+ to individuate its economical viability and potential cultural issues.
+ In general, we considered worst case scenarios, possibly (hopefully) leading
+ to an overestimation of the number of casualties but that, in this way,
+ makes more apparent the potential of the interventions.
+ Our results are aligned with previous works XXX
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+we should comment other results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Self-distancing proves to be an efficient measure, and reducing the number
+ of contacts to a 50% has the most important effect among all the interventions.
+ Such a reduction is, however, difficult to achieve, for example due to
+ the large population under 14 years old which have high motility in the
+ camps and little control.
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+perhaps a little bit unrigurous the last point
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We proposed the implementation of self-isolation with individual tents,
+ that could be located either in a dedicated zone in the camp or next to
+ the tents of relatives, with a buffering zone (
+\begin_inset Formula $\sim2\ m^{2})$
+\end_inset
+
+ in-between.
+ We think this intervention is more likely to be accepted than the evacuation
+ to isolation centers without health care [APG.
+ Include reference to public plans of WHO].
+ Without testing, it is difficult to know if symptoms are truly associated
+ to COVID-19, and hence an increase in the contacts between individuals
+ may increase the infectivity, also among carers if they do not have effective
+ protection measures.
+ Our proposal is effective even for a number of tents is as low as 0.5-1%
+ of the total population in the camp.
+ We considered that there is one carer per individual isolated with a daily
+ contact in a buffering zone, and this choice shows that increasing the
+ number of isolated individuals increases the infectivity.
+ This could be circumvented with a more organized group of trained carers,
+ which would reduce the number of total contacts with infectious individuals.
+ The intervention is effective even though we assumed that individuals requiring
+ hospitalization should leave the tents due to their need of care, and hence
+ they become fully infectious.
+\end_layout
+
+\begin_layout Standard
+The creation of a safety zone is an interesting intervention that we propose
+ should keep the same setting in terms of number of people per tent and
+ distance between tents.
+ This would mitigate side-effects derived from an increase in the number
+ of contacts between vulnerable population.
+ Still, we implemented this increase exactly compensating the reduction
+ in the number of contacts with the other population, and we observed in
+ some cases side-effects such as an increase in the fraction of deaths in
+ the protected population, justifying these concerns.
+ However, these side-effects are compensated by the strong reduction in
+ the probability of outbreak in the safety zone that this intervention provides,
+ which leads to an overall reduction in the fraction of deaths in the whole
+ camp.
+ Moreover, it is unrealistic to think that the level of activity will be
+ maintained in the safety zone, which would readily control for any side-effects.
+\end_layout
+
+\begin_layout Standard
+An important question for the success of this intervention comes from the
+ efficiency of the buffering zone.
+ The reduction in the number of contacts per week, the implementation of
+ basic health checks to identify symptomatic individuals, and the eventual
+ lockdown, have notable effects.
+ Also important is which population should be shielded.
+ Protecting only elderly and at most adults with comorbidities have the
+ most beneficial effects, and the intervention becomes less effective when
+ more adults and kids are included.
+ Another relevant consideration is the fraction of population recovered,
+ that may help to reach herd immunity.
+ We observed that unless a self-distancing of 50% is considered, the fraction
+ of population recovered is close to a 75%, which is quite promising to
+ prevent future outbreaks.
+\end_layout
+
+\begin_layout Standard
+Decisions on which population should be protected are one example of social
+ challenges that may become more complex in practice.
+ Another example we did not address is that it is unlikely that a kid becomes
+ isolated alone in a tent.
+ The number of exceptions to the cases proposed are possibly endless, but
+ we should ask if it is needed to run a simulation to predict the outcome
+ of these exceptions.
+ In this respect, we believe that the importance of these results comes
+ from the fact that the examples may help individuals to understand the
+ dynamics of the virus, and then to adapt to new situations and to look
+ for alternatives.
+ Given the highly dynamic environment existing in the camps and the slow
+ reaction of the local and international authorities, empowering the local
+ population is possibly the best, if not the only way, to help these communities.
+\end_layout
+
+\end_body
+\end_document
