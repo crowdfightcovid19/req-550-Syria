@@ -14,6 +14,9 @@ currentDir <- getwd()
 setwd("/home/ecam/workbench/req-550-Syria/src")
 
 library(ggplot2)
+library(grid)
+library(gridExtra)
+
 fymin.q <- function(z){ return(quantile(z,0.25))} 
 fymax.q <- function(z){ return(quantile(z,0.75))} 
 fymin.sd <- function(z){ return(mean(z)-sd(z))} 
@@ -23,10 +26,12 @@ fymax.se <- function(z){ return(mean(z)+sd(z)/sqrt(length(z[!is.na(z)])))}
 
 
 
-axis.text.size = 20
-axis.title.size = 22
-legend.title.size = 28
-legend.text.size = 22
+axis.text.size = 30
+axis.title.size = 35
+legend.title.size = 35
+legend.text.size = 32
+
+def_color_scale <- c("T" = "#619CFF","E" = "#FFB54D","S" = "#00BA38")
 
 #By Alberto
 extract_subtable_output_summaries = function(df.out,params.df){
@@ -61,8 +66,10 @@ do_ribbon_plot <- function(df,fn,varX,xlabel,ylabel,fymin,fymax,fun,scale_x_labe
             xlab(xlabel)+
             ylab(ylabel)+
             scale_x_discrete(labels=scale_x_labels)+
-            scale_fill_discrete(name=group_name,labels=scale_fill_labels)+
-            scale_color_discrete(name=group_name,labels=scale_fill_labels)+
+            #scale_fill_discrete(name=group_name,labels=scale_fill_labels)+
+            #scale_color_discrete(name=group_name,labels=scale_fill_labels)+
+            scale_fill_manual(name=group_name,labels=scale_fill_labels,values=def_color_scale)+
+            scale_color_manual(name=group_name,labels=scale_fill_labels,values=def_color_scale)+
             theme(  legend.text = element_text(size=legend.text.size),
                     legend.title = element_text(size=legend.title.size),
                     axis.text = element_text(size=axis.text.size), 
@@ -83,14 +90,16 @@ do_box_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels
             geom_point(position=position_jitterdodge(dodge.width=0.9),aes_string(x=varX,y=fn,colour="group",group="group"),alpha=.075)
 
     if(line){
-        gg <- gg + stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group="group",colour="group"),position=dodge,)
+        gg <- gg + stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group="group",colour="group"),position=dodge,size=2)
     }
         gg <- gg + geom_boxplot(aes_string(x=varX,y=fn,fill="group"),position=dodge)+
             xlab(xlabel)+
             ylab(ylabel)+
             scale_x_discrete(labels=scale_x_labels)+
-            scale_fill_discrete(name=group_name,labels=scale_fill_labels)+
-            scale_color_discrete(name=group_name,labels=scale_fill_labels)+
+#            scale_fill_discrete(name=group_name,labels=scale_fill_labels)+
+#            scale_color_discrete(name=group_name,labels=scale_fill_labels)+
+            scale_fill_manual(name=group_name,labels=scale_fill_labels,values=def_color_scale)+
+            scale_color_manual(name=group_name,labels=scale_fill_labels,values=def_color_scale)+
             theme(  legend.text = element_text(size=legend.text.size),
                     legend.title = element_text(size=legend.title.size),
                     axis.text = element_text(size=axis.text.size), 
@@ -111,14 +120,14 @@ do_vio_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels
     gg <- ggplot(data=df)
 
     if(line){
-        gg <- gg + stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group="group",colour="group"),position=dodge,)
+        gg <- gg + stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group="group",colour="group"),position=dodge,size=2)
     }
         gg <- gg + geom_violin(aes_string(x=varX,y=fn,fill="group"),position=dodge)+
             xlab(xlabel)+
             ylab(ylabel)+
             scale_x_discrete(labels=scale_x_labels)+
-            scale_fill_discrete(name=group_name,labels=scale_fill_labels)+
-            scale_color_discrete(name=group_name,labels=scale_fill_labels)+
+            scale_fill_manual(name=group_name,labels=scale_fill_labels,values=def_color_scale)+
+            scale_color_manual(name=group_name,labels=scale_fill_labels,values=def_color_scale)+
             theme(  legend.text = element_text(size=legend.text.size),
                     legend.title = element_text(size=legend.title.size),
                     axis.text = element_text(size=axis.text.size), 
@@ -142,8 +151,11 @@ do_line_plot<- function(df,fn,varX,xlabel,ylabel,fun,scale_x_labels,scale_fill_l
             xlab(xlabel)+
             ylab(ylabel)+
             scale_x_discrete(labels=scale_x_labels)+
-            scale_fill_discrete(name=group_name,labels=scale_fill_labels)+
-            scale_color_discrete(name=group_name,labels=scale_fill_labels)+
+#            scale_fill_discrete(name=group_name,labels=scale_fill_labels)+
+#            scale_color_discrete(name=group_name,labels=scale_fill_labels)+
+            scale_fill_manual(name=group_name,labels=scale_fill_labels,values=def_color_scale)+
+            scale_color_manual(name=group_name,labels=scale_fill_labels,values=def_color_scale)+
+
             theme(  legend.position = "top",
                     legend.text = element_text(size=legend.text.size),
                     legend.title = element_blank(),
