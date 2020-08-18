@@ -101,11 +101,12 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 227091064 "Klein"
 \end_header
 
 \begin_body
@@ -156,7 +157,7 @@ status open
 
 \end_inset
 
- in high-density informal settlements
+ in informal settlements
 \end_layout
 
 \begin_layout Author
@@ -228,7 +229,11 @@ with
 \begin_inset Formula $\tau$
 \end_inset
 
- the probability of infection if there is a contact between a susceptible
+ 
+\change_inserted 227091064 1597701763
+is 
+\change_unchanged
+the probability of infection if there is a contact between a susceptible
  and an infected person, and 
 \begin_inset Formula $C_{ij}$
 \end_inset
@@ -242,8 +247,11 @@ with
 \end_inset
 
  per day.
- The rest of parameters are described in Table [Table], and the model is
- illustrated in Fig.
+ The 
+\change_deleted 227091064 1597706483
+rest of parameters are described in Table [Table], and the 
+\change_unchanged
+model is illustrated in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -254,12 +262,36 @@ noprefix "false"
 
 \end_inset
 
+
+\change_inserted 227091064 1597706497
+, and the rest of the parameters are described in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:FixedParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_unchanged
 .
- In the following, to simplify the notation we define 
+ 
+\change_inserted 227091064 1597706486
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1597702005
+In the following, to simplify the notation we define 
 \begin_inset Formula $\kappa_{i}=((1-g_{i}-h_{i})\gamma_{\I}+h_{i}\eta+g_{i}\alpha)$
 \end_inset
 
 .
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
@@ -506,27 +538,96 @@ name "fig:Diagram"
 Diagram of the model.
  
 \series default
-The model considers the following compartments, related to epidemiologically
- relevant stages: susceptible (S), exposed (E), presymptomatic (P), asymptomatic
- (A), symptomatic (I), recovered (R) and dead (D).
- In our model, individuals requiring ICU care immediately after the symptomatic
- period will die, and those requiring just hospitalization (but not ICU
- care) will move the H compartment.
+The model considers the following compartments
+\change_deleted 227091064 1597702541
+, related to epidemiologically relevant stages
+\change_unchanged
+: susceptible (S), exposed (E), 
+\change_inserted 227091064 1597702546
+infectious-
+\change_unchanged
+presymptomatic (P), 
+\change_inserted 227091064 1597702549
+infectious-
+\change_unchanged
+asymptomatic (A), 
+\change_inserted 227091064 1597702552
+infectious-
+\change_unchanged
+symptomatic (I), 
+\change_inserted 227091064 1597703032
+infectious-requiring hospitalization (H), 
+\change_unchanged
+recovered (R) and dead (D).
+ 
+\change_inserted 227091064 1597715050
+Our model considers 3 potential outcomes for symptomatic cases (I): mild
+ cases will recover (R) after the typical infectious period, severe cases
+ will have an extended infectious period during which they require hospitalizati
+on (H), and critical cases 
+\change_deleted 227091064 1597702980
+In our model, individuals 
+\change_unchanged
+requiring ICU care 
+\change_inserted 227091064 1597702989
+will die (D) 
+\change_deleted 227091064 1597704652
+immediately 
+\change_unchanged
+after the symptomatic period
+\change_inserted 227091064 1597702995
+.
+
+\change_deleted 227091064 1597703004
+ 
+\change_inserted 227091064 1597703005
+ 
+\change_deleted 227091064 1597703004
+will die, and those requiring just hospitalization (but not ICU care) will
+ move the H compartment.
  The aim of this compartment is to consider a longer infectivity period
  for individuals that requiring hospitalization will not have it, hence
  staying in the hospital.
- Since the fate of individuals in the H compartment is uncertain if health
- care is not available, we run simulations considering two limiting possibilitie
-s, either all the individuals in H are recovered, or all die.
- This is indicated in the model with the variable R/D.
+ 
+\change_unchanged
+Since the fate of individuals in the H compartment is uncertain if health
+\change_deleted 227091064 1597703137
+ 
+\change_unchanged
+care is not available, we run simulations considering two 
+\change_deleted 227091064 1597703021
+limiting 
+\change_unchanged
+possibilities
+\change_inserted 227091064 1597703072
+:
+\change_deleted 227091064 1597703072
+,
+\change_unchanged
+ either all 
+\change_deleted 227091064 1597703087
+the individuals in H are recovered
+\change_inserted 227091064 1597703088
+recover
+\change_unchanged
+, or all die
+\change_inserted 227091064 1597703103
+, represented by 
+\change_deleted 227091064 1597703107
+.
+ This is indicated in the model with the variable
+\change_inserted 227091064 1597703107
+the
+\change_unchanged
+ R/D
+\change_inserted 227091064 1597703111
+ compartment
+\change_unchanged
+.
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -536,10 +637,38 @@ s, either all the individuals in H are recovered, or all die.
 \end_layout
 
 \begin_layout Subsection*
+
+\change_inserted 227091064 1597702170
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597702169
+
+
+\backslash
+newpage
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\change_deleted 227091064 1597706518
 Model parameters determining state transitions
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 227091064 1597706521
 The parameters considered in this work are summarized in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -551,7 +680,13 @@ noprefix "false"
 \end_inset
 
 .
- To estimate the duration of latency we generated a random incubation time
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1597706521
+To estimate the duration of latency we generated a random incubation time
  and subtracted an also randomly-generated presymptomatic time interval.
  The presymptomatic interval was estimated following the values reported
  in [Ref], with mean 2.3 and CI 95%: [0.8-3.0].
@@ -568,6 +703,8 @@ noprefix "false"
  For those cases, we considered that there is a minimum time for the virus
  to develop until the individual becomes infectious, that we fixed to 12h
  [Ref].
+\change_inserted 227091064 1597706608
+
 \end_layout
 
 \begin_layout Standard
@@ -578,16 +715,40 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597706912
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597706912
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:FixedParams"
+
+\end_inset
+
+
+\series bold
+Model parameters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="5">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="25text%">
+<column alignment="center" valignment="middle" width="20text%">
+<column alignment="center" valignment="middle" width="15text%">
+<column alignment="center" valignment="middle" width="15text%">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -596,7 +757,7 @@ Parameter
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -605,7 +766,7 @@ Description
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -614,7 +775,7 @@ Value
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -623,7 +784,7 @@ Distribution
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -634,7 +795,7 @@ Reference
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -646,16 +807,22 @@ Reference
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597704931
+Incubation period (days)
+\change_deleted 227091064 1597704924
 Duration of incubation period in days
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -664,7 +831,7 @@ Duration of incubation period in days
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -673,10 +840,12 @@ Lognormal
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 227091064 1597705857
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-1"
@@ -685,76 +854,30 @@ literal "false"
 \end_inset
 
 
-\end_layout
+\change_inserted 227091064 1597709988
 
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Duration of latency in days
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\left(\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}\right)-\nicefrac{1}{\delta_{\PP}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-2"
+key "li2020early"
 literal "false"
 
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597706125
 \begin_inset Formula $\nicefrac{1}{\delta_{\PP}}$
 \end_inset
 
@@ -763,40 +886,48 @@ literal "false"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Duration of preclinical infectiousness in days
+
+\change_inserted 227091064 1597706150
+Presymptomatic infectious period (days)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597707010
 2.3 (95% CI: 0.8-3.8)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597707172
 Gaussian
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597710001
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-2"
+key "he2020temporal"
 literal "false"
 
 \end_inset
@@ -808,11 +939,13 @@ literal "false"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\nicefrac{1}{\gamma_{\A}}=\nicefrac{1}{\gamma_{\I}}$
+
+\change_inserted 227091064 1597706119
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}$
 \end_inset
 
 
@@ -820,10 +953,79 @@ literal "false"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597708758
+Latent period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597708862
+\begin_inset Formula $\left(\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}\right)-\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597708871
+(Minimum = .5 days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597706119
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597709597
+[Calculated]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\gamma_{\I}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_deleted 227091064 1597705032
 Duration of clinical (
 \begin_inset Formula $\nicefrac{1}{\gamma_{\I}}$
 \end_inset
@@ -833,11 +1035,15 @@ Duration of clinical (
 \end_inset
 
 ) infectiousness in days
+\change_inserted 227091064 1597705038
+Symptomatic infectious period (days)
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -846,7 +1052,7 @@ Duration of clinical (
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -855,13 +1061,94 @@ Duration of clinical (
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597707691
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,wolfel2020virological"
+literal "false"
+
+\end_inset
+
+
+\change_deleted 227091064 1597707660
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-2,key-3"
+literal "false"
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597705010
+\begin_inset Formula $\nicefrac{1}{\gamma_{\A}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597705054
+Asymptomatic infectious period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597705010
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597705010
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597707706
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,wolfel2020virological"
 literal "false"
 
 \end_inset
@@ -873,7 +1160,7 @@ literal "false"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -885,16 +1172,40 @@ literal "false"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Delay from symptoms onset to hospitalization in days
+
+\change_inserted 227091064 1597707201
+Time
+\change_deleted 227091064 1597707200
+Delay
+\change_unchanged
+ from symptom
+\change_deleted 227091064 1597707207
+s
+\change_unchanged
+ onset to
+\change_inserted 227091064 1597711632
+ requiring
+\change_unchanged
+ hospitalization 
+\change_deleted 227091064 1597707204
+in 
+\change_inserted 227091064 1597707208
+(
+\change_unchanged
+days
+\change_inserted 227091064 1597707210
+)
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -903,7 +1214,7 @@ Delay from symptoms onset to hospitalization in days
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -912,10 +1223,12 @@ Gamma
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 227091064 1597707741
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-4"
@@ -924,13 +1237,25 @@ literal "false"
 \end_inset
 
 
+\change_inserted 227091064 1597707741
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -942,16 +1267,42 @@ literal "false"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Delay from symptoms onset to ICU (here death) in days
+
+\change_deleted 227091064 1597707217
+Delay
+\change_inserted 227091064 1597707218
+Time
+\change_unchanged
+ from symptom
+\change_deleted 227091064 1597707232
+s
+\change_unchanged
+ onset to 
+\change_deleted 227091064 1597708983
+ICU
+\change_inserted 227091064 1597708984
+death
+\change_unchanged
+ (
+\change_inserted 227091064 1597715040
+critical cases, 
+\change_deleted 227091064 1597707224
+here death) in 
+\change_unchanged
+days
+\change_inserted 227091064 1597707227
+)
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -960,7 +1311,7 @@ Delay from symptoms onset to ICU (here death) in days
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -969,10 +1320,12 @@ Gamma
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 227091064 1597707746
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-4"
@@ -981,13 +1334,25 @@ literal "false"
 \end_inset
 
 
+\change_inserted 227091064 1597707746
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -999,16 +1364,36 @@ literal "false"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Delay from hospitalization to recovery in days
+
+\change_deleted 227091064 1597707240
+Delay
+\change_inserted 227091064 1597707241
+Time
+\change_unchanged
+ from 
+\change_inserted 227091064 1597711637
+requiring 
+\change_unchanged
+hospitalization to recovery 
+\change_inserted 227091064 1597707247
+(d
+\change_deleted 227091064 1597707245
+in d
+\change_unchanged
+ays
+\change_inserted 227091064 1597707248
+)
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1017,7 +1402,7 @@ Delay from hospitalization to recovery in days
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1026,10 +1411,12 @@ Gamma
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 227091064 1597707747
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-4"
@@ -1038,13 +1425,25 @@ literal "false"
 \end_inset
 
 
+\change_inserted 227091064 1597707747
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1056,16 +1455,28 @@ literal "false"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Fraction of infected people who develop symptoms
+
+\change_deleted 227091064 1597707331
+Fraction of infected people who develop
+\change_inserted 227091064 1597707341
+Probability an infectious individual is
+\change_unchanged
+ symptom
+\change_inserted 227091064 1597707344
+atic
+\change_deleted 227091064 1597707343
+s
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1074,7 +1485,7 @@ Fraction of infected people who develop symptoms
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1083,10 +1494,12 @@ Binomial
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 227091064 1597707824
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-5"
@@ -1095,16 +1508,30 @@ literal "false"
 \end_inset
 
 
+\change_inserted 227091064 1597710498
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "byambasuren2020estimating"
+literal "false"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597704758
 \begin_inset Formula $h_{i}$
 \end_inset
 
@@ -1113,40 +1540,60 @@ literal "false"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Fraction of symptomatic people requiring hospitalization but not ICU
+
+\change_inserted 227091064 1597715050
+Fraction of symptomatic cases severe
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Age- and comorbidity-dependent
+
+\change_inserted 227091064 1597713424
+Age and comorbidity-dependent (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597704758
 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597710897
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-6,key-7"
+key "dong2020epidemiological,covid2020preliminary"
 literal "false"
 
 \end_inset
@@ -1158,10 +1605,12 @@ literal "false"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597704758
 \begin_inset Formula $g_{i}$
 \end_inset
 
@@ -1170,40 +1619,58 @@ literal "false"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Fraction of symptomatic people requiring ICU
+
+\change_inserted 227091064 1597715040
+Fraction of symptomatic cases critical
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Age- and comorbidity-dependent
+
+\change_inserted 227091064 1597713419
+Age and comorbidity-dependent (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597704758
 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 227091064 1597710906
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-6,key-7"
+key "dong2020epidemiological,covid2020preliminary"
 literal "false"
 
 \end_inset
@@ -1215,7 +1682,7 @@ literal "false"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1224,65 +1691,26 @@ literal "false"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Minimum time required to become infectious
+Reduction in 
+\change_deleted 227091064 1597709518
+the infectivity in the
+\change_inserted 227091064 1597709524
+probability of infection from contact in
+\change_unchanged
+ buffer
+\change_deleted 227091064 1597707889
+ing
+\change_unchanged
+ zone
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-12h
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\color red
-[REF]
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Reduction in the infectivity in the buffering zone
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1291,7 +1719,7 @@ Reduction in the infectivity in the buffering zone
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1300,13 +1728,19 @@ Reduction in the infectivity in the buffering zone
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
-\color red
+\change_inserted 227091064 1597709591
+
+\color black
+[Assumed]
+\change_deleted 227091064 1597707963
 [REF]
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -1320,6 +1754,8 @@ Reduction in the infectivity in the buffering zone
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_deleted 227091064 1597706898
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -1330,8 +1766,21 @@ name "tab:FixedParams"
 \end_inset
 
 
+\change_inserted 227091064 1597706782
+
 \series bold
-Parameters used in this work.
+Model parameters.
+\change_deleted 227091064 1597706419
+Parameters used in this work
+\change_unchanged
+.
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -1339,17 +1788,1379 @@ Parameters used in this work.
 
 \end_layout
 
+\begin_layout Standard
+
+\change_inserted 227091064 1597709688
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597709690
+
+
+\backslash
+newpage
+\change_unchanged
+
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597715040
+To estimate latent period (
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}$
+\end_inset
+
+), we calculated the difference between randomly generated incubation (
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+) and presymptomatic (
+\begin_inset Formula $\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+) periods.
+ The presymptomatic period (
+\begin_inset Formula $\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+) was estimated following the values reported in He et al, with a mean of
+ 2.3 days (95% CI: 0.8-3.0).
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal"
+literal "false"
+
+\end_inset
+
+ This follows a Gompertz distribution and is left-skewed, suggesting that
+ the presymptomatic period would not be much longer than 3 days.
+ Since the presymptomatic period can indeed be longer than 3 days, we estimated
+ that the true presymptomatic period follows a Gaussian distribution about
+ the mean (95% CI: 0.8-3.8).
+ With this distribution, there is a non-negligible probability of having
+ a negative latent period.
+ For these cases, we assumed a minimum latent period of .5 days.
+ Time from symptom onset to death in critical cases (
+\begin_inset Formula $\nicefrac{1}{\alpha}$
+\end_inset
+
+) is estimated using time from symptom onset to ICU admission in Wang et
+ al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+ We assume that in the buffer zone between shielded and non-shielded populations
+, non-compliance with distancing and mask wearing guidance will be such
+ that the probability of transmission from contacts will be reduced by 80%
+ compared to the baseline.
+\end_layout
+
+\begin_layout Subsection*
+
+\change_deleted 227091064 1597709837
+Population-structured parameters
+\change_inserted 227091064 1597711736
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1597703812
+[Please add description and tables]
+\change_inserted 227091064 1597718243
 
 \end_layout
 
 \begin_layout Subsection*
-Population-structured parameters
+
+\change_inserted 227091064 1597711789
+Population structure
 \end_layout
 
 \begin_layout Standard
-[Please add description and tables]
+
+\change_inserted 227091064 1597713702
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712656
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713373
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:PopParams"
+
+\end_inset
+
+
+\series bold
+Population structured parameters.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712665
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="14text%">
+<column alignment="center" valignment="middle" width="13text%">
+<column alignment="center" valignment="middle" width="13text%">
+<column alignment="center" valignment="middle" width="13text%">
+<column alignment="center" valignment="middle" width="13text%">
+<column alignment="center" valignment="middle" width="13text%">
+<column alignment="center" valignment="middle" width="13text%">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712698
+Population class
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712705
+Age 1 (0-12)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712715
+Age 2 (13-50), no comorbidities
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712730
+Age 2 (13-50), 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712720
+comorbidities
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712733
+Age 3 (>50), no comorbidities
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712737
+Age 3 (>50), 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712722
+comorbidities
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712754
+Reference
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712836
+Fraction in class
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712848
+.407
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712850
+.471
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712852
+.0626
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712854
+.022
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597712863
+.0373
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713314
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doocy_prevalence_2016,doocy_prevalence_2015,noauthor_syrian_nodate"
+literal "false"
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713468
+\begin_inset Formula $h_{i}$
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713508
+.064
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713513
+.067
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713516
+.199
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713519
+.183
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713524
+.445
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713609
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological,covid2020preliminary"
+literal "false"
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713485
+\begin_inset Formula $g_{i}$
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713549
+.0065
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713566
+.02
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713568
+.094
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713571
+.063
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713572
+.222
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597713610
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological,covid2020preliminary"
+literal "false"
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597716124
+In April, 2020, 40.7% of the population in informal IDP camps in Northern
+ Syria was aged 0-12, 53.4% aged 13-50, and 5.9% aged 51+.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "noauthor_syrian_nodate"
+literal "false"
+
+\end_inset
+
+ To estimate the proportion of each age group with comorbidities, we calculated
+ the weighted average age-specific comorbidity prevalence of the 4 most
+ common comorbidities in the Syrian refugee populations in Jordan and Lebanon:
+ hypertension, cardiovascular disease, diabetes, and chronic respiratory
+ disease.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doocy_prevalence_2015,doocy_prevalence_2016"
+literal "false"
+
+\end_inset
+
+ We standardized these weighted averages to the age structure of IDPs in
+ Northern Syria and estimated that 11.7% of people aged 13-50 have comorbidities,
+ while 62.9% of people aged 51+ have comorbidities.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597717049
+We estimated the fractions of symptomatic cases in children aged <13 that
+ would become severe and critical from the fractions of symptomatic cases
+ in children aged <11 that were severe and critical in China.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological"
+literal "false"
+
+\end_inset
+
+ We estimated the class-specific fractions of symptomatic cases in adults
+ that would become severe and critical using the age and comorbidity-specific
+ fractions of symptomatic cases with known outcomes that required hospitalizatio
+n, without and with ICU admission, respectively in the US.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covid2020preliminary"
+literal "false"
+
+\end_inset
+
+To account for poorer health among Syrian adults compared to their similarly
+ aged peers in developed countries, estimates for US adults aged 19-64 were
+ used for Syrian adults aged 13-50, while estimates for US adults aged 65+
+ were used for Syrian adults aged 51+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597716183
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716264
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717981
+
+\series bold
+Fraction of population in each zone by safety zone scenario.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716275
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="9">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="8text%">
+<column alignment="center" valignment="top" width="8text%">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="10text%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716442
+Scenario
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716370
+Age 1, orange
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716374
+Age 1, green
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716388
+Age 2 no comorbidities, orange
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716403
+Age 2 no comorbidities, green
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716642
+Age 2 comorbidities, orange
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716414
+Age 2 comorbidities, green
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716427
+Age 3 no comorbidities, green
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716432
+Age 3 comorbidities, green
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717985
+Only age 3 in green zone
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717280
+.407
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717280
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717280
+.471
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717312
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717280
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717280
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717280
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717280
+.0373
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597717989
+Age 3 + age 2 with comorbidities in green zone
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716694
+.407
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716729
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716694
+.471
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716694
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716679
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716678
+.0626
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716683
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716683
+.0373
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716542
+20% green zone capacity
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716534
+.376
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716534
+.0312
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716534
+.424
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716534
+.0469
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716645
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716534
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716534
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716534
+.0373
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716807
+25% green zone capacity
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716843
+.356
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716855
+.0512
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716857
+.394
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716861
+.0769
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716829
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716829
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716829
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716829
+.0373
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716812
+30% green zone capacity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716870
+.336
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716873
+.0712
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716875
+.364
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716877
+.107
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716831
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716831
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716831
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597716831
+.0373
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597718180
+One of the interventions we simulate are different scenarios for allocating
+ members of each population class to the safe, or 
+\begin_inset Quotes eld
+\end_inset
+
+green
+\begin_inset Quotes erd
+\end_inset
+
+ zone, and the exposed, or 
+\begin_inset Quotes eld
+\end_inset
+
+orange
+\begin_inset Quotes erd
+\end_inset
+
+ zone.
+ In one scenario, we only place individuals in age group 3 (>50) in the
+ green zone, while in another we place all vulnerable individuals, age group
+ 3 and age group 2 (13-50) with comorbidities, in the green zone.
+ In 3 additional scenarios, after all vulnerable individuals are allocated
+ to the green zone, we set the green zone's capacity to a certain percentage
+ of the camp's population (20%, 25%, 30%), and allocate its remainder to
+ non-vulnerable family members (necessarily children <13 in age group 1
+ and healthy adults in age group 2).
+ In accordance with camp manager expectations that many vulnerable individuals
+ will have non-vulnerable spouses, while fewer vulnerable individuals will
+ have young children, in these scenarios we allocate 40% of the remainder
+ of the green zone to children <13 and 60% of the remainder of the green
+ zone to adults 13-50 without comorbidities.
+ We also consider a baseline scenario in which there is no green zone.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection*
@@ -2415,9 +4226,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Graphics
-	filename figures/FigS2a.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -2429,7 +4239,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS2b.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -2441,45 +4251,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS2c.pdf
-	width 31text%
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/FigS2d.pdf
-	width 31text%
-
-\end_inset
-
-
-\begin_inset space \hspace{}
-\length 2mm
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/FigS2e.pdf
+	filename figures/FigS1c.pdf
 	width 31text%
 
 \end_inset
@@ -2499,19 +4271,14 @@ name "fig:Suppl_DvsR"
 Lower and upper bounds when interventions are absent.
 
 \series default
- Probability of outbreak (top-left), fraction of casualties (top-middle),
- time in which the number of symptomatic cases peaks (top-right), CFR (bottom-le
-ft) and fraction of recovered individuals (bottom-right), as a function
- of the fate of the individuals in the H compartment, that may all recover
+ Probability of outbreak (left), fraction of casualties (middle) and time
+ in which the number of symptomatic cases peaks (right), as a function of
+ the fate of the individuals in the H compartment, that may all recover
  or all die.
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2537,7 +4304,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS3a.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -2549,7 +4316,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS3b.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -2598,7 +4365,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS4a.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -2610,7 +4377,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS4b.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -2659,9 +4426,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Graphics
-	filename figures/FigS5a.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -2673,7 +4439,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS5b.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -2685,45 +4451,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS5c.pdf
-	width 31text%
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/FigS5d.pdf
-	width 31text%
-
-\end_inset
-
-
-\begin_inset space \hspace{}
-\length 2mm
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/FigS5e.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -2743,11 +4471,9 @@ name "fig:Suppl_onset"
 Time to self-isolation.
 
 \series default
- Probability of outbreak (top-left), fraction of casualties (top-middle),
- time in which the number of symptomatic cases peaks (top-right), CFR (bottom-le
-ft) and fraction of recovered individuals (bottom-right), as a function
- of the time that individuals require to recognize their symptoms and self-isola
-te.
+ Probability of outbreak (left), fraction of casualties (middle) and time
+ in which the number of symptomatic cases peaks (right), as a function of
+ the time that individuals require to recognize their symptoms and self-isolate.
 \end_layout
 
 \end_inset
@@ -2775,9 +4501,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Graphics
-	filename figures/FigS6a.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -2789,7 +4514,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS6b.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -2801,45 +4526,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS6c.pdf
-	width 31text%
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/FigS6d.pdf
-	width 31text%
-
-\end_inset
-
-
-\begin_inset space \hspace{}
-\length 2mm
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/FigS6e.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -2859,9 +4546,8 @@ name "fig:Suppl_evacuation"
 Evacuation.
 
 \series default
- Probability of outbreak (top-left), fraction of casualties (top-middle),
- time in which the number of symptomatic cases peaks (top-right), CFR (bottom-le
-ft) and fraction of recovered individuals (bottom-right), depending on whether
+ Probability of outbreak (left), fraction of casualties (middle) and time
+ in which the number of symptomatic cases peaks (right), depending on whether
  individuals requiring hospitalization are evacuated to isolation centers.
 \end_layout
 
@@ -2890,9 +4576,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Graphics
-	filename figures/FigS7a.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -2904,7 +4589,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS7b.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -2916,53 +4601,12 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS7c.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/FigS7d.pdf
-	width 31text%
-
-\end_inset
-
-
-\begin_inset space \hspace{}
-\length 2mm
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/FigS7e.pdf
-	width 31text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -2977,9 +4621,8 @@ name "fig:Suppl_Tcheck"
 Health-checks in the buffering zone.
 
 \series default
- Probability of outbreak (top-left), fraction of casualties (top-middle),
- time in which the number of symptomatic cases peaks (top-right), CFR (bottom-le
-ft) and fraction of recovered individuals (bottom-right), depending on whether
+ Probability of outbreak (left), fraction of casualties (middle) and time
+ in which the number of symptomatic cases peaks (right), depending on whether
  health-checks are implemented to avoid that symptomatic individuals access
  to the buffering zone separating the orange and green zones.
 \end_layout
@@ -3011,7 +4654,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS8a.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -3023,7 +4666,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS8b.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -3068,12 +4711,12 @@ Number of contacts in the buffering zone.
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS9a.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -3085,7 +4728,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS9b.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -3097,7 +4740,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS9c.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -3118,12 +4761,8 @@ status open
 \end_inset
 
 
-\begin_inset VSpace defskip
-\end_inset
-
-
 \begin_inset Graphics
-	filename figures/FigS9d.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -3135,7 +4774,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS9e.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -3183,12 +4822,12 @@ ft) and fraction of recovered individuals (bottom-right), as a function
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS10a.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -3200,7 +4839,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS10b.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -3212,7 +4851,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS10c.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -3233,12 +4872,8 @@ status open
 \end_inset
 
 
-\begin_inset VSpace defskip
-\end_inset
-
-
 \begin_inset Graphics
-	filename figures/FigS10d.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -3250,7 +4885,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS10e.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -3306,7 +4941,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS11a.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -3318,7 +4953,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS11b.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -3330,7 +4965,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS11c.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -3351,12 +4986,8 @@ status open
 \end_inset
 
 
-\begin_inset VSpace defskip
-\end_inset
-
-
 \begin_inset Graphics
-	filename figures/FigS11d.pdf
+	filename figures/FigS1a.pdf
 	width 31text%
 
 \end_inset
@@ -3368,7 +4999,7 @@ status open
 
 
 \begin_inset Graphics
-	filename figures/FigS11e.pdf
+	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
@@ -3408,6 +5039,8 @@ ft) and fraction of recovered individuals (bottom-right), as a function
 \end_layout
 
 \begin_layout Bibliography
+
+\change_deleted 227091064 1597710136
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1"
@@ -3425,6 +5058,8 @@ Li, Q., Guan, X., Wu, P., Wang, X., Zhou, L., Tong, Y., ...
 \end_layout
 
 \begin_layout Bibliography
+
+\change_deleted 227091064 1597710136
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "2"
@@ -3442,6 +5077,8 @@ He, X., Lau, E.
 \end_layout
 
 \begin_layout Bibliography
+
+\change_deleted 227091064 1597710136
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "3"
@@ -3460,6 +5097,8 @@ Wölfel, R., Corman, V.
 \end_layout
 
 \begin_layout Bibliography
+
+\change_deleted 227091064 1597710136
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "4"
@@ -3477,6 +5116,8 @@ us–Infected Pneumonia in Wuhan, China.
 \end_layout
 
 \begin_layout Bibliography
+
+\change_deleted 227091064 1597710136
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "5"
@@ -3493,6 +5134,8 @@ McLaws, L.
 \end_layout
 
 \begin_layout Bibliography
+
+\change_deleted 227091064 1597710136
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "6"
@@ -3508,6 +5151,8 @@ Coronavirus Disease 2019 in Children — United States, February 12–April
 \end_layout
 
 \begin_layout Bibliography
+
+\change_deleted 227091064 1597710136
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "7"
@@ -3524,6 +5169,8 @@ s Among Patients with Coronavirus Disease 2019 - United States, February
  2020;69(13):382-386.
  Published 2020 Apr 3.
  doi:10.15585/mmwr.mm6913e2
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section*
@@ -3630,7 +5277,7 @@ In the previous section, we considered that the family members visiting
 LatexCommand bibtex
 btprint "btPrintCited"
 bibfiles "req550-syria"
-options "plain"
+options "unsrt"
 
 \end_inset
 
