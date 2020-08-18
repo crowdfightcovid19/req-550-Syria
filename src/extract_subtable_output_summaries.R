@@ -24,11 +24,12 @@ extract_subtable_output_summaries = function(Ncomp,df.out,params.df){
     Tcheck.var=paste("Tcheck",params.df$Tcheck[i],sep="")
     lock.var=paste("lock",params.df$lock[i],sep="")
     self.var=paste("self",params.df$self[i],sep="")
-    
+    str.out=paste(contacts.var,PopSize.var,Isolate.var,Limit.var,Onset.var,
+                  Fate.var,Tcheck.var,lock.var,self.var)
     df.tmp=subset(df.out, contacts==contacts.var &  Isolate==Isolate.var & 
                     Onset == Onset.var & Limit==Limit.var & Fate==Fate.var & Tcheck==Tcheck.var &
                     PopSize==PopSize.var & lock==lock.var & self==self.var)
-    if(dim(df.tmp)[1]==0){warning(paste("File in line",i,"of the input file not found"))}
+    if(dim(df.tmp)[1]==0){warning(paste("File in line",i,"of the input file not found: ",str.out))}
     
     df.sub=rbind(df.sub,df.tmp)
   }
