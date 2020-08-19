@@ -597,7 +597,7 @@ care facility.
  the implementation of realistic interventions in these regions.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Part*
 Methods
 \end_layout
 
@@ -2312,7 +2312,7 @@ An important social question to be addressed in this intervention is how
  maximum of 30% of the total population.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
 
 \change_deleted 227091064 1597861168
 Lockdown of the safety zone
@@ -2340,7 +2340,7 @@ lockdown
  by a 50% or a maximum of a 90% (see Table XXX)
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
 
 \change_deleted 227091064 1597868340
 Self-isolation
@@ -2377,7 +2377,7 @@ A challenge in informal settlements is how self-isolation can be implemented
  zone cannot be longer fulfilled.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
 
 \change_deleted 227091064 1597870007
 Evacuation
@@ -2409,53 +2409,71 @@ ty considered by policy-makers.
 
 \end_layout
 
-\begin_layout Standard
-
-\change_inserted 227091064 1597870229
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 227091064 1597870217
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597870220
-
-
-\backslash
-newpage
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
 \begin_layout Subsection*
 Analysis of the interventions
 \end_layout
 
 \begin_layout Standard
-For each implementation of the interventions, we run 500 simulations, analysing
- results arising from the incorporation of an intervention with respect
- to a set of simulations in which the intervention was absent.
- The main variables we considered in the comparisons were the fraction of
- casualties in the population, the case fatality rates (CFR), the fraction
- of population recovered and the time at which it is observed a peak in
- the symptomatic population, which is the most informative population in
- settings in which there is no access to other tests.
+For each implementation of the interventions, we r
+\change_inserted 227091064 1597871287
+a
+\change_deleted 227091064 1597871287
+u
+\change_unchanged
+n 500 simulations, 
+\change_inserted 227091064 1597871834
+and compared results between them
+\change_deleted 227091064 1597871841
+analysing results arising from the incorporation of an intervention with
+ respect to a set of simulations in which the intervention was absent
+\change_unchanged
+.
+ The main variables 
+\change_deleted 227091064 1597871937
+we considered in the comparisons were
+\change_inserted 227091064 1597872262
+considered are
+\change_unchanged
+ the fraction of 
+\change_inserted 227091064 1597872161
+simulations in which at least one death is observed, a proxy for the probability
+ of an outbreak, the fraction of
+\change_deleted 227091064 1597871946
+casualties in the population
+\change_inserted 227091064 1597871949
+the population that dies
+\change_deleted 227091064 1597872195
+,
+\change_unchanged
+ 
+\change_inserted 227091064 1597872181
+and the time until the symptomatic population peaks, as well as 
+\change_unchanged
+the case fatality rate
+\change_deleted 227091064 1597872187
+s
+\change_unchanged
+ (CFR)
+\change_inserted 227091064 1597872191
+ and
+\change_deleted 227091064 1597872190
+,
+\change_unchanged
+ the fraction of population 
+\change_inserted 227091064 1597872218
+that 
+\change_unchanged
+recover
+\change_inserted 227091064 1597872221
+s.
+\change_deleted 227091064 1597872237
+ed and the time at which it is observed a peak in the symptomatic population,
+ which is the most informative population in settings in which there is
+ no access to other tests.
  We additionally considered the fraction of simulations in which at least
  one death is observed, as a proxy for the probability of outbreak.
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Note that interventions will affect CFR only when interventions have a different
@@ -2465,16 +2483,50 @@ ial effect among population classes, and hence we will mostly refer to the
 
 \end_inset
 
- For consistency, when we compared the statistics of a given variable between
- two interventions, only simulations in which there was an outbreak were
- considered.
- When it was needed to individuate if differences between interventions
- were significant, we conducted statistical analysis: t– or Welch–tests
- for pairwise comparisons depending on whether normality is fulfilled, and
- Tukey tests for multiple comparisons among non-orthogonal variables.
+
+\change_unchanged
+ For consistency, 
+\change_inserted 227091064 1597872315
+we only considered simulations in which there was an outbreak 
+\change_unchanged
+when 
+\change_deleted 227091064 1597872323
+we compared
+\change_inserted 227091064 1597872324
+comparing
+\change_unchanged
+ the 
+\change_deleted 227091064 1597872287
+statistics of a given variable
+\change_inserted 227091064 1597872290
+outcome of a variable
+\change_unchanged
+ between 
+\change_deleted 227091064 1597872328
+two 
+\change_unchanged
+interventions
+\change_deleted 227091064 1597872331
+, only simulations in which there was an outbreak were considered
+\change_unchanged
+.
+ 
+\change_inserted 227091064 1597872917
+For pairwise comparisons between interventions, we used Student's t-tests
+ for variables with equal variance and Welch's t-tests for variables with
+ unequal variance.
+ For multiple comparisons across non-orthogonal variables, we used Tukey's
+ tests.
+\change_deleted 227091064 1597872895
+When it was needed to individuate if differences between interventions were
+ significant, we conducted statistical analysis: t– or Welch–tests for pairwise
+ comparisons depending on whether normality is fulfilled, and Tukey tests
+ for multiple comparisons among non-orthogonal variables.
+\change_unchanged
+
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Part*
 Results
 \end_layout
 
@@ -3028,19 +3080,128 @@ on of interventions.
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Part*
 Discussion
 \end_layout
 
 \begin_layout Standard
 In this research, we proposed a number of feasible interventions of immediate
- applicability, for  informal settlements.
- We took as reference settlements of IDPs in the NW of Syria, and took into
- account the feasibility of the different interventions, their cultural
- acceptance  and the need for low-cost solutions.
- In general, we considered worst case scenarios,  leading to a probable
- overestimation of the number of casualties but making more apparent the
- potential effects of the interventions.
+ applicability
+\change_inserted 227091064 1597873056
+ to
+\change_deleted 227091064 1597873055
+, for
+\change_unchanged
+  informal settlements.
+ We 
+\change_deleted 227091064 1597873515
+took as reference settlements of
+\change_inserted 227091064 1597873516
+focused on
+\change_unchanged
+ IDP
+\change_inserted 227091064 1597873524
+ settlements
+\change_deleted 227091064 1597873520
+s
+\change_unchanged
+ in 
+\change_deleted 227091064 1597873526
+the 
+\change_unchanged
+NW 
+\change_deleted 227091064 1597873529
+of 
+\change_unchanged
+Syria, 
+\change_deleted 227091064 1597873558
+and took
+\change_inserted 227091064 1597873559
+taking
+\change_unchanged
+ into account the 
+\change_inserted 227091064 1597873569
+interventions' 
+\change_unchanged
+feasibility
+\change_inserted 227091064 1597873573
+,
+\change_deleted 227091064 1597873572
+ of the different interventions,
+\change_unchanged
+ 
+\change_deleted 227091064 1597873577
+their 
+\change_unchanged
+cultural acceptance  and 
+\change_deleted 227091064 1597873584
+the 
+\change_inserted 227091064 1597873618
+their 
+\change_unchanged
+need for low-cost
+\change_deleted 227091064 1597873622
+ solutions
+\change_unchanged
+.
+ 
+\change_deleted 227091064 1597873643
+In general, w
+\change_inserted 227091064 1597873653
+When confronted with different possible scenarios, w
+\change_unchanged
+e 
+\change_inserted 227091064 1597873664
+generally 
+\change_unchanged
+considered 
+\change_inserted 227091064 1597873666
+the 
+\change_unchanged
+worst
+\change_inserted 227091064 1597873661
+-
+\change_deleted 227091064 1597873660
+ 
+\change_unchanged
+case
+\change_inserted 227091064 1597873672
+s
+\change_deleted 227091064 1597873674
+ scenarios
+\change_unchanged
+,
+\change_deleted 227091064 1597873676
+ 
+\change_unchanged
+ 
+\change_inserted 227091064 1597873846
+highlighting the interventions most effective in the direst conditions but
+ possibly 
+\change_deleted 227091064 1597873684
+leading to
+\change_inserted 227091064 1597873686
+resulting in
+\change_unchanged
+ 
+\change_deleted 227091064 1597873809
+a probable 
+\change_inserted 227091064 1597873810
+an 
+\change_unchanged
+overestimat
+\change_deleted 227091064 1597873822
+ion
+\change_inserted 227091064 1597873822
+e
+\change_unchanged
+ of the number of 
+\change_deleted 227091064 1597873833
+casualties but making more apparent the potential effects of the interventions
+\change_inserted 227091064 1597873834
+deaths
+\change_unchanged
+.
  Our results are aligned with previous works XXX
 \begin_inset Note Comment
 status open
@@ -3056,12 +3217,50 @@ we should comment other results
 
 \begin_layout Standard
 Self-distancing proves to be an efficient measure, and reducing the number
- of contacts to a 50% has the most important effect among all the interventions.
- Such a reduction may, however, be difficult to achieve, due to the large
- 6-13 year's old fraction of the population which may have high motility
- within the settlements and little control.
+ of contacts 
+\change_deleted 227091064 1597873897
+to a
+\change_inserted 227091064 1597873897
+by
+\change_unchanged
+ 50% has the 
+\change_deleted 227091064 1597873920
+most important
+\change_inserted 227091064 1597873922
+greatest
+\change_unchanged
+ effect among all the interventions.
+ 
+\change_inserted 227091064 1597873930
+However, 
+\change_deleted 227091064 1597873935
+Such a reduction may, however, 
+\change_inserted 227091064 1597873942
+a reduction of this magnitude may 
+\change_unchanged
+be difficult to achieve, 
+\change_inserted 227091064 1597874271
+especially 
+\change_unchanged
+due to the large 
+\change_inserted 227091064 1597874403
+proportion of the population composed of children (0-12 years old), a group
+ with a high contact rate, that is difficult to control 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "noauthor_syrian_nodate"
+literal "false"
+
+\end_inset
+
+
+\change_deleted 227091064 1597874387
+6-13 year's old fraction of the population which may have high motility
+ within the settlements and little control
+\change_unchanged
+.
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Plain Layout
 perhaps a little bit unrigurous the last point
@@ -3073,20 +3272,122 @@ perhaps a little bit unrigurous the last point
 \end_layout
 
 \begin_layout Standard
-We proposed the implementation of self-isolation using individual tents,
- that could be located either in a dedicated zone in the camp or next to
- the tents of relatives, with a buffering zone (
-\begin_inset Formula $\sim2\ m^{2})$
+We 
+\change_deleted 227091064 1597875151
+proposed
+\change_inserted 227091064 1597875152
+also propose
+\change_unchanged
+ 
+\change_deleted 227091064 1597875164
+the implementation of 
+\change_unchanged
+self-isolation using individual tents
+\change_deleted 227091064 1597875174
+,
+\change_unchanged
+ 
+\change_deleted 227091064 1597874426
+that could
+\change_inserted 227091064 1597874428
+which can
+\change_unchanged
+ be located 
+\change_deleted 227091064 1597874444
+either 
+\change_unchanged
+in a dedicated zone 
+\change_deleted 227091064 1597874450
+in the camp 
+\change_unchanged
+or next to the tents of relatives, 
+\change_deleted 227091064 1597874490
+with a
+\change_unchanged
+ 
+\change_inserted 227091064 1597874583
+where contact with non-isolated individuals is mediated by a 
+\change_unchanged
+buffering zone (
+\begin_inset Formula $\sim2\ m^{2}$
 \end_inset
 
- in-between.
- We think this intervention is more likely to be accepted in NW Syria than
- the evacuation to community-based isolation wards which poses cultural
- challenges and whose minimum set-up requirements are hardly fulfilled [WHOsetup
-Wards].
+
+\change_inserted 227091064 1597874469
+)
+\change_deleted 227091064 1597874586
+ in-between
+\change_unchanged
+.
+ 
+\change_inserted 227091064 1597875283
+This intervention is effective with even a small number of isolation tents,
+ as low as 5-10 tents per 1000 camp residents.
+ 
+\change_unchanged
+We 
+\change_deleted 227091064 1597874593
+think
+\change_inserted 227091064 1597874889
+also suspect
+\change_deleted 227091064 1597874893
+ this intervention
+\change_inserted 227091064 1597874893
+it
+\change_unchanged
+ is more likely to be accepted in NW Syria than 
+\change_deleted 227091064 1597874605
+the 
+\change_unchanged
+evacuation to community-based isolation 
+\change_deleted 227091064 1597874625
+wards
+\change_inserted 227091064 1597874627
+centers.
+
+\change_unchanged
+ 
+\change_inserted 227091064 1597874658
+Community-based isolation 
+\change_deleted 227091064 1597874664
+which
+\change_inserted 227091064 1597874666
+not only
+\change_unchanged
+ poses cultural challenges
+\change_inserted 227091064 1597874714
+; the capacity required to implement it has
+\change_deleted 227091064 1597874721
+ and whose minimum set-up requirements are
+\change_unchanged
+ hardly 
+\change_deleted 227091064 1597874724
+fulfilled
+\change_inserted 227091064 1597874725
+been met
+\change_unchanged
+ 
+\change_deleted 227091064 1597874738
+[WHOsetupWards]
+\change_inserted 227091064 1597874738
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NW_Syria_tracking"
+literal "false"
+
+\end_inset
+
+
+\change_unchanged
+.
+
+\change_deleted 227091064 1597874915
  The use of individual isolation tents is effective even for a number of
  individual tents as low as 5 to 10 per 1000 capita in the settlement.
  
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -3117,9 +3418,48 @@ Not sure to inderstand well
 \end_layout
 
 \begin_layout Standard
-The intervention consisting in separating the settlement in two zones, one
- of which is a safety zone, does not modify the composition of the settlement,
- not the number of people per tent and distance between tents.
+The 
+\change_deleted 227091064 1597875005
+intervention consisting in separating the settlement in two zones, one of
+ which is 
+\change_inserted 227091064 1597875013
+division of a camp into a
+\change_deleted 227091064 1597875009
+a
+\change_unchanged
+ safety zone
+\change_inserted 227091064 1597875018
+ and an exposed zone
+\change_deleted 227091064 1597875019
+,
+\change_unchanged
+ does not modify 
+\change_inserted 227091064 1597875026
+its
+\change_deleted 227091064 1597875025
+the
+\change_unchanged
+ composition
+\change_deleted 227091064 1597875046
+ of the settlement
+\change_unchanged
+, no
+\change_inserted 227091064 1597875049
+r
+\change_deleted 227091064 1597875049
+t
+\change_unchanged
+ 
+\change_inserted 227091064 1597875052
+change 
+\change_unchanged
+the number of people per tent 
+\change_deleted 227091064 1597875056
+and
+\change_inserted 227091064 1597875056
+or
+\change_unchanged
+ distance between tents.
  This would mitigate side-effects derived from an increase in the number
  of contacts between vulnerable population
 \begin_inset Note Comment
@@ -3149,7 +3489,13 @@ I am not sure how important is to keep this remark.
 
 \begin_layout Standard
 An important question for the success of this intervention comes from the
- efficiency of the buffering zone.
+ effic
+\change_deleted 227091064 1597873304
+ien
+\change_inserted 227091064 1597873300
+a
+\change_unchanged
+cy of the buffering zone.
  The reduction in the number of contacts per week in the buffering zone
  between individuals living in the safety zone and individuals from the
  exposed zone, the implementation of basic health checks to identify symptomatic
