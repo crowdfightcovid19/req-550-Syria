@@ -179,3 +179,22 @@ kruskal.test( CFR~Limit,df.iso.aux )
 `wilcox.test(df.iso$CFR[df.iso$Limit=="Limit100"],df.iso$CFR[df.iso$Limit=="Limit50"],paired=FALSE,alternative="less")`
 
 > W = 74760, p-value = 0.0428
+
+### Fraction of deaths for elderly with and without safety zone
+
+We compare elderly mortality for the experiments below:
+```
+df.null <- read.csv("../../data/real_models/null_model_mixed/IsolateNO_Limit2000_Onset24_FateD_TcheckNO_PopSize2000_lockNO_selfNO_modSV/FracFinalDeaths_SEPAIHRD_dynamics_null_model_mixed_IsolateNO_Limit2000_Onset24_FateD_TcheckNO_PopSize2000_lockNO_selfNO_modSV.dat")
+
+df.shield <- read.csv("../../data/real_models/shield_cont2_age3/IsolateNO_Limit0_Onset0_FateD_TcheckYES_PopSize2000_lockNO_selfNO_modSV/FracFinalDeaths_SEPAIHRD_dynamics_shield_cont2_age3_IsolateNO_Limit0_Onset0_FateD_TcheckYES_PopSize2000_lockNO_selfNO_modSV.dat")
+```
+
+Mortality elderly is lower with the safety zone. This is true both for comorbid and no comorbid elderly.
+
+`wilcox.test(df.shield$age3_comorbid_green.D,df.null$age3_comorbid.D,paired=FALSE,alternative="less")`
+
+> W = 52128, p-value < 2.2e-16
+
+`wilcox.test(df.shield$age3_no_comorbid_green.D,df.null$age3_no_comorbid.D,paired=FALSE,alternative="less")
+
+> W = 53784, p-value < 2.2e-16
