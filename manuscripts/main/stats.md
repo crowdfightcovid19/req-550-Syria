@@ -1,12 +1,12 @@
-#General notes
+# General notes
 
 Assumptions for ANOVA are not met in general. We use non-parametric tests.
 
-#Questions from Things2Do
+# Questions from Things2Do
 
 ## Test if the difference between null model and safety interventions (10 and 2 contacts) are significantlt different.
 
-###Total population
+### Total population
 All differences are significant. 
 
 `kruskal.test(FracFinalDeaths~contacts,df.shield[df.shield$group=="T",]`
@@ -21,14 +21,14 @@ There is a difference in the medians of the groups. We run a pairwise test (Cono
 | shield\_cont10\_age3\_age2\_20 | 1.3e-07             | -                              |
 | shield\_cont2\_age3\_age2\_20  | < 2e-16             | 4.3e-11                        |
 
-###Exposed population
+### Exposed population
 No significant differences.
 
 `kruskal.test(FracFinalDeaths~contacts,df.shield[df.shield$group=="E",]`
 
 > Kruskal-Wallis chi-squared = 0.036058, df = 1, p-value = 0.8494
 
-###Safety-zone population
+### Safety-zone population
 10 contacts per week have less fraction of deaths than 2 contacts per week.
 
 `kruskal.test(FracFinalDeaths~contacts,df.shield[df.shield$group=="S",])`
@@ -56,7 +56,7 @@ We confirm the relative order with one-sided Wilcoxon.
 
 > Kruskal-Wallis chi-squared = 3.5753, df = 1, p-value = 0.05864
 
-##Test if the difference in the fraction of deaths is significant for 24h vs. 12h in the Onset variable
+## Test if the difference in the fraction of deaths is significant for 24h vs. 12h in the Onset variable
 
 All differences are significant.
 
@@ -70,9 +70,9 @@ All differences are significant.
 | Onset24 | <2e-16  | -       |
 | Onset48 | <2e-16  | <2e-16  |
 
-##Posthoc test for isolation tents, increasing numbers the tents reduces significantly the fraction of deaths? What about CFR?
+## Posthoc test for isolation tents, increasing numbers the tents reduces significantly the fraction of deaths? What about CFR?
 
-###Fraction of deaths
+### Fraction of deaths
 
 There are significant differences for different number of tents.
 
@@ -129,7 +129,7 @@ Any number of tents is better than not implementing the isolation strategy.
 
 In conclusion, the more tents the better, up to a 100. Going over a 100 tents is not cost-effective (there is no significant difference between 100 and 500), and with even higher number the result is negative (increase in the fraction of deaths).
 
-###CFR
+### CFR
 
 There are significant differences for different number of tents.
 
