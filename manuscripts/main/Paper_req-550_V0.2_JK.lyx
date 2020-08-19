@@ -577,7 +577,12 @@ literal "false"
 n of contacts and other parameters in the model.
  We consider the micro-dynamics of contacts, the time that individuals take
  to recognize their symptoms before self-isolating, the effect of having
- care-givers to attend isolated individuals, and the existence of a buffer
+ care-givers to attend isolated individuals, and the existence of a 
+\change_inserted 227091064 1597867396
+buffering
+\change_deleted 227091064 1597867396
+buffer
+\change_unchanged
  zone in which exposed and protected population classes can interact under
  certain rules, among other details.
  We examine a potential worst-case scenario in which there is no access
@@ -1730,6 +1735,8 @@ Interventions
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 227091064 1597868449
 \begin_inset Note Comment
 status collapsed
 
@@ -1740,6 +1747,59 @@ APG: A table similar to Table 1 in Zandvoort et al.
 
 \end_inset
 
+
+\change_inserted 227091064 1597868449
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597868488
+\begin_inset Graphics
+	filename figures/diagram_interventions.pdf
+	width 100text%
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597868449
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597868529
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Interventions"
+
+\end_inset
+
+Diagram of interventions
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -1762,7 +1822,24 @@ amount
 \change_inserted 227091064 1597862351
 magnitude
 \change_unchanged
- (20% or 50%).
+ (20% or 50%)
+\change_inserted 227091064 1597868806
+ (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-1)
+\change_deleted 227091064 1597868663
+.
+
+\change_unchanged
  Since the mean number of people per tent in a camp is 7 [verify]
 \change_inserted 227091064 1597858917
 
@@ -1800,6 +1877,32 @@ having
 
 \change_deleted 227091064 1597859512
 Buffering zone
+\change_inserted 227091064 1597868208
+Buffering zone
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597868816
+We envision these zones as open spaces, with guidelines in place to limit
+ occupancy to 4 individuals wearing masks, with 2 meters separating individuals
+ from the two separate zones.
+ We assume that non-compliance will be such that the probability of transmission
+ from contacts will be reduced by 80% compared to the baseline (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\change_deleted 227091064 1597859512
+
 \end_layout
 
 \begin_layout Standard
@@ -1824,6 +1927,73 @@ buffering zones
  but we considered that its actual efficiency will be of an 80%.
  An additional intervention we considered in some simulations, is that symptomat
 ic individuals cannot access the buffering zones.
+\change_inserted 227091064 1597868345
+
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_inserted 227091064 1597868346
+Self-isolation
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597869140
+Self-isolation is a challenge in informal settlements, where households
+ consist of a single, often small space, water is collected at designated
+ locations, sanitation facilities are communal and food supplies are scarce.
+ We considered the possibility of those showing symptoms self-isolating
+ in individual tents in dedicated parts of the camps, or next to the tents
+ of their relatives.
+ We simulated this intervention with 10 isolation tents per camp, up to
+ 2000 (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-2).
+ In addition, we modeled the role of care-givers dedicated to supplying
+ isolated individuals, who interact with them via a buffering zone (see
+ Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-2b).
+ In considering one care-giver per individual with one contact per day,
+ we do not neglect the probability of infecting the rest of the camp.
+ We further considered that severe cases, or those in the hospitalized compartme
+nt, are fully infectious since they require more intensive care that is
+ not possible to deliver while adhering to the guidelines of the buffering
+ zone.
+ We also considered  minimum time intervals for individuals to recognize
+ their symptoms:  with means of 12, 24 and 48 hours (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-2c).
+\change_deleted 227091064 1597862316
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1967,7 +2137,7 @@ zones
 otherwise 
 \change_unchanged
 the same
-\change_inserted 227091064 1597862467
+\change_inserted 227091064 1597869166
  so, the overall contact rate does not change unless self-distancing is
  also implemented.
  In practice, reducing the contact rate with individuals living in a different
@@ -1976,51 +2146,60 @@ the same
  This allows us to investigate undesired side-effects of this intervention.
  Since proposals for partitioning the population may be received differently
  across camps, we considered several scenarios for allocating a camp's populatio
-n to the two zones [SM Table 3]
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597860990
-APG insert cross ref
-\end_layout
+n to the two zones (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-
+-3).
 \change_unchanged
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 227091064 1597860028
-Interaction between the two zones is limited to a 
-\begin_inset Quotes eld
-\end_inset
-
-buffer zone
-\begin_inset Quotes erd
-\end_inset
-
-
+\change_inserted 227091064 1597867396
+Interaction between the two zones is limited to a buffering zone
 \change_unchanged
 .
  
-\change_inserted 227091064 1597862734
-We assumed that these zones would be open spaces, with guidelines in place
- to limit occupancy to 4 individuals wearing masks, with 2 meters separating
- individuals from the two separate zones.
- We assume that non-compliance will be such that the probability of transmission
- from contacts will be reduced by 80% compared to the baseline.
- If individuals in the green zone cannot leave and thus need to be provided
+\change_inserted 227091064 1597870015
+If individuals in the green zone cannot leave and thus need to be provided
  with supplies by individuals in the orange zone, any delivery of supplies
- will necessarily take place in the buffer zone.
+ will necessarily take place in the buffering zone.
  In our simulations, we considered limiting individuals in the green zone
- to 10 or 2 contacts with individuals from the orange zone per week.
+ to 10 or 2 contacts with individuals from the orange zone per week (see
+ Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-3b).
  Other variations on this intervention we explored include preventing symptomati
-c individuals from entering the buffer zone and 
+c individuals from entering the buffering zone (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-3c) and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2028,23 +2207,71 @@ locking down
 \begin_inset Quotes erd
 \end_inset
 
- the green zone, where their number of weekly contacts in the buffer zone
- is reduced by 50%, or a maximum of 90% (see Table XXX)
+ the green zone, where their number of weekly contacts in the buffering
+ zone is reduced by 50% or 90% (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-3d).
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_inserted 227091064 1597870016
+Evacuation
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597870016
+The last intervention we simulated is the evacuation of individuals in the
+ hospitalization compartment.
+ We assume the evacuees will be taken to isolation centers, not hospitals,
+ so this measure does not change their fate 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NW_Syria_tracking"
+literal "false"
+
+\end_inset
+
+ 
 \begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 227091064 1597861160
-Not sure what the idea is for this table
-\change_unchanged
-
+\change_inserted 227091064 1597870016
+APG: Chamsy, I think it would be great to document here that this is a possibili
+ty considered by policy-makers.
 \end_layout
 
 \end_inset
 
-.
+; The only effect this intervention has is reducing the infectivity of evacuees
+ to zero (see Fig.
  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-4).
+\end_layout
+
+\begin_layout Standard
+
 \change_deleted 227091064 1597860530
 Therefore, the number of contacts per day and individual does not change
  unless self-distancing is implemented.
@@ -2058,7 +2285,7 @@ tary Material).
 
 \begin_layout Standard
 
-\change_deleted 227091064 1597860530
+\change_deleted 227091064 1597869979
 We also considered that individuals living in the green zone cannot leave
  it, which means that supplies for this population should be provided by
  individuals in the orange zone, and hence the contacts between both populations
@@ -2067,13 +2294,11 @@ We also considered that individuals living in the green zone cannot leave
  zone, and we assumed that each individual in the green zone can have a
  maximum number of contacts per week with individuals of the orange zone:
  either 10 or 2 contacts per week for each individual.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
 
-\change_deleted 227091064 1597860842
+\change_deleted 227091064 1597869979
 An important social question to be addressed in this intervention is how
  population will be distributed in the two zones, since different partitionings
  may have a different reception in the population.
@@ -2084,9 +2309,7 @@ An important social question to be addressed in this intervention is how
  and not exceeding 40% of the population in the green zone).
  For the scenario iii) we considered, in turn, three additional possibilities,
  in which the total population in the green zone represent 20%, 25% or a
- maximum of 30% of the total population
-\change_unchanged
-.
+ maximum of 30% of the total population.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2097,7 +2320,7 @@ Lockdown of the safety zone
 
 \begin_layout Standard
 
-\change_deleted 227091064 1597861168
+\change_deleted 227091064 1597869979
 An additional measure that can incorporated once the safety zone is implemented,
  is a further reduction in the number of contacts occuring in the buffering
  zone.
@@ -2115,305 +2338,60 @@ lockdown
  Again, since supplies for people living in the green zone cannot be disrupted,
  we assumed that the number of contacts per week and individual is reduced
  by a 50% or a maximum of a 90% (see Table XXX)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection*
+
+\change_deleted 227091064 1597868340
 Self-isolation
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 227091064 1597861202
-Self-isolation is a 
-\change_deleted 227091064 1597861200
-A 
-\change_unchanged
-challenge in informal settlements
-\change_deleted 227091064 1597861212
- is how self-isolation can be implemented
-\change_inserted 227091064 1597861212
-,
-\change_unchanged
- whe
-\change_inserted 227091064 1597861214
-re
-\change_deleted 227091064 1597861214
-n
-\change_unchanged
- households consist of a single, 
-\change_deleted 227091064 1597861220
-and 
-\change_unchanged
-often small
-\change_deleted 227091064 1597862754
-,
-\change_unchanged
- space
-\change_deleted 227091064 1597861225
-.
- Moreover,
-\change_inserted 227091064 1597861225
-,
-\change_unchanged
- water 
-\change_inserted 227091064 1597861231
-is
-\change_deleted 227091064 1597861230
-should be
-\change_unchanged
- collected at 
-\change_deleted 227091064 1597861235
-specific
-\change_inserted 227091064 1597861237
-designated
-\change_unchanged
- locations, 
-\change_deleted 227091064 1597861251
-there are communal latrines
-\change_inserted 227091064 1597861257
-sanitation facilities are communal
-\change_unchanged
- and
-\change_deleted 227091064 1597862764
- the
-\change_unchanged
- 
-\change_deleted 227091064 1597861285
-scarcity of food supplies do not allow for the complete isolation of whole
- families
-\change_inserted 227091064 1597861290
-food supplies are scarce
-\change_unchanged
-.
- We considered the possibility 
-\change_inserted 227091064 1597862791
-of those
-\change_deleted 227091064 1597862789
-that individuals
-\change_unchanged
- showing symptoms self-isolat
-\change_inserted 227091064 1597862796
-ing
-\change_deleted 227091064 1597862796
-e
-\change_unchanged
- in individual tents in dedicated 
-\change_deleted 227091064 1597862805
-spaces
-\change_inserted 227091064 1597862806
-parts
-\change_unchanged
- of the camps, or next to the tents of their relatives.
-
-\change_inserted 227091064 1597861355
- 
-\change_unchanged
-We 
-\change_deleted 227091064 1597861391
-modelled this intervention for an increasing number of tents from 10 to
- an unlimited number
-\change_inserted 227091064 1597861405
-simulated this intervention with 10 isolation tents per camp, up to an unlimited
- number
-\change_unchanged
- (see Table XXX)
-\change_inserted 227091064 1597861411
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597861414
-Need this table
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-.
- We also considered 
-\change_deleted 227091064 1597861477
-that there is a
-\change_unchanged
- minimum time 
-\change_inserted 227091064 1597861480
-intervals 
-\change_unchanged
-for 
-\change_deleted 227091064 1597861455
-an individual to recognize his/her own symptoms.
- 
-\change_inserted 227091064 1597861462
-individuals to recognize their symptoms: 
-\change_deleted 227091064 1597861493
-We considered three possible time
-\change_unchanged
- 
-\change_deleted 227091064 1597862847
-intervals 
-\change_unchanged
-with means of 12, 24 
-\change_inserted 227091064 1597861497
-and
-\change_deleted 227091064 1597861495
-or
-\change_unchanged
- 48 hours (see Table XXX)
-\change_inserted 227091064 1597861432
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597861434
-Missing table
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-.
- In addition, we 
-\change_deleted 227091064 1597861551
-considered that there are a number of
-\change_inserted 227091064 1597861557
-modeled the role of
-\change_unchanged
- care-givers dedicated to suppl
-\change_deleted 227091064 1597861562
-y food and water to
-\change_inserted 227091064 1597861562
-ying
-\change_unchanged
- isolated individuals, 
-\change_deleted 227091064 1597862867
-interacting
-\change_inserted 227091064 1597862869
-who interact
-\change_unchanged
- 
-\change_inserted 227091064 1597861568
-with them 
-\change_unchanged
-via a buffer
-\change_deleted 227091064 1597861571
-ing
-\change_unchanged
+\change_deleted 227091064 1597869945
+A challenge in informal settlements is how self-isolation can be implemented
+ when households consist of a single, and often small, space.
+ Moreover, water should be collected at specific locations, there are communal
+ latrines and the scarcity of food supplies do not allow for the complete
+ isolation of whole families.
+ We considered the possibility that individuals showing symptoms self-isolate
+ in individual tents in dedicated spaces of the camps, or next to the tents
+ of their relatives.We modelled this intervention for an increasing number
+ of tents from 10 to an unlimited number (see Table XXX).
+ We also considered that there is a minimum time for an individual to recognize
+ his/her own symptoms.
+ We considered three possible time intervals with means of 12, 24 or 48
+ hours (see Table XXX).
+ In addition, we considered that there are a number of care-givers dedicated
+ to supply food and water to isolated individuals, interacting via a buffering
  zone.
- I
-\change_deleted 227091064 1597861741
-n Supplementary Material, we show that 
-\change_inserted 227091064 1597861607
-n 
-\change_unchanged
-considering one care
-\change_inserted 227091064 1597861631
--giver
-\change_deleted 227091064 1597861630
-r
-\change_unchanged
- per individual
-\change_deleted 227091064 1597862894
- having
-\change_inserted 227091064 1597862894
- with
-\change_unchanged
- one contact per day, 
-\change_inserted 227091064 1597862986
-we do not neglect the probability of infecting the rest of the camp.
- 
-\change_deleted 227091064 1597862992
-we account for both the positive effects of isolation and the negative effects
- derived from the contact with care-givers, since the probability of infection
- with the rest of the population cannot be neglected.
- In this respect, w
-\change_inserted 227091064 1597861798
-W
-\change_unchanged
-e 
-\change_inserted 227091064 1597861805
-further 
-\change_unchanged
-considered that 
-\change_deleted 227091064 1597861838
-people moving to a severely symptomatic stage (hospitalized compartment)
- becomes fully infectious
-\change_inserted 227091064 1597861970
-severe cases, or those in the hospitalized compartment, are fully infectious
-\change_deleted 227091064 1597861884
-.
- The rationale behind this choice is that these individuals require a
-\change_inserted 227091064 1597861889
- since they require
-\change_unchanged
- more intensive care
-\change_inserted 227091064 1597862021
- that is not possible to deliver while adhering to the guidelines of the
- buffer zone
-\change_deleted 227091064 1597862001
-, and hence it is expected that the rules imposed for a buffering zone cannot
- be longer fulfilled
-\change_unchanged
-.
+ In Supplementary Material, we show that considering one carer per individual
+ having one contact per day, we account for both the positive effects of
+ isolation and the negative effects derived from the contact with care-givers,
+ since the probability of infection with the rest of the population cannot
+ be neglected.
+ In this respect, we considered that people moving to a severely symptomatic
+ stage (hospitalized compartment) becomes fully infectious.
+ The rationale behind this choice is that these individuals require a more
+ intensive care, and hence it is expected that the rules imposed for a buffering
+ zone cannot be longer fulfilled.
 \end_layout
 
 \begin_layout Subsubsection*
+
+\change_deleted 227091064 1597870007
 Evacuation
 \end_layout
 
 \begin_layout Standard
-The last intervention 
-\change_deleted 227091064 1597862055
-refers to the possibility of evacuating severely symptomatic individuals,
- i.e.
- those
-\change_inserted 227091064 1597863032
-we simulated is the evacuation of individuals
-\change_unchanged
- in the hospitalization compartment.
- 
-\change_deleted 227091064 1597862220
-This measure does not change the fate of the evacuated individuals.
- Hence, w
-\change_inserted 227091064 1597862097
-W
-\change_unchanged
-e assume 
-\change_deleted 227091064 1597862103
-that 
-\change_unchanged
-the evacu
-\change_inserted 227091064 1597862138
-ees will be taken to isolation centers, not hospitals, so this measure does
- not change their fate
-\change_deleted 227091064 1597862157
-ation will not be to a hospital but to isolation centers
-\change_unchanged
- 
-\change_deleted 227091064 1597862200
-[REF]
-\change_inserted 227091064 1597862200
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "NW_Syria_tracking"
-literal "false"
-
-\end_inset
-
-
-\change_unchanged
- 
+\change_deleted 227091064 1597870204
+The last intervention refers to the possibility of evacuating severely symptomat
+ic individuals, i.e.
+ those in the hospitalization compartment.
+ This measure does not change the fate of the evacuated individuals.
+ Hence, we assume that the evacuation will not be to a hospital but to isolation
+ centers [REF] 
 \begin_inset Note Comment
 status collapsed
 
@@ -2424,36 +2402,41 @@ ty considered by policy-makers.
 
 \end_inset
 
-
-\change_inserted 227091064 1597863168
-;
-\change_deleted 227091064 1597863168
 .
+ In this way, the only effect of the intervention is a reduction of the
+ infectiousness of these individuals to zero.
+\change_inserted 227091064 1597870231
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597870229
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597870217
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597870220
+
+
+\backslash
+newpage
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \change_unchanged
- 
-\change_deleted 227091064 1597862224
-In this way, t
-\change_inserted 227091064 1597862224
-T
-\change_unchanged
-he only effect 
-\change_deleted 227091064 1597863185
-of the
-\change_inserted 227091064 1597863185
-this
-\change_unchanged
- intervention
-\change_inserted 227091064 1597863189
- has
-\change_unchanged
- is 
-\change_deleted 227091064 1597862248
-a reduction of the infectiousness of these individuals
-\change_inserted 227091064 1597863177
-reducing the infectivity of evacuees
-\change_unchanged
- to zero.
+
 \end_layout
 
 \begin_layout Subsection*
