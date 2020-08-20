@@ -22,11 +22,11 @@ setwd("/home/ec365/workbench/req-550-Syria")
 ptitle <- c("boxmeandot")
 fplot.list <- c(do_box_plot_mean_dot)
 
-axis.text.size = 20
-axis.title.size = 22
-legend.title.size = 22
-legend.text.size = 20
-axis.text.x.size = 20
+axis.text.size = 16 
+axis.title.size = 18 
+legend.title.size = 18 
+legend.text.size = 16
+axis.text.x.size = 16
 title.size = 35
 
 varPoutbreak <- "POutbreak"
@@ -76,6 +76,14 @@ df.tcheckElderly <- extract_subtable_output_summaries(df.all,params.df)
 params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_G.csv",sep=""),header = TRUE, sep=",")
 df.lock <- extract_subtable_output_summaries(df.all,params.df)
 
+params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_J.csv",sep=""),header = TRUE, sep=",")
+df.evac<- extract_subtable_output_summaries(df.all,params.df)
+
+params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_A2.csv",sep=""),header = TRUE, sep=",")
+df.fate<- extract_subtable_output_summaries(df.all,params.df)
+
+
+
 idx.contacts <- c(1,2,5,3,4,6,7)
 df.shield$contacts<-factor(df.shield$contacts,levels(df.shield$contacts)[idx.contacts])
 
@@ -103,6 +111,18 @@ df.tcheck$intervention <- as.factor(paste(df.tcheck$contacts,df.tcheck$PopSize,s
 df.tcheck$intervention<-factor(df.tcheck$intervention,levels(df.tcheck$intervention)[c(3,1,2,6,4,5)])
 
 df.tcheck$group<-factor(df.tcheck$group,levels(df.tcheck$group)[idx.group])
+
+df.shieldlimit$group<-factor(df.shieldlimit$group,levels(df.shieldlimit$group)[idx.group])
+
+
+df.tcheckElderly$group<-factor(df.tcheckElderly$group,levels(df.tcheckElderly$group)[idx.group])
+df.tcheckElderly$intervention<-as.factor(paste(df.tcheckElderly$contacts,df.tcheckElderly$Tcheck,sep="/"))
+
+
+df.evac$group<-factor(df.evac$group,levels(df.evac$group)[idx.group])
+df.evac$intervention<-as.factor(paste(df.evac$contacts,df.evac$Isolate,sep="/"))
+
+df.fate$Fate<-factor(df.fate$Fate,levels(df.fate$Fate)[c(2,1)])
 
 setwd(outPlotDir)
 
@@ -136,7 +156,7 @@ dev.off( )
 
 outFile = "FigS11c"
 varY = "TimePeakSymptomatic"
-ylabel = "Time to peak of symptomatic"
+ylabel = "Time to peak of symptomatic (days)"
 
 gg <- do_box_plot_mean_dot(df.lock,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 
@@ -195,7 +215,7 @@ dev.off( )
 
 outFile = "FigS10c"
 varY = "TimePeakSymptomatic"
-ylabel = "Time to peak of symptomatic"
+ylabel = "Time to peak of symptomatic (days)"
 
 gg <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
@@ -226,70 +246,411 @@ pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
 print(gg)
 dev.off( )
 
+#Effect of number of individuals per camp
+df <- df.shieldlimit
+outFile = "FigS9e"
+varX = "contacts"
+varY = "FracFinalRecovered"
+xlabel = "Population classes in safety zone"
+ylabel = "Fraction of population recovered"
+scale_x_labels <- c("Elderly","Elder. + adult w. comorb.","Elder. + adults + kids (< 20%)","Elder. + adults + kids (< 25%)","Elder. + adults + kids (< 30%)")
+scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
+group_name = "Group"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.25,1.0)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS9d"
+varY = "CFR"
+ylabel = "Case Fatality Rate"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.0,0.75)
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS9c"
+varY = "TimePeakSymptomatic"
+ylabel = "Time to peak of symptomatic (days)"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS9b"
+varY = "FracFinalDeaths"
+ylabel = "Fraction of population dying"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS9a"
+varY = "POutbreak"
+ylabel = "Probability of Outbreak"
+
+gg <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+#Safety zone
+df <- df.shield
+outFile = "FigS8b"
+varX = "contacts"
+varY = "FracFinalRecovered"
+xlabel = "Number of contacts per week/individual"
+ylabel = "Fraction of population recovered"
+scale_x_labels <- c("No limit","10","2")
+scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
+group_name = "Group"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg <- gg + ylim(0.5,1.0)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS8a"
+varY = "CFR"
+ylabel = "Case Fatality Rate"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg <- gg + ylim(0.0,0.40)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+#Checks in buffer zone
+df <- df.tcheckElderly
+outFile = "FigS7e"
+varX = "intervention"
+varY = "FracFinalRecovered"
+xlabel = "Contacts per week and individual / Health checks"
+ylabel = "Fraction of population recovered"
+scale_x_labels <- c("10 cont. (no checks)", "10 cont. + checks", "2 cont. (no checks)", "2 cont. + checks")
+scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
+group_name = "Group"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.5,1.0)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS7d"
+varY = "CFR"
+ylabel = "Case Fatality Rate"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.0,0.4)
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS7c"
+varY = "TimePeakSymptomatic"
+ylabel = "Time to peak of symptomatic (days)"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS7b"
+varY = "FracFinalDeaths"
+ylabel = "Fraction of population dying"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS7a"
+varY = "POutbreak"
+ylabel = "Probability of Outbreak"
+
+gg <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+#Evac
+df <- df.evac
+outFile = "FigS6e"
+varX = "intervention"
+varY = "FracFinalRecovered"
+xlabel = "Model / Evacuation"
+ylabel = "Fraction of population recovered"
+scale_x_labels <- c("null / NO","null / YES", "safety 2 / NO", "safety 2 / YES") 
+scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
+group_name = "Group"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.5,1.0)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS6d"
+varY = "CFR"
+ylabel = "Case Fatality Rate"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.0,0.4)
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS6c"
+varY = "TimePeakSymptomatic"
+ylabel = "Time to peak of symptomatic (days)"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS6b"
+varY = "FracFinalDeaths"
+ylabel = "Fraction of population dying"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS6a"
+varY = "POutbreak"
+ylabel = "Probability of Outbreak"
+
+gg <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+#Onset
+df <- df.onset
+outFile = "FigS5e"
+varX = "Onset"
+varY = "FracFinalRecovered"
+xlabel = "Time to self-isolation (h)"
+ylabel = "Fraction of population recovered"
+scale_x_labels <- c("No isol.", "12", "24", "48")
+scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
+group_name = "Group"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+#gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.75,1.0)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS5d"
+varY = "CFR"
+ylabel = "Case Fatality Rate"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+#gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.0,0.25)
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS5c"
+varY = "TimePeakSymptomatic"
+ylabel = "Time to peak of symptomatic (days)"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+#gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS5b"
+varY = "FracFinalDeaths"
+ylabel = "Fraction of population dying"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+#gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS5a"
+varY = "POutbreak"
+ylabel = "Probability of Outbreak"
+
+gg <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+#gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+#No. isolation tents
+df <- df.iso
+outFile = "FigS4b"
+varX = "Limit"
+varY = "FracFinalRecovered"
+xlabel = "Number of self-isolation tents"
+ylabel = "Fraction of population recovered"
+scale_x_labels <- c("0","10","25","50","100","250","500","2000")
+scale_fill_labels <- c("Total")
+group_name = "Group"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg <- gg + ylim(0.75,1.0)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS4a"
+varY = "CFR"
+ylabel = "Case Fatality Rate"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg <- gg + ylim(0.0,0.20)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+#Self distancing
+df <- df.self
+outFile = "FigS3b"
+varX = "self"
+varY = "FracFinalRecovered"
+xlabel = "Individual reduction of contacts per day (%)"
+ylabel = "Fraction of population recovered"
+scale_x_labels <- c("0","20","50")
+scale_fill_labels <- c("Total")
+group_name = "Group"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg <- gg + ylim(0.5,1.0)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS3a"
+varY = "CFR"
+ylabel = "Case Fatality Rate"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg <- gg + ylim(0.0,0.25)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+#Fate
+df <- df.fate
+outFile = "FigS2e"
+varX = "Fate"
+varY = "FracFinalRecovered"
+xlabel = "Fate of individuals in H compartment"
+ylabel = "Fraction of population recovered"
+scale_x_labels <- c("All recover", "All die")
+scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
+group_name = "Group"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+#gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.75,1.0)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS2d"
+varY = "CFR"
+ylabel = "Case Fatality Rate"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+#gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.0,0.20)
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS2c"
+varY = "TimePeakSymptomatic"
+ylabel = "Time to peak of symptomatic (days)"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+#gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS2b"
+varY = "FracFinalDeaths"
+ylabel = "Fraction of population dying"
+
+gg <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+#gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS2a"
+varY = "POutbreak"
+ylabel = "Probability of Outbreak"
+
+gg <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+#gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
 
 
-#for(i in 1:length(ptitle)){
-#    title <- ptitle[i]
-#    fplot <- fplot.list[[i]]
-#
-#    #Shielding
-#    varX="contacts"
-#    xlabel="Number of contacts per week/individual"
-#    scale_x_labels <- c("No limit","10","2")
-#    scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
-#    group_name = "Group"
-#
-#    #gg.Poutbreak.shield <- do_line_plot(df.shield,varPoutbreak,varX,xlabel,ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
-#    #gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#    #gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#
-#    gg.Poutbreak.shield <- do_line_plot(df.shield,varPoutbreak,varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
-#    gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#    gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#
-#
-#
-#    #Isolation
-#    varX="Limit"
-#    xlabel="Number of self-isolation tents"
-#    scale_x_labels <- c("0","10","25","50","100","250","500","2000")
-#    scale_fill_labels <- c("Total")
-#    group_name = "Group"
-#
-#    #gg.Poutbreak.iso <- do_line_plot(df.iso,varPoutbreak,varX,xlabel,ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#    #gg.FracDeath.iso <- fplot(df.iso,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#    #gg.TimePeak.iso <- fplot(df.iso,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#
-#    gg.Poutbreak.iso <- do_line_plot(df.iso,varPoutbreak,varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#    gg.FracDeath.iso <- fplot(df.iso,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#    gg.TimePeak.iso <- fplot(df.iso,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#
-#
-#
-#    #Self
-#    varX="self"
-#    xlabel="Individual reduction of contacts per day (%)"
-#    scale_x_labels <- c("0","20","50")
-#    scale_fill_labels <- c("Total")
-#    group_name = "Group"
-#
-#    #gg.Poutbreak.self <- do_line_plot(df.self,varPoutbreak,varX,xlabel,ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#    #gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#    #gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#
-#    gg.Poutbreak.self <- do_line_plot(df.self,varPoutbreak,varX,"",ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#    gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,"",ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#    gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-#
-#
-#    #pdf(file=paste(title,".pdf",sep=""),width=27,height = 21)
-#    #grid.arrange(gg.Poutbreak.shield,gg.FracDeath.shield,gg.TimePeak.shield,gg.Poutbreak.iso,gg.FracDeath.iso,gg.TimePeak.iso,gg.Poutbreak.self,gg.FracDeath.self,gg.TimePeak.self,nrow=3,ncol=3)
-##    pdf(file=paste(title,"_col.pdf",sep=""),width=32,height = 25)
-#    #grid.arrange(gg.Poutbreak.shield,gg.Poutbreak.iso,gg.Poutbreak.self,gg.FracDeath.shield,gg.FracDeath.iso,gg.FracDeath.self,gg.TimePeak.shield,gg.TimePeak.iso,gg.TimePeak.self,nrow=3,ncol=3)
-##    grid.arrange(arrangeGrob(gg.Poutbreak.self,top=textGrob("Self-distancing",gp=gpar(fontsize=title.size))),arrangeGrob(gg.Poutbreak.iso,top=textGrob("Isolation",gp=gpar(fontsize=title.size))),arrangeGrob(gg.Poutbreak.shield,top=textGrob("Safety zone",gp=gpar(fontsize=title.size))),gg.FracDeath.self,gg.FracDeath.iso,gg.FracDeath.shield,gg.TimePeak.self,gg.TimePeak.iso,gg.TimePeak.shield,nrow=3,ncol=3)
-##    dev.off( )
-#
-#
-#}
-#
+
+
+
+
 setwd(currentDir) #Let's finish where we started.
