@@ -111,7 +111,7 @@ do_box_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels
                     panel.background = element_rect(fill = "white", colour = "black", linetype = "solid"))
 
     if(addmean)
-        gg <- gg + stat_summary(geom="point",fun="mean",aes_string(x=varX,y=fn,group="group"),color="black",shape=20,size=4,position=dodge)
+        gg <- gg + stat_summary(geom="point",fun="mean",aes_string(x=varX,y=fn,group="group"),color="black",fill="black",shape=24,size=4,position=dodge)
 
     if(nolegend)
         gg <- gg + theme(legend.position = "none")
