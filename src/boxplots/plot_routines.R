@@ -84,7 +84,7 @@ do_ribbon_plot <- function(df,fn,varX,xlabel,ylabel,fymin,fymax,fun,scale_x_labe
     return(gg)
 }
 
-do_box_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE,fun="mean"){
+do_box_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE,fun="mean",addmean=FALSE){
     dodge <- position_dodge(width = 0.9)
     gg <- ggplot(data=df)+
             geom_point(position=position_jitterdodge(dodge.width=0.9),aes_string(x=varX,y=fn,colour="group",group="group"),alpha=.075)
@@ -107,6 +107,9 @@ do_box_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels
                     panel.grid.major = element_line(size = 0.5, linetype = 'solid', colour = "lightgrey"), 
                     panel.grid.minor = element_line(size = 0.25, linetype = 'solid', colour = "lightgrey"),
                     panel.background = element_rect(fill = "white", colour = "black", linetype = "solid"))
+
+    if(addmean)
+        gg <- gg + stat_summary(geom="point",fun="mean",aes_string(x=varX,y=fn,group="group"),color="black",shape=20,size=4,position=dodge)
 
     if(nolegend)
         gg <- gg + theme(legend.position = "none")
@@ -188,6 +191,12 @@ do_ribbon_se <- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labe
 do_box_plot_mean<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE){
     return(do_box_plot(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=TRUE,nolegend=nolegend,fun="mean"))
 }
+
+do_box_plot_mean_dot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE){
+    return(do_box_plot(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=TRUE,nolegend=nolegend,fun="mean",addmean=TRUE))
+}
+
+
 
 do_box_plot_median<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE){
     return(do_box_plot(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=TRUE,nolegend=nolegend,fun="median"))
