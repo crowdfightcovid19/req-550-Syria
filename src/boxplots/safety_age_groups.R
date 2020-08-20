@@ -66,8 +66,8 @@ for(cl in c("age1","age2_no_comorbid","age2_comorbid","age3_no_comorbid","age3_c
     df.null <- subset(df, class==cl & model=="null")
     df.shield <- subset(df, class==cl & model=="shield")
 
-    p.null <- length( df.null$FracDeath[ df.null$FracDeath == 0 ] ) / length(df.null$FracDeath)
-    p.shield <- length( df.shield$FracDeath[ df.shield$FracDeath == 0 ] ) / length(df.shield$FracDeath)
+    p.null <- length( df.null$FracDeath[ df.null$FracDeath != 0 ] ) / length(df.null$FracDeath)
+    p.shield <- length( df.shield$FracDeath[ df.shield$FracDeath != 0 ] ) / length(df.shield$FracDeath)
 
     df$POutbreak[ df$class == cl & df$model == "null" ] <- p.null
     df$POutbreak[ df$class == cl & df$model == "shield" ] <- p.shield
