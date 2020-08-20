@@ -22,8 +22,10 @@ setwd("/home/ecam/workbench/req-550-Syria")
 ptitle <- c("boxmeandot")
 fplot.list <- c(do_box_plot_mean_dot)
 
-
-
+axis.text.size = 10
+axis.title.size = 12
+legend.title.size = 12
+legend.text.size = 11
 title.size = 35
 
 varPoutbreak <- "POutbreak"
