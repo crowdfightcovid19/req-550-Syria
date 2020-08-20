@@ -19,7 +19,7 @@ setwd("/home/ec365/workbench/req-550-Syria")
 #ptitle <- c("boxplot","boxmean","boxmedian","vio","viomean","viomedian","ribbonsd","ribbonmedian","ribbonse")
 #fplot.list <- c(do_box_plot,do_box_plot_mean,do_box_plot_median,do_vio_plot,do_vio_plot_mean,do_vio_plot_median,do_ribbon_sd,do_ribbon_quartile,do_ribbon_se)
 
-ptitle <- c("boxmeandot2")
+ptitle <- c("boxmeandot_triangle")
 fplot.list <- c(do_box_plot_mean_dot)
 
 
