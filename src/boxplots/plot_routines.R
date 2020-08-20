@@ -31,6 +31,13 @@ axis.title.size = 35
 legend.title.size = 35
 legend.text.size = 32
 
+axis.text.size = 10
+axis.title.size = 12
+legend.title.size = 12
+legend.text.size = 11
+
+
+
 def_color_scale <- c("T" = "#619CFF","E" = "#FFB54D","S" = "#00BA38")
 
 #By Alberto
