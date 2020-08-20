@@ -14,7 +14,7 @@ currentDir <- getwd()
 
 source("plot_routines.R")
 
-setwd("/home/ecam/workbench/req-550-Syria")
+setwd("/home/ec365/workbench/req-550-Syria")
 
 #ptitle <- c("boxplot","boxmean","boxmedian","vio","viomean","viomedian","ribbonsd","ribbonmedian","ribbonse")
 #fplot.list <- c(do_box_plot,do_box_plot_mean,do_box_plot_median,do_vio_plot,do_vio_plot_mean,do_vio_plot_median,do_ribbon_sd,do_ribbon_quartile,do_ribbon_se)
@@ -22,10 +22,11 @@ setwd("/home/ecam/workbench/req-550-Syria")
 ptitle <- c("boxmeandot")
 fplot.list <- c(do_box_plot_mean_dot)
 
-axis.text.size = 10
-axis.title.size = 12
-legend.title.size = 12
-legend.text.size = 11
+axis.text.size = 20
+axis.title.size = 22
+legend.title.size = 22
+legend.text.size = 20
+axis.text.x.size = 20
 title.size = 35
 
 varPoutbreak <- "POutbreak"
@@ -97,6 +98,12 @@ idx.lock <- c(4,1,2,3)
 df.lock$lock<-factor(df.lock$lock,levels(df.lock$lock)[idx.lock])
 df.lock$group<-factor(df.lock$group,levels(df.lock$group)[c(3,1,2)])
 
+#New factor with the intervention
+df.tcheck$intervention <- as.factor(paste(df.tcheck$contacts,df.tcheck$PopSize,sep="/"))
+df.tcheck$intervention<-factor(df.tcheck$intervention,levels(df.tcheck$intervention)[c(3,1,2,6,4,5)])
+
+df.tcheck$group<-factor(df.tcheck$group,levels(df.tcheck$group)[idx.group])
+
 setwd(outPlotDir)
 
 #Lockdown of buffer zone
@@ -156,6 +163,69 @@ gg <- do_line_plot(df.lock,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_f
 pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
 print(gg)
 dev.off( )
+
+#Effect of number of individuals per camp
+outFile = "FigS10e"
+varX = "intervention"
+varY = "FracFinalRecovered"
+xlabel = "Model/Number of individuals in the camp"
+ylabel = "Fraction of population recovered"
+scale_x_labels <- c("null/500","null/1000","null/2000","safety 2/500","safety 2/1000","safety 2/2000")
+scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
+group_name = "Group"
+
+gg <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.5,1.0)
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS10d"
+varY = "CFR"
+ylabel = "Case Fatality Rate"
+
+gg <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg<- gg + ylim(0.0,0.35)
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS10c"
+varY = "TimePeakSymptomatic"
+ylabel = "Time to peak of symptomatic"
+
+gg <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS10b"
+varY = "FracFinalDeaths"
+ylabel = "Fraction of population dying"
+
+gg <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
+outFile = "FigS10a"
+varY = "POutbreak"
+ylabel = "Probability of Outbreak"
+
+gg <- do_line_plot(df.tcheck,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=9,height = 7)
+print(gg)
+dev.off( )
+
 
 
 #for(i in 1:length(ptitle)){
