@@ -94,7 +94,7 @@ do_box_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels
     if(line){
         gg <- gg + stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group="group",colour="group"),position=dodge,size=2)
     }
-        gg <- gg + geom_boxplot(aes_string(x=varX,y=fn,fill="group"),position=dodge)+
+        gg <- gg + geom_boxplot(aes_string(x=varX,y=fn,fill="group"),position=dodge,fatten=NULL)+
             xlab(xlabel)+
             ylab(ylabel)+
             scale_x_discrete(labels=scale_x_labels)+
