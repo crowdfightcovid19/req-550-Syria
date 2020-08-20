@@ -14,7 +14,7 @@ currentDir <- getwd()
 
 source("plot_routines.R")
 
-setwd("/home/ec365/workbench/req-550-Syria")
+setwd("/home/ecam/workbench/req-550-Syria")
 
 #ptitle <- c("boxplot","boxmean","boxmedian","vio","viomean","viomedian","ribbonsd","ribbonmedian","ribbonse")
 #fplot.list <- c(do_box_plot,do_box_plot_mean,do_box_plot_median,do_vio_plot,do_vio_plot_mean,do_vio_plot_median,do_ribbon_sd,do_ribbon_quartile,do_ribbon_se)
@@ -356,8 +356,8 @@ gg.b<-gg.b+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 varY = "POutbreak"
 ylabel = "Probability of Outbreak"
 
-gg.e <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
-gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
