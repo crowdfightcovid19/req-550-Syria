@@ -13,7 +13,9 @@ currentDir <- getwd()
 
 source("plot_routines.R")
 
-setwd("/home/ec365/workbench/req-550-Syria")
+setwd("/home/ecam/workbench/req-550-Syria")
+
+library("tidyr")
 
 axis.text.size = 24
 axis.title.size = 27
@@ -43,112 +45,57 @@ df.null <- read.csv("data/real_models/null_model_mixed/IsolateNO_Limit0_Onset0_F
 
 df.shield <- read.csv("data/real_models/shield_cont2_age3/IsolateNO_Limit0_Onset0_FateD_TcheckYES_PopSize2000_lockNO_selfNO_modSV/FracFinalDeaths_SEPAIHRD_dynamics_shield_cont2_age3_IsolateNO_Limit0_Onset0_FateD_TcheckYES_PopSize2000_lockNO_selfNO_modSV.dat")   
 
+df.null.long <- pivot_longer(df.null,cols=2:6,names_to="class",values_to="FracDeath")
+df.shield.long <- pivot_longer(df.shield,cols=2:6,names_to="class",values_to="FracDeath")
 
-df <- data.frame(class=NA,model=NA,deaths=NA)[-1,]
+df.null.long$model <- rep("null",dim(df.null.long)[1])
+df.shield.long$model <- rep("shield",dim(df.shield.long)[1])
 
-#df <- rbind(df, data.frame(cbind( class=rep("age1",500), model=rep("null",500),deaths=as.numeric(df.null$age1.D)) ))
-#df <- rbind(df, data.frame(cbind( class=rep("age2_no_comorbid",500), model=rep("null",500),deaths=as.numeric(df.null$age2_no_comorbid.D))))
-#df <- rbind(df, data.frame(cbind( class=rep("age2_comorbid",500), model=rep("null",500),deaths=as.numeric(df.null$age2_comorbid.D))))
-#df <- rbind(df, data.frame(cbind( class=rep("age3_no_comorbid",500), model=rep("null",500),deaths=as.numeric(df.null$age3_no_comorbid.D))))
-#df <- rbind(df, data.frame(cbind( class=rep("age3_comorbid",500), model=rep("null",500),deaths=as.numeric(df.null$age3_comorbid.D))))
-#
-df1 <- data.frame(cbind( class=rep("age1",500), model=rep("null",500),deaths=df.null$age1.D) )
-df2 <- data.frame(cbind( class=rep("age2_no_comorbid",500), model=rep("null",500),deaths=df.null$age2_no_comorbid.D))
-df3 <- data.frame(cbind( class=rep("age2_comorbid",500), model=rep("null",500),deaths=df.null$age2_comorbid.D))
-df4 <- data.frame(cbind( class=rep("age3_no_comorbid",500), model=rep("null",500),deaths=df.null$age3_no_comorbid.D))
-df5 <- data.frame(cbind( class=rep("age3_comorbid",500), model=rep("null",500),deaths=df.null$age3_comorbid.D))
+df <- rbind(df.null.long,df.shield.long)
 
-df1$deaths<-as.numeric(df1$deaths)
-df2$deaths<-as.numeric(df2$deaths)
-df3$deaths<-as.numeric(df3$deaths)
-df4$deaths<-as.numeric(df4$deaths)
-df5$deaths<-as.numeric(df5$deaths)
+old_names <- c("age1.D","age2_no_comorbid.D","age2_comorbid.D","age3_no_comorbid.D","age3_comorbid.D","age1_orange.D","age2_no_comorbid_orange.D","age2_comorbid_orange.D","age3_no_comorbid_green.D","age3_comorbid_green.D")
+new_names <- c("age1","age2_no_comorbid","age2_comorbid","age3_no_comorbid","age3_comorbid","age1","age2_no_comorbid","age2_comorbid","age3_no_comorbid","age3_comorbid")
 
-df <- rbind(df1,df2,df3,df4,df5)
+for(i in 1:length(old_names)){
+    df$class[ df$class == old_names[i] ] <- new_names[i]
+}
 
-df6 <- data.frame(cbind( class=rep("age1",500), model=rep("shield",500),deaths=df.shield$age1_orange.D))
-df7 <- data.frame(cbind( class=rep("age2_no_comorbid",500), model=rep("shield",500),deaths=df.shield$age2_no_comorbid_orange.D))
-df8 <- data.frame(cbind( class=rep("age2_comorbid",500), model=rep("shield",500),deaths=df.shield$age2_comorbid_orange.D))
-df9 <- data.frame(cbind( class=rep("age3_no_comorbid",500), model=rep("shield",500),deaths=df.shield$age3_no_comorbid_green.D))
-df10 <- data.frame(cbind( class=rep("age3_comorbid",500), model=rep("shield",500),deaths=df.shield$age3_comorbid_green.D))
+df$POutbreak <- rep(0.0,dim(df)[1])
 
-df6$deaths<-as.numeric(df6$deaths)
-df7$deaths<-as.numeric(df7$deaths)
-df8$deaths<-as.numeric(df8$deaths)
-df9$deaths<-as.numeric(df9$deaths)
-df10$deaths<-as.numeric(df10$deaths)
+for(cl in c("age1","age2_no_comorbid","age2_comorbid","age3_no_comorbid","age3_comorbid")){
+    df.null <- subset(df, class==cl & model=="null")
+    df.shield <- subset(df, class==cl & model=="shield")
 
-df <- rbind(df1,df2,df3,df4,df5,df6,df7,df8,df9,df10)
-##
-#df$deaths <- as.numeric(df$deaths)
+    p.null <- length( df.null$FracDeath[ df.null$FracDeath == 0 ] ) / length(df.null$FracDeath)
+    p.shield <- length( df.shield$FracDeath[ df.shield$FracDeath == 0 ] ) / length(df.shield$FracDeath)
 
-#Totals in each class (SM tab 2)
-age1 <- 0.407*2000
-age2_noc <- 0.471*2000
-age2_c <- 0.0626*2000
-age3_noc <- 0.022*2000
-age3_c <- 0.0373*2000
+    df$POutbreak[ df$class == cl & df$model == "null" ] <- p.null
+    df$POutbreak[ df$class == cl & df$model == "shield" ] <- p.shield
+}
 
-df$FracDeaths <- df$deaths
+df <- df[ df$FracDeath > 0, ]
 
-#df$FracDeaths[ df$class == "age1" ] <- 100*df$deaths[ df$class == "age1" ] / age1
-#df$FracDeaths[ df$class == "age2_no_comorbid" ] <- 100*df$deaths[ df$class == "age2_no_comorbid" ] / age2_noc
-#df$FracDeaths[ df$class == "age2_comorbid" ] <- 100*df$deaths[ df$class == "age2_comorbid" ] / age2_c
-#df$FracDeaths[ df$class == "age3_no_comorbid" ] <- 100*df$deaths[ df$class == "age3_no_comorbid" ] / age3_noc
-#df$FracDeaths[ df$class == "age3_comorbid" ] <- 100*df$deaths[ df$class == "age3_comorbid" ] / age3_c
-#
-df <- df[ df$FracDeaths > 1, ] #Cutoff simulations with very low deaths.
+df$class <- factor(df$class)
+df$class<-factor(df$class,levels(df$class)[c(1,3,2,5,4)])
+df$model <- factor(df$model)
 
-gg <- do_box_plot_mean_dot( df, "FracDeaths", "class", "Population class", "Deaths (% of the class)", c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Elderly (not comorbid)", "Elderly (comorbid)"), c("Mixed","Safety zone"), "Model", line=TRUE, nolegend=FALSE, groupvar="model")
-#gg <- do_line_plot( df, "FracDeaths", "class", "Population class", "Deaths (% of the class)", "mean",c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Elderly (not comorbid)", "Elderly (comorbid)"), c("Mixed","Safety zone"), "Model", nolegend=FALSE, groupvar="model")
-gg<-gg+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+gg.d <- do_box_plot_mean_dot( df, "FracDeath", "class", "Population class", "Deaths (% of the class)", c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Elderly (not comorbid)", "Elderly (comorbid)"), c("Mixed","Safety zone"), "Model", line=TRUE, nolegend=TRUE, groupvar="model")
+gg.p <- do_line_plot( df, "POutbreak", "class", "", "Probability of outbreak", "mean",c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Elderly (not comorbid)", "Elderly (comorbid)"), c("Mixed","Safety zone"), "Model", nolegend=FALSE, groupvar="model")
+gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+gg.p<- gg.p + theme(axis.text.x = element_blank())
 
 setwd(outPlotDir)
-pdf(file="Fig_agegroups.pdf",width=20,height=15)
-print(gg)
+pdf(file="Fig_agegroups.pdf",width=12,height=20)
+grid.arrange(gg.p,gg.d,nrow=2,ncol=1,heights=c(1,1.3))
 dev.off( )
 
-setwd("/home/ec365/workbench/req-550-Syria")
-df.null <- read.csv("data/real_models/null_model_mixed/IsolateNO_Limit0_Onset0_FateD_TcheckNO_PopSize2000_lockNO_selfNO_modSV/NumFinalDeaths_SEPAIHRD_dynamics_null_model_mixed_IsolateNO_Limit0_Onset0_FateD_TcheckNO_PopSize2000_lockNO_selfNO_modSV.dat")  
+setwd("/home/ecam/workbench/req-550-Syria")
+#df.null <- read.csv("data/real_models/null_model_mixed/IsolateNO_Limit0_Onset0_FateD_TcheckNO_PopSize2000_lockNO_selfNO_modSV/NumFinalDeaths_SEPAIHRD_dynamics_null_model_mixed_IsolateNO_Limit0_Onset0_FateD_TcheckNO_PopSize2000_lockNO_selfNO_modSV.dat")  
 
-df.shield <- read.csv("data/real_models/shield_cont2_age3/IsolateNO_Limit0_Onset0_FateD_TcheckYES_PopSize2000_lockNO_selfNO_modSV/NumFinalDeaths_SEPAIHRD_dynamics_shield_cont2_age3_IsolateNO_Limit0_Onset0_FateD_TcheckYES_PopSize2000_lockNO_selfNO_modSV.dat")   
+#df.shield <- read.csv("data/real_models/shield_cont2_age3/IsolateNO_Limit0_Onset0_FateD_TcheckYES_PopSize2000_lockNO_selfNO_modSV/NumFinalDeaths_SEPAIHRD_dynamics_shield_cont2_age3_IsolateNO_Limit0_Onset0_FateD_TcheckYES_PopSize2000_lockNO_selfNO_modSV.dat")   
 
 
-df <- data.frame(class=NA,model=NA,deaths=NA)[-1,]
 
-#df <- rbind(df, data.frame(cbind( class=rep("age1",500), model=rep("null",500),deaths=as.numeric(df.null$age1.D)) ))
-#df <- rbind(df, data.frame(cbind( class=rep("age2_no_comorbid",500), model=rep("null",500),deaths=as.numeric(df.null$age2_no_comorbid.D))))
-#df <- rbind(df, data.frame(cbind( class=rep("age2_comorbid",500), model=rep("null",500),deaths=as.numeric(df.null$age2_comorbid.D))))
-#df <- rbind(df, data.frame(cbind( class=rep("age3_no_comorbid",500), model=rep("null",500),deaths=as.numeric(df.null$age3_no_comorbid.D))))
-#df <- rbind(df, data.frame(cbind( class=rep("age3_comorbid",500), model=rep("null",500),deaths=as.numeric(df.null$age3_comorbid.D))))
-#
-df1 <- data.frame(cbind( class=rep("age1",500), model=rep("null",500),deaths=df.null$age1.D) )
-df2 <- data.frame(cbind( class=rep("age2_no_comorbid",500), model=rep("null",500),deaths=df.null$age2_no_comorbid.D))
-df3 <- data.frame(cbind( class=rep("age2_comorbid",500), model=rep("null",500),deaths=df.null$age2_comorbid.D))
-df4 <- data.frame(cbind( class=rep("age3_no_comorbid",500), model=rep("null",500),deaths=df.null$age3_no_comorbid.D))
-df5 <- data.frame(cbind( class=rep("age3_comorbid",500), model=rep("null",500),deaths=df.null$age3_comorbid.D))
-
-df1$deaths<-as.numeric(df1$deaths)
-df2$deaths<-as.numeric(df2$deaths)
-df3$deaths<-as.numeric(df3$deaths)
-df4$deaths<-as.numeric(df4$deaths)
-df5$deaths<-as.numeric(df5$deaths)
-
-df <- rbind(df1,df2,df3,df4,df5)
-
-df6 <- data.frame(cbind( class=rep("age1",500), model=rep("shield",500),deaths=df.shield$age1_orange.D))
-df7 <- data.frame(cbind( class=rep("age2_no_comorbid",500), model=rep("shield",500),deaths=df.shield$age2_no_comorbid_orange.D))
-df8 <- data.frame(cbind( class=rep("age2_comorbid",500), model=rep("shield",500),deaths=df.shield$age2_comorbid_orange.D))
-df9 <- data.frame(cbind( class=rep("age3_no_comorbid",500), model=rep("shield",500),deaths=df.shield$age3_no_comorbid_green.D))
-df10 <- data.frame(cbind( class=rep("age3_comorbid",500), model=rep("shield",500),deaths=df.shield$age3_comorbid_green.D))
-
-df6$deaths<-as.numeric(df6$deaths)
-df7$deaths<-as.numeric(df7$deaths)
-df8$deaths<-as.numeric(df8$deaths)
-df9$deaths<-as.numeric(df9$deaths)
-df10$deaths<-as.numeric(df10$deaths)
-
-df <- rbind(df1,df2,df3,df4,df5,df6,df7,df8,df9,df10)
-#
 
 setwd(currentDir) #Let's finish where we started.
