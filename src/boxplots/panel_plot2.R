@@ -39,7 +39,7 @@ baseDir <- getwd()
 codeDir <- paste(baseDir,"/src",sep="")
 dataDir <- paste(baseDir,"/data/real_models",sep="")
 outDir <- paste(baseDir,"/data/real_models/results_post_processing",sep="")
-outPlotDir <- paste(baseDir,"/data/real_models/results_post_processing/boxplots",sep="")
+outPlotDir <- paste(baseDir,"/manuscripts/main/figures/newFig",sep="")
 
 idDir="modSV" # this is a string contained in all the directories that should be processed
 fileIn=paste("extended_results_table_",idDir,".csv",sep="")
@@ -105,7 +105,7 @@ gg.FracDeath <- do_box_plot_mean_dot(df,varFracDeath,varX,"",ytitFracDeath,scale
 gg.TimePeak <- do_box_plot_mean_dot(df,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
                  theme(axis.text.x = element_text(size=axis.text.size,angle=45,hjust=1,vjust=1))
 
-pdf(file="interventions.pdf",width=30,height=30)
+pdf(file="Fig3.pdf",width=30,height=30)
 grid.arrange(gg.Poutbreak,gg.FracDeath,gg.TimePeak,nrow=3,ncol=1,heights=c(1,1,1.8))
 dev.off( )
 
