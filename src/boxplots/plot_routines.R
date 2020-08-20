@@ -11,7 +11,7 @@
 
 
 currentDir <- getwd()
-setwd("/home/ecam/workbench/req-550-Syria/src")
+setwd("/home/ec365/workbench/req-550-Syria/src")
 
 library(ggplot2)
 library(grid)
