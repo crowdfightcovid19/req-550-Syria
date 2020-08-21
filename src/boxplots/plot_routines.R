@@ -33,7 +33,7 @@ legend.text.size = 32
 
 
 
-def_color_scale <- c("T" = "#619CFF","E" = "#FFB54D","S" = "#00BA38")
+def_color_scale <- c("T" = "#619CFF","E" = "#FFB54D","S" = "#00BA38","null" = "#619CFF", "shield" = "#00BA38")
 
 #By Alberto
 extract_subtable_output_summaries = function(df.out,params.df){
@@ -86,15 +86,15 @@ do_ribbon_plot <- function(df,fn,varX,xlabel,ylabel,fymin,fymax,fun,scale_x_labe
     return(gg)
 }
 
-do_box_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE,fun="mean",addmean=FALSE){
+do_box_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE,fun="mean",addmean=FALSE,groupvar="group",fatten=NULL){
     dodge <- position_dodge(width = 0.9)
     gg <- ggplot(data=df)+
-            geom_point(position=position_jitterdodge(dodge.width=0.9),aes_string(x=varX,y=fn,colour="group",group="group"),alpha=.075)
+            geom_point(position=position_jitterdodge(dodge.width=0.9),aes_string(x=varX,y=fn,colour=groupvar,group=groupvar),alpha=.075)
 
     if(line){
-        gg <- gg + stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group="group",colour="group"),position=dodge,size=2)
+        gg <- gg + stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group=groupvar,colour=groupvar),position=dodge,size=2)
     }
-        gg <- gg + geom_boxplot(aes_string(x=varX,y=fn,fill="group"),position=dodge)+
+        gg <- gg + geom_boxplot(aes_string(x=varX,y=fn,fill=groupvar),position=dodge,fatten=NULL)+
             xlab(xlabel)+
             ylab(ylabel)+
             scale_x_discrete(labels=scale_x_labels)+
@@ -111,7 +111,7 @@ do_box_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels
                     panel.background = element_rect(fill = "white", colour = "black", linetype = "solid"))
 
     if(addmean)
-        gg <- gg + stat_summary(geom="point",fun="mean",aes_string(x=varX,y=fn,group="group"),color="black",shape=20,size=4,position=dodge)
+        gg <- gg + stat_summary(geom="point",fun="mean",aes_string(x=varX,y=fn,group=groupvar),color="black",fill="black",shape=24,size=4,position=dodge)
 
     if(nolegend)
         gg <- gg + theme(legend.position = "none")
@@ -148,11 +148,11 @@ do_vio_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels
 
 }
 
-do_line_plot<- function(df,fn,varX,xlabel,ylabel,fun,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE,alpha=.75){
+do_line_plot<- function(df,fn,varX,xlabel,ylabel,fun,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE,alpha=.75,groupvar="group"){
     dodge <- position_dodge(width = 0.3)
     gg <- ggplot(data=df)+
-            stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group="group",colour="group"),size=2,alpha=alpha,position=dodge)+
-            stat_summary(geom="point",fun=fun,aes_string(x=varX,y=fn,group="group",colour="group"),size=4,alpha=alpha,position=dodge)+
+            stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group=groupvar,colour=groupvar),size=2,alpha=alpha,position=dodge)+
+            stat_summary(geom="point",fun=fun,aes_string(x=varX,y=fn,group=groupvar,colour=groupvar),size=4,alpha=alpha,position=dodge)+
             xlab(xlabel)+
             ylab(ylabel)+
             scale_x_discrete(labels=scale_x_labels)+
@@ -194,8 +194,8 @@ do_box_plot_mean<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_l
     return(do_box_plot(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=TRUE,nolegend=nolegend,fun="mean"))
 }
 
-do_box_plot_mean_dot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE){
-    return(do_box_plot(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=TRUE,nolegend=nolegend,fun="mean",addmean=TRUE))
+do_box_plot_mean_dot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE,groupvar="group"){
+    return(do_box_plot(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=TRUE,nolegend=nolegend,fun="mean",addmean=TRUE,groupvar=groupvar))
 }
 
 

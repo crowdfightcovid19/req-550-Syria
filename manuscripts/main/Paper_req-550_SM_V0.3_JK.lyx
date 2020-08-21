@@ -636,7 +636,7 @@ the
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Standard
 
 \change_inserted 227091064 1597702170
 \begin_inset ERT
@@ -658,7 +658,7 @@ newpage
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Standard
 
 \change_deleted 227091064 1597706518
 Model parameters determining state transitions
@@ -705,6 +705,571 @@ To estimate the duration of latency we generated a random incubation time
  [Ref].
 \change_inserted 227091064 1597706608
 
+\end_layout
+
+\begin_layout Subsection*
+
+\change_inserted 227091064 1597971052
+Population structure and model parameters
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597970967
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:PopParams"
+
+\end_inset
+
+
+\series bold
+Population structured parameters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="14text%">
+<column alignment="center" valignment="middle" width="13text%">
+<column alignment="center" valignment="middle" width="13text%">
+<column alignment="center" valignment="middle" width="13text%">
+<column alignment="center" valignment="middle" width="13text%">
+<column alignment="center" valignment="middle" width="13text%">
+<column alignment="center" valignment="middle" width="13text%">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+Population class
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+Age 1 (0-12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+Age 2 (13-50), no comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+Age 2 (13-50), 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+Age 3 (>50), no comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+Age 3 (>50), 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+Reference
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+Fraction in class
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.407
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.471
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.0373
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doocy_prevalence_2016,doocy_prevalence_2015,noauthor_syrian_nodate"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+\begin_inset Formula $h_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.064
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.067
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.199
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.183
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.445
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological,covid2020preliminary"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+\begin_inset Formula $g_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.0065
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.02
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.094
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.063
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+.222
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological,covid2020preliminary"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+\begin_inset Formula $\bar{c}_{i}$
+\end_inset
+
+,
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597970967
+[From camp managers]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597970967
+In April, 2020, 40.7% of the population in informal IDP camps in Northern
+ Syria was aged 0-12, 53.4% aged 13-50, and 5.9% aged 51+.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "noauthor_syrian_nodate"
+literal "false"
+
+\end_inset
+
+ To estimate the proportion of each age group with comorbidities, we calculated
+ the weighted average age-specific comorbidity prevalence of the 4 most
+ common comorbidities in the Syrian refugee populations in Jordan and Lebanon:
+ hypertension, cardiovascular disease, diabetes, and chronic respiratory
+ disease.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doocy_prevalence_2015,doocy_prevalence_2016"
+literal "false"
+
+\end_inset
+
+ We standardized these weighted averages to the age structure of IDPs in
+ Northern Syria and estimated that 11.7% of people aged 13-50 have comorbidities,
+ while 62.9% of people aged 51+ have comorbidities.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1597970967
+We estimated the fractions of symptomatic cases in children aged <13 that
+ would become severe and critical from the fractions of symptomatic cases
+ in children aged <11 that were severe and critical in China.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological"
+literal "false"
+
+\end_inset
+
+ We estimated the class-specific fractions of symptomatic cases in adults
+ that would become severe and critical using the age and comorbidity-specific
+ fractions of symptomatic cases with known outcomes that required hospitalizatio
+n, without and with ICU admission, respectively in the US.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covid2020preliminary"
+literal "false"
+
+\end_inset
+
+To account for poorer health among Syrian adults compared to their similarly
+ aged peers in developed countries, estimates for US adults aged 19-64 were
+ used for Syrian adults aged 13-50, while estimates for US adults aged 65+
+ were used for Syrian adults aged 51+.
 \end_layout
 
 \begin_layout Standard
@@ -1378,7 +1943,11 @@ Time
 \change_inserted 227091064 1597711637
 requiring 
 \change_unchanged
-hospitalization to recovery 
+hospitalization to recovery
+\change_inserted 227091064 1597957401
+/death
+\change_unchanged
+ 
 \change_inserted 227091064 1597707247
 (d
 \change_deleted 227091064 1597707245
@@ -1786,6 +2355,8 @@ Parameters used in this work
 \end_inset
 
 
+\change_inserted 227091064 1597970960
+
 \end_layout
 
 \begin_layout Standard
@@ -1882,629 +2453,6 @@ Population-structured parameters
 [Please add description and tables]
 \change_inserted 227091064 1597718243
 
-\end_layout
-
-\begin_layout Subsection*
-
-\change_inserted 227091064 1597711789
-Population structure
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 227091064 1597713702
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712656
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713373
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:PopParams"
-
-\end_inset
-
-
-\series bold
-Population structured parameters.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712665
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="7">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="middle" width="14text%">
-<column alignment="center" valignment="middle" width="13text%">
-<column alignment="center" valignment="middle" width="13text%">
-<column alignment="center" valignment="middle" width="13text%">
-<column alignment="center" valignment="middle" width="13text%">
-<column alignment="center" valignment="middle" width="13text%">
-<column alignment="center" valignment="middle" width="13text%">
-<row>
-<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712698
-Population class
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712705
-Age 1 (0-12)
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712715
-Age 2 (13-50), no comorbidities
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712730
-Age 2 (13-50), 
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712720
-comorbidities
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712733
-Age 3 (>50), no comorbidities
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712737
-Age 3 (>50), 
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712722
-comorbidities
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712754
-Reference
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712836
-Fraction in class
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712848
-.407
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712850
-.471
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712852
-.0626
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712854
-.022
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597712863
-.0373
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713314
-\begin_inset CommandInset citation
-LatexCommand cite
-key "doocy_prevalence_2016,doocy_prevalence_2015,noauthor_syrian_nodate"
-literal "false"
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713468
-\begin_inset Formula $h_{i}$
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713508
-.064
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713513
-.067
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713516
-.199
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713519
-.183
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713524
-.445
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713609
-\begin_inset CommandInset citation
-LatexCommand cite
-key "dong2020epidemiological,covid2020preliminary"
-literal "false"
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713485
-\begin_inset Formula $g_{i}$
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713549
-.0065
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713566
-.02
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713568
-.094
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713571
-.063
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713572
-.222
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597713610
-\begin_inset CommandInset citation
-LatexCommand cite
-key "dong2020epidemiological,covid2020preliminary"
-literal "false"
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597863367
-\begin_inset Formula $\bar{c}_{i}$
-\end_inset
-
-,
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597863385
-25
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597863386
-15
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597863387
-15
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597863388
-10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597863389
-10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 227091064 1597863459
-[From camp managers]
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 227091064 1597716124
-In April, 2020, 40.7% of the population in informal IDP camps in Northern
- Syria was aged 0-12, 53.4% aged 13-50, and 5.9% aged 51+.
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "noauthor_syrian_nodate"
-literal "false"
-
-\end_inset
-
- To estimate the proportion of each age group with comorbidities, we calculated
- the weighted average age-specific comorbidity prevalence of the 4 most
- common comorbidities in the Syrian refugee populations in Jordan and Lebanon:
- hypertension, cardiovascular disease, diabetes, and chronic respiratory
- disease.
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "doocy_prevalence_2015,doocy_prevalence_2016"
-literal "false"
-
-\end_inset
-
- We standardized these weighted averages to the age structure of IDPs in
- Northern Syria and estimated that 11.7% of people aged 13-50 have comorbidities,
- while 62.9% of people aged 51+ have comorbidities.
- 
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 227091064 1597717049
-We estimated the fractions of symptomatic cases in children aged <13 that
- would become severe and critical from the fractions of symptomatic cases
- in children aged <11 that were severe and critical in China.
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "dong2020epidemiological"
-literal "false"
-
-\end_inset
-
- We estimated the class-specific fractions of symptomatic cases in adults
- that would become severe and critical using the age and comorbidity-specific
- fractions of symptomatic cases with known outcomes that required hospitalizatio
-n, without and with ICU admission, respectively in the US.
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "covid2020preliminary"
-literal "false"
-
-\end_inset
-
-To account for poorer health among Syrian adults compared to their similarly
- aged peers in developed countries, estimates for US adults aged 19-64 were
- used for Syrian adults aged 13-50, while estimates for US adults aged 65+
- were used for Syrian adults aged 51+.
 \end_layout
 
 \begin_layout Standard
@@ -4309,7 +4257,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/newFig/FigS2.pdf
 	width 31text%
 
 \end_inset
@@ -4319,6 +4267,8 @@ status open
 \length 2mm
 \end_inset
 
+
+\change_deleted 227091064 1597954857
 
 \begin_inset Graphics
 	filename figures/FigS1b.pdf
@@ -4338,6 +4288,8 @@ status open
 
 \end_inset
 
+
+\change_unchanged
 
 \begin_inset Caption Standard
 
@@ -4386,7 +4338,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/newFig/FigS3.pdf
 	width 31text%
 
 \end_inset
@@ -4397,12 +4349,16 @@ status open
 \end_inset
 
 
+\change_deleted 227091064 1597954879
+
 \begin_inset Graphics
 	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
 
+
+\change_unchanged
 
 \begin_inset Caption Standard
 
@@ -4447,7 +4403,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/newFig/FigS4.pdf
 	width 31text%
 
 \end_inset
@@ -4458,12 +4414,16 @@ status open
 \end_inset
 
 
+\change_deleted 227091064 1597955145
+
 \begin_inset Graphics
 	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
 
+
+\change_unchanged
 
 \begin_inset Caption Standard
 
@@ -4509,7 +4469,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/newFig/FigS5.pdf
 	width 31text%
 
 \end_inset
@@ -4519,6 +4479,8 @@ status open
 \length 2mm
 \end_inset
 
+
+\change_deleted 227091064 1597955276
 
 \begin_inset Graphics
 	filename figures/FigS1b.pdf
@@ -4538,6 +4500,8 @@ status open
 
 \end_inset
 
+
+\change_unchanged
 
 \begin_inset Caption Standard
 
@@ -4584,7 +4548,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/newFig/FigS6.pdf
 	width 31text%
 
 \end_inset
@@ -4594,6 +4558,8 @@ status open
 \length 2mm
 \end_inset
 
+
+\change_deleted 227091064 1597955299
 
 \begin_inset Graphics
 	filename figures/FigS1b.pdf
@@ -4613,6 +4579,8 @@ status open
 
 \end_inset
 
+
+\change_unchanged
 
 \begin_inset Caption Standard
 
@@ -4659,7 +4627,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/newFig/FigS7.pdf
 	width 31text%
 
 \end_inset
@@ -4669,6 +4637,8 @@ status open
 \length 2mm
 \end_inset
 
+
+\change_deleted 227091064 1597955406
 
 \begin_inset Graphics
 	filename figures/FigS1b.pdf
@@ -4688,6 +4658,8 @@ status open
 
 \end_inset
 
+
+\change_unchanged
 
 \begin_inset Caption Standard
 
@@ -4720,6 +4692,54 @@ Health-checks in the buffering zone.
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 227091064 1597962745
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 227091064 1597962745
+\begin_inset Graphics
+	filename figures/newFig/Fig_agegroups.pdf
+	width 31text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+]
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1597962745
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:agegroups"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \begin_inset VSpace defskip
 \end_inset
 
@@ -4736,7 +4756,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/newFig/FigS8.pdf
 	width 31text%
 
 \end_inset
@@ -4747,12 +4767,18 @@ status open
 \end_inset
 
 
+\change_inserted 227091064 1597955509
+]
+\change_deleted 227091064 1597955509
+
 \begin_inset Graphics
 	filename figures/FigS1b.pdf
 	width 31text%
 
 \end_inset
 
+
+\change_unchanged
 
 \begin_inset Caption Standard
 
@@ -4793,12 +4819,12 @@ Number of contacts in the buffering zone.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/newFig/FigS9.pdf
 	width 31text%
 
 \end_inset
@@ -4808,6 +4834,8 @@ status collapsed
 \length 2mm
 \end_inset
 
+
+\change_deleted 227091064 1597955543
 
 \begin_inset Graphics
 	filename figures/FigS1b.pdf
@@ -4861,6 +4889,8 @@ status open
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -4904,12 +4934,12 @@ ft) and fraction of recovered individuals (bottom-right), as a function
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/newFig/FigS10.pdf
 	width 31text%
 
 \end_inset
@@ -4919,6 +4949,8 @@ status collapsed
 \length 2mm
 \end_inset
 
+
+\change_deleted 227091064 1597955582
 
 \begin_inset Graphics
 	filename figures/FigS1b.pdf
@@ -4972,6 +5004,8 @@ status open
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -5023,7 +5057,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/FigS1a.pdf
+	filename figures/newFig/FigS11.pdf
 	width 31text%
 
 \end_inset
@@ -5033,6 +5067,8 @@ status open
 \length 2mm
 \end_inset
 
+
+\change_deleted 227091064 1597955595
 
 \begin_inset Graphics
 	filename figures/FigS1b.pdf
@@ -5086,6 +5122,8 @@ status open
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 

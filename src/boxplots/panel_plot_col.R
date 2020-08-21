@@ -14,12 +14,12 @@ currentDir <- getwd()
 
 source("plot_routines.R")
 
-setwd("/home/ecam/workbench/req-550-Syria")
+setwd("/home/ec365/workbench/req-550-Syria")
 
 #ptitle <- c("boxplot","boxmean","boxmedian","vio","viomean","viomedian","ribbonsd","ribbonmedian","ribbonse")
 #fplot.list <- c(do_box_plot,do_box_plot_mean,do_box_plot_median,do_vio_plot,do_vio_plot_mean,do_vio_plot_median,do_ribbon_sd,do_ribbon_quartile,do_ribbon_se)
 
-ptitle <- c("boxmeandot")
+ptitle <- c("Fig2")
 fplot.list <- c(do_box_plot_mean_dot)
 
 
@@ -39,7 +39,7 @@ baseDir <- getwd()
 codeDir <- paste(baseDir,"/src",sep="")
 dataDir <- paste(baseDir,"/data/real_models",sep="")
 outDir <- paste(baseDir,"/data/real_models/results_post_processing",sep="")
-outPlotDir <- paste(baseDir,"/data/real_models/results_post_processing/boxplots",sep="")
+outPlotDir <- paste(baseDir,"/manuscripts/main/figures/newFig",sep="")
 
 idDir="modSV" # this is a string contained in all the directories that should be processed
 fileIn=paste("extended_results_table_",idDir,".csv",sep="")
@@ -128,7 +128,7 @@ for(i in 1:length(ptitle)){
 
     #pdf(file=paste(title,".pdf",sep=""),width=27,height = 21)
     #grid.arrange(gg.Poutbreak.shield,gg.FracDeath.shield,gg.TimePeak.shield,gg.Poutbreak.iso,gg.FracDeath.iso,gg.TimePeak.iso,gg.Poutbreak.self,gg.FracDeath.self,gg.TimePeak.self,nrow=3,ncol=3)
-    pdf(file=paste(title,"_col.pdf",sep=""),width=32,height = 25)
+    pdf(file=paste(title,".pdf",sep=""),width=32,height = 25)
     #grid.arrange(gg.Poutbreak.shield,gg.Poutbreak.iso,gg.Poutbreak.self,gg.FracDeath.shield,gg.FracDeath.iso,gg.FracDeath.self,gg.TimePeak.shield,gg.TimePeak.iso,gg.TimePeak.self,nrow=3,ncol=3)
     grid.arrange(arrangeGrob(gg.Poutbreak.self,top=textGrob("Self-distancing",gp=gpar(fontsize=title.size))),arrangeGrob(gg.Poutbreak.iso,top=textGrob("Isolation",gp=gpar(fontsize=title.size))),arrangeGrob(gg.Poutbreak.shield,top=textGrob("Safety zone",gp=gpar(fontsize=title.size))),gg.FracDeath.self,gg.FracDeath.iso,gg.FracDeath.shield,gg.TimePeak.self,gg.TimePeak.iso,gg.TimePeak.shield,nrow=3,ncol=3)
     dev.off( )
