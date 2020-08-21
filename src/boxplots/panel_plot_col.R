@@ -14,7 +14,7 @@ currentDir <- getwd()
 
 source("plot_routines.R")
 
-setwd("/home/ec365/workbench/req-550-Syria")
+setwd("/home/ecam/workbench/req-550-Syria")
 
 #ptitle <- c("boxplot","boxmean","boxmedian","vio","viomean","viomedian","ribbonsd","ribbonmedian","ribbonse")
 #fplot.list <- c(do_box_plot,do_box_plot_mean,do_box_plot_median,do_vio_plot,do_vio_plot_mean,do_vio_plot_median,do_ribbon_sd,do_ribbon_quartile,do_ribbon_se)
@@ -24,7 +24,7 @@ fplot.list <- c(do_box_plot_mean_dot)
 
 
 
-title.size = 35
+title.size = 18 
 
 varPoutbreak <- "POutbreak"
 varFracDeath <- "FracFinalDeaths"
@@ -91,7 +91,9 @@ for(i in 1:length(ptitle)){
     gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-
+    gg.Poutbreak.shield <- gg.Poutbreak.shield+annotate('text',label="G",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
+    gg.FracDeath.shield <- gg.FracDeath.shield+annotate('text',label="H",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
+    gg.TimePeak.shield <- gg.TimePeak.shield+annotate('text',label="I",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
 
     #Isolation
     varX="Limit"
@@ -107,6 +109,10 @@ for(i in 1:length(ptitle)){
     gg.Poutbreak.iso <- do_line_plot(df.iso,varPoutbreak,varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.FracDeath.iso <- fplot(df.iso,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.TimePeak.iso <- fplot(df.iso,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+    gg.Poutbreak.iso<- gg.Poutbreak.iso+annotate('text',label="D",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
+    gg.FracDeath.iso<- gg.FracDeath.iso+annotate('text',label="E",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
+    gg.TimePeak.iso<- gg.TimePeak.iso+annotate('text',label="F",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
 
 
 
@@ -124,6 +130,10 @@ for(i in 1:length(ptitle)){
     gg.Poutbreak.self <- do_line_plot(df.self,varPoutbreak,varX,"",ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,"",ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+    gg.Poutbreak.self<- gg.Poutbreak.self+annotate('text',label="A",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
+    gg.FracDeath.self<- gg.FracDeath.self+annotate('text',label="B",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
+    gg.TimePeak.self<- gg.TimePeak.self+annotate('text',label="C",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
 
 
     #pdf(file=paste(title,".pdf",sep=""),width=27,height = 21)
