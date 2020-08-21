@@ -48,7 +48,6 @@ df.all <- read.csv(paste(outDir,"/",fileIn,sep=""))
 
 #intervention=as.factor(seq(from=1,to=dim(df)[1],by=1))
 #intervention.label=c("none","self 20%","isol 10","self 20% + isol 10", "shield","shield + self 20%","shield + lock 50%","shield + isol 10", "shield + self 20% + isol 10", "shield + self 20% + isol 10 + lock 50")
-intervention.label <- params.df$scale_label
 
 
 extract_subtable_output_summariesK = function(df.out,params.df){
@@ -86,6 +85,7 @@ setwd(codeDir)
 params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_K.csv",sep=""),header = TRUE, sep=",")
 df <- extract_subtable_output_summariesK(df.all,params.df)
 
+intervention.label <- params.df$scale_label
 df$group<-factor(df$group,levels(df$group)[c(3,1,2)])
 df$intervention<-factor(df$intervention,intervention.label)
 
