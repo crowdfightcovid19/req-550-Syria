@@ -203,7 +203,7 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot(df.tcheck,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 17)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
 dev.off( )
 
@@ -247,7 +247,7 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 20)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
 dev.off( )
 
@@ -315,7 +315,7 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 18)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
 dev.off( )
 
@@ -359,7 +359,7 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 17)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
 dev.off( )
 
