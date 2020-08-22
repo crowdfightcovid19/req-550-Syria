@@ -130,7 +130,7 @@ setwd(outPlotDir)
 outFile = "FigS11"
 varX = "lock"
 varY = "FracFinalRecovered"
-xlabel = "Reduction of number of contacts buffering zone (%)"
+xlabel = "Reduction of number of contacts buffer zone (%)"
 ylabel = "Fraction of population recovered"
 scale_x_labels <- c("0","50","90","99")
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
