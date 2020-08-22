@@ -137,13 +137,13 @@ scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
 
 gg.e <- do_box_plot_mean_dot(df.lock,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.e <-gg.e +ylim(0.5,1.0)
+##gg.e <-gg.e +ylim(0.5,1.0)
 
 varY = "CFR"
 ylabel = "Case Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df.lock,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.d <-gg.d +ylim(0.0,0.25)
+#gg.d <-gg.d +ylim(0.0,0.25)
 
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
@@ -176,14 +176,14 @@ group_name = "Group"
 
 gg.e <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
-gg.e<- gg.e + ylim(0.5,1.0)
+#gg.e<- gg.e + ylim(0.5,1.0)
 
 varY = "CFR"
 ylabel = "Case Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
-gg.d<- gg.d + ylim(0.0,0.35)
+#gg.d<- gg.d + ylim(0.0,0.35)
 
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
@@ -214,20 +214,20 @@ varX = "contacts"
 varY = "FracFinalRecovered"
 xlabel = "Population classes in safety zone"
 ylabel = "Fraction of population recovered"
-scale_x_labels <- c("Elderly","Elder. + adult w. comorb.","Elder. + adults + kids (< 20%)","Elder. + adults + kids (< 25%)","Elder. + adults + kids (< 30%)")
+scale_x_labels <- c("Older","Older + adult w. comorb.","Older + adults + kids (< 20%)","Older + adults + kids (< 25%)","Older + adults + kids (< 30%)")
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
 
 gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
-gg.e<- gg.e + ylim(0.25,1.0)
+#gg.e<- gg.e + ylim(0.25,1.0)
 
 varY = "CFR"
 ylabel = "Case Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
-gg.d<- gg.d + ylim(0.0,0.75)
+#gg.d<- gg.d + ylim(0.0,0.75)
 
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
@@ -244,7 +244,7 @@ gg.b<-gg.b+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 varY = "POutbreak"
 ylabel = "Probability of Outbreak"
 
-gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"identity",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 20)
@@ -263,13 +263,13 @@ scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
 
 gg.b <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
-gg.b <- gg.b + ylim(0.5,1.0)
+#gg.b <- gg.b + ylim(0.5,1.0)
 
 varY = "CFR"
 ylabel = "Case Fatality Rate"
 
 gg.a <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.a <- gg.a + ylim(0.0,0.40)
+#gg.a <- gg.a + ylim(0.0,0.40)
 
 pdf(file=paste(outFile,".pdf",sep=""),width=20,height = 10)
 grid.arrange(gg.a,gg.b,ncol=2,nrow=1,widths=c(1,1.35))
@@ -288,14 +288,14 @@ group_name = "Group"
 
 gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
-gg.e<- gg.e + ylim(0.5,1.0)
+#gg.e<- gg.e + ylim(0.5,1.0)
 
 varY = "CFR"
 ylabel = "Case Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
-gg.d<- gg.d + ylim(0.0,0.4)
+#gg.d<- gg.d + ylim(0.0,0.4)
 
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
@@ -327,19 +327,23 @@ varY = "FracFinalRecovered"
 xlabel = "Model / Evacuation"
 ylabel = "Fraction of population recovered"
 scale_x_labels <- c("null / NO","null / YES", "safety 2 / NO", "safety 2 / YES") 
+#scale_x_labels <- c("NO","YES") 
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
 
+#df <- subset(df,group=="T")
+#df <- subset(df,contacts=="null_model_mixed")
+
 gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
-gg.e<- gg.e + ylim(0.5,1.0)
+#gg.e<- gg.e + ylim(0.5,1.0)
 
 varY = "CFR"
 ylabel = "Case Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
-gg.d<- gg.d + ylim(0.0,0.4)
+#gg.d<- gg.d + ylim(0.0,0.4)
 
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
@@ -356,7 +360,7 @@ gg.b<-gg.b+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 varY = "POutbreak"
 ylabel = "Probability of Outbreak"
 
-gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 17)
@@ -375,13 +379,13 @@ scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
 
 gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.e<- gg.e + ylim(0.75,1.0)
+#gg.e<- gg.e + ylim(0.75,1.0)
 
 varY = "CFR"
 ylabel = "Case Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.d<- gg.d + ylim(0.0,0.25)
+#gg.d<- gg.d + ylim(0.0,0.25)
 
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
@@ -414,16 +418,17 @@ scale_fill_labels <- c("Total")
 group_name = "Group"
 
 gg.b <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.b <- gg.b + ylim(0.75,1.0)
+#gg.b <- gg.b + ylim(0.75,1.0)
 
 varY = "CFR"
 ylabel = "Case Fatality Rate"
 
 gg.a <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.a <- gg.a + ylim(0.0,0.20)
+#gg.a <- gg.a + ylim(0.0,0.20)
 
 pdf(file=paste(outFile,".pdf",sep=""),width=20,height = 10)
-grid.arrange(gg.a,gg.b,ncol=2,nrow=1,widths=c(1,1.35))
+#grid.arrange(gg.a,gg.b,ncol=2,nrow=1,widths=c(1,1.35))
+grid.arrange(gg.a,gg.b,ncol=2,nrow=1)
 dev.off( )
 
 
@@ -439,16 +444,17 @@ scale_fill_labels <- c("Total")
 group_name = "Group"
 
 gg.b <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.b <- gg.b + ylim(0.5,1.0)
+#gg.b <- gg.b + ylim(0.5,1.0)
 
 varY = "CFR"
 ylabel = "Case Fatality Rate"
 
 gg.a <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.a <- gg.a + ylim(0.0,0.25)
+#gg.a <- gg.a + ylim(0.0,0.25)
 
 pdf(file=paste(outFile,".pdf",sep=""),width=20,height = 10)
-grid.arrange(gg.a,gg.b,ncol=2,nrow=1,widths=c(1,1.35))
+#grid.arrange(gg.a,gg.b,ncol=2,nrow=1,widths=c(1,1.35))
+grid.arrange(gg.a,gg.b,ncol=2,nrow=1)
 dev.off( )
 
 #Fate
@@ -463,13 +469,13 @@ scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
 
 gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.e <- gg.e + ylim(0.75,1.0)
+#gg.e <- gg.e + ylim(0.75,1.0)
 
 varY = "CFR"
 ylabel = "Case Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-gg.d <- gg.d + ylim(0.0,0.20)
+#gg.d <- gg.d + ylim(0.0,0.20)
 
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
