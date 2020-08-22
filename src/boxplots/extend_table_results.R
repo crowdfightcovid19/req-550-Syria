@@ -16,7 +16,7 @@ library(stringr)
 
 
 currentDir <- getwd()
-setwd("/home/ec365/workbench/req-550-Syria/src")
+setwd("/home/ecam/workbench/req-550-Syria/src")
 
 #Directories
 setwd("..")
@@ -61,7 +61,7 @@ get_relative_sizes <- function(PopStructure,PopSize){
   return(PopSize.sub)
 }
 
-df.Summary <- read.csv("/home/ec365/workbench/req-550-Syria/data/real_models/results_post_processing/Summary_interventions_modSV.csv")
+df.Summary <- read.csv("/home/ecam/workbench/req-550-Syria/data/real_models/results_post_processing/Summary_interventions_modSV.csv")
 
 #Going to do a for loop, this should not run often. Terribly slow.
 popSize.col <- c()
@@ -71,7 +71,7 @@ for(i in 1:length(df.results$group)){
     PopSize.T=as.numeric(str.PopSize)
     poplist = get_relative_sizes(df.results$contacts[i],PopSize.T)
 
-    df.aux <- subset(df.Summary, contacts == df.results$contacts[i] & Isolate == df.results$Isolate[i] &  Limit == df.results$Limit[i] &  Onset == df.results$Onset[i] & Fate == df.results$Fate[i] & Tcheck == df.results$Tcheck[i] & lock == df.results$lock[i] & self == df.results$self[i] & mod==df.results$mod[i])
+    df.aux <- subset(df.Summary, contacts == df.results$contacts[i] & Isolate == df.results$Isolate[i] &  Limit == df.results$Limit[i] &  Onset == df.results$Onset[i] & Fate == df.results$Fate[i] & Tcheck == df.results$Tcheck[i] & lock == df.results$lock[i] & self == df.results$self[i] & mod==df.results$mod[i] & PopSize == df.results$PopSize[i])
 
     g <- df.results$group[i]
 

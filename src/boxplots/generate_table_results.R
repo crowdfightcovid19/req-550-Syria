@@ -10,7 +10,7 @@
 #usage = Run from src/
 
 currentDir <- getwd()
-setwd("/home/ec365/workbench/req-550-Syria/src")
+setwd("/home/ecam/workbench/req-550-Syria/src")
 
 library(rlang)
 library(dplyr)
