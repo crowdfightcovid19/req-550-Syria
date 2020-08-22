@@ -105,8 +105,24 @@ gg.FracDeath <- do_box_plot_mean_dot(df,varFracDeath,varX,"",ytitFracDeath,scale
 gg.TimePeak <- do_box_plot_mean_dot(df,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
                  theme(axis.text.x = element_text(size=axis.text.size,angle=45,hjust=1,vjust=1))
 
-pdf(file="Fig3.pdf",width=30,height=30)
-grid.arrange(gg.Poutbreak,gg.FracDeath,gg.TimePeak,nrow=3,ncol=1,heights=c(1,1,1.8))
+#pdf(file="Fig3.pdf",width=30,height=30)
+#grid.arrange(gg.Poutbreak,gg.FracDeath,gg.TimePeak,nrow=3,ncol=1,heights=c(1,1,1.8))
+#dev.off( )
+
+gg.b <- do_box_plot_mean_dot(df,"FracFinalRecovered",varX,"","Fraction of the population recoreved",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
+                 theme(axis.text.x = element_text(size=axis.text.size,angle=45,hjust=1,vjust=1))
+gg.a <- do_box_plot_mean_dot(df,"CFR",varX,"","Case Fatality Rate",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
+        theme(axis.text.x= element_blank() )+
+        theme(  legend.position = "top",
+                    legend.text = element_text(size=legend.text.size),
+                    legend.title = element_blank())
+
+
+
+pdf(file="Fig_Sinterventions.pdf",width=30,height=30)
+grid.arrange(gg.a,gg.b,nrow=2,ncol=1,heights=c(1,1.5))
 dev.off( )
+
+
 
 setwd(currentDir) #Let's finish where we started.
