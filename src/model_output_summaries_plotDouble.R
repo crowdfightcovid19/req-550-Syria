@@ -113,6 +113,8 @@ model_output_summaries_plotDouble = function(df.output,experiment,dirCode,dirPlo
     ylabel=as.character(df.vars$ylabel)
     # ... set the output file
     filePlotOut=paste(varX.out,"Vs",varY0.char,"_byClass.pdf",sep="")
+    #filePlotOut=paste(varX.out,"Vs",varY0.char,"_byClass_unlabelled.pdf",sep="")
+    
     # ... prepare the main plot
     gg=ggplot(data = df.sub) +  # assign columns to axes and groups
       geom_point(aes(x = varX, y = varY0, colour="total"),size=2)+
