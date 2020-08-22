@@ -194,8 +194,8 @@ do_box_plot_mean<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_l
     return(do_box_plot(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=TRUE,nolegend=nolegend,fun="mean"))
 }
 
-do_box_plot_mean_dot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE,groupvar="group"){
-    return(do_box_plot(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=TRUE,nolegend=nolegend,fun="mean",addmean=TRUE,groupvar=groupvar))
+do_box_plot_mean_dot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=TRUE,nolegend=FALSE,groupvar="group"){
+    return(do_box_plot(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=line,nolegend=nolegend,fun="mean",addmean=TRUE,groupvar=groupvar))
 }
 
 
