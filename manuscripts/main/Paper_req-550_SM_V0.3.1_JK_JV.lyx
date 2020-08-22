@@ -2296,12 +2296,10 @@ the infectivity in the
 probability of infection from contact in
 \change_unchanged
  
-\change_deleted 277985569 1598090228
+\change_deleted 277985569 1598105452
+buffering
+\change_inserted 277985569 1598105452
 buffer
-\change_inserted 277985569 1598090228
-buffer
-\change_inserted 227091064 1598068790
-ing
 \change_deleted 227091064 1597707889
 ing
 \change_unchanged
@@ -4042,12 +4040,10 @@ nteract via a
 \end_inset
 
 
-\change_deleted 277985569 1598090229
+\change_deleted 277985569 1598105454
+buffering
+\change_inserted 277985569 1598105454
 buffer
-\change_inserted 277985569 1598090229
-buffer
-\change_unchanged
-ing
 \change_deleted 227091064 1598074888
 
 \begin_inset Quotes erd
@@ -4065,12 +4061,12 @@ In particular, we considered that individuals entering in this zone will
  [Ref]
 \change_inserted 227091064 1598074973
 Based on our assumption that infectivity in the 
-\change_deleted 277985569 1598090229
-buffer
-\change_inserted 277985569 1598090229
+\change_deleted 277985569 1598105461
+buffering
+\change_inserted 277985569 1598105461
 buffer
 \change_inserted 227091064 1598074973
-ing zone is reduced by 80%
+ zone is reduced by 80%
 \change_unchanged
 , 
 \change_deleted 227091064 1598074976
@@ -4131,7 +4127,12 @@ Finally, i
 \change_inserted 227091064 1598075096
 I
 \change_unchanged
-n some interventions we considered that individuals visiting the buffering
+n some interventions we considered that individuals visiting the 
+\change_deleted 277985569 1598105465
+buffering
+\change_inserted 277985569 1598105465
+buffer
+\change_unchanged
  zone will have a health check (e.g.
  temperature measurement), aimed at excluding symptomatic 
 \change_deleted 227091064 1598075118
@@ -4256,7 +4257,13 @@ susceptible of visiting
 \change_inserted 227091064 1598075581
 that visits
 \change_unchanged
- the buffering zone.
+ the 
+\change_deleted 277985569 1598105468
+buffering
+\change_inserted 277985569 1598105468
+buffer
+\change_unchanged
+ zone.
  We define 
 \begin_inset Formula $\rho$
 \end_inset
@@ -4285,7 +4292,13 @@ If
 it should be considered that
 \change_unchanged
  this function saturates, because every member of the orange zone would
- eventually visits the buffering zone:
+ eventually visits the 
+\change_deleted 277985569 1598105471
+buffering
+\change_inserted 277985569 1598105471
+buffer
+\change_unchanged
+ zone:
 \end_layout
 
 \begin_layout Plain Layout
@@ -4675,8 +4688,13 @@ increases
 \change_deleted 227091064 1598076915
 is regulated following the guidelines introduced for a safety zone, 
 \change_inserted 227091064 1598076973
-will be regulated through a buffering zone, so infectivity is reduced by
- 80%
+will be regulated through a 
+\change_deleted 277985569 1598105474
+buffering
+\change_inserted 277985569 1598105474
+buffer
+\change_inserted 227091064 1598076973
+ zone, so infectivity is reduced by 80%
 \change_deleted 227091064 1598076996
 and the infectivity becomes thus reduced by a factor
 \change_inserted 227091064 1598076999
@@ -5440,7 +5458,13 @@ name "fig:Suppl_Tcheck"
 
  
 \series bold
-Health-checks in the buffering zone.
+Health-checks in the 
+\change_deleted 277985569 1598105355
+buffering
+\change_inserted 277985569 1598105355
+buffer
+\change_unchanged
+ zone.
 
 \series default
  
@@ -5459,7 +5483,13 @@ Probability of an outbreak (top left), fraction of the population dying
 to avoid that symptomatic individuals access to the buffering zone separating
  the orange and green zones.
 \change_inserted 227091064 1598078851
-in the buffering zone with 10 and with 2 contacts per week.
+in the 
+\change_deleted 277985569 1598105358
+buffering
+\change_inserted 277985569 1598105358
+buffer
+\change_inserted 227091064 1598078851
+ zone with 10 and with 2 contacts per week.
 \change_unchanged
 
 \end_layout
@@ -5582,7 +5612,13 @@ name "fig:Suppl_safety"
 
  
 \series bold
-Number of contacts in the buffering zone.
+Number of contacts in the 
+\change_deleted 277985569 1598105361
+buffering
+\change_inserted 277985569 1598105361
+buffer
+\change_unchanged
+ zone.
 
 \series default
  
@@ -5593,7 +5629,13 @@ CFR (left), and fraction of the population that recovers (right)
 \change_unchanged
  as a function of the number of contacts
 \change_inserted 227091064 1598079370
- per individual in the buffering zone
+ per individual in the 
+\change_deleted 277985569 1598105362
+buffering
+\change_inserted 277985569 1598105362
+buffer
+\change_inserted 227091064 1598079370
+ zone
 \change_deleted 227091064 1598079362
  
 \change_inserted 227091064 1598080819
@@ -6010,7 +6052,13 @@ Probability of an outbreak (top left), fraction of the population dying
  left), and fraction of the population that recovers (bottom middle)
 \change_unchanged
  as a function of the reduction in the number of contacts permitted in the
- buffering zone
+ 
+\change_deleted 277985569 1598105365
+buffering
+\change_inserted 277985569 1598105365
+buffer
+\change_unchanged
+ zone
 \change_inserted 227091064 1598079850
  from a baseline of 2 per week
 \change_unchanged
@@ -6189,14 +6237,35 @@ Maximum number of family members permitted
 
 \begin_layout Plain Layout
 [APG, the following should be reviewed, it is unfinished] We considered
- until now that people from the orange area visiting the buffering zone
- will be always different within the same week.
+ until now that people from the orange area visiting the 
+\change_deleted 277985569 1598105371
+buffering
+\change_inserted 277985569 1598105371
+buffer
+\change_unchanged
+ zone will be always different within the same week.
  An interesting question for management is how to keep the fraction of the
- orange population using the buffering zone as small as possible to minimize
- the spread of the infection.
+ orange population using the 
+\change_deleted 277985569 1598105441
+buffering
+\change_inserted 277985569 1598105441
+buffer
+\change_unchanged
+ zone as small as possible to minimize the spread of the infection.
  This relies on the assumption that, since symptomatic members are excluded
- from the buffering zone, increasing this fraction increases the chances
- for assymptomatic or presymptomatic individuals to visit the buffering
+ from the 
+\change_deleted 277985569 1598105443
+buffering
+\change_inserted 277985569 1598105443
+buffer
+\change_unchanged
+ zone, increasing this fraction increases the chances for assymptomatic
+ or presymptomatic individuals to visit the 
+\change_deleted 277985569 1598105444
+buffering
+\change_inserted 277985569 1598105444
+buffer
+\change_unchanged
  zone.
  As we will see immediately, this observation could be used to improve the
  management strategies.
@@ -6262,7 +6331,13 @@ In the previous section, we considered that the family members visiting
  even if the strategy may be better to minimize the overall impact in the
  population.
  On the other hand, if clans are split, it increases the chances that the
- same relatives visit the buffering zone several times.
+ same relatives visit the 
+\change_deleted 277985569 1598105445
+buffering
+\change_inserted 277985569 1598105445
+buffer
+\change_unchanged
+ zone several times.
  Under the assumption that minimizing the number of different people would
  reduce the probability of infection, this could also be a positive strategy.
 \end_layout
