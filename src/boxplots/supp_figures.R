@@ -332,7 +332,7 @@ scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
 
 #df <- subset(df,group=="T")
-#df <- subset(df,contacts=="null_model_mixed")
+df <- subset(df,contacts=="null_model_mixed")
 
 gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
