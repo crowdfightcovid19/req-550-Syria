@@ -19,11 +19,11 @@
 
 ## Contents
 
-* Abstract
+* Abstract APG
 * Authors
 * Afiliations
-* Acknowledgements
-* Conflicts of interests
+* Acknowledgements APG
+* Conflicts of interests APG
 * Ethical
 * REf R and URL repo
 
