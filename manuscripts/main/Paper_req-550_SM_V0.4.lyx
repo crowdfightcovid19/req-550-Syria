@@ -162,11 +162,147 @@ status open
 \end_layout
 
 \begin_layout Author
-Authors names TBA
+Alberto Pascual-García
+\begin_inset Formula $^{(1,*)}$
+\end_inset
+
+, Jordan Klein
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+, Jennifer Villers
+\begin_inset Formula $^{(2,\land)}$
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Eduard Campillo-Funollet
+\begin_inset Formula $^{(3,\wedge)}$
+\end_inset
+
+, Chamsy Sarkis
+\begin_inset Formula $^{(4)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Address
-Add your affiliation here.
+\align center
+(1) Institute of Integrative Biology.
+ ETH-Zürich.
+ Zürich, Switzerland 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (2) Woodrow Wilson School.
+ Princeton University.
+ Princeton, NJ, USA.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (3) Genome Damage and Stability Centre, University of Sussex, Brighton,
+ United Kingdom 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (4) Pax Syriana Foundation, Valetta, Malta 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Formula $\land$
+\end_inset
+
+) Equal contribution.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (*) correspondence: alberto.pascual@env.ethz.ch
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -3679,7 +3815,7 @@ Self-distancing.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3735,7 +3871,7 @@ Self-isolation.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3793,7 +3929,7 @@ Time to self-isolation.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3937,6 +4073,12 @@ Probability of an outbreak (top), and proportion that dies in each population
  class (bottom) when no interventions are implemented (Mixed), compared
  to protection of age 3 in a safety zone with 2 contacts per week (Safety
  zone).
+ The fraction of deaths in the safety zone for the older population is significa
+ntly lower (Kruskal-Wallis test, p-val
+\begin_inset Formula $<10^{-15}$
+\end_inset
+
+).
 \end_layout
 
 \end_inset
