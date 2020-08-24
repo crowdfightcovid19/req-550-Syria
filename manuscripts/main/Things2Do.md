@@ -1,32 +1,29 @@
 
 
 
+
 ## Tables and figures
 
-* Evacuation, exclude shielded zone in the figure
-* Review caption SM regarding increases in total while reducing in the others. APG
-* Mention which is the population shielded in the captions
+* Double check figures in Main reference correct figure in Suppl
 
 ## Results review and statistical analysis.
 
-* Include sentences in the main text related to statistical tests.
-
+* Double check if sentences in the main text related to statistical tests are missing.
 
 ## Format
 
-* We are keeping elderly in the figures so we should explain our decision. Jordan rephrase to make it politically correct, I think you could use the fact that we are mapping the parameters to older Western population is a good excuse.
-* References with urls fail, and publishers are missing.
+* Double check older vs elder including tables and Figures.
+* Double check references, in particular those from websites, verify that exist  and that are the correct ones. 
+* Proofread last changes.
 
 ## Contents
 
-* Abstract APG
-* Authors
-* Afiliations
-* Acknowledgements APG
-* Conflicts of interests APG
-* Ethical
-* REf R and URL repo
+* Abstract: Reduce 100 words. Make more concrete statements in results. Interpretation kind of vague.
+* Authors: Double check
+* Afiliations: Double check
+* Ethical statement: include
+
 
 ## Others
 
-* Review contents repo. 
+* Review contents repo. Identify potential conflicts and communicate others. Remove if accepted. 
