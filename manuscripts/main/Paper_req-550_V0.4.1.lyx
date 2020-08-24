@@ -8,7 +8,7 @@
 \begin_preamble
 \usepackage{lipsum}
 \usepackage{xr}
-\externaldocument{Paper_req-550_V0.4_SM}
+\externaldocument{Paper_req-550_SM_V0.4}
 \usepackage{lineno}
 \usepackage[strings]{underscore}
 \end_preamble
