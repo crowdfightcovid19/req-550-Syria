@@ -80,8 +80,8 @@ df$class<-factor(df$class,levels(df$class)[c(1,3,2,5,4)])
 df$model <- factor(df$model)
 
 
-gg.d <- do_box_plot_mean_dot( df, "FracDeath", "class", "Population class", "Deaths (% of the class)", c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Elderly (not comorbid)", "Elderly (comorbid)"), c("Mixed","Safety zone"), "Model", line=FALSE, nolegend=TRUE, groupvar="model")
-gg.p <- do_line_plot( df, "POutbreak", "class", "", "Probability of outbreak", "mean",c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Elderly (not comorbid)", "Elderly (comorbid)"), c("Mixed","Safety zone"), "Model", nolegend=FALSE, groupvar="model")
+gg.d <- do_box_plot_mean_dot( df, "FracDeath", "class", "Population class", "Deaths (% of the class)", c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Older (not comorbid)", "Older (comorbid)"), c("Mixed","Safety zone"), "Model", line=FALSE, nolegend=TRUE, groupvar="model")
+gg.p <- do_line_plot( df, "POutbreak", "class", "", "Probability of outbreak", "mean",c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Older (not comorbid)", "Older (comorbid)"), c("Mixed","Safety zone"), "Model", nolegend=FALSE, groupvar="model")
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 gg.p<- gg.p + theme(axis.text.x = element_blank())
 
