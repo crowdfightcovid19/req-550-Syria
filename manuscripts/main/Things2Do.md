@@ -22,7 +22,7 @@
 * Authors: Double check
 * Afiliations: Double check
 * Ethical statement: include
-
+* Funding statement: include
 
 ## Others
 
