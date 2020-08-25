@@ -1482,19 +1482,19 @@ reference "fig:Panel2"
 
 E).
  Further increasing the number of tents significantly augments this reduction
- until there is 1 per every 10 people (Kruskal-Conover post-hoc-test, p-val
+ until there is 1 per every 20 people (Kruskal-Conover post-hoc-test, p-val
 \begin_inset Formula $<3\times10^{-5}$
 \end_inset
 
 ).
  However, mortality begins to slightly increase again after this threshold.
  This effect and the increase in the probability of observing an outbreak
- is a consequence of having one carer per individual self-isolated (see
- Supplementary Material): when the self-isolated (infected) population increases
-, the number of healthy younger adults in contact with them increases in
- tandem.
- Nevertheless, we observe a continuous reduction in CFR, albeit small, with
- an increasing number of tents (see Supplementary Fig.
+ is a consequence of having one carer per individual isolated (see Supplementary
+ Material), so when the isolated (infected) population increases, the number
+ of healthy younger adults in contact with them increases in tandem.
+ Similarly, we observe a reduction in CFR when increasing the number of
+ tents up to 1 per every 20 people, and no significant reduction over that
+ number (see Supplementary Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
