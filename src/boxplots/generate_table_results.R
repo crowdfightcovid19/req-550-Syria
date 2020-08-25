@@ -161,9 +161,32 @@ for(dirIn in dir.list){
             df.timesteady.S = rowMeans(df.S)
         } 
         else {#For time peak, we take the MEAN of the total/exposed/shielded
-            df.time= rowMeans(df)
-            df.time.E = rowMeans(df.E)
-            df.time.S = rowMeans(df.S)
+            df.aux <- df
+            df.aux[df.aux == 0 ] = NA
+            df.time= rowMeans(df.aux,na.rm=TRUE)
+            
+            df.aux.E <- df.E
+            if(dim(df.aux.E)[1] > 0){
+                df.aux.E[df.aux.E == 0 ] = NA
+                df.time.E = rowMeans(df.aux.E,na.rm=TRUE)
+            }
+            else{
+                df.time.E <- NA 
+            }
+
+            df.aux.S <- df.S
+            if(dim(df.aux.S)[1] > 0){
+                df.aux.S[df.aux.S == 0 ] = NA
+                df.time.S = rowMeans(df.aux.S,na.rm=TRUE)
+            }
+            else{
+                df.time.S <- NA
+            }
+
+            #df.time= rowMeans(df)
+            #df.time.E = rowMeans(df.E)
+            #df.time.S = rowMeans(df.S)
+
         } 
     }
 
