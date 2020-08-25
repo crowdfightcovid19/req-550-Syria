@@ -196,7 +196,7 @@ gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 df.tcheck.aux <- data.frame(df.tcheck %>% group_by(group,intervention) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
 
 gg.dd <- do_line_plot(df.tcheck.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-
+gg.dd<-gg.dd+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
@@ -250,7 +250,7 @@ gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 df.aux <- data.frame(df %>% group_by(group,contacts) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
 
 gg.dd <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
-
+gg.dd<-gg.dd+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
@@ -339,6 +339,7 @@ gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 df.aux <- data.frame(df %>% group_by(group,intervention) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
 
 gg.dd <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg.dd<-gg.dd+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
 
 varY = "TimePeakSymptomatic"
@@ -397,6 +398,7 @@ gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 df.aux <- data.frame(df %>% group_by(group,intervention) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
 
 gg.dd <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg.dd<-gg.dd+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
 
 varY = "TimePeakSymptomatic"
