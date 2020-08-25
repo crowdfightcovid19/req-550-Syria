@@ -24,7 +24,8 @@ fplot.list <- c(do_box_plot_mean_dot)
 
 
 
-title.size = 18 
+inset.size = 18 
+title.size = 50
 
 varPoutbreak <- "POutbreak"
 varFracDeath <- "FracFinalDeaths"
@@ -91,9 +92,9 @@ for(i in 1:length(ptitle)){
     gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-    gg.Poutbreak.shield <- gg.Poutbreak.shield+annotate('text',label="G",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
-    gg.FracDeath.shield <- gg.FracDeath.shield+annotate('text',label="H",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
-    gg.TimePeak.shield <- gg.TimePeak.shield+annotate('text',label="I",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
+    gg.Poutbreak.shield <- gg.Poutbreak.shield+annotate('text',label="G",x=-Inf,y=Inf,hjust=0,vjust=1,size=inset.size)
+    gg.FracDeath.shield <- gg.FracDeath.shield+annotate('text',label="H",x=-Inf,y=Inf,hjust=0,vjust=1,size=inset.size)
+    gg.TimePeak.shield <- gg.TimePeak.shield+annotate('text',label="I",x=-Inf,y=Inf,hjust=0,vjust=1,size=inset.size)
 
     #Isolation
     varX="Limit"
@@ -110,9 +111,9 @@ for(i in 1:length(ptitle)){
     gg.FracDeath.iso <- fplot(df.iso,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.TimePeak.iso <- fplot(df.iso,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-    gg.Poutbreak.iso<- gg.Poutbreak.iso+annotate('text',label="D",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
-    gg.FracDeath.iso<- gg.FracDeath.iso+annotate('text',label="E",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
-    gg.TimePeak.iso<- gg.TimePeak.iso+annotate('text',label="F",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
+    gg.Poutbreak.iso<- gg.Poutbreak.iso+annotate('text',label="D",x=-Inf,y=Inf,hjust=0,vjust=1,size=inset.size)
+    gg.FracDeath.iso<- gg.FracDeath.iso+annotate('text',label="E",x=-Inf,y=Inf,hjust=0,vjust=1,size=inset.size)
+    gg.TimePeak.iso<- gg.TimePeak.iso+annotate('text',label="F",x=-Inf,y=Inf,hjust=0,vjust=1,size=inset.size)
 
 
 
@@ -131,9 +132,9 @@ for(i in 1:length(ptitle)){
     gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,"",ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-    gg.Poutbreak.self<- gg.Poutbreak.self+annotate('text',label="A",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
-    gg.FracDeath.self<- gg.FracDeath.self+annotate('text',label="B",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
-    gg.TimePeak.self<- gg.TimePeak.self+annotate('text',label="C",x=-Inf,y=Inf,hjust=0,vjust=1,size=title.size)
+    gg.Poutbreak.self<- gg.Poutbreak.self+annotate('text',label="A",x=-Inf,y=Inf,hjust=0,vjust=1,size=inset.size)
+    gg.FracDeath.self<- gg.FracDeath.self+annotate('text',label="B",x=-Inf,y=Inf,hjust=0,vjust=1,size=inset.size)
+    gg.TimePeak.self<- gg.TimePeak.self+annotate('text',label="C",x=-Inf,y=Inf,hjust=0,vjust=1,size=inset.size)
 
 
     #pdf(file=paste(title,".pdf",sep=""),width=27,height = 21)
