@@ -4,8 +4,10 @@
 
 \begin{document}
     \begin{tabular}{|l|c|c|c|}%
-    \textbf{Intervention}& \textbf{$<$20 cases} &\textbf{Total} &\textbf{\% of total} % specify table head
+    \hline
+    \textbf{Intervention}& \textbf{$<$20 cases} &\textbf{Total} &\textbf{\% of total}
     \csvreader[head to column names]{../../data/real_models/results_post_processing/table_combined_low_total_S_fix.csv}{}% use head of csv as column names
     {\\\hline\csvcoli&\csvcolii&\csvcoliii&\csvcoliv}
+    \\\hline
     \end{tabular}
 \end{document}
