@@ -1,7 +1,7 @@
 # req-550-Syria
-Repository to host the code and results of request 550 coming from the Pax Syriana Foundation.
+This repository hosts the code and results of crowdfightCOVID-19 request 550 coming from the Pax Syriana Foundation.
 
-# Cite
+## Cite
 
 If you use the code or results of this repository, please cite:
 
