@@ -10,8 +10,11 @@
 #usage = Edit setwd to base dir and run
 
 library(dplyr)
+library(tidyr)
 
 currentDir <- getwd()
+
+
 
 source("plot_routines.R")
 
@@ -153,8 +156,12 @@ dev.off( )
 table.low <- pivot_wider(df.thres,names_from="group",id_cols=c("intervention","group"),values_from="low")[,c("intervention","S")]
 table.total <- pivot_wider(df.thres,names_from="group",id_cols=c("intervention","group"),values_from="total")[,c("intervention","S")]  
 table.res <- bind_cols(table.low,table.total$S)
-colnames(table.res)<-c("Intervention",paste("<",as.character(threshold)," cases",sep=""),"Total")
-table.res <- table.res[!is.na(table.res$Total),]
+colnames(table.res)<-c("intervention","low","total")
+#table.res$pct <- signif(table.res$low/table.res$total,digits=3)
+#colnames(table.res)<-c("Intervention",paste("<",as.character(threshold)," cases",sep=""),"Total","% of total")
+table.res <- table.res[!is.na(table.res$total),]
+table.res$pct <- signif(100*table.res$low/table.res$total,digits=2)
+colnames(table.res)<-c("Intervention",paste("<",as.character(threshold)," cases",sep=""),"Total","% of total")
 
 setwd(outDir)
 write.csv(table.res,file="table_combined_low_total_S.csv")
