@@ -34,6 +34,8 @@ library(stringr)
 
 #### START EDITING
 
+minOutbr=15 # minimum number of times needed to say that there was an outbreak
+
 keywordS="green" # a keyword to identify (S)hielded pop
 keywordE="orange" # non-shielded pop (E)xposed 
 
@@ -147,7 +149,10 @@ for(file2proc in files.list){
     col7="P.outbrk"  
     col8="P.outbrk.E"
     col9="P.outbrk.S"
-    header.names=c(header.names,col7,col8,col9)
+    col10="P.cases.lt.thr"
+    col11="P.cases.lt.thr.E"
+    col12="P.cases.lt.thr.S"
+    header.names=c(header.names,col7,col8,col9,col10,col11,col12)
   }else if(file2proc=="NumFinalRecovered"){
     col7="CFR"
     col8="CFR.E"
@@ -157,7 +162,8 @@ for(file2proc in files.list){
 }
 
 # --- Move to directory and retrieve list of directories
-this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1] 
+#this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1]
+this.dir="/home/ecam/workbench/req-550-Syria"
 dirCode=paste(this.dir,"/src",sep="")
 dirData=paste(this.dir,"/data/real_models/",sep="")
 dirOut=paste(dirData,"results_post_processing",sep="")
@@ -230,11 +236,14 @@ for(dirIn in dir.list){
     if (file2proc == "NumFinalDeaths") {
       # this file should be the first
       death.totals = rowSums(df.all) # because we will identify simulations with no deaths
-      nodeath.obs = which(death.totals > 0) # and create an index to work only with them
+      nodeath.obs = which(death.totals > minOutbr) # and create an index to work only with them
+      cases.lt.thr=which((death.totals < minOutbr))#&(death.totals > 0))
       death.totals.E=rowSums(df.all[,idx.classE])
       nodeath.obs.E = which(death.totals.E > 0)
+      cases.lt.thr.E=which((death.totals.E < minOutbr))#&(death.totals > 0))
       death.totals.S=rowSums(df.all[,idx.classS])
       nodeath.obs.S = which(death.totals.S > 0)
+      cases.lt.thr.S=which((death.totals.S < minOutbr))#&(death.totals > 0))
     }
     df = df.all[nodeath.obs, ] # gather statistics only for cases where deaths are observed
     Nrealiz=dim(df)[1] # Number realizations for all set
@@ -285,15 +294,21 @@ for(dirIn in dir.list){
       frac.nodeath = apply(df.all, 2, function(x) {
         length(which(x == 0))})/Nrealiz.all
       p.outbrk = signif(1 - min(frac.nodeath), digits = 2)
+      p.cases.lt.thr=length(cases.lt.thr)/Nrealiz.all
       if (is_empty(idx.classS)) {
         # there is no shielding
         p.outbrk.E = NA
         p.outbrk.S = NA
+        p.cases.lt.thr.E=NA
+        p.cases.lt.thr.S=NA
       } else{
         p.outbrk.E = signif(1 - min(frac.nodeath[idx.classE]), digits = 2)
         p.outbrk.S = signif(1 - min(frac.nodeath[idx.classS]), digits = 2)
+        p.cases.lt.thr.E=length(cases.lt.thr.E)/Nrealiz.all
+        p.cases.lt.thr.S=length(cases.lt.thr.S)/Nrealiz.all
       }
-      outputLine = c(outputLine,p.outbrk, p.outbrk.E, p.outbrk.S)
+      outputLine = c(outputLine,p.outbrk, p.outbrk.E, p.outbrk.S,
+                     p.cases.lt.thr,p.cases.lt.thr.E,p.cases.lt.thr.S)
     }else if (file2proc == "NumFinalRecovered") {
       recov.totals.all = mean(rowSums(df)) 
       recov.totals.E = mean(rowSums(df.E)) 
@@ -348,6 +363,4 @@ write.table(df.output,file=fileOut,quote=FALSE,sep=",",row.names = FALSE)
 # source("model_output_summaries_plotH.R")
 # setwd(dirCode)
 # source("model_output_summaries_plotK.R")
-
-
 
