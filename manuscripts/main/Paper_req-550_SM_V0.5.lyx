@@ -4397,6 +4397,85 @@ Combined interventions.
 \end_inset
 
 
+\change_inserted -1732430129 1598404126
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1598404147
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1598404672
+\begin_inset Graphics
+	filename figures/table_combined_low_total_S.pdf
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1598404147
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1598405154
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:CFR_discrete"
+
+\end_inset
+
+ Effectiveness of the green zone.
+ (<20 cases) Number of simulations with less than 20 infectious cases recorded
+ in the green zone.
+ (Total) Number of simulations with at least one death.
+ The total number of simulations is 500.
+ For the most effective interventions, most of the simulations recording
+ at least one death have less than 20 infectious cases.
+ For them, the discretization of the possible values that the CFR can take,
+ explains its apparently anomalous increase in Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_combined"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard

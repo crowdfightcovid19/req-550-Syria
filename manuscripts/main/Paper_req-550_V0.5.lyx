@@ -8,7 +8,7 @@
 \begin_preamble
 \usepackage{lipsum}
 \usepackage{xr}
-\externaldocument{Paper_req-550_SM_V0.4}
+\externaldocument{Paper_req-550_SM_V0.5}
 \usepackage{lineno}
 \usepackage[strings]{underscore}
 \end_preamble
@@ -79,7 +79,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -1098,15 +1098,9 @@ reference "fig:Interventions"
 \end_inset
 
 -2b).
-\change_deleted 227091064 1598298180
-Safety zone
-\change_inserted 227091064 1598298190
-
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_inserted 227091064 1598298197
 Safety zone
 \end_layout
 
@@ -1675,10 +1669,29 @@ reference "fig:Suppl_combined"
  The protective effects of the safety zone intervention especially are most
  fully realized when paired with other interventions, less so when implemented
  on its own.
- When all interventions are implemented together: strict self-distancing
+ 
+\change_inserted -1732430129 1598405312
+The safety effectiveness of the green zone is very high, with a very low
+ number of infectious cases even when deaths are recorded.
+ This leads to an increase in the CFR driven by the discretization of the
+ values when there are few infectious cases recorded (Supplementary Table.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:CFR_discrete"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\change_unchanged
+When all interventions are implemented together: strict self-distancing
  (50% reduction in contacts), self-isolation of symptomatic cases (1 tent
  for every 40 people), a safety zone with 2 contacts per week in the buffer
- zone, health checks, a moderate lockdown (50%), and evacuation of severe
+ zone, health checks, a strict lockdown (90%), and evacuation of severe
  cases, mortality is reduced by ~80%.
 \end_layout
 
@@ -1970,6 +1983,21 @@ APG is a Board Member of crowdfightCOVID19, an initiative from the scientific
  aid for people affected by wars or humanitarian crises.
  These organizations had no role in study design, data collection, data
  analysis, data interpretation, or writing of the article.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Ethics.
+ This study used only publicly available aggregate data and was thus not
+ subject to ethical review
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
