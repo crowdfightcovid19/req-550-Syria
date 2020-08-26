@@ -127,6 +127,12 @@ gg.a <- do_box_plot_mean_dot(df,"CFR",varX,"","Case Fatality Rate",scale_x_label
                     legend.text = element_text(size=legend.text.size),
                     legend.title = element_blank())
 
+df$NumFinalCases <- df$NumFinalDeaths + df$NumFinalRecovered
+df.thres <- data.frame(df %>% group_by(intervention,group) %>% summarise(low = sum(NumFinalCases < 15),total=length(NumFinalCases))) 
+df.thres$prob <- 1 - (df.thres$total - df.thres$low)/500
+
+gg.c <- do_line_plot(df.thres,"prob",varX,"","Safety effectiveness","identity",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
+        theme(axis.text.x= element_blank() )
 
 
 
@@ -137,6 +143,10 @@ dev.off( )
 
 pdf(file="Fig_Sinterventions_lineCFR.pdf",width=30,height=30)
 grid.arrange(gg.aa,gg.b,nrow=2,ncol=1,heights=c(1,1.5))
+dev.off( )
+
+pdf(file="Fig_Sinterventions_safety_effectiveness.pdf",width=30,height=30)
+grid.arrange(gg.a,gg.c,gg.b,nrow=3,ncol=1,heights=c(1,1,1.5))
 dev.off( )
 
 
