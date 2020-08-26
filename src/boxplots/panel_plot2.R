@@ -9,6 +9,7 @@
 #description = Produces panel plot  
 #usage = Edit setwd to base dir and run
 
+library(dplyr)
 
 currentDir <- getwd()
 
@@ -22,7 +23,7 @@ setwd("/home/ecam/workbench/req-550-Syria")
 ptitle <- c("boxmeandot")
 fplot.list <- c(do_box_plot_mean_dot)
 
-
+threshold = 20 #threshold for safety effectiveness and table
 
 title.size = 35
 
@@ -105,17 +106,33 @@ gg.FracDeath <- do_box_plot_mean_dot(df,varFracDeath,varX,"",ytitFracDeath,scale
 gg.TimePeak <- do_box_plot_mean_dot(df,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
                  theme(axis.text.x = element_text(size=axis.text.size,angle=45,hjust=1,vjust=1))
 
-#pdf(file="Fig3.pdf",width=30,height=30)
-#grid.arrange(gg.Poutbreak,gg.FracDeath,gg.TimePeak,nrow=3,ncol=1,heights=c(1,1,1.8))
-#dev.off( )
+pdf(file="Fig3.pdf",width=30,height=30)
+grid.arrange(gg.Poutbreak,gg.FracDeath,gg.TimePeak,nrow=3,ncol=1,heights=c(1,1,1.8))
+dev.off( )
 
 gg.b <- do_box_plot_mean_dot(df,"FracFinalRecovered",varX,"","Fraction of the population recoreved",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
                  theme(axis.text.x = element_text(size=axis.text.size,angle=45,hjust=1,vjust=1))
+
+df.aux <- data.frame(df %>% group_by(group,intervention) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.aa <- do_line_plot(df.aux,"CFR",varX,"","Case Fatality Rate","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
+        theme(axis.text.x= element_blank() )+
+        theme(  legend.position = "top",
+                    legend.text = element_text(size=legend.text.size),
+                    legend.title = element_blank())
+
 gg.a <- do_box_plot_mean_dot(df,"CFR",varX,"","Case Fatality Rate",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
         theme(axis.text.x= element_blank() )+
         theme(  legend.position = "top",
                     legend.text = element_text(size=legend.text.size),
                     legend.title = element_blank())
+
+df$NumFinalCases <- df$NumFinalDeaths + df$NumFinalRecovered
+df.thres <- data.frame(df %>% group_by(intervention,group) %>% summarise(low = sum(NumFinalCases < threshold),total=length(NumFinalCases))) 
+df.thres$prob <- 1 - (df.thres$total - df.thres$low)/500
+
+gg.c <- do_line_plot(df.thres,"prob",varX,"","Safety effectiveness","identity",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
+        theme(axis.text.x= element_blank() )
 
 
 
@@ -124,5 +141,22 @@ grid.arrange(gg.a,gg.b,nrow=2,ncol=1,heights=c(1,1.5))
 dev.off( )
 
 
+pdf(file="Fig_Sinterventions_lineCFR.pdf",width=30,height=30)
+grid.arrange(gg.aa,gg.b,nrow=2,ncol=1,heights=c(1,1.5))
+dev.off( )
+
+pdf(file="Fig_Sinterventions_safety_effectiveness.pdf",width=30,height=30)
+grid.arrange(gg.a,gg.c,gg.b,nrow=3,ncol=1,heights=c(1,1,1.5))
+dev.off( )
+
+
+table.low <- pivot_wider(df.thres,names_from="group",id_cols=c("intervention","group"),values_from="low")[,c("intervention","S")]
+table.total <- pivot_wider(df.thres,names_from="group",id_cols=c("intervention","group"),values_from="total")[,c("intervention","S")]  
+table.res <- bind_cols(table.low,table.total$S)
+colnames(table.res)<-c("Intervention",paste("<",as.character(threshold)," cases",sep=""),"Total")
+table.res <- table.res[!is.na(table.res$Total),]
+
+setwd(outDir)
+write.csv(table.res,file="table_combined_low_total_S.csv")
 
 setwd(currentDir) #Let's finish where we started.
