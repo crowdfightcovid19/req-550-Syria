@@ -2029,7 +2029,7 @@ literal "false"
 
 \end_inset
 
- suggest they significantly underestimate the presymptomatic period's upper
+ suggests they significantly underestimate the presymptomatic period's upper
  bound, we estimated that the true presymptomatic period follows a Gaussian
  distribution around the mean (95% CI: 0.8-3.8).
  However, this presymptomatic period distribution implies a non-negligible
@@ -4412,7 +4412,7 @@ noprefix "false"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
