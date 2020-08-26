@@ -72,6 +72,8 @@ model_output_summaries_plotSingle = function(df.output,experiment,dirCode,dirPlo
                             ylabel="Case Fatality Rate")
   vars.list[[5]]=data.frame(varY="P.outbrk",
                             ylabel="Probability of outbreak")
+  vars.list[[6]]=data.frame(varY="P.cases.lt.thr",
+                            ylabel="Probability of shielding")
   
   # --- Redefine varX, initialize  and plot
   setwd(dirPlotOut)
@@ -91,7 +93,7 @@ model_output_summaries_plotSingle = function(df.output,experiment,dirCode,dirPlo
       geom_point(aes_string(x = varX, y = varY),size=2)+
       geom_line(aes_string(x = varX, y = varY,group=1),color="red")
     # ... add error bars if needed
-    if(!((varY=="P.outbrk")||(varY=="CFR"))){ # error bars needed
+    if(!((varY=="P.outbrk")||(varY=="CFR")||(varY=="P.cases.lt.thr"))){ # error bars needed
       errY=as.character(df.vars$errY)
       errX=df.sub[,varX]
       errMin=df.sub[,varY]-df.sub[,errY]

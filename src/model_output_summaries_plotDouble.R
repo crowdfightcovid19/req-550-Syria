@@ -93,6 +93,10 @@ model_output_summaries_plotDouble = function(df.output,experiment,dirCode,dirPlo
                             varY1="P.outbrk.E",
                             varY2="P.outbrk.S",
                             ylabel="Probability of outbreak")
+  vars.list[[6]]=data.frame(varY0="P.cases.lt.thr",
+                            varY1="P.cases.lt.thr.E",
+                            varY2="P.cases.lt.thr.S",
+                            ylabel="Probability of shielding")
   
   # --- Redefine varX, initialize  and plot
   setwd(dirPlotOut)
@@ -124,7 +128,7 @@ model_output_summaries_plotDouble = function(df.output,experiment,dirCode,dirPlo
       geom_point(aes(x = varX, y = varY2,colour ="safety zone"),size=2)+
       geom_line(aes(x = varX, y = varY2, colour = "safety zone", group=1),show.legend = TRUE)
     # ... add error bars if needed
-    if(!((varY1.char=="P.outbrk.E")||(varY1.char=="CFR.E"))){ # error bars needed
+    if(!((varY1.char=="P.outbrk.E")||(varY1.char=="CFR.E")||(varY1.char=="P.cases.lt.thr.E"))){ # error bars needed
       errY0.char=as.character(df.vars$errY0)
       errY1.char=as.character(df.vars$errY1)
       errY2.char=as.character(df.vars$errY2)
