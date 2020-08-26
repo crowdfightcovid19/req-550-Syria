@@ -1,37 +1,34 @@
 # req-550-Syria
-Repository to host the code of request 550 coming from the Pax Syriana Foundation.
+Repository to host the code and results of request 550 coming from the Pax Syriana Foundation.
+
+# Cite
+
+If you use the code or results of this repository, please cite:
+
+Pascual-García, A., Klein, J., Villers, J., Campillo-Funollet, E. and Sarkis, C. Empowering the crowd: Feasible strategies to minimize the spread of COVID-19 in high-density informal settlements. (2020) medRxiv, [doi: ]()
+
 
 ### Participants
 
 #### Modellers
 
-* Eduard Campillo-Funollet, University of Sussex, UK. (e.campillo-funollet@sussex.ac.uk)
-* Jennifer Villers, Princeton University (villers.jennifer@gmail.com)
-* Jordan Klein, Princeton University (jdklein@princeton.edu)
-* Judith Bouman, ETH-Zürich (judith.bouman@env.ethz.ch)
-* Alberto Pascual-García, ETH-Zürich and crowdfight (alberto.pascual.garcia@gmail.com)
+* Eduard Campillo-Funollet, University of Sussex, UK. 
+* Jennifer Villers, Princeton University 
+* Jordan Klein, Princeton University 
+* Judith Bouman, ETH-Zürich 
+* Alberto Pascual-García, ETH-Zürich and Board of Crowdfight 
 
 #### Pax Syriana Foundation
 
-* Chamsy Sarkis, Chairman Pax Syriana Foundation (chamsy.sarkis@paxsyriana.com)
-* Jean Jaques Py, IT Pax Syriana Foundation (jean-jacques.py@paxsyriana.com)
+* Chamsy Sarkis, Chairman Pax Syriana Foundation 
+* Jean Jaques Py, IT Pax Syriana Foundation 
 
 #### Public dissemination
 
-* Megan Naidoo, University of Stellenbosch.	(megan.naidoo4266@gmail.com)
-* Laure Gicquel, (logicquel@hotmail.com)
-* Juan A. Garcia, French National Institute of Health and Medical Research. (jags4595@gmail.com)
-* Om Chabra, (omchabra@gmail.com)
-
-### Tools at your disposal
-
-Please add here any URL address to other tools you may be using (e.g. Google docs). 
-
-* _github_: Store code and articles to share. Please keep data and heavy documents stored elsewhere **TBD**.
-* _slack_: Quick communication.
-* _Google drive_:
-     * Shared documents: [link](https://drive.google.com/drive/folders/1aIYpuSEaXgdNS8Z-7KTMhpNNWWzQqvg4)
-* _Overleaf_: More detailed documentation of the methods and results.
+* Megan Naidoo, University of Stellenbosch.	
+* Juan A. Garcia, French National Institute of Health and Medical Research.
+* Om Chabra.
+* Cynthia A. Shelton.
 
 ### Contents
 
