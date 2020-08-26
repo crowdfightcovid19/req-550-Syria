@@ -23,7 +23,7 @@ setwd("/home/ecam/workbench/req-550-Syria")
 ptitle <- c("boxmeandot")
 fplot.list <- c(do_box_plot_mean_dot)
 
-
+threshold = 20 #threshold for safety effectiveness and table
 
 title.size = 35
 
@@ -128,7 +128,7 @@ gg.a <- do_box_plot_mean_dot(df,"CFR",varX,"","Case Fatality Rate",scale_x_label
                     legend.title = element_blank())
 
 df$NumFinalCases <- df$NumFinalDeaths + df$NumFinalRecovered
-df.thres <- data.frame(df %>% group_by(intervention,group) %>% summarise(low = sum(NumFinalCases < 15),total=length(NumFinalCases))) 
+df.thres <- data.frame(df %>% group_by(intervention,group) %>% summarise(low = sum(NumFinalCases < threshold),total=length(NumFinalCases))) 
 df.thres$prob <- 1 - (df.thres$total - df.thres$low)/500
 
 gg.c <- do_line_plot(df.thres,"prob",varX,"","Safety effectiveness","identity",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
@@ -150,6 +150,13 @@ grid.arrange(gg.a,gg.c,gg.b,nrow=3,ncol=1,heights=c(1,1,1.5))
 dev.off( )
 
 
+table.low <- pivot_wider(df.thres,names_from="group",id_cols=c("intervention","group"),values_from="low")[,c("intervention","S")]
+table.total <- pivot_wider(df.thres,names_from="group",id_cols=c("intervention","group"),values_from="total")[,c("intervention","S")]  
+table.res <- bind_cols(table.low,table.total$S)
+colnames(table.res)<-c("Intervention",paste("<",as.character(threshold)," cases",sep=""),"Total")
+table.res <- table.res[!is.na(table.res$Total),]
 
+setwd(outDir)
+write.csv(table.res,file="table_combined_low_total_S.csv")
 
 setwd(currentDir) #Let's finish where we started.
