@@ -1,0 +1,14 @@
+Intervention,<15 cases,Total
+safety,16,270
+safety + evac,20,249
+safety + lock 50%,5,171
+safety + self 20%,19,188
+safety + 50 tents,11,240
+safety + self 50%,13,64
+safety + 50 tents + lock 50%,14,154
+safety + 50 tents + evac,31,239
+safety + 50 tents + self 20%,31,144
+safety + 50 tents + self 50%,24,38
+safety + 50 tents + evac + lock 50% + self 20%,50,110
+safety + 50 tents + evac + lock 50% + self 50%,17,20
+safety + 50 tents + evac + lock 90% + self 50%,6,8

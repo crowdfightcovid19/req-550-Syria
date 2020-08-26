@@ -1,0 +1,23 @@
+"","intervention","T","E","S"
+"1","none",418,NA,NA
+"2","evac",414,NA,NA
+"3","self 20%",373,NA,NA
+"4","50 tents",400,NA,NA
+"5","self 50%",307,NA,NA
+"6","self 20% + 50 tents",351,NA,NA
+"7","self 20% + 50 tents + evac",371,NA,NA
+"8","self 50% + 50 tents ",283,NA,NA
+"9","self 50% + 50 tents + evac",250,NA,NA
+"10","safety",423,423,270
+"11","safety + evac",400,399,249
+"12","safety + lock 50%",416,416,171
+"13","safety + self 20%",382,382,188
+"14","safety + 50 tents",414,414,240
+"15","safety + self 50%",311,311,64
+"16","safety + 50 tents + lock 50%",413,413,154
+"17","safety + 50 tents + evac",401,401,239
+"18","safety + 50 tents + self 20%",357,357,144
+"19","safety + 50 tents + self 50%",275,275,38
+"20","safety + 50 tents + evac + lock 50% + self 20%",373,373,110
+"21","safety + 50 tents + evac + lock 50% + self 50%",279,279,20
+"22","safety + 50 tents + evac + lock 90% + self 50%",259,259,8
