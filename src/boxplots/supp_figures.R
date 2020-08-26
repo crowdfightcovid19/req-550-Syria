@@ -145,6 +145,10 @@ ylabel = "Case Fatality Rate"
 gg.d <- do_box_plot_mean_dot(df.lock,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.d <-gg.d +ylim(0.0,0.25)
 
+df.lock.aux <- data.frame(df.lock %>% group_by(group,lock) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.dd <- do_line_plot(df.lock.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
 
@@ -162,6 +166,10 @@ gg.a <- do_line_plot(df.lock,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale
 
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
+dev.off( )
+
+pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=30,height = 15)
+grid.arrange(gg.a,gg.b,gg.c,gg.dd,gg.e,ncol=3,nrow=2)
 dev.off( )
 
 #Effect of number of individuals per camp
@@ -185,6 +193,11 @@ gg.d <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,sc
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 #gg.d<- gg.d + ylim(0.0,0.35)
 
+df.tcheck.aux <- data.frame(df.tcheck %>% group_by(group,intervention) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.dd <- do_line_plot(df.tcheck.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg.dd<-gg.dd+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
 
@@ -206,6 +219,11 @@ gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 17)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
 dev.off( )
+
+pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=30,height = 15)
+grid.arrange(gg.a,gg.b,gg.c,gg.dd,gg.e,ncol=3,nrow=2)
+dev.off( )
+
 
 #Effect of number of individuals per camp
 df <- df.shieldlimit
@@ -229,6 +247,11 @@ gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fil
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 #gg.d<- gg.d + ylim(0.0,0.75)
 
+df.aux <- data.frame(df %>% group_by(group,contacts) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.dd <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg.dd<-gg.dd+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
 
@@ -251,6 +274,11 @@ pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 20)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
 dev.off( )
 
+pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=30,height = 15)
+grid.arrange(gg.a,gg.b,gg.c,gg.dd,gg.e,ncol=3,nrow=2)
+dev.off( )
+
+
 #Safety zone
 df <- df.shield
 outFile = "FigS8"
@@ -271,9 +299,20 @@ ylabel = "Case Fatality Rate"
 gg.a <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.a <- gg.a + ylim(0.0,0.40)
 
+df.aux <- data.frame(df %>% group_by(group,contacts) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.aa <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+
 pdf(file=paste(outFile,".pdf",sep=""),width=20,height = 10)
 grid.arrange(gg.a,gg.b,ncol=2,nrow=1,widths=c(1,1.35))
 dev.off( )
+
+pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=20,height = 10)
+grid.arrange(gg.aa,gg.b,ncol=2,nrow=1,widths=c(1,1.35))
+dev.off( )
+
+
 
 #Checks in buffer zone
 df <- df.tcheckElderly
@@ -297,6 +336,12 @@ gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fil
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 #gg.d<- gg.d + ylim(0.0,0.4)
 
+df.aux <- data.frame(df %>% group_by(group,intervention) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.dd <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg.dd<-gg.dd+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
 
@@ -318,6 +363,11 @@ gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 18)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
 dev.off( )
+
+pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=30,height = 15)
+grid.arrange(gg.a,gg.b,gg.c,gg.dd,gg.e,ncol=3,nrow=2)
+dev.off( )
+
 
 #Evac
 df <- df.evac
@@ -345,6 +395,12 @@ gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fil
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 #gg.d<- gg.d + ylim(0.0,0.4)
 
+df.aux <- data.frame(df %>% group_by(group,intervention) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.dd <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg.dd<-gg.dd+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
+
+
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
 
@@ -367,6 +423,11 @@ pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 17)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
 dev.off( )
 
+pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=30,height = 15)
+grid.arrange(gg.a,gg.b,gg.c,gg.dd,gg.e,ncol=3,nrow=2)
+dev.off( )
+
+
 #Onset
 df <- df.onset
 outFile = "FigS5"
@@ -387,6 +448,11 @@ ylabel = "Case Fatality Rate"
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.d<- gg.d + ylim(0.0,0.25)
 
+df.aux <- data.frame(df %>% group_by(group,Onset) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.dd <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
 
@@ -405,6 +471,11 @@ gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
 dev.off( )
+
+pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=30,height = 15)
+grid.arrange(gg.a,gg.b,gg.c,gg.dd,gg.e,ncol=3,nrow=2)
+dev.off( )
+
 
 #No. isolation tents
 df <- df.iso
@@ -426,10 +497,19 @@ ylabel = "Case Fatality Rate"
 gg.a <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.a <- gg.a + ylim(0.0,0.20)
 
+df.aux <- data.frame(df %>% group_by(group,Limit) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.aa <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+
 pdf(file=paste(outFile,".pdf",sep=""),width=20,height = 10)
-#grid.arrange(gg.a,gg.b,ncol=2,nrow=1,widths=c(1,1.35))
 grid.arrange(gg.a,gg.b,ncol=2,nrow=1)
 dev.off( )
+
+pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=20,height = 10)
+grid.arrange(gg.aa,gg.b,ncol=2,nrow=1)
+dev.off( )
+
 
 
 #Self distancing
@@ -452,10 +532,20 @@ ylabel = "Case Fatality Rate"
 gg.a <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.a <- gg.a + ylim(0.0,0.25)
 
+df.aux <- data.frame(df %>% group_by(group,self) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.aa <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+
 pdf(file=paste(outFile,".pdf",sep=""),width=20,height = 10)
-#grid.arrange(gg.a,gg.b,ncol=2,nrow=1,widths=c(1,1.35))
 grid.arrange(gg.a,gg.b,ncol=2,nrow=1)
 dev.off( )
+
+pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=20,height = 10)
+grid.arrange(gg.aa,gg.b,ncol=2,nrow=1)
+dev.off( )
+
+
 
 #Fate
 df <- df.fate
@@ -477,6 +567,11 @@ ylabel = "Case Fatality Rate"
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.d <- gg.d + ylim(0.0,0.20)
 
+df.aux <- data.frame(df %>% group_by(group,Fate) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
+
+gg.dd <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+
+
 varY = "TimePeakSymptomatic"
 ylabel = "Time to peak of symptomatic (days)"
 
@@ -495,5 +590,10 @@ gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,ncol=3,nrow=2)
 dev.off( )
+
+pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=30,height = 15)
+grid.arrange(gg.a,gg.b,gg.c,gg.dd,gg.e,ncol=3,nrow=2)
+dev.off( )
+
 
 setwd(currentDir) #Let's finish where we started.

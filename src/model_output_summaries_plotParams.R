@@ -194,6 +194,17 @@ i=0
 #                                       pdf.height=pdf.height.default),
 #                            scale.manual.lab=c("null/NO","null/YES",
 #                                               "safety 2/NO","safety 2/YES"))
+ # i=i+1
+ # experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_J.csv",
+ #                                       title.lab="Evacuation",
+ #                                       subtitle.lab=paste("Population size = ",Npop),
+ #                                       varX="Isolate",
+ #                                       xlabel.lab="Model/Evacuation",
+ #                                       plot.type="double",
+ #                                       pdf.width=pdf.width.default,
+ #                                       pdf.height=pdf.height.default),
+ #                            scale.manual.lab=c("null/NO","null/YES",
+ #                                               "safety 2/NO","safety 2/YES"))
  i=i+1
  experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_K.csv",
                                        title.lab="Combined",
@@ -256,5 +267,37 @@ i=0
                                               "safety + 50 tents + evac + lock 50% + self 20%",
                                               "safety + 50 tents + evac + lock 50% + self 50%",
                                               "safety + 50 tents + evac + lock 90% + self 50%"))
-
-
+ # i=i+1 
+## To generate this figure in model_output_summaries_plotDouble.R change the name of the file to "unlabelled" (see plotOut)
+ # experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_K.csv",
+ #                                       title.lab="",
+ #                                       subtitle.lab="", #paste("Population size = ",Npop),
+ #                                       varX="Combined",
+ #                                       xlabel.lab="Intervention",
+ #                                       plot.type="double",
+ #                                       pdf.width=12,
+ #                                       pdf.height=7),
+ #                            scale.manual.lab=c("1",
+ #                                               "2",
+ #                                               "3",
+ #                                               "4",
+ #                                               "5",
+ #                                               "6",
+ #                                               "7",
+ #                                               "8",
+ #                                               "9",
+ #                                               "10",
+ #                                               "11",
+ #                                               "12",
+ #                                               "13",
+ #                                               "14",
+ #                                               "15",
+ #                                               "16",
+ #                                               "17",
+ #                                               "18",
+ #                                               "19",
+ #                                               "20",
+ #                                               "21",
+ #                                               "22"))
+ # 
+ # 
