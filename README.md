@@ -58,3 +58,13 @@ Please add here any URL address to other tools you may be using (e.g. Google doc
     * _Description_: SEAIRQD model including the possibility of defining population classes. The transition probabilities from one compartment to another depend on features of the population that the user may want to define, for instance related to age, sex, comorbidities of the individuals, roles like "carers" or "shielded". These are named population "classes" in the script.
     * _Usage_: Usage, input and output files are described in the header of the file.
 
+#### Figures and statistics
+All the scripts in this section run from their current folder. More details in the header of the file.
+* `boxplots/generate_table_results.R`: compiles a tidy table of all the simulations.
+* `boxplots/extend_table_results.R`: extends the tidy table with derived variables (e.g CFR).
+* `boxplots/panel_plot_Fig2.R`: Generates Fig. 2 of the manuscript. Requires the tidy table.
+* `boxplots/panel_plot_Fig3.R`: Generates Fig. 3 of the manuscript. Requires the tidy table.
+* `boxplots/supp_figures.R`: Generates the figures for the supplementary material. Requires the tidy table.
+* `boxplots/safety_age_groups.R`: Generates the Supplementary Figure 8 (safety zone and age groups). 
+* `stats/all_stats.R`: Generates a table with basic tests for the results. 
+* `stats/posthoc.R`: Runs a series of posthoc tests for particular questions about the results.
