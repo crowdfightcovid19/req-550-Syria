@@ -1,8 +1,22 @@
 ## Description of the models and directory contents
 
-Isolation centers: Are isolation centers available? (yes/no) and the capacity (number, I am considering 50 people or the whole population). When the number of infectious people exceeds this value, the excess is considered that remains in the camp and that is infectious.
-Neutral zone: Is a neutral zone available? (yes/no) and the number of interactions allowed per person per week plus contention measures (at the moment I consider the null model, 2 per week and 10 per week). 
-Fate of hospitalized population: Independently of whether they go to isolation centers or not (which would be change the infectiousness but not their fate) there are two scenarios D/R.
+In this folder you will find results for the simulations for a given population structure. Within each of these folders you will find different directories, labelled with the parameters used in the simulation. Each directory contains all the results of the simulations plus some figures.
+
+### Parameters for the interventions
+
+* **self$number** = self-distancing, reduction of $number % in the number of contacts per day.
+* **Limit$number** = self-isolation of symptomatic with mild symptoms, with $number tents available.
+* **Onset$number** = time that an individual takes to recognize symptoms and self-isolate measured in $number hours.
+* **Isolate** = evacuation of symptomatic that would require hospitalization.
+* **Fate** = would all individuals requiring hospitalization die (D) or recover (R)?
+* **Tcheck** = Are health checks available in the camp? (e.g. temperature)
+* **PopSize** = Population size of the camp.
+* contacts = safety-zone: number of contacts per week and individual that can occur in the buffering zone.
+* **lock$number** = lockdown of the safety zone after one symptomatic case appears in the exposed zone, it reduces $number % the contacts in the buffer zone.
+* **mod** = Model simulated, "SV" for stochastic variable.
+
+
+### Description of the population structures
 
 * **null_model_mixed**
   * Description: 5 population classes, well-mixed (age1 = ages 0-12, age2_no_comorbid = ages 13-50 with no comorbidities, age2_comorbid = ages 13-50 with comorbidities, age3_no_comorbid = aged over 50 with no comorbidities, age3_comorbid = aged over 50 with comorbidities). No intervention.  
@@ -25,6 +39,16 @@ Fate of hospitalized population: Independently of whether they go to isolation c
     * **Contacts_matrix_construction.R**- uses **classes_structure** and **classes_contacts** to compute the contact matrix (C_ij) for the null model as described [here](https://github.com/crowdfightcovid19/req-550-Syria/blob/master/manuscripts/DerivationOfR0_APG.pdf)
     * **contacts_structure**- the contact matrix (average number of contacts of an individual of class i with an individual of class j, C_ij)
 
+
+* **shield directories**: Shield directories contain simulations in which a safety zone is simulated. 
+    * The label `cont` refers to the number of contacts per week that an individual in the green zone can have with individuals in the orange zone (always under the assumptions of the buffer zone). The 
+    * The label `age$description` describes the population living in the green zone:
+        * **age3**: only older adults.
+        * **age3+age2**: older adults plus younger adults with comorbidities.
+        * **age3+age2+$percent**: older adults plus younger adults with comorbidities, plus other adults (e.g. spouses) and young kids (under 13) up to $percent of the total population.
+
+
+** The following models are obsolete tests **
     
 * **model_1_1**
 * Shielding with shielded population permitted to have visits from 2 family members per week
