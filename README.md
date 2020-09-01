@@ -74,13 +74,12 @@ There are some scripts from previous versions of the model:
 
 *  `SimpleSIR.R`: Minimal SIR model
 *  `SIR-Syria.R`: Minimal SIR model with some Syrian parameters.
-*  `SIR-Syria_structured.R`: 
-    * _Description_: SEAIRQD model including the possibility of defining population classes. The transition probabilities from one compartment to another depend on features of the population that the user may want to define, for instance related to age, sex, comorbidities of the individuals, roles like "carers" or "shielded". These are named population "classes" in the script.
+*  `SIR-Syria_structured.R`:  SEAIRQD model including the possibility of defining population classes
 
-The final model is located in the folder `SEPAIHRD`, and contains among other scripts:
+The final model is located in the folder `SEPAIHRD` and it contains, among other scripts:
 
-* `launch_SEPAIHRD-Syria_structured.R`: Script to launch one simulation (which runs N realizations of teh model) for specified parameters.
-* `launch_multiple_SEPAIHRD-Syria_structured.R`: Script to launch a set of simulations, each with different parameters. Each set of parameters should be specified in one line (see the files `input_parameters_multiple_launch_experiment$label.csv` for examples)
+* `launch_SEPAIHRD-Syria_structured.R`: Script to launch one simulation (which runs N realizations of the model) for specified parameters.
+* `launch_multiple_SEPAIHRD-Syria_structured.R`: Script to launch a set of simulations, each simulation having different parameters. The parameters for each simulation in the set is specified in one line of a file (see `input_parameters_multiple_launch_experiment$label.csv` for examples)
 * `SEPAIHRD-Syria_structured.R` main code, which has these functions:
     * `make_transitions.R`: Function to estimate transitions between states.
     * `rates_SEPAIHRD_str.R`: integration routine stochastic model.
@@ -91,7 +90,7 @@ The final model is located in the folder `SEPAIHRD`, and contains among other sc
 
 Note that each simulation already generates figures specific of that simulation. So the fillowing scripts generate figures or perform statistical analysis across simulations with different sets of parameters.
 
-* `model_output_summaries.R`: Creates a table with means and stdv of all the variables for different population classes.
+* `model_output_summaries.R`: Creates a table with all the simulations specified, computing the means and stdv of all the variables considered in the model  and for all the population classes.
 
 * `model_output_summaries_plotMaster.R`: Main script to simultaneously plot different experiments (i.e. combinations of simulations with different parameters). Several experiments can be plot in a single run, each described in a file called `input_parameters_multiple_output_summaries_$label.csv`. Dependencies:
     * `extract_subtable_output_summaries.R`: Extracts the subset of simulations correspondent to the experiment.
