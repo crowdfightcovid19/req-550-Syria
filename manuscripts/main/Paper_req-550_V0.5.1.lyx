@@ -462,16 +462,23 @@ Our results highlight the potential of non-medical interventions to mitigate
 \end_layout
 
 \begin_layout Abstract
-\begin_inset Note Comment
-status open
 
-\begin_layout Plain Layout
-Funding
+\series bold
+Role of the funding source
 \end_layout
 
+\begin_layout Abstract
+
+\series bold
+\begin_inset VSpace defskip
 \end_inset
 
 
+\end_layout
+
+\begin_layout Abstract
+The funders of the study had no role in study design, data collection, data
+ analysis, data interpretation, or writing of the article.
 \end_layout
 
 \begin_layout Abstract
@@ -1298,6 +1305,15 @@ The funders of the study had no role in study design, data collection, data
 
 \end_layout
 
+\begin_layout Subsection*
+Role of the funding source
+\end_layout
+
+\begin_layout Standard
+The funders of the study had no role in study design, data collection, data
+ analysis, data interpretation, or writing of the article.
+\end_layout
+
 \begin_layout Part*
 Results
 \end_layout
@@ -1956,6 +1972,25 @@ APG is a Board Member of crowdfightCOVID19, an initiative from the scientific
  aid for people affected by wars or humanitarian crises.
  These organizations had no role in study design, data collection, data
  analysis, data interpretation, or writing of the article.
+\end_layout
+
+\begin_layout Subsection*
+Authors contributions
+\end_layout
+
+\begin_layout Standard
+All authors contributed to the conceptualization.
+ Design of the methodology: APG, ECF, JV, JK.
+ Formal analysis: APG, ECF, JK.
+ Code development APG, ECF, JK.
+ Conducted research: APG, ECF, JV, JK.
+ Validate results: APG, ECF, JK, JV.
+ Contributed resources: APG, CS, ECF, JK.
+ Data curation: APG, JK.
+ Visualization: APG, ECF, JK.
+ Writing (original draft) APG, ECF, JK.
+ All authors contributed to the final version of the manuscript, and APG
+ supervised the research.
 \end_layout
 
 \begin_layout Subsection*
