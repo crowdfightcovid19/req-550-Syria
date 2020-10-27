@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Paper_req-550_V0.6.aux
+The style file: unsrt.bst
+Database file #1: req550-syria.bib
+Repeated entry---line 367 of file req550-syria.bib
+ : @article{truelove_potential_2020
+ :                                 ,
+I'm skipping whatever remains of this entry
+Warning--empty journal in gatto2020
+Warning--empty year in gatto2020
+You've used 27 entries,
+            1791 wiz_defined-function locations,
+            595 strings with 10416 characters,
+and the built_in function-call counts, 5561 in all, are:
+= -- 400
+> -- 418
+< -- 1
++ -- 151
+- -- 124
+* -- 404
+:= -- 994
+add.period$ -- 85
+call.type$ -- 27
+change.case$ -- 26
+chr.to.int$ -- 0
+cite$ -- 29
+duplicate$ -- 202
+empty$ -- 481
+format.name$ -- 124
+if$ -- 1155
+int.to.chr$ -- 0
+int.to.str$ -- 27
+missing$ -- 18
+newline$ -- 142
+num.names$ -- 27
+pop$ -- 81
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 87
+stack$ -- 0
+substring$ -- 171
+swap$ -- 27
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 42
+width$ -- 29
+write$ -- 285
+(There was 1 error message)
