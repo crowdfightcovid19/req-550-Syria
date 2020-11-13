@@ -159,7 +159,7 @@ at different possible stages along the disease's progression \cite{gatto_spread_
 (see Supplementary Fig. \ref{fig:Diagram}), and splits the population
 into classes by age and comorbidity status. Each population class
 has specific parameters, and we considered the frequency of contacts
-between and within population classes to model transmissivity (see
+between and within population classes to model transmissibility (see
 section Transmissibility assumptions Subsection). Working with population
 classes allow us to encode in the model behavioural assumptions with
 an appropriate balance between the specificity needed in the model
@@ -193,9 +193,10 @@ with 2000 individuals, unless otherwise specified. We considered 3
 age groups: children (age 1, 0-12 years old), younger adults (age
 2, 13-50 yrs) and older adults (age 3, \textgreater 50 yrs). For
 ages 2 and 3, we considered two subclasses comprising healthy individuals
-and individuals with comorbidities. The fraction of a simulated camp's
-population in each of these 5 classes is shown in Supplementary Table
-\ref{tab:PopParams}.
+and individuals with comorbidities. Full details of the methods to
+estimate the fraction of a simulated camp's population in each of
+these 5 classes are reported in Supplementary Material, and final
+values shown in Supplementary Table \ref{tab:PopParams}.
 
 \subsection*{Epidemiological severity assumptions}
 
@@ -204,7 +205,7 @@ with a current capacity of 66 ventilators, 74 ICU beds and 355 ward
 beds for 4.2 million people \cite{REACH_syriaOverview,UNOCHA_CCTC_numbers}.
 Basic estimation predicted a collapse of health facilities 8 weeks
 into an outbreak \cite{hariri_SyriaForecast_2020}. Although we do
-not have access to official numbers on healthcare occupancy, the currently
+not have access to official data on healthcare occupancy, the currently
 reported number of cases suggests that this scenario could already
 have been reached \cite{UNOCHA_collapse}. Hence, we considered a
 worst-case scenario in which individuals will not have access to healthcare
@@ -240,7 +241,7 @@ is class-specific, and was estimated from conversations with camp
 managers in NWS. The probability of random interaction with an individual
 from each class is proportional to this class' fraction of the population.
 The product of these two values is the contact rate between two respective
-classes.
+classes (see Supplementary Methods).
 
 The probability of infection from contact with an infectious individual,
 $\tau$, was estimated from a Gaussian distribution of the basic reproduction
@@ -273,7 +274,7 @@ group-specific and was estimated from conversations with camp managers
 in NWS. Since the mean number of inhabitants per tent in a camp is
 5.5 and sanitation facilities are shared \cite{noauthor_syrian_nodate},
 we inferred that the number of contacts per day cannot be reduced
-by more than 50\%.For a younger adult, this would mean 7.5 contacts
+by more than 50\%. For a younger adult, this would mean 7.5 contacts
 per day.
 
 \subsubsection*{Self-isolation}
@@ -528,7 +529,7 @@ scenarios, we generally considered the worst-cases, highlighting the
 interventions that are most effective in the direst conditions, but
 possibly resulting in an overestimate of mortality. This potential
 overestimation does not change the qualitative picture of the results,
-which is built upon the analysis of relative values between the presence
+which is built upon comparison of relative values between the presence
 and absence of interventions.
 
 Our results align with previous simulation studies of potential COVID-19
