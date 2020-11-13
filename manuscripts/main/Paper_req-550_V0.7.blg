@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Paper_req-550_V0.7.aux
+The style file: unsrt.bst
+Database file #1: req550-syria.bib
+You've used 32 entries,
+            1791 wiz_defined-function locations,
+            628 strings with 12012 characters,
+and the built_in function-call counts, 6721 in all, are:
+= -- 489
+> -- 499
+< -- 1
++ -- 180
+- -- 148
+* -- 502
+:= -- 1201
+add.period$ -- 100
+call.type$ -- 32
+change.case$ -- 31
+chr.to.int$ -- 0
+cite$ -- 32
+duplicate$ -- 245
+empty$ -- 580
+format.name$ -- 148
+if$ -- 1398
+int.to.chr$ -- 0
+int.to.str$ -- 32
+missing$ -- 23
+newline$ -- 167
+num.names$ -- 32
+pop$ -- 83
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 104
+stack$ -- 0
+substring$ -- 232
+swap$ -- 33
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 51
+width$ -- 34
+write$ -- 342
