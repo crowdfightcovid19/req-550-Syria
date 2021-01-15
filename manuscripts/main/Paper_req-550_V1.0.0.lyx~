@@ -8,9 +8,32 @@
 \begin_preamble
 \usepackage{lipsum}
 \usepackage{xr}
-\externaldocument{Paper_req-550_SM_V0.6.1}
+\externaldocument{Paper_req-550_SM_V1.0.0}
 \usepackage{lineno}
 \usepackage[strings]{underscore}
+
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\add}[1]{\textcolor{red}{#1}}
+\newcommand{\oran}{\mathrm{o}}
+\newcommand{\g}{\mathrm{g}}
+\newcommand{\X}{\mathrm{X}}
+\newcommand{\Y}{\mathrm{Y}}
+\newcommand{\PP}{\mathrm{P}}
+\newcommand{\EE}{\mathrm{E}}
+\newcommand{\HH}{\mathrm{H}}
+\newcommand{\DD}{\mathrm{D}}
+\newcommand{\RR}{\mathrm{R}}
+\newcommand{\A}{\mathrm{A}}
+\newcommand{\I}{\mathrm{I}}
+\newcommand{\M}{\mathrm{M}}
+
+\newcommand{\sh}{\mathrm{sh}}
+\newcommand{\nullm}{\mathrm{null}}
+\newcommand{\intv}{\mathrm{intv}}
+\newcommand{\family}{\mathrm{visit}}
+\newcommand{\care}{\mathrm{care}}
+\newcommand{\Exp}{\mathrm{exp}}
+\newcommand{\onset}{\mathrm{onset}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false

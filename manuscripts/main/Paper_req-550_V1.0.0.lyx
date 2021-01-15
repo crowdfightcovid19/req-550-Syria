@@ -1290,8 +1290,8 @@ literal "false"
 \change_inserted -1732430129 1610637904
 \begin_inset Formula 
 \begin{eqnarray*}
-q_{i}^{\HH} & = & h_{i}\eta z^{-1}\\
-q_{i}^{\DD} & = & g_{i}\alpha z\\
+ & q_{i}^{\HH}=h_{i}\eta z^{-1}\\
+ & q_{i}^{\DD}=g_{i}\alpha z^{-1}\\
 q_{i}^{\RR}= & 1-q_{i}^{\HH}-q_{i}^{\DD} & =l_{i}\gamma_{\I}z^{-1},
 \end{eqnarray*}
 
