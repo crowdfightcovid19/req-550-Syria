@@ -2998,6 +2998,7 @@ All authors contributed to the conceptualization.
  
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
+btprint "btPrintCited"
 bibfiles "req550-syria"
 options "unsrt"
 
