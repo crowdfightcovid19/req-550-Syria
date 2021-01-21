@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+
+\title{Intectious time normalization}
+
+\begin{document}
+
+\maketitle
+
+This addresses T1.
+
+We have prescribed values for the infectious periods for symptomatic ($gamma_I^{-1}$), severe ($\eta^{-1}$) and critical ($\alpha^{-1}$) cases, and at the same time we have what fraction of the cases, for each age band, are severe ($h_i$) and critical ($g_i$). The fraction of cases in each group (symptomatic, severe, critical). Since the proportion of cases in each age band is given by the infectious periods, we add a correction coefficient depending on the each band. More precisely, let $a_i,b_i>0$, and consider that the age-corrected rates are $a_i \eta$ for severe cases, $b_i \alpha$ for critical cases, and $((1-a_i-b_i)\gamma_I$ for other symptomatic cases. The fractions of cases in each age band satisfy
+\[
+h_i = \frac{a_i \eta}{ (1-a_i-b_i)\gamma_I + a_i \eta + b_i \alpha },
+g_i = \frac{b_i \alpha}{ (1-a_i-b_i)\gamma_I + a_i \eta + b_i \alpha }.
+\]
+
+We can explicitly find $a_i,b_i$:
+
+\[ 
+a_i = \frac{\alpha h_i}{\eta g_i}b_i, b_i = \gamma_I \left( \frac{\alpha}{g_i} + \frac{\gamma_I \alpha h_i }{\eta g_i} + \gamma_I - \frac{\alpha h_i}{g_i} - \alpha \right)^{-1}.
+\]
+
+The formulae are implemented in the script \emph{infection\_time\_normalization.R}. The table below includes the results:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+ & Age 1 & Age 2 no com. & Age 2 com. & Age 3 no com. & Age 3 com. \\
+\hline\hline
+$a_i$ & 0.06382221 & 0.06643059 & 0.19129360 & 0.17818890 & 0.40633968 \\
+\hline
+$b_i$ & 0.009259919 & 0.028328612 & 0.129085416 & 0.087633885 & 0.289590399 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Implementation}
+To implement this in the model, we just need to replace the current $h_i$ values by $a_i$, and the current $g_i$ values by $b_i$.
+
+\end{document}
