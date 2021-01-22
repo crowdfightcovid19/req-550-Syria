@@ -3111,7 +3111,7 @@ becomes
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\bar{c}_{i}^{0}\left(\beta_{\PP}P_{j}+\beta_{\text{\A}}A_{j}+\beta_{\I}I_{j}+\beta_{\HH}H_{j}\right).
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{M}\bar{c}_{i}^{0}\left(\beta_{\PP}P_{j}+\beta_{\text{\A}}A_{j}+\beta_{\I}I_{j}+\beta_{\HH}H_{j}\right).
 \]
 
 \end_inset
@@ -3145,7 +3145,7 @@ Following this notation, the linearized system can be written in the form
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\bs{T}=\tau\begin{bmatrix}\bs{0} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta}\\
+\bs{T}=\tau\begin{bmatrix}\bs{0} & \bs{\Theta}_{\PP} & \bs{\Theta}_{\A} & \bs{\Theta}_{\I} & \bs{\Theta}_{\HH}\\
 \bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
 \bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
 \bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
@@ -3160,21 +3160,43 @@ Following this notation, the linearized system can be written in the form
 
 \begin_layout Standard
 is the transmission matrix, with 
-\begin_inset Formula $\bs{\Theta}=\mathrm{diag}(\bs{p}\odot\bs{\bar{c}}^{0})\bs{\bs{U}}$
+\begin_inset Formula $\bs{\Theta}_{\X}=\beta_{\X}\mathrm{diag}(\bs{p}\odot\bs{\bar{c}}^{0})\bs{\bs{U}}$
 \end_inset
 
 , 
 \begin_inset Formula $\bs\{p\}=\bs{N}/N$
 \end_inset
 
-, and 
+, 
+\change_deleted -1732430129 1611341125
+and
+\change_unchanged
+ 
 \begin_inset Formula $\bs{U}$
 \end_inset
 
- is the all ones matrix of size 
+ is the all
+\change_inserted -1732430129 1611341131
+-
+\change_deleted -1732430129 1611341131
+ 
+\change_unchanged
+ones matrix of size 
 \begin_inset Formula $M$
 \end_inset
 
+
+\change_inserted -1732430129 1611341525
+, and 
+\begin_inset Formula $\beta_{\X}$
+\end_inset
+
+ the infectiousness of compartment 
+\begin_inset Formula $\X$
+\end_inset
+
+ relative to the presymptomatic compartment (see Main Text for details)
+\change_unchanged
 .
  The transition matrix is
 \end_layout
@@ -3312,7 +3334,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather*}
-\bs{K_{\mathrm{S}}}=\tau\left[\left(\frac{1}{\delta_{P}}+\frac{(1-f)}{\gamma_{A}}\right)\bs{\Theta}+\mathrm{diag}\left(f\bs{h}^{-1}(1+\frac{\eta}{\gamma_{\HH}}\bs{h})\right)\bs{\Theta}\right].
+\bs{K_{\mathrm{S}}}=\tau\left[\frac{1}{\delta_{P}}\bs{\Theta}_{\PP}+\frac{(1-f)}{\gamma_{A}}\bs{\Theta}_{\text{\A}}+f\mathrm{diag\left(\bs{h}^{-1}\right)\bs{\Theta}_{\text{\I}}}+\frac{f\eta}{\gamma_{\HH}}\mathrm{diag}(\bs{h}\oslash\bs{\kappa})\bs{\Theta}_{\HH}\right].
 \end{gather*}
 
 \end_inset
