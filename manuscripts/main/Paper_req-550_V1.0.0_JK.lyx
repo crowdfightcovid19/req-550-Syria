@@ -11,6 +11,10 @@
 \externaldocument{Paper_req-550_SM_V1.0.0}
 \usepackage{lineno}
 \usepackage[strings]{underscore}
+\usepackage{lineno}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
 
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 \newcommand{\add}[1]{\textcolor{red}{#1}}
@@ -108,6 +112,7 @@
 \html_css_as_file 0
 \html_be_strict false
 \author -1732430129 "apascual"
+\author 227091064 "Klein"
 \end_header
 
 \begin_body
@@ -549,14 +554,554 @@ The model
 \end_layout
 
 \begin_layout Standard
-We considered a 
+We consider
+\change_deleted 227091064 1611274357
+ed
+\change_unchanged
+ a 
 \change_deleted -1732430129 1610585215
 discrete-time stochastic
 \change_unchanged
- model, simulating a viral outbreak in a single camp over a 12-month period.
- The model, adapted for NWS IDP camps is divided into compartments containing
- individuals at different possible stages along the disease's progression
+ model
+\change_deleted 227091064 1611274371
+,
+\change_unchanged
+ simulating a viral outbreak in a single camp over a 12-month period
+\change_inserted 227091064 1611274542
+ inspired by those proposed by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gatto_spread_2020"
+literal "false"
+
+\end_inset
+
  
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bertuzzo_geography_2020"
+literal "false"
+
+\end_inset
+
+ (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\change_unchanged
+.
+ 
+\change_deleted 227091064 1611274463
+The model, 
+\change_inserted 227091064 1611274542
+The model is 
+\change_unchanged
+adapted 
+\change_inserted 227091064 1611274542
+to the context of
+\change_deleted 227091064 1611274472
+for
+\change_unchanged
+ NWS IDP camps 
+\change_inserted 227091064 1611274542
+and 
+\change_unchanged
+is divided into compartments containing individuals at different possible
+ stages along the disease's progression
+\change_inserted 227091064 1611274652
+, 
+\change_deleted 227091064 1611274649
+ 
+\change_inserted 227091064 1611274696
+governed by the following set of differential equations: 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611274745
+\begin_inset Formula 
+\begin{gather}
+\dot{S}_{i}=-\lambda_{i}S_{i}\label{eq:System1}\\
+\dot{E}_{i}=\lambda_{i}S_{i}-\delta_{\EE}E_{i}\\
+\dot{P}_{i}=\delta_{\EE}E_{i}-\delta_{\PP}P_{i}\\
+\dot{A}_{i}=(1-f)\delta_{\PP}P_{i}-\gamma_{\A}A_{i}\\
+\dot{I}_{i}=f\delta_{\PP}P_{i}-(l_{i}\gamma_{I}+h_{i}\eta+g_{i}\alpha)I_{i}\\
+\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{\HH}H_{i}\\
+\dot{R}_{i}=\gamma_{\A}A_{i}+l_{i}\gamma_{\I}I_{i}+(1-\sigma)\gamma_{\HH}H_{i}\\
+\dot{D_{i}}=g_{i}\alpha I_{i}+\sigma\gamma_{\HH}H_{i}\label{eq:System8}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611274749
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 227091064 1611274748
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+
+\backslash
+tikzstyle{int}=[draw, fill=blue!50, minimum size=2em] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+
+\backslash
+tikzstyle{init} = [pin edge={to-,thin,black}] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+
+\backslash
+begin{tikzpicture}[node distance=2.5cm,auto,>=latex']     
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+node [int] (S) {$
+\backslash
+dot{S_i}$};     
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+node (E) [int, right of=S] {$
+\backslash
+dot{E_i}$};     
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+node (P) [int, right of=E] {$
+\backslash
+dot{P_i}$};   
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+node (blank) [right of=P, coordinate]{};  
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+node (I) [int, below of=blank] {$
+\backslash
+dot{I_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+node (A) [int, above of=blank] {$
+\backslash
+dot{A_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+node (H) [int, right of=I] {$
+\backslash
+dot{H_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+node (R) [int, right of=blank] {$
+\backslash
+dot{R_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+node (D) [int, below of=H] {$
+\backslash
+dot{D_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+path[->] (S) edge node {$
+\backslash
+lambda_iS_i$} (E);     
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+path[->] (E) edge node {$
+\backslash
+delta_
+\backslash
+EE E_i$} (P);    
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+path[->] (P) edge node [anchor=center, left, midway] {$f
+\backslash
+delta_
+\backslash
+PP P_i$} (I);   
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, below, midway] {$h_i{
+\backslash
+eta}I_i$} (H);   
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611276823
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, left, pos=0.7] {$
+\backslash
+l_i 
+\backslash
+gamma_
+\backslash
+I I_i$} (R);   
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+path[->] (A) edge node [anchor=center, right, midway] {$
+\backslash
+gamma_
+\backslash
+A A_i$} (R);   
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+path[->] (P) edge node [anchor=center, left, midway] {$(1-f)
+\backslash
+delta_
+\backslash
+PP P_i$} (A);  
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, left, midway] {$g_i{
+\backslash
+alpha}I_i$} (D);  
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+path[->] (H) edge node [anchor=center, right, midway] {$(1-
+\backslash
+sigma)
+\backslash
+gamma_
+\backslash
+HH H_i$} (R); 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+	
+\backslash
+path[->] (H) edge node [anchor=center, right, midway] {$
+\backslash
+sigma
+\backslash
+gamma_
+\backslash
+HH H_i$} (D);  
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 227091064 1611274748
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611274748
+
+\series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagram"
+
+\end_inset
+
+Diagram of the model.
+ 
+\series default
+The model considers the following compartments: susceptible (S), exposed
+ (E), infectious-presymptomatic (P), infectious-asymptomatic (A), infectious-sym
+ptomatic (I), infectious-requiring hospitalization (H), recovered (R) and
+ dead (D).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611280254
+The susceptible population (
+\begin_inset Formula $S_{i}$
+\end_inset
+
+) becomes exposed at rate 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+, while exposed individuals (
+\begin_inset Formula $E_{i}$
+\end_inset
+
+) progress through the latent period at rate 
+\begin_inset Formula $\delta_{\EE}$
+\end_inset
+
+ to a preclinical infectious stage (
+\begin_inset Formula $P_{i}$
+\end_inset
+
+), which then progresses to (at rate 
+\begin_inset Formula $\delta_{\PP}$
+\end_inset
+
+) either a a clinical (symptomatic, 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+, with probablity 
+\begin_inset Formula $f$
+\end_inset
+
+) or subclinical (asymptomatic, 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+, with probability 
+\begin_inset Formula $1-f$
+\end_inset
+
+) infectious stage.
+ Asymptomatic cases recover (
+\begin_inset Formula $R_{i}$
+\end_inset
+
+) at rate 
+\begin_inset Formula $\gamma_{\A}$
+\end_inset
+
+.
+ Symptomatic cases have 3 potential outcomes: mild cases will recover at
+ rate 
+\begin_inset Formula $\gamma_{\I}$
+\end_inset
+
+, severe cases will progress to an extended infectious period during which
+ they require hospitalization (
+\begin_inset Formula $H_{i}$
+\end_inset
+
+) at rate 
+\begin_inset Formula $\eta$
+\end_inset
+
+, while critical cases requiring ICU care will die (
+\begin_inset Formula $D_{i}$
+\end_inset
+
+) at rate 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Finally, since the fate of individuals in the hospitalized compartment
+ is uncertain if healthcare is not available, we run simulations considering
+ two possibilities: either all recover (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611280125
+
+$
+\backslash
+sigma$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ = 0), or all die (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611280135
+
+$
+\backslash
+sigma$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ = 1) (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:FixedParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611277519
 \begin_inset CommandInset citation
 LatexCommand cite
 key "gatto_spread_2020"
@@ -578,21 +1123,96 @@ noprefix "false"
 ).
  
 \change_inserted -1732430129 1610485159
-The model then
+The model 
+\change_deleted 227091064 1611275985
+then
 \change_deleted -1732430129 1610485160
 and
 \change_unchanged
  splits the population into classes
+\change_inserted 227091064 1611276004
+ (indexed
+\change_inserted -1732430129 1610669221
+ 
+\change_inserted 227091064 1611276013
+
+\begin_inset Formula $i$
+\end_inset
+
+) 
 \change_inserted -1732430129 1610632939
- to account for the fact that different subgroups of the population require
- specific parameters.
- If there are no interventions, the distinction in classes
+to account for 
+\change_deleted 227091064 1611276359
+the fact that different subgroups of the population require specific parameters
+\change_inserted 227091064 1611276552
+heterogeneity with respect to clinical risk and behaviour
+\change_inserted -1732430129 1610669221
+.
+ 
+\change_inserted 227091064 1611278215
+Working with population classes allows us to encode behavioural assumptions
+ in the model and strike an appropriate balance between generality, computationa
+l tractability, and the requisite specificity to realistically evaluate
+ our proposed interventions 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "funk_BehaviourInModels_2015"
+literal "false"
+
+\end_inset
+
+.
+\change_deleted 227091064 1611277689
+If there are no
+\change_inserted 227091064 1611278521
+ Moreover, the explicit representation of contacts between and within population
+ classes allows us to design interventions considering cultural and context-spec
+ific assumptions 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rhodes_Model2context_2020"
+literal "false"
+
+\end_inset
+
+ (see section Interventions and Supplementary Material for details).
+ Under a null model where no
+\change_inserted -1732430129 1610632939
+ interventions
+\change_inserted 227091064 1611276506
+ are implemented
+\change_inserted -1732430129 1610632939
+, the distinction
+\change_inserted 227091064 1611276905
+s
+\change_inserted -1732430129 1610632939
+ 
+\change_inserted 227091064 1611276909
+between
+\change_deleted 227091064 1611276907
+in
+\change_inserted -1732430129 1610632939
+ classes
 \change_deleted -1732430129 1610485289
  by
-\change_inserted -1732430129 1610632462
- dependend only on
+\change_inserted -1732430129 1610632939
+ 
+\change_inserted 227091064 1611276433
+are only 
+\change_inserted -1732430129 1610632939
+dependen
+\change_inserted 227091064 1611276440
+t
+\change_deleted 227091064 1611276907
+d
+\change_inserted -1732430129 1610632939
+ 
+\change_deleted 227091064 1611276907
+only on
 \change_deleted -1732430129 1610485289
  
+\change_inserted 227091064 1611277548
+on 
 \change_unchanged
 age and comorbidity status
 \change_inserted -1732430129 1610669221
@@ -605,7 +1225,64 @@ demographic-classes
 \end_inset
 
 ).
- Some interventions may further split a demographic-class into subclasses
+ 
+\change_inserted 227091064 1611278555
+
+\begin_inset Formula $h_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $l_{i}$
+\end_inset
+
+ are demographic-class specific parameters, adjusted to ensure that the
+ proportions of symptomatic cases progressing through each of the 3 potential
+ clinical outcomes (mild, severe, and critical) are consistent with the
+ literature (see section Epidemiological severity assumptions).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611278535
+Under some interventions, the demographic-classes may be subdivided further
+ into subclasses according to behaviour (
+\begin_inset Quotes eld
+\end_inset
+
+behaviour-classes
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Consequently, different interventions may require models with different
+ numbers of classes.
+ Behaviour-class specific parameters are encoded in 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ (see section Transmissibility assumptions).
+ We refer to both demographic- and behaviour-classes generically as 
+\begin_inset Quotes eld
+\end_inset
+
+classes
+\begin_inset Quotes erd
+\end_inset
+
+ (see section Interventions for the modelization of behaviour-classes).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611278446
+Some interventions may further split a demographic-class into subclasses
  having different behaviour (
 \begin_inset Quotes eld
 \end_inset
@@ -625,16 +1302,14 @@ classes
 \begin_inset Quotes erd
 \end_inset
 
- and we detail the implementation of behaviour-classes in section XXX
-\change_unchanged
-.
+ and we detail the implementation of behaviour-classes in section XXX.
 
 \change_deleted -1732430129 1610669234
  Each population class has specific parameters, and we considered the frequency
  of contacts between and within population classes to model transmissibility
  (see section Transmissibility assumptions Subsection).
  
-\change_unchanged
+\change_deleted 227091064 1611278181
 Working with population classes allow us to encode in the model behavioural
  assumptions with an appropriate balance between the specificity needed
  in the model to realistically evaluate the interventions, its generality,
@@ -647,7 +1322,11 @@ literal "false"
 \end_inset
 
 .
- Moreover, the explicit representation of contacts between and within population
+
+\change_unchanged
+ 
+\change_deleted 227091064 1611278403
+Moreover, the explicit representation of contacts between and within population
  classes, allowed us to design the interventions considering cultural and
  context-based assumptions 
 \begin_inset CommandInset citation
@@ -658,13 +1337,13 @@ literal "false"
 \end_inset
 
  (see section Interventions and Supplementary Material for details).
-\change_inserted -1732430129 1610502899
+\change_inserted 227091064 1611277478
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -1732430129 1610503030
+\change_deleted 227091064 1611274669
 We consider a model inspired by the one proposed in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -674,11 +1353,13 @@ literal "false"
 \end_inset
 
 ,governed by the following set of differential equations:
+\change_inserted -1732430129 1610503030
+
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -1732430129 1610630389
+\change_deleted 227091064 1611274688
 \begin_inset Formula 
 \begin{gather}
 \dot{S}_{i}=-\lambda_{i}S_{i}\label{eq:System1}\\
@@ -727,14 +1408,12 @@ where
 Our simulations start with a completely susceptible population where one
  person is exposed to the virus.
 
-\change_unchanged
+\change_deleted 227091064 1611274688
  
 \change_deleted -1732430129 1610630402
 The disease in exposed individuals progresses through
-\change_unchanged
- a preclinical infectious stage
-\change_inserted -1732430129 1610630413
- (
+\change_deleted 227091064 1611274688
+ a preclinical infectious stage (
 \begin_inset Formula $P_{i}$
 \end_inset
 
@@ -745,28 +1424,20 @@ The disease in exposed individuals progresses through
 )
 \change_deleted -1732430129 1610500740
 , followed by
-\change_unchanged
- either a clinical (symptomatic
-\change_inserted -1732430129 1610630455
-, 
+\change_deleted 227091064 1611274688
+ either a clinical (symptomatic, 
 \begin_inset Formula $I_{i}$
 \end_inset
 
 ,
 \change_deleted -1732430129 1610500789
 )
-\change_unchanged
- 
-\change_inserted -1732430129 1610500795
-with probablity 
+\change_deleted 227091064 1611274688
+ with probablity 
 \begin_inset Formula $f$
 \end_inset
 
-) 
-\change_unchanged
-or subclinical (asymptomatic
-\change_inserted -1732430129 1610630474
-, 
+) or subclinical (asymptomatic, 
 \begin_inset Formula $A_{i}$
 \end_inset
 
@@ -774,17 +1445,11 @@ or subclinical (asymptomatic
 \begin_inset Formula $1-f$
 \end_inset
 
-
-\change_unchanged
-) infectious stage
-\change_inserted -1732430129 1610500823
-.
+) infectious stage.
 \change_deleted -1732430129 1610500822
 ,
-\change_unchanged
- 
-\change_inserted -1732430129 1610630536
-Asymptomatic cases recovered (
+\change_deleted 227091064 1611274688
+ Asymptomatic cases recovered (
 \begin_inset Formula $R_{i}$
 \end_inset
 
@@ -808,11 +1473,11 @@ Asymptomatic cases recovered (
 ) or 
 \change_deleted -1732430129 1610503128
 resolving through
-\change_unchanged
+\change_deleted 227091064 1611274688
  
 \change_deleted -1732430129 1610503131
 recovery or death
-\change_inserted -1732430129 1610630524
+\change_deleted 227091064 1611274688
 dying (
 \begin_inset Formula $D_{i}$
 \end_inset
@@ -821,11 +1486,7 @@ dying (
 \begin_inset Formula $\alpha$
 \end_inset
 
-
-\change_unchanged
 .
-
-\change_inserted -1732430129 1610636849
  The demographic-class-specific parameters 
 \begin_inset Formula $h_{i}$
 \end_inset
@@ -858,7 +1519,7 @@ ty
  
 \change_deleted -1732430129 1610500920
  
-\change_inserted -1732430129 1610633317
+\change_deleted 227091064 1611274688
 Behaviour-classes parameters are encoded in 
 \begin_inset Formula $\lambda_{i}$
 \end_inset
@@ -877,7 +1538,826 @@ We verified that a steady state was always reached before the end of each
  We did not consider migration, births, nor deaths due to other causes,
  since they are small enough in magnitude to not significantly impact the
  course of an outbreak, provided additional conflict does not erupt.
-\change_inserted -1732430129 1610631729
+\change_inserted 227091064 1611279694
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611279707
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611280049
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:FixedParams"
+
+\end_inset
+
+
+\series bold
+Fixed parameters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611280062
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="27.5text%">
+<column alignment="center" valignment="middle" width="27.5text%">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="10text%">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Distribution
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Reference
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Incubation period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+5.2 (95% CI: 4.1-7.0)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Lognormal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset CommandInset citation
+LatexCommand cite
+key "li2020early"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Formula $\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Presymptomatic infectious period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+2.3 (95% CI: 0.8-3.8)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Gaussian
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,ashcroft_covid-19_2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Latent period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Formula $\left(\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}\right)-\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+(Minimum = .5 days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Derived
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Formula $\nicefrac{1}{\gamma_{\I}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Symptomatic infectious period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,wolfel2020virological"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Formula $\nicefrac{1}{\gamma_{\A}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Asymptomatic infectious period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,wolfel2020virological"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Formula $\nicefrac{1}{\eta}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Time from symptom onset to requiring hospitalization (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+7 (IQR: 4-8)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Formula $\nicefrac{1}{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Time from symptom onset to death (critical cases, days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+10 (IQR: 6-12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Formula $\nicefrac{1}{\gamma_{\HH}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Time from requiring hospitalization to recovery/death (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+10 (IQR: 7-14)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Probability an infectious individual is symptomatic
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+0.84 (95% CI: 0.8-0.88)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+Binomial
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279707
+\begin_inset CommandInset citation
+LatexCommand cite
+key "byambasuren2020estimating"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279726
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611280035
+
+$
+\backslash
+sigma$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279848
+Indicator of whether hospitalized recover or die
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279935
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283098
+
+$
+\backslash
+sigma 
+\backslash
+in 
+\backslash
+{0,1
+\backslash
+}$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279855
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611279864
+Assumed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611280109
+(See Supplementary Material for derivations.)
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -885,6 +2365,33 @@ We verified that a steady state was always reached before the end of each
 
 \change_inserted -1732430129 1610631731
 Transmissibility assumptions
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611290733
+Although individuals in IDP camps share tents with other co-occupants, whom
+ they may be more likely to infect than occupants of different tents, we
+ ignore spatial structure in our model and assume a well-mixed population.
+ This is justified since our following derivation of the transmissivity
+ parameter itself, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611290737
+
+$
+\backslash
+tau$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, is not spatially explicit.
 \end_layout
 
 \begin_layout Standard
@@ -937,7 +2444,25 @@ where
 \begin_inset Formula $C_{ij}$
 \end_inset
 
- estimating from conversations with camp managers in NWS the mean number
+ 
+\change_inserted 227091064 1611280829
+by multiplying the mean number of total contacts that individuals from a
+ population class 
+\begin_inset Formula $i$
+\end_inset
+
+ have per day, 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+, by the probability of random interaction with individuals of class 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\change_deleted 227091064 1611280909
+estimating from conversations with camp managers in NWS the mean number
  of contacts that individuals from a population class 
 \begin_inset Formula $i$
 \end_inset
@@ -952,12 +2477,26 @@ where
 \end_inset
 
 .
- Considering a well-mixed population, this probability is proportional to
- class' 
+ 
+\change_inserted -1732430129 1610670692
+Considering a well-mixed population, this probability is proportional to
+ class
+\change_deleted 227091064 1611280920
+'
+\change_inserted -1732430129 1610670692
+ 
 \begin_inset Formula $j$
 \end_inset
 
- fraction of the population, i.e.
+
+\change_inserted 227091064 1611280923
+'s
+\change_inserted -1732430129 1610670692
+ fraction of the 
+\change_inserted 227091064 1611280930
+total 
+\change_inserted -1732430129 1610670692
+population, i.e.
  
 \begin_inset Formula $C_{ij}=c_{i}N_{j}/N$
 \end_inset
@@ -965,18 +2504,66 @@ where
 .
  If interventions are absent, we consider demographic-classes only and,
  hence, different 
+\change_inserted 227091064 1611280961
+values of 
+\change_inserted -1732430129 1610670692
+
 \begin_inset Formula $c_{i}$
 \end_inset
 
- reflect a different number of contacts due to different ages and comorbidity
- status.
+ 
+\change_deleted 227091064 1611280971
+reflect a different number of
+\change_inserted 227091064 1611280993
+reflect heterogeneity in the number of
+\change_inserted -1732430129 1610670692
+ contacts 
+\change_deleted 227091064 1611280998
+due to different ages and comorbidity status.
+\change_inserted 227091064 1611283561
+by age group.
+ We assume specific values of 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ for each class baed on conversations with camp managers in NWS (see Table
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted -1732430129 1610633754
-The probability of infection if there is a contact between a susceptible
- and an infected person for each stage are 
+The probabilit
+\change_inserted 227091064 1611281181
+y
+\change_deleted 227091064 1611281116
+y
+\change_inserted -1732430129 1610633754
+ of infection if there is a contact between a susceptible and an infected
+ person
+\change_deleted 227091064 1611281122
+ for each stage
+\change_inserted -1732430129 1610633754
+ 
+\change_deleted 227091064 1611281185
+are
+\change_inserted 227091064 1611281185
+is
+\change_inserted -1732430129 1610633754
+ 
 \begin_inset Formula $\tau\beta_{\PP}$
 \end_inset
 
@@ -988,26 +2575,123 @@ The probability of infection if there is a contact between a susceptible
 \begin_inset Formula $\tau\beta_{\I}$
 \end_inset
 
- and 
+ 
+\change_deleted 227091064 1611281189
+and
+\change_inserted 227091064 1611281189
+or
+\change_inserted -1732430129 1610633754
+ 
 \begin_inset Formula $\tau\beta_{\HH}$
 \end_inset
 
+
+\change_inserted 227091064 1611281281
+ depending upon whether the infected individual is in the presymptomatic
+ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611281231
+
+$P_i$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+), symptomatic (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611281257
+
+$I_i$
+\end_layout
+
+\end_inset
+
+), asymptomatic (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611281284
+
+$A_i$
+\end_layout
+
+\end_inset
+
+), or hospitalized compartment (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611281289
+
+$H_i$
+\end_layout
+
+\end_inset
+
+), respectively
+\change_inserted -1732430129 1610633754
 .
  The 
 \begin_inset Formula $\tau$
 \end_inset
 
  parameter is the maximum transmissivity, which is observed at the presymptomati
-c stage [Ref].
+c stage 
+\change_inserted 227091064 1611281601
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal"
+literal "false"
+
+\end_inset
+
+
+\change_deleted 227091064 1611281451
+[Ref]
+\change_inserted -1732430129 1610633754
+.
  Thus, we selected the presymptomatic stage as a reference (
 \begin_inset Formula $\beta_{P}=1$
 \end_inset
 
-) with the remainder 
+) with the remain
+\change_deleted 227091064 1611281887
+d
+\change_inserted 227091064 1611281611
+ing
+\change_deleted 227091064 1611281610
+er
+\change_inserted -1732430129 1610633754
+ 
 \begin_inset Formula $\beta$
 \end_inset
 
- parameters estimated from literature relative to 
+ parameters 
+\change_deleted 227091064 1611281893
+estimated
+\change_inserted 227091064 1611281893
+set
+\change_inserted -1732430129 1610633754
+ 
+\change_deleted 227091064 1611281685
+from literature 
+\change_inserted -1732430129 1610633754
+relative to 
 \begin_inset Formula $\beta_{\PP}$
 \end_inset
 
@@ -1015,7 +2699,437 @@ c stage [Ref].
 \begin_inset Formula $\beta_{i}<\beta_{\PP},\quad i\in\{\A,\HH,\I\}$
 \end_inset
 
-, see Table XX).
+
+\change_inserted 227091064 1611281706
+) based on the following set of equations
+\change_deleted 227091064 1611281698
+,
+\change_inserted -1732430129 1610633754
+ 
+\change_inserted 227091064 1611281707
+(
+\change_inserted -1732430129 1610633754
+see Table 
+\change_inserted 227091064 1611282652
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:TransParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_deleted 227091064 1611282580
+XX
+\change_inserted 227091064 1611282549
+, Supplementary Materials for derivation
+\change_inserted -1732430129 1610633754
+)
+\change_inserted 227091064 1611281936
+:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611282381
+\begin_inset Formula 
+\begin{equation}
+\beta_{\I}=\frac{\beta_{\PP}\gamma_{\I}\gamma_{\HH}(1-AUC_{P})}{AUC_{P}\delta_{\PP}(\gamma_{\HH}+\rho_{HI}\gamma_{\I})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611282471
+\begin_inset Formula 
+\begin{equation}
+\beta_{\A}=\frac{\rho_{AI}\beta_{\PP}\gamma_{\I}\gamma_{\HH}(1-AUC_{P})}{AUC_{P}\delta_{\PP}(\gamma_{\HH}+\rho_{HI}\gamma_{\I})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611282565
+\begin_inset Formula 
+\begin{equation}
+\beta_{\HH}=\frac{\rho_{HI}\beta_{\PP}\gamma_{\I}\gamma_{\HH}(1-AUC_{P})}{AUC_{P}\delta_{\PP}(\gamma_{\HH}+\rho_{HI}\gamma_{\I})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611282566
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611284691
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:TransParams"
+
+\end_inset
+
+
+\series bold
+Transmissibility parameters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="27.5text%">
+<column alignment="center" valignment="middle" width="27.5text%">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="10text%">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+Value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+Distribution
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+Reference
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+
+$AUC_P$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+Presymptomatic area under infectivity curve
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+.44 (95% CI: .30-.57)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+Gaussian
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_temporal_2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+
+$
+\backslash
+rho_{AI}$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+Ratio of asymptomatic to symptomatic infectiousness
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+.58 (95% CI: .34-.99)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+Lognormal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+\begin_inset CommandInset citation
+LatexCommand cite
+key "byambasuren_estimating_2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+
+$
+\backslash
+rho_{HI}$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+Ratio of hospitalized to symptomatic infectiousness
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+.48
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+_
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611282566
+\begin_inset CommandInset citation
+LatexCommand cite
+key "van_kampen_shedding_2020"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "he_temporal_2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611281714
+.
+
+\change_inserted -1732430129 1610633754
  The 
 \begin_inset Formula $\tau$
 \end_inset
@@ -1025,10 +3139,22 @@ on number,
 \begin_inset Formula $R_{0}$
 \end_inset
 
-, following a Gaussian distribution with mean of 4 (99% CI: 3–5) and dividing
- this value by the real part of the main eigenvalue of the Next Generation
- Matrix (see section XXX for details on the computational implementation
- and Supplementary Material for the analytical results).
+, following a Gaussian distribution with 
+\change_inserted 227091064 1611282682
+a 
+\change_inserted -1732430129 1610633754
+mean of 4 (99% CI: 3–5) and dividing this value by the real part of the
+ main eigenvalue of the Next Generation Matrix (see section 
+\change_deleted 227091064 1611282710
+XXX for details on the c
+\change_inserted 227091064 1611282710
+C
+\change_inserted -1732430129 1610633754
+omputational implementation 
+\change_inserted 227091064 1611282722
+for details 
+\change_inserted -1732430129 1610633754
+and Supplementary Material for the analytical results).
  The distribution of 
 \begin_inset Formula $R_{0}$
 \end_inset
@@ -1063,16 +3189,19 @@ literal "false"
 \end_inset
 
 .
-\end_layout
 
-\begin_layout Subsection*
-
-\change_deleted -1732430129 1610638257
+\change_inserted 227091064 1611289664
+ In 
+\change_inserted -1732430129 1610633754
 
 \end_layout
 
 \begin_layout Subsection*
 Population structure
+\change_inserted 227091064 1611285236
+ of demographic-classes
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -1091,11 +3220,364 @@ ed, with a mean of of 1212.
  Since interventions tend to be less effective in larger camps, the results
  presented refer to simulations with 2000 individuals, unless otherwise
  specified.
- We considered 3 age groups: children (age 1, 0-12 years old), younger adults
+ 
+\change_inserted 227091064 1611283368
+For our demographic-classes, w
+\change_deleted 227091064 1611283367
+W
+\change_unchanged
+e considered 3 age groups: children (age 1, 0-12 years old), younger adults
  (age 2, 13-50 yrs) and older adults (age 3, >50 yrs).
  For ages 2 and 3, we considered two subclasses comprising healthy individuals
- and individuals with comorbidities.
- Full details of the methods to estimate the fraction of a simulated camp's
+ and individuals with comorbidities
+\change_inserted 227091064 1611283531
+ (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\change_unchanged
+.
+ 
+\change_inserted 227091064 1611283496
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611283497
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283515
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:PopParams"
+
+\end_inset
+
+
+\series bold
+Demographic classes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283587
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+Population class
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+Age 1 (0-12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+Age 2 (13-50), no comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+Age 2 (13-50),
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+Age 3 (>50), no comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+Age 3 (>50),
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+References
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+Fraction in class
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+.407
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283883
+.439
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283897
+.0946
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283904
+.0296
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283908
+.0296
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+
+\noun on
+\begin_inset CommandInset citation
+LatexCommand cite
+key "noauthor_syrian_nodate,helpage_international_hidden_2014"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+\begin_inset Formula $c_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283497
+From camp managers
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611283614
+(See Supplementary Material for derivations.)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611283932
+Full details of the methods to estimate the fraction of a simulated camp's
  population in each of these 5 classes are reported in Supplementary Material,
  and final values shown in Supplementary Table 
 \begin_inset CommandInset ref
@@ -1108,6 +3590,8 @@ noprefix "false"
 \end_inset
 
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection*
@@ -1126,8 +3610,14 @@ literal "false"
 \end_inset
 
 .
- Basic estimation predicted a collapse of health facilities 8 weeks into
- an outbreak 
+ 
+\change_deleted 227091064 1611288697
+Basic estimation
+\change_inserted 227091064 1611288703
+Modeling conducted by Hariri et al.
+
+\change_unchanged
+ predicted a collapse of health facilities 8 weeks into an outbreak 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hariri_SyriaForecast_2020"
@@ -1153,7 +3643,26 @@ literal "false"
  However, there is greater uncertainty about the fate of severe cases, those
  requiring hospitalization but not ICU care.
  We therefore considered a compartment for severe cases to account for a
- longer infectious period if they stay in the camp.
+ longer infectious period if they stay in the camp
+\change_inserted 227091064 1611288959
+ (see compartment 
+\begin_inset Formula $H_{i}$
+\end_inset
+
+, Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\change_unchanged
+.
  This compartment also helped us model some interventions more realistically,
  for example by noting that the symptoms of severe cases are incompatible
  with self-isolation.
@@ -2998,7 +5507,6 @@ All authors contributed to the conceptualization.
  
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-btprint "btPrintCited"
 bibfiles "req550-syria"
 options "unsrt"
 
