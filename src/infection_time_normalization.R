@@ -21,6 +21,11 @@ print(g)
 testqH <- qH - h*eta / ( (1 - h - g)*gammaI + h*eta + g*alpha)
 testqD <- qD - g*alpha / ( (1 - h - g)*gammaI + h*eta + g*alpha)
 
+qR <- 1 - qD - qH
+
+testqR <- qR - (1-h -g)*gammaI/ ( (1 - h - g)*gammaI + h*eta + g*alpha)
+
 print(testqH)
 print(testqD)
+print(testqR)
 
