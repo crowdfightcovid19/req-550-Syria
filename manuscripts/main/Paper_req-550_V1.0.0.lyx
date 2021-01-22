@@ -974,7 +974,7 @@ where
 
 \begin_layout Standard
 
-\change_inserted -1732430129 1610633754
+\change_inserted -1732430129 1610738373
 The probability of infection if there is a contact between a susceptible
  and an infected person for each stage are 
 \begin_inset Formula $\tau\beta_{\PP}$
@@ -997,8 +997,8 @@ The probability of infection if there is a contact between a susceptible
 \begin_inset Formula $\tau$
 \end_inset
 
- parameter is the maximum transmissivity, which is observed at the presymptomati
-c stage [Ref].
+ parameter is the maximum transmissibility, which is observed at the presymptoma
+tic stage [Ref].
  Thus, we selected the presymptomatic stage as a reference (
 \begin_inset Formula $\beta_{P}=1$
 \end_inset
@@ -1290,9 +1290,9 @@ literal "false"
 \change_inserted -1732430129 1610637904
 \begin_inset Formula 
 \begin{eqnarray*}
- & q_{i}^{\HH}=h_{i}\eta z^{-1}\\
- & q_{i}^{\DD}=g_{i}\alpha z^{-1}\\
-q_{i}^{\RR}= & 1-q_{i}^{\HH}-q_{i}^{\DD} & =l_{i}\gamma_{\I}z^{-1},
+ & q_{i}^{\HH}=h_{i}\eta\kappa_{i}^{-1}\\
+ & q_{i}^{\DD}=g_{i}\alpha\kappa_{i}^{-1}\\
+q_{i}^{\RR}= & 1-q_{i}^{\HH}-q_{i}^{\DD} & =l_{i}\gamma_{\I}\kappa_{i}^{-1},
 \end{eqnarray*}
 
 \end_inset
@@ -1304,7 +1304,7 @@ q_{i}^{\RR}= & 1-q_{i}^{\HH}-q_{i}^{\DD} & =l_{i}\gamma_{\I}z^{-1},
 
 \change_inserted -1732430129 1610670738
 where 
-\begin_inset Formula $z=h_{i}\eta+g_{i}\alpha+l_{i}\gamma_{\I}.$
+\begin_inset Formula $\kappa_{i}=h_{i}\eta+g_{i}\alpha+l_{i}\gamma_{\I}.$
 \end_inset
 
  The solution ...
@@ -1584,7 +1584,7 @@ We considered as a null model (indexed with superscript 0) a well-mixed
 \change_inserted -1732430129 1610670436
 \begin_inset Formula 
 \begin{equation}
-C_{ij}^{0}=\bar{c}_{i}^{0}N_{j}/N,
+C_{ij}^{0}=\bar{c}_{i}^{0}N_{j}/N,\label{eq:NullContactsMatrix}
 \end{equation}
 
 \end_inset
