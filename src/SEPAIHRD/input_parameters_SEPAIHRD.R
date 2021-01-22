@@ -39,6 +39,18 @@ t.H.shape=t.H.mean/t.H.scale
 t.ItoD.mean=10 # time from onset to death in Western countries
 t.ItoD.scale=2.13 # gamma distribution
 t.ItoD.shape=t.ItoD.mean/t.ItoD.scale
+
+AUC.mean=0.44 # Area Under the Curve infectiousness
+AUC.std=0.082 #n normal
+
+rhoAtoI.mean=0.58 # ratio of Asymptomatic to symptomatic infectiousness
+rhoAtoI.std=0.32 # lognormal
+
+rhoHtoI.mean=0.48 # ratio of hospitalized to symptomatic infectiousness
+
+Ifact.mean=0.24 # factor required to estimate infectiousness ratios
+Ifact.std=0.53
+
 ##### STOP EDITING
 
 # --- Generate random values
@@ -93,3 +105,26 @@ eta.vec=1/t.ItoH.vec
 idx.neg=which(eta.vec<0) # here is where those with little time of symptoms
 eta.vec[idx.neg]=max(eta.vec) # should jump to H (this happens only if isoThr>0)
 alpha.vec=1/t.ItoD.vec
+
+# --- Infectiousness
+AUC.vec=rnorm(Nrand,mean = AUC.mean,sd=AUC.std)
+rhoAtoI.vec=rlnorm(Nrand,mean=log(rhoAtoI.mean),sd=rhoAtoI.std) 
+# ... the following lines of code were used to estimate Ifact, it
+#     was then adjusted to a lognorm distribution (see below)
+# Ifact=(gammaI*gammaH.vec*(1-AUC.vec))/
+#   (AUC.vec*deltaP.vec*(gammaH.vec+rhoHtoI.mean*gammaI))
+# quantile(Ifact,probs = c(0.01,0.05,0.5,0.95,0.99)) # check for rare values
+# # mean = 0.24 (95% CI: 0.0774, 0.57); (99% CI: 0.018, 0.81) # lognormal
+# idx.norm=which((Ifact < 0.57) & (Ifact > 0.0774)) # 99% of the values, remove abnormally divergent  values
+# hist(Ifact[idx.norm],breaks=50) # lognorm
+# hist(log(Ifact[idx.norm]),breaks=50) # lognorm
+# qqnorm(log(Ifact[idx.norm]))
+
+Ifact.vec=rlnorm(Nrand,mean=log(Ifact.mean),sd=Ifact.std)
+rhoItoP.vec=Ifact.vec
+rhoAtoP.vec=Ifact.vec*rhoAtoI.vec
+rhoHtoP.vec=Ifact.vec*rhoHtoI.mean
+
+quantile(rhoItoP.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+quantile(rhoAtoP.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+quantile(rhoHtoP.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
