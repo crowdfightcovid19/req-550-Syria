@@ -1,0 +1,5548 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{xr}
+\externaldocument{Paper_req-550_V1.0.0}
+\usepackage{lineno}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\add}[1]{\textcolor{red}{#1}}
+\newcommand{\oran}{\mathrm{o}}
+\newcommand{\g}{\mathrm{g}}
+\newcommand{\X}{\mathrm{X}}
+\newcommand{\Y}{\mathrm{Y}}
+\newcommand{\PP}{\mathrm{P}}
+\newcommand{\EE}{\mathrm{E}}
+\newcommand{\HH}{\mathrm{H}}
+\newcommand{\A}{\mathrm{A}}
+\newcommand{\I}{\mathrm{I}}
+\newcommand{\M}{\mathrm{M}}
+
+\newcommand{\sh}{\mathrm{sh}}
+\newcommand{\nullm}{\mathrm{null}}
+\newcommand{\intv}{\mathrm{intv}}
+\newcommand{\family}{\mathrm{visit}}
+\newcommand{\care}{\mathrm{care}}
+\newcommand{\Exp}{\mathrm{exp}}
+\newcommand{\onset}{\mathrm{onset}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes true
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author -1732430129 "apascual"
+\author 227091064 "Klein"
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Supplementary Methods and Results
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Empowering the crowd: Feasible strategies 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ to minimize the spread of COVID-19 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ in informal settlements
+\end_layout
+
+\begin_layout Author
+Alberto Pascual-García
+\begin_inset Formula $^{(1,*)}$
+\end_inset
+
+, Jordan Klein
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+, Jennifer Villers
+\begin_inset Formula $^{(3,\land)}$
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Eduard Campillo-Funollet
+\begin_inset Formula $^{(4,\wedge)}$
+\end_inset
+
+, Chamsy Sarkis
+\begin_inset Formula $^{(5)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+\align center
+(1) Institute of Integrative Biology.
+ ETH-Zürich.
+ Zürich, Switzerland.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (2) Office of Population Research.
+ Princeton University.
+ Princeton, NJ, USA.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (3) Princeton Environmental Institute.
+ Princeton University.
+ Princeton, NJ, USA.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (4) Genome Damage and Stability Centre.
+ University of Sussex.
+ Brighton, United Kingdom.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (5) Pax Syriana Foundation.
+ Valetta, Malta.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Formula $\land$
+\end_inset
+
+) Equal contribution.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ (*) correspondence: alberto.pascual@env.ethz.ch
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\change_deleted -1732430129 1610737509
+Model
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610737509
+We consider a stochastic model inspired by the one proposed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gatto_spread_2020"
+literal "false"
+
+\end_inset
+
+, governed by the following set of differential equations:
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610737509
+\begin_inset Formula 
+\begin{gather}
+\dot{S}_{i}=-\lambda_{i}S_{i}\\
+\dot{E}_{i}=\lambda_{i}S_{i}-\delta_{\EE}E_{i}\\
+\dot{P}_{i}=\delta_{\EE}E_{i}-\delta_{\PP}P_{i}\\
+\dot{A}_{i}=(1-f)\delta_{\PP}P_{i}-\gamma_{\A}A_{i}\\
+\dot{I}_{i}=f\delta_{\PP}P_{i}-((1-g_{i}-h_{i})\gamma_{I}+h_{i}\eta+g_{i}\alpha)I_{i}\\
+\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{\HH}H_{i}\\
+\dot{R}_{i}=\gamma_{\A}A_{i}+(1-g_{i}-h_{i})\gamma_{\I}I_{i}+(1-\sigma)\gamma_{\HH}H_{i}\\
+\dot{D_{i}}=g_{i}\alpha I_{i}+\sigma\gamma_{\HH}H_{i}
+\end{gather}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610737509
+where 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{gather}
+\lambda_{i}=\sum_{j=1}^{n}\beta_{ij}\frac{P_{j}+A_{j}+I_{j}+H_{j}}{N_{j}}\label{eq:lambda-1}
+\end{gather}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610737509
+with 
+\begin_inset Formula $\beta_{ij}=\tau C_{ij}$
+\end_inset
+
+, where 
+\begin_inset Formula $\tau$
+\end_inset
+
+ is the probability of infection if there is a contact between a susceptible
+ and an infected person, and 
+\begin_inset Formula $C_{ij}$
+\end_inset
+
+ is the average number of contacts of an individual of class 
+\begin_inset Formula $i$
+\end_inset
+
+ with an individual of class 
+\begin_inset Formula $j$
+\end_inset
+
+ per day.
+ 
+\begin_inset Formula $N_{j}$
+\end_inset
+
+ is the total population size of class 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ The split of the population in classes is a convenient strategy to account
+ for different responses of sub-populations to the infection.
+ It is also a flexible implementation, since can be considered as many classes
+ as needed to account for different population's attributes such as age
+ or spatial location, see e.g.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gatto_spread_2020,vanzandvoort2020"
+literal "false"
+
+\end_inset
+
+ for two different implementations.
+ The model is illustrated in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and the rest of the parameters are described in Tables 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:FixedParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The compartments describe the progression of individuals through the different
+ stages of the disease, starting from susceptible individuals (S), that
+ may become exposed (E), and then we considered as infectious stages a presympto
+matic stage (P), followed by either an asymptomatic (A) or symptomatic (I)
+ stage, and severe cases having a longer infectious period (H).
+ Finally, all cases either recover (R) or die (D).
+ As it was explained in the Main Text, due to the limited health-care resources
+ on the Northwest region of Syria (NWS), we considered that individuals
+ will not have access to hospitals.
+ As a consequence, all cases requiring ICU would die, and those requiring
+ hospitalization but not ICU remain in the camp, with a longer infectivity
+ period modelled with the H compartment.
+ It is difficult to estimate the fate of those cases requiring hospitalization
+ but not ICU admission.
+ To address this point, we considered two possible fates for the individuals
+ in the H compartment: either all will die 
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+, or all will recover 
+\begin_inset Formula $\sigma=0$
+\end_inset
+
+.
+ Simulating both possibilities allow us to to estimate upper and lower bounds
+ for the outcome variables of our model.
+\change_inserted -1732430129 1610737515
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611284182
+Move this figure to Main Text and create a new figure for the self-isolated
+ population.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611284182
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tikzstyle{int}=[draw, fill=blue!50, minimum size=2em] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tikzstyle{init} = [pin edge={to-,thin,black}] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2.5cm,auto,>=latex']     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [int] (S) {$
+\backslash
+dot{S_i}$};     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (E) [int, right of=S] {$
+\backslash
+dot{E_i}$};     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (P) [int, right of=E] {$
+\backslash
+dot{P_i}$};   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (blank) [right of=P, coordinate]{};  
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (I) [int, below of=blank] {$
+\backslash
+dot{I_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (A) [int, above of=blank] {$
+\backslash
+dot{A_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (H) [int, right of=I] {$
+\backslash
+dot{H_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (R) [int, right of=blank] {$
+\backslash
+dot{R_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (D) [int, below of=H] {$
+\backslash
+dot{D_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (S) edge node {$
+\backslash
+lambda_iS_i$} (E);     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (E) edge node {$
+\backslash
+delta_
+\backslash
+EE E_i$} (P);    
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (P) edge node [anchor=center, left, midway] {$f
+\backslash
+delta_
+\backslash
+PP P_i$} (I);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, below, midway] {$h_i{
+\backslash
+eta}I_i$} (H);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, left, pos=0.7] {$(1-g_i-h_i)
+\backslash
+gamma_
+\backslash
+I I_i$} (R);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (A) edge node [anchor=center, right, midway] {$
+\backslash
+gamma_
+\backslash
+A A_i$} (R);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (P) edge node [anchor=center, left, midway] {$(1-f)
+\backslash
+delta_
+\backslash
+PP P_i$} (A);  
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, left, midway] {$g_i{
+\backslash
+alpha}I_i$} (D);  
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (H) edge node [anchor=center, right, midway] {$(1-
+\backslash
+sigma)
+\backslash
+gamma_
+\backslash
+HH H_i$} (R); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (H) edge node [anchor=center, right, midway] {$
+\backslash
+sigma
+\backslash
+gamma_
+\backslash
+HH H_i$} (D);  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagram"
+
+\end_inset
+
+Diagram of the model.
+ 
+\series default
+The model considers the following compartments: susceptible (S), exposed
+ (E), infectious-presymptomatic (P), infectious-asymptomatic (A), infectious-sym
+ptomatic (I), infectious-requiring hospitalization (H), recovered (R) and
+ dead (D).
+ Our model considers 3 potential outcomes for symptomatic cases (I): mild
+ cases will recover (R) after the typical infectious period, severe cases
+ will have an extended infectious period during which they require hospitalizati
+on (H), and critical cases requiring ICU care will die (D) after the symptomatic
+ period.
+ Since the fate of individuals in the H compartment is uncertain if healthcare
+ is not available, we run simulations considering two possibilities: either
+ all recover (
+\begin_inset Formula $\sigma=0)$
+\end_inset
+
+, or all die (
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611284182
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\change_inserted -1732430129 1610737602
+
+\end_layout
+
+\begin_layout Section*
+
+\change_inserted -1732430129 1610737607
+Parameterization of the model
+\change_inserted 227091064 1611284315
+
+\end_layout
+
+\begin_layout Subsection*
+
+\change_inserted 227091064 1611284641
+Derivation of fixed parameters (Main Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:FixedParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611284773
+To estimate the latent period (
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}$
+\end_inset
+
+), we calculated the difference between randomly generated incubation (
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+) and presymptomatic (
+\begin_inset Formula $\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+) periods.
+ We estimated the presymptomatic period using results reported by He et
+ al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal"
+literal "false"
+
+\end_inset
+
+ and found they best fit a Gompertz distribution with a mean of 2.3 days
+ (95% CI: 0.8-3.0).
+ Since a correction of these by Ashcroft et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ashcroft_covid-19_2020"
+literal "false"
+
+\end_inset
+
+ suggests they significantly underestimate the presymptomatic period's upper
+ bound, we estimated that the true presymptomatic period follows a Gaussian
+ distribution around the mean (95% CI: 0.8-3.8).
+ However, this presymptomatic period distribution implies a non-negligible
+ probability of a negative latent period.
+ To correct this discrepancy, we assumed a minimum latent period of .5 days
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "harcourt2020severe"
+literal "false"
+
+\end_inset
+
+.
+ Time from symptom onset to death in critical cases (
+\begin_inset Formula $\nicefrac{1}{\alpha}$
+\end_inset
+
+) is estimated using time from symptom onset to ICU admission in Wang et
+ al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+
+\change_inserted 227091064 1611284888
+Derivation of transmissibility parameters (Main Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:TransParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611284933
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611284889
+
+$
+\backslash
+rho_{HI}$
+\end_layout
+
+\end_inset
+
+ calculated manually from van Kampen et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "van_kampen_shedding_2020"
+literal "false"
+
+\end_inset
+
+ by ratio of viral culture positive test rate in hospitalized patients 7-16
+ days since start of symptoms to positive test rate in patients 0-6 days
+ since start of symptoms.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611284988
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\beta_{A}=\beta_{I}\rho_{AI}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611284998
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\beta_{H}=\beta_{I}\rho_{HI}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611284936
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611284936
+
+$$
+\backslash
+newline$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611285123
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\frac{AUC_{P}}{(1-AUC_{P})}=\frac{\frac{\beta_{P}}{\delta_{P}}}{\frac{\beta_{I}}{\gamma_{I}}+\frac{\beta_{H}}{\gamma_{H}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611285131
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\beta_{I}\gamma_{H}+\beta_{H}\gamma_{I}=\frac{\beta_{P}\gamma_{I}\gamma_{H}(1-AUC_{P})}{AUC_{P}\delta_{P}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611285139
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\beta_{I}\gamma_{H}+\beta_{I}\rho_{HI}\gamma_{I}=\frac{\beta_{P}\gamma_{I}\gamma_{H}(1-AUC_{P})}{AUC_{P}\delta_{P}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611285145
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\beta_{I}=\frac{\beta_{P}\gamma_{I}\gamma_{H}(1-AUC_{P})}{AUC_{P}\delta_{P}(\gamma_{H}+\rho_{HI}\gamma_{I})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611284936
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1611284936
+
+$$
+\backslash
+newline$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611285154
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\beta_{A}=\frac{\rho_{AI}\beta_{P}\gamma_{I}\gamma_{H}(1-AUC_{P})}{AUC_{P}\delta_{P}(\gamma_{H}+\rho_{HI}\gamma_{I})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611285163
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\beta_{H}=\frac{\rho_{HI}\beta_{P}\gamma_{I}\gamma_{H}(1-AUC_{P})}{AUC_{P}\delta_{P}(\gamma_{H}+\rho_{HI}\gamma_{I})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Population structure 
+\change_inserted -1732430129 1610737626
+of demographic-classes
+\change_inserted 227091064 1611285269
+ derivation (Main Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\change_deleted -1732430129 1610737628
+and model parameters
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611285409
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:PopParams"
+
+\end_inset
+
+
+\series bold
+Population structured parameters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<column alignment="center" valignment="middle" width="12.12text%">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Population class
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 1 (0-12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 2 (13-50), no comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 2 (13-50),
+\end_layout
+
+\begin_layout Plain Layout
+comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 3 (>50), no comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 3 (>50),
+\end_layout
+
+\begin_layout Plain Layout
+comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+References
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fraction in class
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.407
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.471
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.0373
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doocy_prevalence_2016,doocy_prevalence_2015,noauthor_syrian_nodate"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.064
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.067
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.199
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.183
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.445
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological,covid2020preliminary"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.0065
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.02
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.094
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.063
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.222
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological,covid2020preliminary"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bar{c}_{i}^{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+From camp managers
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+In April, 2020, 40.7% of the population in informal IDP camps in Northern
+ Syria was aged 0-12, 53.4% aged 13-50, and 5.9% aged 51+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "noauthor_syrian_nodate"
+literal "false"
+
+\end_inset
+
+.
+ 
+\change_inserted 227091064 1611288227
+We assumed the age-specific prevalence of chronic disease is comparable
+ in Syrian refugees in both Syria and Jordan.
+ According to survey data on Syrian refugees in Jordan, 10% of people under
+ 30, 30% of people 30-50, and 50% of people over 50 reported having chronic
+ diseases 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "helpage_international_hidden_2014"
+literal "false"
+
+\end_inset
+
+.
+ We assumed that no one in the 0-12 age group had chronic diseases and calculate
+d the proportion of people aged 13-50 with chronic diseases by standardizing
+ the age-specific chronic disease prevalence reported in the survey to the
+ age distribution in the 13-50 interval of the IDP camp population.
+ In sum, we assume that ~17.7% of adults aged 13-50 and 50% of adults aged
+ 51+ have comorbidities.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611288255
+To estimate the proportion of each age group with comorbidities, we calculated
+ the weighted average age-specific comorbidity prevalence of the 4 most
+ common comorbidities in the Syrian refugee populations in Jordan and Lebanon:
+ hypertension, cardiovascular disease, diabetes, and chronic respiratory
+ disease 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doocy_prevalence_2015,doocy_prevalence_2016"
+literal "false"
+
+\end_inset
+
+.
+ We standardized these weighted averages to the age structure of IDPs in
+ Northern Syria and estimated that 11.7% of people aged 13-50 have comorbidities,
+ while 62.9% of people aged 51+ have comorbidities.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611288372
+We estimated the fractions of symptomatic cases in children aged <13 that
+ would become severe and critical from the fractions of symptomatic cases
+ in children aged <11 that were severe and critical in China 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological"
+literal "false"
+
+\end_inset
+
+.
+ We estimated the class-specific fractions of symptomatic cases in adults
+ that would become severe and critical using the age and comorbidity-specific
+ fractions of symptomatic cases with known outcomes that required hospitalizatio
+n, without and with ICU admission, respectively in the United States 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covid2020preliminary"
+literal "false"
+
+\end_inset
+
+.
+ To account for poorer health among Syrian adults compared to their similarly
+ aged peers in developed countries, estimates for US adults aged 19-64 were
+ used for Syrian adults aged 13-50, while estimates for US adults aged 65+
+ were used for Syrian adults aged 51+.
+\change_inserted 227091064 1611285413
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611288341
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:FixedParams"
+
+\end_inset
+
+
+\series bold
+Model parameters.
+ 
+\change_inserted -1732430129 1610670189
+Include new parameters XXX
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="27.5text%">
+<column alignment="center" valignment="middle" width="27.5text%">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="10text%">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Distribution
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reference
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Incubation period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.2 (95% CI: 4.1-7.0)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lognormal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "li2020early"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Presymptomatic infectious period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.3 (95% CI: 0.8-3.8)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gaussian
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,ashcroft_covid-19_2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Latent period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}\right)-\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+(Minimum = .5 days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Derived
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\gamma_{\I}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symptomatic infectious period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,wolfel2020virological"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\gamma_{\A}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Asymptomatic infectious period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,wolfel2020virological"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\eta}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Time from symptom onset to requiring hospitalization (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7 (IQR: 4-8)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Time from symptom onset to death (critical cases, days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10 (IQR: 6-12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\gamma_{\HH}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Time from requiring hospitalization to recovery/death (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10 (IQR: 7-14)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Probability an infectious individual is symptomatic
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.84 (95% CI: 0.8-0.88)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Binomial
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "byambasuren2020estimating"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fraction of symptomatic cases severe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age and comorbidity-dependent (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological,covid2020preliminary"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fraction of symptomatic cases critical
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age and comorbidity-dependent (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological,covid2020preliminary"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reduction in probability of infection from contact in buffer zone
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color black
+Assumed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_deleted 227091064 1611288341
+Time periods
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611288341
+To estimate the latent period (
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}$
+\end_inset
+
+), we calculated the difference between randomly generated incubation (
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+) and presymptomatic (
+\begin_inset Formula $\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+) periods.
+ We estimated the presymptomatic period using results reported by He et
+ al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal"
+literal "false"
+
+\end_inset
+
+ and found they best fit a Gompertz distribution with a mean of 2.3 days
+ (95% CI: 0.8-3.0).
+ Since a correction of these by Ashcroft et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ashcroft_covid-19_2020"
+literal "false"
+
+\end_inset
+
+ suggests they significantly underestimate the presymptomatic period's upper
+ bound, we estimated that the true presymptomatic period follows a Gaussian
+ distribution around the mean (95% CI: 0.8-3.8).
+ However, this presymptomatic period distribution implies a non-negligible
+ probability of a negative latent period.
+ To correct this discrepancy, we assumed a minimum latent period of .5 days
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "harcourt2020severe"
+literal "false"
+
+\end_inset
+
+.
+ Time from symptom onset to death in critical cases (
+\begin_inset Formula $\nicefrac{1}{\alpha}$
+\end_inset
+
+) is estimated using time from symptom onset to ICU admission in Wang et
+ al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+.
+\change_inserted -1732430129 1610737724
+
+\end_layout
+
+\begin_layout Subsection*
+
+\change_deleted 227091064 1611288398
+Proportions severe cases etc
+\change_inserted 227091064 1611288527
+Epidemiological severity assumptions derivation
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1611288380
+We estimated the fractions of symptomatic cases in children aged <13 that
+ would become severe and critical from the fractions of symptomatic cases
+ in children aged <11 that were severe and critical in China 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological"
+literal "false"
+
+\end_inset
+
+.
+ We estimated the class-specific fractions of symptomatic cases in adults
+ that would become severe and critical using the age and comorbidity-specific
+ fractions of symptomatic cases with known outcomes that required hospitalizatio
+n, without and with ICU admission, respectively in the United States 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covid2020preliminary"
+literal "false"
+
+\end_inset
+
+.
+ To account for poorer health among Syrian adults compared to their similarly
+ aged peers in developed countries, estimates for US adults aged 19-64 were
+ used for Syrian adults aged 13-50, while estimates for US adults aged 65+
+ were used for Syrian adults aged 51+.
+\change_inserted -1732430129 1610737753
+
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_deleted 227091064 1611288390
+Transmissivity
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1611288390
+INCLUDE COMPUTATION FOR THE NEW PARAMETERS.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610737008
+We explore different scenarios for allocating members of each population
+ class to the safety, or 
+\begin_inset Quotes eld
+\end_inset
+
+green
+\begin_inset Quotes erd
+\end_inset
+
+ zone, and the exposed, or 
+\begin_inset Quotes eld
+\end_inset
+
+orange
+\begin_inset Quotes erd
+\end_inset
+
+ zone.
+ In one scenario, we only place individuals in age group 3 (>50) in the
+ green zone, while in another we place all vulnerable individuals, age group
+ 3 and age group 2 (13-50) with comorbidities, in the green zone.
+ In 3 additional scenarios, after all vulnerable individuals are allocated
+ to the green zone, we set the green zone's capacity to a certain percentage
+ of the camp's population (20%, 25%, 30%), and allocate its remainder to
+ non-vulnerable family members, who by necessity are either children <13
+ in age group 1 or healthy younger adults in age group 2.
+ In accordance with camp managers' expectations that many vulnerable individuals
+ will have non-vulnerable spouses, while fewer vulnerable individuals will
+ have young children, in these scenarios we allocate 40% of the remainder
+ of the green zone to children and 60% of the remainder of the green zone
+ to younger adults without comorbidities.
+ We also consider a baseline scenario in which there is no green zone.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection*
+
+\change_deleted -1732430129 1610717858
+Parameterization of the contact matrix
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610717858
+We estimated the average number of contacts that individuals of class 
+\begin_inset Formula $i$
+\end_inset
+
+ have in a camp per day, 
+\begin_inset Formula $\bar{c}_{i}^{0}$
+\end_inset
+
+ (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), and we parameterized the contact matrix assuming that, in a well-mixed
+ population, these contacts will be distributed among classes relative to
+ the fraction of individuals within each class, i.e.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610717858
+\begin_inset Formula 
+\begin{equation}
+C_{ij}^{0}=\bar{c}_{i}^{0}N_{j}/N,
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610717858
+with 
+\begin_inset Formula $N$
+\end_inset
+
+ the total population size and 
+\begin_inset Formula $N_{j}$
+\end_inset
+
+ the population size of class 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ A well-mixed population will be considered the null model, and parameters
+ derived under the null model assumptions are indexed with the superscript
+ 
+\begin_inset Formula $0$
+\end_inset
+
+, e.g.
+ the null contact matrix is 
+\begin_inset Formula $C_{ij}^{0}$
+\end_inset
+
+.
+ Some of the interventions we considered either reduce the average number
+ of contacts of class 
+\begin_inset Formula $i$
+\end_inset
+
+ (e.g.
+ self-isolation) or the probability that individuals of class 
+\begin_inset Formula $i$
+\end_inset
+
+ interact with those of class 
+\begin_inset Formula $j$
+\end_inset
+
+ (e.g.
+ safety zone strategies).
+ We model the first type of intervention introducing the parameter 
+\begin_inset Formula $\epsilon_{i}$
+\end_inset
+
+, representing the fraction of the average number of contacts observed in
+ the null model that prevail after the intervention: 
+\begin_inset Formula $\bar{c}_{i}=\epsilon_{i}\bar{c}_{i}^{0}$
+\end_inset
+
+.
+ Similarly, we model the second type of intervention with the matrix 
+\begin_inset Formula $m_{ij}$
+\end_inset
+
+, representing the fraction of population 
+\begin_inset Formula $j$
+\end_inset
+
+ visible to population 
+\begin_inset Formula $i$
+\end_inset
+
+ after the intervention.
+ The contact matrix resulting from management strategies can therefore be
+ written with respect to the null model as:
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610717858
+\begin_inset Formula 
+\begin{equation}
+C_{ij}=\epsilon_{i}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon_{i}m_{ij}C_{ij}^{0}=M_{ij}C_{ij}^{0}.\label{eq:ManagementMatrix}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610717858
+We name the matrix 
+\begin_inset Formula $M_{ij}$
+\end_inset
+
+ the management matrix.
+ Substituting Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ManagementMatrix"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ in the explicit expression of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ (Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambda-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) yields a general expression for management strategies acting on the contact
+ matrix:
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610717858
+\begin_inset Formula 
+\begin{gather}
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\epsilon_{i}\bar{c}_{i}^{0}m_{ij}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda_simplified}
+\end{gather}
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection*
+Derivation of the transmissivity parameter 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Overall strategy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The derivation of R0 for a SIR type model following description of 'Mathematical
+ Tools for Understanding Infectious Disease Dynamics' written by Odo Diekmann,
+ Hans Heesterbeek and Tom Britton.
+ See chapter 7, section 2 'Next-generation matrix for compartmental systems'.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+1) Define the infected subsystem, i.e.
+ all equations that include compartments where individuals can get infected.
+ 2) Linearize the subsystem in the disease-free equilibrium.
+ 3) Find the next generation matrix (NGM) with large domain (
+\begin_inset Formula $K_{L}$
+\end_inset
+
+) by writing the linear system as: 
+\begin_inset Formula $\bs{\dot{x}}=(\bs{T}+\bs{\Sigma})\bs{x}$
+\end_inset
+
+.
+ Here 
+\begin_inset Formula $\bs{x}$
+\end_inset
+
+ is a vector containing all states where individuals can get infected, 
+\begin_inset Formula $\bs{T}$
+\end_inset
+
+ contains all terms corresponding to transmission and 
+\begin_inset Formula $\bs{\Sigma}$
+\end_inset
+
+ all terms corresponding to transitions between compartments.
+ Then: 
+\begin_inset Formula $\bs{K}=-\bs{T}\bs{\Sigma}^{-1}.$
+\end_inset
+
+ 4) Particularize the solution to the NGM with small domain (
+\begin_inset Formula $K_{S}$
+\end_inset
+
+) and estimate 
+\begin_inset Formula $\tau$
+\end_inset
+
+ by relating the dominant eigenvalue of the NGM to an estimation of the
+ basic reproduction number obtained from the literature.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+We also reference the description of R0 in metapopulations in Philipps S,
+ Rossi D.
+ Mathematical Models of Infectious Diseases: Two-Strain Infections in Metapopula
+tions, and the methodology for calculating R0 used by the authors in Gatto
+ M, Bertuzzo E, Mari L, Miccoli S, Carraro L, Casagrandi R, et al.
+ Spread and dynamics of the COVID-19 epidemic in Italy: Effects of emergency
+ containment measures.
+ PNAS.
+ 2020 May 12;117(19):10484–91.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Estimation of the Next Generation Matrix
+\end_layout
+
+\begin_layout Standard
+In the following, to simplify the notation we define 
+\begin_inset Formula $\kappa_{i}=((1-g_{i}-h_{i})\gamma_{\I}+h_{i}\eta+g_{i}\alpha)$
+\end_inset
+
+.
+ To estimate the probability of infection if there is a contact between
+ a susceptible and an infected individual (parameter 
+\begin_inset Formula $\tau$
+\end_inset
+
+) we proceed as follows 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "diekmann_mathematical_2013,philipps_mathematical_2011,gatto_spread_2020"
+literal "false"
+
+\end_inset
+
+.
+ We start by considering the subsystem containing the infected population:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\dot{E}_{i}=\lambda_{i}S_{i}-\delta_{\EE}E_{i}\\
+\dot{P}_{i}=\delta_{\EE}E_{i}-\delta_{\PP}P_{i}\\
+\dot{A}_{i}=(1-f)\delta_{\PP}P_{i}-\gamma_{\A}A_{i}\\
+\dot{I}_{i}=f\delta_{\PP}P_{i}-\kappa_{i}I_{i}\\
+\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{\HH}H_{i}.
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the sake of simplifying the notation, let us consider the following
+ ordering of the variables in the vector 
+\begin_inset Formula $x=(E_{1},...,E_{\M},P_{1},...,P_{\M},A_{1},...,A_{\M},I_{1},...,I_{\M},H_{1},...,H_{\M})$
+\end_inset
+
+, with 
+\begin_inset Formula $M$
+\end_inset
+
+ the number of population classes.
+ We are interested in the parameterization of the null model, which will
+ serve as a baseline to estimate the parameter 
+\begin_inset Formula $\tau$
+\end_inset
+
+, which is initially unknown, but does not change when interventions are
+ introduced.
+ 
+\change_inserted -1732430129 1610718165
+Considering the contacts matrix f
+\change_deleted -1732430129 1610718164
+F
+\change_unchanged
+or the null model
+\change_inserted -1732430129 1610718175
+ (Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:NullContactsMatrix"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ in Main Text)
+\change_unchanged
+, 
+\change_deleted -1732430129 1610718180
+Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambda_simplified"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_inserted -1732430129 1610718275
+ the rate of exposure
+\change_deleted -1732430129 1610718185
+ 
+\change_unchanged
+becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\bar{c}_{i}^{0}\left(\beta_{\PP}P_{j}+\beta_{\text{\A}}A_{j}+\beta_{\I}I_{j}+\beta_{\HH}H_{j}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1610719047
+In the following, we use bold symbols for vectors and matrices, and the
+ symbols 
+\begin_inset Formula $\odot$
+\end_inset
+
+ and 
+\begin_inset Formula $\oslash$
+\end_inset
+
+ for the element-wise product and division, respectively.
+ 
+\change_unchanged
+Following this notation, the linearized system can be written in the form
+ 
+\begin_inset Formula $\bs{\dot{x}}=(\bs{T}+\bs{\Sigma})\bs{x}$
+\end_inset
+
+, where:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\bs{T}=\tau\begin{bmatrix}\bs{0} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}
+\end{bmatrix}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is the transmission matrix, with 
+\begin_inset Formula $\bs{\Theta}=\mathrm{diag}(\bs{p}\odot\bs{\bar{c}}^{0})\bs{\bs{U}}$
+\end_inset
+
+, 
+\begin_inset Formula $\bs\{p\}=\bs{N}/N$
+\end_inset
+
+, and 
+\begin_inset Formula $\bs{U}$
+\end_inset
+
+ is the all ones matrix of size 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ The transition matrix is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\bs{\Sigma}=\begin{bmatrix}-\delta_{\EE}\bs{I} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\delta_{\EE}\bs{I} & -\delta_{\PP}\bs{I} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & (1-f)\delta_{\PP}\bs{I} & -\gamma_{\A}\bs{I} & \bs{0} & \bs{0}\\
+\bs{0} & f\delta_{\PP}\bs{I} & \bs{0} & -\mathrm{diag}(\bs{\kappa})\bs{I} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \eta\mathrm{diag}(\bs{h})\bs{I} & -\gamma_{\HH}\bs{I}
+\end{bmatrix}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\bs{I}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bs{0}$
+\end_inset
+
+ are the identity and null matrices of size 
+\begin_inset Formula $M$
+\end_inset
+
+, and 
+\begin_inset Formula $\bs{\kappa}=\bs{l}\gamma_{I}+\bs{h}\eta+\bs{g}\alpha$
+\end_inset
+
+.
+ We next compute the inverse of the transition matrix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\bs{\Sigma^{-1}}=\begin{bmatrix}-\frac{1}{\delta_{\EE}}\bs{I} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+-\frac{1}{\delta_{\PP}}\bs{I} & -\frac{1}{\delta_{\PP}}\bs{I} & \bs{0} & \bs{0} & \bs{0}\\
+-\frac{(1-f)}{\gamma_{\A}}\bs{I} & -\frac{(1-f)}{\gamma_{\A}}\bs{I} & -\frac{1}{\gamma_{\A}}\bs{I} & \bs{0} & \bs{0}\\
+-f\mathrm{diag}(\bs{\kappa}^{-1})\bs{I} & -f\mathrm{diag}(\bs{\kappa}^{-1})\bs{I} & \bs{0} & -\mathrm{diag}(\bs{\kappa}^{-1})\bs{I} & \bs{0}\\
+-\frac{f\eta}{\gamma_{\HH}}\mathrm{diag}(\bs{h}\oslash\bs{\kappa})\bs{I} & -\frac{f\eta}{\gamma_{\HH}}\mathrm{diag}(\bs{h}\oslash\bs{\kappa})\bs{I} & \bs{0} & -\frac{\eta}{\gamma_{\HH}}\mathrm{diag}(\bs{h}\oslash\bs{\kappa})\bs{I} & -\frac{1}{\gamma_{\HH}}\bs{I}
+\end{bmatrix}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The NGM with large domain can now be found by 
+\begin_inset Formula $\bs{K_{\mathrm{L}}}=-\bs{T}\bs{\Sigma}^{-1}$
+\end_inset
+
+.
+ However, since we know that each individual who gets infected becomes exposed
+ (
+\begin_inset Formula $E$
+\end_inset
+
+ compartment), we focus on the NGM with small domain, 
+\begin_inset Formula ${\bf {K_{\mathrm{S}}}}$
+\end_inset
+
+, which only consists of the 
+\begin_inset Formula $E$
+\end_inset
+
+ compartment 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "heffernan_perspectives_2005"
+literal "false"
+
+\end_inset
+
+.
+ We do this by removing the rows that correspond to the other compartments
+ from 
+\begin_inset Formula $T$
+\end_inset
+
+ and the columns from 
+\begin_inset Formula $\Sigma^{-1}$
+\end_inset
+
+ .
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+add{
+\end_layout
+
+\end_inset
+
+APG: This could be more elegantly explained defining an epsilon matrix
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\change_deleted -1732430129 1598135029
+ 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ We then find:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather*}
+\bs{K_{\mathrm{S}}}=\tau\left[\left(\frac{1}{\delta_{P}}+\frac{(1-f)}{\gamma_{A}}\right)\bs{\Theta}+\mathrm{diag}\left(f\bs{h}^{-1}(1+\frac{\eta}{\gamma_{\HH}}\bs{h})\right)\bs{\Theta}\right].
+\end{gather*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Estimation of 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The reproduction number is related to the main eigenvalue of 
+\begin_inset Formula $\bs{K_{\mathrm{S}}}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $R_{0}=|\lambda_{1}|$
+\end_inset
+
+, and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ is estimated from the main eigenvalue of 
+\begin_inset Formula $\tilde{K}_{\mathrm{S}}=K_{\mathrm{S}}/\tau$
+\end_inset
+
+.
+ Considering the null model parameters (
+\begin_inset Formula $\tilde{\lambda}_{1}^{0}$
+\end_inset
+
+), we have the expression:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tau=\frac{R_{0}}{|\tilde{\lambda}_{1}^{0}|}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Parameterization of the interventions
+\end_layout
+
+\begin_layout Subsubsection*
+Safety zone
+\end_layout
+
+\begin_layout Standard
+We considered the existence of a safety zone to protect a certain fraction,
+ 
+\begin_inset Formula $f_{\mathrm{S}}$
+\end_inset
+
+, of the population, mostly those more vulnerable.
+ In practice, this involves dividing the camp in two areas, a 
+\begin_inset Quotes eld
+\end_inset
+
+green
+\begin_inset Quotes erd
+\end_inset
+
+ zone (denoted 
+\begin_inset Formula $\g$
+\end_inset
+
+) for the protected population and an 
+\begin_inset Quotes eld
+\end_inset
+
+orange
+\begin_inset Quotes erd
+\end_inset
+
+ zone (
+\begin_inset Formula $\oran$
+\end_inset
+
+) for the exposed population.
+ These two populations could interact via a buffer zone, under controlled
+ conditions.
+ Based on our assumption that infectivity in the buffer zone is reduced
+ by 80%, 
+\begin_inset Formula $\hat{\tau}=0.2\tau$
+\end_inset
+
+.
+ Each individual in the green zone can interact with a limited number (
+\begin_inset Formula $c_{\family}$
+\end_inset
+
+) of family members (hereafter 
+\begin_inset Quotes eld
+\end_inset
+
+visitors
+\begin_inset Quotes erd
+\end_inset
+
+) from the orange zone per day.
+ In some interventions we considered that individuals visiting the buffer
+ zone will have a health check (e.g.
+ temperature measurement), aimed at excluding symptomatic individuals.
+ When the health check is applied, the transmission probability between
+ individuals from the orange zone in the 
+\begin_inset Formula $I$
+\end_inset
+
+ or 
+\begin_inset Formula $H$
+\end_inset
+
+ compartments and individuals from the green zone is set to zero.
+\end_layout
+
+\begin_layout Standard
+Although setting up a safety zone implies a reduction in the number of contacts
+ between classes of the green zone and the orange zone, the mean number
+ of contacts that each individual has per day, 
+\begin_inset Formula $\bar{c}_{i}$
+\end_inset
+
+, is conserved.
+ Therefore we need to estimate how contacts will be redistributed from individua
+ls from a different zone to individuals living in the same zone.
+ We model this redistribution of the contacts with the parameter 
+\begin_inset Formula $\epsilon_{i}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\epsilon_{i} & = & \rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in different zones})\\
+\epsilon_{i} & = & 1-\rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in same zone}).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we assume that visitors are always different, the quantity 
+\begin_inset Formula $f_{\oran,\family}=c_{\family}\frac{N_{\g}}{N_{\oran}}$
+\end_inset
+
+ is the fraction of the orange population that visits the buffer zone.
+ We define 
+\begin_inset Formula $\rho$
+\end_inset
+
+ as
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $c_{\family}$
+\end_inset
+
+ is large enough ( 
+\begin_inset Formula $c_{\family}\approx$
+\end_inset
+
+ 
+\change_inserted -1732430129 1610728441
+15 
+\change_unchanged
+contacts per
+\change_inserted -1732430129 1610728445
+ day
+\change_deleted -1732430129 1610728443
+ week
+\change_unchanged
+), 
+\change_deleted -1732430129 1610724568
+this function
+\change_inserted -1732430129 1610724576
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ should
+\change_deleted -1732430129 1610724568
+ 
+\change_unchanged
+saturate
+\change_deleted -1732430129 1610724579
+s
+\change_unchanged
+, because every member of the orange zone would eventually visit
+\change_deleted -1732430129 1610724374
+s
+\change_unchanged
+ the buffer zone
+\change_inserted -1732430129 1610724589
+, following the expression
+\change_unchanged
+:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\rho=\begin{cases}
+1 & \textrm{if }i\in\g\\
+f_{\oran,\family}\left(1-\textrm{H}(f_{\oran,\family}-1)\frac{f_{\oran,\family}-1}{f_{\oran,\family}}\right) & \textrm{if }i\in\oran
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with the Heaviside function 
+\begin_inset Formula $\textrm{H}(f_{\oran,\family}-1)=1$
+\end_inset
+
+ if 
+\begin_inset Formula $f_{\oran,\family}\geq1$
+\end_inset
+
+.
+ We chose values well below this saturation threshold
+\change_inserted -1732430129 1610728491
+ (a maximum of 10 contacts per week, i.e.
+ 1.42 contacts per day)
+\change_unchanged
+.
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho=\begin{cases}
+1 & \textrm{if }i\in\g\\
+f_{\oran,\family} & \textrm{if }i\in\oran
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Next, we model the probability of interaction between a member of class
+ 
+\begin_inset Formula $i$
+\end_inset
+
+ and class 
+\begin_inset Formula $j$
+\end_inset
+
+, depending on whether they belong to the same or to different zones.
+ Since interaction is limited to others in the same zone, every individual
+ will have a higher likelihood of interaction with members of the classes
+ staying in the same zone compared to the null model.
+ More specifically, the proportion 
+\begin_inset Formula $N_{i}/N$
+\end_inset
+
+ of individuals of class 
+\begin_inset Formula $i$
+\end_inset
+
+ in the null model will become 
+\begin_inset Formula $N_{i}/N_{\X}$
+\end_inset
+
+ with 
+\begin_inset Formula $N_{\X}$
+\end_inset
+
+ the total number of individuals in zone 
+\begin_inset Formula $X=\{\oran,\g\}$
+\end_inset
+
+.
+ This yields the following values for 
+\begin_inset Formula $m_{ij}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\X}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\X}}\quad(i,j\textrm{ in same zone}\ X)\\
+m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\Y}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\Y}}\quad(i\in X\textrm{ and}\ j\in Y).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We finally define the management matrix as 
+\begin_inset Formula $M_{ij}=\epsilon_{i}m_{ij}$
+\end_inset
+
+.
+\change_inserted -1732430129 1610737016
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1610737016
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:SafetyScenarios"
+
+\end_inset
+
+
+\series bold
+Fraction of population in each zone by safety zone scenario and behaviour-class.
+ 
+\series default
+Behaviour-classes that are not considered in a given scenario have a proportion
+ equal to zero.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="9">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="6text%">
+<column alignment="center" valignment="top" width="6text%">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="10text%">
+<column alignment="center" valignment="top" width="10text%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Scenario
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Age 1, orange
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Age 1, green
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Age 2 no comorbidities, orange
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Age 2 no comorbidities, green
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Age 2 comorbidities, orange
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Age 2 comorbidities, green
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Age 3 no comorbidities, green
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Age 3 comorbidities, green
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Only age 3 in green zone
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.407
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.471
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0373
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+Age 3 + age 2 with comorbidities in green zone
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.407
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.471
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0373
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+20% green zone capacity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.376
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0312
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.424
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0469
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0373
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+25% green zone capacity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.356
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0512
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.394
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0769
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0373
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+30% green zone capacity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.336
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0712
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.364
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.107
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1610737016
+.0373
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1610737440
+Following this parameterization, we explore different scenarios, summarized
+ in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:SafetyScenarios"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, for allocating members of each population class to the safety, or 
+\begin_inset Quotes eld
+\end_inset
+
+green
+\begin_inset Quotes erd
+\end_inset
+
+ zone, and the exposed, or 
+\begin_inset Quotes eld
+\end_inset
+
+orange
+\begin_inset Quotes erd
+\end_inset
+
+ zone.
+ In one scenario, we only place individuals in age group 3 (>50) in the
+ green zone, while in another we place all vulnerable individuals, age group
+ 3 and age group 2 (13-50) with comorbidities, in the green zone.
+ In 3 additional scenarios, after all vulnerable individuals are allocated
+ to the green zone, we set the green zone's capacity to a certain percentage
+ of the camp's population (20%, 25%, 30%), and allocate its remainder to
+ non-vulnerable family members, who by necessity are either children <13
+ in age group 1 or healthy younger adults in age group 2.
+ For these 3 scenarios, it is required to split the children and the healthy
+ younger adults demographic-classes in two behaviour-classes (orange and
+ green) to account for the different parameterizations in the contacts matrix,
+ as explained above.
+ In accordance with camp managers' expectations that many vulnerable individuals
+ will have non-vulnerable spouses, while fewer vulnerable individuals will
+ have young children, in these scenarios we allocate 40% of the remainder
+ of the green zone to children and 60% of the remainder of the green zone
+ to younger adults without comorbidities.
+ We also consider a baseline scenario in which there is no green zone.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsubsection*
+Estimation of the infectivity of the isolated and evacuated populations
+\end_layout
+
+\begin_layout Standard
+To estimate the infectivity of the isolated population, we make the following
+ assumptions.
+ We considered a number 
+\begin_inset Formula $N_{\textrm{care}}$
+\end_inset
+
+ of carers having 
+\begin_inset Formula $c_{\care}$
+\end_inset
+
+ contacts per day with the isolated population.
+ Carers are entirely drawn from younger adults (age 2) with no comorbidities,
+ and must have no symptoms.
+ We denote the number of individuals fulfilling these requirements with
+ 
+\begin_inset Formula $N_{\Exp}$
+\end_inset
+
+ (number of exposed).
+ When the number of symptomatic individuals exceeds the isolation capacity,
+ 
+\begin_inset Formula $\tilde{N},$
+\end_inset
+
+ the individuals in excess are fully infectious (note that we use a tilde
+ to denote variables related to the isolated population).
+ In addition, the occupancy of the isolation beds is distributed among classes
+ proportionally to the number of symptomatic individuals present in each
+ class, i.e.
+ 
+\begin_inset Formula $\tilde{I}_{j}=\tilde{N}\left(I_{j}/\sum_{j}I_{j}\right)$
+\end_inset
+
+.
+ Finally, symptomatic individuals developing symptoms that would require
+ hospitalization, are either evacuated or become fully infectious.
+ The rationale behind the latter choice is that camps lack the necessary
+ means to adequately protect the rest of the population when individuals
+ require more dedicated care.
+ In particular, it is unlikely that a severely ill individual would be able
+ to stay alone in a tent.
+ We model evacuation considering a parameter 
+\begin_inset Formula $\epsilon=0$
+\end_inset
+
+ if evacuation is put in place and 
+\begin_inset Formula $\epsilon=1$
+\end_inset
+
+ otherwise.
+ Evacuated individuals are no longer infectious.
+\change_inserted -1732430129 1610729861
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1610735513
+Given these assumptions, to estimate the rate of exposure for each demographic-c
+lass, it is needed to split the contacts into two terms, one describing
+ the interaction of individuals in the class with the isolated population,
+ and another term for the infectious individuals that are not isolated:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1610733590
+\begin_inset Formula 
+\[
+\lambda_{i}=\tau\sum_{j}\underset{\mathrm{isolated}}{\underbrace{\beta_{\I}\tilde{c}_{i}\tilde{P}(i\rightarrow j)}}+\underset{\mathrm{not\ isolated}}{\underbrace{C_{ij}\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon\beta_{\HH}H_{j}}{N_{j}}}},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1610736128
+where 
+\begin_inset Formula $\tilde{c}_{i}$
+\end_inset
+
+ is the mean number of contacts of class 
+\begin_inset Formula $i$
+\end_inset
+
+ per individual per day with the self-isolated individuals and 
+\begin_inset Formula $\tilde{P}(i\rightarrow j)$
+\end_inset
+
+ is the probability that an individual of class 
+\begin_inset Formula $i$
+\end_inset
+
+ encounters an isolated individual of class 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ For the not-isolated term, we maintain the well-mixed population assumption
+ explained in the Main Text, with the incorporation of a Heaviside function,
+ 
+\begin_inset Formula $\varTheta(N_{\I}-\tilde{N})$
+\end_inset
+
+, which activates the interaction with the clinical symptomatic individuals
+ when their number 
+\begin_inset Formula $N_{\I}$
+\end_inset
+
+ exceeds the isolation capacity 
+\begin_inset Formula $\tilde{N}$
+\end_inset
+
+, and we estimate the probability of encountering with the non-isolated
+ individuals to be proportional to their fraction 
+\begin_inset Formula $(I_{j}-\tilde{I}_{j})/N_{j}$
+\end_inset
+
+.
+ For the isolated population, however, the well-mixed assumption is no longer
+ valid.
+ Firstly, all demographic-classes not contributing individuals to the group
+ of carers will never interact with the isolated individuals, and hence
+ 
+\begin_inset Formula $\tilde{c}_{i}=0$
+\end_inset
+
+ for them (morever 
+\begin_inset Formula $\tilde{P}(i\rightarrow j)=0$
+\end_inset
+
+).
+ Secondly, the healthy younger adults population will certainly interact
+ with isolated individuals due to their role of carers, hence 
+\begin_inset Formula $\tilde{P}(i\rightarrow j)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1610736720
+To estimate 
+\begin_inset Formula $\tilde{c}_{i}$
+\end_inset
+
+ for the healthy younger adult class, we note that the number of contacts
+ per day with the isolated individuals is 
+\begin_inset Formula $c_{\care}N_{\care}$
+\end_inset
+
+, and hence the mean number of contacts per individuals per day is 
+\begin_inset Formula $\tilde{c}_{i}=c_{\care}N_{\care}/N_{\Exp}$
+\end_inset
+
+ .
+ We observe that, increasing the number of carers, and the number of contacts
+ per day between carers and individuals, will increase the rate of infection.
+ For simplicity, we assume that there is one carer for each infected person
+ in the class 
+\begin_inset Formula $j,$
+\end_inset
+
+ (
+\begin_inset Formula $N_{\care,j}=\tilde{N}_{j}$
+\end_inset
+
+), having only one contact per day (
+\begin_inset Formula $c_{\care}$
+\end_inset
+
+).
+ Note the convenience of this choice, since if the number of symptomatic
+ individuals is larger than the number of potential carers, the ratio 
+\begin_inset Formula $\tilde{N}_{j}/N_{\Exp}>1$
+\end_inset
+
+, implying more than one contact per day is needed to take care of that
+ population class.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610730740
+Given these assumptions, 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610736491
+the number of contacts that the healthy younger adult population class will
+ have with the isolated population will be 
+\begin_inset Formula $c_{\care}N_{\care}$
+\end_inset
+
+ per individual and day.
+ The expression clearly shows that increasing the number of carers, the
+ number of isolated individuals, and the number of contacts per day between
+ carers and individuals, will increase the rate of infection.
+ Hence, we expect that for fixed 
+\begin_inset Formula $N_{\care}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{\care}$
+\end_inset
+
+, the positive effects of isolation will be diminished as 
+\begin_inset Formula $\tilde{N}$
+\end_inset
+
+ increases.
+ 
+\change_unchanged
+We further assume that this interaction will be regulated through a buffer
+ zone, so infectivity is reduced by 80%, denoted by 
+\begin_inset Formula $\xi=0.2$
+\end_inset
+
+.
+ 
+\change_deleted -1732430129 1610736503
+Finally, we note that the probability of finding an isolated individual
+ belonging to class 
+\begin_inset Formula $j$
+\end_inset
+
+, is equal to 
+\begin_inset Formula $(N_{j}/N)(\tilde{N}_{j}/N_{j})$
+\end_inset
+
+, but this probability is equal to one for the healthy younger adult population
+ (due to their role as carers) and zero for the remaining classes (since
+ they have no access to the isolation area).
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610736503
+For simplicity, we assume that there is one carer for each infected person
+ in the class 
+\begin_inset Formula $j,$
+\end_inset
+
+ (
+\begin_inset Formula $N_{\care,j}=\tilde{N}_{j}$
+\end_inset
+
+), having only one contact per day (
+\begin_inset Formula $c_{\care}$
+\end_inset
+
+).
+ Note the convenience of this choice, since if the number of symptomatic
+ individuals is larger than the number of potential carers, the ratio 
+\begin_inset Formula $\tilde{N}_{j}/N_{\Exp}>1$
+\end_inset
+
+, implying more than one contact per day is needed to take care of that
+ population class.
+
+\change_unchanged
+ With these considerations, the rate of infection for the healthy younger
+ adult population class (indexed 
+\begin_inset Formula $k$
+\end_inset
+
+) becomes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{k}=\tau\sum_{j}\xi\frac{\tilde{N}_{j}}{N_{\Exp}}+C_{kj}\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon\beta_{\HH}H_{j}}{},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1732430129 1610736542
+where 
+\begin_inset Formula $\varTheta$
+\end_inset
+
+ is the Heaviside function and 
+\begin_inset Formula $N_{I}$
+\end_inset
+
+ the total number of symptomatic individuals at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+
+\change_unchanged
+ For the remaining classes (
+\begin_inset Formula $i\neq k$
+\end_inset
+
+) the rate of infection becomes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{i}=\tau\sum_{j}C_{ij}\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon\beta_{\HH}H_{j}}{}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A final consideration is that symptomatic individuals require some time
+ to recognize their symptoms and to self-isolate.
+ To model this, whenever simulating the isolation intervention, the symptomatic
+ compartment is split in two compartments: onset of symptoms, 
+\begin_inset Formula $I_{i}^{\onset}$
+\end_inset
+
+, and symptomatic, 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+.
+ We assumed the duration of 
+\begin_inset Formula $I_{i}^{\onset}$
+\end_inset
+
+ follows a Gaussian distribution with means 12, 24 or 48 hours on average.
+ The duration for which an individual isolates is then calculated as the
+ difference between the symptomatic period if there is no isolation and
+ the duration spent in the symptom onset compartment.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Supplementary figures
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/FigS2.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_DvsR"
+
+\end_inset
+
+ 
+\series bold
+Outcomes when all severe cases recover vs when all severe cases die.
+
+\series default
+ Probability of an outbreak (top left), fraction of the population dying
+ (top middle), time until peak symptomatic cases (top right), IFR (bottom
+ left), and fraction of the population that recovers (bottom middle).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/FigS3.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_self"
+
+\end_inset
+
+ 
+\series bold
+Self-distancing.
+
+\series default
+ IFR (left), and fraction of the population that recovers (right) as a function
+ of the proportion of contacts reduced per individual per day.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/FigS4.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_isolation"
+
+\end_inset
+
+ 
+\series bold
+Self-isolation.
+
+\series default
+ IFR (left), and fraction of the population that recovers (right) as a function
+ of the number of isolation tents available in the camp.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/FigS5.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_onset"
+
+\end_inset
+
+ 
+\series bold
+Time to self-isolation.
+
+\series default
+ Probability of an outbreak (top left), fraction of the population dying
+ (top middle), time until peak symptomatic cases (top right), IFR (bottom
+ left), and fraction of the population that recovers (bottom middle) as
+ a function of the time that individuals require to recognize their symptoms
+ and self-isolate.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/FigS6.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_evacuation"
+
+\end_inset
+
+ 
+\series bold
+Evacuation.
+
+\series default
+ Probability of an outbreak (top left), fraction of the population dying
+ (top middle), time until peak symptomatic cases (top right), IFR (bottom
+ left), and fraction of the population that recovers (bottom middle), as
+ a function of whether individuals requiring hospitalization are evacuated
+ to isolation centers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/FigS7.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_Tcheck"
+
+\end_inset
+
+ 
+\series bold
+Health-checks in the buffer zone.
+
+\series default
+ Probability of an outbreak (top left), fraction of the population dying
+ (top middle), time until peak symptomatic cases (top right), IFR (bottom
+ left), and fraction of the population that recovers (bottom middle), as
+ a function of whether health-checks are implemented in the buffer zone
+ between the safety and exposed zones.
+ Scenarios with 10 or 2 contacts in the buffer zone per person in the safety
+ zone per week are plotted.
+ All figures consider the scenario in which 20% of the camp's population
+ is allocated to the safety zone.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/FigS8.pdf
+	width 60text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_agegroups"
+
+\end_inset
+
+ 
+\series bold
+Effects of the safety zone on outcomes by population class.
+ 
+\series default
+Probability of an outbreak (top), and proportion that dies in each population
+ class (bottom) when no interventions are implemented (Mixed), compared
+ to protection of older adults in the safety zone with 2 contacts in the
+ buffer zone per week (Safety zone).
+ The fraction of deaths in the safety zone for the older population is significa
+ntly lower (Kruskal-Wallis test, p-val
+\begin_inset Formula $<10^{-15}$
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/FigS9.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_safety"
+
+\end_inset
+
+ 
+\series bold
+Number of contacts in the buffer zone.
+
+\series default
+ IFR (left), and fraction of the population that recovers (right) as a function
+ of the number of contacts that each individual in the safety zone has in
+ the buffer zone per week.
+ All figures consider the scenario in which 20% of the camp's population
+ is allocated to the safety zone.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/FigS10.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_popClass"
+
+\end_inset
+
+ 
+\series bold
+Population moving to the safety zone.
+
+\series default
+ Probability of an outbreak (top left), fraction of the population dying
+ (top middle), time until peak symptomatic cases (top right), IFR (bottom
+ left), and fraction of the population that recovers (bottom middle) as
+ a function of the safety zone allocation scenario (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:SafetyScenarios"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ All figures consider the scenario with 2 contacts in the buffer per person
+ in the safety zone per week.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/FigS11.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_popSize"
+
+\end_inset
+
+ 
+\series bold
+Efficacy of the safety zone for different population sizes.
+
+\series default
+ Probability of an outbreak (top left), fraction of the population dying
+ (top middle), time until peak symptomatic cases (top right), IFR (bottom
+ left), and fraction of the population that recovers (bottom middle) as
+ a function of the total population size.
+ The figures consider scenarios with no interventions (null), and with a
+ safety zone comprising 20% of the camp's population with 2 contacts in
+ the buffer zone per person in the safety zone per week (safety 2).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/FigS12.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_lockdown"
+
+\end_inset
+
+ 
+\series bold
+Lockdown of the safety zone.
+
+\series default
+ Probability of an outbreak (top left), fraction of the population dying
+ (top middle), time until peak symptomatic cases (top right), IFR (bottom
+ left), and fraction of the population that recovers (bottom middle) as
+ a function of the reduction in the number of contacts permitted in the
+ buffer zone from a baseline of 2 per person in the safety zone per week.
+ All figures consider the scenario in which 20% of the camp's population
+ is allocated to the safety zone.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/Fig_S13.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2mm
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Suppl_combined"
+
+\end_inset
+
+ 
+\series bold
+Combined interventions.
+
+\series default
+ IFR (top), and fraction of the population that recovers (bottom) for different
+ combinations of interventions.
+ Evac = evacuation of severely symptomatic, self = self-distancing, tents
+ = number of available self-isolation tents, safety = safety zone, lock
+ = lockdown of the buffer zone.
+ For combinations of interventions including a safety zone, we distinguish
+ between the population living in the green zone, in the orange zone and
+ the whole population.
+ The increase in the IFR for the green zone is explained by the discretization
+ of the possible values that the IFR can take when the number of cases is
+ very low (see Supplementary Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:CFR_discrete"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/Table_S4.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:CFR_discrete"
+
+\end_inset
+
+ 
+\series bold
+Efficacy of the safety zone in combination with other interventions.
+
+\series default
+ <20 cases = number of outbreaks in the green zone with fewer than 20 cases
+ recorded.
+ Total = total number of simulations where an outbreak in the green zone
+ occurs (at least one death).
+ % of total = percent of outbreaks where fewer than 20 cases are recorded.
+ N = 500 simulations for each combination of interventions.
+ For the most effective combinations, the majority of simulations where
+ an outbreak occurs in the green zone see fewer than 20 cases.
+ In these simulations, the discretization of the possible values that the
+ IFR can take explains its apparently anomalous increase in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_combined"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "req550-syria"
+options "unsrt"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
