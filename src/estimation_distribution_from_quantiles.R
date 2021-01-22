@@ -47,22 +47,31 @@
 # 10 days (IQR: 6-12) (Chinese study 138 patients) 
 # For parameter = 2.13 minimization value = 1.12 # ** Fraction of infectious
 # ** R0 Basic reproduction number
-# 4 [3,5] 99% (ad-hoc after having a look to the literature)
+# 4 [3,5] 99% (ad-hoc after investigating the literature)
 # For parameter = 0.43 minimization value = 1.18e-08 (normal distribution)
+# ** AUC infectiousness presymptomatic
+# 0.44 [0.30,0.57] 95% He et al. Nature Medicine 2020
+# For parameter = 0.082 minimization value = 0.0071 (normal distribution)
+# ** Ratio asymptomatic to symptomatic
+# .58 (95% CI: .34-.99) 
+# For parameter = 0.32 minimization value = 0.00019 (lognormal distribution)
+# ** Infectousness factor (mean and CI estimated in input_parameters_SEPAIHRD.R)
+# .24 (95% CI: .0.074-.57)
+# For parameter = 0.53 minimization value = 0.027 (lognormal distribution)
 
 library(extraDistr) # fits gompertz distribution
 rm(list=ls())
 
 ### START EDITING
-distribution="normal" #"normal" "lognormal" "gamma" "binomial" and "gompertz"
-meanIn=1/2 # mean of the distribution 
-CIlow=1/4 # lower CI (not log-transformed here if lognormal)
-CIhigh=3/4 # upper CI
+distribution="lognormal" #"normal" "lognormal" "gamma" "binomial" and "gompertz"
+meanIn=0.24 # mean of the distribution 
+CIlow=0.074 # lower CI (not log-transformed here if lognormal)
+CIhigh=0.57 # upper CI
 param=c(1) # a vector with the starting parameters to explore in the optimization, only gompertz requires two values
 N=10e5 # number of randomizations generated for a plot
-Level=0.99 # confidence level, implemented 0.95, 0.99 and 0.75 (interquartile)
-xlabel="Time from onset to self-isolation (days)" # a string for the xaxis with the units (e.g "incubation time (days)")
-labelPlot="OnsetToSelfIsolation3" # And a label for the plot
+Level=0.95 # confidence level, implemented 0.95, 0.99 and 0.75 (interquartile)
+xlabel="Infectiousness factor" # a string for the xaxis with the units (e.g "incubation time (days)")
+labelPlot="InfectiousnessFactor" # And a label for the plot
 pathOut="data/estimation_parameters/figures_prob_distros" # path for the plots from the root of the repo
 ### STOP EDITING
 
