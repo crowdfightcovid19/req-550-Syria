@@ -97,7 +97,8 @@ CFR <- df.results$NumFinalDeaths / (df.results$NumFinalDeaths + df.results$NumFi
 
 cnames <- colnames(df.results)
 
-df.output <- bind_cols(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,CFR,POutbreak.col)
+#df.output <- bind_cols(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,CFR,POutbreak.col)
+df.output <- cbind(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,CFR,POutbreak.col)
 colnames(df.output) <- c(cnames,"PopSizeNum","FracFinalDeaths","FracFinalRecovered","CFR","POutbreak")
 
 setwd(outDir)
