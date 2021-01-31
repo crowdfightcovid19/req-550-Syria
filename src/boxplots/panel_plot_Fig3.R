@@ -18,7 +18,7 @@ currentDir <- getwd()
 
 source("plot_routines.R")
 
-setwd("/home/ec365/workbench/req-550-Syria")
+setwd("/home/ecam/workbench/req-550-Syria")
 
 #ptitle <- c("boxplot","boxmean","boxmedian","vio","viomean","viomedian","ribbonsd","ribbonmedian","ribbonse")
 #fplot.list <- c(do_box_plot,do_box_plot_mean,do_box_plot_median,do_vio_plot,do_vio_plot_mean,do_vio_plot_median,do_ribbon_sd,do_ribbon_quartile,do_ribbon_se)
@@ -118,13 +118,13 @@ gg.b <- do_box_plot_mean_dot(df,"FracFinalRecovered",varX,"","Fraction of the po
 
 df.aux <- data.frame(df %>% group_by(group,intervention) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
 
-gg.aa <- do_line_plot(df.aux,"CFR",varX,"","Case Fatality Rate","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
+gg.aa <- do_line_plot(df.aux,"CFR",varX,"","Infection Fatality Rate","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
         theme(axis.text.x= element_blank() )+
         theme(  legend.position = "top",
                     legend.text = element_text(size=legend.text.size),
                     legend.title = element_blank())
 
-gg.a <- do_box_plot_mean_dot(df,"CFR",varX,"","Case Fatality Rate",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
+gg.a <- do_box_plot_mean_dot(df,"CFR",varX,"","Infection Fatality Rate",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
         theme(axis.text.x= element_blank() )+
         theme(  legend.position = "top",
                     legend.text = element_text(size=legend.text.size),
@@ -139,23 +139,24 @@ gg.c <- do_line_plot(df.thres,"prob",varX,"","Safety effectiveness","identity",s
 
 
 
-pdf(file="Fig_Sinterventions.pdf",width=30,height=30)
+pdf(file="FigS13.pdf",width=30,height=30)
 grid.arrange(gg.a,gg.b,nrow=2,ncol=1,heights=c(1,1.5))
 dev.off( )
 
 
-pdf(file="Fig_Sinterventions_lineCFR.pdf",width=30,height=30)
-grid.arrange(gg.aa,gg.b,nrow=2,ncol=1,heights=c(1,1.5))
-dev.off( )
-
-pdf(file="Fig_Sinterventions_safety_effectiveness.pdf",width=30,height=30)
-grid.arrange(gg.a,gg.c,gg.b,nrow=3,ncol=1,heights=c(1,1,1.5))
-dev.off( )
-
+#pdf(file="Fig_Sinterventions_lineCFR.pdf",width=30,height=30)
+#grid.arrange(gg.aa,gg.b,nrow=2,ncol=1,heights=c(1,1.5))
+#dev.off( )
+#
+#pdf(file="Fig_Sinterventions_safety_effectiveness.pdf",width=30,height=30)
+#grid.arrange(gg.a,gg.c,gg.b,nrow=3,ncol=1,heights=c(1,1,1.5))
+#dev.off( )
+#
 
 table.low <- pivot_wider(df.thres,names_from="group",id_cols=c("intervention","group"),values_from="low")[,c("intervention","S")]
 table.total <- pivot_wider(df.thres,names_from="group",id_cols=c("intervention","group"),values_from="total")[,c("intervention","S")]  
-table.res <- bind_cols(table.low,table.total$S)
+#table.res <- bind_cols(table.low,table.total$S)
+table.res <- cbind(table.low,table.total$S)
 colnames(table.res)<-c("intervention","low","total")
 #table.res$pct <- signif(table.res$low/table.res$total,digits=3)
 #colnames(table.res)<-c("Intervention",paste("<",as.character(threshold)," cases",sep=""),"Total","% of total")

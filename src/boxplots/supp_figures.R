@@ -146,7 +146,7 @@ ylabel = "Fraction of susceptible population"
 gg.f <- do_box_plot_mean_dot(df.lock,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 varY = "CFR"
-ylabel = "Case Fatality Rate"
+ylabel = "Infection Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df.lock,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.d <-gg.d +ylim(0.0,0.25)
@@ -198,7 +198,7 @@ gg.f <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,sc
 
 
 varY = "CFR"
-ylabel = "Case Fatality Rate"
+ylabel = "Infection Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
@@ -256,7 +256,7 @@ ylabel = "Fraction of susceptible population"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 varY = "CFR"
-ylabel = "Case Fatality Rate"
+ylabel = "Infection Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
@@ -313,7 +313,7 @@ ylabel = "Fraction of susceptible population"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 varY = "CFR"
-ylabel = "Case Fatality Rate"
+ylabel = "Infection Fatality Rate"
 
 gg.a <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.a <- gg.a + ylim(0.0,0.40)
@@ -354,7 +354,7 @@ gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fil
 
 
 varY = "CFR"
-ylabel = "Case Fatality Rate"
+ylabel = "Infection Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
@@ -418,7 +418,7 @@ gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fil
 
 
 varY = "CFR"
-ylabel = "Case Fatality Rate"
+ylabel = "Infection Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
@@ -477,7 +477,7 @@ gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fil
 
 
 varY = "CFR"
-ylabel = "Case Fatality Rate"
+ylabel = "Infection Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.d<- gg.d + ylim(0.0,0.25)
@@ -530,7 +530,7 @@ ylabel = "Fraction of susceptible population"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 varY = "CFR"
-ylabel = "Case Fatality Rate"
+ylabel = "Infection Fatality Rate"
 
 gg.a <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.a <- gg.a + ylim(0.0,0.20)
@@ -569,7 +569,7 @@ ylabel = "Fraction of susceptible population"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 varY = "CFR"
-ylabel = "Case Fatality Rate"
+ylabel = "Infection Fatality Rate"
 
 gg.a <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.a <- gg.a + ylim(0.0,0.25)
@@ -608,7 +608,7 @@ ylabel = "Fraction of susceptible population"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 varY = "CFR"
-ylabel = "Case Fatality Rate"
+ylabel = "Infection Fatality Rate"
 
 gg.d <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.d <- gg.d + ylim(0.0,0.20)
