@@ -97,9 +97,11 @@ CFR <- df.results$NumFinalDeaths / (df.results$NumFinalDeaths + df.results$NumFi
 
 cnames <- colnames(df.results)
 
+FracFinalSusceptible <- 1 - FracFinalDeaths - FracFinalRecovered #TO DO: confirm.
+
 #df.output <- bind_cols(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,CFR,POutbreak.col)
-df.output <- cbind(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,CFR,POutbreak.col)
-colnames(df.output) <- c(cnames,"PopSizeNum","FracFinalDeaths","FracFinalRecovered","CFR","POutbreak")
+df.output <- cbind(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,FracFinalSusceptible,CFR,POutbreak.col)
+colnames(df.output) <- c(cnames,"PopSizeNum","FracFinalDeaths","FracFinalRecovered","FracFinalSusceptible","CFR","POutbreak")
 
 setwd(outDir)
 write.csv(df.output,file=fileOut)
