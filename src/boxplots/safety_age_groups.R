@@ -81,13 +81,15 @@ df$model <- factor(df$model)
 
 
 gg.d <- do_box_plot_mean_dot( df, "FracDeath", "class", "Population class", "Deaths (% of the class)", c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Older (not comorbid)", "Older (comorbid)"), c("Mixed","Safety zone"), "Model", line=FALSE, nolegend=TRUE, groupvar="model")
+#gg.f <- do_box_plot_mean_dot( df, "FracFinalSusceptible", "class", "Population class", "Deaths (% of the class)", c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Older (not comorbid)", "Older (comorbid)"), c("Mixed","Safety zone"), "Model", line=FALSE, nolegend=TRUE, groupvar="model")
 gg.p <- do_line_plot( df, "POutbreak", "class", "", "Probability of outbreak", "mean",c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Older (not comorbid)", "Older (comorbid)"), c("Mixed","Safety zone"), "Model", nolegend=FALSE, groupvar="model")
 gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 gg.p<- gg.p + theme(axis.text.x = element_blank())
+#gg.f<- gg.f + theme(axis.text.x = element_blank())
 
 setwd(outPlotDir)
-pdf(file="Fig_agegroups.pdf",width=12,height=20)
-grid.arrange(gg.p,gg.d,nrow=2,ncol=1,heights=c(1,1.3))
+pdf(file="FigS8.pdf",width=12,height=20)
+grid.arrange(gg.p,gg.d,nrow=3,ncol=1,heights=c(1,1,1.3))
 dev.off( )
 
 setwd("/home/ecam/workbench/req-550-Syria")
