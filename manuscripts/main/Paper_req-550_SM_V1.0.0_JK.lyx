@@ -328,7 +328,7 @@ status open
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Standard
 
 \change_deleted -1732430129 1610737509
 Model
@@ -926,7 +926,7 @@ noprefix "false"
 
 \begin_layout Standard
 
-\change_inserted 227091064 1611284933
+\change_inserted 227091064 1612480330
 \begin_inset ERT
 status open
 
@@ -949,9 +949,9 @@ literal "false"
 
 \end_inset
 
- by ratio of viral culture positive test rate in hospitalized patients 7-16
- days since start of symptoms to positive test rate in patients 0-6 days
- since start of symptoms.
+ by the ratio of viral culture positive test rate in hospitalized patients
+ 7-16 days since start of symptoms to positive test rate in patients 0-6
+ days since start of symptoms.
 \end_layout
 
 \begin_layout Standard
@@ -1661,6 +1661,8 @@ From camp managers
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 227091064 1612382322
 In April, 2020, 40.7% of the population in informal IDP camps in Northern
  Syria was aged 0-12, 53.4% aged 13-50, and 5.9% aged 51+ 
 \begin_inset CommandInset citation
@@ -1672,26 +1674,35 @@ literal "false"
 
 .
  
-\change_inserted 227091064 1611288227
-We assumed the age-specific prevalence of chronic disease is comparable
- in Syrian refugees in both Syria and Jordan.
- According to survey data on Syrian refugees in Jordan, 10% of people under
- 30, 30% of people 30-50, and 50% of people over 50 reported having chronic
- diseases 
+\change_inserted 227091064 1612382322
+In April, 2020, 40.7% of the population in informal IDP camps in Northern
+ Syria was aged 0-12, 53.4% aged 13-50, and 5.9% aged 51+ 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "helpage_international_hidden_2014"
+key "noauthor_syrian_nodate"
 literal "false"
 
 \end_inset
 
 .
- We assumed that no one in the 0-12 age group had chronic diseases and calculate
-d the proportion of people aged 13-50 with chronic diseases by standardizing
- the age-specific chronic disease prevalence reported in the survey to the
- age distribution in the 13-50 interval of the IDP camp population.
- In sum, we assume that ~17.7% of adults aged 13-50 and 50% of adults aged
- 51+ have comorbidities.
+ To estimate the proportion of each age group with comorbidities, we calculated
+ the weighted average age-specific comorbidity prevalence of the 4 most
+ common comorbidities in the Syrian refugee populations in Jordan and Lebanon:
+ hypertension, cardiovascular disease, diabetes, and chronic respiratory
+ disease 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doocy_prevalence_2015,doocy_prevalence_2016"
+literal "false"
+
+\end_inset
+
+.
+ We standardized these weighted averages to the age structure of IDPs in
+ Northern Syria and estimated that 11.7% of people aged 13-50 have comorbidities,
+ while 62.9% of people aged 51+ have comorbidities.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -2549,7 +2560,7 @@ Assumed
 
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
 
 \change_deleted 227091064 1611288341
 Time periods
@@ -2625,12 +2636,12 @@ literal "false"
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Standard
 
 \change_deleted 227091064 1611288398
 Proportions severe cases etc
 \change_inserted 227091064 1611288527
-Epidemiological severity assumptions derivation
+
 \end_layout
 
 \begin_layout Standard
@@ -2667,7 +2678,7 @@ literal "false"
 
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
 
 \change_deleted 227091064 1611288390
 Transmissivity
@@ -2720,7 +2731,7 @@ orange
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Standard
 
 \change_deleted -1732430129 1610717858
 Parameterization of the contact matrix
@@ -2912,7 +2923,7 @@ Derivation of the transmissivity parameter
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Overall strategy
@@ -2925,7 +2936,7 @@ Overall strategy
 
 \begin_layout Standard
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The derivation of R0 for a SIR type model following description of 'Mathematical
@@ -2986,7 +2997,7 @@ status collapsed
 
 
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Plain Layout
 We also reference the description of R0 in metapopulations in Philipps S,
@@ -3011,7 +3022,7 @@ Estimation of the Next Generation Matrix
 
 \begin_layout Standard
 In the following, to simplify the notation we define 
-\begin_inset Formula $\kappa_{i}=((1-g_{i}-h_{i})\gamma_{\I}+h_{i}\eta+g_{i}\alpha)$
+\begin_inset Formula $\kappa_{i}=(l_{i}\gamma_{\I}+h_{i}\eta+g_{i}\alpha)$
 \end_inset
 
 .
@@ -3111,7 +3122,7 @@ becomes
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{M}\bar{c}_{i}^{0}\left(\beta_{\PP}P_{j}+\beta_{\text{\A}}A_{j}+\beta_{\I}I_{j}+\beta_{\HH}H_{j}\right).
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{M}c_{i}\left(\beta_{\PP}P_{j}+\beta_{\text{\A}}A_{j}+\beta_{\I}I_{j}+\beta_{\HH}H_{j}\right).
 \]
 
 \end_inset
@@ -3131,7 +3142,13 @@ In the following, we use bold symbols for vectors and matrices, and the
 \begin_inset Formula $\oslash$
 \end_inset
 
- for the element-wise product and division, respectively.
+ for the element-wise 
+\change_deleted 227091064 1612480875
+product
+\change_inserted 227091064 1612480877
+multiplication
+\change_inserted -1732430129 1610719047
+ and division, respectively.
  
 \change_unchanged
 Following this notation, the linearized system can be written in the form
@@ -3160,11 +3177,11 @@ Following this notation, the linearized system can be written in the form
 
 \begin_layout Standard
 is the transmission matrix, with 
-\begin_inset Formula $\bs{\Theta}_{\X}=\beta_{\X}\mathrm{diag}(\bs{p}\odot\bs{\bar{c}}^{0})\bs{\bs{U}}$
+\begin_inset Formula $\bs{\Theta}_{\X}=\beta_{\X}\mathrm{diag}(\bs{p}\odot\bs{c})\bs{\bs{U}}$
 \end_inset
 
 , 
-\begin_inset Formula $\bs\{p\}=\bs{N}/N$
+\begin_inset Formula $\bs{p}=\bs{N}/N$
 \end_inset
 
 , 
@@ -3344,7 +3361,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Estimation of 
@@ -3356,6 +3373,24 @@ Estimation of
 
 \end_inset
 
+
+\change_inserted 227091064 1612481161
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612481172
+APG not sure if you want to expand on this section
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -3435,14 +3470,47 @@ orange
 \begin_inset Formula $\oran$
 \end_inset
 
-) for the exposed population.
- These two populations could interact via a buffer zone, under controlled
- conditions.
+) for the exposed population
+\change_inserted 227091064 1612486073
+, and dividing each demographic-class into two behaviour-classes for each
+ respective zone
+\change_unchanged
+.
+ These two populations 
+\change_deleted 227091064 1612486729
+could 
+\change_unchanged
+interact via a buffer zone, under controlled conditions
+\change_inserted 227091064 1612486775
+ where we assumed transmissivity is reduced by 80%, denoted 
+\change_deleted 227091064 1612486805
+.
  Based on our assumption that infectivity in the buffer zone is reduced
  by 80%, 
-\begin_inset Formula $\hat{\tau}=0.2\tau$
+\begin_inset Formula $\hat{\tau}=\xi\tau$
 \end_inset
 
+
+\change_inserted 227091064 1612481399
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612481440
+
+$
+\backslash
+xi=0.2$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 .
  Each individual in the green zone can interact with a limited number (
 \begin_inset Formula $c_{\family}$
@@ -3470,20 +3538,69 @@ visitors
 \end_inset
 
  compartments and individuals from the green zone is set to zero.
+
+\change_inserted 227091064 1612486868
+ The safety zone interventions are governed by the parameter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612486847
+
+$m_{ij}$
+\end_layout
+
+\end_inset
+
+, a matrix which modiies the probability that an individual in class 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612486847
+
+$i$
+\end_layout
+
+\end_inset
+
+ has a potentially infectious contact with an individual in class 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612486847
+
+$j$
+\end_layout
+
+\end_inset
+
+.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Although setting up a safety zone implies a reduction in the number of contacts
  between classes of the green zone and the orange zone, the mean number
  of contacts that each individual has per day, 
-\begin_inset Formula $\bar{c}_{i}$
+\begin_inset Formula $c_{i}$
 \end_inset
 
 , is conserved.
  Therefore we need to estimate how contacts will be redistributed from individua
 ls from a different zone to individuals living in the same zone.
- We model this redistribution of the contacts with the parameter 
-\begin_inset Formula $\epsilon_{i}$
+ We model this redistribution of
+\change_deleted 227091064 1612487409
+ the
+\change_unchanged
+ contacts with the parameter 
+\begin_inset Formula $\psi_{ij}$
 \end_inset
 
 :
@@ -3492,8 +3609,8 @@ ls from a different zone to individuals living in the same zone.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\epsilon_{i} & = & \rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in different zones})\\
-\epsilon_{i} & = & 1-\rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in same zone}).
+\psi_{ij} & = & \xi\rho c_{\family}/c_{i}\quad(i,j\textrm{ in different zones})\\
+\psi_{ij} & = & 1-\rho c_{\family}/c_{i}\quad(i,j\textrm{ in same zone}).
 \end{eqnarray*}
 
 \end_inset
@@ -3566,7 +3683,7 @@ s
 \[
 \rho=\begin{cases}
 1 & \textrm{if }i\in\g\\
-f_{\oran,\family}\left(1-\textrm{H}(f_{\oran,\family}-1)\frac{f_{\oran,\family}-1}{f_{\oran,\family}}\right) & \textrm{if }i\in\oran
+f_{\oran,\family}\left(1-\varTheta(f_{\oran,\family}-1)\frac{f_{\oran,\family}-1}{f_{\oran,\family}}\right) & \textrm{if }i\in\oran
 \end{cases}
 \]
 
@@ -3577,7 +3694,7 @@ f_{\oran,\family}\left(1-\textrm{H}(f_{\oran,\family}-1)\frac{f_{\oran,\family}-
 
 \begin_layout Plain Layout
 with the Heaviside function 
-\begin_inset Formula $\textrm{H}(f_{\oran,\family}-1)=1$
+\begin_inset Formula $\varTheta(f_{\oran,\family}-1)=1$
 \end_inset
 
  if 
@@ -3648,7 +3765,11 @@ Next, we model the probability of interaction between a member of class
 
 .
  This yields the following values for 
-\begin_inset Formula $m_{ij}$
+\change_inserted 227091064 1612486952
+a parameter we denote 
+\change_unchanged
+
+\begin_inset Formula $\omega_{ij}$
 \end_inset
 
 :
@@ -3657,8 +3778,8 @@ Next, we model the probability of interaction between a member of class
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\X}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\X}}\quad(i,j\textrm{ in same zone}\ X)\\
-m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\Y}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\Y}}\quad(i\in X\textrm{ and}\ j\in Y).
+\omega_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\X}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\X}}\quad(i,j\textrm{ in same zone}\ X)\\
+\omega_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\Y}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\Y}}\quad(i\in X\textrm{ and}\ j\in Y).
 \end{eqnarray*}
 
 \end_inset
@@ -3667,6 +3788,84 @@ m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\Y}}\right)}{\left(\frac{N}{N_{i}}\
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 227091064 1612487314
+We multiply the parameters 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612487160
+
+$
+\backslash
+psi_{ij}$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612487486
+
+$
+\backslash
+omega_{ij}$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ element-wise to obtain the safety zone intervention parameter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612487093
+
+$m_{ij}$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612487306
+
+$
+\backslash
+psi_{ij} 
+\backslash
+odot 
+\backslash
+omega_{ij}=m_ij$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 227091064 1612487336
 We finally define the management matrix as 
 \begin_inset Formula $M_{ij}=\epsilon_{i}m_{ij}$
 \end_inset
@@ -4385,11 +4584,15 @@ orange
  of the camp's population (20%, 25%, 30%), and allocate its remainder to
  non-vulnerable family members, who by necessity are either children <13
  in age group 1 or healthy younger adults in age group 2.
- For these 3 scenarios, it is required to split the children and the healthy
+ 
+\change_deleted 227091064 1612487977
+For these 3 scenarios, it is required to split the children and the healthy
  younger adults demographic-classes in two behaviour-classes (orange and
  green) to account for the different parameterizations in the contacts matrix,
  as explained above.
- In accordance with camp managers' expectations that many vulnerable individuals
+ 
+\change_inserted -1732430129 1610737440
+In accordance with camp managers' expectations that many vulnerable individuals
  will have non-vulnerable spouses, while fewer vulnerable individuals will
  have young children, in these scenarios we allocate 40% of the remainder
  of the green zone to children and 60% of the remainder of the green zone
@@ -4438,8 +4641,15 @@ To estimate the infectivity of the isolated population, we make the following
 \end_inset
 
 .
- Finally, symptomatic individuals developing symptoms that would require
- hospitalization, are either evacuated or become fully infectious.
+ Finally, symptomatic individuals 
+\change_deleted 227091064 1612371934
+developing symptoms
+\change_unchanged
+ that would require hospitalization, are either evacuated 
+\change_inserted 227091064 1612372199
+and are no longer infectious, 
+\change_unchanged
+or become fully infectious.
  The rationale behind the latter choice is that camps lack the necessary
  means to adequately protect the rest of the population when individuals
  require more dedicated care.
@@ -4454,7 +4664,9 @@ To estimate the infectivity of the isolated population, we make the following
 \end_inset
 
  otherwise.
- Evacuated individuals are no longer infectious.
+ 
+\change_deleted 227091064 1612372203
+Evacuated individuals are no longer infectious.
 \change_inserted -1732430129 1610729861
 
 \end_layout
@@ -4463,14 +4675,37 @@ To estimate the infectivity of the isolated population, we make the following
 
 \change_inserted -1732430129 1610735513
 Given these assumptions, to estimate the rate of exposure for each demographic-c
-lass, it is needed to split the contacts into two terms, one describing
- the interaction of individuals in the class with the isolated population,
- and another term for the infectious individuals that are not isolated:
+lass
+\change_inserted 227091064 1612372317
+ we 
+\change_deleted 227091064 1612372313
+, it is needed to
+\change_inserted -1732430129 1610735513
+ split 
+\change_inserted 227091064 1612372328
+our expression of
+\change_deleted 227091064 1612372325
+the
+\change_inserted -1732430129 1610735513
+ contacts into two terms, one describing the interaction of individuals
+ in the class with the isolated population, and another 
+\change_deleted 227091064 1612380078
+term for the
+\change_inserted 227091064 1612380081
+for interaction with
+\change_inserted -1732430129 1610735513
+ infectious individuals 
+\change_inserted 227091064 1612380085
+who
+\change_deleted 227091064 1612380084
+that
+\change_inserted -1732430129 1610735513
+ are not isolated:
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -1732430129 1610733590
+\change_deleted 227091064 1612380830
 \begin_inset Formula 
 \[
 \lambda_{i}=\tau\sum_{j}\underset{\mathrm{isolated}}{\underbrace{\beta_{\I}\tilde{c}_{i}\tilde{P}(i\rightarrow j)}}+\underset{\mathrm{not\ isolated}}{\underbrace{C_{ij}\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon\beta_{\HH}H_{j}}{N_{j}}}},
@@ -4478,6 +4713,18 @@ lass, it is needed to split the contacts into two terms, one describing
 
 \end_inset
 
+
+\change_inserted 227091064 1612380830
+
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=\tau\sum_{j}\underset{\mathrm{isolated}}{\underbrace{\beta_{\I}\tilde{c}_{i}\tilde{P}(i\rightarrow j)}}+\underset{\mathrm{not\ isolated}}{\underbrace{C_{ij}\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon\beta_{\HH}H_{j}}{N_{j}}}},
+\end{equation}
+
+\end_inset
+
+
+\change_inserted -1732430129 1610733590
 
 \end_layout
 
@@ -4520,17 +4767,25 @@ where
 \begin_inset Formula $\tilde{N}$
 \end_inset
 
-, and we estimate the probability of encountering with the non-isolated
- individuals to be proportional to their fraction 
+, and we estimate the probability of
+\change_deleted 227091064 1612380475
+ encountering with the 
+\change_inserted 227091064 1612380479
+ interacting with 
+\change_inserted -1732430129 1610736128
+non-isolated individuals to be proportional to their fraction 
 \begin_inset Formula $(I_{j}-\tilde{I}_{j})/N_{j}$
 \end_inset
 
 .
  For the isolated population, however, the well-mixed assumption is no longer
  valid.
- Firstly, all demographic-classes not contributing individuals to the group
- of carers will never interact with the isolated individuals, and hence
- 
+ Firstly, all demographic-classes not contributing 
+\change_deleted 227091064 1612380659
+individuals 
+\change_inserted -1732430129 1610736128
+to the group of carers will never interact with the isolated individuals,
+ and hence 
 \begin_inset Formula $\tilde{c}_{i}=0$
 \end_inset
 
@@ -4540,7 +4795,13 @@ where
 
 ).
  Secondly, the healthy younger adults population will certainly interact
- with isolated individuals due to their role of carers, hence 
+ with isolated individuals 
+\change_deleted 227091064 1612380717
+due to their role of 
+\change_inserted 227091064 1612380720
+through their role as 
+\change_inserted -1732430129 1610736128
+carers, hence 
 \begin_inset Formula $\tilde{P}(i\rightarrow j)=1$
 \end_inset
 
@@ -4625,7 +4886,7 @@ the number of contacts that the healthy younger adult population class will
 
  increases.
  
-\change_unchanged
+\change_deleted 227091064 1612397169
 We further assume that this interaction will be regulated through a buffer
  zone, so infectivity is reduced by 80%, denoted by 
 \begin_inset Formula $\xi=0.2$
@@ -4674,15 +4935,50 @@ For simplicity, we assume that there is one carer for each infected person
  population class.
 
 \change_unchanged
- With these considerations, the rate of infection for the healthy younger
- adult population class (indexed 
+ With these considerations,
+\change_deleted 227091064 1612381063
+ 
+\change_inserted 227091064 1612381070
+ using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambda-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we can express 
+\change_unchanged
+the rate of 
+\change_deleted 227091064 1612380962
+infection
+\change_inserted 227091064 1612380963
+exposure
+\change_deleted 227091064 1612381074
+ 
+\change_inserted 227091064 1612381081
+ of the healthy younger adult demographic-class (indexed 
 \begin_inset Formula $k$
 \end_inset
 
-) becomes:
+)
+\change_deleted 227091064 1612381086
+for the healthy younger adult population class (indexed 
+\begin_inset Formula $k$
+\end_inset
+
+) becomes
+\change_inserted 227091064 1612381086
+ as
+\change_unchanged
+:
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 227091064 1612381099
 \begin_inset Formula 
 \[
 \lambda_{k}=\tau\sum_{j}\xi\frac{\tilde{N}_{j}}{N_{\Exp}}+C_{kj}\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon\beta_{\HH}H_{j}}{},
@@ -4690,6 +4986,18 @@ For simplicity, we assume that there is one carer for each infected person
 
 \end_inset
 
+
+\change_inserted 227091064 1612381099
+
+\begin_inset Formula 
+\begin{equation}
+\lambda_{k}=\tau\sum_{j}\xi\frac{\tilde{N}_{j}}{N_{\Exp}}+C_{kj}\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\epsilon\beta_{\HH}H_{j}}{},
+\end{equation}
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -4715,7 +5023,21 @@ where
 \begin_inset Formula $i\neq k$
 \end_inset
 
-) the rate of infection becomes:
+) the rate of infection 
+\change_inserted 227091064 1612381143
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambda-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) 
+\change_unchanged
+becomes:
 \end_layout
 
 \begin_layout Standard
@@ -4733,19 +5055,39 @@ where
 A final consideration is that symptomatic individuals require some time
  to recognize their symptoms and to self-isolate.
  To model this, whenever simulating the isolation intervention, the symptomatic
- compartment is split in two compartments: onset of symptoms, 
-\begin_inset Formula $I_{i}^{\onset}$
+ compartment is split in two compartments: 
+\change_deleted 227091064 1612381203
+onset of symptoms
+\change_inserted 227091064 1612381212
+symptomatic prior to identification
+\change_unchanged
+, 
+\begin_inset Formula $O_{i}$
 \end_inset
 
-, and symptomatic, 
+, and symptomatic
+\change_inserted 227091064 1612397249
+ following identification
+\change_unchanged
+, 
 \begin_inset Formula $I_{i}$
 \end_inset
 
 .
  We assumed the duration of 
+\change_deleted 227091064 1612488095
+
 \begin_inset Formula $I_{i}^{\onset}$
 \end_inset
 
+
+\change_inserted 227091064 1612488095
+
+\begin_inset Formula $O_{i}$
+\end_inset
+
+
+\change_unchanged
  follows a Gaussian distribution with means 12, 24 or 48 hours on average.
  The duration for which an individual isolates is then calculated as the
  difference between the symptomatic period if there is no isolation and
@@ -4794,12 +5136,101 @@ name "fig:Suppl_DvsR"
 
  
 \series bold
-Outcomes when all severe cases recover vs when all severe cases die.
+Outcomes when all severe
+\change_inserted 227091064 1612370823
+ (hospitalized)
+\change_unchanged
+ cases recover 
+\change_inserted 227091064 1612370890
+(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612370880
+
+
+\backslash
+sigma=0
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+) 
+\change_unchanged
+vs when all severe 
+\change_inserted 227091064 1612370828
+(hospitalized) 
+\change_unchanged
+cases die
+\change_inserted 227091064 1612370897
+ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612370900
+
+
+\backslash
+sigma=1
+\end_layout
+
+\end_inset
+
+)
+\change_unchanged
+.
 
 \series default
  Probability of an outbreak (top left), fraction of the population dying
  (top middle), time until peak symptomatic cases (top right), IFR (bottom
  left), and fraction of the population that recovers (bottom middle).
+
+\change_inserted 227091064 1612371302
+ Since we define outbreaks as simulations in which at least one person dies
+ and probability of a case dying is higher when 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612371257
+
+
+\backslash
+sigma=1
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, the probability of observing an outbreak is also necessarily higher when
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 227091064 1612371301
+
+
+\backslash
+sigma=1
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \end_inset
