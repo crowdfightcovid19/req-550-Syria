@@ -315,6 +315,10 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     gammaH=gammaH.vec[i]
     eta=eta.vec[i]
     alpha=alpha.vec[i]
+    #betaP=betaP
+    betaA=betaA.vec[i]
+    betaI=betaI.vec[i]
+    betaH=betaH.vec[i]
     tau=tau.vec[i]
     fracPtoI=fracPtoI.vec[i]
   }else{ # stochastic variable
@@ -330,6 +334,10 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     eta=eta.vec
     alpha=alpha.vec
     tau=tau.vec
+    #betaP=betaP
+    betaA=betaA.vec
+    betaI=betaI.vec
+    betaH=betaH.vec
     fracPtoI=fracPtoI.vec
   }
 
@@ -337,7 +345,8 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
   gammaI=gammaI
   Cont=C
   parms.list=list(Nsubpop=Nsubpop,Ntrans=Ntrans,model.type=model.type,
-                  tau=tau,deltaE=deltaE,deltaP=deltaP,deltaO=deltaO,
+                  tau=tau,betaP=betaP,betaA=betaA,betaI=betaI,betaH=betaH,
+                  deltaE=deltaE,deltaP=deltaP,deltaO=deltaO,
                   gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,eta=eta,alpha=alpha,
                   fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,
                   Cont=C,Tcheck.mat=Tcheck.mat,lockDown=lockDown,lock.mat=lock.mat,self=self,
