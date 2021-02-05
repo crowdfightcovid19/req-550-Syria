@@ -17,9 +17,9 @@ t.P.param1=2.3 # presymptomatic time, gaussian first param
 t.P.param2=0.91 # gaussian second param
 
 # ..... Time between symptom's onset and taking the decision of isolating in a tent
-# ..... these values are set now in the main code with the option onset, uncomment if you use this script only
-# t.O.param1=2
-# t.O.param2=0.43
+# ..... these values are now fixed in the main code with the option Onset, uncomment if you use this script only
+#t.O.param1=2
+#t.O.param2=0.43
   
 # ..... Symptomatic compartments
 f.S.mean=0.84
@@ -43,10 +43,11 @@ t.ItoD.shape=t.ItoD.mean/t.ItoD.scale
 AUC.mean=0.44 # Area Under the Curve infectiousness
 AUC.std=0.082 #n normal
 
-rhoAtoI.mean=0.58 # ratio of Asymptomatic to symptomatic infectiousness
-rhoAtoI.std=0.32 # lognormal
+betaP.mean=1
+betaA.mean=0.58 # ratio of Asymptomatic to symptomatic infectiousness
+betaA.std=0.32 # lognormal
 
-rhoHtoI.mean=0.48 # ratio of hospitalized to symptomatic infectiousness
+betaH.mean=0.48 # ratio of hospitalized to symptomatic infectiousness
 
 Ifact.mean=0.24 # factor required to estimate infectiousness ratios
 Ifact.std=0.53
@@ -88,9 +89,11 @@ R0.param=0.43
 R0.vec=rnorm(Nrand,mean=R0.mean,sd=R0.param)
 #
 # ..... tau
-tau.mean=0.0196 # old value 0.00608
-tau.param=0.00305 # old value  0.0009
-tau.vec=rnorm(Nrand,mean = tau.mean,sd=tau.param)
+tau.mean=-2.91594 # log-normal param: log(mean=0.05415) # older, without beta (normal): 0.0196 # old value 0.00608
+tau.param=0.3665 # log-normal param # older, without beta (normal): 0.00305 # old value  0.0009
+#tau.vec=rnorm(Nrand,mean = tau.mean,sd=tau.param)
+tau.vec=rlnorm(Nrand,meanlog = tau.mean,sdlog =tau.param)
+
 #
 # --- Transform to rates
 deltaE.vec=1/t.E.vec
@@ -108,11 +111,11 @@ alpha.vec=1/t.ItoD.vec
 
 # --- Infectiousness
 AUC.vec=rnorm(Nrand,mean = AUC.mean,sd=AUC.std)
-rhoAtoI.vec=rlnorm(Nrand,mean=log(rhoAtoI.mean),sd=rhoAtoI.std) 
+betaA.vec=rlnorm(Nrand,mean=log(betaA.mean),sd=betaA.std) 
 # ... the following lines of code were used to estimate Ifact, it
 #     was then adjusted to a lognorm distribution (see below)
 # Ifact=(gammaI*gammaH.vec*(1-AUC.vec))/
-#   (AUC.vec*deltaP.vec*(gammaH.vec+rhoHtoI.mean*gammaI))
+#   (AUC.vec*deltaP.vec*(gammaH.vec+betaH.mean*gammaI))
 # quantile(Ifact,probs = c(0.01,0.05,0.5,0.95,0.99)) # check for rare values
 # # mean = 0.24 (95% CI: 0.0774, 0.57); (99% CI: 0.018, 0.81) # lognormal
 # idx.norm=which((Ifact < 0.57) & (Ifact > 0.0774)) # 99% of the values, remove abnormally divergent  values
@@ -121,10 +124,12 @@ rhoAtoI.vec=rlnorm(Nrand,mean=log(rhoAtoI.mean),sd=rhoAtoI.std)
 # qqnorm(log(Ifact[idx.norm]))
 
 Ifact.vec=rlnorm(Nrand,mean=log(Ifact.mean),sd=Ifact.std)
-rhoItoP.vec=Ifact.vec
-rhoAtoP.vec=Ifact.vec*rhoAtoI.vec
-rhoHtoP.vec=Ifact.vec*rhoHtoI.mean
 
-quantile(rhoItoP.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
-quantile(rhoAtoP.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
-quantile(rhoHtoP.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+betaP=betaP.mean
+betaI.vec=Ifact.vec
+betaA.vec=Ifact.vec*betaI.vec
+betaH.vec=Ifact.vec*betaH.mean
+
+#quantile(betaI.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+#quantile(betaA.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+#quantile(betaH.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
