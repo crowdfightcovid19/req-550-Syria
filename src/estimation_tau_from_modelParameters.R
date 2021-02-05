@@ -48,6 +48,7 @@ av.cont=as.matrix(read.csv(file=file.contclass,sep="\t"))
 # --- Source parameters
 #N=6000
 setwd(dirParams)
+isoThr=0 # needed in the estimation of parameters
 source(fileParams)
 
 # --- Compute NGM
@@ -64,13 +65,17 @@ for(k in 1:Nrand){
   gammaH=gammaH.vec[k]
   eta=eta.vec[k]
   alpha=alpha.vec[k]
-  deltaP=deltaE.vec[k]
+  deltaP=deltaP.vec[k]
+  #betaP=betaP
+  betaA=betaA.vec[k]
+  betaI=betaI.vec[k]
+  betaH=betaH.vec[k]
   # ... compute coefficients
   kappa=(1-h-g)*gammaI+h*eta+g*alpha
-  A1=1/deltaP
-  A2=(1-f)/gammaA
-  A3=as.vector(as.matrix(f/kappa))
-  A4=as.vector(as.matrix((f*h*eta)/
+  A1=betaP/deltaP
+  A2=betaA*(1-f)/gammaA
+  A3=betaI*as.vector(as.matrix(f/kappa))
+  A4=betaH*as.vector(as.matrix((f*h*eta)/
                            (kappa*gammaH)))
   
   Ks.red= (A1+A2+A3+A4)*scope
@@ -84,8 +89,8 @@ for(k in 1:Nrand){
 
 # --- Analyse the distribution of tau
 setwd(dirPathOut)
-distribution="normal" #"gamma" #"log-normal" # choose a distro to fit
-quantile(tau,probs = c(0.05, 0.5, 0.95)) # show quantiles
+distribution="log-normal" #"normal" #"gamma" #"log-normal" # choose a distro to fit
+quantile(tau,probs = c(0,0.05, 0.5, 0.95,1)) # show quantiles
 fit=fitdistr(tau,densfun = distribution) # fit
 mean=fit$estimate[1] # retrieve parameters
 sd=fit$estimate[2]
@@ -94,13 +99,17 @@ fit$loglik # show loglike
 # --- Plot results
 xlabel="tau"
 labelPlot="Tau"
-plotOut=paste("Plot_",labelPlot,"_",distribution,"Distro_v2.pdf",sep="")
+plotOut=paste("Plot_",labelPlot,"_",distribution,"Distro_wBeta.pdf",sep="")
 pdf(file = plotOut,width=10)
 hist(tau, 100, freq = FALSE, main=paste(distribution," distribution"),
      xlab=xlabel)
 #X=rlnorm(Nrand,meanlog = mean,sd=sd)
-curve(dnorm(x, mean = mean, sd=sd), seq(0,1,0.01),  col = "red", add = TRUE)
-#curve(dlnorm(x, meanlog = mean, sdlog=sd), seq(0,1,0.01),  col = "red", add = TRUE)
+#curve(dnorm(x, mean = mean, sd=sd), seq(0,1,0.01),  col = "red", add = TRUE)
+curve(dlnorm(x, meanlog = mean, sdlog=sd), seq(0,1,0.01),  col = "red", add = TRUE)
 #curve(dgamma(x, shape = mean, rate=sd), seq(0,1,0.01),  col = "red", add = TRUE)
+tau.rnd=rlnorm(Nrand,meanlog = mean,sdlog = sd)
+hist(tau.rnd,99,freq=FALSE,main="randomly generated with fitted parameters",xlab=xlabel)
+curve(dlnorm(x, meanlog = mean, sdlog=sd), seq(0,1,0.01),  col = "red", add = TRUE)
 dev.off()
 # 
+
