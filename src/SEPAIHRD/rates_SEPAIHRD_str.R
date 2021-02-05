@@ -25,9 +25,13 @@ rates_SEPAIHRD_str = function(y, parms,t){
   inf.idx=parms["inf.idx"][[1]]
   gammaA=parms["gammaA"][[1]]
   gammaI=parms["gammaI"][[1]]
+  betaP=parms["betaP"][[1]]
   # ... Single-value parameters for "stochastic_fixed" and vectors for "stochastic_variable"
   if(model.type=="stochastic_fixed"){ 
     tau=parms["tau"][[1]] # Simply unwrap, there is one value
+    betaA=parms["betaA"][[1]]
+    betaI=parms["betaI"][[1]]
+    betaH=parms["betaH"][[1]]
     deltaE=parms["deltaE"][[1]]
     deltaP=parms["deltaP"][[1]]
     deltaO=parms["deltaO"][[1]]
@@ -39,6 +43,9 @@ rates_SEPAIHRD_str = function(y, parms,t){
     t.int <<- t.int+1 # This becomes a global variable
     time=t.int
     tau=unlist(parms["tau"][[1]])[time]
+    betaA=unlist(parms["betaA"][[1]])[time]
+    betaI=unlist(parms["betaI"][[1]])[time]
+    betaH=unlist(parms["betaH"][[1]])[time]
     deltaE=unlist(parms["deltaE"][[1]])[time]
     deltaP=unlist(parms["deltaP"][[1]])[time]
     deltaO=unlist(parms["deltaO"][[1]])[time]
@@ -150,7 +157,8 @@ rates_SEPAIHRD_str = function(y, parms,t){
       lambda = lambda+
                iso.transm+
                C[Ref,class]*self*lock.mat.local[Ref,class]*
-                      (y[classP]+y[classA]+yClassI+Hinfect*yClassH)/Nsubpop[class]
+                      (betaP*y[classP]+betaA*y[classA]+
+                         betaI*yClassI+betaH*Hinfect*yClassH)/Nsubpop[class]
     }
     lambda=tau*lambda
     k=k+1 # see github issue 26
