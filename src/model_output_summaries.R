@@ -56,7 +56,6 @@ fileOut=paste("Summary_interventions_",idDir,".csv",sep="")
 
 header.names=c("contacts","Isolate","Limit","Onset","Fate","Tcheck","PopSize","lock","self","mod")
 Nparam=length(header.names)
-# --- Source Functions 
 # ..... Function to get output directories
 get_output_directories <- function(directory) {
   list.dirs(directory) %>% 
@@ -165,8 +164,8 @@ for(file2proc in files.list){
 }
 
 # --- Move to directory and retrieve list of directories
-#this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1]
-this.dir="/home/ecam/workbench/req-550-Syria"
+this.dir=strsplit(rstudioapi::getActiveDocumentContext()$path, "/src/")[[1]][1]
+#this.dir="/home/ecam/workbench/req-550-Syria"
 dirCode=paste(this.dir,"/src",sep="")
 dirData=paste(this.dir,"/data/real_models/",sep="")
 dirOut=paste(dirData,"results_post_processing",sep="")
