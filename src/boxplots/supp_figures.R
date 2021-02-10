@@ -142,7 +142,7 @@ gg.e <- do_box_plot_mean_dot(df.lock,varY,varX,xlabel,ylabel,scale_x_labels,scal
 ##gg.e <-gg.e +ylim(0.5,1.0)
 
 varY = "FracFinalSusceptible"
-ylabel = "Fraction of susceptible population"
+ylabel = "Fraction of population susceptible"
 gg.f <- do_box_plot_mean_dot(df.lock,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 varY = "CFR"
@@ -170,7 +170,10 @@ ylabel = "Probability of Outbreak"
 
 gg.a <- do_line_plot(df.lock,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
+ss <- df.lock %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15,title=outFile)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,gg.f,ncol=3,nrow=2)
 dev.off( )
 
@@ -193,8 +196,9 @@ gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 #gg.e<- gg.e + ylim(0.5,1.0)
 
 varY = "FracFinalSusceptible"
-ylabel = "Fraction of susceptible population"
+ylabel = "Fraction of population susceptible"
 gg.f <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg.f<-gg.f+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
 
 varY = "CFR"
@@ -227,7 +231,10 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot(df.tcheck,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 17)
+ss <- df.tcheck %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 17,title=outFile)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,gg.f,ncol=3,nrow=2)
 dev.off( )
 
@@ -252,8 +259,9 @@ gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 #gg.e<- gg.e + ylim(0.25,1.0)
 
 varY = "FracFinalSusceptible"
-ylabel = "Fraction of susceptible population"
+ylabel = "Fraction of population susceptible"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg.f<-gg.f+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
 varY = "CFR"
 ylabel = "Infection Fatality Rate"
@@ -285,7 +293,11 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"identity",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 20)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
+
+
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 20,title=outFile)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,gg.f,ncol=3,nrow=2)
 dev.off( )
 
@@ -305,12 +317,12 @@ scale_x_labels <- c("No limit","10","2")
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
 
-gg.b <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+gg.b <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.b <- gg.b + ylim(0.5,1.0)
 
 varY = "FracFinalSusceptible"
-ylabel = "Fraction of susceptible population"
-gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+ylabel = "Fraction of population susceptible"
+gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 
 varY = "CFR"
 ylabel = "Infection Fatality Rate"
@@ -322,9 +334,12 @@ df.aux <- data.frame(df %>% group_by(group,contacts) %>% summarise(CFR = mean(Nu
 
 gg.aa <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=20,height = 10)
-grid.arrange(gg.a,gg.f,gg.b,ncol=3,nrow=1,widths=c(1,1,1.35))
+
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 10,title=outFile)
+grid.arrange(gg.a,gg.b,gg.f,ncol=3,nrow=1,widths=c(1,1,1.35))
 dev.off( )
 
 #pdf(file=paste(outFile,"_lineCFR",".pdf",sep=""),width=20,height = 10)
@@ -349,8 +364,9 @@ gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 #gg.e<- gg.e + ylim(0.5,1.0)
 
 varY = "FracFinalSusceptible"
-ylabel = "Fraction of susceptible population"
+ylabel = "Fraction of population susceptible"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+gg.f<-gg.f+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
 
 varY = "CFR"
@@ -384,7 +400,11 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 18)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
+
+
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 18,title=outFile)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,gg.f,ncol=3,nrow=2)
 dev.off( )
 
@@ -398,9 +418,9 @@ df <- df.evac
 outFile = "FigS6"
 varX = "intervention"
 varY = "FracFinalRecovered"
-xlabel = "Model / Evacuation"
+xlabel = "Evacuation"
 ylabel = "Fraction of population recovered"
-scale_x_labels <- c("null / NO","null / YES", "safety 2 / NO", "safety 2 / YES") 
+scale_x_labels <- c("NO","YES", "safety 2 / NO", "safety 2 / YES") 
 #scale_x_labels <- c("NO","YES") 
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
@@ -413,7 +433,7 @@ gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust
 #gg.e<- gg.e + ylim(0.5,1.0)
 
 varY = "FracFinalSusceptible"
-ylabel = "Fraction of susceptible population"
+ylabel = "Fraction of population susceptible"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 
@@ -448,7 +468,11 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 17)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
+
+
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 17,title=outFile)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,gg.f,ncol=3,nrow=2)
 dev.off( )
 
@@ -472,7 +496,7 @@ gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fil
 #gg.e<- gg.e + ylim(0.75,1.0)
 
 varY = "FracFinalSusceptible"
-ylabel = "Fraction of susceptible population"
+ylabel = "Fraction of population susceptible"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 
@@ -502,7 +526,11 @@ ylabel = "Probability of Outbreak"
 
 gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
+
+
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15,title=outFile)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,gg.f,ncol=3,nrow=2)
 dev.off( )
 
@@ -526,7 +554,7 @@ gg.b <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fil
 #gg.b <- gg.b + ylim(0.75,1.0)
 
 varY = "FracFinalSusceptible"
-ylabel = "Fraction of susceptible population"
+ylabel = "Fraction of population susceptible"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 varY = "CFR"
@@ -539,8 +567,12 @@ df.aux <- data.frame(df %>% group_by(group,Limit) %>% summarise(CFR = mean(NumFi
 
 gg.aa <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=20,height = 10)
+
+
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 10,title=outFile)
 grid.arrange(gg.a,gg.b,gg.f,ncol=3,nrow=1)
 dev.off( )
 
@@ -565,7 +597,7 @@ gg.b <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fil
 #gg.b <- gg.b + ylim(0.5,1.0)
 
 varY = "FracFinalSusceptible"
-ylabel = "Fraction of susceptible population"
+ylabel = "Fraction of population susceptible"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 varY = "CFR"
@@ -578,8 +610,12 @@ df.aux <- data.frame(df %>% group_by(group,self) %>% summarise(CFR = mean(NumFin
 
 gg.aa <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
-pdf(file=paste(outFile,".pdf",sep=""),width=20,height = 10)
+
+
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 10,title=outFile)
 grid.arrange(gg.a,gg.b,gg.f,ncol=3,nrow=1)
 dev.off( )
 
@@ -604,7 +640,7 @@ gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fil
 #gg.e <- gg.e + ylim(0.75,1.0)
 
 varY = "FracFinalSusceptible"
-ylabel = "Fraction of susceptible population"
+ylabel = "Fraction of population susceptible"
 gg.f <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
 varY = "CFR"
@@ -633,7 +669,11 @@ ylabel = "Probability of Outbreak"
 
 gg.a <- do_line_plot(df,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
+
+
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15,title=outFile)
 grid.arrange(gg.a,gg.b,gg.c,gg.d,gg.e,gg.f,ncol=3,nrow=2)
 dev.off( )
 

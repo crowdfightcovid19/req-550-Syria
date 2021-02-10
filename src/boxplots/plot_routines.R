@@ -87,14 +87,14 @@ do_ribbon_plot <- function(df,fn,varX,xlabel,ylabel,fymin,fymax,fun,scale_x_labe
 }
 
 do_box_plot<- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,line=FALSE,nolegend=FALSE,fun="mean",addmean=FALSE,groupvar="group",fatten=NULL){
-    dodge <- position_dodge(width = 0.9)
+    dodge <- position_dodge(width = 0.7)
     gg <- ggplot(data=df)+
-            geom_point(position=position_jitterdodge(dodge.width=0.9),aes_string(x=varX,y=fn,colour=groupvar,group=groupvar),alpha=.075)
+            geom_point(position=position_jitterdodge(dodge.width=0.7),aes_string(x=varX,y=fn,colour=groupvar,group=groupvar),alpha=.075)
 
     if(line){
         gg <- gg + stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group=groupvar,colour=groupvar),position=dodge,size=2)
     }
-        gg <- gg + geom_boxplot(aes_string(x=varX,y=fn,fill=groupvar),position=dodge,fatten=NULL)+
+        gg <- gg + geom_boxplot(aes_string(x=varX,y=fn,fill=groupvar),position=dodge,fatten=NULL,width=0.6)+
             xlab(xlabel)+
             ylab(ylabel)+
             scale_x_discrete(labels=scale_x_labels)+
