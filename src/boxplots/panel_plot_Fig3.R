@@ -141,7 +141,8 @@ df.thres$prob <- 1 - (df.thres$total - df.thres$low)/500
 gg.c <- do_line_plot(df.thres,"prob",varX,"","Safety effectiveness","identity",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
         theme(axis.text.x= element_blank() )
 
-
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_","FigS13.csv",sep=""))
 
 pdf(file="FigS13.pdf",width=30,height=40,title="FigS13")
 grid.arrange(gg.a,gg.b,gg.f,nrow=3,ncol=1,heights=c(1,1,1.5))
