@@ -1134,19 +1134,32 @@
     </clipPath>
   </defs>
   <rect
+     style="opacity:1;fill:#008000;fill-opacity:0.18823529;stroke:none;stroke-width:2.83784342;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect4946"
+     width="310.69998"
+     height="121.7608"
+     x="4.1986485"
+     y="381.04041"
+     inkscape:export-xdpi="85.800003"
+     inkscape:export-ydpi="85.800003" />
+  <rect
      style="opacity:1;fill:#e5e5e5;fill-opacity:1;stroke:none;stroke-width:2.83464575;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="rect4944"
      width="310.69998"
      height="97.968475"
      x="4.1986485"
-     y="283.07193" />
+     y="283.07193"
+     inkscape:export-xdpi="85.800003"
+     inkscape:export-ydpi="85.800003" />
   <rect
      style="opacity:1;fill:#fdebcc;fill-opacity:1;stroke:none;stroke-width:2.83464575;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="rect4942"
      width="310.69998"
      height="280.60965"
      x="4.1986485"
-     y="2.4622824" />
+     y="2.4622824"
+     inkscape:export-xdpi="85.800003"
+     inkscape:export-ydpi="85.800003" />
   <path
      id="path470-3-9-3-3"
      d="M 280.22179,503.37771 H 38.87557 c -19.10193,0 -34.7430898,-14.29189 -34.7430898,-31.746 v -59.5754 c 0,-17.45409 15.6411598,-31.746 34.7430898,-31.746 h 241.34622 c 19.11319,0 34.74299,14.29191 34.74299,31.746 v 59.5754 c 0,17.45411 -15.6298,31.746 -34.74299,31.746"
@@ -1651,7 +1664,9 @@
          style="stroke-width:0.5625" /></flowRegion><flowPara
        id="flowPara7838-1-6"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.75">ZONE</flowPara></flowRoot>  <g
-     id="g8548">
+     id="g8548"
+     inkscape:export-xdpi="85.800003"
+     inkscape:export-ydpi="85.800003">
     <path
        inkscape:export-ydpi="85.800003"
        inkscape:export-xdpi="85.800003"
@@ -1917,11 +1932,4 @@
          id="rect7834-90-2-2"
          style="stroke-width:0.5625" /></flowRegion><flowPara
        id="flowPara7838-4-2-2"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.75">BUFFER ZONE</flowPara></flowRoot>  <rect
-     style="opacity:1;fill:#008000;fill-opacity:0.18823529;stroke:none;stroke-width:2.83784342;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     id="rect4946"
-     width="310.69998"
-     height="121.7608"
-     x="4.1986485"
-     y="381.04041" />
-</svg>
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.75">BUFFER ZONE</flowPara></flowRoot></svg>
