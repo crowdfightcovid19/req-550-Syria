@@ -109,12 +109,16 @@ gg.FracDeath <- do_box_plot_mean_dot(df,varFracDeath,varX,"",ytitFracDeath,scale
 gg.TimePeak <- do_box_plot_mean_dot(df,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
                  theme(axis.text.x = element_text(size=axis.text.size,angle=45,hjust=1,vjust=1))
 
-pdf(file="Fig3.pdf",width=30,height=30)
+pdf(file="Fig3.pdf",width=30,height=30,title="Fig3")
 grid.arrange(gg.Poutbreak,gg.FracDeath,gg.TimePeak,nrow=3,ncol=1,heights=c(1,1,1.8))
 dev.off( )
 
 gg.b <- do_box_plot_mean_dot(df,"FracFinalRecovered",varX,"","Fraction of the population recoreved",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
+                 theme(axis.text.x = element_blank())
+
+gg.f <- do_box_plot_mean_dot(df,"FracFinalSusceptible",varX,"","Fraction of the population susceptible",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
                  theme(axis.text.x = element_text(size=axis.text.size,angle=45,hjust=1,vjust=1))
+
 
 df.aux <- data.frame(df %>% group_by(group,intervention) %>% summarise(CFR = mean(NumFinalDeaths)/mean(NumFinalDeaths+NumFinalRecovered)))
 
@@ -137,10 +141,11 @@ df.thres$prob <- 1 - (df.thres$total - df.thres$low)/500
 gg.c <- do_line_plot(df.thres,"prob",varX,"","Safety effectiveness","identity",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
         theme(axis.text.x= element_blank() )
 
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+write.csv(ss,file=paste("tables/",varX,"_","FigS13.csv",sep=""))
 
-
-pdf(file="FigS13.pdf",width=30,height=30)
-grid.arrange(gg.a,gg.b,nrow=2,ncol=1,heights=c(1,1.5))
+pdf(file="FigS13.pdf",width=30,height=40,title="FigS13")
+grid.arrange(gg.a,gg.b,gg.f,nrow=3,ncol=1,heights=c(1,1,1.5))
 dev.off( )
 
 
