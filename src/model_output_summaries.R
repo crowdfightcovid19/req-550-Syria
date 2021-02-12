@@ -154,7 +154,14 @@ for(file2proc in files.list){
     col10="P.cases.lt.thr"
     col11="P.cases.lt.thr.E"
     col12="P.cases.lt.thr.S"
-    header.names=c(header.names,col7,col8,col9,col10,col11,col12)
+    col13="N.nodeath"
+    col14="N.nodeath.E"
+    col15="N.nodeath.S"
+    col16="N.death"
+    col17="N.death.E"
+    col18="N.death.S"
+
+    header.names=c(header.names,col7,col8,col9,col10,col11,col12,col13,col14,col15,col16,col17,col18)
   }else if(file2proc=="NumFinalRecovered"){
     col7="CFR"
     col8="CFR.E"
@@ -297,6 +304,14 @@ for(dirIn in dir.list){
         length(which(x < minOutbr))})/Nrealiz.all
       p.outbrk = signif(1 - min(frac.nodeath), digits = 4)
       p.cases.lt.thr=length(cases.lt.thr)/Nrealiz.all
+
+      N.nodeath = Nrealiz.all - Nrealiz
+      N.nodeath.E = Nrealiz.all - Nrealiz.E
+      N.nodeath.S = Nrealiz.all - Nrealiz.S
+      N.death = Nrealiz
+      N.death.E = Nrealiz.E
+      N.death.S = Nrealiz.S
+      
       if (is_empty(idx.classS)) {
         # there is no shielding
         p.outbrk.E = NA
@@ -310,7 +325,7 @@ for(dirIn in dir.list){
         p.cases.lt.thr.S=length(cases.lt.thr.S)/Nrealiz.all
       }
       outputLine = c(outputLine,p.outbrk, p.outbrk.E, p.outbrk.S,
-                     p.cases.lt.thr,p.cases.lt.thr.E,p.cases.lt.thr.S)
+                     p.cases.lt.thr,p.cases.lt.thr.E,p.cases.lt.thr.S,N.nodeath,N.nodeath.E,N.nodeath.S,N.death,N.death.E,N.death.S)
     }else if (file2proc == "NumFinalRecovered") {
       recov.totals.all = mean(rowSums(df)) 
       recov.totals.E = mean(rowSums(df.E)) 
