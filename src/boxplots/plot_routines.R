@@ -177,6 +177,41 @@ do_line_plot<- function(df,fn,varX,xlabel,ylabel,fun,scale_x_labels,scale_fill_l
 
 }
 
+do_line_plot_ci<- function(df,fn,cimin,cimax,varX,xlabel,ylabel,fun,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE,alpha=.75,groupvar="group"){
+    dodge <- position_dodge(width = 0.3)
+    df.aux <- df %>% group_by_at(c(groupvar,varX)) %>% summarise_at(c(fn,cimin,cimax),list(fun))
+    gg <- ggplot(data=df)+
+            stat_summary(geom="line",fun=fun,aes_string(x=varX,y=fn,group=groupvar,colour=groupvar),size=2,alpha=alpha,position=dodge)+
+            stat_summary(geom="point",fun=fun,aes_string(x=varX,y=fn,group=groupvar,colour=groupvar),size=4,alpha=alpha,position=dodge)+
+            geom_errorbar(data=df.aux,aes_string(x=varX,y=fn,ymin=cimin,ymax=cimax,group=groupvar,colour=groupvar),size=2,alpha=alpha,position=dodge,width=.3)+
+            #stat_summary(geom="errorbar",fun=fun,aes_string(x=varX,y=fn,ymin=cimin,ymax=cimax,group=groupvar,colour=groupvar),size=2,alpha=alpha,position=dodge)+
+            #stat_summary(geom="errorbar",fun=fun,aes=aes(ymin=getColumn(cimin,df),ymax=getColumn(cimax,df)),aes_string(x=varX,y=fn,ymin=cimin,ymax=cimax,group=groupvar,colour=groupvar),size=2,alpha=alpha,position=dodge)+
+            xlab(xlabel)+
+            ylab(ylabel)+
+            scale_x_discrete(labels=scale_x_labels)+
+#            scale_fill_discrete(name=group_name,labels=scale_fill_labels)+
+#            scale_color_discrete(name=group_name,labels=scale_fill_labels)+
+            scale_fill_manual(name=group_name,labels=scale_fill_labels,values=def_color_scale)+
+            scale_color_manual(name=group_name,labels=scale_fill_labels,values=def_color_scale)+
+
+            theme(  legend.position = "top",
+                    legend.text = element_text(size=legend.text.size),
+                    legend.title = element_blank(),
+                    axis.text = element_text(size=axis.text.size), 
+                    axis.title = element_text(size=axis.title.size),
+                    panel.grid.major = element_line(size = 0.5, linetype = 'solid', colour = "lightgrey"), 
+                    panel.grid.minor = element_line(size = 0.25, linetype = 'solid', colour = "lightgrey"),
+                    panel.background = element_rect(fill = "white", colour = "black", linetype = "solid"))
+
+    if(nolegend)
+        gg <- gg + theme(legend.position = "none")
+
+    return(gg)
+
+}
+
+
+
 #Wrappers:
 do_ribbon_quartile <- function(df,fn,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE){
     return(do_ribbon_plot(df,fn,varX,xlabel,ylabel,fymin.q,fymax.q,"median",scale_x_labels,scale_fill_labels,group_name,nolegend));
