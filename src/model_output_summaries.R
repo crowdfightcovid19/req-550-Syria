@@ -37,7 +37,7 @@ library(stringr)
 
 #### START EDITING
 
-minOutbr=1 # minimum number of deaths observed to say that there was an outbreak
+minOutbr=1 # minimum number of deaths observed to say that there was an outbreak minus one
 
 keywordS="green" # a keyword to identify (S)hielded pop
 keywordE="orange" # non-shielded pop (E)xposed 
@@ -238,13 +238,13 @@ for(dirIn in dir.list){
     if (file2proc == "NumFinalDeaths") {
       # this file should be the first
       death.totals = rowSums(df.all) # because we will identify simulations with no deaths
-      nodeath.obs = which(death.totals > minOutbr) # and create an index to work only with them
+      nodeath.obs = which(death.totals >= minOutbr) # and create an index to work only with them
       cases.lt.thr=which((death.totals < minOutbr))#&(death.totals > 0))
       death.totals.E=rowSums(df.all[,idx.classE])
-      nodeath.obs.E = which(death.totals.E > 0)
+      nodeath.obs.E = which(death.totals.E >= minOutbr)
       cases.lt.thr.E=which((death.totals.E < minOutbr))#&(death.totals > 0))
       death.totals.S=rowSums(df.all[,idx.classS])
-      nodeath.obs.S = which(death.totals.S > 0)
+      nodeath.obs.S = which(death.totals.S >= minOutbr)
       cases.lt.thr.S=which((death.totals.S < minOutbr))#&(death.totals > 0))
     }
     df = df.all[nodeath.obs, ] # gather statistics only for cases where deaths are observed
@@ -294,7 +294,7 @@ for(dirIn in dir.list){
       death.totals.S = mean(rowSums(df.S)) 
       # in addition, we estimate the probability of outbreak
       frac.nodeath = apply(df.all, 2, function(x) {
-        length(which(x == 0))})/Nrealiz.all
+        length(which(x < minOutbr))})/Nrealiz.all
       p.outbrk = signif(1 - min(frac.nodeath), digits = 4)
       p.cases.lt.thr=length(cases.lt.thr)/Nrealiz.all
       if (is_empty(idx.classS)) {
