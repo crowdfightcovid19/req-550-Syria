@@ -13,6 +13,7 @@ library(rlang)
 library(dplyr)
 library(stringi)
 library(stringr)
+library(binom)
 
 
 currentDir <- getwd()
@@ -66,6 +67,10 @@ df.Summary <- read.csv("/home/ecam/workbench/req-550-Syria/data/real_models/resu
 #Going to do a for loop, this should not run often. Terribly slow.
 popSize.col <- c()
 POutbreak.col <- c()
+po.min.col <- c()
+po.max.col <- c()
+Ndeaths.col <- c()
+Nnodeaths.col <- c()
 for(i in 1:length(df.results$group)){
     str.PopSize=stri_split_fixed(df.results$PopSize[i],"PopSize")[[1]][2]
     PopSize.T=as.numeric(str.PopSize)
@@ -78,16 +83,29 @@ for(i in 1:length(df.results$group)){
     if( g == "T" ){
         popSize.col <- c(popSize.col, PopSize.T)
         POutbreak.col <- c(POutbreak.col, df.aux$P.outbrk[1])
+        Ndeaths.col <- c(Ndeaths.col,df.aux$N.death[1])
+        Nnodeaths.col <- c(Nnodeaths.col,df.aux$N.nodeath[1])
+        
     }
     else if (g == "S"){
         popSize.col <- c(popSize.col, poplist[2])
         POutbreak.col <- c(POutbreak.col, df.aux$P.outbrk.S[1])
+        Ndeaths.col <- c(Ndeaths.col,df.aux$N.death.S[1])
+        Nnodeaths.col <- c(Nnodeaths.col,df.aux$N.nodeath.S[1])
+
     }
     else{
         popSize.col <- c(popSize.col, poplist[1])
         POutbreak.col <- c(POutbreak.col, df.aux$P.outbrk.E[1])
+        Ndeaths.col <- c(Ndeaths.col,df.aux$N.death.E[1])
+        Nnodeaths.col <- c(Nnodeaths.col,df.aux$N.nodeath.E[1])
     }
 
+    total <- tail(Ndeaths.col,n=1) + tail(Nnodeaths.col,n=1)
+    ci <- binom.confint(tail(Ndeaths.col,n=1),total,methods=c("wilson"))
+    po.min.col <- c(po.min.col,ci$lower[1])
+    po.max.col <- c(po.max.col,ci$upper[1])
+    
 }
 
 FracFinalDeaths <- df.results$NumFinalDeaths / popSize.col
@@ -100,8 +118,8 @@ cnames <- colnames(df.results)
 FracFinalSusceptible <- 1 - FracFinalDeaths - FracFinalRecovered #TO DO: confirm.
 
 #df.output <- bind_cols(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,CFR,POutbreak.col)
-df.output <- cbind(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,FracFinalSusceptible,CFR,POutbreak.col)
-colnames(df.output) <- c(cnames,"PopSizeNum","FracFinalDeaths","FracFinalRecovered","FracFinalSusceptible","CFR","POutbreak")
+df.output <- cbind(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,FracFinalSusceptible,CFR,POutbreak.col,Ndeaths.col,Nnodeaths.col,po.min.col,po.max.col)
+colnames(df.output) <- c(cnames,"PopSizeNum","FracFinalDeaths","FracFinalRecovered","FracFinalSusceptible","CFR","POutbreak","Ndeaths","Nnodeaths","CImin","CImax")
 
 setwd(outDir)
 write.csv(df.output,file=fileOut)
