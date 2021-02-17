@@ -105,12 +105,13 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
 \author -1732430129 "apascual"
+\author 227091064 "Klein"
 \end_header
 
 \begin_body
@@ -415,7 +416,7 @@ literal "false"
 .
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Standard
 
 \change_deleted -1732430129 1613339531
 Derivation of transmissibility parameters (Main Table 
@@ -762,6 +763,8 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 227091064 1613598263
 We estimated the fractions of symptomatic cases in children aged <13 that
  would become severe and critical from the fractions of symptomatic cases
  in children aged <11 that were severe and critical in China 
@@ -789,6 +792,8 @@ literal "false"
  aged peers in developed countries, estimates for US adults aged 19-64 were
  used for Syrian adults aged 13-50, while estimates for US adults aged 65+
  were used for Syrian adults aged 51+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection*
@@ -844,19 +849,33 @@ The probability of infection if there is a contact between a susceptible
 \begin_inset Formula $\X\in\{\PP,\A,\I,\HH\}$
 \end_inset
 
-) whic represent the relative transmissibility of each stage with respect
- to the maximum transmissibility 
+) whic
+\change_inserted 227091064 1613500422
+h
+\change_inserted -1732430129 1613401043
+ represent the relative transmissibility of each stage with respect to the
+ maximum transmissibility 
 \begin_inset Formula $\tau$
 \end_inset
 
 .
- to the presymptomatic stage, .
+
+\change_deleted 227091064 1613500127
+ to the presymptomatic stage,
+\change_inserted -1732430129 1613401043
+ 
+\change_deleted 227091064 1613500131
+.
+
+\change_inserted -1732430129 1613401043
  After this calculation, we present our estimate for the maximum transmissibilit
 y parameter 
 \begin_inset Formula $\tau$
 \end_inset
 
 
+\change_inserted 227091064 1613502791
+.
 \change_unchanged
 
 \end_layout
@@ -888,13 +907,33 @@ noprefix "false"
 \begin_layout Standard
 
 \change_inserted -1732430129 1613401099
-We start by considering the transmissibility of the presymptomatic compartment
+We start by considering the transmissibility of the presymptomatic 
+\change_deleted 227091064 1613500432
+compartment
+\change_inserted 227091064 1613500433
+stage
+\change_inserted -1732430129 1613401099
  as a reference (
 \begin_inset Formula $\beta_{\PP}=1)$
 \end_inset
 
-, since the probability of infection after contacting an individual in this
- epidemiological stage is the highest 
+, since the probability of infection 
+\change_deleted 227091064 1613500244
+after contacting
+\change_inserted 227091064 1613500245
+from contact with
+\change_inserted -1732430129 1613401099
+ an individual 
+\change_inserted 227091064 1613500249
+at
+\change_deleted 227091064 1613500249
+in
+\change_inserted -1732430129 1613401099
+ this epidemiological stage is 
+\change_deleted 227091064 1613502890
+the 
+\change_inserted -1732430129 1613401099
+highest 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "he_temporal_2020"
@@ -903,22 +942,148 @@ literal "false"
 \end_inset
 
 .
- Next, we considered that the contribution arising from each stage of the
- disease to the infectivity is proportional to 
+ Next, 
+\change_deleted 227091064 1613500574
+we considered 
+\change_inserted 227091064 1613500620
+we set 
+\change_deleted 227091064 1613500581
+that 
+\change_inserted -1732430129 1613401099
+the contribution 
+\change_deleted 227091064 1613500544
+arising from
+\change_inserted 227091064 1613500544
+of
+\change_inserted -1732430129 1613401099
+ each 
+\change_inserted 227091064 1613500588
+epidemiological 
+\change_inserted -1732430129 1613401099
+stage 
+\change_deleted 227091064 1613500630
+of the disease 
+\change_inserted -1732430129 1613401099
+to 
+\change_deleted 227091064 1613500638
+the 
+\change_inserted -1732430129 1613401099
+infectivity
+\change_deleted 227091064 1613500643
+ is
+\change_inserted -1732430129 1613401099
+ 
+\change_inserted 227091064 1613500874
+as 
+\change_inserted -1732430129 1613401099
+proportional to 
 \begin_inset Formula $\beta_{\X}/\gamma_{\X}$
 \end_inset
 
+
+\change_inserted 227091064 1613500654
+,
+\change_inserted -1732430129 1613401099
  with 
 \begin_inset Formula $1/\gamma_{\X}$
 \end_inset
 
- the average time in which the disease develops in the stage 
+ t
+\change_deleted 227091064 1613500504
+he average time in which the disease develops in the stage
+\change_inserted 227091064 1613500506
+he duration of stage
+\change_inserted -1732430129 1613401099
+ 
 \begin_inset Formula $\X$
 \end_inset
 
 .
- This contribution is estimated as the Area Under the Curve (AUC) of the
- infectivity curve:
+ 
+\change_inserted 227091064 1613502968
+Following He et al, we estimate the proportion of infectivity that occurs
+ at the presymptomatic stage (
+\begin_inset Formula $\X\in\{\PP\}$
+\end_inset
+
+) as the area under the infectivity curve prior to symptom onset, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $AUC_{\PP}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, and the proportion of infectivity that occurs at symptomatic stages (
+\begin_inset Formula $\X\in\{\I,\HH\}$
+\end_inset
+
+) as the area under the infectivity curve after symptom onset, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $1-AUC_{\PP}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_temporal_2020"
+literal "false"
+
+\end_inset
+
+
+\change_deleted 227091064 1613501531
+This contribution is estimated as the Area Under the Curve (AUC) of the
+ infectivity curve
+\change_inserted -1732430129 1613401099
+:
 \end_layout
 
 \begin_layout Standard
@@ -949,14 +1114,30 @@ literal "false"
 
 \begin_layout Standard
 
+\change_deleted 227091064 1613501573
+Next, we
+\change_inserted 227091064 1613501574
+We then
 \change_inserted -1732430129 1613401156
-Next, we considered the quantity 
+ considered the quantity 
 \begin_inset Formula $\rho_{\HH\I}$
 \end_inset
 
-, which is the ratio of viral culture positive test rate in hospitalized
- patients 7-16 days since start of symptoms to positive test rate in patients
- 0-6 days since start of symptoms from van Kampen et al.
+, 
+\change_deleted 227091064 1613501585
+which is 
+\change_inserted -1732430129 1613401156
+the ratio of 
+\change_inserted 227091064 1613501593
+the 
+\change_inserted -1732430129 1613401156
+viral culture positive test rate in hospitalized patients 7-16 days since
+ start of symptoms to 
+\change_inserted 227091064 1613501608
+the 
+\change_inserted -1732430129 1613401156
+positive test rate in patients 0-6 days since start of symptoms from van
+ Kampen et al.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "van_kampen_shedding_2020"
@@ -965,16 +1146,38 @@ literal "false"
 \end_inset
 
 .
- Similarly...
- [Describe computation here for
-\change_unchanged
+ Similarly
+\change_inserted 227091064 1613501836
+, the relative risk of asymptomatic transmission to symptomatic transmission
+ according to Byambasuren et al.
+ is expressed as
+\change_deleted 227091064 1613501841
+...
  
+\change_inserted 227091064 1613501841
+ 
+\change_deleted 227091064 1613501841
+[Describe computation here for 
+\change_unchanged
+
 \begin_inset Formula $\rho_{\A\I}$
 \end_inset
 
 
+\change_deleted 227091064 1613501843
+]
+\change_inserted 227091064 1613501882
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "byambasuren_estimating_2020"
+literal "false"
+
+\end_inset
+
+
 \change_inserted -1732430129 1613401156
-]:
+:
 \end_layout
 
 \begin_layout Standard
@@ -1462,8 +1665,14 @@ name "tab:TransParams"
 \end_inset
 
 
+\change_inserted 227091064 1613503336
+
 \series bold
-Transmissibility parameters.
+Relative t
+\change_deleted 227091064 1613503333
+T
+\change_unchanged
+ransmissibility parameters.
 \end_layout
 
 \end_inset
@@ -1848,7 +2057,13 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-The reproduction number is related to the main eigenvalue of 
+The reproduction number is related to the 
+\change_inserted 227091064 1613599941
+dominant
+\change_deleted 227091064 1613599940
+main
+\change_unchanged
+ eigenvalue of 
 \begin_inset Formula $\bs{K_{\mathrm{S}}}$
 \end_inset
 
@@ -1861,7 +2076,13 @@ The reproduction number is related to the main eigenvalue of
 \begin_inset Formula $\tau$
 \end_inset
 
- is estimated from the main eigenvalue of 
+ is estimated from the 
+\change_inserted 227091064 1613599946
+dominant
+\change_deleted 227091064 1613599945
+main
+\change_unchanged
+ eigenvalue of 
 \begin_inset Formula $\tilde{K}_{\mathrm{S}}=K_{\mathrm{S}}/\tau$
 \end_inset
 
@@ -1907,13 +2128,85 @@ noprefix "false"
 \begin_layout Standard
 
 \change_inserted -1732430129 1613347156
-In Main Text, we presented the proportions in which clinical symptomatic
- individuals resolve into the critical, severe and recovered cases.
- Since 
+In 
+\change_inserted 227091064 1613501957
+the 
+\change_inserted -1732430129 1613347156
+Main Text, we presented the proportions in which clinical symptomatic individual
+s resolve into 
+\change_deleted 227091064 1613598363
+the 
+\change_inserted -1732430129 1613347156
+critical
+\change_inserted 227091064 1613598428
+ (
+\begin_inset Formula $q_{i}^{D}$
+\end_inset
+
+)
+\change_inserted -1732430129 1613347156
+, severe 
+\change_inserted 227091064 1613598427
+(
+\begin_inset Formula $q_{i}^{\HH}$
+\end_inset
+
+) 
+\change_inserted -1732430129 1613347156
+and recovered 
+\change_inserted 227091064 1613598447
+(
+\begin_inset Formula $q_{i}^{R}$
+\end_inset
+
+) 
+\change_inserted -1732430129 1613347156
+cases.
+ 
+\change_inserted 227091064 1613598523
+We assigned the fractions of symptomatic cases in children aged <13 that
+ would become severe and critical from the fractions of symptomatic cases
+ in children aged <11 that were severe and critical in China 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological"
+literal "false"
+
+\end_inset
+
+.
+ We assigned the class-specific fractions of symptomatic cases in adults
+ that would become severe and critical based on age and comorbidity-specific
+ fractions of symptomatic cases with known outcomes that required hospitalizatio
+n, without and with ICU admission, respectively in the United States 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covid2020preliminary"
+literal "false"
+
+\end_inset
+
+.
+ To account for poorer health among Syrian adults compared to their similarly
+ aged peers in developed countries, estimates for US adults aged 19-64 were
+ used for Syrian adults aged 13-50, while estimates for US adults aged 65+
+ were used for Syrian adults aged 51+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1613347156
+Since 
 \change_unchanged
 t
 \change_inserted -1732430129 1613347156
-he rates at which these individuals progress is different (
+he rates at which these individuals progress 
+\change_inserted 227091064 1613598281
+are
+\change_deleted 227091064 1613502339
+is
+\change_inserted -1732430129 1613347156
+ different (
 \begin_inset Formula $\eta$
 \end_inset
 
@@ -1971,7 +2264,7 @@ q_{i}^{\HH}=h_{i}\eta\kappa_{i}^{-1}
 \change_inserted -1732430129 1613346991
 \begin_inset Formula 
 \begin{equation}
-q_{i}^{\DD}=g_{i}\alpha\kappa_{i}^{-1}
+q_{i}^{D}=g_{i}\alpha\kappa_{i}^{-1}
 \end{equation}
 
 \end_inset
@@ -1984,7 +2277,7 @@ q_{i}^{\DD}=g_{i}\alpha\kappa_{i}^{-1}
 \change_inserted -1732430129 1613346991
 \begin_inset Formula 
 \begin{equation}
-q_{i}^{\RR}=1-q_{i}^{\HH}-q_{i}^{\DD}=l_{i}\gamma_{\I}\kappa_{i}^{-1},
+q_{i}^{R}=1-q_{i}^{\HH}-q_{i}^{D}=l_{i}\gamma_{\I}\kappa_{i}^{-1},
 \end{equation}
 
 \end_inset
@@ -2028,14 +2321,39 @@ to
 
 \begin_layout Standard
 
-\change_inserted -1732430129 1613347545
+\change_deleted 227091064 1613503040
 \begin_inset Formula 
 \[
-h_{i}=\frac{\alpha q_{i}^{H}}{\eta q_{i}^{D}}g_{i},\qquad g_{i}=\gamma_{I}\left(\frac{\alpha}{q_{i}^{D}}+\frac{\gamma_{I}\alpha q_{i}^{H}}{\eta q_{i}^{D}}+\gamma_{I}-\frac{\alpha q_{i}^{H}}{q_{i}^{D}}-\alpha\right)^{-1}.
+h_{i}=\frac{\alpha q_{i}^{H}}{\eta q_{i}^{D}}g_{i},\qquad g_{i}=\gamma_{I}\left(\frac{\alpha}{q_{i}^{D}}+\frac{\gamma_{I}\alpha q_{i}^{H}}{\eta q_{i}^{D}}+\gamma_{I}-\frac{\alpha q_{i}^{H}}{q_{i}^{D}}-\alpha\right)^{-1}
 \]
 
 \end_inset
 
+
+\change_inserted 227091064 1613503118
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1613503123
+\begin_inset Formula 
+\begin{equation}
+h_{i}=\frac{\alpha q_{i}^{H}}{\eta q_{i}^{D}}g_{i},
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\qquad g_{i}=\gamma_{I}\left(\frac{\alpha}{q_{i}^{D}}+\frac{\gamma_{I}\alpha q_{i}^{H}}{\eta q_{i}^{D}}+\gamma_{I}-\frac{\alpha q_{i}^{H}}{q_{i}^{D}}-\alpha\right)^{-1}.
+\end{equation}
+
+\end_inset
+
+
+\change_inserted -1732430129 1613347545
 
 \end_layout
 
@@ -2094,7 +2412,7 @@ orange
  where we assumed transmissivity is reduced by 80%, 
 \change_inserted -1732430129 1613342026
 encoded in the parameter 
-\begin_inset Formula $\xi=0.2$
+\begin_inset Formula $\xi_{ij}=0.2$
 \end_inset
 
 .
@@ -2118,8 +2436,21 @@ visitors
  In some interventions we considered that individuals visiting the buffer
  zone will have a health check (e.g.
  temperature measurement), aimed at excluding symptomatic individuals.
- When the health check is applied, the transmission probability between
- individuals from the orange zone in the 
+ When the health check is applied, 
+\change_deleted 227091064 1613591762
+the transmission 
+\change_inserted 227091064 1613591763
+the 
+\change_unchanged
+probability
+\change_inserted 227091064 1613596447
+ 
+\change_deleted 227091064 1613591823
+ between individuals from the orange zone in the
+\change_inserted 227091064 1613591866
+of transmission by individuals in the
+\change_unchanged
+ 
 \begin_inset Formula $I$
 \end_inset
 
@@ -2127,13 +2458,31 @@ visitors
 \begin_inset Formula $H$
 \end_inset
 
- compartments and individuals from the green zone is set to zero 
+ compartments 
+\change_inserted 227091064 1613591928
+from one zone to susceptible individuals from a different zone
+\change_deleted 227091064 1613591932
+and individuals from the green zone
+\change_unchanged
+ is set to zero 
 \change_inserted -1732430129 1613342294
-(see parameter 
+(see parameter
+\change_inserted 227091064 1613592010
+s
+\change_inserted -1732430129 1613342294
+ 
 \begin_inset Formula $\zeta_{\I}$
 \end_inset
 
- in Eq.
+ 
+\change_inserted 227091064 1613592023
+and 
+\begin_inset Formula $\zeta_{\HH}$
+\end_inset
+
+ 
+\change_inserted -1732430129 1613342294
+in Eq.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2157,7 +2506,11 @@ noprefix "false"
 \begin_inset Formula $\omega_{ij}$
 \end_inset
 
-, modifying the the rate at which individuals become exposed (see Eq.
+, modifying the 
+\change_deleted 227091064 1613596472
+the 
+\change_inserted -1732430129 1613343162
+rate at which individuals become exposed (see Eq.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2193,7 +2546,7 @@ ls from a different zone to individuals living in the same zone.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\epsilon_{ij} & = & \xi\vartheta c_{\family}/c_{i}\quad(i,j\textrm{ in different zones})\\
+\epsilon_{ij} & = & \vartheta c_{\family}/c_{i}\quad(i,j\textrm{ in different zones})\\
 \epsilon_{ij} & = & 1-\vartheta c_{\family}/c_{i}\quad(i,j\textrm{ in same zone}).
 \end{eqnarray*}
 
@@ -2203,12 +2556,16 @@ ls from a different zone to individuals living in the same zone.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 227091064 1613592286
 If we assume that visitors are always different, the quantity 
 \begin_inset Formula $f_{\oran,\family}=c_{\family}\frac{N_{\g}}{N_{\oran}}$
 \end_inset
 
  is the fraction of the orange population that visits the buffer zone.
- We define 
+ 
+\change_unchanged
+We define 
 \begin_inset Formula $\vartheta$
 \end_inset
 
@@ -2279,6 +2636,21 @@ f_{\oran,\family} & \textrm{if }i\in\oran
 \end_inset
 
 
+\change_inserted 227091064 1613592305
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 227091064 1613592307
+If we assume that visitors are always different, the quantity 
+\begin_inset Formula $f_{\oran,\family}=c_{\family}\frac{N_{\g}}{N_{\oran}}$
+\end_inset
+
+ is the fraction of the orange population that visits the buffer zone.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -2300,12 +2672,36 @@ model
 \change_inserted -1732430129 1613343249
  is modified with respect to the null model
 \change_unchanged
-, depending on whether they belong to the same or to different zones.
- Since interaction is limited to others in the same zone, every individual
+, depending on 
+\change_deleted 227091064 1613594017
+whether they belong to the same or to different zones
+\change_inserted 227091064 1613594055
+the zones from which class 
+\begin_inset Formula $i$
+\end_inset
+
+ and class 
+\begin_inset Formula $j$
+\end_inset
+
+ are drawn
+\change_unchanged
+.
+ 
+\change_inserted 227091064 1613596878
+When interaction is limited to individuals within a certain zone who comprise
+ only a proportion of the camp's total population, the smaller this proportion
+ is, the higher the likelihood of interaction with an individual in this
+ proportion of the population is.
+ 
+\change_deleted 227091064 1613595322
+Since interaction is limited to others in the same zone, every individual
  will have a higher likelihood of interaction with members of the classes
- staying in the same zone compared to the null model
+ staying in the same zone compared to the null model, which we encode in
+\change_inserted 227091064 1613595334
+This modification of relative probability of interaction is encoded in
 \change_inserted -1732430129 1613343321
-, which we encode in the parameter 
+ the parameter 
 \begin_inset Formula $\omega_{ij}$
 \end_inset
 
@@ -2331,7 +2727,11 @@ noprefix "false"
 \begin_inset Formula $i$
 \end_inset
 
- in the null model will become
+ in the null model 
+\change_deleted 227091064 1613595945
+will 
+\change_unchanged
+become
 \change_inserted -1732430129 1613343331
 s
 \change_unchanged
