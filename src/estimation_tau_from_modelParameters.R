@@ -49,6 +49,9 @@ av.cont=as.matrix(read.csv(file=file.contclass,sep="\t"))
 #N=6000
 setwd(dirParams)
 isoThr=0 # needed in the estimation of parameters
+# ..... Time between symptom's onset and taking the decision of isolating in a tent
+t.O.param1=2
+t.O.param2=0.43
 source(fileParams)
 
 # --- Compute NGM
