@@ -136,7 +136,9 @@ gg.a <- do_box_plot_mean_dot(df,"CFR",varX,"","Infection Fatality Rate",scale_x_
 
 df$NumFinalCases <- df$NumFinalDeaths + df$NumFinalRecovered
 df.thres <- data.frame(df %>% group_by(intervention,group) %>% summarise(low = sum(NumFinalCases < threshold),total=length(NumFinalCases))) 
-df.thres$prob <- 1 - (df.thres$total - df.thres$low)/500
+
+#df.thres$prob <- 1 - (df.thres$total - df.thres$low)/500
+df.thres$prob <- 1 - (df.thres$total - df.thres$low)/df.thres$total
 
 gg.c <- do_line_plot(df.thres,"prob",varX,"","Safety effectiveness","identity",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
         theme(axis.text.x= element_blank() )
