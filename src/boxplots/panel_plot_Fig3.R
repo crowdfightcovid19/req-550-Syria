@@ -102,7 +102,7 @@ scale_x_labels <- intervention.label
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
 
-gg.Poutbreak <- do_line_plot(df,varPoutbreak,varX,"",ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)+
+gg.Poutbreak <- do_line_plot_ci(df,varPoutbreak,"CImin","CImax",varX,"",ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)+
                  theme(axis.text.x = element_blank())
 gg.FracDeath <- do_box_plot_mean_dot(df,varFracDeath,varX,"",ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)+
                  theme(axis.text.x = element_blank())
