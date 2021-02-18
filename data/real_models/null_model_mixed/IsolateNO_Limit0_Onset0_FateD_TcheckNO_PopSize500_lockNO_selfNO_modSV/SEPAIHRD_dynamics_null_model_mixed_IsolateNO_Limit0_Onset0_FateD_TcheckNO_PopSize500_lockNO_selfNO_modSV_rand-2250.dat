@@ -1,0 +1,14 @@
+"time" "age1.S" "age2_no_comorbid.S" "age2_comorbid.S" "age3_no_comorbid.S" "age3_comorbid.S" "age1.E" "age2_no_comorbid.E" "age2_comorbid.E" "age3_no_comorbid.E" "age3_comorbid.E" "age1.P" "age2_no_comorbid.P" "age2_comorbid.P" "age3_no_comorbid.P" "age3_comorbid.P" "age1.A" "age2_no_comorbid.A" "age2_comorbid.A" "age3_no_comorbid.A" "age3_comorbid.A" "age1.I" "age2_no_comorbid.I" "age2_comorbid.I" "age3_no_comorbid.I" "age3_comorbid.I" "age1.H" "age2_no_comorbid.H" "age2_comorbid.H" "age3_no_comorbid.H" "age3_comorbid.H" "age1.R" "age2_no_comorbid.R" "age2_comorbid.R" "age3_no_comorbid.R" "age3_comorbid.R" "age1.D" "age2_no_comorbid.D" "age2_comorbid.D" "age3_no_comorbid.D" "age3_comorbid.D"
+0 204 234 31 11 19 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2.0538984275524 204 234 31 11 19 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2.14540826725693 204 234 31 11 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+2.76887321869279 204 233 31 11 19 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+5.03037118915642 204 233 31 11 19 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+5.44504966380013 204 233 31 11 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+7.56671440339822 204 233 31 11 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
+9.78431891885707 203 233 31 11 19 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
+11.0358021952499 203 233 31 11 19 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
+11.0418240633917 203 233 31 11 19 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0
+11.8844522414831 203 233 31 11 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0
+15.0468680534891 203 233 31 11 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0
+365 203 233 31 11 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0

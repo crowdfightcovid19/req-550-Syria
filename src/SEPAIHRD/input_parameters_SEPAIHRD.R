@@ -17,9 +17,10 @@ t.P.param1=2.3 # presymptomatic time, gaussian first param
 t.P.param2=0.91 # gaussian second param
 
 # ..... Time between symptom's onset and taking the decision of isolating in a tent
-# ..... these values are now fixed in the main code with the option Onset, uncomment if you use this script only
-#t.O.param1=2
-#t.O.param2=0.43
+# ..... these values are now fixed in the main code with the option Onset, 
+# ..... uncomment if you use this script only
+# t.O.param1=2
+# t.O.param2=0.43
   
 # ..... Symptomatic compartments
 f.S.mean=0.84
@@ -89,8 +90,8 @@ R0.param=0.43
 R0.vec=rnorm(Nrand,mean=R0.mean,sd=R0.param)
 #
 # ..... tau
-tau.mean=-2.91594 # log-normal param: log(mean=0.05415) # older, without beta (normal): 0.0196 # old value 0.00608
-tau.param=0.3665 # log-normal param # older, without beta (normal): 0.00305 # old value  0.0009
+tau.mean=-2.923657 # log-normal param: log(mean=0.05415) # older, without beta (normal): 0.0196 # old value 0.00608
+tau.param=0.359468 # log-normal param # older, without beta (normal): 0.00305 # old value  0.0009
 #tau.vec=rnorm(Nrand,mean = tau.mean,sd=tau.param)
 tau.vec=rlnorm(Nrand,meanlog = tau.mean,sdlog =tau.param)
 
@@ -127,9 +128,15 @@ Ifact.vec=rlnorm(Nrand,mean=log(Ifact.mean),sd=Ifact.std)
 
 betaP=betaP.mean
 betaI.vec=Ifact.vec
-betaA.vec=Ifact.vec*betaI.vec
+betaA.vec=Ifact.vec*betaA.vec
 betaH.vec=Ifact.vec*betaH.mean
 
-#quantile(betaI.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
-#quantile(betaA.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
-#quantile(betaH.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+quantile(betaI.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+quantile(betaA.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+quantile(betaH.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+hist(betaI.vec,breaks=50) # lognorm
+qqnorm(log(betaI.vec))
+hist(betaA.vec,breaks=50) # lognorm
+qqnorm(log(betaA.vec))
+hist(betaH.vec,breaks=50) # lognorm
+qqnorm(log(betaH.vec))
