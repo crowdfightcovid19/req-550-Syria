@@ -15,7 +15,9 @@ source("plot_routines.R")
 
 setwd("/home/ecam/workbench/req-550-Syria")
 
-library("tidyr")
+library(dplyr)
+library(tidyr)
+library(binom)
 
 axis.text.size = 24
 axis.title.size = 27
@@ -77,6 +79,8 @@ for(i in 1:length(old_names2)){
 
 
 df$POutbreak <- rep(0.0,dim(df)[1])
+df$CImin <- rep(0.0,dim(df)[1])
+df$CImax <- rep(0.0,dim(df)[1])
 
 for(cl in c("age1","age2_no_comorbid","age2_comorbid","age3_no_comorbid","age3_comorbid")){
     df.null <- subset(df, class==cl & model=="null")
@@ -85,8 +89,18 @@ for(cl in c("age1","age2_no_comorbid","age2_comorbid","age3_no_comorbid","age3_c
     p.null <- length( df.null$FracDeath[ df.null$FracDeath != 0 ] ) / length(df.null$FracDeath)
     p.shield <- length( df.shield$FracDeath[ df.shield$FracDeath != 0 ] ) / length(df.shield$FracDeath)
 
+    ci.null <- binom.confint(length( df.null$FracDeath[ df.null$FracDeath != 0 ] ),length(df.null$FracDeath),methods=c("wilson"))
+    ci.shield <- binom.confint(length( df.shield$FracDeath[ df.shield$FracDeath != 0 ] ) , length(df.shield$FracDeath),methods=c("wilson"))
+
+ 
+
     df$POutbreak[ df$class == cl & df$model == "null" ] <- p.null
     df$POutbreak[ df$class == cl & df$model == "shield" ] <- p.shield
+    df$CImin[ df$class == cl & df$model == "null" ] <- ci.null$lower[1]
+    df$CImax[ df$class == cl & df$model == "null" ] <- ci.null$upper[1]
+    df$CImin[ df$class == cl & df$model == "shield" ] <- ci.shield$lower[1]
+    df$CImax[ df$class == cl & df$model == "shield" ] <- ci.shield$upper[1]
+
 }
 
 gf <- gf[ df$FracDeath > 0, ]
@@ -106,7 +120,7 @@ gf$model <- factor(gf$model)
 
 gg.d <- do_box_plot_mean_dot( df, "FracDeath", "class", "Population class", "Deaths (% of the class)", c("Kids","Younger (not comorbid)", "Younger (comorbid)", "Older (not comorbid)", "Older (comorbid)"), c("Mixed","Safety zone"), "Model", line=FALSE, nolegend=TRUE, groupvar="model")
 #gg.f <- do_box_plot_mean_dot( df, "FracFinalSusceptible", "class", "Population class", "Deaths (% of the class)", c("Kids","Adults (not comorbid)", "Adults (comorbid)", "Older (not comorbid)", "Older (comorbid)"), c("Mixed","Safety zone"), "Model", line=FALSE, nolegend=TRUE, groupvar="model")
-gg.p <- do_line_plot( df, "POutbreak", "class", "", "Probability of outbreak", "mean",c("Kids","Younger (not comorbid)", "Younger (comorbid)", "Older (not comorbid)", "Older (comorbid)"), c("Mixed","Safety zone"), "Model", nolegend=FALSE, groupvar="model")
+gg.p <- do_line_plot_ci( df, "POutbreak", "CImin","CImax","class", "", "Probability of outbreak", "mean",c("Kids","Younger (not comorbid)", "Younger (comorbid)", "Older (not comorbid)", "Older (comorbid)"), c("Mixed","Safety zone"), "Model", nolegend=FALSE, groupvar="model")
 gg.d<- gg.d + theme(axis.text.x = element_blank())
 #gg.d<-gg.d+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 gg.p<- gg.p + theme(axis.text.x = element_blank())

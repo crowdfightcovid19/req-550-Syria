@@ -91,7 +91,7 @@ for(i in 1:length(ptitle)){
     #gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     #gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-    gg.Poutbreak.shield <- do_line_plot(df.shield,varPoutbreak,varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
+    gg.Poutbreak.shield <- do_line_plot_ci(df.shield,varPoutbreak,"CImin","CImax",varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
     gg.FracDeath.shield <- fplot(df.shield,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.TimePeak.shield <- fplot(df.shield,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
@@ -112,7 +112,7 @@ for(i in 1:length(ptitle)){
     #gg.FracDeath.iso <- fplot(df.iso,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     #gg.TimePeak.iso <- fplot(df.iso,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-    gg.Poutbreak.iso <- do_line_plot(df.iso,varPoutbreak,varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.Poutbreak.iso <- do_line_plot_ci(df.iso,varPoutbreak,"CImin","CImax",varX,"","","mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.FracDeath.iso <- fplot(df.iso,varFracDeath,varX,"","",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.TimePeak.iso <- fplot(df.iso,varPeak,varX,xlabel,"",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
@@ -133,7 +133,7 @@ for(i in 1:length(ptitle)){
     #gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,xlabel,ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     #gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-    gg.Poutbreak.self <- do_line_plot(df.self,varPoutbreak,varX,"",ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
+    gg.Poutbreak.self <- do_line_plot_ci(df.self,varPoutbreak,"CImin","CImax",varX,"",ytitPoutbreak,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.FracDeath.self <- fplot(df.self,varFracDeath,varX,"",ytitFracDeath,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
     gg.TimePeak.self <- fplot(df.self,varPeak,varX,xlabel,ytitPeak,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
