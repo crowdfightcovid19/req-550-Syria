@@ -69,6 +69,7 @@ popSize.col <- c()
 POutbreak.col <- c()
 po.min.col <- c()
 po.max.col <- c()
+po.new.col <- c()
 Ndeaths.col <- c()
 Nnodeaths.col <- c()
 for(i in 1:length(df.results$group)){
@@ -105,7 +106,7 @@ for(i in 1:length(df.results$group)){
     ci <- binom.confint(tail(Ndeaths.col,n=1),total,methods=c("wilson"))
     po.min.col <- c(po.min.col,ci$lower[1])
     po.max.col <- c(po.max.col,ci$upper[1])
-    
+    po.new.col <- c(po.new.col, tail(Ndeaths.col,n=1) / total )
 }
 
 FracFinalDeaths <- df.results$NumFinalDeaths / popSize.col
@@ -118,8 +119,8 @@ cnames <- colnames(df.results)
 FracFinalSusceptible <- 1 - FracFinalDeaths - FracFinalRecovered #TO DO: confirm.
 
 #df.output <- bind_cols(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,CFR,POutbreak.col)
-df.output <- cbind(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,FracFinalSusceptible,CFR,POutbreak.col,Ndeaths.col,Nnodeaths.col,po.min.col,po.max.col)
-colnames(df.output) <- c(cnames,"PopSizeNum","FracFinalDeaths","FracFinalRecovered","FracFinalSusceptible","CFR","POutbreak","Ndeaths","Nnodeaths","CImin","CImax")
+df.output <- cbind(df.results,popSize.col,FracFinalDeaths,FracFinalRecovered,FracFinalSusceptible,CFR,POutbreak.col,Ndeaths.col,Nnodeaths.col,po.min.col,po.max.col,po.new.col)
+colnames(df.output) <- c(cnames,"PopSizeNum","FracFinalDeaths","FracFinalRecovered","FracFinalSusceptible","CFR","POutbreak.old","Ndeaths","Nnodeaths","CImin","CImax","POutbreak")
 
 setwd(outDir)
 write.csv(df.output,file=fileOut)
