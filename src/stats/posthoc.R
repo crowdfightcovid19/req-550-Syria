@@ -12,6 +12,33 @@
 
 library(PMCMR)
 
+source("../boxplots/plot_routines.R")
+
+baseDir <- "/home/ecam/workbench/req-550-Syria"
+codeDir <- paste(baseDir,"/src",sep="")
+outDir <- paste(baseDir,"/data/real_models/results_post_processing",sep="")
+idDir="modSV" # this is a string contained in all the directories that should be processed
+fileIn=paste("extended_results_table_",idDir,".csv",sep="")
+
+
+df.all <- read.csv(paste(outDir,"/",fileIn,sep=""))
+params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_A.csv",sep=""),header = TRUE, sep=",")
+df.shield <- extract_subtable_output_summaries(df.all,params.df)
+
+params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_C.csv",sep=""),header = TRUE, sep=",")
+df.onset <- extract_subtable_output_summaries(df.all,params.df)
+
+params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_B.csv",sep=""),header = TRUE, sep=",")
+df.iso <- extract_subtable_output_summaries(df.all,params.df)
+
+idx.contacts <- c(1,2,5,3,4,6,7)
+df.shield$contacts<-factor(df.shield$contacts,levels(df.shield$contacts)[idx.contacts])
+idx.group <- c(3,1,2)
+df.shield$group<-factor(df.shield$group,levels(df.shield$group)[idx.group])
+idx.limit<- c(1,2,5,7,3,6,8,4)
+df.iso$Limit<-factor(df.iso$Limit,levels(df.iso$Limit)[idx.limit])
+
+
 cat("Test if the difference between null model and safety interventions (10 and 2 contacts) are significantlt different.\n")
 
 print(kruskal.test(FracFinalDeaths~contacts,df.shield[df.shield$group=="T",]))
