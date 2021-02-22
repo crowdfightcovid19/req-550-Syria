@@ -12,6 +12,6 @@ req-550-Syria.Rproj
 *.blg
 
 #Large summary files
-data/real_models/results_post_processing/results_table_modSV.csv
-data/real_models/results_post_processing/extended_results_table_modSV.csv
+#data/real_models/results_post_processing/results_table_modSV.csv
+#data/real_models/results_post_processing/extended_results_table_modSV.csv
 
