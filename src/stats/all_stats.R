@@ -110,7 +110,8 @@ df.fate$Fate<-factor(df.fate$Fate,levels(df.fate$Fate)[c(2,1)])
 
 
 #Output dataframe (empty dataframe with col names)
-odf <- data.frame(fig=NA,name=NA,varX=NA,varY=NA,group=NA,pvalue=NA,significance=NA,barlettp=NA,bartlett=NA,Welchp=NA,WelchSig=NA,shapirop=NA,shapiro=NA,kruskalp=NA,kruskalSig=NA)[-1,]
+#odf <- data.frame(fig=NA,name=NA,varX=NA,varY=NA,group=NA,pvalue=NA,significance=NA,barlettp=NA,bartlett=NA,Welchp=NA,WelchSig=NA,shapirop=NA,shapiro=NA,kruskalp=NA,kruskalSig=NA)[-1,]
+odf <- data.frame(fig=NA,name=NA,varX=NA,varY=NA,group=NA,pvalue=NA,significance=NA,barlettp=NA,bartlett=NA,Welchp=NA,WelchSig=NA,kruskalp=NA,kruskalSig=NA)[-1,]
 
 #Returns 1 or 0 indicating Homogeneity of Var (1) or not (0) for 0.05 significance
 getBartlett <- function(p){
@@ -161,10 +162,10 @@ for (i in 1:length(figs)){
             swel <- stars.pval(as.numeric(pwel))[1]
 
             #Normality of residuals
-            aov_residuals <- residuals(object = res.aov)
-            res.sha <- shapiro.test(x = aov_residuals)
-            psha <- unlist(res.sha)[["p.value"]]
-            sha <- getBartlett(as.numeric(psha))
+            #aov_residuals <- residuals(object = res.aov)
+            #res.sha <- shapiro.test(x = aov_residuals)
+            #psha <- unlist(res.sha)[["p.value"]]
+            #sha <- getBartlett(as.numeric(psha))
 
             #Kruskal (if normality fails)
             res.kru <- kruskal.test(form,data=df)
@@ -172,7 +173,8 @@ for (i in 1:length(figs)){
             skru <- stars.pval(as.numeric(pkru))[1]
 
             #Add row to output dataframe.
-            odf[nrow(odf)+1,] <- c(fig,name,varX,varY,g,p,s,pbar,bar,pwel,swel,psha,sha,pkru,skru)
+            #odf[nrow(odf)+1,] <- c(fig,name,varX,varY,g,p,s,pbar,bar,pwel,swel,psha,sha,pkru,skru)
+            odf[nrow(odf)+1,] <- c(fig,name,varX,varY,g,p,s,pbar,bar,pwel,swel,pkru,skru)
         } 
     }
 }
