@@ -17,8 +17,8 @@ library(ggplot2)
 library(grid)
 library(gridExtra)
 
-fymin.q <- function(z){ return(quantile(z,0.25))} 
-fymax.q <- function(z){ return(quantile(z,0.75))} 
+fymin.q <- function(z,na.rm=TRUE){ return(quantile(z,0.25,na.rm=na.rm))} 
+fymax.q <- function(z,na.rm=TRUE){ return(quantile(z,0.75,na.rm=na.rm))} 
 fymin.sd <- function(z){ return(mean(z)-sd(z))} 
 fymax.sd <- function(z){ return(mean(z)+sd(z))} 
 fymin.se <- function(z){ return(mean(z)-sd(z)/sqrt(length(z[!is.na(z)])))} 
