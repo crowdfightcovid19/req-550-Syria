@@ -170,7 +170,7 @@ ylabel = "Probability of Outbreak"
 
 gg.a <- do_line_plot_ci(df.lock,varY,"CImin","CImax",varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 
-ss <- df.lock %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+ss <- df.lock %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR,q25=fymin.q,q75=fymax.q),na.rm=TRUE)
 write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 15,title=outFile)
@@ -231,7 +231,7 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot_ci(df.tcheck,varY,"CImin","CImax",varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-ss <- df.tcheck %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+ss <- df.tcheck %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR,q25=fymin.q,q75=fymax.q),na.rm=TRUE)
 write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 17,title=outFile)
@@ -293,7 +293,7 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot_ci(df,varY,"CImin","CImax",varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR,q25=fymin.q,q75=fymax.q),na.rm=TRUE)
 write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
 
@@ -334,7 +334,7 @@ df.aux <- data.frame(df %>% group_by(group,contacts) %>% summarise(CFR = mean(Nu
 
 gg.aa <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR,q25=fymin.q,q75=fymax.q),na.rm=TRUE)
 write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
 
@@ -400,7 +400,7 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot_ci(df,varY,"CImin","CImax",varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=FALSE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR,q25=fymin.q,q75=fymax.q),na.rm=TRUE)
 write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
 
@@ -468,7 +468,7 @@ ylabel = "Probability of Outbreak"
 gg.a <- do_line_plot_ci(df,varY,"CImin","CImax",varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.a<-gg.a+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
 
-ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR,q25=fymin.q,q75=fymax.q),na.rm=TRUE)
 write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
 
@@ -526,7 +526,7 @@ ylabel = "Probability of Outbreak"
 
 gg.a <- do_line_plot_ci(df,varY,"CImin","CImax",varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR,q25=fymin.q,q75=fymax.q),na.rm=TRUE)
 write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
 
@@ -567,7 +567,7 @@ df.aux <- data.frame(df %>% group_by(group,Limit) %>% summarise(CFR = mean(NumFi
 
 gg.aa <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR,q25=fymin.q,q75=fymax.q),na.rm=TRUE)
 write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
 
@@ -610,7 +610,7 @@ df.aux <- data.frame(df %>% group_by(group,self) %>% summarise(CFR = mean(NumFin
 
 gg.aa <- do_line_plot(df.aux,varY,varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR,q25=fymin.q,q75=fymax.q),na.rm=TRUE)
 write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
 
@@ -669,7 +669,7 @@ ylabel = "Probability of Outbreak"
 
 gg.a <- do_line_plot_ci(df,varY,"CImin","CImax",varX,xlabel,ylabel,"mean",scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 
-ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR),na.rm=TRUE)
+ss <- df %>% group_by_at(varX) %>% summarise_at(c("FracFinalRecovered","FracFinalSusceptible","CFR","TimePeakSymptomatic","FracFinalDeaths","POutbreak"),list(median=median,IQR=IQR,q25=fymin.q,q75=fymax.q),na.rm=TRUE)
 write.csv(ss,file=paste("tables/",varX,"_",outFile,".csv",sep=""))
 
 
