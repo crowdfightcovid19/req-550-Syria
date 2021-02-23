@@ -1,0 +1,222 @@
+Posthoc tests for isolation tents.
+Does increasing numbers the tents reduces significantly the fraction of deaths?
+	Kruskal-Wallis rank sum test
+
+data:  FracFinalDeaths by Limit
+Kruskal-Wallis chi-squared = 5398.9, df = 7, p-value < 2.2e-16
+
+
+	Pairwise comparisons using Tukey and Kramer (Nemenyi) test	
+                   with Tukey-Dist approximation for independent samples 
+
+data:  FracFinalDeaths by Limit 
+
+          Limit0  Limit10 Limit25 Limit50 Limit100 Limit250 Limit500
+Limit10   < 2e-16 -       -       -       -        -        -       
+Limit25   < 2e-16 0.72971 -       -       -        -        -       
+Limit50   < 2e-16 0.00034 0.11229 -       -        -        -       
+Limit100  < 2e-16 2.0e-13 1.5e-08 0.01122 -        -        -       
+Limit250  < 2e-16 1.5e-12 9.3e-08 0.02947 0.99999  -        -       
+Limit500  < 2e-16 4.6e-08 0.00028 0.69781 0.61321  0.79534  -       
+Limit2000 < 2e-16 0.15818 0.98085 0.62086 3.3e-06  1.5e-05  0.01157 
+
+P value adjustment method: none 
+We can do pairwise, ordered comparisons
+.
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalDeaths[df.iso$Limit == "Limit0"] and df.iso$FracFinalDeaths[df.iso$Limit == "Limit10"]
+W = 4394342, p-value < 2.2e-16
+alternative hypothesis: true location shift is greater than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalDeaths[df.iso$Limit == "Limit10"] and df.iso$FracFinalDeaths[df.iso$Limit == "Limit25"]
+W = 2269717, p-value = 0.02526
+alternative hypothesis: true location shift is greater than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalDeaths[df.iso$Limit == "Limit25"] and df.iso$FracFinalDeaths[df.iso$Limit == "Limit50"]
+W = 2430346, p-value = 0.0008728
+alternative hypothesis: true location shift is greater than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalDeaths[df.iso$Limit == "Limit50"] and df.iso$FracFinalDeaths[df.iso$Limit == "Limit100"]
+W = 2535384, p-value = 3.203e-05
+alternative hypothesis: true location shift is greater than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalDeaths[df.iso$Limit == "Limit100"] and df.iso$FracFinalDeaths[df.iso$Limit == "Limit250"]
+W = 2344777, p-value = 0.7348
+alternative hypothesis: true location shift is not equal to 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalDeaths[df.iso$Limit == "Limit250"] and df.iso$FracFinalDeaths[df.iso$Limit == "Limit500"]
+W = 2286696, p-value = 0.04281
+alternative hypothesis: true location shift is less than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalDeaths[df.iso$Limit == "Limit500"] and df.iso$FracFinalDeaths[df.iso$Limit == "Limit2000"]
+W = 2214305, p-value = 3.218e-05
+alternative hypothesis: true location shift is less than 0
+
+Frac Deaths Summary: FracDeaths is reduced with 100 tents when compared to 0, 10, 25, 50. There is no difference between 100 and 250. FracDeaths increases for 500 and 2000 tents when compared to 100, 250.
+Does increasing numbers the tents reduces significantly the IFR?
+
+	Kruskal-Wallis rank sum test
+
+data:  CFR by Limit
+Kruskal-Wallis chi-squared = 5670.3, df = 7, p-value < 2.2e-16
+
+
+	Pairwise comparisons using Tukey and Kramer (Nemenyi) test	
+                   with Tukey-Dist approximation for independent samples 
+
+data:  CFR by Limit 
+
+          Limit0  Limit10 Limit25 Limit50 Limit100 Limit250 Limit500
+Limit10   < 2e-16 -       -       -       -        -        -       
+Limit25   < 2e-16 0.99533 -       -       -        -        -       
+Limit50   < 2e-16 0.27212 0.75609 -       -        -        -       
+Limit100  < 2e-16 0.00082 0.01425 0.58785 -        -        -       
+Limit250  < 2e-16 0.00026 0.00562 0.40835 1.00000  -        -       
+Limit500  < 2e-16 1.7e-07 1.0e-05 0.01036 0.70668  0.85663  -       
+Limit2000 < 2e-16 6.4e-14 1.3e-13 2.6e-09 9.9e-05  0.00035  0.06165 
+
+P value adjustment method: none 
+We can do pairwise, ordered comparisons
+.
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$CFR[df.iso$Limit == "Limit0"] and df.iso$CFR[df.iso$Limit == "Limit10"]
+W = 4436522, p-value < 2.2e-16
+alternative hypothesis: true location shift is greater than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$CFR[df.iso$Limit == "Limit10"] and df.iso$CFR[df.iso$Limit == "Limit25"]
+W = 2229845, p-value = 0.3493
+alternative hypothesis: true location shift is not equal to 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$CFR[df.iso$Limit == "Limit25"] and df.iso$CFR[df.iso$Limit == "Limit50"]
+W = 2375236, p-value = 0.03821
+alternative hypothesis: true location shift is greater than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$CFR[df.iso$Limit == "Limit50"] and df.iso$CFR[df.iso$Limit == "Limit100"]
+W = 2455854, p-value = 0.01884
+alternative hypothesis: true location shift is greater than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$CFR[df.iso$Limit == "Limit100"] and df.iso$CFR[df.iso$Limit == "Limit250"]
+W = 2372418, p-value = 0.7413
+alternative hypothesis: true location shift is not equal to 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$CFR[df.iso$Limit == "Limit250"] and df.iso$CFR[df.iso$Limit == "Limit500"]
+W = 2423808, p-value = 0.1095
+alternative hypothesis: true location shift is not equal to 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$CFR[df.iso$Limit == "Limit500"] and df.iso$CFR[df.iso$Limit == "Limit2000"]
+W = 2516354, p-value = 0.0005506
+alternative hypothesis: true location shift is greater than 0
+
+Summary for IFR: IFR is reduced when increasing tents up to 100 (as with frac final deahts). There is no diffeence between 100, 250 and 500 tents. IFR is reduced for 2000 when compared to 500 tents.
+Does increasing numbers the tents reduces significantly the final fraction of population susceptible?
+
+	Kruskal-Wallis rank sum test
+
+data:  FracFinalSusceptible by Limit
+Kruskal-Wallis chi-squared = 9234.9, df = 7, p-value < 2.2e-16
+
+
+	Pairwise comparisons using Tukey and Kramer (Nemenyi) test	
+                   with Tukey-Dist approximation for independent samples 
+
+data:  FracFinalSusceptible by Limit 
+
+          Limit0  Limit10 Limit25 Limit50 Limit100 Limit250 Limit500
+Limit10   1.2e-06 -       -       -       -        -        -       
+Limit25   < 2e-16 9.0e-14 -       -       -        -        -       
+Limit50   < 2e-16 < 2e-16 < 2e-16 -       -        -        -       
+Limit100  < 2e-16 < 2e-16 < 2e-16 < 2e-16 -        -        -       
+Limit250  < 2e-16 < 2e-16 < 2e-16 < 2e-16 6.4e-06  -        -       
+Limit500  < 2e-16 2.1e-10 0.022   < 2e-16 < 2e-16  < 2e-16  -       
+Limit2000 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16  < 2e-16  < 2e-16 
+
+P value adjustment method: none 
+We can do pairwise, ordered comparisons
+.
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalSusceptible[df.iso$Limit == "Limit0"] and df.iso$FracFinalSusceptible[df.iso$Limit == "Limit10"]
+W = 1907976, p-value < 2.2e-16
+alternative hypothesis: true location shift is less than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalSusceptible[df.iso$Limit == "Limit10"] and df.iso$FracFinalSusceptible[df.iso$Limit == "Limit25"]
+W = 1672754, p-value < 2.2e-16
+alternative hypothesis: true location shift is less than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalSusceptible[df.iso$Limit == "Limit25"] and df.iso$FracFinalSusceptible[df.iso$Limit == "Limit50"]
+W = 1579257, p-value < 2.2e-16
+alternative hypothesis: true location shift is less than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalSusceptible[df.iso$Limit == "Limit50"] and df.iso$FracFinalSusceptible[df.iso$Limit == "Limit100"]
+W = 1426651, p-value < 2.2e-16
+alternative hypothesis: true location shift is less than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalSusceptible[df.iso$Limit == "Limit100"] and df.iso$FracFinalSusceptible[df.iso$Limit == "Limit250"]
+W = 2696560, p-value < 2.2e-16
+alternative hypothesis: true location shift is greater than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalSusceptible[df.iso$Limit == "Limit250"] and df.iso$FracFinalSusceptible[df.iso$Limit == "Limit500"]
+W = 3765650, p-value < 2.2e-16
+alternative hypothesis: true location shift is greater than 0
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  df.iso$FracFinalSusceptible[df.iso$Limit == "Limit500"] and df.iso$FracFinalSusceptible[df.iso$Limit == "Limit2000"]
+W = 4681914, p-value < 2.2e-16
+alternative hypothesis: true location shift is greater than 0
+
+Summary for final susceptibles: number of final susceptibles increases up to a 100 tents, and then decreases.
