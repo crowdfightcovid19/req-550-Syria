@@ -3,7 +3,12 @@ require(extraDistr) # fits gompertz distribution
 # This function considers the epidemiological parameters estimated and creates
 # vectors with random number with size the number of simulations. 
 
+
+
 ### START EDITING
+thisScript=0 # by default this must be zero (when called from other scripts)
+    # if you want to run just this script, turn it to one.
+
 #set.seed(18062020) # today 
 # ..... Incubation and presymptomatic (the difference will estimate t.Exposed)
 t.incub.mean=5.2 # incubation time
@@ -16,12 +21,6 @@ incub.thr=8/24 # minimum incubation threshold
 t.P.param1=2.3 # presymptomatic time, gaussian first param
 t.P.param2=0.91 # gaussian second param
 
-# ..... Time between symptom's onset and taking the decision of isolating in a tent
-# ..... these values are now fixed in the main code with the option Onset, 
-# ..... uncomment if you use this script only
-# t.O.param1=2
-# t.O.param2=0.43
-  
 # ..... Symptomatic compartments
 f.S.mean=0.84
 f.S.param=240 # Number of trials needed to fit the CI reported
@@ -44,16 +43,26 @@ t.ItoD.shape=t.ItoD.mean/t.ItoD.scale
 AUC.mean=0.44 # Area Under the Curve infectiousness
 AUC.std=0.082 #n normal
 
-betaP.mean=1
-betaA.mean=0.58 # ratio of Asymptomatic to symptomatic infectiousness
-betaA.std=0.32 # lognormal
+betaP.mean=1 # relative infectousness of presymptomatic individuals becoming symptomatic
+rhoAI.mean=0.58 # ratio of Asymptomatic to symptomatic infectiousness
+rhoAI.std=0.32 # lognormal
 
-betaH.mean=0.48 # ratio of hospitalized to symptomatic infectiousness
+rhoHI.mean=0.48 # ratio of hospitalized to symptomatic infectiousness
 
 Ifact.mean=0.24 # factor required to estimate infectiousness ratios
 Ifact.std=0.53
 
 ##### STOP EDITING
+
+if(thisScript == 1){ # if you run this script only, these values are needed to avoid errors
+  # ..... Time between symptom's onset and taking the decision of isolating in a tent
+  # ..... these values are now fixed in the main code with the option Onset, 
+  t.O.param1=2
+  t.O.param2=0.43
+  # ..... some params
+  isoThr=0
+  Nrand=10000
+}
 
 # --- Generate random values
 #
@@ -90,8 +99,8 @@ R0.param=0.43
 R0.vec=rnorm(Nrand,mean=R0.mean,sd=R0.param)
 #
 # ..... tau
-tau.mean=-2.923657 # log-normal param: log(mean=0.05415) # older, without beta (normal): 0.0196 # old value 0.00608
-tau.param=0.359468 # log-normal param # older, without beta (normal): 0.00305 # old value  0.0009
+tau.mean=-2.896575 # log-normal param: log(mean=0.05415) # older, without beta (normal): 0.0196 # old value 0.00608
+tau.param=0.3652693 # log-normal param # older, without beta (normal): 0.00305 # old value  0.0009
 #tau.vec=rnorm(Nrand,mean = tau.mean,sd=tau.param)
 tau.vec=rlnorm(Nrand,meanlog = tau.mean,sdlog =tau.param)
 
@@ -112,11 +121,11 @@ alpha.vec=1/t.ItoD.vec
 
 # --- Infectiousness
 AUC.vec=rnorm(Nrand,mean = AUC.mean,sd=AUC.std)
-betaA.vec=rlnorm(Nrand,mean=log(betaA.mean),sd=betaA.std) 
+rhoAI.vec=rlnorm(Nrand,mean=log(rhoAI.mean),sd=rhoAI.std) 
 # ... the following lines of code were used to estimate Ifact, it
 #     was then adjusted to a lognorm distribution (see below)
 # Ifact=(gammaI*gammaH.vec*(1-AUC.vec))/
-#   (AUC.vec*deltaP.vec*(gammaH.vec+betaH.mean*gammaI))
+#   (AUC.vec*deltaP.vec*(gammaH.vec+rhoHI.mean*gammaI))
 # quantile(Ifact,probs = c(0.01,0.05,0.5,0.95,0.99)) # check for rare values
 # # mean = 0.24 (95% CI: 0.0774, 0.57); (99% CI: 0.018, 0.81) # lognormal
 # idx.norm=which((Ifact < 0.57) & (Ifact > 0.0774)) # 99% of the values, remove abnormally divergent  values
@@ -126,17 +135,30 @@ betaA.vec=rlnorm(Nrand,mean=log(betaA.mean),sd=betaA.std)
 
 Ifact.vec=rlnorm(Nrand,mean=log(Ifact.mean),sd=Ifact.std)
 
-betaP=betaP.mean
+betaP.vec=betaP.mean*(fracPtoI.vec+(1-fracPtoI.vec)*rhoAI.vec)
 betaI.vec=Ifact.vec
-betaA.vec=Ifact.vec*betaA.vec
-betaH.vec=Ifact.vec*betaH.mean
+betaA.vec=Ifact.vec*rhoAI.vec
+betaH.vec=Ifact.vec*rhoHI.mean
 
-quantile(betaI.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
-quantile(betaA.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
-quantile(betaH.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
-hist(betaI.vec,breaks=50) # lognorm
-qqnorm(log(betaI.vec))
-hist(betaA.vec,breaks=50) # lognorm
-qqnorm(log(betaA.vec))
-hist(betaH.vec,breaks=50) # lognorm
-qqnorm(log(betaH.vec))
+# quantile(betaP.vec,probs = c(0.01,0.05,0.5,0.95,0.99)) # 0.93 [0.89-0.99]
+# quantile(betaI.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+# quantile(betaA.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+# quantile(betaH.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+ # hist(betaP.vec,breaks=50) # 
+ # qqnorm(log(betaP.vec))
+ # qqline(log(betaP.vec), col = "steelblue", lwd = 2)
+ # qqnorm((betaP.vec))
+ # qqline((betaP.vec), col = "red", lwd = 2)
+ # 
+ # hist(betaI.vec,breaks=50) # lognorm
+ # qqnorm(log(betaI.vec))
+ # qqline(log(betaI.vec), col = "blue", lwd = 2)
+ # 
+ # hist(betaA.vec,breaks=50) # lognorm
+ # qqnorm(log(betaA.vec))
+ # qqline(log(betaA.vec), col = "green", lwd = 2)
+ # 
+ # hist(betaH.vec,breaks=50) # lognorm
+ # qqnorm(log(betaH.vec))
+ # qqline(log(betaH.vec), col = "black", lwd = 2)
+ # 
