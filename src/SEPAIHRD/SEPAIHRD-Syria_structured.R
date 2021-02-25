@@ -315,7 +315,7 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     gammaH=gammaH.vec[i]
     eta=eta.vec[i]
     alpha=alpha.vec[i]
-    #betaP=betaP
+    betaP=betaP.vec[i]
     betaA=betaA.vec[i]
     betaI=betaI.vec[i]
     betaH=betaH.vec[i]
@@ -334,7 +334,7 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     eta=eta.vec
     alpha=alpha.vec
     tau=tau.vec
-    #betaP=betaP
+    betaP=betaP.vec
     betaA=betaA.vec
     betaI=betaI.vec
     betaH=betaH.vec
