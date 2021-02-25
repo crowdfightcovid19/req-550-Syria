@@ -69,7 +69,7 @@ for(k in 1:Nrand){
   eta=eta.vec[k]
   alpha=alpha.vec[k]
   deltaP=deltaP.vec[k]
-  #betaP=betaP
+  betaP=betaP.vec[k]
   betaA=betaA.vec[k]
   betaI=betaI.vec[k]
   betaH=betaH.vec[k]
