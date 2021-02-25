@@ -25,10 +25,10 @@ rates_SEPAIHRD_str = function(y, parms,t){
   inf.idx=parms["inf.idx"][[1]]
   gammaA=parms["gammaA"][[1]]
   gammaI=parms["gammaI"][[1]]
-  betaP=parms["betaP"][[1]]
   # ... Single-value parameters for "stochastic_fixed" and vectors for "stochastic_variable"
   if(model.type=="stochastic_fixed"){ 
     tau=parms["tau"][[1]] # Simply unwrap, there is one value
+    betaP=parms["betaP"][[1]]
     betaA=parms["betaA"][[1]]
     betaI=parms["betaI"][[1]]
     betaH=parms["betaH"][[1]]
@@ -43,6 +43,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
     t.int <<- t.int+1 # This becomes a global variable
     time=t.int
     tau=unlist(parms["tau"][[1]])[time]
+    betaP=unlist(parms["betaP"][[1]])[time]
     betaA=unlist(parms["betaA"][[1]])[time]
     betaI=unlist(parms["betaI"][[1]])[time]
     betaH=unlist(parms["betaH"][[1]])[time]
@@ -132,8 +133,8 @@ rates_SEPAIHRD_str = function(y, parms,t){
         classO=paste(class,"O",sep=".") # symptomatic, but not isolated yet
         # .... Address the infectivity of isolated first.
         #      The following condition should not be needed with carers.mat, just to prevent weird things to happen
-        if(Nexp > 0){ # There are available carers 
-          frac.exp=Niso[class]/Nexp # Note that it could be > 0
+        if(Nexp > 0){ # There are carers available 
+          frac.exp=Niso[class]/Nsubpop[Ref] #Nexp # Note that it could be > 0
         }else{ # otherwise it means all carers died (very unlikely)
           isoThr=0 # so isolation does no longer make sense
           Niso=Niso*0
@@ -158,9 +159,9 @@ rates_SEPAIHRD_str = function(y, parms,t){
                iso.transm+
                C[Ref,class]*self*lock.mat.local[Ref,class]*
                       (betaP*y[classP]+betaA*y[classA]+
-                         betaI*yClassI+betaH*Hinfect*yClassH)/Nsubpop[class]
+                         betaI*yClassI+betaH*Hinfect*yClassH)# /Nsubpop[class]
     }
-    lambda=tau*lambda
+    lambda=tau*lambda/N
     k=k+1 # see github issue 26
     dy[k] = lambda*y[S] # S to E
     k=k+1
