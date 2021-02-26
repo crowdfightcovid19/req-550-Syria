@@ -115,7 +115,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -2305,6 +2305,10 @@ The probability of infection if there is a contact between a susceptible
 
  parameter is the maximum transmissivity, which is observed at the presymptomati
 c stage 
+\change_inserted -1732430129 1614353133
+for those individuals becoming symptomatic 
+\change_unchanged
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "he2020temporal"
@@ -2313,8 +2317,20 @@ literal "false"
 \end_inset
 
 .
- Thus, we selected the presymptomatic stage as a reference (
-\begin_inset Formula $\beta_{\PP}=1$
+ Thus, we selected the
+\change_inserted -1732430129 1614353165
+se
+\change_unchanged
+ 
+\change_deleted -1732430129 1614353164
+presymptomatic stage
+\change_unchanged
+ 
+\change_inserted -1732430129 1614353170
+individuals 
+\change_unchanged
+as a reference (
+\begin_inset Formula $\beta_{\PP\rightarrow\I}=1$
 \end_inset
 
 ) with the remaining 
@@ -2322,11 +2338,11 @@ literal "false"
 \end_inset
 
  parameters set relative to 
-\begin_inset Formula $\beta_{\PP}$
+\begin_inset Formula $\beta_{\PP\rightarrow\I}$
 \end_inset
 
  (
-\begin_inset Formula $\beta_{i}<\beta_{\PP},\quad i\in\{\A,\HH,\I\}$
+\begin_inset Formula $\beta_{i}<\beta_{\PP\rightarrow\I},\quad i\in\{\P,\A,\HH,\I\}$
 \end_inset
 
 ) (see Table 
@@ -2340,6 +2356,18 @@ noprefix "false"
 \end_inset
 
 , Supplementary Materials for derivation).
+
+\change_inserted -1732430129 1614353411
+ In particular, the overall presymptomatic transmissibility (
+\begin_inset Formula $\beta_{\P}$
+\end_inset
+
+) is estimated as a weighted average of the transmissibility of individuals
+ becoming symptomatic and those asymptomatic, considering that the relative
+ transmissibility between both groups is the same than between symptomatic
+ and asymptomatic (see Supplementary Materials for details).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -2401,7 +2429,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="5">
+<lyxtabular version="3" rows="7" columns="5">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="10text%">
 <column alignment="center" valignment="middle" width="27.5text%">
@@ -2510,7 +2538,7 @@ Derived
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\beta_{\PP}$
+\begin_inset Formula $\beta_{\PP\rightarrow\I}$
 \end_inset
 
 
@@ -2523,6 +2551,10 @@ Derived
 
 \begin_layout Plain Layout
 Presymptomatic transmissibility
+\change_inserted -1732430129 1614352992
+ of individuals becoming symptomatic
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -2565,6 +2597,76 @@ literal "false"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1614353008
+\begin_inset Formula $\beta_{\PP}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1614353032
+Mean presymptomatic transmissibility
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1614353008
+relative to 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1614353064
+0.93 (95% CI: 0.88-0.99)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1614353071
+Empirical_
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1614353076
+Derived
 \end_layout
 
 \end_inset
@@ -3793,7 +3895,7 @@ Self-isolation
 \align center
 
 \size small
-\begin_inset Formula $(c_{\care}/c_{i})(\tilde{I}_{j}/N_{\Exp})$
+\begin_inset Formula $(c_{\care}/c_{i})(\tilde{I}_{j}/N_{k})$
 \end_inset
 
 
@@ -3959,11 +4061,17 @@ Self-isolation
 \begin_layout Plain Layout
 \align center
 
+\change_deleted -1732430129 1614352864
+
 \size small
 1-
 \begin_inset Formula $(c_{\care}/c_{i})(\tilde{I}_{j}/N_{\Exp})$
 \end_inset
 
+
+\change_inserted -1732430129 1614352864
+1
+\change_unchanged
 
 \end_layout
 
@@ -5077,14 +5185,14 @@ self-isolation
 \change_unchanged
 .
  
-\change_inserted -1732430129 1614004128
+\change_inserted -1732430129 1614352774
 Since this intervention only modifies the infectiousness of individuals
  at the 
 \begin_inset Formula $\I$
 \end_inset
 
- compartment, it is not required the consideration of additional behavioural-cla
-sses.
+ compartment and the exposure of carers, it is not required the consideration
+ of additional behavioural-classes.
  Instead, the intervention can be encoded in 
 \begin_inset Formula $\lambda_{i}$
 \end_inset
@@ -5640,16 +5748,44 @@ noprefix "false"
  We consider the latter scenario to evaluate the effect of non-medical preventiv
 e interventions.
  In this scenario, the probability of observing an outbreak is close to
- 0.85, in which 
+ 0.8
+\change_inserted -1732430129 1614019073
+6
+\change_deleted -1732430129 1614019074
+5
+\change_unchanged
+, in which 
+\begin_inset Formula $\apprge$
+\end_inset
+
+10% of the camp dies, the number of symptomatic cases peaks after 
+\change_deleted -1732430129 1614019150
+55
+\change_inserted -1732430129 1614020019
+37
+\change_unchanged
+ days
+\change_inserted -1732430129 1614019209
+,
+\change_deleted -1732430129 1614019208
+ and
+\change_unchanged
+ 
 \begin_inset Formula $\sim$
 \end_inset
 
-10% of the camp dies, the number of symptomatic cases peaks after 55 days
- and 
+84% of the population recovers
+\change_inserted -1732430129 1614019253
+, and 
 \begin_inset Formula $\sim$
 \end_inset
 
-84% of the population recovers.
+5% escape from infection (i.e.
+ remain susceptible).
+\change_deleted -1732430129 1614019197
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection*
@@ -5658,12 +5794,18 @@ Self-distancing
 
 \begin_layout Standard
 Our results show that self-distancing has a notable effect on reducing the
- probability of an outbreak: a 20% reduction in daily contacts is associated
- with a 
+ probability of an outbreak
+\change_inserted -1732430129 1614019476
+ which decreases linearly with the decrease in percentage reduction (slope).
+ 
+\change_deleted -1732430129 1614019487
+: a 20% reduction in daily contacts is associated with a 
 \begin_inset Formula $\sim$
 \end_inset
 
-10% decrease in outbreak probability (see Fig.
+10% decrease in outbreak probability
+\change_unchanged
+ (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5675,8 +5817,31 @@ noprefix "false"
 \end_inset
 
 A).
- A greater reduction in daily contacts, of 50%, is required to observe a
- significant decrease in mortality, of as much as 35% (see Fig.
+ A
+\change_inserted -1732430129 1614019753
+ near-quadratic trend is observed for the fraction of population dying,
+ with a faster decrease for large
+\change_deleted -1732430129 1614019757
+ greater
+\change_unchanged
+ reduction in daily contacts
+\change_inserted -1732430129 1614019803
+, achieving a 35% reduction in mortality.
+\change_deleted -1732430129 1614019761
+,
+\change_unchanged
+ 
+\change_deleted -1732430129 1614019785
+of 50%,
+\change_unchanged
+ 
+\change_inserted -1732430129 1614019813
+when the number of contacts is reduced by 50%
+\change_deleted -1732430129 1614019819
+is required to observe a significant decrease in mortality, of as much as
+ 35%
+\change_unchanged
+ (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5689,8 +5854,19 @@ noprefix "false"
 
 B).
  Self-distancing also significantly extends the time until the peak of the
- outbreak, from 55 days when there is no intervention to 110 days when contacts
- are reduced by 50% (see Fig.
+ outbreak, from 
+\change_deleted -1732430129 1614019838
+55
+\change_inserted -1732430129 1614020005
+~37
+\change_unchanged
+ days when there is no intervention to 
+\change_inserted -1732430129 1614020084
+71
+\change_deleted -1732430129 1614020082
+110
+\change_unchanged
+ days when contacts are reduced by 50% (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5702,12 +5878,32 @@ noprefix "false"
 \end_inset
 
 C).
- However, the proportion of the population recovered after 12 months is
- reduced by 
+ 
+\change_deleted -1732430129 1614021842
+However,
+\change_unchanged
+ 
+\change_inserted -1732430129 1614022328
+The proportion of population escaping from infection after 12 months also
+ increases up to near 25% of the population when a 50% reduction is considered,
+ and 
+\change_unchanged
+the proportion of the population recovered after 12 months 
+\change_inserted -1732430129 1614022182
+(which may help to understand how far the population is from herd immunity)
+ 
+\change_unchanged
+is 
+\change_inserted -1732430129 1614022294
+reduced from 84% to 60%
+\change_deleted -1732430129 1614022204
+reduced by 
 \begin_inset Formula $\sim$
 \end_inset
 
-30% (see Supplementary Fig.
+30%
+\change_unchanged
+ (see Supplementary Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5822,20 +6018,81 @@ noprefix "false"
 \end_inset
 
 E).
- Further increasing the number of tents significantly augments this reduction
- until there is 1 per every 20 people (Kruskal-Conover post-hoc-test, p-val
+ Further increasing the number of tents 
+\change_inserted -1732430129 1614023196
+does not 
+\change_unchanged
+significantly 
+\change_inserted -1732430129 1614023207
+reduce the mortality 
+\change_deleted -1732430129 1614023216
+augments this reduction until there is 1 per every 20 people
+\change_unchanged
+ (Kruskal-Conover post-hoc-test, p-val
 \begin_inset Formula $<3\times10^{-5}$
 \end_inset
 
-).
- However, mortality begins to slightly increase again after this threshold.
- This effect and the increase in the probability of observing an outbreak
- are consequences of having one carer per individual isolated (see Supplementary
- Material), so when the isolated (infected) population increases, the number
- of healthy younger adults in contact with them increases in tandem.
- Similarly, we observe a reduction in IFR when increasing the number of
- tents up to 1 per every 20 people, and no significant reduction over that
- number (see Supplementary Fig.
+)
+\change_inserted -1732430129 1614023229
+ and increases the probability of an outbreak
+\change_deleted -1732430129 1614023240
+.
+ However, mortality begins to slightly increase again after this threshold
+\change_unchanged
+.
+ This 
+\change_inserted -1732430129 1614023253
+counter-intuitive 
+\change_unchanged
+effect
+\change_deleted -1732430129 1614023262
+ and the increase in the probability of observing an outbreak are
+\change_inserted -1732430129 1614023266
+ is a 
+\change_deleted -1732430129 1614023263
+ 
+\change_unchanged
+consequence
+\change_deleted -1732430129 1614023268
+s
+\change_unchanged
+ of 
+\change_inserted -1732430129 1614023279
+demanding 
+\change_unchanged
+having one 
+\change_inserted -1732430129 1614023291
+independent 
+\change_unchanged
+carer per
+\change_inserted -1732430129 1614023294
+ each
+\change_deleted -1732430129 1614023294
+ 
+\change_unchanged
+individual isolated (see Supplementary Material), so when the isolated (infected
+) population increases, the number of healthy younger adults in contact
+ with them increases in tandem
+\change_inserted -1732430129 1614023765
+, effectively hindering the benefits of isolation
+\change_unchanged
+.
+
+\change_inserted -1732430129 1614023726
+ This assumption allow us to illustrate how increasing the isolation capacity
+ is not benefitial unless it goes hand-in-hand with an appropriate management
+ of the population isolated (see Discussion).
+
+\change_deleted -1732430129 1614023335
+ 
+\change_unchanged
+Similarly, we observe a reduction in IFR when 
+\change_inserted -1732430129 1614023593
+the number of tents is 1 per every 200 people, 
+\change_deleted -1732430129 1614023599
+increasing the number of tents up to 1 per every 20 people,
+\change_unchanged
+ and no significant reduction over that number (see Supplementary Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5877,8 +6134,19 @@ In this section, we consider the scenario in which all older adults, younger
  overall, but with sometimes opposite outcomes in the exposed and protected
  populations.
  For example, the probability of an outbreak sharply decreases for the protected
- population, by almost 40%, if only two contacts are allowed per week in
- the buffer zone (see Fig.
+ population, by 
+\change_inserted -1732430129 1614024627
+around
+\change_deleted -1732430129 1614024625
+almost
+\change_unchanged
+ 
+\change_deleted -1732430129 1614024605
+4
+\change_inserted -1732430129 1614024606
+1
+\change_unchanged
+0%, if only two contacts are allowed per week in the buffer zone (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
