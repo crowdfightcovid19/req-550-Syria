@@ -140,7 +140,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
           Niso=Niso*0
           frac.exp=0 # all are exposed
         }
-        iso.transm = xi*carers.mat[Ref,class]*frac.exp # transmission from isolated
+        iso.transm = xi*betaI*carers.mat[Ref,class]*frac.exp # transmission from isolated
         
         # .... Address the infectivity of non-isolated
         if(Itot > isoThr){ # this happens if the capacity of isolation is insufficient

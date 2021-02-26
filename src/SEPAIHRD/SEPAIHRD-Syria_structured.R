@@ -5,7 +5,7 @@
 # 
 # author = Alberto Pascual-García, built from minimal SIR code from Eduard Campillo-Funollet
 # email = alberto.pascual.garcia@gmail.com (Eduard: e.campillo-funollet@sussex.ac.uk)
-# date = 27th May 2020
+# date = 27th May 2020 
 # description = This script computes a deterministic epidemiological model with different
 #        compartments, further accounting for a structured population
 #        in which the transition probabilities from one compartment to another depend on features
