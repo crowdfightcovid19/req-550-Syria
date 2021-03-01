@@ -137,19 +137,20 @@ transmissibility parameter $\tau$.
 in Main Text)}
 
 We start by considering the transmissibility of the presymptomatic
-stage as a reference ($\beta_{\PP}=1)$, since the probability of
-infection from contact with an individual at this epidemiological
-stage is highest \cite{he_temporal_2020}. Next, we set the contribution
-of each epidemiological stage to infectivity as proportional to $\beta_{\X}/\gamma_{\X}$,
-with $1/\gamma_{\X}$ the duration of stage $\X$. Following He et
-al, we estimate the proportion of infectivity that occurs at the presymptomatic
-stage ($\X\in\{\PP\}$) as the area under the infectivity curve prior
-to symptom onset, $AUC_{\PP}$, and the proportion of infectivity
-that occurs at symptomatic stages ($\X\in\{\I,\HH\}$) as the area
-under the infectivity curve after symptom onset, $1-AUC_{\PP}$ \cite{he_temporal_2020}:
+stage for those individuals becoming symptomaticas a reference ($\beta_{\PP\rightarrow\I}=1)$,
+since the probability of infection from contact with an individual
+at this epidemiological stage is highest \cite{he_temporal_2020}.
+Next, we set the contribution of each epidemiological stage to infectivity
+as proportional to $\beta_{\X}/\gamma_{\X}$, with $1/\gamma_{\X}$
+the duration of stage $\X$. Following He et al, we estimate the proportion
+of infectivity that occurs at the presymptomatic stage ($\X\in\{\PP\}$)
+as the area under the infectivity curve prior to symptom onset, $AUC_{\PP}$,
+and the proportion of infectivity that occurs at symptomatic stages
+($\X\in\{\I,\HH\}$) as the area under the infectivity curve after
+symptom onset, $1-AUC_{\PP}$ \cite{he_temporal_2020}:
 
 \begin{equation}
-\frac{AUC_{\PP}}{(1-AUC_{\PP})}\approx\frac{\frac{\beta_{\PP}}{\delta_{\PP}}}{\frac{\beta_{\I}}{\gamma_{\I}}+\frac{\beta_{\HH}}{\gamma_{\HH}}}\label{eq:AUC_P}
+\frac{AUC_{\PP}}{(1-AUC_{\PP})}\approx\frac{\frac{\beta_{\PP\rightarrow\I}}{\delta_{\PP}}}{\frac{\beta_{\I}}{\gamma_{\I}}+\frac{\beta_{\HH}}{\gamma_{\HH}}}\label{eq:AUC_P}
 \end{equation}
 
 We then considered the quantity $\rho_{\HH\I}$, the ratio of the
@@ -172,20 +173,34 @@ Considering these relationships we rewrite Eq. \ref{eq:AUC_P} to
 obtain the desired parameters:
 
 \begin{equation}
-\beta_{\I}=\frac{\beta_{\PP}\gamma_{\I}\gamma_{\HH}(1-AUC_{\PP})}{AUC_{\PP}\delta_{\PP}(\gamma_{\HH}+\rho_{\HH\I}\gamma_{\I})}
+\beta_{\I}=\frac{\beta_{\PP\rightarrow\I}\gamma_{\I}\gamma_{\HH}(1-AUC_{\PP})}{AUC_{\PP}\delta_{\PP}(\gamma_{\HH}+\rho_{\HH\I}\gamma_{\I})}
 \end{equation}
 
 \begin{equation}
-\beta_{\A}=\frac{\rho_{\A\I}\beta_{\PP}\gamma_{\I}\gamma_{\HH}(1-AUC_{\PP})}{AUC_{\PP}\delta_{\PP}(\gamma_{\HH}+\rho_{\HH\I}\gamma_{\I})}
+\beta_{\A}=\frac{\rho_{\A\I}\beta_{\PP\rightarrow\I}\gamma_{\I}\gamma_{\HH}(1-AUC_{\PP})}{AUC_{\PP}\delta_{\PP}(\gamma_{\HH}+\rho_{\HH\I}\gamma_{\I})}
 \end{equation}
 
 \begin{equation}
-\beta_{\HH}=\frac{\rho_{\HH\I}\beta_{\PP}\gamma_{\I}\gamma_{\HH}(1-AUC_{\PP})}{AUC_{\PP}\delta_{\PP}(\gamma_{\HH}+\rho_{\HH\I}\gamma_{\I})}.
+\beta_{\HH}=\frac{\rho_{\HH\I}\beta_{\PP\rightarrow\I}\gamma_{\I}\gamma_{\HH}(1-AUC_{\PP})}{AUC_{\PP}\delta_{\PP}(\gamma_{\HH}+\rho_{\HH\I}\gamma_{\I})}.
 \end{equation}
 
 The values of $AUC_{\PP}$, $\rho_{\A\I}$ and $\rho_{\HH\I}$ are
 presented in Table \ref{tab:TransParams}, and the values of $\beta_{\X}$
-in Main Text.
+in Main Text. Since the derivation was made relative to presymptomatic
+individuals that will become presymptomatic, we should also estimate
+the transmissibility of all presymptomatic individuals ($\beta_{\PP}$),
+i.e. also including those that will be asymptomatic. Since the proportion
+of presymptomatic that will become symptomatic is known (encoded in
+$f$ in Eqs. \ref{eq:System1}--\ref{eq:System8} in Main Text) we
+considered that the relative transmissibility between presymptomatic
+individuals becoming symptomatic, and those becoming asymptomatic,
+is the same than between symptomatic and asymptomatic individuals
+($\rho_{\A\I}$). Following these considerations, the total transmissibility
+is computed as:
+
+\[
+\beta_{\P}=f\beta_{\PP\rightarrow\I}+(1-f)\rho_{\A\I}\beta_{\PP\rightarrow\I}.
+\]
 
 \begin{table}[h]
 \begin{tabular}{|>{\centering}m{0.1\textwidth}|>{\centering}m{0.275\textwidth}|>{\centering}m{0.275\textwidth}|>{\centering}m{0.1\textwidth}|>{\centering}m{0.1\textwidth}|}
@@ -521,12 +536,11 @@ To implement self-isolation we start expanding our model (Eqs \ref{eq:System1}--
 in Main Text) to consider a new compartment for each demographic-class.
 We split the clinical symptomatic compartment to model the fact that
 symptomatic individuals require some time to recognize their symptoms
-and to self-isolate. To model this, whenever simulating the isolation
-intervention, the symptomatic compartment is split in two compartments:
+and to self-isolate. The symptomatic compartment is split in two compartments:
 symptomatic prior to identification, $O_{i}$, and symptomatic following
 identification, $I_{i}$. Following these considerations, the structure
 of the model is represented in Fig. \ref{fig:DiagramOnset}, which
-obey the following equations:
+follows the equations:
 
 \begin{gather}
 \dot{S}_{i}=-\lambda_{i}S_{i}\label{eq:System1}\\
@@ -546,6 +560,10 @@ which an individual spends in the clinical symptomatic compartment,
 $1/\eta'$, is then calculated as the difference between the symptomatic
 period if there is no isolation, $\text{1/\ensuremath{\eta}},$and
 the duration spent in the symptom onset compartment ($\text{1/\ensuremath{\delta}}_{\OO}$).
+The remaining parameters determining the rate of change of individuals
+at $O_{i}$, namely the rate of progression towards recovery or death
+($\gamma_{i}$ and $\alpha$) or the relative transmissibility, $\beta_{\I}$
+remain the same than those of the symtomatic compartment, $I_{i}$.
 
 \begin{figure}[h]
 \begin{centering}
@@ -585,126 +603,101 @@ onset compartment (O).}
 
 The second modification required is a distinction between the isolated
 and non-isolated population within the clinical symptomatic compartment
-after identification of symptoms ($I_{i}$). This distinction should
-be made for each class except for the youngest population (age 1)
-for which do not consider realistic their self-isolation. The split
-in these two subpopulations is implemented computing, at each integration
-step in the simulation, the number of total infected individuals,
-$N_{\I}=\sum_{i}I_{i}$. Next, we consider the isolation capacity
-of the camp ($\tilde{N}$), and we assumed that the number of isolated
-individuals for each class is proportional to the number of clinical
-symptomatic individuals in the class, i.e. $\tilde{I}_{i}=\tilde{N}I_{i}/N_{\I}$.
-Note that, in doing this, we are not creating compartments, we are
-simply identifying the number of individuals that this class has under
-isolation. Once their numbers are determined, we just need to focus
-on the fact that the two subpopulations (isolated and not isolated)
-have a different number of contacts and exposure to the other classes,
-which can be implemented in $\lambda_{i}$.
+after identification of symptoms ($I_{i}$). The split in these two
+subpopulations is implemented computing, at each integration step
+in the simulation, the number of total infected individuals, $N_{\I}=\sum_{i}I_{i}$.
+Next, we consider the isolation capacity of the camp ($\tilde{N}$),
+and we assumed that the number of isolated individuals for each class
+is proportional to the number of clinical symptomatic individuals
+in the class, i.e. $\tilde{I}_{i}=\tilde{N}I_{i}/N_{\I}$. Note that,
+in doing this, we are not creating compartments, we are simply identifying
+the number of individuals that this class has under isolation. Once
+their numbers are determined, we just need to focus on the fact that
+the two subpopulations (isolated and not isolated) have a different
+number of contacts and exposure to the other classes, which can be
+implemented in $\lambda_{i}$. A similar reasoning can be applied
+for the third and final consideration regarding the existence of carers,
+which are individuals from the younger adults class with no comorbidities.
+We do not create a new class, because all the epidemiological parameters
+of carers and those of younger adults with no comorbidities are identical
+and, hence, the only modification required concerns the rate of exposure.
+Therefore, we proceed by estimating the parameterization of $\lambda_{i}$
+following the intervention, in particular the values of $\epsilon_{ij}$
+and $\omega_{ij}$ (see Eq \ref{eq:lambdaInterv} in Main Text). 
 
-Therefore, we just need to proceed by estimating the parameterization
-of $\lambda_{i}$ following the intervention, in particular the values
-of $\epsilon_{ij}$ and $\omega_{ij}$ (see Eq \ref{eq:lambdaInterv}
-in Main Text). Firstly, we consider that individuals in the onset
-compartment are equally infectious than those clinical symptomatic
-individuals not isolated (i.e. the relative transmissibility is $\beta_{\I}$).
-Secondly, we consider how the different classes interact with isolated
-and not-isolated individuals. The younger healthy adults class requires
-a more specific derivation, since it is the only class interacting
-with isolated individuals, and we should make a number of assumptions
-on how the interactions betweeen them take place. 
-
-We considered a number $N_{\textrm{care}}$ of carers having $c_{\care}$
-contacts per day with the isolated population. As we anticipated,
-carers are entirely drawn from younger adults (age 2) with no comorbidities,
-and must have no symptoms. We denote the number of individuals fulfilling
-these requirements with $N_{\Exp}$ (number of exposed), which varies
-along the simulation. When the total number of symptomatic individuals,
-$N_{\I}$, exceeds the isolation capacity, $\tilde{N},$ the individuals
-in excess are fully infectious. .  Finally, symptomatic individuals
-that would require hospitalization, are either evacuated and are no
-longer infectious, or become fully infectious. The rationale behind
-the latter choice is that camps lack the necessary means to adequately
-protect the rest of the population when individuals require more dedicated
-care. In particular, it is unlikely that a severely ill individual
-would be able to stay alone in a tent. We model evacuation considering
-a parameter $\zeta_{\HH}=0$ if evacuation is put in place and $\zeta_{\HH}=1$
-otherwise.
-
-Given these assumptions, to estimate the rate of exposure for each
-demographic-class we split our expression of contacts into two terms,
-one describing the interaction of individuals in the class with the
-isolated population, and another for interaction with infectious individuals
-who are not isolated:
+Let us start considering the rate of exposure of the younger adults
+with no comorbidities, whose parameters are hereafter indicated with
+the index $k$. If this class has a number $N_{\textrm{care}}$ of
+carers, and each isolated individual requireshaving $c_{\care}$ contacts
+per day with them,. if a given stage of the disease each class $j$
+has $\tilde{I}_{j}$ isolated individuals, the mean number of contacts
+that each carer has per day with individuals in isolation is $\tilde{c}_{k}=c_{\care}\sum_{j}\tilde{I}_{j}/$$N_{\textrm{care}}$.
+We envisage these interactions occuring in what we call buffer zones,
+namely open spaces in which carers and isolated individuals maintain
+a distance and wear masks, reducing the transmissibility by 80\% ($\xi=0.2$).
+Given these assumptions, the subpopulation of carers have a rate of
+exposure $\lambda_{k}^{\care}$ given by
 
 \begin{equation}
-\lambda_{i}=\tau\sum_{j}\underset{\mathrm{isolated}}{\underbrace{\beta_{\I}\tilde{c}_{i}\tilde{P}(i\rightarrow j)}}+\underset{\mathrm{not\ isolated}}{\underbrace{C_{ij}\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}O_{i}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\zeta_{\HH}\beta_{\HH}H_{j}}{N_{j}}}},
+\lambda_{k}^{\care}=\tau\sum_{j}\underset{\mathrm{isolated}}{\xi\underbrace{\beta_{\I}\tilde{c}_{k}\tilde{P}(k\rightarrow j)}}+\underset{\mathrm{not\ isolated}}{\underbrace{c_{k}\left(\frac{N_{j}-\tilde{I}_{j}}{N}\right)\left(\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}O_{i}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\beta_{\HH}H_{j}}{N_{j}-\tilde{I}_{j}}\right)}},
 \end{equation}
 
-where $\tilde{c}_{i}$ is the mean number of contacts of class $i$
-per individual per day with the self-isolated individuals and $\tilde{P}(i\rightarrow j)$
-is the probability that an individual of class $i$ encounters an
-isolated individual of class $j$. For the not-isolated term, we maintain
-the well-mixed population assumption explained in the Main Text, with
-the incorporation of a Heaviside function, $\varTheta(N_{\I}-\tilde{N})$,
-which activates the interaction with the clinical symptomatic individuals
-when their number $N_{\I}$ exceeds the isolation capacity $\tilde{N}$,
-and we estimate the probability of interacting with non-isolated individuals
-to be proportional to their fraction $(I_{j}-\tilde{I}_{j})/N_{j}$.
-For the isolated population, however, the well-mixed assumption is
-no longer valid. Firstly, all demographic-classes not contributing
-to the group of carers will never interact with the isolated individuals,
-and hence $\tilde{c}_{i}=0$ for them (morever $\tilde{P}(i\rightarrow j)=0$).
-Secondly, the healthy younger adults population will certainly interact
-with isolated individuals through their role as carers, hence $\tilde{P}(i\rightarrow j)=1$.
+ where $\tilde{P}(k\rightarrow j)$ is the probability that an individual
+of class $k$ encounters an isolated individual of class $j$. For
+the not-isolated term, we maintain the well-mixed population assumption
+explained in the Main Text, with the incorporation of a Heaviside
+function, $\varTheta(N_{\I}-\tilde{N})$, which activates the interaction
+with the clinical symptomatic individuals when their number $N_{\I}$
+exceeds the isolation capacity $\tilde{N}$, and we estimate the probability
+of interacting with non-isolated individuals to be proportional to
+their fraction $(I_{j}-\tilde{I}_{j})/(N_{j}-\tilde{I}_{j})$. For
+the isolated population, however, the well-mixed assumption is no
+longer valid, because carers will certainly interact with isolated
+individuals through their role as carers, hence $\tilde{P}(k\rightarrow j)=1$.
+Note that the mean number of contacts per day that carers have with
+the rest of the population,$c_{k}$, is not reduced. In doing so,
+we concentrate on the reduction in the transmissibility that the intervention
+has, and we do not incorporate further assumptions regarding changes
+in carers life-styles.
 
-To estimate $\tilde{c}_{i}$ for the healthy younger adult class,
-we note that the number of contacts per day with the isolated individuals
-is $c_{\care}N_{\care}$, and hence the mean number of contacts per
-individuals per day is $\tilde{c}_{i}=c_{\care}N_{\care}/N_{\Exp}$.
-We observe that, increasing the number of carers, and the number of
-contacts per day between carers and individuals, will increase the
-rate of infection. This problem could be circumvented considering
-a group of carers with a fixed number of individuals. However, it
-is also expected that the size of this group should increase if the
-number of isolated individuals increases, and additional assumptions
-should be put in place. For simplicity, we assume that there is one
-carer from the the healthy younger adult demographic-class (indexed
-$k$) for each infected person in the class $j,$ (i.e. $N_{\care,j}=\tilde{I}_{j}$),
-having only one contact per day ($c_{\care}=1$). Note the convenience
-of this choice, since the number of carers will linearly increase
-with the number of isolated individuals (if there is enough capacity),
-what will allow us to investigate potential shortcomings of the intervention
-when the burden of symptomatic individuals is large, and the number
-of carers increases in tandem. In addition, since the number of individuals
-available from the young healthy adult population, $N_{\Exp}$, will
-also change during the simulations (in particular it will be suffer
-a reduction during the time interval in which infections spread),
-considering this expression we may reach a situation in which the
-number of symptomatic individuals is larger than the number of potential
-carers, i.e.the ratio $\tilde{N}/N_{\Exp}>1$, which can be naturally
-interpreted saying that each carer will need more than one contact
-per day  to take care of the isolated population.
-
-With these considerations, we can express the rate of exposure of
-the healthy younger adult demographic-class (indexed $k$) as:
+Those individuals belonging to the younger adults with no comorbidities
+not belonging to the group of carers will not interact with isolated
+individuals, and hence their rate of exposure becomes:
 
 \begin{equation}
-\lambda_{k}=\tau\sum_{j}\underset{\textrm{isolated}}{\underbrace{\xi c_{\care}\frac{\tilde{I}_{j}}{N_{\Exp}}}}+\underset{\textrm{not isolated}}{\underbrace{\left(c_{i}-c_{\care}\frac{\tilde{I}_{j}}{N_{\Exp}}\right)\left(\frac{N_{j}-\tilde{I}_{j}}{N}\right)\left(\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\zeta_{\HH}\beta_{\HH}H_{j}}{N_{j}-\tilde{I}_{j}}\right)}}.
+\lambda_{k}^{\overline{\care}}=\underset{\mathrm{not\ isolated}}{\underbrace{c_{k}\left(\frac{N_{j}-\tilde{I}_{j}}{N}\right)\left(\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}O_{i}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\beta_{\HH}H_{j}}{N_{j}-\tilde{I}_{j}}\right)}}.
 \end{equation}
 
-We can express this equation following the parameterization presented
-in Eq. \ref{ROTO: Ref: eq:lambdaInterv} in Main Text by choosing
-$\epsilon_{ij}=(c_{\care}/c_{i})(\tilde{I}_{j}/N_{\Exp})$ and $\omega_{ij}=N/N_{j}$
-for the isolated population, and $\epsilon_{ij}=1-(c_{\care}/c_{i})(\tilde{I}_{j}/N_{\Exp})$,
-$\omega_{ij}=1$ for the interaction with the population not isolated.For
-the remaining classes ($i\neq k$) the rate of infection (\ref{eq:lambda1})
-becomes:
+The rate of exposure of the younger adults with no comorbidities,
+then becomes:
+
+\[
+\lambda_{k}=\frac{N_{\care}}{N_{k}}\lambda_{k}^{\care}+\left(\frac{N_{k}-N_{\care}}{N_{k}}\right)\lambda_{k}^{\overline{\care}},
+\]
+
+which we can made explicit and simplify to yield
 
 \begin{equation}
-\lambda_{i}=\tau\sum_{j}\underset{\textrm{not isolated}}{\underbrace{c_{i}\left(\frac{N_{j}-\tilde{I}_{j}}{N}\right)\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\zeta_{\HH}\beta_{\HH}H_{j}}{N_{j}-\tilde{I}_{j}}}},
+\lambda_{k}=\tau\sum_{j}\underset{\mathrm{isolated}}{\underbrace{\xi\beta_{\I}c_{\care}\frac{\tilde{I}_{j}}{N_{k}}}}+\underset{\mathrm{not\ isolated}}{\underbrace{c_{k}\left(\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}O_{i}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\beta_{\HH}H_{j}}{N}\right)}.}\label{eq:lambdaIsolation}
 \end{equation}
 
-which does not require further parameterization ($\text{\ensuremath{\epsilon_{ij}=1} and \ensuremath{\omega_{ij}=1}}).$
+In our simulations, we consider that each isolated individual requires
+just one contact with carers, i.e. $c_{\care}=1$. Interestingly,
+the expression is independent of $N_{\care}$, but the transmissibility
+of the isolated population inversely depends on the size of the class
+hosting carers, suggesting that a small dedicated class would be optimal
+for the success of this intervention. We can express this equation
+following the parameterization presented in Eq. \ref{ROTO: Ref: eq:lambdaInterv}
+in Main Text by choosing $\epsilon_{ij}=(c_{\care}/c_{i})(\tilde{I}_{j}/N_{k})$
+and $\omega_{ij}=N/N_{k}$ for the isolated population, while for
+the population not isolated it is not required any further parameterization
+($\text{\ensuremath{\epsilon_{ij}=1} and \ensuremath{\omega_{ij}=1}}).$
+The rate of exposure of the remaining classes ($i\neq k$) corresponds
+to the second term in the r.h.s of Eq. \ref{eq:lambdaIsolation}:
+
+\[
+\lambda_{i}=\tau\sum_{j}\underset{\textrm{not isolated}}{\underbrace{c_{i}\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\zeta_{\HH}\beta_{\HH}H_{j}}{N}}}.
+\]
 
 \newpage{}
 
@@ -745,7 +738,7 @@ of an outbreak (top left), fraction of the population dying (top middle),
 time until peak symptomatic cases (top right), IFR (bottom left),
 and fraction of the population that recovers (bottom middle) as a
 function of the time that individuals require to recognize their symptoms
-and self-isolate.}
+and self-isolate. The isolation capacity }
 \end{figure}
 
 \medskip{}
@@ -842,7 +835,7 @@ population is allocated to the safety zone.}
 \medskip{}
 
 \begin{figure}[H]
-\centering{}\includegraphics[width=1\textwidth]{figures/FigS13}\hspace{2mm}\caption{\label{fig:Suppl_combined} \textbf{Combined interventions.} IFR (top),
+\centering{}\includegraphics[height=0.7\textheight]{figures/FigS13}\hspace{2mm}\caption{\label{fig:Suppl_combined} \textbf{Combined interventions.} IFR (top),
 and fraction of the population that recovers (bottom) for different
 combinations of interventions. Evac = evacuation of severely symptomatic,
 self = self-distancing, tents = number of available self-isolation

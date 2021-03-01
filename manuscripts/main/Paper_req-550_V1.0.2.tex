@@ -10,6 +10,7 @@
 \usepackage{multirow}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{wasysym}
 
 \makeatletter
 
@@ -449,10 +450,16 @@ or $\tau\beta_{\HH}$ depending upon whether the infected individual
 is in the presymptomatic ($P_{i}$), symptomatic ($I_{i}$), asymptomatic
 ($A_{i}$), or hospitalized compartment ($H_{i}$), respectively.
 The $\tau$ parameter is the maximum transmissivity, which is observed
-at the presymptomatic stage \cite{he2020temporal}. Thus, we selected
-the presymptomatic stage as a reference ($\beta_{\PP}=1$) with the
-remaining $\beta$ parameters set relative to $\beta_{\PP}$ ($\beta_{i}<\beta_{\PP},\quad i\in\{\A,\HH,\I\}$)
+at the presymptomatic stage for those individuals becoming symptomatic
+\cite{he2020temporal}. Thus, we selected these  individuals as a
+reference ($\beta_{\PP\rightarrow\I}=1$) with the remaining $\beta$
+parameters set relative to $\beta_{\PP\rightarrow\I}$ ($\beta_{i}<\beta_{\PP\rightarrow\I},\quad i\in\{\P,\A,\HH,\I\}$)
 (see Table \ref{tab:tramsParams}, Supplementary Materials for derivation).
+In particular, the overall presymptomatic transmissibility ($\beta_{\P}$)
+is estimated as a weighted average of the transmissibility of individuals
+becoming symptomatic and those asymptomatic, considering that the
+relative transmissibility between both groups is the same than between
+symptomatic and asymptomatic (see Supplementary Materials for details).
 
 The $\tau$ parameter was estimated by randomly generating a value
 for the basic reproduction number, $R_{0}$, following a Gaussian
@@ -474,9 +481,13 @@ Parameter & Description & Value & Distribution & Reference\tabularnewline
 \hline 
 $\tau$ & Maximum transmissibility & 0.14 (95\% CI: 0.05-0.40) & Lognormal & Derived\tabularnewline
 \hline 
-$\beta_{\PP}$ & Presymptomatic transmissibility
+$\beta_{\PP\rightarrow\I}$ & Presymptomatic transmissibility of individuals becoming symptomatic
 
 relative to $\tau$ & Reference stage (=1) & \_\_\_ & \cite{he_temporal_2020,ashcroft_covid-19_2020}\tabularnewline
+\hline 
+$\beta_{\PP}$ & Mean presymptomatic transmissibility
+
+relative to $\tau$ & 0.93 (95\% CI: 0.88-0.99) & Empirical\_ & Derived\tabularnewline
 \hline 
 $\beta_{\A}$ & Asymptomatic transmissibility
 
@@ -626,10 +637,10 @@ Intervention & \centering{}$\epsilon_{ij}$ & \centering{}$\omega_{ij}$ & \center
 \hline 
 Self-distancing & \centering{}{\small{}$\epsilon\in\{0.9,0.8,0.7,0.6,0.5\}$} & \centering{}{\small{}1} & \centering{}{\small{}1} & {\small{}1} & {\small{}1} & \centering{}{\small{}constant $\forall i,j$}\tabularnewline
 \hline 
-\multirow{8}{0.1\textwidth}{\centering{}Self-isolation} & \multirow{2}{0.17\textwidth}{\centering{}{\small{}$(c_{\care}/c_{i})(\tilde{I}_{j}/N_{\Exp})$}} & \multirow{2}{0.07\textwidth}{\centering{}{\small{}$N/N_{j}$}} & \multirow{8}{0.07\textwidth}{\centering{}{\small{}1}} & \multirow{8}{0.07\textwidth}{\centering{}{\small{}1}} & \multirow{2}{0.07\textwidth}{\centering{}{\small{}0.2}} & \centering{}{\small{}$i\in$ young healthy adults}\tabularnewline
+\multirow{8}{0.1\textwidth}{\centering{}Self-isolation} & \multirow{2}{0.17\textwidth}{\centering{}{\small{}$(c_{\care}/c_{i})(\tilde{I}_{j}/N_{k})$}} & \multirow{2}{0.07\textwidth}{\centering{}{\small{}$N/N_{j}$}} & \multirow{8}{0.07\textwidth}{\centering{}{\small{}1}} & \multirow{8}{0.07\textwidth}{\centering{}{\small{}1}} & \multirow{2}{0.07\textwidth}{\centering{}{\small{}0.2}} & \centering{}{\small{}$i\in$ young healthy adults}\tabularnewline
  &  &  &  &  &  & \centering{}{\small{}$j\in$ isolated individuals in class $j$}\tabularnewline
 \cline{2-3} \cline{3-3} \cline{6-7} \cline{7-7} 
- & \multirow{2}{0.17\textwidth}{\centering{}{\small{}1-$(c_{\care}/c_{i})(\tilde{I}_{j}/N_{\Exp})$}} & \multirow{2}{0.07\textwidth}{\centering{}{\small{}1}} &  &  & \multirow{2}{0.07\textwidth}{\centering{}{\small{}1}} & \centering{}{\small{}$i\in$ young healthy adults}\tabularnewline
+ & \multirow{2}{0.17\textwidth}{\centering{}{\small{}1}} & \multirow{2}{0.07\textwidth}{\centering{}{\small{}1}} &  &  & \multirow{2}{0.07\textwidth}{\centering{}{\small{}1}} & \centering{}{\small{}$i\in$ young healthy adults}\tabularnewline
  &  &  &  &  &  & \centering{}{\small{}$j\in$ individuals not isolated in class $j$}\tabularnewline
 \cline{2-3} \cline{3-3} \cline{6-7} \cline{7-7} 
  & \multirow{2}{0.17\textwidth}{\centering{}{\small{}0}} & \multirow{2}{0.07\textwidth}{\centering{}{\small{}0}} &  &  & \multirow{2}{0.07\textwidth}{\centering{}{\small{}0}} & \centering{}{\small{}$i\notin$ young healthy adults}\tabularnewline
@@ -714,18 +725,18 @@ are not at a stage of the disease during which they display symptoms
 (i.e. not in compartments $\I$ or $\HH$ ), while isolated individuals
 may belong to any class except children (0-12 yrs.), for whom we do
 not consider self-isolation realistic. Since this intervention only
-modifies the infectiousness of individuals at the $\I$ compartment,
-it is not required the consideration of additional behavioural-classes.
-Instead, the intervention can be encoded in $\lambda_{i}$ by simply
-splitting the contribution of symptomatic individuals to the rate
-of exposure in two terms, one for the isolated individuals and another
-one for the remainder. Hence, its implementations requires estimatingthe
-parameters $\epsilon_{ij}$ and $\omega_{ij}$  for isolated and non-isolated
-individuals individually, and it is also dependent on whether the
-interaction is with the younger adult class with no comorbidities
-(from which carers are drawn) or with the other classes. In Table
-\ref{tab:IntervParams} we present these terms and its derivation
-in Supplementary Materials.
+modifies the infectiousness of individuals at the $\I$ compartment
+and the exposure of carers, it is not required the consideration of
+additional behavioural-classes. Instead, the intervention can be encoded
+in $\lambda_{i}$ by simply splitting the contribution of symptomatic
+individuals to the rate of exposure in two terms, one for the isolated
+individuals and another one for the remainder. Hence, its implementations
+requires estimatingthe parameters $\epsilon_{ij}$ and $\omega_{ij}$
+ for isolated and non-isolated individuals individually, and it is
+also dependent on whether the interaction is with the younger adult
+class with no comorbidities (from which carers are drawn) or with
+the other classes. In Table \ref{tab:IntervParams} we present these
+terms and its derivation in Supplementary Materials.
 
 In addition, interactions between carers and isolated individuals
 were restricted to \textit{buffer zones}, which we envisioned as open
@@ -848,23 +859,28 @@ where all severe cases requiring hospitalization recover (see Supplementary
 Fig. \ref{fig:Suppl_DvsR}), and $\sim$11\% in simulations where
 all severe cases die. We consider the latter scenario to evaluate
 the effect of non-medical preventive interventions. In this scenario,
-the probability of observing an outbreak is close to 0.85, in which
-$\sim$10\% of the camp dies, the number of symptomatic cases peaks
-after 55 days and $\sim$84\% of the population recovers.
+the probability of observing an outbreak is close to 0.86, in which
+$\apprge$10\% of the camp dies, the number of symptomatic cases peaks
+after 37 days, $\sim$84\% of the population recovers, and $\sim$5\%
+escape from infection (i.e. remain susceptible).
 
 \subsection*{Self-distancing}
 
 Our results show that self-distancing has a notable effect on reducing
-the probability of an outbreak: a 20\% reduction in daily contacts
-is associated with a $\sim$10\% decrease in outbreak probability
-(see Fig. \ref{fig:Panel2}A). A greater reduction in daily contacts,
-of 50\%, is required to observe a significant decrease in mortality,
-of as much as 35\% (see Fig. \ref{fig:Panel2}B). Self-distancing
-also significantly extends the time until the peak of the outbreak,
-from 55 days when there is no intervention to 110 days when contacts
-are reduced by 50\% (see Fig. \ref{fig:Panel2}C). However, the proportion
-of the population recovered after 12 months is reduced by $\sim$30\%
-(see Supplementary Fig. \ref{fig:Suppl_self}).
+the probability of an outbreak which decreases linearly with the decrease
+in percentage reduction (slope).  (see Fig. \ref{fig:Panel2}A). A
+near-quadratic trend is observed for the fraction of population dying,
+with a faster decrease for large reduction in daily contacts, achieving
+a 35\% reduction in mortality.  when the number of contacts is reduced
+by 50\% (see Fig. \ref{fig:Panel2}B). Self-distancing also significantly
+extends the time until the peak of the outbreak, from \textasciitilde 37
+days when there is no intervention to 71 days when contacts are reduced
+by 50\% (see Fig. \ref{fig:Panel2}C).  The proportion of population
+escaping from infection after 12 months also increases up to near
+25\% of the population when a 50\% reduction is considered, and the
+proportion of the population recovered after 12 months (which may
+help to understand how far the population is from herd immunity) is
+reduced from 84\% to 60\% (see Supplementary Fig. \ref{fig:Suppl_self}).
 
 \begin{figure*}
 \includegraphics[width=1\textwidth]{figures/Fig2}
@@ -896,21 +912,24 @@ With only 10 tents for a camp of 2000 people (i.e. 1 tent for every
 200 people), self-isolation yields a modest decrease in the probability
 of observing an outbreak (see Fig. \ref{fig:Panel2}D), but a stronger
 reduction in mortality ($\sim$30\%) (see Fig. \ref{fig:Panel2}E).
-Further increasing the number of tents significantly augments this
-reduction until there is 1 per every 20 people (Kruskal-Conover post-hoc-test,
-p-val$<3\times10^{-5}$). However, mortality begins to slightly increase
-again after this threshold. This effect and the increase in the probability
-of observing an outbreak are consequences of having one carer per
-individual isolated (see Supplementary Material), so when the isolated
-(infected) population increases, the number of healthy younger adults
-in contact with them increases in tandem. Similarly, we observe a
-reduction in IFR when increasing the number of tents up to 1 per every
-20 people, and no significant reduction over that number (see Supplementary
-Fig. \ref{fig:Suppl_isolation}). Importantly, the potential reductions
-in overall fatalities and IFR from self-isolation are realized whether
-the time required for individuals to recognize their symptoms is 12h
-or 24h on average, but the intervention becomes less effective when
-this time increases to 48h (see Supplementary Fig. \ref{fig:Suppl_onset}).
+Further increasing the number of tents does not significantly reduce
+the mortality  (Kruskal-Conover post-hoc-test, p-val$<3\times10^{-5}$)
+and increases the probability of an outbreak. This counter-intuitive
+effect is a consequence of demanding having one independent carer
+per eachindividual isolated (see Supplementary Material), so when
+the isolated (infected) population increases, the number of healthy
+younger adults in contact with them increases in tandem, effectively
+hindering the benefits of isolation. This assumption allow us to illustrate
+how increasing the isolation capacity is not benefitial unless it
+goes hand-in-hand with an appropriate management of the population
+isolated (see Discussion).Similarly, we observe a reduction in IFR
+when the number of tents is 1 per every 200 people,  and no significant
+reduction over that number (see Supplementary Fig. \ref{fig:Suppl_isolation}).
+Importantly, the potential reductions in overall fatalities and IFR
+from self-isolation are realized whether the time required for individuals
+to recognize their symptoms is 12h or 24h on average, but the intervention
+becomes less effective when this time increases to 48h (see Supplementary
+Fig. \ref{fig:Suppl_onset}).
 
 \subsection*{Safety zone}
 
@@ -920,7 +939,7 @@ of the camp population live in the green zone, unless otherwise specified.
 Creating a green zone improves the effect of the previous interventions
 overall, but with sometimes opposite outcomes in the exposed and protected
 populations. For example, the probability of an outbreak sharply decreases
-for the protected population, by almost 40\%, if only two contacts
+for the protected population, by around 10\%, if only two contacts
 are allowed per week in the buffer zone (see Fig. \ref{fig:Panel2}G).
 Notably, most of this reduction is only achieved when health-checks
 excluding symptomatic individuals from the buffer zone are in place
