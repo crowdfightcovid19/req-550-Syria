@@ -17,7 +17,7 @@ library(dplyr)
 library(stringi)
 library(stringr)
 
-assemble_df <- function( deaths, reco, time, timesteady, maxh, tmaxh, group, oParam){
+assemble_df <- function( deaths, reco, time, timesteady, maxh, tmaxh, fmaxe, group, oParam){
     l = length(deaths)
     df <- data.frame( rep(oParam[1],l),
                       rep(oParam[2],l),
@@ -35,7 +35,8 @@ assemble_df <- function( deaths, reco, time, timesteady, maxh, tmaxh, group, oPa
                       time,
                       timesteady,
                       maxh,
-                      tmaxh )
+                      tmaxh,
+                      fmaxe )
 
     return(df)
 }
@@ -44,7 +45,7 @@ keywordS="green" # a keyword to identify (S)hielded pop
 keywordE="orange" # non-shielded pop (E)xposed 
 
 # Files to process (header). Also variable col names.
-files.list=c("NumFinalDeaths","NumFinalRecovered","TimePeakSymptomatic","TimeSteadyStateSusceptible","NumMaxHospitalized","TimePeakHospitalized")
+files.list=c("NumFinalDeaths","NumFinalRecovered","TimePeakSymptomatic","TimeSteadyStateSusceptible","NumMaxHospitalized","TimePeakHospitalized","FracMaxExposed")
 
 idDir="modSV" # this is a string contained in all the directories that should be processed
 fileOut=paste("results_table_",idDir,".csv",sep="")
@@ -155,6 +156,11 @@ for(dirIn in dir.list){
             df.tmaxh.E = rowMeans(df.E)
             df.tmaxh.S = rowMeans(df.S)
         }
+        else if (file2proc == "FracMaxExposed"){
+            df.fmaxe = rowMeans(df)
+            df.fmaxe.E = rowMeans(df.E)
+            df.fmaxe.S = rowMeans(df.S)
+        }
         else if (file2proc == "TimeSteadyStateSusceptible"){#For time to steady, we take the MEAN of the total/exposed/shielded
             df.timesteady= rowMeans(df)
             df.timesteady.E = rowMeans(df.E)
@@ -191,18 +197,18 @@ for(dirIn in dir.list){
     }
 
     #Create temporal frame
-    df.tmp <- assemble_df(df.deaths,df.reco,df.time,df.timesteady,df.maxh,df.tmaxh,"T",outputParam)
+    df.tmp <- assemble_df(df.deaths,df.reco,df.time,df.timesteady,df.maxh,df.tmaxh,df.fmaxe,"T",outputParam)
 
     #Add it to the output
     df.output <- rbind(df.output,df.tmp)
 
     if(length(df.deaths.E) > 0){
-        df.tmp <- assemble_df(df.deaths.E,df.reco.E,df.time.E,df.timesteady.E,df.maxh.E,df.tmaxh.E,"E",outputParam)
+        df.tmp <- assemble_df(df.deaths.E,df.reco.E,df.time.E,df.timesteady.E,df.maxh.E,df.tmaxh.E,df.fmaxe.E,"E",outputParam)
         df.output <- rbind(df.output,df.tmp)
     }     
 
     if(length(df.deaths.S) > 0){
-        df.tmp <- assemble_df(df.deaths.S,df.reco.S,df.time.S,df.timesteady.S,df.maxh.S,df.tmaxh.S,"S",outputParam)
+        df.tmp <- assemble_df(df.deaths.S,df.reco.S,df.time.S,df.timesteady.S,df.maxh.S,df.tmaxh.S,df.fmaxe.S,"S",outputParam)
         df.output <- rbind(df.output,df.tmp)
     }     
 
