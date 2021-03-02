@@ -3359,21 +3359,23 @@ a number
 , and each isolated individual requires
 \change_deleted -1732430129 1614297394
  
+\change_inserted -1732430129 1614711603
+ 
 \change_unchanged
 having 
 \begin_inset Formula $c_{\care}$
 \end_inset
 
  contacts per day with
-\change_inserted -1732430129 1614298068
- them,
-\change_deleted -1732430129 1614297959
- the isolated population
+\change_inserted -1732430129 1614711623
+ them and,
+\change_deleted -1732430129 1614711610
+ the isolated population.
+
 \change_unchanged
-.
  
-\change_inserted -1732430129 1614303312
-if a given stage of the disease each class 
+\change_inserted -1732430129 1614711686
+if at a given stage of the disease each class 
 \begin_inset Formula $j$
 \end_inset
 
@@ -3398,12 +3400,12 @@ if a given stage of the disease each class
 \end_inset
 
 ).
- Given these assumptions, the subpopulation of carers have a rate of exposure
- 
-\begin_inset Formula $\lambda_{k}^{\care}$
+ Given these assumptions, a general expression for the rate of exposure
+ of the younger adults with no comorbidities, 
+\begin_inset Formula $\lambda_{k}$
 \end_inset
 
- given by
+, is given by
 \end_layout
 
 \begin_layout Standard
@@ -3425,7 +3427,7 @@ if a given stage of the disease each class
 arers are entirely drawn from younger adults (age 2) with no comorbidities,
  and must have no symptoms.
 
-\change_inserted -1732430129 1614303394
+\change_inserted -1732430129 1614711730
  where 
 \begin_inset Formula $\tilde{P}(k\rightarrow j)$
 \end_inset
@@ -3466,8 +3468,27 @@ arers are entirely drawn from younger adults (age 2) with no comorbidities,
 \begin_inset Formula $\tilde{P}(k\rightarrow j)=1$
 \end_inset
 
-.
- Note that the mean number of contacts per day that carers have with the
+ .
+ This yields the following expression for the subpopulation of carers
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1614711519
+\begin_inset Formula 
+\[
+\lambda_{k}^{\care}=\tau\sum_{j}\underset{\mathrm{isolated}}{\xi\underbrace{\beta_{\I}\tilde{c}_{k}}}+\underset{\mathrm{not\ isolated}}{\underbrace{c_{k}\left(\frac{N_{j}-\tilde{I}_{j}}{N}\right)\left(\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}O_{i}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\beta_{\HH}H_{j}}{N_{j}-\tilde{I}_{j}}\right)}},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1614711516
+Note that the mean number of contacts per day that carers have with the
  rest of the population,
 \begin_inset Formula $c_{k}$
 \end_inset
@@ -3480,10 +3501,15 @@ arers are entirely drawn from younger adults (age 2) with no comorbidities,
 
 \begin_layout Standard
 
-\change_inserted -1732430129 1614300845
+\change_inserted -1732430129 1614711764
 Those individuals belonging to the younger adults with no comorbidities
  not belonging to the group of carers will not interact with isolated individual
-s, and hence their rate of exposure becomes:
+s (i.e.
+ 
+\begin_inset Formula $\tilde{P}(k\rightarrow j)=0$
+\end_inset
+
+), and hence their rate of exposure becomes:
 \end_layout
 
 \begin_layout Standard
@@ -3501,8 +3527,9 @@ s, and hence their rate of exposure becomes:
 
 \begin_layout Standard
 
-\change_inserted -1732430129 1614300990
-The rate of exposure of the younger adults with no comorbidities, then becomes:
+\change_inserted -1732430129 1614711780
+The total rate of exposure of the younger adults with no comorbidities,
+ then becomes:
 \end_layout
 
 \begin_layout Standard
@@ -3559,7 +3586,7 @@ In our simulations, we consider that each isolated individual requires just
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "ROTO: Ref: eq:lambdaInterv"
+reference "eq:lambdaInterv"
 plural "false"
 caps "false"
 noprefix "false"
