@@ -154,14 +154,14 @@ rates_SEPAIHRD_str = function(y, parms,t){
         iso.transm=0 # the isolation transmission does not hold
       }
       yClassH=Tcheck.mat[Ref,class]*y[classH] # these individuals do not pass a symptoms' check
-      # ... Compute lambda
+      # ... Compute lambda note that C = c_i*N_j/N
       lambda = lambda+
                iso.transm+
                C[Ref,class]*self*lock.mat.local[Ref,class]*
                       (betaP*y[classP]+betaA*y[classA]+
-                         betaI*yClassI+betaH*Hinfect*yClassH)# /Nsubpop[class]
+                         betaI*yClassI+betaH*Hinfect*yClassH)/Nsubpop[class]
     }
-    lambda=tau*lambda/N
+    lambda=tau*lambda # /N --> it is included in the files contact_matrices = c_i*N_j/N
     k=k+1 # see github issue 26
     dy[k] = lambda*y[S] # S to E
     k=k+1
