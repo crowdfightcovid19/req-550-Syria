@@ -2342,7 +2342,7 @@ as a reference (
 \end_inset
 
  (
-\begin_inset Formula $\beta_{i}<\beta_{\PP\rightarrow\I},\quad i\in\{\P,\A,\HH,\I\}$
+\begin_inset Formula $\beta_{i}<\beta_{\PP\rightarrow\I},\quad i\in\{\PP,\A,\HH,\I\}$
 \end_inset
 
 ) (see Table 
@@ -2655,7 +2655,7 @@ relative to
 \begin_layout Plain Layout
 
 \change_inserted -1732430129 1614353071
-Empirical_
+Empirical
 \end_layout
 
 \end_inset

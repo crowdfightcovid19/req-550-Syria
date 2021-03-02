@@ -930,7 +930,7 @@ c, is the same than between symptomatic and asymptomatic individuals (
 \change_inserted -1732430129 1614354020
 \begin_inset Formula 
 \[
-\beta_{\P}=f\beta_{\PP\rightarrow\I}+(1-f)\rho_{\A\I}\beta_{\PP\rightarrow\I}.
+\beta_{\PP}=f\beta_{\PP\rightarrow\I}+(1-f)\rho_{\A\I}\beta_{\PP\rightarrow\I}.
 \]
 
 \end_inset
