@@ -3476,9 +3476,9 @@ arers are entirely drawn from younger adults (age 2) with no comorbidities,
 
 \change_inserted -1732430129 1614711519
 \begin_inset Formula 
-\[
-\lambda_{k}^{\care}=\tau\sum_{j}\underset{\mathrm{isolated}}{\xi\underbrace{\beta_{\I}\tilde{c}_{k}}}+\underset{\mathrm{not\ isolated}}{\underbrace{c_{k}\left(\frac{N_{j}-\tilde{I}_{j}}{N}\right)\left(\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}O_{i}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\beta_{\HH}H_{j}}{N_{j}-\tilde{I}_{j}}\right)}},
-\]
+\begin{equation}
+\lambda_{k}^{\care}=\tau\sum_{j}\underset{\mathrm{isolated}}{\xi\underbrace{\beta_{\I}\tilde{c}_{k}}}+\underset{\mathrm{not\ isolated}}{\underbrace{c_{k}\left(\frac{N_{j}-\tilde{I}_{j}}{N}\right)\left(\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}O_{i}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\beta_{\HH}H_{j}}{N_{j}-\tilde{I}_{j}}\right)}},\label{eq:lambdaCarers}
+\end{equation}
 
 \end_inset
 
@@ -3574,13 +3574,6 @@ In our simulations, we consider that each isolated individual requires just
 \end_inset
 
 .
- Interestingly, the expression is independent of 
-\begin_inset Formula $N_{\care}$
-\end_inset
-
-, but the transmissibility of the isolated population inversely depends
- on the size of the class hosting carers, suggesting that a small dedicated
- class would be optimal for the success of this intervention.
  We can express this equation following the parameterization presented in
  Eq.
  
@@ -3626,7 +3619,7 @@ noprefix "false"
 
 \begin_layout Standard
 
-\change_inserted -1732430129 1614302555
+\change_inserted -1732430129 1614713044
 \begin_inset Formula 
 \[
 \lambda_{i}=\tau\sum_{j}\underset{\textrm{not isolated}}{\underbrace{c_{i}\frac{\beta_{\PP}P+\beta_{\A}A_{j}+\beta_{\I}\varTheta(N_{\I}-\tilde{N})(I_{j}-\tilde{I}_{j})+\zeta_{\HH}\beta_{\HH}H_{j}}{N}}}.
@@ -3635,6 +3628,41 @@ noprefix "false"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1614713681
+We should note that Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambdaIsolation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ does not depend on the number of carers, 
+\begin_inset Formula $N_{\care}$
+\end_inset
+
+, the reason being that we are assuming that the rate of exposure of carers
+ is averaged out among all individuals in the class of younger healthy adults.
+ To investigate this question, a specific class of carers could be created,
+ which would maintain explicit this variable as in Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambdaCarers"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
