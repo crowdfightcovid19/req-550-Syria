@@ -2357,15 +2357,15 @@ noprefix "false"
 
 , Supplementary Materials for derivation).
 
-\change_inserted -1732430129 1614353411
+\change_inserted -1732430129 1614886744
  In particular, the overall presymptomatic transmissibility (
 \begin_inset Formula $\beta_{\P}$
 \end_inset
 
 ) is estimated as a weighted average of the transmissibility of individuals
- becoming symptomatic and those asymptomatic, considering that the relative
- transmissibility between both groups is the same than between symptomatic
- and asymptomatic (see Supplementary Materials for details).
+ becoming symptomatic and those becoming asymptomatic, considering that
+ the relative transmissibility between both groups is the same than between
+ symptomatic and asymptomatic (see Supplementary Materials for details).
 \change_unchanged
 
 \end_layout
@@ -5622,8 +5622,16 @@ noprefix "false"
 \begin_inset Formula $\tau$
 \end_inset
 
- is then estimated.
- To ensure computational efficiency, all these random values are precalculated.
+ 
+\change_deleted -1732430129 1614886859
+is then
+\change_unchanged
+ estimated.
+ 
+\change_deleted -1732430129 1614886870
+To ensure computational efficiency, all these random values are precalculated
+\change_unchanged
+.
  In the code provided it is possible to fix the seed to exactly reproduce
  the results presented.
  The equations are then integrated with a Gillespie algorithm implemented
@@ -5728,7 +5736,11 @@ In the absence of interventions, the mean IFR is
 \begin_inset Formula $\sim$
 \end_inset
 
-2% in simulations where all severe cases requiring hospitalization recover
+2
+\change_inserted -1732430129 1614887254
+.5
+\change_unchanged
+% in simulations where all severe cases requiring hospitalization recover
  (see Supplementary Fig.
  
 \begin_inset CommandInset ref
@@ -5749,8 +5761,8 @@ noprefix "false"
 e interventions.
  In this scenario, the probability of observing an outbreak is close to
  0.8
-\change_inserted -1732430129 1614019073
-6
+\change_inserted -1732430129 1614887318
+4
 \change_deleted -1732430129 1614019074
 5
 \change_unchanged
@@ -5761,8 +5773,8 @@ e interventions.
 10% of the camp dies, the number of symptomatic cases peaks after 
 \change_deleted -1732430129 1614019150
 55
-\change_inserted -1732430129 1614020019
-37
+\change_inserted -1732430129 1614887365
+40
 \change_unchanged
  days
 \change_inserted -1732430129 1614019209
@@ -5795,8 +5807,8 @@ Self-distancing
 \begin_layout Standard
 Our results show that self-distancing has a notable effect on reducing the
  probability of an outbreak
-\change_inserted -1732430129 1614019476
- which decreases linearly with the decrease in percentage reduction (slope).
+\change_inserted -1732430129 1614887551
+ which decreases linearly when the percentage of contacts reduced increases.
  
 \change_deleted -1732430129 1614019487
 : a 20% reduction in daily contacts is associated with a 
@@ -5818,15 +5830,15 @@ noprefix "false"
 
 A).
  A
-\change_inserted -1732430129 1614019753
+\change_inserted -1732430129 1614887565
  near-quadratic trend is observed for the fraction of population dying,
- with a faster decrease for large
+ with a faster decrease for larger
 \change_deleted -1732430129 1614019757
  greater
 \change_unchanged
  reduction in daily contacts
-\change_inserted -1732430129 1614019803
-, achieving a 35% reduction in mortality.
+\change_inserted -1732430129 1614887639
+, achieving a 34% reduction in mortality.
 \change_deleted -1732430129 1614019761
 ,
 \change_unchanged
@@ -5857,12 +5869,12 @@ B).
  outbreak, from 
 \change_deleted -1732430129 1614019838
 55
-\change_inserted -1732430129 1614020005
-~37
+\change_inserted -1732430129 1614887657
+~40
 \change_unchanged
  days when there is no intervention to 
-\change_inserted -1732430129 1614020084
-71
+\change_inserted -1732430129 1614887671
+72
 \change_deleted -1732430129 1614020082
 110
 \change_unchanged
@@ -5883,9 +5895,9 @@ C).
 However,
 \change_unchanged
  
-\change_inserted -1732430129 1614022328
+\change_inserted -1732430129 1614887752
 The proportion of population escaping from infection after 12 months also
- increases up to near 25% of the population when a 50% reduction is considered,
+ increases up to near 33% of the population when a 50% reduction is considered,
  and 
 \change_unchanged
 the proportion of the population recovered after 12 months 
@@ -5972,6 +5984,23 @@ ns in which at least one death was observed in the population class inhabiting
 
 35% of simulations there is an outbreak in the orange zone but not in the
  green zone (panel G).
+
+\change_inserted -1732430129 1614944642
+ In the safety zone figures (panels G-I) health-checks are in place, in
+ Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_Tcheck"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we show the effect of removing health-checks.
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -6018,81 +6047,36 @@ noprefix "false"
 \end_inset
 
 E).
- Further increasing the number of tents 
-\change_inserted -1732430129 1614023196
-does not 
-\change_unchanged
-significantly 
-\change_inserted -1732430129 1614023207
-reduce the mortality 
-\change_deleted -1732430129 1614023216
-augments this reduction until there is 1 per every 20 people
-\change_unchanged
- (Kruskal-Conover post-hoc-test, p-val
+ Further increasing the number of tents significantly augments this reduction
+ until there is 1 per every 20 people (Kruskal-Conover post-hoc-test, p-val
 \begin_inset Formula $<3\times10^{-5}$
 \end_inset
 
-)
-\change_inserted -1732430129 1614023229
- and increases the probability of an outbreak
-\change_deleted -1732430129 1614023240
-.
- However, mortality begins to slightly increase again after this threshold
-\change_unchanged
-.
- This 
-\change_inserted -1732430129 1614023253
-counter-intuitive 
-\change_unchanged
-effect
-\change_deleted -1732430129 1614023262
- and the increase in the probability of observing an outbreak are
-\change_inserted -1732430129 1614023266
- is a 
-\change_deleted -1732430129 1614023263
+).
+ However, mortality begins to slightly increase again after this threshold.
+ This effect and the increase in the probability of observing an outbreak
+\change_inserted -1732430129 1614946678
+ (Fig.
  
-\change_unchanged
-consequence
-\change_deleted -1732430129 1614023268
-s
-\change_unchanged
- of 
-\change_inserted -1732430129 1614023279
-demanding 
-\change_unchanged
-having one 
-\change_inserted -1732430129 1614023291
-independent 
-\change_unchanged
-carer per
-\change_inserted -1732430129 1614023294
- each
-\change_deleted -1732430129 1614023294
- 
-\change_unchanged
-individual isolated (see Supplementary Material), so when the isolated (infected
-) population increases, the number of healthy younger adults in contact
- with them increases in tandem
-\change_inserted -1732430129 1614023765
-, effectively hindering the benefits of isolation
-\change_unchanged
-.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
 
-\change_inserted -1732430129 1614023726
- This assumption allow us to illustrate how increasing the isolation capacity
- is not benefitial unless it goes hand-in-hand with an appropriate management
- of the population isolated (see Discussion).
+\end_inset
 
-\change_deleted -1732430129 1614023335
+D)
+\change_deleted -1732430129 1614946657
  
 \change_unchanged
-Similarly, we observe a reduction in IFR when 
-\change_inserted -1732430129 1614023593
-the number of tents is 1 per every 200 people, 
-\change_deleted -1732430129 1614023599
-increasing the number of tents up to 1 per every 20 people,
-\change_unchanged
- and no significant reduction over that number (see Supplementary Fig.
+are consequences of having one carer per individual isolated (see Supplementary
+ Material), so when the isolated (infected) population increases, the number
+ of healthy younger adults in contact with them increases in tandem.
+ Similarly, we observe a reduction in IFR when increasing the number of
+ tents up to 1 per every 20 people, and no significant reduction over that
+ number (see Supplementary Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6133,8 +6117,11 @@ In this section, we consider the scenario in which all older adults, younger
  Creating a green zone improves the effect of the previous interventions
  overall, but with sometimes opposite outcomes in the exposed and protected
  populations.
- For example, the probability of an outbreak sharply decreases for the protected
- population, by 
+ For example, the probability of an outbreak 
+\change_deleted -1732430129 1614887999
+sharply
+\change_unchanged
+ decreases for the protected population, by 
 \change_inserted -1732430129 1614024627
 around
 \change_deleted -1732430129 1614024625
@@ -6143,10 +6130,12 @@ almost
  
 \change_deleted -1732430129 1614024605
 4
-\change_inserted -1732430129 1614024606
-1
+\change_inserted -1732430129 1614887994
+11
+\change_deleted -1732430129 1614887992
+0
 \change_unchanged
-0%, if only two contacts are allowed per week in the buffer zone (see Fig.
+%, if only two contacts are allowed per week in the buffer zone (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6171,11 +6160,17 @@ noprefix "false"
 
 \end_inset
 
+
+\change_inserted -1732430129 1614944664
+ to see the effect of removing health-checks
+\change_unchanged
 ).
  On the other hand, the probability of an outbreak may slightly increase
  for the exposed population, a consequence of the relative increase in intra-zon
 e contacts.
- Despite this side-effect, by shifting the burden of an outbreak towards
+ 
+\change_deleted -1732430129 1614888713
+Despite this side-effect, by shifting the burden of an outbreak towards
  the less vulnerable population in the orange zone, this intervention not
  only reduces fatalities among the more vulnerable population in the green
  zone (Kruskal-Wallis test, p-val
@@ -6216,9 +6211,29 @@ noprefix "false"
 \end_inset
 
 H).
- Another important outcome of this intervention is the notable increase
- in time until the number of symptomatic cases peaks for the vulnerable
- population (see Fig.
+ 
+\change_inserted -1732430129 1614888744
+By shifting the burden of an outbreak towards the less vulnerable population
+ in the orange zone, 
+\change_deleted -1732430129 1614888751
+A
+\change_inserted -1732430129 1614888751
+a
+\change_unchanged
+nother important outcome of this intervention is the notable increase in
+ time
+\change_inserted -1732430129 1614888695
+ (~62%)
+\change_deleted -1732430129 1614888365
+ 
+\change_unchanged
+until the number of symptomatic cases peaks for the vulnerable population
+\change_inserted -1732430129 1614888723
+, and a 40% for the whole population
+\change_deleted -1732430129 1614888713
+ 
+\change_unchanged
+(see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6230,13 +6245,39 @@ noprefix "false"
 \end_inset
 
 I).
+
+\change_inserted -1732430129 1614906327
+ Nevertheless, this intervention has a modest reduction in the overall mortality
+ (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+H), possibly due to the high infectiousness of presymptomatic individuals.
+ To illustrate this point, we show the same results considering all infected
+ individuals equally infectious (see Suppl.
+ Fig.
+ [Ref]).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Considering different scenarios for allocating people to the green zone,
  the lowest probability of an outbreak is achieved when only older adults
  or at most older adults and younger adults with comorbidities move there
- (see Supplementary Fig.
+\change_inserted -1732430129 1614888901
+, with probabilities below 0.4 and 0.65, respectively
+\change_deleted -1732430129 1614888858
+ 
+\change_unchanged
+(see Supplementary Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6262,9 +6303,22 @@ noprefix "false"
 \end_inset
 
 ).
- The incorporation of a lockdown has the greatest effect on reducing the
- probability of an outbreak in the green zone, to under 0.10 when contacts
- in the buffer zone are reduced by 90%.
+
+\change_inserted -1732430129 1614903465
+ Notably, a reduction of 20% in mortality is observed when the population
+ is reduced from 2000 to 500 individuals living in the camp.
+
+\change_deleted -1732430129 1614889227
+ 
+\change_unchanged
+The incorporation of a lockdown has the greatest effect on reducing the
+ probability of an outbreak in the green zone, to under 0.
+\change_inserted -1732430129 1614889336
+25
+\change_deleted -1732430129 1614889335
+10
+\change_unchanged
+ when contacts in the buffer zone are reduced by 90%.
  While lockdowns show no positive effect on green zone fatalities in the
  few instances where an outbreak does reach there, they decrease IFR and
  overall fatalities by further concentrating outbreaks in the less vulnerable
@@ -6559,6 +6613,13 @@ One of the key parameters we assessed for the implementation of self-isolation
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -1732430129 1614890180
+Setting up a safety zone has two positive effects: a reduction in the probabilit
+y of an outbreak in the vulnerable population, and an increase in the time
+ in which the number of symptomatic cases peak.
+ 
+\change_unchanged
 Much of the success or failure of the safety zone intervention hinges on
  the functioning of the buffer zone.
  The number of inter-zone contacts per week, the implementation of health
@@ -6574,15 +6635,54 @@ Much of the success or failure of the safety zone intervention hinges on
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1732430129 1614890193
 Although setting up a safety zone sharply reduces the probability of an
  outbreak in the population classes with the highest IFRs, thus reducing
- the IFR of the entire population, it is possible that our model may overestimat
-e mortality from an outbreak in the green zone in the few instances when
- there is one.
- Since total numbers of contacts are conserved in our modelization, individuals
- do not reduce their contacts when moved to the green zone, which implies
- an increase in the number of contacts between vulnerable individuals.
- Despite this increase in contacts, we observed a significant reduction
+ the IFR of the entire population,
+\change_inserted -1732430129 1614890242
+Despite of these benefits, we do not observe a clear decrease in IFR with
+ this intervention, although
+\change_deleted -1732430129 1614890197
+ 
+\change_unchanged
+it is possible that our model may overestimate mortality from an outbreak
+ in the green zone in the few instances when there is one.
+ Since 
+\change_inserted -1732430129 1614890295
+it is unlikely that the camps have the economical means to increase their
+ number of tents to implement this intervention
+\change_deleted -1732430129 1614890264
+total numbers of contacts are conserved in our modelization
+\change_unchanged
+, 
+\change_inserted -1732430129 1614890304
+we considered that 
+\change_unchanged
+individuals do not reduce their contacts when moved to the green zone
+\change_inserted -1732430129 1614890327
+ because they will share the tents with the same number of individuals
+\change_unchanged
+, which implies an increase in the number of contacts between vulnerable
+ individuals.
+ Despite this increase in contacts, we 
+\change_inserted -1732430129 1614890337
+do not 
+\change_unchanged
+observe
+\change_deleted -1732430129 1614890339
+d
+\change_unchanged
+ a
+\change_inserted -1732430129 1614890342
+n
+\change_unchanged
+ 
+\change_deleted -1732430129 1614890347
+significant reduction
+\change_inserted -1732430129 1614890350
+increase
+\change_unchanged
  in mortality in the vulnerable population when the safety zone is implemented.
  These results address concerns raised around this type of intervention
  from previous experiences with large numbers of fatalities registered in
@@ -6595,12 +6695,37 @@ literal "false"
 \end_inset
 
 .
- While in developed countries nursing home residents have more contacts,
- both with other vulnerable people (other nursing home residents) and healthy
- adults who live in different households (health aids), than the elderly
- who live at home, vulnerable people in our proposed green zone have the
- same number of total contacts as they would under normal conditions, but
- significantly fewer contacts with healthy adults from different households.
+ While
+\change_inserted -1732430129 1614906407
+ nursing-homes and the safety zone may be seen as conceputally related,
+ the alternative (in a scenario of lockdown)
+\change_deleted -1732430129 1614890394
+ 
+\change_unchanged
+in developed countries 
+\change_inserted -1732430129 1614906407
+to 
+\change_unchanged
+nursing home
+\change_inserted -1732430129 1614906407
+s for the elderly population typically is
+\change_deleted -1732430129 1614890434
+ 
+\change_inserted -1732430129 1614906407
+remaining at home with few contacts with younger individuals, while in the
+ camps the alternative is living in a tent shared with young individuals
+ that have a high rate of contacts (in particular kids).
+ This is the reason why we observe a positive effect with this intervention
+ despite of having the vulnerable subpopulation in close contact.
+\change_deleted -1732430129 1614890696
+residents have more contacts, both with other vulnerable people (other nursing
+ home residents) and healthy adults who live in different households (health
+ aids), than the elderly who live at home, vulnerable people in our proposed
+ green zone have the same number of total contacts as they would under normal
+ conditions, but significantly fewer contacts with healthy adults from different
+ households.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -6632,8 +6757,20 @@ literal "false"
 
 .
  We expect our results to be robust against changes in the population, as
- soon as these changes are relatively small compared to the total population
- size in the camp, implying punctual inputs of infected individuals.
+ 
+\change_inserted -1732430129 1614945349
+long
+\change_deleted -1732430129 1614945348
+soon
+\change_unchanged
+ as these changes are relatively small compared to the total population
+ size in the camp, implying 
+\change_deleted -1732430129 1614890735
+punctual
+\change_inserted -1732430129 1614890737
+sporadic
+\change_unchanged
+ inputs of infected individuals.
  This is the expected behaviour in IDPs, which are often small and located
  in rural areas, and in which important population movements, as those observed
  in large camps, are infrequent.
@@ -6648,6 +6785,8 @@ literal "false"
 \end_inset
 
 .
+\change_inserted -1732430129 1614890769
+
 \end_layout
 
 \begin_layout Standard
@@ -6664,6 +6803,123 @@ s, which often depend on complex political decisions and may take years
  at least some of the interventions we propose are implemented, the impacts
  of COVID-19 can be mitigated even in an environment as challenging as NW
  Syria.
+\change_inserted -1732430129 1614890848
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1614903936
+Another important consideration to interpret our results regards the modelling
+ assumptions we made.
+ From the point of view of the parameterization, perhaps the most relevant
+ is the one related with the transmission probabilities of the different
+ infectious stages, whose specific values have still large margins of variabilit
+y 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "widders_viralLoadVsInfect_2020,casey_presymptEstim_2020,he_temporal_2020"
+literal "false"
+
+\end_inset
+
+.
+ It is particularly relevant in our context because the higher the infectivity
+ of the presymptomatic and asymptomattic individuals is, the less effective
+ the non-medical interventions requiring identification of symptomatic individua
+ls will be.
+ For instance, Bullock et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bullock_IBM4IDPs_covid21"
+literal "false"
+
+\end_inset
+
+ assumed a higher infectiousness of the presymptomatic stage and hence self-isol
+ation of symptomatic individuals had little effect.
+ Self-isolation also becomes ineffective under the assumptions made by Hernandez
+-Suarez et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hernandez_Refugee_covid20"
+literal "false"
+
+\end_inset
+
+ when they considered isolating only severe symptomatic cases (whose fraction
+ is small), hence considering mild symptomatic individuals effectively as
+ asymptomatic.
+ On the contrary, Gilman et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gilman_IBMrefugee_covid20"
+literal "false"
+
+\end_inset
+
+ showed that self-isolation was efficient when considering individuals at
+ the different stages equally infectious.
+ We considered that presymptomatic individuals have the highest infectivity
+ consistent with the most recent estimations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "casey_presymptEstim_2020"
+literal "false"
+
+\end_inset
+
+, and the interventions we proposed are still effective.
+ Considering a different scenario in which all compartments are equally
+ infectious, our interventions become more effective, illustrated in one
+ example in Supplementary Fig.
+ [Ref].
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1614904072
+It is also important to acknowledge which are the benefits and limitations
+ of the different possible computational implementations.
+ For instance, there are interventions that do not have a natural implementation
+ within our framework, such as those requiring interventions targetting
+ very specific interactions between individuals (as opposed to large groups
+ of individuals).
+ An example might be the isolation of an individual and his/her family,
+ as proposed in Gilman 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gilman_IBMrefugee_covid20"
+literal "false"
+
+\end_inset
+
+ which, since we do not explicitly model interactions at the family-level,
+ would require the creation of as many classes as families.
+ When this level of detail is required, individual based models (IBMs) may
+ be more appropriate 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gilman_IBMrefugee_covid20,bullock_IBM4IDPs_covid21"
+literal "false"
+
+\end_inset
+
+.
+ However, IBMs require a rich amount of data for their parameterization
+ which, although increasingly available, is scarce for IDPs.
+ Our framework is powerful to simulate a large number of scenarios with
+ little computational cost, which would be an optimal strategy as a first
+ approximation in the design of interventions, to narrow down the most relevant
+ scenarios (as a reference, in <24h we model with just 12 cores 75 scenarios
+ requiring quarter million simulations).
+ The scenarios selected could then be further investigated with more detailed
+ interventions with IBMs, if data is available.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section*
@@ -6672,8 +6928,11 @@ Conclusion
 
 \begin_layout Standard
 Given a rapidly changing environment and slow responses of local and internation
-al authorities, the latter often leaving these communities aside in their
- priorities 
+al authorities
+\change_inserted -1732430129 1614904148
+ in regions in which policy control is under dispute
+\change_unchanged
+, the latter often leaving these communities aside in their priorities 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mukumbange_refugeesVaccine_2020"
