@@ -6048,6 +6048,11 @@ noprefix "false"
 
 E).
  Further increasing the number of tents significantly augments this reduction
+\change_inserted -1732430129 1615128248
+ in both probability of outbreak and mortality, but the change is less pronounce
+d.
+
+\change_deleted -1732430129 1615128263
  until there is 1 per every 20 people (Kruskal-Conover post-hoc-test, p-val
 \begin_inset Formula $<3\times10^{-5}$
 \end_inset
@@ -6055,28 +6060,21 @@ E).
 ).
  However, mortality begins to slightly increase again after this threshold.
  This effect and the increase in the probability of observing an outbreak
-\change_inserted -1732430129 1614946678
- (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Panel2"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-D)
-\change_deleted -1732430129 1614946657
- 
-\change_unchanged
-are consequences of having one carer per individual isolated (see Supplementary
+ are consequences of having one carer per individual isolated (see Supplementary
  Material), so when the isolated (infected) population increases, the number
  of healthy younger adults in contact with them increases in tandem.
- Similarly, we observe a reduction in IFR when increasing the number of
- tents up to 1 per every 20 people, and no significant reduction over that
- number (see Supplementary Fig.
+\change_inserted -1732430129 1615128319
+The important reduction in the mortality with just 10 tents is explained...XXX.
+
+\change_deleted -1732430129 1615128279
+ 
+\change_unchanged
+Similarly, we observe a reduction in IFR when increasing the number of tents
+\change_deleted -1732430129 1615128356
+ up to 1 per every 20 people, and no significant reduction over that number
+ 
+\change_unchanged
+(see Supplementary Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
