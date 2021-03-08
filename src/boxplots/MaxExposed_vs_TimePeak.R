@@ -62,9 +62,16 @@ df.self$self<-factor(df.self$self,levels(df.self$self)[idx.self])
 
 df.self$FracMaxExposed <- df.self$FracMaxExposed / 100. #Fraction, rather than %.
 
+params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_B.csv",sep=""),header = TRUE, sep=",")
+df.iso <- extract_subtable_output_summaries(df.all,params.df)
+idx.limit<- c(1,2,5,7,3,6,8,4)
+df.iso$Limit<-factor(df.iso$Limit,levels(df.iso$Limit)[idx.limit])
+df.iso$FracMaxExposed <- df.iso$FracMaxExposed / 100. #Fraction, rather than %.
+
+
 #Self distancing
 df <- df.self
-outFile = "MaxExposed_vs_TimePeak"
+outFile = "MaxExposed_vs_TimePeak_by_self-distancing"
 varX = "TimePeakSymptomatic"
 varY = "FracMaxExposed"
 xlabel = "Time to peak symptomatic (days)"
@@ -86,13 +93,41 @@ gg <-ggplot(df,aes(x=TimePeakSymptomatic,y=FracMaxExposed))+
             panel.grid.minor = element_line(size = 0.25, linetype = 'solid', colour = "lightgrey"),
             panel.background = element_rect(fill = "white", colour = "black", linetype = "solid"))
 
-    
-
-    
 
 setwd(outPlotDir)
 pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 20,title=outFile)
 print(gg)
 dev.off( )
+
+#Self isolation
+df <- df.iso
+outFile = "MaxExposed_vs_TimePeak_by_self-isolation"
+varX = "TimePeakSymptomatic"
+varY = "FracMaxExposed"
+xlabel = "Time to peak symptomatic (days)"
+ylabel = "Max. fraction of population exposed"
+#scale_x_labels <- c("0","10","20","30","40","50")
+scale_color_labels <- c("0","10","25","50","100","250","500","2000")
+group_name = "Number of self-isolation tents"
+
+gg <-ggplot(df,aes(x=TimePeakSymptomatic,y=FracMaxExposed))+
+     geom_point(size=3,aes(colour=Limit),alpha=0.6)+
+     scale_color_discrete(name=group_name,labels=scale_color_labels,type=c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7","#E69AA0"))+
+     xlab(xlabel)+
+     ylab(ylabel)+
+     theme( legend.text = element_text(size=legend.text.size),
+            legend.title = element_text(size=legend.title.size),
+            axis.text = element_text(size=axis.text.size),
+            axis.title = element_text(size=axis.title.size),
+            panel.grid.major = element_line(size = 0.5, linetype = 'solid', colour = "lightgrey"),
+            panel.grid.minor = element_line(size = 0.25, linetype = 'solid', colour = "lightgrey"),
+            panel.background = element_rect(fill = "white", colour = "black", linetype = "solid"))
+
+
+setwd(outPlotDir)
+pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 20,title=outFile)
+print(gg)
+dev.off( )
+
 
 setwd(currentDir) #Let's finish where we started.
