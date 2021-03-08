@@ -81,10 +81,15 @@ scale_color_labels <- c("0%","10%","20%","30%","40%","50%")
 group_name = "Reduction of contacts"
 
 gg <-ggplot(df,aes(x=TimePeakSymptomatic,y=FracMaxExposed))+
-     geom_point(size=3,aes(colour=self))+
+     geom_point(aes(colour=self,size=FracFinalDeaths),alpha=0.6)+
      scale_color_discrete(name=group_name,labels=scale_color_labels)+
+     scale_size(breaks=c(0.07,0.08,0.09,0.10,0.11),
+                       labels=c("0.07","0.08","0.09","0.10","0.11"),
+                       range=c(1,10),
+                       name="Fraction of population dying")+
      xlab(xlabel)+
      ylab(ylabel)+
+     guides(color = guide_legend(override.aes = list(size = 5)))+
      theme( legend.text = element_text(size=legend.text.size),
             legend.title = element_text(size=legend.title.size),
             axis.text = element_text(size=axis.text.size),
@@ -111,10 +116,15 @@ scale_color_labels <- c("0","10","25","50","100","250","500","2000")
 group_name = "Number of self-isolation tents"
 
 gg <-ggplot(df,aes(x=TimePeakSymptomatic,y=FracMaxExposed))+
-     geom_point(size=3,aes(colour=Limit),alpha=0.6)+
+     geom_point(aes(colour=Limit,size=FracFinalDeaths),alpha=0.6)+
      scale_color_discrete(name=group_name,labels=scale_color_labels,type=c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7","#E69AA0"))+
+     scale_size(breaks=c(0.07,0.08,0.09,0.10,0.11),
+                       labels=c("0.07","0.08","0.09","0.10","0.11"),
+                       range=c(1,10),
+                       name="Fraction of population dying")+
      xlab(xlabel)+
      ylab(ylabel)+
+     guides(color = guide_legend(override.aes = list(size = 5)))+
      theme( legend.text = element_text(size=legend.text.size),
             legend.title = element_text(size=legend.title.size),
             axis.text = element_text(size=axis.text.size),
