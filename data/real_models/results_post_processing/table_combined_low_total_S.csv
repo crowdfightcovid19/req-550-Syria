@@ -1,14 +1,14 @@
 "","Intervention","<20 cases","Total","% of total"
-"10","safety",180,180,100
-"11","safety + evac",172,172,100
-"12","safety + lock 50%",97,97,100
-"13","safety + self 20%",46,46,100
-"14","safety + 50 tents",128,128,100
-"15","safety + self 50%",1,1,100
-"16","safety + 50 tents + lock 50%",74,74,100
-"17","safety + 50 tents + evac",33,239,14
-"18","safety + 50 tents + self 20%",12,12,100
-"19","safety + 50 tents + self 50%",25,38,66
-"20","safety + 50 tents + evac + lock 50% + self 20%",10,10,100
-"21","safety + 50 tents + evac + lock 50% + self 50%",2,2,100
-"22","safety + 50 tents + evac + lock 90% + self 50%",1,1,100
+"10","safety",36,1908,1.9
+"11","safety + evac",48,1894,2.5
+"12","safety + lock 50%",40,1454,2.8
+"13","safety + self 20%",56,1582,3.5
+"14","safety + 50 tents",29,1827,1.6
+"15","safety + self 50%",187,719,26
+"16","safety + 50 tents + lock 50%",50,1349,3.7
+"17","safety + 50 tents + evac",47,1804,2.6
+"18","safety + 50 tents + self 20%",90,1421,6.3
+"19","safety + 50 tents + self 50%",199,486,41
+"20","safety + 50 tents + evac + lock 50% + self 20%",113,991,11
+"21","safety + 50 tents + evac + lock 50% + self 50%",129,275,47
+"22","safety + 50 tents + evac + lock 90% + self 50%",38,82,46
