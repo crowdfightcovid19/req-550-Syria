@@ -54,10 +54,10 @@ df.all <- read.csv(paste(outDir,"/",fileIn,sep=""))
 #Extract relevant data from table
 setwd(codeDir)
 
-params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_H.csv",sep=""),header = TRUE, sep=",")
+params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_H2.csv",sep=""),header = TRUE, sep=",")
 df.self <- extract_subtable_output_summaries(df.all,params.df)
 
-idx.self<- c(6,1,2,3,4,5)
+idx.self<- c(10,1,2,3,4,5,6,7,8,9)
 df.self$self<-factor(df.self$self,levels(df.self$self)[idx.self])
 
 df.self$FracMaxExposed <- df.self$FracMaxExposed / 100. #Fraction, rather than %.
@@ -77,14 +77,14 @@ varY = "FracMaxExposed"
 xlabel = "Time to peak symptomatic (days)"
 ylabel = "Max. fraction of population exposed"
 #scale_x_labels <- c("0","10","20","30","40","50")
-scale_color_labels <- c("0%","10%","20%","30%","40%","50%")
+scale_color_labels <- c("0%","10%","20%","30%","40%","50%","60%","70%","80%","90%")
 group_name = "Reduction of contacts"
 
 gg <-ggplot(df,aes(x=TimePeakSymptomatic,y=FracMaxExposed))+
      geom_point(aes(colour=self,size=FracFinalDeaths),alpha=0.6)+
      scale_color_discrete(name=group_name,labels=scale_color_labels)+
-     scale_size(breaks=c(0.07,0.08,0.09,0.10,0.11),
-                       labels=c("0.07","0.08","0.09","0.10","0.11"),
+     scale_size(breaks=c(0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.10,0.11),
+                       labels=c("0.01","0.02","0.03","0.04","0.05","0.06","0.07","0.08","0.09","0.10","0.11"),
                        range=c(1,10),
                        name="Fraction of population dying")+
      xlab(xlabel)+
