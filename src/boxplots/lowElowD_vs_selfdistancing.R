@@ -91,7 +91,7 @@ gg <- ggplot(odf,aes(x=self,y=lowEDfraction,fill=fracD))+geom_bar(stat="identity
       ylab(ylabel)+
       scale_x_discrete(labels=scale_x_labels)+
       scale_fill_discrete(labels=c("<0.01","<0.02","<0.03","<0.04","<0.05","<0.06","<0.07","<0.08","<0.09","<0.10","<0.11"),name="Fraction of population dying")+
-      scale_y_continuous()+
+      scale_y_continuous(labels=function(x) sprintf("%.2f",x/10))+
       theme( legend.text = element_text(size=legend.text.size),
             legend.title = element_text(size=legend.title.size),
             axis.text = element_text(size=axis.text.size),
