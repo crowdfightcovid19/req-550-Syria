@@ -63,29 +63,34 @@ df.self$self<-factor(df.self$self,levels(df.self$self)[idx.self])
 df.self$FracMaxExposed <- df.self$FracMaxExposed / 100. #Fraction, rather than %.
 
 
-odf <- data.frame(self=NA,total=NA,lowlow=NA,lowlowfraction=NA)[-1,]
+odf <- data.frame(self=NA,total=NA,fracD=NA,lowED=NA,lowEDfraction=NA)[-1,]
 for(s in levels(df.self$self)){
    df.aux <- subset(df.self, self == s)
    total = nrow(df.aux)
-   lowlow = nrow(subset(df.aux, FracMaxExposed <= 0.05 & FracFinalDeaths > 0))
-   lowlowfraction = lowlow / total
-   odf[nrow(odf)+1,] <- c(s,total,lowlow,lowlowfraction)
+   df.lowe <- subset(df.aux,FracMaxExposed <=0.05)
+   for(d in c(0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.10,0.11)){
+        lowED <- nrow(subset(df.lowe,FracFinalDeaths>0 & FracFinalDeaths < d ))
+        lowEDfraction <- lowED / total 
+        odf[nrow(odf)+1,] <- c(s,total,d,lowED,lowEDfraction)
+   }
 }
 
 odf$self <- factor(odf$self)
 odf$self<-factor(odf$self,levels(odf$self)[idx.self])
-odf$lowlowfraction <- as.numeric(odf$lowlowfraction)
+odf$lowEDfraction <- as.numeric(odf$lowEDfraction)
+odf$fracD <- factor(odf$fracD)
 
 
-outFile = "lowElowD_vs_self-distancing"
+outFile = "lowEoutbreaks_vs_self-distancing"
 xlabel = "Reduction of contacts"
-ylabel = "Fraction of simulations with low E and low D"
+ylabel = "Fraction of simulations with low exposed outbreaks"
 scale_x_labels <- c("0%","10%","20%","30%","40%","50%","60%","70%","80%","90%")
 
-gg <- ggplot(odf,aes(x=self,y=lowlowfraction))+geom_bar(stat="identity")+
+gg <- ggplot(odf,aes(x=self,y=lowEDfraction,fill=fracD))+geom_bar(stat="identity")+
       xlab(xlabel)+
       ylab(ylabel)+
       scale_x_discrete(labels=scale_x_labels)+
+      scale_fill_discrete(labels=c("<0.01","<0.02","<0.03","<0.04","<0.05","<0.06","<0.07","<0.08","<0.09","<0.10","<0.11"),name="Fraction of population dying")+
       scale_y_continuous()+
       theme( legend.text = element_text(size=legend.text.size),
             legend.title = element_text(size=legend.title.size),
