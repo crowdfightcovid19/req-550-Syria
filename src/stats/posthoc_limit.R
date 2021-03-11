@@ -43,11 +43,11 @@ print(wilcox.test(df.iso$FracFinalDeaths[df.iso$Limit=="Limit0"],df.iso$FracFina
 print(wilcox.test(df.iso$FracFinalDeaths[df.iso$Limit=="Limit10"],df.iso$FracFinalDeaths[df.iso$Limit=="Limit25"],paired=FALSE,alternative="greater"))
 print(wilcox.test(df.iso$FracFinalDeaths[df.iso$Limit=="Limit25"],df.iso$FracFinalDeaths[df.iso$Limit=="Limit50"],paired=FALSE,alternative="greater"))
 print(wilcox.test(df.iso$FracFinalDeaths[df.iso$Limit=="Limit50"],df.iso$FracFinalDeaths[df.iso$Limit=="Limit100"],paired=FALSE,alternative="greater"))
-print(wilcox.test(df.iso$FracFinalDeaths[df.iso$Limit=="Limit100"],df.iso$FracFinalDeaths[df.iso$Limit=="Limit250"],paired=FALSE,alternative="two.sided"))
+print(wilcox.test(df.iso$FracFinalDeaths[df.iso$Limit=="Limit100"],df.iso$FracFinalDeaths[df.iso$Limit=="Limit250"],paired=FALSE,alternative="greater"))
 print(wilcox.test(df.iso$FracFinalDeaths[df.iso$Limit=="Limit250"],df.iso$FracFinalDeaths[df.iso$Limit=="Limit500"],paired=FALSE,alternative="less"))
 print(wilcox.test(df.iso$FracFinalDeaths[df.iso$Limit=="Limit500"],df.iso$FracFinalDeaths[df.iso$Limit=="Limit2000"],paired=FALSE,alternative="less"))
 
-cat("Frac Deaths Summary: FracDeaths is reduced with 100 tents when compared to 0, 10, 25, 50. There is no difference between 100 and 250. FracDeaths increases for 500 and 2000 tents when compared to 100, 250.\n")
+cat("Frac Deaths Summary: FracDeaths is reduced with 250 tents when compared to 0, 10, 25, 50 and 100. FracDeaths increases for 500 and 2000 tents when compared to 250.\n")
 
 cat("Does increasing numbers the tents reduces significantly the IFR?\n")
 
@@ -79,9 +79,9 @@ print(wilcox.test(df.iso$FracFinalSusceptible[df.iso$Limit=="Limit0"],df.iso$Fra
 print(wilcox.test(df.iso$FracFinalSusceptible[df.iso$Limit=="Limit10"],df.iso$FracFinalSusceptible[df.iso$Limit=="Limit25"],paired=FALSE,alternative="less"))
 print(wilcox.test(df.iso$FracFinalSusceptible[df.iso$Limit=="Limit25"],df.iso$FracFinalSusceptible[df.iso$Limit=="Limit50"],paired=FALSE,alternative="less"))
 print(wilcox.test(df.iso$FracFinalSusceptible[df.iso$Limit=="Limit50"],df.iso$FracFinalSusceptible[df.iso$Limit=="Limit100"],paired=FALSE,alternative="less"))
-print(wilcox.test(df.iso$FracFinalSusceptible[df.iso$Limit=="Limit100"],df.iso$FracFinalSusceptible[df.iso$Limit=="Limit250"],paired=FALSE,alternative="greater"))
-print(wilcox.test(df.iso$FracFinalSusceptible[df.iso$Limit=="Limit250"],df.iso$FracFinalSusceptible[df.iso$Limit=="Limit500"],paired=FALSE,alternative="greater"))
-print(wilcox.test(df.iso$FracFinalSusceptible[df.iso$Limit=="Limit500"],df.iso$FracFinalSusceptible[df.iso$Limit=="Limit2000"],paired=FALSE,alternative="greater"))
+print(wilcox.test(df.iso$FracFinalSusceptible[df.iso$Limit=="Limit100"],df.iso$FracFinalSusceptible[df.iso$Limit=="Limit250"],paired=FALSE,alternative="less"))
+print(wilcox.test(df.iso$FracFinalSusceptible[df.iso$Limit=="Limit250"],df.iso$FracFinalSusceptible[df.iso$Limit=="Limit500"],paired=FALSE,alternative="two.sided"))
+print(wilcox.test(df.iso$FracFinalSusceptible[df.iso$Limit=="Limit500"],df.iso$FracFinalSusceptible[df.iso$Limit=="Limit2000"],paired=FALSE,alternative="two.sided"))
 
 cat("Summary for final susceptibles: number of final susceptibles increases up to a 100 tents, and then decreases.\n")
 
