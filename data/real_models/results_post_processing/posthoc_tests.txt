@@ -3,7 +3,7 @@ Test if the difference between null model and safety interventions (10 and 2 con
 	Kruskal-Wallis rank sum test
 
 data:  FracFinalDeaths by contacts
-Kruskal-Wallis chi-squared = 122.63, df = 2, p-value < 2.2e-16
+Kruskal-Wallis chi-squared = 150.93, df = 2, p-value < 2.2e-16
 
 There is a difference in the medians of the groups. We run a pairwise test.
 
@@ -14,7 +14,7 @@ data:  FracFinalDeaths by contacts
 
                            null_model_mixed shield_cont10_age3_age2_20
 shield_cont10_age3_age2_20 <2e-16           -                         
-shield_cont2_age3_age2_20  <2e-16           0.34                      
+shield_cont2_age3_age2_20  <2e-16           0.096                     
 
 P value adjustment method: holm 
 Similar results using van Waerden.
@@ -22,7 +22,7 @@ Similar results using van Waerden.
 	Van der Waerden normal scores test
 
 data:  FracFinalDeaths by contacts
-Van der Waerden chi-squared = 126.73, df = 2, p-value < 2.2e-16
+Van der Waerden chi-squared = 163.65, df = 2, p-value < 2.2e-16
 
 
 	Pairwise comparisons using van der Waerden normal scores test for	
@@ -32,7 +32,7 @@ data:  FracFinalDeaths by contacts
 
                            null_model_mixed shield_cont10_age3_age2_20
 shield_cont10_age3_age2_20 <2e-16           -                         
-shield_cont2_age3_age2_20  <2e-16           0.88                      
+shield_cont2_age3_age2_20  <2e-16           0.005                     
 
 P value adjustment method: holm 
 All differences between contact strategies are significant
@@ -42,7 +42,7 @@ Test if the difference in the fraction of deaths is significant for 24h vs. 12h 
 	Kruskal-Wallis rank sum test
 
 data:  FracFinalDeaths by Onset
-Kruskal-Wallis chi-squared = 6332.7, df = 3, p-value < 2.2e-16
+Kruskal-Wallis chi-squared = 5095.1, df = 3, p-value < 2.2e-16
 
 The difference is significant. Posthoc...
 
@@ -54,7 +54,7 @@ data:  FracFinalDeaths by Onset
         Onset0 Onset12 Onset24
 Onset12 <2e-16 -       -      
 Onset24 <2e-16 <2e-16  -      
-Onset48 <2e-16 <2e-16  <2e-16 
+Onset48 <2e-16 0.0027  <2e-16 
 
 P value adjustment method: holm 
 All differences significant.
@@ -62,7 +62,7 @@ van Waerden test to double check
 	Van der Waerden normal scores test
 
 data:  FracFinalDeaths by Onset
-Van der Waerden chi-squared = 5707.1, df = 3, p-value < 2.2e-16
+Van der Waerden chi-squared = 4759.4, df = 3, p-value < 2.2e-16
 
 
 	Pairwise comparisons using van der Waerden normal scores test for	
@@ -73,68 +73,7 @@ data:  FracFinalDeaths by Onset
         Onset0 Onset12 Onset24
 Onset12 <2e-16 -       -      
 Onset24 <2e-16 <2e-16  -      
-Onset48 <2e-16 <2e-16  <2e-16 
-
-P value adjustment method: holm 
-Posthoc test for isolation tents, increasing numbers the tents reduces significantly the fraction of deaths? What about CFR?
-
-	Kruskal-Wallis rank sum test
-
-data:  FracFinalDeaths by Limit
-Kruskal-Wallis chi-squared = 5398.9, df = 7, p-value < 2.2e-16
-
-
-	Pairwise comparisons using Tukey and Kramer (Nemenyi) test	
-                   with Tukey-Dist approximation for independent samples 
-
-data:  FracFinalDeaths by Limit 
-
-          Limit0  Limit10 Limit25 Limit50 Limit100 Limit250 Limit500
-Limit10   < 2e-16 -       -       -       -        -        -       
-Limit25   < 2e-16 0.72971 -       -       -        -        -       
-Limit50   < 2e-16 0.00034 0.11229 -       -        -        -       
-Limit100  < 2e-16 2.0e-13 1.5e-08 0.01122 -        -        -       
-Limit250  < 2e-16 1.5e-12 9.3e-08 0.02947 0.99999  -        -       
-Limit500  < 2e-16 4.6e-08 0.00028 0.69781 0.61321  0.79534  -       
-Limit2000 < 2e-16 0.15818 0.98085 0.62086 3.3e-06  1.5e-05  0.01157 
-
-P value adjustment method: none 
-We can do pairwise, ordered comparisons
-.
-	Wilcoxon rank sum test with continuity correction
-
-data:  df.iso$FracFinalDeaths[df.iso$Limit == "Limit100"] and df.iso$FracFinalDeaths[df.iso$Limit == "Limit250"]
-W = 2344777, p-value = 0.7348
-alternative hypothesis: true location shift is not equal to 0
-
-
-	Wilcoxon rank sum test with continuity correction
-
-data:  df.iso$FracFinalDeaths[df.iso$Limit == "Limit250"] and df.iso$FracFinalDeaths[df.iso$Limit == "Limit500"]
-W = 2286696, p-value = 0.08562
-alternative hypothesis: true location shift is not equal to 0
-
-
-	Wilcoxon rank sum test with continuity correction
-
-data:  df.iso$FracFinalDeaths[df.iso$Limit == "Limit500"] and df.iso$FracFinalDeaths[df.iso$Limit == "Limit2000"]
-W = 2214305, p-value = 3.218e-05
-alternative hypothesis: true location shift is less than 0
-
-
-	Pairwise comparisons using van der Waerden normal scores test for	
-               multiple comparisons of independent samples 
-
-data:  CFR by Limit 
-
-          Limit0  Limit10 Limit25 Limit50 Limit100 Limit250 Limit500
-Limit10   < 2e-16 -       -       -       -        -        -       
-Limit25   < 2e-16 0.86578 -       -       -        -        -       
-Limit50   < 2e-16 0.04915 0.26022 -       -        -        -       
-Limit100  < 2e-16 3.9e-06 0.00013 0.08367 -        -        -       
-Limit250  < 2e-16 6.6e-07 3.0e-05 0.03876 0.86578  -        -       
-Limit500  < 2e-16 3.5e-11 5.6e-09 0.00012 0.26022  0.34361  -       
-Limit2000 < 2e-16 < 2e-16 < 2e-16 1.9e-14 4.1e-07  2.8e-06  0.00260 
+Onset48 <2e-16 0.092   <2e-16 
 
 P value adjustment method: holm 
 
