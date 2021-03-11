@@ -24,12 +24,12 @@ setwd("/home/ecam/workbench/req-550-Syria")
 ptitle <- c("boxmeandot")
 fplot.list <- c(do_box_plot_mean_dot)
 
-axis.text.size = 24
-axis.title.size = 27
-legend.title.size = 27
-legend.text.size = 24
-axis.text.x.size = 24
-title.size = 35
+axis.text.size = 34
+axis.title.size = 37
+legend.title.size = 37
+legend.text.size = 34
+axis.text.x.size = 34
+title.size = 45
 
 varPoutbreak <- "POutbreak"
 varFracDeath <- "FracFinalDeaths"
