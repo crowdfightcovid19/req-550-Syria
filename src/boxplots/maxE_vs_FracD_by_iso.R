@@ -24,12 +24,12 @@ setwd("/home/ecam/workbench/req-550-Syria")
 ptitle <- c("boxmeandot")
 fplot.list <- c(do_box_plot_mean_dot)
 
-axis.text.size = 34
-axis.title.size = 37
-legend.title.size = 37
-legend.text.size = 34
-axis.text.x.size = 34
-title.size = 45
+axis.text.size = 24
+axis.title.size = 27
+legend.title.size = 27
+legend.text.size = 24
+axis.text.x.size = 24
+title.size = 35
 
 varPoutbreak <- "POutbreak"
 varFracDeath <- "FracFinalDeaths"
@@ -69,59 +69,53 @@ df.iso$Limit<-factor(df.iso$Limit,levels(df.iso$Limit)[idx.limit])
 df.iso$FracMaxExposed <- df.iso$FracMaxExposed / 100. #Fraction, rather than %.
 
 
-#Self distancing
-df <- df.self
-outFile = "MaxExposed_vs_TimePeak_by_self-distancing"
-varX = "TimePeakSymptomatic"
-varY = "FracMaxExposed"
-xlabel = "Time to peak symptomatic (days)"
-ylabel = "Max. fraction of population exposed"
-#scale_x_labels <- c("0","10","20","30","40","50")
-scale_color_labels <- c("0%","10%","20%","30%","40%","50%","60%","70%","80%","90%")
-group_name = "Reduction of contacts"
-
-gg <-ggplot(df,aes(x=TimePeakSymptomatic,y=FracMaxExposed))+
-     geom_point(aes(colour=self,size=FracFinalDeaths),alpha=0.6)+
-     scale_color_discrete(name=group_name,labels=scale_color_labels)+
-     scale_size(breaks=c(0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.10,0.11),
-                       labels=c("0.01","0.02","0.03","0.04","0.05","0.06","0.07","0.08","0.09","0.10","0.11"),
-                       range=c(1,10),
-                       name="Fraction of population dying")+
-     xlab(xlabel)+
-     ylab(ylabel)+
-     guides(color = guide_legend(override.aes = list(size = 5)))+
-     theme( legend.text = element_text(size=legend.text.size),
-            legend.title = element_text(size=legend.title.size),
-            axis.text = element_text(size=axis.text.size),
-            axis.title = element_text(size=axis.title.size),
-            panel.grid.major = element_line(size = 0.5, linetype = 'solid', colour = "lightgrey"),
-            panel.grid.minor = element_line(size = 0.25, linetype = 'solid', colour = "lightgrey"),
-            panel.background = element_rect(fill = "white", colour = "black", linetype = "solid"))
-
-
-setwd(outPlotDir)
-pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 20,title=outFile)
-print(gg)
-dev.off( )
-
+##Self distancing
+#df <- df.self
+#outFile = "MaxExposed_vs_TimePeak_by_self-distancing"
+#varX = "TimePeakSymptomatic"
+#varY = "FracMaxExposed"
+#xlabel = "Time to peak symptomatic (days)"
+#ylabel = "Max. fraction of population exposed"
+##scale_x_labels <- c("0","10","20","30","40","50")
+#scale_color_labels <- c("0%","10%","20%","30%","40%","50%","60%","70%","80%","90%")
+#group_name = "Reduction of contacts"
+#
+#gg <-ggplot(df,aes(x=TimePeakSymptomatic,y=FracMaxExposed))+
+#     geom_point(aes(colour=self,size=FracFinalDeaths),alpha=0.6)+
+#     scale_color_discrete(name=group_name,labels=scale_color_labels)+
+#     scale_size(breaks=c(0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.10,0.11),
+#                       labels=c("0.01","0.02","0.03","0.04","0.05","0.06","0.07","0.08","0.09","0.10","0.11"),
+#                       range=c(1,10),
+#                       name="Fraction of population dying")+
+#     xlab(xlabel)+
+#     ylab(ylabel)+
+#     guides(color = guide_legend(override.aes = list(size = 5)))+
+#     theme( legend.text = element_text(size=legend.text.size),
+#            legend.title = element_text(size=legend.title.size),
+#            axis.text = element_text(size=axis.text.size),
+#            axis.title = element_text(size=axis.title.size),
+#            panel.grid.major = element_line(size = 0.5, linetype = 'solid', colour = "lightgrey"),
+#            panel.grid.minor = element_line(size = 0.25, linetype = 'solid', colour = "lightgrey"),
+#            panel.background = element_rect(fill = "white", colour = "black", linetype = "solid"))
+#
+#
+#setwd(outPlotDir)
+#pdf(file=paste(outFile,".pdf",sep=""),width=30,height = 20,title=outFile)
+#print(gg)
+#dev.off( )
+#
 #Self isolation
 df <- df.iso
-outFile = "MaxExposed_vs_TimePeak_by_self-isolation"
-varX = "TimePeakSymptomatic"
-varY = "FracMaxExposed"
-xlabel = "Time to peak symptomatic (days)"
-ylabel = "Max. fraction of population exposed"
+outFile = "finalD_vs_maxE_by_self-isolation"
+xlabel = "Max. fraction of population exposed"
+ylabel = "Fraction of population dying"
 #scale_x_labels <- c("0","10","20","30","40","50")
 scale_color_labels <- c("0","10","25","50","100","250","500","2000")
 group_name = "Number of self-isolation tents"
 
-gg <-ggplot(df,aes(x=TimePeakSymptomatic,y=FracMaxExposed))+
-     geom_point(aes(colour=Limit,size=FracFinalDeaths),alpha=0.6)+
+gg <-ggplot(df,aes(x=FracMaxExposed,y=FracFinalDeaths))+
+     geom_point(aes(colour=Limit),alpha=0.6)+
      scale_color_discrete(name=group_name,labels=scale_color_labels,type=c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7","#E69AA0"))+
-     scale_size(breaks=c(0.07,0.08,0.09,0.10,0.11),
-                       labels=c("0.07","0.08","0.09","0.10","0.11"),
-                       range=c(1,10),
-                       name="Fraction of population dying")+
      xlab(xlabel)+
      ylab(ylabel)+
      guides(color = guide_legend(override.aes = list(size = 5)))+

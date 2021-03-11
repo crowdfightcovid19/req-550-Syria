@@ -66,7 +66,7 @@ for(s in levels(df.iso$Limit)){
    total = nrow(df.aux)
    df.lowe <- subset(df.aux,FracMaxExposed <=0.05)
    for(d in c(0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.10,0.11)){
-        lowED <- nrow(subset(df.lowe,FracFinalDeaths>0 & FracFinalDeaths < d ))
+        lowED <- nrow(subset(df.lowe,FracFinalDeaths>d-0.01 & FracFinalDeaths < d ))
         lowEDfraction <- lowED / total 
         odf[nrow(odf)+1,] <- c(s,total,d,lowED,lowEDfraction)
    }
@@ -78,17 +78,15 @@ odf$lowEDfraction <- as.numeric(odf$lowEDfraction)
 odf$fracD <- factor(odf$fracD)
 
 
-outFile = "lowEoutbreaks_vs_self-isolation"
+outFile = "Eoutbreaks_vs_self-isolation"
 xlabel = "Number of self-isolation tents"
 ylabel = "Fraction of simulations with low exposed outbreaks"
-scale_x_labels <- c("0","10","25","50","100","250","500","2000")
 
 gg <- ggplot(odf,aes(x=Limit,y=lowEDfraction,fill=fracD))+geom_bar(stat="identity")+
       xlab(xlabel)+
       ylab(ylabel)+
-      scale_x_discrete(labels=scale_x_labels)+
       scale_fill_discrete(labels=c("<0.01","<0.02","<0.03","<0.04","<0.05","<0.06","<0.07","<0.08","<0.09","<0.10","<0.11"),name="Fraction of population dying")+
-      scale_y_continuous(labels=function(x) sprintf("%.2f",x/10))+
+      scale_y_continuous(labels=function(x) sprintf("%.3f",x))+
       theme( legend.text = element_text(size=legend.text.size),
             legend.title = element_text(size=legend.title.size),
             axis.text = element_text(size=axis.text.size),
