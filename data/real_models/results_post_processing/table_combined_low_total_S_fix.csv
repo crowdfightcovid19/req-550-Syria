@@ -1,14 +1,14 @@
-Intervention,<20 cases,Total,% of total
-safety,16,270,5.9
-safety + evac,20,249,8
-safety + lock 50\%,5,171,2.9
-safety + self 20\%,19,188,10
-safety + 50 tents,11,240,4.6
-safety + self 50\%,14,64,22
-safety + 50 tents + lock 50\%,14,154,9.1
-safety + 50 tents + evac,33,239,14
-safety + 50 tents + self 20\%,31,144,22
-safety + 50 tents + self 50\%,25,38,66
-safety + 50 tents + evac + lock 50\% + self 20\%,53,110,48
-safety + 50 tents + evac + lock 50\% + self 50\%,18,20,90
-safety + 50 tents + evac + lock 90\% + self 50\%,6,8,75
+"Intervention","<20 cases","Total","% of total"
+safety,36,1908,1.9
+safety + evac,48,1894,2.5
+safety + lock 50\%,40,1454,2.8
+safety + self 20\%,56,1582,3.5
+safety + 50 tents,29,1827,1.6
+safety + self 50\%,187,719,26
+safety + 50 tents + lock 50\%,50,1349,3.7
+safety + 50 tents + evac,47,1804,2.6
+safety + 50 tents + self 20\%,90,1421,6.3
+safety + 50 tents + self 50\%,199,486,41
+safety + 50 tents + evac + lock 50\% + self 20\%,113,991,11
+safety + 50 tents + evac + lock 50\% + self 50\%,129,275,47
+safety + 50 tents + evac + lock 90\% + self 50\%,38,82,46
