@@ -95,8 +95,11 @@ df.shield$group<-factor(df.shield$group,levels(df.shield$group)[idx.group])
 idx.limit<- c(1,2,5,7,3,6,8,4)
 df.iso$Limit<-factor(df.iso$Limit,levels(df.iso$Limit)[idx.limit])
 
-idx.self<- c(6,1,2,3,4,5)
+idx.self<- c(10,1,2,3,4,5,6,7,8,9)
 df.self$self<-factor(df.self$self,levels(df.self$self)[idx.self])
+
+#idx.self<- c(6,1,2,3,4,5)
+#df.self$self<-factor(df.self$self,levels(df.self$self)[idx.self])
 
 #idx.onset <- c(3,1,2)
 #df.onset$Onset<-factor(df.onset$Onset,levels(df.onset$Onset)[idx.onset])
@@ -589,7 +592,7 @@ varX = "self"
 varY = "FracFinalRecovered"
 xlabel = "Individual reduction of contacts per day (%)"
 ylabel = "Fraction of population recovered"
-scale_x_labels <- c("0","10","20","30","40","50")
+scale_x_labels <- c("0","10","20","30","40","50","60","70","80","90")
 scale_fill_labels <- c("Total")
 group_name = "Group"
 
