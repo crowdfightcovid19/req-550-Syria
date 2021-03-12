@@ -81,10 +81,10 @@ rates_SEPAIHRD_str = function(y, parms,t){
   # ..... Quantify people at the symptomatic compartments
   #Htot = sum(y[hosp.idx]) # people which needs to be in isolation, heavy symptoms
   Itot = sum(y[inf.idx]) # mild symptoms, these are the only ones that can stay in tents
-  Niso = isoThr*y[inf.idx]
+  Niso = y[inf.idx]
   names(Niso)=classes
-  if(Itot > 0){ # Niso will be zero otherwise for all classes
-    Niso = Niso/Itot
+  if(Itot > isoThr){ # Niso will be zero otherwise for all classes
+    Niso = isoThr*Niso/Itot
   }
   
   # --- Initialize vars for lockdown
@@ -136,7 +136,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
         if(Nexp > 0){ # There are carers available 
           frac.exp=Niso[class]/Nsubpop[Ref] #Nexp # Note that it could be > 0
         }else{ # otherwise it means all carers died (very unlikely)
-          isoThr=0 # so isolation does no longer make sense
+          #isoThr=0 # so isolation does no longer make sense (don't turn to zero, it may make sense later on and isoThr affects more points in the algorithm)
           Niso=Niso*0
           frac.exp=0 # all are exposed
         }
