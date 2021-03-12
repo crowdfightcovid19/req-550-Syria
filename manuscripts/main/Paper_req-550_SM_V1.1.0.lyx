@@ -7,7 +7,7 @@
 \textclass article
 \begin_preamble
 \usepackage{xr}
-\externaldocument{Paper_req-550_V1.0.2}
+\externaldocument{Paper_req-550_V1.1.0}
 \usepackage{lineno}
 \usepackage{xcolor}
 \usepackage{tikz}
@@ -4207,7 +4207,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename figures/FigS13.pdf
-	height 70theight%
+	width 90text%
 
 \end_inset
 
@@ -4333,29 +4333,24 @@ noprefix "false"
 
 \begin_layout Standard
 
-\change_inserted -1732430129 1615482103
+\change_inserted -1732430129 1615564622
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 
 \change_inserted -1732430129 1615483501
 \begin_inset Graphics
-	filename figures/FigS14a.pdf
-	width 47text%
-
-\end_inset
-
-
-\begin_inset space \enskip{}
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/FigS14b.pdf
-	width 47text%
+	filename figures/FigS14.pdf
+	width 110text%
 
 \end_inset
 
