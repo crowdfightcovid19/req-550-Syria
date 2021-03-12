@@ -8,7 +8,7 @@
 \begin_preamble
 \usepackage{lipsum}
 \usepackage{xr}
-\externaldocument{Paper_req-550_SM_V1.0.2}
+\externaldocument{Paper_req-550_SM_V1.1.0}
 \usepackage{lineno}
 %\usepackage[strings]{underscore} % to include underscores (appearing in bib fields)
 %\usepackage[english]{babel} % should go in hand with this to prevent errors (better to escape the underscores)
@@ -729,6 +729,78 @@ noprefix "false"
 \end_inset
 
 .
+\change_inserted -1732430129 1615560686
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1732430129 1615561160
+While we introduced the model as a classical ordinary system of ordinary
+ differential equations (Eqs.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:System1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+–
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:System8"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) we considered a stochastic implementation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "engbert_chanceChaos_1994"
+literal "false"
+
+\end_inset
+
+, with an integer description of the population in which a state is encoded
+ in a vector 
+\begin_inset Formula $X=(S,E,P,I,A,H,R,D)^{t}$
+\end_inset
+
+, with the total population size conserved along the simulation 
+\begin_inset Formula $N=S+E+P+I+A+R+D$
+\end_inset
+
+.
+ The possible transitions between states of the system are shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, where an arrow indicates transitions in which the source compartment transfers
+ one individual to the target compartment.
+ The mean transition rates corresponding to each transition are displayed.
+ The system then evolves following a continuous-time Markov process which
+ is simulated following the tau-leaping approximation implemented in the
+ adaptivetau package 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "R_adaptivetau"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -999,6 +1071,12 @@ ptomatic (I), infectious-requiring hospitalization (H), recovered (R) and
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_inserted -1732430129 1615560819
+Demographic– and behaviour-classes
 \end_layout
 
 \begin_layout Standard
@@ -5418,90 +5496,11 @@ Computational implementation and statistical analysis
 
 \begin_layout Standard
 
-\change_deleted -1732430129 1615495059
-To implement this model, we considered a
-\change_inserted -1732430129 1615511486
-While we introduced the model as a classical ordinary system of ordinary
- differential equations (Eqs.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:System1"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-–
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:System8"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-) we considered a stochastic implementation 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "engbert_chanceChaos_1994"
-literal "false"
-
-\end_inset
-
-, with an integer description of the population in which a state is encoded
- in a vector 
-\begin_inset Formula $X=(S,E,P,I,A,H,R,D)^{t}$
-\end_inset
-
- (if self-isolation is modelled 
-\begin_inset Formula $O$
-\end_inset
-
- is also included), with the total population size conserved along the simulatio
-n 
-\begin_inset Formula $N=S+E+P+I+A+R+D$
-\end_inset
-
-.
- The possible transitions between states of the system are shown in Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Diagram"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, where an arrow indicates transitions in which the source compartment transfers
- one individual to the target compartment.
- The mean transition rates corresponding to each transition are displayed
- in each arrow.
- The system then evolves following a
-\change_deleted -1732430129 1615494078
+\change_deleted -1732430129 1615560661
+To implement this model, we considered a continuous-time Markov process.
  
 \change_unchanged
-continuous-time Markov process
-\change_inserted -1732430129 1615506626
- which is simulated following the tau-leaping approximation of the Gillespie
- algorithm implemented in the adaptivetau package 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "R_adaptivetau"
-literal "false"
-
-\end_inset
-
-.
-\change_deleted -1732430129 1615496573
-.
-
-\change_unchanged
- The specific values of the parameters shown in 
+The specific values of the parameters shown in 
 \change_deleted -1732430129 1615496600
 these equations
 \change_inserted -1732430129 1615496601
@@ -5611,7 +5610,9 @@ literal "false"
 \end_inset
 
  to verify that our results do not exhibit normally distributed residuals,
- Kruskal-Wallis test for pairwise comparisons 
+ 
+\change_deleted -1732430129 1615561298
+Kruskal-Wallis test for pairwise comparisons 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kruskal_ranks_1952"
@@ -5619,7 +5620,9 @@ literal "false"
 
 \end_inset
 
-, and Conover-Iman test for multiple comparisons 
+,
+\change_unchanged
+ and Conover-Iman test for multiple comparisons 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "conover_multiple_1979"
@@ -5901,9 +5904,9 @@ E).
  
 \change_unchanged
 and mortality
-\change_inserted -1732430129 1615509764
- (until 1 per every 20 people, Kruskal-Conover post-hoc-test, p-val
-\begin_inset Formula $<3\times10^{-5}$
+\change_inserted -1732430129 1615561231
+ (until 1 per every 20 people, Conover-Iman test, p-val
+\begin_inset Formula $<10^{-16}$
 \end_inset
 
 ).
@@ -6308,8 +6311,8 @@ literal "false"
 
 .
 
-\change_inserted -1732430129 1615507920
- However, to illustrate the mechanist micro-dynamics of the intervention,
+\change_inserted -1732430129 1615562955
+ However, to illustrate the mechanistic micro-dynamics of the intervention,
  in Supplementary Fig.
  
 \begin_inset CommandInset ref
@@ -6321,14 +6324,15 @@ noprefix "false"
 
 \end_inset
 
- we show how a further reduction in contacts reduces the maximum, along
- the simulaton, in the number of individuals in the exposed compartment
- at a given time, and increases the time to peak of symptomatic until a
- threshold (between 60-70%), over which the spread of the virus becomes
- damped.
- This happens when the maximum of the population exposed is lower than 2%,
- which can be interpreted as a critical threshold over which the virus increases
- the time present in the population, significantly increasing the mortality.
+ we show the maximum in the population simultaneously exposed at a given
+ time in each simulation, against the time to peak of symptomatic.
+ We observe that, by reducing the number of contacts until approximately
+ a 60% reduction this maximum is reduced while the time to peak increases.
+ Above that value, the time to peak abruptly decreases and also the mortality,
+ suggesting that the spread of the virus becomes damped.
+ This behaviour can be interpreted as a critical threshold over which the
+ virus increases the time present in the population, significantly increasing
+ the mortality.
 \change_unchanged
 
 \end_layout
@@ -6627,13 +6631,22 @@ literal "false"
 
 \end_inset
 
-, empowering local communities themselves is perhaps the best, if not the
- only way, to help them avoid the worst consequences of the pandemic
-\change_inserted -1732430129 1615490922
- because may achieve greater compliance, particularly when there is mistrust
- of external authority
+, 
+\change_inserted -1732430129 1615563989
+because may achieve greater compliance, particularly when there is mistrust
+ of external authority.
+ 
+\change_deleted -1732430129 1615563991
+e
+\change_inserted -1732430129 1615563992
+E
 \change_unchanged
+mpowering local communities themselves is perhaps the best, if not the only
+ way, to help them avoid the worst consequences of the pandemic
+\change_deleted -1732430129 1615563976
 .
+
+\change_unchanged
  This not only applies to IDP camps in NW Syria, but more generally to refugee
  camps in conflict-torn regions, and potentially other informal settlements
  and vulnerable communities around the world: the low-cost, effective interventi
