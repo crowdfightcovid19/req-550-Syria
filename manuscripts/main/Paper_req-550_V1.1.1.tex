@@ -91,7 +91,9 @@ NJ, USA. \\
 United Kingdom. \\
  (5) Pax Syriana Foundation. Valetta, Malta. \\
  ($\land$) Equal contribution. \\
- ({*}) correspondence: alberto.pascual@env.ethz.ch 
+ ({*}) correspondence: alberto.pascual@env.ethz.ch.\\
+Universitätstrasse 16. 8005, Zürich (Switzerland). Tel. +41 44 632
+89 22
 \par\end{center}}
 \begin{abstract}
 More than 1 billion people live in informal settlements worldwide,
@@ -112,15 +114,17 @@ of them reduce mortality when an outbreak does occur. Self-distancing
 reduces mortality by up to 35\% if contacts are reduced by 50\%. A
 similar reduction in mortality can be achieved by providing 1 self-isolation
 tent per 200 people. Protecting the most vulnerable in a safety zone
-both reduces mortality among them and has synergistic effects with
-the other interventions. Our model predicts that a combination of
-all simulated interventions may reduce mortality by as much as 80\%
-and delay an outbreak’s peak by almost two months. Our results highlight
-the potential for non-medical interventions to mitigate the effects
-of the pandemic. Similar measures may be applicable to controlling
-COVID-19 in other informal settlements, particularly IDP camps in
-conflict regions, around the world.
+reduces the outbreak probability in the vulnerable population and
+has synergistic effects with the other interventions. Our model predicts
+that a combination of all simulated interventions may reduce mortality
+by almost 80\% and delay an outbreak’s peak by almost two months.
+Our results highlight the potential for non-medical interventions
+to mitigate the effects of the pandemic. Similar measures may be applicable
+to controlling COVID-19 in other informal settlements, particularly
+IDP camps in conflict regions, around the world.
 \end{abstract}
+\bigskip{}
+
 \textbf{Keywords:} COVID 19 \textbar{} Epidemiology \textbar{} community-led
 interventions \textbar{} SIR models \textbar{} Internally Displaced
 Persons \textbar{} Syria \textbar{} Refugees
@@ -131,6 +135,10 @@ Persons \textbar{} Syria \textbar{} Refugees
 NWS: Northwest region of Syria \textbar{} IFR: Infection fatality
 rate \textbar{} ICU: Intensive care unit \textbar{} IBM: Individual
 based models
+
+\medskip{}
+
+\textbf{Word count:} 5738
 
 \newpage{}
 
@@ -897,9 +905,9 @@ from $\sim$40 days when there is no intervention to 72 days when
 contacts are reduced by 50\% (see Fig. \ref{fig:Panel2}C). The proportion
 of the population escaping from infection after 12 months also increases
 up to near 33\% when a 50\% reduction is considered, and the proportion
-of the population recovered after 12 months (which may help with population
-level protection against future outbreaks) is reduced from 84\% to
-60\% (see Supplementary Fig. \ref{fig:Suppl_self}).
+of the population recovered after 12 months (which informs on the
+potential population level protection against future outbreaks) is
+reduced from 84\% to 60\% (see Supplementary Fig. \ref{fig:Suppl_self}).
 
 \begin{figure*}
 \includegraphics[width=1\textwidth]{figures/Fig2}
@@ -912,17 +920,14 @@ probability of an outbreak. E: Self-isolation, fraction of the population
 dying. F: Self-isolation, time until peak symptomatic cases. G: Safety
 zone, probability of an outbreak. H: Safety zone, fraction of the
 population dying. I: Safety zone, time until peak symptomatic cases.
-Note that in figures of the safety zone intervention (panels G-I),
-the mean of an outcome for the whole population is not the weighted
-mean of the exposed and safety zones, since outcomes are computed
-considering simulations in which at least one death was observed in
-the population class inhabiting the zone. This explains why in panel
-I there is a reduction in the mean time until symptomatic cases peak
-when moving from 10 to 2 contacts per week for the whole population,
-despite there being a weak increase in the safety zone: in $\sim$35\%
-of simulations there is an outbreak in the orange zone but not in
-the green zone (panel G). In the safety zone figures (panels G-I)
-health-checks are in place, in Supplementary Fig. \ref{fig:Suppl_Tcheck}
+Triangles indicate the means and boxes interquartile ranges. Note
+that in figures of the safety zone intervention (panels G-I), the
+mean of an outcome for the whole population is not the weighted mean
+of the exposed and safety zones, since outcomes are computed considering
+simulations in which at least one death was observed in the population
+class inhabiting the zone, i.e. the number of simulations considered
+to compute each mean is different. In the safety zone figures (panels
+G-I) health-checks are in place, in Supplementary Fig. \ref{fig:Suppl_Tcheck}
 we show the effect of removing health-checks.}
 \end{figure*}
 
@@ -1000,8 +1005,8 @@ to have an effect only in reducing the infectivity. Although these
 individuals spend a longer period being infectious with respect to
 an individual having mild symptoms ($\sim$10 days longer), the number
 of individuals under these conditions is only a small fraction of
-the total infectious population at any given time, what explains why
-we do not observe significant effects for this intervention.
+the total infectious population at any given time, which explains
+why we do not observe significant effects for this intervention.
 
 \subsection*{Combined interventions}
 
@@ -1021,7 +1026,8 @@ are implemented together: strict self-distancing (50\% reduction in
 contacts), self-isolation of symptomatic cases (1 tent for every 40
 people), a safety zone with 2 contacts per week in the buffer zone,
 health checks, a strict lockdown (90\%), and evacuation of severe
-cases, mortality is reduced by $\sim$80\%.
+cases, mortality is reduced by $\sim$80\% and the time to peak of
+symptomatic cases in the green zone is delayed by two months.
 
 \begin{figure*}
 \begin{centering}
@@ -1150,7 +1156,7 @@ perhaps the most relevant relates to the relative transmissivity of
 the different infectious stages, whose specific values still have
 large margins of variability \cite{widders_viralLoadVsInfect_2020,casey_presymptEstim_2020,he_temporal_2020}.
 This is particularly relevant for our purposes, because the higher
-the relative infectivity of the presymptomatic and asymptomattic stages,
+the relative infectivity of the presymptomatic and asymptomatic stages,
 the less effective our non-medical interventions which rely on identification
 of symptomatic individuals will be. For instance, Bullock et al. \cite{bullock_IBM4IDPs_covid21}
 assumed a higher infectiousness of the presymptomatic stage and hence
@@ -1159,7 +1165,7 @@ also becomes ineffective under the assumptions made by Hernandez-Suarez
 et al. \cite{hernandez_Refugee_covid20} when they considered isolating
 only severe symptomatic cases (whose fraction is small), hence mildly
 symptomatic individuals were effectively considered asymptomatic.
-On the otherhand, Gilman et al. \cite{gilman_IBMrefugee_covid20}
+On the other hand, Gilman et al. \cite{gilman_IBMrefugee_covid20}
 showed that self-isolation was effective when considering individuals
 at different stages to be equally infectious. We assumed that presymptomatic
 individuals have the highest relative infectivity, consistent with
@@ -1172,7 +1178,7 @@ of our manuscript \cite{pascual-garcia_medRxiv_2020}v1).
 It is also important to acknowledge the benefits and limitations of
 different possible computational implementations. For instance, there
 are interventions that do not have a natural implementation within
-our framework, such as those requiring interventions targetting very
+our framework, such as those requiring interventions targeting very
 specific interactions between individuals (as opposed to large groups
 of individuals). An example might be the isolation of an individual
 and his/her family, as proposed in Gilman \cite{gilman_IBMrefugee_covid20}
@@ -1181,14 +1187,14 @@ would require the creation of as many classes as families. When this
 level of detail is required, individual based models (IBMs) may be
 more appropriate \cite{gilman_IBMrefugee_covid20,bullock_IBM4IDPs_covid21}.
 However, IBMs require a rich amount of data for their parameterization
-which, although increasingly available, is scarce for IDPs. Our framework
-is powerful enough to simulate a large number of scenarios with little
-computational cost, which would be an optimal strategy as a first
-approximation in the design of interventions to narrow down the most
-relevant scenarios (as a reference, in \textless 24h we model with
-just 12 cores 75 scenarios requiring quarter million simulations).
-The scenarios selected could then be further investigated with more
-detailed interventions using IBMs, if data is available.
+which, although increasingly available, is scarce for informal IDPs
+camps. Our framework is powerful enough to simulate a large number
+of scenarios with little computational cost, which would be an optimal
+strategy as a first approximation in the design of interventions to
+narrow down the most relevant scenarios (as a reference, in \textless 24h
+we model with just 12 cores 75 scenarios requiring quarter million
+simulations). The scenarios selected could then be further investigated
+with more detailed interventions using IBMs, if data is available.
 
 A key limitation of our approach is that it simulates an outbreak
 started by one infectious individual in a single camp with a closed
@@ -1291,10 +1297,10 @@ All the code is freely available at the url https://github.com/crowdfightcovid19
 All authors contributed to the conceptualization. Design of the methodology:
 APG, ECF, JV, JK, CS. Formal analysis: APG, ECF, JK. Code development
 APG, ECF, JK. Conducted research: APG, ECF, JV, JK. Validate results:
-APG, ECF, JK, JV, CS. Contributed resources: APG, CS, ECF, JK. Data
-curation: APG, JK. Visualization: APG, ECF, JK. Writing (original
-draft) APG, ECF, JK. All authors contributed to the final version
-of the manuscript, and APG supervised the research.
+APG, ECF, JK, JV, CS. Contributed resources: APG, CS, ECF, JK, JV.
+Data curation: APG, JK, ECF. Visualization: APG, ECF, JK, JV. Writing
+(original draft) APG, ECF, JK. All authors contributed to the final
+version of the manuscript, and APG supervised the research.
 
 \bibliographystyle{unsrt}
 \bibliography{req550-syria}

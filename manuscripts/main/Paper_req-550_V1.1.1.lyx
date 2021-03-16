@@ -242,11 +242,12 @@ cks, and carers for isolated individuals, quantifying their impact on the
  by 50%.
  A similar reduction in mortality can be achieved by providing 1 self-isolation
  tent per 200 people.
- Protecting the most vulnerable in a safety zone both reduces mortality
- among them and has synergistic effects with the other interventions.
+ Protecting the most vulnerable in a safety zone reduces the outbreak probabilit
+y in the vulnerable population and has synergistic effects with the other
+ interventions.
  Our model predicts that a combination of all simulated interventions may
- reduce mortality by as much as 80% and delay an outbreak’s peak by almost
- two months.
+ reduce mortality by almost 80% and delay an outbreak’s peak by almost two
+ months.
  Our results highlight the potential for non-medical interventions to mitigate
  the effects of the pandemic.
  Similar measures may be applicable to controlling COVID-19 in other informal
@@ -5743,9 +5744,9 @@ noprefix "false"
 C).
  The proportion of the population escaping from infection after 12 months
  also increases up to near 33% when a 50% reduction is considered, and the
- proportion of the population recovered after 12 months (which may help
- with population level protection against future outbreaks) is reduced from
- 84% to 60% (see Supplementary Fig.
+ proportion of the population recovered after 12 months (which informs on
+ the potential population level protection against future outbreaks) is
+ reduced from 84% to 60% (see Supplementary Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5800,20 +5801,13 @@ Effect of interventions on outbreak probability, fatalities and time until
  G: Safety zone, probability of an outbreak.
  H: Safety zone, fraction of the population dying.
  I: Safety zone, time until peak symptomatic cases.
+ Triangles indicate the means and boxes interquartile ranges.
  Note that in figures of the safety zone intervention (panels G-I), the
  mean of an outcome for the whole population is not the weighted mean of
  the exposed and safety zones, since outcomes are computed considering simulatio
 ns in which at least one death was observed in the population class inhabiting
- the zone.
- This explains why in panel I there is a reduction in the mean time until
- symptomatic cases peak when moving from 10 to 2 contacts per week for the
- whole population, despite there being a weak increase in the safety zone:
- in 
-\begin_inset Formula $\sim$
-\end_inset
-
-35% of simulations there is an outbreak in the orange zone but not in the
- green zone (panel G).
+ the zone, i.e.
+ the number of simulations considered to compute each mean is different.
  In the safety zone figures (panels G-I) health-checks are in place, in
  Supplementary Fig.
  
@@ -6132,7 +6126,8 @@ noprefix "false"
 \begin_inset Formula $\sim$
 \end_inset
 
-80%.
+80% and the time to peak of symptomatic cases in the green zone is delayed
+ by two months.
 \end_layout
 
 \begin_layout Standard
@@ -6680,9 +6675,9 @@ All authors contributed to the conceptualization.
  Code development APG, ECF, JK.
  Conducted research: APG, ECF, JV, JK.
  Validate results: APG, ECF, JK, JV, CS.
- Contributed resources: APG, CS, ECF, JK.
- Data curation: APG, JK.
- Visualization: APG, ECF, JK.
+ Contributed resources: APG, CS, ECF, JK, JV.
+ Data curation: APG, JK, ECF.
+ Visualization: APG, ECF, JK, JV.
  Writing (original draft) APG, ECF, JK.
  All authors contributed to the final version of the manuscript, and APG
  supervised the research.

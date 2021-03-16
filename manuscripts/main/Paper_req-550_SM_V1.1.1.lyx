@@ -3861,6 +3861,15 @@ Health-checks in the buffer zone.
  zone per week are plotted.
  All figures consider the scenario in which 20% of the camp's population
  is allocated to the safety zone.
+ Note that the mean of an outcome for the whole population is not the weighted
+ mean of the exposed and safety zones, since outcomes are computed considering
+ simulations in which at least one death was observed in the population
+ class inhabiting the zone, i.e.
+ the number of simulations considered to compute each mean may be different.
+ This explains for example why there is a reduction in the mean time until
+ symptomatic cases peak when moving from 2 contacts per week without health
+ checks to considering health checks for the whole population, despite there
+ being an increase in the safety zone.
 \end_layout
 
 \end_inset
