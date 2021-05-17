@@ -19,6 +19,7 @@
 # ** Incubation:
 # lognormal, mean = 5.2, CI=[4.1,7.2], 95%
 # For parameter = 0.18 minimization value = 0.30 (lognormal distribution)
+#
 # ** Presymptomatic
 # gompertz, mean = 2.3, CI=[0.8,3.0], 95%
 # For parameters a = 0.028, b = 1.73 (gompertz distribution)
@@ -26,9 +27,11 @@
 # of mean 2.3 and CIhigh=2.3+(2.3-0.8)=3.8
 # gaussian, mean = 2.3, CI=[0.8,3.8]
 # For parameter = 0.91
+#
 # ** Fraction asymptomatic
 # binomial, mean = 0.84, CI=[0.8,0.88], 95%
 # For parameter = 240 minimization value = 0.0019 (binomial distribution)
+#
 # ** Symptoms onset to decision of self-isolation
 # mean = 2 and CI=[1,3], 99% 
 # For parameter = 0.43 value = 1.19e-08 (normal distribution)"
@@ -36,42 +39,51 @@
 # For parameter = 0.21 minimization value = 1.17e-08 (normal distribution)
 # mean = 1/2 and CI=[1/4,3/4], 99% 
 # For parameter = 0.11 mimization value = 1.40e-09 (normal distribution)
+# mean = 1/24 and CI=[1/96,5/96] (1 hour +- 15  minutes)
+# For parameter = 0.010 minimization value = 0.0085 (normal distribution)
+#
 # ** Symptoms onset to hospital 
 #  7 days (IQR: 4-8) (Chinese study 138 patients) 
 #  For parameter = 0.14 minimization value = 1.75 (lognormal distribution)
 #  For parameter = 1.47 minimization value = 1.16 (gamma distribution)
+#
 # ** Hospitalized to R/D
 # 10 days (IQR: 7-14) (Chinese study 138 patients) 
 # For parameter = 2.24 minimization value = 1.59 (gamma distribution)
+#
 # ** Symptoms onset to critical care (to dead in our case)
 # 10 days (IQR: 6-12) (Chinese study 138 patients) 
 # For parameter = 2.13 minimization value = 1.12 # ** Fraction of infectious
+#
 # ** R0 Basic reproduction number
 # 4 [3,5] 99% (ad-hoc after investigating the literature)
 # For parameter = 0.43 minimization value = 1.18e-08 (normal distribution)
+#
 # ** AUC infectiousness presymptomatic
 # 0.44 [0.30,0.57] 95% He et al. Nature Medicine 2020
 # For parameter = 0.082 minimization value = 0.0071 (normal distribution)
+#
 # ** Ratio asymptomatic to symptomatic
 # .58 (95% CI: .34-.99) 
 # For parameter = 0.32 minimization value = 0.00019 (lognormal distribution)
+#
 # ** Infectousness factor (mean and CI estimated in input_parameters_SEPAIHRD.R)
 # .24 (95% CI: .0.074-.57)
 # For parameter = 0.53 minimization value = 0.027 (lognormal distribution)
-
+#
 library(extraDistr) # fits gompertz distribution
 rm(list=ls())
 
 ### START EDITING
-distribution="lognormal" #"normal" "lognormal" "gamma" "binomial" and "gompertz"
-meanIn=0.24 # mean of the distribution 
-CIlow=0.074 # lower CI (not log-transformed here if lognormal)
-CIhigh=0.57 # upper CI
+distribution="normal" #"normal" "lognormal" "gamma" "binomial" and "gompertz"
+meanIn=1/24 # mean of the distribution 
+CIlow=3/96 # lower CI (not log-transformed here if lognormal)
+CIhigh=5/96 # upper CI
 param=c(1) # a vector with the starting parameters to explore in the optimization, only gompertz requires two values
 N=10e5 # number of randomizations generated for a plot
 Level=0.95 # confidence level, implemented 0.95, 0.99 and 0.75 (interquartile)
-xlabel="Infectiousness factor" # a string for the xaxis with the units (e.g "incubation time (days)")
-labelPlot="InfectiousnessFactor" # And a label for the plot
+xlabel="Time from onset to self-isolation (days)" # a string for the xaxis with the units (e.g "incubation time (days)")
+labelPlot="OnsetToSelfIsolation4" # And a label for the plot
 pathOut="data/estimation_parameters/figures_prob_distros" # path for the plots from the root of the repo
 ### STOP EDITING
 
