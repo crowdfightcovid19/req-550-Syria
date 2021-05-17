@@ -20,11 +20,11 @@ rates_SEPAIHRD_str = function(y, parms,t){
   self=parms["self"][[1]]
   # isolation=parms["isolation"][[1]] # No longer used, the relevant param is now Hinfect
   isoThr=parms["isoThr"][[1]]
+  onset=parms["onset"][[1]]
   lockDown=parms["lockDown"][[1]]
   hosp.idx=parms["hosp.idx"][[1]]
   inf.idx=parms["inf.idx"][[1]]
   gammaA=parms["gammaA"][[1]]
-  gammaI=parms["gammaI"][[1]]
   # ... Single-value parameters for "stochastic_fixed" and vectors for "stochastic_variable"
   if(model.type=="stochastic_fixed"){ 
     tau=parms["tau"][[1]] # Simply unwrap, there is one value
@@ -35,8 +35,11 @@ rates_SEPAIHRD_str = function(y, parms,t){
     deltaE=parms["deltaE"][[1]]
     deltaP=parms["deltaP"][[1]]
     deltaO=parms["deltaO"][[1]]
+    gammaO=parms["gammaO"][[1]]
+    gammaI=parms["gammaI"][[1]]
     gammaH=parms["gammaH"][[1]]
     eta=parms["eta"][[1]]
+    alphaO=parms["alphaO"][[1]]
     alpha=parms["alpha"][[1]]
     fracPtoI=parms["fracPtoI"][[1]]
   }else{ # There is one vector of parameters, and we want to pick a different value each time
@@ -50,11 +53,16 @@ rates_SEPAIHRD_str = function(y, parms,t){
     deltaE=unlist(parms["deltaE"][[1]])[time]
     deltaP=unlist(parms["deltaP"][[1]])[time]
     deltaO=unlist(parms["deltaO"][[1]])[time]
+    gammaO=unlist(parms["gammaO"][[1]])[time]
+    gammaI=unlist(parms["gammaI"][[1]])[time]
     gammaH=unlist(parms["gammaH"][[1]])[time]
     eta=unlist(parms["eta"][[1]])[time]
+    alphaO=unlist(parms["alphaO"][[1]])[time]
     alpha=unlist(parms["alpha"][[1]])[time]
     fracPtoI=unlist(parms["fracPtoI"][[1]])[time]
   }
+
+  
   # .... Parameters dependent on population structure
   Nsubpop=unlist(parms["Nsubpop"][[1]])
   fracItoH.str=unlist(parms["fracItoH.str"][[1]])
@@ -109,7 +117,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
     S=paste(Ref,"S",sep=".") # Create labels to handle variables and transitions
     E=paste(Ref,"E",sep=".")
     P=paste(Ref,"P",sep=".")
-    if(isoThr>0){
+    if(onset>0){
       O=paste(Ref,"O",sep=".")
     }
     A=paste(Ref,"A",sep=".")
@@ -120,6 +128,9 @@ rates_SEPAIHRD_str = function(y, parms,t){
     f=fracPtoI # double check no age structure
     h=fracItoH.str[Ref]
     g=fracItoD.str[Ref]
+    if(onset > 0){
+      kappaO = g*alphaO + h*etaO +(1-g-h)*gammaO
+    }
     
     Nexp=y[S]+y[E]+y[P]+y[A]+y[R] # exposed individuals (may interact with infected in isolation, i.e. become carers)
     lambda=0 # To estimate lambda
@@ -130,7 +141,10 @@ rates_SEPAIHRD_str = function(y, parms,t){
       classI=paste(class,"I",sep=".") # and infected
       # ... Reduce the infectivity of symptomatic under some scenarios
       if(isoThr > 0){ # If there are tents for isolation
-        classO=paste(class,"O",sep=".") # symptomatic, but not isolated yet
+        if(onset > 0){
+          classO=paste(class,"O",sep=".") # symptomatic, but not isolated yet
+        }
+
         # .... Address the infectivity of isolated first.
         #      The following condition should not be needed with carers.mat, just to prevent weird things to happen
         if(Nexp > 0){ # There are carers available 
@@ -143,12 +157,18 @@ rates_SEPAIHRD_str = function(y, parms,t){
         iso.transm = xi*betaI*carers.mat[Ref,class]*frac.exp # transmission from isolated
         
         # .... Address the infectivity of non-isolated
-        if(Itot > isoThr){ # this happens if the capacity of isolation is insufficient
-          Nfree=y[classI]-Niso[class] # number of non-isolated exceeding the capacity
+        yClassI=0 # we start considering that infected individuals are not infectious, beyond the interaction with carers above
+        
+        if(Itot > isoThr){ # but if the capacity of isolation is insufficient
+          Nfree=y[classI]-Niso[class] # number of non-isolated exceeding the capacity are infectious
         }else{ 
           Nfree=0
         }
-        yClassI=Tcheck.mat[Ref,class]*(Nfree+y[classO]) # they are infectious
+        if(onset > 0){ # if there is onset, we add those at the onset  compartment
+          yClassI=Tcheck.mat[Ref,class]*(Nfree+y[classO]) # they are infectious
+        }else{ # otherwise only those in excess
+          yClassI=Tcheck.mat[Ref,class]*Nfree  # they are infectious
+        }
       }else{ # no isolation
         yClassI=Tcheck.mat[Ref,class]*y[classI] # all are fully infectious
         iso.transm=0 # the isolation transmission does not hold
@@ -169,16 +189,19 @@ rates_SEPAIHRD_str = function(y, parms,t){
     k=k+1
     dy[k] = (1-f)*deltaP*y[P] # P to A
     k=k+1
-    dy[k] = f*deltaP*y[P] # P to I if isoThr=0, to O otherwise
+    dy[k] = f*deltaP*y[P] # P to I if onset=0, to O otherwise
     k=k+1
     dy[k] = gammaA*y[A] # Asymptomatic to R
-    if(isoThr>0){
+    if(onset>0){
+      psi=exp(-kappaO*y[O]/deltaO)
       k=k+1
-      dy[k] = (1-g-h)*gammaI*y[O] # Onset-Infected to R
+      dy[k] = psi*(1-g-h)*gammaO*y[O] # Onset-Infected to R
       k=k+1
-      dy[k] = h*deltaO*y[O] # Onset-Infected to Late-Infected
+      dy[k] = psi*h*etaO*y[O] # Onset-Infected to H
       k=k+1
-      dy[k] = g*alpha*y[O] # Onset-Infected to D
+      dy[k] = (1-psi)*deltaO*y[O] # Onset-Infected to Late-Infected
+      k=k+1
+      dy[k] = psi*g*alphaO*y[O] # Onset-Infected to D
     }
     k=k+1
     dy[k] = (1-g-h)*gammaI*y[I] # Infected to R

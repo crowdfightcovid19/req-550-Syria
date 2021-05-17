@@ -7,8 +7,8 @@ require(extraDistr) # fits gompertz distribution
 
 ### START EDITING
 thisScript=0 # by default this must be zero (when called from other scripts)
-    # if you want to run just this script, turn it to one.
-
+    # if you want to run just this script, turn it to one and check the if
+    # immediately  after STOP EDITING if you want to change isoThr
 #set.seed(18062020) # today 
 # ..... Incubation and presymptomatic (the difference will estimate t.Exposed)
 t.incub.mean=5.2 # incubation time
@@ -49,19 +49,37 @@ rhoAI.std=0.32 # lognormal
 
 rhoHI.mean=0.48 # ratio of hospitalized to symptomatic infectiousness
 
-Ifact.mean=0.24 # factor required to estimate infectiousness ratios
+Ifact.mean=0.24 # factor required to estimate infectiousness ratios, it is = betaI
 Ifact.std=0.53
 
 ##### STOP EDITING
 
 if(thisScript == 1){ # if you run this script only, these values are needed to avoid errors
-  # ..... Time between symptom's onset and taking the decision of isolating in a tent
-  # ..... these values are now fixed in the main code with the option Onset, 
-  t.O.param1=2
-  t.O.param2=0.43
-  # ..... some params
-  isoThr=0
+  # ..... some params for testing
+  isoThr=10
   Nrand=10000
+}
+
+# --- Fix onset distribution
+if(onset > 0){   # ..... Time between symptom's onset and taking the decision of isolating in a tent
+  if(onset == 1){
+    t.O.param1=1/24
+    t.O.param2=0.010
+  }else if(onset == 12){
+    t.O.param1=1/2
+    t.O.param2=0.11
+  }else if(onset == 24){
+    t.O.param1=1
+    t.O.param2=0.21
+  }else{
+    t.O.param1=2
+    t.O.param2=0.43
+  }
+  #tents="YES"
+}else{ # these values are arbitrary, will not be used but are computed, so we prevent errors
+  t.O.param1=1/2
+  t.O.param2=0.11
+  #tents="NO"
 }
 
 # --- Generate random values
@@ -77,6 +95,7 @@ t.E.toolow.vec=rnorm(Ntoolow,mean=t.min.incub.mean,sd=t.min.incub.std) # and gen
 t.E.vec[t.E.toolow.index]=t.E.toolow.vec # and substitute
 t.E.vec.neg=which(t.E.vec<0) # still, this may happen with prob. ~10^(-7) so not neglectable if many simulations are run
 t.E.vec[t.E.vec.neg]=t.min.incub.mean
+t.P.vec=c(t.P.vec[Nrand],t.P.vec[1:(Nrand-1)]) # we shift one time step to make more likely that they match
 
 # ..... Symptomatic
 fracPtoI.vec=rbinom(Nrand,prob = f.S.mean,size=f.S.param)/f.S.param
@@ -84,14 +103,42 @@ t.O.vec=rnorm(Nrand,mean=t.O.param1,sd=t.O.param2)
 t.O.toolow.index=which(t.O.vec<1/4) # we consider at least 6h of symptoms
 t.O.vec[t.O.toolow.index]=1/4
 t.ItoH.vec=rgamma(Nrand,shape=t.ItoH.shape,scale=t.ItoH.scale)
-if(isoThr > 0){ # if they are isolated
+t.OtoH.vec=t.ItoH.vec
+t.OtoI.vec=t.O.vec
+if(onset > 0){ # if they are isolated and there is an onset
   t.ItoH.tmp=t.ItoH.vec-t.O.vec  # this is the time that should remain in "I" once they decide isolate
   idx.neg=which(t.ItoH.tmp<0) # if it is negative it means that all the time till going to H
-  t.O.vec[idx.neg]=t.ItoH.vec[idx.neg] # they are in the fully infectious compartment
-  t.ItoH.vec=t.ItoH.tmp # then we will make them basically skip I below and jump to H
+  t.OtoI.vec[idx.neg]=t.ItoH.vec[idx.neg] # they are in the fully infectious compartment
+  t.ItoH.tmp[idx.neg]=1/24 # then we will make them basically skip I
+  t.ItoH.vec=c(t.ItoH.tmp[Nrand],t.ItoH.tmp[1:(Nrand-1)]) # we shift one time step to make them match 
 }
-t.H.vec=rgamma(Nrand,shape=t.H.shape,scale=t.H.scale)
+deltaO.vec=1/t.OtoI.vec
+etaO.vec=1/t.OtoH.vec
+
 t.ItoD.vec=rgamma(Nrand,shape=t.ItoD.shape,scale=t.ItoD.scale)
+t.OtoD.vec=t.ItoD.vec
+if(onset > 0){ # if they are isolated and there is an onset
+  t.ItoD.tmp=t.ItoD.vec-t.O.vec  # this is the time that should remain in "I" once they decide isolate
+  idx.neg=which(t.ItoD.tmp<0) # if it is negative it means that all the time till going to H
+  t.ItoD.tmp[idx.neg]=1/24 # then we will make them basically skip I
+  t.ItoD.vec=c(t.ItoD.tmp[Nrand],t.ItoD.tmp[1:(Nrand-1)]) 
+}
+alphaO.vec=1/t.OtoD.vec
+
+ones=vector(mode="numeric",length = Nrand)
+ones=ones+1
+t.ItoR.vec=t.ItoR.mean*ones # constant vector if no onset compartment is present
+t.OtoR.vec=t.ItoR.vec
+if(onset > 0){ # if they are isolated and there is an onset compartment
+  t.ItoR.tmp=t.ItoR.vec-t.O.vec  # this is the time that should remain in "I" once they decide isolate
+  idx.neg=which(t.ItoR.tmp<0) # if it is negative it means that all the time till going to H
+  t.ItoR.tmp[idx.neg]=1/24 # then we will make them basically skip I
+  t.ItoR.vec=c(t.ItoR.tmp[Nrand],t.ItoR.tmp[1:(Nrand-1)]) 
+}
+gammaO.vec=1/t.OtoR.vec
+
+t.H.vec=rgamma(Nrand,shape=t.H.shape,scale=t.H.scale)
+
 #
 # ..... R0
 R0.mean=4
@@ -99,24 +146,23 @@ R0.param=0.43
 R0.vec=rnorm(Nrand,mean=R0.mean,sd=R0.param)
 #
 # ..... tau
-tau.mean=-2.896575 # log-normal param: log(mean=0.05415) # older, without beta (normal): 0.0196 # old value 0.00608
+tau.mean= -2.896575 # log-normal param: log(mean=0.05415) # older, without beta (normal): 0.0196 # old value 0.00608
 tau.param=0.3652693 # log-normal param # older, without beta (normal): 0.00305 # old value  0.0009
 #tau.vec=rnorm(Nrand,mean = tau.mean,sd=tau.param)
 tau.vec=rlnorm(Nrand,meanlog = tau.mean,sdlog =tau.param)
 
 #
-# --- Transform to rates
+# --- Transform to rates (for onset compartment see onset>0 conditions above)
 deltaE.vec=1/t.E.vec
 deltaP.vec=1/t.P.vec
 idx.neg=which(deltaP.vec<0) # if there are negative values, the presymptomatic does not exist
 deltaP.vec[idx.neg]=max(deltaP.vec) # fix to the highest rate
-deltaO.vec=1/t.O.vec
 gammaA=1/t.A.mean
-gammaI=1/t.ItoR.mean
+gammaI.vec=1/t.ItoR.vec
 gammaH.vec=1/t.H.vec
 eta.vec=1/t.ItoH.vec
-idx.neg=which(eta.vec<0) # here is where those with little time of symptoms
-eta.vec[idx.neg]=max(eta.vec) # should jump to H (this happens only if isoThr>0)
+#idx.neg=which(eta.vec<0) # here is where those with little time of symptoms
+#eta.vec[idx.neg]=max(eta.vec) # should jump to H (this happens only if onset>0)
 alpha.vec=1/t.ItoD.vec
 
 # --- Infectiousness
@@ -140,10 +186,12 @@ betaI.vec=Ifact.vec
 betaA.vec=Ifact.vec*rhoAI.vec
 betaH.vec=Ifact.vec*rhoHI.mean
 
-# quantile(betaP.vec,probs = c(0.01,0.05,0.5,0.95,0.99)) # 0.93 [0.89-0.99]
-# quantile(betaI.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
-# quantile(betaA.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
-# quantile(betaH.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+ # quantile(betaP.vec,probs = c(0.01,0.05,0.5,0.95,0.99)) # 0.93 [0.89-0.99]
+ # quantile(betaI.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+ # quantile(betaA.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+ # quantile(betaH.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+ # quantile(tau.vec,probs = c(0.01,0.05,0.5,0.95,0.99))
+ # 
  # hist(betaP.vec,breaks=50) # 
  # qqnorm(log(betaP.vec))
  # qqline(log(betaP.vec), col = "steelblue", lwd = 2)
@@ -162,3 +210,15 @@ betaH.vec=Ifact.vec*rhoHI.mean
  # qqnorm(log(betaH.vec))
  # qqline(log(betaH.vec), col = "black", lwd = 2)
  # 
+# quantile(t.O.vec,probs = c(0,0.01,0.05,0.5,0.95,0.99,1))
+#  hist(t.O.vec,breaks=50) #
+#  qqnorm(t.O.vec)
+#  qqline(t.O.vec, col = "red", lwd = 2)
+#  
+#  quantile(t.ItoH.vec,probs = c(0,0.01,0.05,0.5,0.95,0.99,1))
+#  hist(t.ItoH.vec,breaks=50) # 
+#  qqnorm(t.ItoH.vec)
+#  qqline(t.ItoH.vec, col = "cyan", lwd = 2)
+#  
+#  quantile(eta.vec,probs = c(0,0.01,0.05,0.5,0.95,0.99,1))
+#  
