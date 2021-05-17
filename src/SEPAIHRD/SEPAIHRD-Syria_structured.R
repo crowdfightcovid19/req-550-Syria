@@ -58,6 +58,10 @@
 #     they will stay in the camp. Their fate is then determined by the variable "hospitalized2".
 #   "isoThr" =  This parameter determine if there are individual tents available to facilitate the quarantine
 #      of mild symptomatic individuals. It should  be a number between 1 and the total population size.
+#   "onset" = This parameter determines if individuals isolated spend some time between their symptoms
+#      and their self-isolation. If equal to 0 they isolate immediately, other options are 1, 12 or 24h. No
+#      further options are considered because, for each value, a probability distribution was considered and
+#      hard-coded.
 #   "hospitalized2" =  Determine whether all hospitalized will become recovered (=0) or if they die (=1) 
 #   "Tcheck" (optional) = Determine whether there exist a test check (most likely "T"emperature, = 1) that 
 #     will prevent the interaction of symptomatic people between two types of classes, identified
@@ -123,23 +127,7 @@ if(isolation == 1){
   isolation="NO"
   Hinfect=1 # Hospitalized are infectious
 }
-if(isoThr > 0){
-  if(onset == 12){
-    t.O.param1=1/2
-    t.O.param2=0.11
-  }else if(onset == 24){
-    t.O.param1=1
-    t.O.param2=0.21
-  }else{
-    t.O.param1=2
-    t.O.param2=0.43
-  }
-  #tents="YES"
-}else{ # these values are arbitrary, will not be used but are computed, so we prevent errors
-  t.O.param1=1/2
-  t.O.param2=0.11
-  #tents="NO"
-}
+
 if(hospitalized2 == 1){
   hospitalized2="D"
 }else{
@@ -213,7 +201,7 @@ Nclass=length(class.str)
 # .... Select the model and source it
 setwd(dirCodeSpec)
 if(CompModel == "SEPAIHRD"){ # Only this model implemented so far
-  if(isoThr==0){
+  if(onset==0){
     compartments=c("S","E","P","A","I","H","R","D") # 
   }else{
     compartments=c("S","E","P","A","O","I","H","R","D") # isolation requires one more comp.
@@ -251,7 +239,11 @@ y.start[first.inf]=1 # we initialize the first case
 first.inf=paste(class.infected,"S",sep=".")
 y.start[first.inf]=y.start[first.inf]-1 # substract from susceptible
 inf.idx=grep(".I$",names(y.start),perl = TRUE) # take indexes infectious variables, needed to estimate capacity isolation centers
+if(onset > 0){ # not used
+  ons.idx=grep(".O$",names(y.start),perl = TRUE)
+}
 hosp.idx=grep(".H$",names(y.start),perl = TRUE) # take indexes hospitalized variables, needed to estimate capacity isolation centers
+#browser()
 
 # --- Create a matrix to limit contacts between symptomatic people of one class and population of selected classes
 Tcheck.mat=matrix(1,ncol=ncol(C),nrow=nrow(C)) # Same size and names than the contacts matrix
@@ -286,10 +278,10 @@ if(lockDown=="YES"){ # if it is possible a lockdown
 times_vector <- seq(from=0, to=Ndays, by=1)
 if((model.type=="stochastic_fixed")||(model.type=="stochastic_variable")){
   setwd(dirCodeSpec)
-  if(isoThr == 0){
+  if(onset == 0){
     source("make_transitions.R")
     transitions=make_transitions(class.names,var.names,hospitalized2)
-  }else{
+  }else{ # An additional onset compartment  is introduced
     source("make_transitions_iso.R")
     transitions=make_transitions_iso(class.names,var.names,hospitalized2)
   }
@@ -297,7 +289,7 @@ if((model.type=="stochastic_fixed")||(model.type=="stochastic_variable")){
   y.start=round(y.start)
 }
 
-
+ 
 # Run the model Nrealiz times ----------------
 dir.create(dirDataOut)
 setwd(dirDataOut)
@@ -312,8 +304,12 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     deltaE=deltaE.vec[i]
     deltaP=deltaP.vec[i]
     deltaO=deltaO.vec[i]
+    gammaO=gammaO.vec[i]
+    gammaI=gammaI.vec[i]
     gammaH=gammaH.vec[i]
     eta=eta.vec[i]
+    etaO=etaO.vec[i]
+    alphaO=alphaO.vec[i]
     alpha=alpha.vec[i]
     betaP=betaP.vec[i]
     betaA=betaA.vec[i]
@@ -330,8 +326,12 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     deltaE=deltaE.vec
     deltaP=deltaP.vec
     deltaO=deltaO.vec
+    gammaO=gammaO.vec
+    gammaI=gammaI.vec
     gammaH=gammaH.vec
     eta=eta.vec
+    etaO=etaO.vec
+    alphaO=alphaO.vec
     alpha=alpha.vec
     tau=tau.vec
     betaP=betaP.vec
@@ -342,16 +342,16 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
   }
 
   gammaA=gammaA
-  gammaI=gammaI
   Cont=C
   parms.list=list(Nsubpop=Nsubpop,Ntrans=Ntrans,model.type=model.type,
                   tau=tau,betaP=betaP,betaA=betaA,betaI=betaI,betaH=betaH,
                   deltaE=deltaE,deltaP=deltaP,deltaO=deltaO,
-                  gammaA=gammaA,gammaI=gammaI,gammaH=gammaH,eta=eta,alpha=alpha,
+                  gammaA=gammaA,gammaO=gammaO,gammaI=gammaI,gammaH=gammaH,
+                  eta=eta,etaO=etaO,alphaO=alphaO,alpha=alpha,
                   fracPtoI=fracPtoI,fracItoH.str=fracItoH.str,fracItoD.str=fracItoD.str,
                   Cont=C,Tcheck.mat=Tcheck.mat,lockDown=lockDown,lock.mat=lock.mat,self=self,
                   hospitalized2=hospitalized2,Hinfect=Hinfect,
-                  isoThr=isoThr,xi=xi,carers.mat=carers.mat,
+                  onset=onset,isoThr=isoThr,xi=xi,carers.mat=carers.mat,
                   inf.idx=inf.idx,hosp.idx=hosp.idx,
                   classes=class.names,vars=var.names,compartments=compartments)
   
@@ -492,7 +492,7 @@ col_class = rainbow(n) #  c(brewer.pal(Nclass,"Set2"),brewer.pal(Nclass,"Dark2")
   #              brewer.pal(Nclass,"Spectral"),brewer.pal(Nclass,"Accent"), 
   #             brewer.pal(Nclass,"Paired"),brewer.pal(Nclass,"Pastel1"),
   #             brewer.pal(Nclass,"Set1"),brewer.pal(Nclass,"Set3")) # other palette
-if(isoThr==0){
+if(onset==0){
   comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
                "Symptomatic","Hospitalized","Recovered","Deaths")
 }else{
