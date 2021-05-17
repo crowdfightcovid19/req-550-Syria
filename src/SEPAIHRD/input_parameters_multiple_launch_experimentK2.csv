@@ -1,11 +1,6 @@
 "descr"	"class.infected"	"Npop"	"isolation"	"isoThr"	"onset"	"hospitalized2"	"Tcheck"	"keywordA"	"keywordB"	"lockDown"	"self"
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	0	50	24	1	1	"orange"	"green"	0.9	0.5
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	24	1	1	"orange"	"green"	0	0.2
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	24	1	1	"orange"	"green"	0.5	0
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	24	1	1	"orange"	"green"	0.5	0.2
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	24	1	1	"orange"	"green"	0.9	0.2
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	24	1	1	"orange"	"green"	0.5	0.5
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	24	1	1	"orange"	"green"	0.9	0.5
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	500	1	50	24	1	1	"orange"	"green"	0	0.2
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	500	1	50	24	1	1	"orange"	"green"	0.5	0
-"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	500	1	50	24	1	1	"orange"	"green"	0.5	0.2
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	0	50	0	1	1	"orange"	"green"	0.9	0.5
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	0	1	1	"orange"	"green"	0	0.2
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	0	1	1	"orange"	"green"	0.5	0
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	0	1	1	"orange"	"green"	0.5	0.2
+"shield_cont2_age3_age2_20"	"age2_no_comorbid_orange"	2000	1	50	0	1	1	"orange"	"green"	0.9	0.2
