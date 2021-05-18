@@ -129,7 +129,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
     h=fracItoH.str[Ref]
     g=fracItoD.str[Ref]
     if(onset > 0){
-      kappaO = g*alphaO + h*etaO +(1-g-h)*gammaO
+      kappaO = g*alphaO + h*etaO +(1-g-h)*gammaO + deltaO
     }
     
     Nexp=y[S]+y[E]+y[P]+y[A]+y[R] # exposed individuals (may interact with infected in isolation, i.e. become carers)
@@ -193,7 +193,11 @@ rates_SEPAIHRD_str = function(y, parms,t){
     k=k+1
     dy[k] = gammaA*y[A] # Asymptomatic to R
     if(onset>0){
-      psi=exp(-kappaO*y[O]/deltaO)
+      if(y[O] > 0){
+        psi=(exp(-y[O])-exp(-kappaO*y[O]/deltaO))/(1-exp(-kappaO*y[O]/deltaO))
+      }else{ # y = 0
+        psi=0
+      }
       k=k+1
       dy[k] = psi*(1-g-h)*gammaO*y[O] # Onset-Infected to R
       k=k+1
