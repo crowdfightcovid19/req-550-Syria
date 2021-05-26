@@ -30,7 +30,27 @@ Npop=2000
 i=0
 
 # --- Create one list for each experiment, and add it to the list of lists "experiments.list"
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_Bonset24.csv",
+                                      title.lab="Self-isolation, onset 24h",
+                                      subtitle.lab=paste("Population size = ",Npop),
+                                      varX="LimitOnset24",
+                                      xlabel.lab="Number of self-isolation tents",
+                                      plot.type="single",
+                                      pdf.width=pdf.width.default,
+                                      pdf.height=pdf.height.default),
+                           scale.manual.lab=c("0","10","25","50","100","250","500","2000"))
 
+i=i+1
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_Bonset0.csv",
+                                      title.lab="Self-isolation, onset 0h",
+                                      subtitle.lab=paste("Population size = ",Npop),
+                                      varX="LimitOnset0",
+                                      xlabel.lab="Number of self-isolation tents",
+                                      plot.type="single",
+                                      pdf.width=pdf.width.default,
+                                      pdf.height=pdf.height.default),
+                           scale.manual.lab=c("0","10","25","50","100","250","500","2000"))
 i=i+1
 experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_A2.csv",
                                       title.lab="",
@@ -62,11 +82,12 @@ experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                       pdf.width=pdf.width.default,
                                       pdf.height=pdf.height.default),
                            scale.manual.lab=c("No isol.","10","2"))
+
 i=i+1
-experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_B.csv",
-                                      title.lab="Self-isolation",
+experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_Bonset1.csv",
+                                      title.lab="Self-isolation, onset 1h",
                                       subtitle.lab=paste("Population size = ",Npop),
-                                      varX="Limit",
+                                      varX="LimitOnset1",
                                       xlabel.lab="Number of self-isolation tents",
                                       plot.type="single",
                                       pdf.width=pdf.width.default,
@@ -81,7 +102,7 @@ experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                       plot.type="single",
                                       pdf.width=pdf.width.default,
                                       pdf.height=pdf.height.default),
-                           scale.manual.lab=c("No isol.","12","24","48"))
+                           scale.manual.lab=c("No isol.","0","1","12","24","48"))
 i=i+1
 experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_D.csv",
                                       title.lab="Population in safety zone",
@@ -267,7 +288,9 @@ experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_s
                                               "safety + 50 tents + evac + lock 50% + self 20%",
                                               "safety + 50 tents + evac + lock 50% + self 50%",
                                               "safety + 50 tents + evac + lock 90% + self 50%"))
- # i=i+1 
+
+##########
+## # i=i+1 
 ## To generate this figure in model_output_summaries_plotDouble.R change the name of the file to "unlabelled" (see plotOut)
  # experiments.list[[i]]=list(data.frame(fileIn="input_parameters_multiple_output_summaries_K.csv",
  #                                       title.lab="",
