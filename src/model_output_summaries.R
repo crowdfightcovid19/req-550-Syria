@@ -207,9 +207,9 @@ for(dirIn in dir.list){
   fileLabel=gsub("/","_",dirIn) # Retrieve the label that all files have, related to the directory
   fileLabel=gsub("^\\.","",fileLabel) # but some processing needed
   
-  # ... Identify if the intervention involves setting up isolation tents (isoThr>0)
+  # ... Identify if the intervention involves setting up isolation tents (Onset>0)
   files.list.local=files.list # From now we will use different names depending on the scenario
-  isoThr.key=grep("Limit0",fileLabel) # If this search is non-empty 
+  isoThr.key=grep("Onset0",fileLabel) # If this search is non-empty 
   if(is_empty(isoThr.key)){ # It means the intervention is active
     file.class=apply(as.matrix(unlist(files.list)),MARGIN = 1,   # Symptomatic files change their name
                      FUN=function(x){!is_empty(grep("Symptomatic",x))}) # identify these files
