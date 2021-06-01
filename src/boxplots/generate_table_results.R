@@ -91,7 +91,9 @@ for(dirIn in dir.list){
 
 # ... Identify if the intervention involves setting up isolation tents (isoThr>0)
     files.list.local=files.list # From now we will use different names depending on the scenario
-    isoThr.key=grep("Limit0",fileLabel) # If this search is non-empty 
+    isoThr.key=grep("Onset0",fileLabel) # If this search is non-empty 
+    cat("Filelabel",fileLabel,"\n")
+    cat("IsoThr.key:",isoThr.key,"\n")
     if(is_empty(isoThr.key)){ # It means the intervention is active
         file.class=apply(as.matrix(unlist(files.list)),MARGIN = 1,   # Symptomatic files change their name
                  FUN=function(x){!is_empty(grep("Symptomatic",x))}) # identify these files
