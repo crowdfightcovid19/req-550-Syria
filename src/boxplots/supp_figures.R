@@ -60,7 +60,7 @@ df.shield <- extract_subtable_output_summaries(df.all,params.df)
 params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_H.csv",sep=""),header = TRUE, sep=",")
 df.self <- extract_subtable_output_summaries(df.all,params.df)
 
-params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_B.csv",sep=""),header = TRUE, sep=",")
+params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_Bonset0.csv",sep=""),header = TRUE, sep=",")
 df.iso <- extract_subtable_output_summaries(df.all,params.df)
 
 params.df <- read.table(file=paste(codeDir,"/","input_parameters_multiple_output_summaries_C.csv",sep=""),header = TRUE, sep=",")
