@@ -140,6 +140,17 @@ ylabel = "Fraction of population recovered"
 scale_x_labels <- c("0","50","90","99")
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
+cat("\n")
+cat(outFile)
+cat("\n")
+cat(varX)
+cat("\n")
+cat(levels(df.lock$lock))
+cat("\n")
+cat(scale_x_labels)
+cat("\n")
+
+
 
 gg.e <- do_box_plot_mean_dot(df.lock,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 ##gg.e <-gg.e +ylim(0.5,1.0)
@@ -193,6 +204,16 @@ ylabel = "Fraction of population recovered"
 scale_x_labels <- c("null/500","null/1000","null/2000","safety 2/500","safety 2/1000","safety 2/2000")
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
+cat("\n")
+cat(outFile)
+
+cat("\n")
+cat(varX)
+cat("\n")
+cat(levels(df.tcheck$intervention))
+cat("\n")
+cat(scale_x_labels)
+cat("\n")
 
 gg.e <- do_box_plot_mean_dot(df.tcheck,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
@@ -256,6 +277,17 @@ ylabel = "Fraction of population recovered"
 scale_x_labels <- c("Older","Older + adult w. comorb.","Older + adults + kids (< 20%)","Older + adults + kids (< 25%)","Older + adults + kids (< 30%)")
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
+cat("\n")
+cat(outFile)
+
+cat("\n")
+cat(varX)
+cat("\n")
+cat(levels(df$contacts))
+cat("\n")
+cat(scale_x_labels)
+cat("\n")
+
 
 gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
@@ -319,6 +351,16 @@ ylabel = "Fraction of population recovered"
 scale_x_labels <- c("No limit","10","2")
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
+cat("\n")
+cat(outFile)
+
+cat("\n")
+cat(varX)
+cat("\n")
+cat(levels(df$contacts))
+cat("\n")
+cat(scale_x_labels)
+cat("\n")
 
 gg.b <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.b <- gg.b + ylim(0.5,1.0)
@@ -361,6 +403,17 @@ ylabel = "Fraction of population recovered"
 scale_x_labels <- c("10 cont. (no checks)", "10 cont. + checks", "2 cont. (no checks)", "2 cont. + checks")
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
+cat("\n")
+cat(outFile)
+
+cat("\n")
+cat(varX)
+cat("\n")
+cat(levels(df$intervention))
+cat("\n")
+cat(scale_x_labels)
+cat("\n")
+
 
 gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 gg.e<-gg.e+theme(axis.text.x = element_text(size=axis.text.x.size,angle=45,hjust=1,vjust=1))
@@ -427,6 +480,17 @@ scale_x_labels <- c("NO","YES", "safety 2 / NO", "safety 2 / YES")
 #scale_x_labels <- c("NO","YES") 
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
+cat("\n")
+cat(outFile)
+
+cat("\n")
+cat(varX)
+cat("\n")
+cat(levels(df$intervention))
+cat("\n")
+cat(scale_x_labels)
+cat("\n")
+
 
 #df <- subset(df,group=="T")
 df <- subset(df,contacts=="null_model_mixed")
@@ -491,9 +555,20 @@ varX = "Onset"
 varY = "FracFinalRecovered"
 xlabel = "Time to self-isolation (h)"
 ylabel = "Fraction of population recovered"
-scale_x_labels <- c("No isol.", "12", "24", "48")
+scale_x_labels <- c("No isol.", "1","12", "24", "48")
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
+cat("\n")
+cat(outFile)
+cat("\n")
+cat(varX)
+cat("\n")
+cat(levels(df$Onset))
+cat("\n")
+cat(scale_x_labels)
+cat("\n")
+
+
 
 gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.e<- gg.e + ylim(0.75,1.0)
@@ -552,6 +627,18 @@ ylabel = "Fraction of population recovered"
 scale_x_labels <- c("0","10","25","50","100","250","500","2000")
 scale_fill_labels <- c("Total")
 group_name = "Group"
+cat("\n")
+cat(outFile)
+
+cat("\n")
+cat(varX)
+cat("\n")
+cat(levels(df$Limit))
+cat("\n")
+cat(scale_x_labels)
+cat("\n")
+
+
 
 gg.b <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.b <- gg.b + ylim(0.75,1.0)
@@ -595,6 +682,18 @@ ylabel = "Fraction of population recovered"
 scale_x_labels <- c("0","10","20","30","40","50","60","70","80","90")
 scale_fill_labels <- c("Total")
 group_name = "Group"
+cat("\n")
+cat(outFile)
+
+cat("\n")
+cat(varX)
+cat("\n")
+cat(levels(df$self))
+cat("\n")
+cat(scale_x_labels)
+cat("\n")
+
+
 
 gg.b <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.b <- gg.b + ylim(0.5,1.0)
@@ -638,6 +737,19 @@ ylabel = "Fraction of population recovered"
 scale_x_labels <- c("All recover", "All die")
 scale_fill_labels <- c("Total","Exposed Zone", "Safety Zone")
 group_name = "Group"
+cat("\n")
+cat(outFile)
+
+cat("\n")
+cat(varX)
+cat("\n")
+cat(levels(df$Fate))
+cat("\n")
+cat(scale_x_labels)
+cat("\n")
+
+
+
 
 gg.e <- do_box_plot_mean_dot(df,varY,varX,xlabel,ylabel,scale_x_labels,scale_fill_labels,group_name,nolegend=TRUE)
 #gg.e <- gg.e + ylim(0.75,1.0)
