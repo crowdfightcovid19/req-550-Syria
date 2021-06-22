@@ -1,0 +1,6912 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{lipsum}
+\usepackage{xr}
+\externaldocument{Paper_req-550_SM_V1.1.1}
+\usepackage{lineno}
+%\usepackage[strings]{underscore} % to include underscores (appearing in bib fields)
+%\usepackage[english]{babel} % should go in hand with this to prevent errors (better to escape the underscores)
+\usepackage{lineno}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+%% Strike out display math with tikz
+\usetikzlibrary{calc}
+%\newcommand{\lyxmathsout}[1]{%
+%  \tikz[baseline=(math.base)]{
+%    \node[inner sep=0pt,outer sep=0pt](math){#1};
+%    \draw($(math.south west)+(2em,.5em)$)--($(math.north east)-(2em,.5em)$);
+%  }
+%}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\add}[1]{\textcolor{red}{#1}}
+\newcommand{\oran}{\mathrm{o}}
+\newcommand{\g}{\mathrm{g}}
+\newcommand{\X}{\mathrm{X}}
+\newcommand{\Y}{\mathrm{Y}}
+\newcommand{\PP}{\mathrm{P}}
+\newcommand{\EE}{\mathrm{E}}
+\newcommand{\HH}{\mathrm{H}}
+\newcommand{\DD}{\mathrm{D}}
+\newcommand{\RR}{\mathrm{R}}
+\newcommand{\A}{\mathrm{A}}
+\newcommand{\I}{\mathrm{I}}
+\newcommand{\M}{\mathrm{M}}
+
+\newcommand{\sh}{\mathrm{sh}}
+\newcommand{\nullm}{\mathrm{null}}
+\newcommand{\intv}{\mathrm{intv}}
+\newcommand{\family}{\mathrm{visit}}
+\newcommand{\care}{\mathrm{care}}
+\newcommand{\Exp}{\mathrm{exp}}
+\newcommand{\onset}{\mathrm{onset}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.3cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes true
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author -1732430129 "apascual"
+\author 227091064 "Klein"
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Empowering the crowd: Feasible strategies 
+\begin_inset Newline newline
+\end_inset
+
+ to minimize the spread
+\change_inserted -1732430129 1624385038
+ of airborne infectious diseases
+\change_deleted -1732430129 1624384738
+ of COVID-19
+\change_unchanged
+ 
+\begin_inset Newline newline
+\end_inset
+
+ in high-density informal settlements
+\change_inserted -1732430129 1624385044
+.
+\begin_inset Newline newline
+\end_inset
+
+ COVID-19 in Northwest Syria as a case-study.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Author
+Alberto Pascual-García
+\begin_inset Formula $^{(1,*)}$
+\end_inset
+
+, Jordan Klein
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+, Jennifer Villers
+\begin_inset Formula $^{(3,\land)}$
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+ Eduard Campillo-Funollet
+\begin_inset Formula $^{(4,\wedge)}$
+\end_inset
+
+, Chamsy Sarkis
+\begin_inset Formula $^{(5)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+\align center
+(1) Institute of Integrative Biology.
+ ETH-Zürich.
+ Zürich, Switzerland.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ (2) Office of Population Research.
+ Princeton University.
+ Princeton, NJ, USA.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ (3) Princeton Environmental Institute.
+ Princeton University.
+ Princeton, NJ, USA.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ (4) Genome Damage and Stability Centre.
+ University of Sussex.
+ Brighton, United Kingdom.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ (5) Pax Syriana Foundation.
+ Valetta, Malta.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ (
+\begin_inset Formula $\land$
+\end_inset
+
+) Equal contribution.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ (*) correspondence: alberto.pascual@env.ethz.ch.
+\begin_inset Newline newline
+\end_inset
+
+Universitätstrasse 16.
+ 8005, Zürich (Switzerland).
+ Tel.
+ +41 44 632 89 22
+\end_layout
+
+\begin_layout Abstract
+More than 1 billion people live in informal settlements worldwide, where
+ precarious living conditions pose unique challenges to managing a COVID-19
+ outbreak.
+ Taking Northwest Syria as a case-study, we simulated an outbreak in high-densit
+y informal Internally Displaced Persons (IDP) camps using a stochastic Susceptib
+le-Exposed-Infectious-Recovered model.
+ Expanding on previous studies, taking social conditions and population
+ health/structure into account, we modeled several interventions feasible
+ in these settings: moderate self-distancing, self-isolation of symptomatic
+ cases, and protection of the most vulnerable in “safety zones”.
+ We considered complementary measures to these interventions that can be
+ implemented autonomously by these communities, such as buffer zones, health-che
+cks, and carers for isolated individuals, quantifying their impact on the
+ micro-dynamics of disease transmission.
+ All interventions significantly reduce outbreak probability and some of
+ them reduce mortality when an outbreak does occur.
+ Self-distancing reduces mortality by up to 35% if contacts are reduced
+ by 50%.
+ A similar reduction in mortality can be achieved by providing 1 self-isolation
+ tent per 200 people.
+ Protecting the most vulnerable in a safety zone reduces the outbreak probabilit
+y in the vulnerable population and has synergistic effects with the other
+ interventions.
+ Our model predicts that a combination of all simulated interventions may
+ reduce mortality by almost 80% and delay an outbreak’s peak by almost two
+ months.
+ Our results highlight the potential for non-medical interventions to mitigate
+ the effects of the pandemic.
+ Similar measures may be applicable to controlling COVID-19 in other informal
+ settlements, particularly IDP camps in conflict regions, around the world.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Keywords:
+\series default
+ COVID 19 | Epidemiology | community-led interventions | SIR models | Internally
+ Displaced Persons | Syria | Refugees
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Abbreviations: 
+\series default
+IDP: Internally Displaced Persons | NWS: Northwest region of Syria | IFR:
+ Infection fatality rate | ICU: Intensive care unit | IBM: Individual based
+ models
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Word count:
+\series default
+ 5738
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Key questions
+\end_layout
+
+\begin_layout Subsubsection*
+What is already known?
+\end_layout
+
+\begin_layout Itemize
+Since the onset of the COVID-19 pandemic, many studies have provided evidence
+ for the effectiveness of strategies such as social distancing, testing,
+ contact tracing, case isolation, use of personal protective equipment/facemasks
+ and improved hygiene to reduce the spread of the disease.
+ These studies underlie the recommendations of the World Health Organisation,
+ but their implementation is contingent on local conditions and resources.
+\end_layout
+
+\begin_layout Itemize
+Mathematical modelling is the basis of many epidemiological studies and
+ has helped inform policymakers considering COVID-19 responses around the
+ world.
+ Nevertheless, only a limited number of studies have applied these models
+ to informal settlements.
+\end_layout
+
+\begin_layout Subsubsection*
+What are the new findings?
+\end_layout
+
+\begin_layout Itemize
+We developed a mathematical model to study the dynamics of COVID-19 in Syrian
+ IDP camps, elaborating on previous efforts done in similar settings by
+ explicitly parameterizing the camps’ demographics, living conditions and
+ micro-dynamics of interpersonal contacts in our modelization.
+\end_layout
+
+\begin_layout Itemize
+We designed interventions such as self-distancing, self-isolation and the
+ creation of safety zones to protect the most vulnerable members of the
+ population, among others, through conversations with camp managers with
+ on-the-ground knowledge of what interventions would be feasible and have
+ community buy-in.
+\end_layout
+
+\begin_layout Itemize
+Our results show how low-cost, feasible, community-led non-medical interventions
+ can significantly mitigate the impact of COVID-19 in Northwest Syrian IDP
+ camps.
+\end_layout
+
+\begin_layout Subsubsection*
+What do the new findings imply?
+\end_layout
+
+\begin_layout Itemize
+Our model represents a step forward in the much-needed search for epidemiologica
+l models that are sufficiently flexible to consider specific social questions.
+ The model can also help inform similar interventions in refugee camps in
+ conflict-torn regions, and potentially be adapted to other informal settlements
+ and vulnerable communities around the world.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The COVID-19 pandemic is intensifying in the developing world 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Guardian1M"
+literal "false"
+
+\end_inset
+
+.
+ In Africa, SARS-CoV-2 has been spreading from urban areas to informal settlemen
+ts 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WHO_AfricaMarks6months"
+literal "false"
+
+\end_inset
+
+.
+ With more than 1 billion people living in informal settlements worldwide,
+ urgent action is needed to contain the virus in these settings, a task
+ which necessarily involves the engagement of the communities living in
+ them 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wilkinson_local_2020"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\change_inserted -1732430129 1624356202
+spread of airborne infectious diseases 
+\change_deleted -1732430129 1623668201
+COVID-19 pandemic is intensifying
+\change_unchanged
+ in regions immersed in protracted armed conflicts 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GuardianWinter"
+literal "false"
+
+\end_inset
+
+, where large portions of their populations have become displaced
+\change_inserted -1732430129 1623668259
+, is an important challenge
+\change_unchanged
+.
+ When the displaced population exceeds official resettlement and refugee
+ camp capacity, Internally Displaced Persons (IDPs) must live in informal
+ settlements (hereafter named 
+\begin_inset Quotes eld
+\end_inset
+
+camps
+\begin_inset Quotes erd
+\end_inset
+
+).
+ These regions must contend with the public health challenges resulting
+ from violence 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "abbas_migrant_2018"
+literal "false"
+
+\end_inset
+
+, the deterioration of health-systems 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hill_conflict_2010"
+literal "false"
+
+\end_inset
+
+, especially of critical care 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sahloul_war_2016"
+literal "false"
+
+\end_inset
+
+, and the breakdown of essential public infrastructure such as water and
+ sanitation systems 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sikder_water_2018"
+literal "false"
+
+\end_inset
+
+.
+ Urgent action is needed to contain the 
+\change_deleted -1732430129 1624356407
+virus
+\change_inserted -1732430129 1624356416
+spread
+\change_deleted -1732430129 1624356416
+ 
+\change_unchanged
+in these settings, a task which necessarily involves the engagement of the
+ communities living in them 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wilkinson_local_2020"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This study focuses on the
+\change_inserted -1732430129 1623668276
+ spread of COVID-19 in
+\change_deleted -1732430129 1623668271
+ 
+\change_unchanged
+Northwest region of Syria (NWS): a relatively small geographical area with
+ 4.2 million people, of which 1.15 million (27.4%) are IDPs living in camps
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Health_directorate"
+literal "false"
+
+\end_inset
+
+, and where the number of cases increased twenty-fold between September
+ 8th and October 20th, 2020 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "UNOCHA_collapse"
+literal "false"
+
+\end_inset
+
+.
+ The health status of households in camps in NWS is poor; 24% have a member
+ with a chronic disease, of whom 41% have no access to medicines 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "noauthor_syria_nodate"
+literal "false"
+
+\end_inset
+
+.
+ As in other conflict regions, the political instability in NWS hinders
+ coordinated public health actions, and the ongoing movements of IDPs create
+ ample opportunity for infectious disease transmission, while making contact
+ tracing interventions infeasible.
+\end_layout
+
+\begin_layout Standard
+To investigate feasible COVID-19 prevention interventions in the camps,
+ we considered a Susceptible-Exposed-Infectious-Recovered model similar
+ to the one presented in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gatto_spread_2020"
+literal "false"
+
+\end_inset
+
+, in which the camps' populations are divided into classes reflecting their
+ estimated age-structures and comorbidity prevalence.
+ We use this model to propose various interventions aimed at reducing the
+ number of contacts within and between population classes in general, and
+ with symptomatic individuals in particular.
+ We paid special attention to how the living conditions in informal camps
+ inform the assumptions underlying our proposed interventions, a question
+ often neglected 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rhodes_Model2context_2020"
+literal "false"
+
+\end_inset
+
+.
+ We modeled interventions previously proposed for African cities 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vanzandvoort2020"
+literal "false"
+
+\end_inset
+
+, such as self-distancing, isolation of symptomatic individuals and the
+ creation of a 'safety zone' in which more vulnerable members of the population
+ are protected from exposure to the virus.
+\end_layout
+
+\begin_layout Standard
+Building upon the approach used to model the impact of these interventions
+ in African cities, our model includes a parameterization of the contacts
+ each individual has per day 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vanzandvoort2020"
+literal "false"
+
+\end_inset
+
+.
+ We further elaborate upon this approach by making a more explicit representatio
+n of contacts and other parameters in the model.
+ We consider the micro-dynamics of contacts, the time that individuals take
+ to recognize their symptoms before self-isolating, the effect of having
+ carers to attend to isolated individuals, and the existence of a buffer
+ zone in which exposed and protected population classes can interact under
+ certain rules.
+ We examine a potential worst-case scenario in which there is no access
+ to any healthcare facility.
+ Since empowering local communities in conflict regions to understand how
+ to control 
+\change_inserted -1732430129 1624356491
+diseases like 
+\change_unchanged
+COVID-19 is possibly the most (and perhaps only) effective way to minimize
+ its spread, our models are of utmost importance for informing the implementatio
+n of realistic interventions in these regions.
+\end_layout
+
+\begin_layout Section*
+Methods
+\end_layout
+
+\begin_layout Subsection*
+The model
+\end_layout
+
+\begin_layout Standard
+We consider a model simulating a viral outbreak in a single camp over a
+ 12-month period inspired by those proposed by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gatto_spread_2020,bertuzzo_geography_2020"
+literal "false"
+
+\end_inset
+
+ (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The model is adapted to the context of NWS IDP camps and is divided into
+ compartments containing individuals at different possible stages along
+ the disease's progression, governed by the following set of differential
+ equations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\dot{S}_{i}=-\lambda_{i}S_{i}\label{eq:System1}\\
+\dot{E}_{i}=\lambda_{i}S_{i}-\delta_{\EE}E_{i}\\
+\dot{P}_{i}=\delta_{\EE}E_{i}-\delta_{\PP}P_{i}\\
+\dot{A}_{i}=(1-f)\delta_{\PP}P_{i}-\gamma_{\A}A_{i}\\
+\dot{I}_{i}=f\delta_{\PP}P_{i}-(l_{i}\gamma_{I}+h_{i}\eta+g_{i}\alpha)I_{i}\\
+\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{\HH}H_{i}\\
+\dot{R}_{i}=\gamma_{\A}A_{i}+l_{i}\gamma_{\I}I_{i}+(1-\sigma)\gamma_{\HH}H_{i}\\
+\dot{D_{i}}=g_{i}\alpha I_{i}+\sigma\gamma_{\HH}H_{i}\label{eq:System8}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The susceptible population (
+\begin_inset Formula $S_{i}$
+\end_inset
+
+) becomes exposed at rate 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+, while exposed individuals (
+\begin_inset Formula $E_{i}$
+\end_inset
+
+) progress through the latent period at rate 
+\begin_inset Formula $\delta_{\EE}$
+\end_inset
+
+ to a preclinical infectious stage (
+\begin_inset Formula $P_{i}$
+\end_inset
+
+), which then progresses to (at rate 
+\begin_inset Formula $\delta_{\PP}$
+\end_inset
+
+) either a a clinical (symptomatic, 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+, with probablity 
+\begin_inset Formula $f$
+\end_inset
+
+) or subclinical (asymptomatic, 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+, with probability 
+\begin_inset Formula $1-f$
+\end_inset
+
+) infectious stage.
+ Asymptomatic cases recover (
+\begin_inset Formula $R_{i}$
+\end_inset
+
+) at rate 
+\begin_inset Formula $\gamma_{\A}$
+\end_inset
+
+.
+ Symptomatic cases have 3 potential outcomes: mild cases will recover at
+ rate 
+\begin_inset Formula $\gamma_{\I}$
+\end_inset
+
+, severe cases will progress to an extended infectious period during which
+ they require hospitalization (
+\begin_inset Formula $H_{i}$
+\end_inset
+
+) at rate 
+\begin_inset Formula $\eta$
+\end_inset
+
+, while critical cases requiring intensive care unit (ICU) care will die
+ (
+\begin_inset Formula $D_{i}$
+\end_inset
+
+) at rate 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Finally, since the fate of individuals in the hospitalized compartment
+ is uncertain if healthcare is not available, we run simulations considering
+ two possibilities: either all recover (
+\begin_inset Formula $\sigma=0$
+\end_inset
+
+), or all die (
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+) (see section Epidemiological severity assumptions).
+ The specific values for the parameters are presented in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:FixedParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+While we introduced the model as a classical system of ordinary differential
+ equations (Eqs.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:System1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+–
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:System8"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) we considered a stochastic implementation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "engbert_chanceChaos_1994"
+literal "false"
+
+\end_inset
+
+, with an integer description of the population in which a state is encoded
+ in a vector 
+\begin_inset Formula $X=(S,E,P,I,A,H,R,D)^{t}$
+\end_inset
+
+, with the total population size conserved throughout the simulation 
+\begin_inset Formula $N=S+E+P+I+A+H+R+D$
+\end_inset
+
+.
+ The possible transitions between states of the system are shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, where an arrow indicates transitions in which the source compartment transfers
+ one individual to the target compartment.
+ The mean transition rates corresponding to each transition are displayed.
+ The system then evolves following a continuous-time Markov process which
+ is simulated following the 
+\change_deleted -1732430129 1624356728
+tau-leaping approximation
+\change_inserted -1732430129 1624356741
+Gillespie algorithm
+\change_deleted -1732430129 1624356731
+ 
+\change_unchanged
+implemented in the adaptivetau package 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "R_adaptivetau"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tikzstyle{int}=[draw, fill=blue!50, minimum size=2em] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tikzstyle{init} = [pin edge={to-,thin,black}] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2.5cm,auto,>=latex']     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [int] (S) {$
+\backslash
+dot{S_i}$};     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (E) [int, right of=S] {$
+\backslash
+dot{E_i}$};     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (P) [int, right of=E] {$
+\backslash
+dot{P_i}$};   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (blank) [right of=P, coordinate]{};  
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (I) [int, below of=blank] {$
+\backslash
+dot{I_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (A) [int, above of=blank] {$
+\backslash
+dot{A_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (H) [int, right of=I] {$
+\backslash
+dot{H_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (R) [int, right of=blank] {$
+\backslash
+dot{R_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node (D) [int, below of=H] {$
+\backslash
+dot{D_i}$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (S) edge node {$
+\backslash
+lambda_iS_i$} (E);     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (E) edge node {$
+\backslash
+delta_
+\backslash
+EE E_i$} (P);    
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (P) edge node [anchor=center, left, midway] {$f
+\backslash
+delta_
+\backslash
+PP P_i$} (I);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, below, midway] {$h_i{
+\backslash
+eta}I_i$} (H);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, left, pos=0.7] {$
+\backslash
+l_i 
+\backslash
+gamma_
+\backslash
+I I_i$} (R);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (A) edge node [anchor=center, right, midway] {$
+\backslash
+gamma_
+\backslash
+A A_i$} (R);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (P) edge node [anchor=center, left, midway] {$(1-f)
+\backslash
+delta_
+\backslash
+PP P_i$} (A);  
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (I) edge node [anchor=center, left, midway] {$g_i{
+\backslash
+alpha}I_i$} (D);  
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (H) edge node [anchor=center, right, midway] {$(1-
+\backslash
+sigma)
+\backslash
+gamma_
+\backslash
+HH H_i$} (R); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->] (H) edge node [anchor=center, right, midway] {$
+\backslash
+sigma
+\backslash
+gamma_
+\backslash
+HH H_i$} (D);  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagram"
+
+\end_inset
+
+Diagram of the model.
+ 
+\series default
+The model considers the following compartments: susceptible (S), exposed
+ (E), infectious-presymptomatic (P), infectious-asymptomatic (A), infectious-sym
+ptomatic (I), infectious-requiring hospitalization (H), recovered (R) and
+ dead (D).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Demographic– and behaviour-classes
+\end_layout
+
+\begin_layout Standard
+The model splits the population into classes (indexed 
+\begin_inset Formula $i$
+\end_inset
+
+) to account for heterogeneity with respect to clinical risk and behaviour.
+ Working with population classes allows us to encode behavioural assumptions
+ in the model and strike an appropriate balance between generality, computationa
+l tractability, and the requisite specificity to realistically evaluate
+ our proposed interventions 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "funk_BehaviourInModels_2015"
+literal "false"
+
+\end_inset
+
+.
+ Moreover, the explicit representation of contacts between and within population
+ classes allows us to design interventions considering cultural and context-spec
+ific assumptions 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rhodes_Model2context_2020"
+literal "false"
+
+\end_inset
+
+ (see section Interventions and Supplementary Material for details).
+ Under a null model where no interventions are implemented, the distinctions
+ between classes are only dependent on age and comorbidity status (hereafter
+ 
+\begin_inset Quotes eld
+\end_inset
+
+demographic-classes
+\begin_inset Quotes erd
+\end_inset
+
+).
+ 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $l_{i}$
+\end_inset
+
+ are demographic-class specific parameters, adjusted to ensure that the
+ proportions of symptomatic cases progressing through each of the 3 potential
+ clinical outcomes (mild, severe, and critical) are consistent with the
+ literature (see section Epidemiological severity assumptions).
+\end_layout
+
+\begin_layout Standard
+Under some interventions, the demographic-classes may be subdivided further
+ into subclasses according to behaviour (
+\begin_inset Quotes eld
+\end_inset
+
+behaviour-classes
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Consequently, different interventions may require models with different
+ numbers of classes.
+ We refer to both demographic- and behaviour-classes generically as 
+\begin_inset Quotes eld
+\end_inset
+
+classes
+\begin_inset Quotes erd
+\end_inset
+
+ (see section Interventions for the modelization of behaviour-classes).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="27.5text%">
+<column alignment="center" valignment="middle" width="27.5text%">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="10text%">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Distribution
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reference
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Incubation period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.2 (95% CI: 4.1-7.0)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lognormal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "li2020early"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Presymptomatic infectious period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.3 (95% CI: 0.8-3.8)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gaussian
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,ashcroft_covid-19_2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\delta_{\EE}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Latent period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\nicefrac{1}{\delta_{\EE}}+\nicefrac{1}{\delta_{\PP}}\right)-\nicefrac{1}{\delta_{\PP}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+(Minimum = .5 days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Derived
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\gamma_{\I}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symptomatic infectious period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,wolfel2020virological"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\gamma_{\A}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Asymptomatic infectious period (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal,wolfel2020virological"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\eta}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Time from symptom onset to requiring hospitalization (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7 (IQR: 4-8)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Time from symptom onset to death (critical cases, days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10 (IQR: 6-12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nicefrac{1}{\gamma_{\HH}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Time from requiring hospitalization to recovery/death (days)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10 (IQR: 7-14)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2020clinical"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Probability an infectious individual is symptomatic
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.84 (95% CI: 0.8-0.88)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Binomial
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "byambasuren2020estimating"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Indicator of whether hospitalized recover or die
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma\in\{0,1\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Assumed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:FixedParams"
+
+\end_inset
+
+
+\series bold
+Fixed parameters.
+ 
+\series default
+See Supplementary Materials for details.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Population structure of demographic-classes
+\end_layout
+
+\begin_layout Standard
+We parameterized the model with data from IDPs in NWS 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "noauthor_syrian_nodate"
+literal "false"
+
+\end_inset
+
+.
+ The population sizes of informal camps are
+\change_deleted -1732430129 1624384289
+ approximately log-normally distributed
+\change_inserted -1732430129 1624384294
+ right-skewed
+\change_unchanged
+, with a mean 
+\change_deleted -1732430129 1624384299
+of
+\change_unchanged
+ of 1212.
+ We simulated camps with populations of 500, 1000 and 2000 individuals.
+ Since interventions tend to be less effective in larger camps, the results
+ presented refer to simulations with 2000 individuals, unless otherwise
+ specified.
+ For our demographic-classes, we considered 3 age groups: children (age
+ 1, 0-12 years old), younger adults (age 2, 13-50 yrs) and older adults
+ (age 3, >50 yrs).
+ For ages 2 and 3, we considered two subclasses comprising healthy individuals
+ and individuals with comorbidities (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="8">
+<features tabularvalignment="middle" tabularwidth="110text%">
+<column alignment="center" valignment="middle" width="8text%">
+<column alignment="center" valignment="middle" width="9text%">
+<column alignment="center" valignment="middle" width="7text%">
+<column alignment="center" valignment="middle" width="15text%">
+<column alignment="center" valignment="middle" width="12text%">
+<column alignment="center" valignment="middle" width="15text%">
+<column alignment="center" valignment="middle" width="12text%">
+<column alignment="center" valignment="middle" width="9text%">
+<row>
+<cell alignment="center" valignment="middle" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Demographic-class
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 1 (0-12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 2 (13-50)
+\end_layout
+
+\begin_layout Plain Layout
+no comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 2 (13-50)
+\end_layout
+
+\begin_layout Plain Layout
+comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 3 (>50)
+\end_layout
+
+\begin_layout Plain Layout
+no comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 3 (>50)
+\end_layout
+
+\begin_layout Plain Layout
+comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+References
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fraction in class
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+_
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.407
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.471
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0373
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\begin_inset CommandInset citation
+LatexCommand cite
+key "noauthor_syrian_nodate,helpage_international_hidden_2014"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mean contacts per day
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+From camp managers
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:PopParams"
+
+\end_inset
+
+
+\series bold
+Demographic class-specific parameters.
+
+\series default
+ Estimated proportions of individuals in the population and mean number
+ of contacts per individual per day for each demographic class.
+ See Supplementary Materials for derivations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Transmissibility assumptions
+\end_layout
+
+\begin_layout Standard
+Although individuals in IDP camps share tents with other co-occupants, whom
+ they may be more likely to infect than occupants of different tents, we
+ ignore spatial structure in our model and assume a well-mixed population.
+ This is justified because individuals from different tents share common
+ spaces (e.g.
+ latrines) and have frequent interactions with each other, especially among
+ children.
+ Consequently, our following derivation of the transmissivity parameter
+ itself, 
+\begin_inset Formula $\tau$
+\end_inset
+
+, is not spatially explicit.
+\end_layout
+
+\begin_layout Standard
+The rate at which susceptible individuals become exposed is
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=\sum_{j=1}^{n}\tau C_{ij}\frac{\beta_{\PP}P_{j}+\beta_{\A}A_{j}+\beta_{\I}I_{j}+\beta_{\HH}H_{j}}{N_{j}},\label{eq:lambda}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $C_{ij}$
+\end_inset
+
+ is the average number of contacts that individuals of class 
+\begin_inset Formula $i$
+\end_inset
+
+ have with individuals of class 
+\begin_inset Formula $j$
+\end_inset
+
+ per day and 
+\begin_inset Formula $N_{j}$
+\end_inset
+
+ is the total population size of class 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ We parameterized 
+\begin_inset Formula $C_{ij}$
+\end_inset
+
+ by multiplying the mean number of total contacts that individuals from
+ a population class 
+\begin_inset Formula $i$
+\end_inset
+
+ have per day, 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+, by the probability of random interaction with individuals of class 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Considering a well-mixed population, this probability is proportional to
+ class 
+\begin_inset Formula $j$
+\end_inset
+
+'s fraction of the total population, i.e.
+ 
+\begin_inset Formula $C_{ij}=c_{i}N_{j}/N$
+\end_inset
+
+.
+ If interventions are absent, we consider demographic-classes only and,
+ hence, different values of 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ reflect heterogeneity in the number of contacts by demographic-class.
+ We assume specific values of 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ for each class based on conversations with camp managers in NWS (see Table
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The probability of infection if there is a contact between a susceptible
+ and an infected person is 
+\begin_inset Formula $\tau\beta_{\PP}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau\beta_{\A}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau\beta_{\I}$
+\end_inset
+
+ or 
+\begin_inset Formula $\tau\beta_{\HH}$
+\end_inset
+
+ depending upon whether the infected individual is in the presymptomatic
+ (
+\begin_inset Formula $P_{i}$
+\end_inset
+
+), symptomatic (
+\begin_inset Formula $I_{i}$
+\end_inset
+
+), asymptomatic (
+\begin_inset Formula $A_{i}$
+\end_inset
+
+), or hospitalized compartment (
+\begin_inset Formula $H_{i}$
+\end_inset
+
+), respectively.
+ The 
+\begin_inset Formula $\tau$
+\end_inset
+
+ parameter is the maximum transmissivity, which is observed at the presymptomati
+c stage for individuals who go on to become symptomatic 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he2020temporal"
+literal "false"
+
+\end_inset
+
+.
+ Thus, we selected the transmissivity of these 
+\change_deleted -1732430129 1615477123
+ 
+\change_unchanged
+individuals as a reference (
+\begin_inset Formula $\beta_{\PP\rightarrow\I}=1$
+\end_inset
+
+) with the remaining 
+\begin_inset Formula $\beta$
+\end_inset
+
+ parameters set relative to 
+\begin_inset Formula $\beta_{\PP\rightarrow\I}$
+\end_inset
+
+ (
+\begin_inset Formula $\beta_{i}<\beta_{\PP\rightarrow\I},\quad i\in\{\PP,\A,\HH,\I\}$
+\end_inset
+
+), where the mean transmissibility of all presymptomatic individuals (
+\begin_inset Formula $\beta_{\PP}$
+\end_inset
+
+) is estimated as a weighted average of the transmissibility of individuals
+ that will become symptomatic and 
+\change_deleted -1732430129 1615477123
+ 
+\change_unchanged
+asymptomatic 
+\change_deleted -1732430129 1615477123
+ 
+\change_unchanged
+(see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:tramsParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, Supplementary Materials for derivation).
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Formula $\tau$
+\end_inset
+
+ parameter was estimated by randomly generating a value for the basic reproducti
+on number, 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+, following a Gaussian distribution with a mean of 4 (99% CI: 3–5) and dividing
+ this value by the the dominant eigenvalue of the Next Generation Matrix
+ (see section Computational implementation for details and Supplementary
+ Material for the analytical results).
+ The distribution of 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ was a compromise between values reported in the literature from regions
+ with high-density informal settlements: 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+=2.77 in Abuja and 3.44 in Lagos, Nigeria 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "oyinlola_empirical_2020"
+literal "false"
+
+\end_inset
+
+, 3.3 in Buenos Aires 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "santos_numerical_2020"
+literal "false"
+
+\end_inset
+
+, and 5 in Rohingya refugee camps in Bangladesh 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "truelove_potential_2020"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="27.5text%">
+<column alignment="center" valignment="middle" width="27.5text%">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="center" valignment="middle" width="10text%">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Distribution
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reference
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum transmissibility
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.14 (95% CI: 0.05-0.40)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lognormal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Derived
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta_{\PP\rightarrow\I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Presymptomatic transmissibility of individuals becoming symptomatic
+\end_layout
+
+\begin_layout Plain Layout
+relative to 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reference stage (=1)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+___
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "he_temporal_2020,ashcroft_covid-19_2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta_{\PP}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mean presymptomatic transmissibility
+\end_layout
+
+\begin_layout Plain Layout
+relative to 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.93 (95% CI: 0.88-0.99)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Empirical
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Derived
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta_{\A}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Asymptomatic transmissibility
+\end_layout
+
+\begin_layout Plain Layout
+relative to 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.14 (95% CI: 0.05-0.40)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lognormal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Derived
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta_{\I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Clinical symptomatic transmissibility
+\end_layout
+
+\begin_layout Plain Layout
+relative to 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.24 (95% CI: 0.11-0.60)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lognormal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Derived
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta_{\HH}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hospitalized transmissibility
+\end_layout
+
+\begin_layout Plain Layout
+relative to 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.11 (95% CI: 0.05-0.29)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lognormal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Derived
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:tramsParams"
+
+\end_inset
+
+
+\series bold
+Transmissibility parameters.
+ 
+\series default
+See Supplementary Materials for details.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Epidemiological severity assumptions
+\end_layout
+
+\begin_layout Standard
+In NWS, there are 4 active and 2 planed COVID-19 referral hospitals, with
+ a current capacity of 66 ventilators, 74 ICU beds and 355 ward beds for
+ 4.2 million people 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "REACH_syriaOverview,UNOCHA_CCTC_numbers"
+literal "false"
+
+\end_inset
+
+.
+ Estimations based on an exponential growth model from Hariri et al.
+ predicted a collapse of health facilities 8 weeks into an outbreak 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hariri_SyriaForecast_2020"
+literal "false"
+
+\end_inset
+
+.
+ Although we do not have access to official data on healthcare occupancy,
+ the currently reported number of cases suggests that this scenario could
+ already have been reached 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "UNOCHA_collapse"
+literal "false"
+
+\end_inset
+
+.
+ Hence, we considered a worst-case scenario in which individuals will not
+ have access to healthcare and assumed that all critical cases (those requiring
+ ICU care) would die.
+ However, there is greater uncertainty about the fate of severe cases, those
+ requiring hospitalization but not ICU care.
+ We therefore considered a compartment for severe cases to account for a
+ longer infectious period if they stay in the camp (see compartment 
+\begin_inset Formula $H_{i}$
+\end_inset
+
+, Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ This compartment also helped us model some interventions more realistically,
+ for example by noting that the symptoms of severe cases are incompatible
+ with self-isolation.
+ To estimate upper and lower bounds for the outcome variables of our model,
+ we simulated two possible scenarios for the fate of this compartment: one
+ in which all cases recover, and another in which all die.
+ In the simulations presented in the Main Text, we consider the worst-case
+ scenario in which all of these cases die.
+\end_layout
+
+\begin_layout Standard
+The fractions of symptomatic cases that are severe (
+\begin_inset Formula $q_{i}^{\HH}$
+\end_inset
+
+), critical (
+\begin_inset Formula $q_{i}^{\DD}$
+\end_inset
+
+) and recover (
+\begin_inset Formula $q_{i}^{\RR}$
+\end_inset
+
+, where 
+\begin_inset Formula $q_{i}^{\RR}=1-q_{i}^{\HH}-q_{i}^{\DD}$
+\end_inset
+
+) are demographic-class-specific (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:TableSeverity"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ We estimated the fractions of symptomatic cases in each demographic-class
+ that would become severe (
+\begin_inset Formula $q_{i}^{\HH}$
+\end_inset
+
+) and critical (
+\begin_inset Formula $q_{i}^{\DD}$
+\end_inset
+
+) using data from developed countries with superior population health 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dong2020epidemiological,covid2020preliminary"
+literal "false"
+
+\end_inset
+
+.
+ Following previous work 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vanzandvoort2020"
+literal "false"
+
+\end_inset
+
+, we mapped the age-specific case severity distributions of the NW Syrian
+ adult population to those of 10 years older age groups in developed countries.
+\end_layout
+
+\begin_layout Standard
+Since the rates at which clinical symptomatic individuals (
+\begin_inset Formula $I_{i}$
+\end_inset
+
+) resolve into these three epidemiological outcomes are different (
+\begin_inset Formula $\eta$
+\end_inset
+
+ for 
+\begin_inset Formula $H$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ for 
+\begin_inset Formula $D$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma_{\I}$
+\end_inset
+
+ for 
+\begin_inset Formula $R$
+\end_inset
+
+) we introduced three parameters, 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $l_{i}$
+\end_inset
+
+, to distribute individuals according to the desired proportions.
+ The analytic solution is provided in Suppl.
+ Material and the specific values in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:TableSeverity"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="15text%">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="12text%">
+<column alignment="center" valignment="top" width="12text%">
+<column alignment="center" valignment="top" width="12text%">
+<column alignment="center" valignment="top" width="12text%">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Demographic class
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 1 (0-12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 2 (13-50)
+\end_layout
+
+\begin_layout Plain Layout
+no comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 2 (13-50) comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 3 (>50)
+\end_layout
+
+\begin_layout Plain Layout
+no comorbidities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 3 (>50), comorbidities
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{i}^{\HH}$
+\end_inset
+
+ (
+\begin_inset Formula $h_{i}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fraction of symptomatic cases severe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.064 (0.064)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.067 (0.066)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.199 (0.191)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.183 (0.178)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.445 (0.406)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{i}^{\DD}$
+\end_inset
+
+ (
+\begin_inset Formula $g_{i}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fraction of symptomatic cases critical
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0065 (0.009)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.020 (0.028)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.094 (0.129)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.063 (0.088)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.222 (0.289)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:TableSeverity"
+
+\end_inset
+
+
+\series bold
+Proportion of symptomatic cases that become severe and critical.
+
+\series default
+ Since the rates at which these cases become severe, critical, or recover
+ are different, we introduced three paramaters (
+\begin_inset Formula $h_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $l_{i}$
+\end_inset
+
+) to distribute individuals according to the desired proportions (values
+ between parenthesis).
+ The proportion of individuals recovering is computed as 
+\begin_inset Formula $1-q_{i}^{\HH}-q_{i}^{\DD}$
+\end_inset
+
+ (see Supplementary Materials for details).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Interventions
+\end_layout
+
+\begin_layout Standard
+The interventions we consider are modelled by modifying the rate at which
+ individuals become exposed (the term 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+, Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambda"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), adding new population classes that govern behavioural changes (behaviour-clas
+ses), and/or adding a compartment to consider the time until detection of
+ symptoms (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:DiagramOnset"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Since 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ can be factorized in four terms, the interventions may influence one or
+ several of these terms.
+ The factors present in 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ and the terms modulating them in the interventions are (see Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambdaInterv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+): i) the maximum transmissibility, 
+\begin_inset Formula $\tau$
+\end_inset
+
+, which is reduced in some interventions by a factor 
+\begin_inset Formula $\xi_{ij}$
+\end_inset
+
+, when interactions are restricted to buffer zones (see below for details);
+ ii) the average number of contacts that individuals in class 
+\begin_inset Formula $i$
+\end_inset
+
+ have per day, 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+.
+ This quantity can either be uniformly reduced across all classes, or the
+ contact rate of class 
+\begin_inset Formula $i$
+\end_inset
+
+ with class 
+\begin_inset Formula $j$
+\end_inset
+
+ can be modified.
+ We model this modification of contact rates using the matrix 
+\begin_inset Formula $\epsilon_{ij}$
+\end_inset
+
+; iii) the probability of encounter between members of class 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ in a well-mixed population, 
+\begin_inset Formula $N_{j}/N$
+\end_inset
+
+.
+ This probability can vary by modifying the visibility of a member of class
+ 
+\begin_inset Formula $j$
+\end_inset
+
+ to a member of class 
+\begin_inset Formula $i$
+\end_inset
+
+ , which we express with the matrix 
+\begin_inset Formula $\omega_{ij}$
+\end_inset
+
+; and iv) the probablility of becoming infected by individuals at specific
+ stages of the disease (e.g.
+ for hospitalized individuals this is encoded in the term 
+\begin_inset Formula $\beta_{\HH}H_{j}/N_{j}$
+\end_inset
+
+) can also be modified by specific factors.
+ Only the terms for individuals at the clinical symptomatic (
+\begin_inset Formula $I$
+\end_inset
+
+) and hospitalized (
+\begin_inset Formula $H$
+\end_inset
+
+) stages are modified in our interventions, through the parameters 
+\begin_inset Formula $\zeta_{\I}$
+\end_inset
+
+ and 
+\begin_inset Formula $\zeta_{\HH}$
+\end_inset
+
+, respectively.
+ Following these considerations, the generic form of 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ under the interventions becomes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=\sum_{j=1}^{n}\underset{i}{\underbrace{\tau\xi_{ij}}}\underset{ii}{\underbrace{c_{i}\epsilon_{ij}}}\underset{iii}{\underbrace{\omega_{ij}\frac{N_{j}}{N}}}\underset{iv}{\underbrace{\left(\frac{\beta_{\PP}P_{j}+\beta_{\A}A_{j}+\zeta_{\I}\beta_{\I}I_{j}+\zeta_{\HH}\beta_{\HH}H_{j}}{N_{j}}\right)}}.\label{eq:lambdaInterv}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All interventions, self-distancing (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-1), self-isolation (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-2), safety zone (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-3), and evacuation (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-4) can be parameterized following this expression.
+ The specific values of the parameters are presented in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:IntervParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and their derivations in Supplementary Materials.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/manuscripts/main/figures/Fig1.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Interventions"
+
+\end_inset
+
+Diagram of interventions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="10text%">
+<column alignment="left" valignment="middle" width="17text%">
+<column alignment="center" valignment="middle" width="7text%">
+<column alignment="left" valignment="middle" width="7text%">
+<column alignment="center" valignment="middle" width="7text%">
+<column alignment="center" valignment="middle" width="7text%">
+<column alignment="center" valignment="middle" width="20text%">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Intervention
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $\epsilon_{ij}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $\omega_{ij}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $\zeta_{\I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $\zeta_{\HH}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\xi_{ij}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+Details
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Self-distancing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $\epsilon\in\{0.9,0.8,0.7,0.6,0.5\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+constant 
+\begin_inset Formula $\forall i,j$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+Self-isolation
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $(c_{\care}/c_{i})(\tilde{I}_{j}/N_{i})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $N/N_{j}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+0.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $i\in$
+\end_inset
+
+ young healthy adults
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $j\in$
+\end_inset
+
+ isolated individuals in class 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -1732430129 1624383011
+\begin_inset Formula $\varTheta(N_{\I}-\tilde{N})$
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $i\in$
+\end_inset
+
+ young healthy adults
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $j\in$
+\end_inset
+
+ individuals not isolated in class 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $i\notin$
+\end_inset
+
+ young healthy adults
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $j\in$
+\end_inset
+
+ isolated individuals in class 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $i\notin$
+\end_inset
+
+ young healthy adults
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $j\in$
+\end_inset
+
+ indiv in class 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+Safety zone
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $\vartheta c_{\family}/c_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $N/N_{\Y}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+{0,1}
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+see (*)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+{0,1}
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+see (*)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+0.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $i\in$
+\end_inset
+
+ zone 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $j\in$
+\end_inset
+
+ zone 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+(
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+{green, orange})
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset Formula $1-\vartheta c_{\family}/c_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $N/N_{\X}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $i,j\in$
+\end_inset
+
+ zone 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+(
+\begin_inset Formula $X$
+\end_inset
+
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+{green, orange})
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Evacuation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:IntervParams"
+
+\end_inset
+
+
+\series bold
+Parameterization of the interventions.
+ 
+\series default
+Values of 
+\begin_inset Formula $\epsilon_{ij}$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{ij}$
+\end_inset
+
+, 
+\begin_inset Formula $\zeta_{\I}$
+\end_inset
+
+, 
+\begin_inset Formula $\zeta_{\HH}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{ij}$
+\end_inset
+
+ considered in the interventions (see Supplementary Materials for their
+ derivations).
+ 
+\begin_inset Formula $c_{\care}=$
+\end_inset
+
+ number of
+\change_inserted -1732430129 1624383047
+ 
+\change_unchanged
+contacts per day of each isolated individual with carers.
+
+\change_deleted -1732430129 1624383045
+ 
+\begin_inset Formula $N_{\Exp}=$
+\end_inset
+
+ potential carers available (non-symptomatic healthy younger adults).
+
+\change_unchanged
+ 
+\begin_inset Formula $\tilde{I}_{j}=$
+\end_inset
+
+ Number of isolated cases of class 
+\begin_inset Formula $j$
+\end_inset
+
+.
+
+\change_inserted -1732430129 1624383161
+ 
+\begin_inset Formula $N_{\I}=$
+\end_inset
+
+ number of symptomatic individuals.
+ 
+\begin_inset Formula $\tilde{N}=$
+\end_inset
+
+ maximum number of tents available for self-isolation.
+ 
+\begin_inset Formula $\Theta(x)=$
+\end_inset
+
+ Heaviside function.
+ 
+\change_deleted -1732430129 1624383078
+ 
+\change_unchanged
+
+\begin_inset Formula $c_{\family}=$
+\end_inset
+
+ maximum number of contacts that individuals in the green zone can have
+ with individuals from the orange zone per day (
+\begin_inset Formula $c_{\family}=\{\frac{2}{7},\frac{10}{7}\}$
+\end_inset
+
+).
+ Under a 
+\begin_inset Quotes eld
+\end_inset
+
+lockdown
+\begin_inset Quotes erd
+\end_inset
+
+ of the green zone where visits are reduced by 50% 
+\begin_inset Formula $c_{\family}=\{\frac{1}{7},\frac{5}{7}\}$
+\end_inset
+
+, and where visits are reduced by 90% 
+\begin_inset Formula $c_{\family}=\{\frac{1}{35},\frac{1}{7}\}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\vartheta=$
+\end_inset
+
+ fraction of the population in the orange (green) zone capable of coming
+ in contact with individuals from the green (orange) zone.
+ 
+\begin_inset Formula $\vartheta=1$
+\end_inset
+
+ if class 
+\begin_inset Formula $i$
+\end_inset
+
+ is in the green zone, and is proportional to 
+\begin_inset Formula $c_{\family}N_{\g}/N_{\oran}$
+\end_inset
+
+ if in the orange zone.
+ 
+\begin_inset Formula $N_{\X}$
+\end_inset
+
+ and 
+\begin_inset Formula $N_{\Y}$
+\end_inset
+
+ generically refer to the total population in either the green (
+\begin_inset Formula $N_{\g})$
+\end_inset
+
+ or the orange (
+\begin_inset Formula $N_{\oran}$
+\end_inset
+
+) zones.
+ Note (*): The parameters 
+\begin_inset Formula $\zeta_{\I}$
+\end_inset
+
+ and 
+\begin_inset Formula $\zeta_{\HH}$
+\end_inset
+
+ are set to 0 if health checks to access to the buffer zone are implemented
+ in the intervention, and set to 1 otherwise.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Self-distancing
+\end_layout
+
+\begin_layout Standard
+The first non-medical intervention that we modeled is a reduction in the
+ mean number of contacts per individual per day for the whole camp population
+ (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-1).
+ The average number of contacts of each class 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PopParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is reduced by a class-independent factor, hence the matrix 
+\begin_inset Formula $\epsilon_{ij}$
+\end_inset
+
+ is uniform for all classes, i.e.
+ 
+\begin_inset Formula $\epsilon_{ij}=\epsilon,\quad\epsilon\in\{0.9,0.8,0.7,0.6,0.5\}$
+\end_inset
+
+.
+ No further adjustments are required for this intervention.
+ Since the mean number of inhabitants per tent in a camp is 5.5 and sanitation
+ facilities are shared 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "noauthor_syrian_nodate"
+literal "false"
+
+\end_inset
+
+, we inferred that the number of contacts per day cannot be reduced by more
+ than 50% (
+\begin_inset Formula $\epsilon=0.5$
+\end_inset
+
+).
+ For a younger adult, this would mean 7.5 contacts per day.
+\end_layout
+
+\begin_layout Subsubsection*
+Self-isolation
+\end_layout
+
+\begin_layout Standard
+Self-isolation is a challenge in informal settlements, where households
+ consist of a single (often small) space, water is collected at designated
+ locations, sanitation facilities are communal and food supplies are scarce.
+ We considered the possibility of those showing symptoms (i.e.
+ in compartment 
+\begin_inset Formula $\I$
+\end_inset
+
+) self-isolating in individual tents in dedicated parts of the camps.
+ We excluded individuals with severe symptoms (
+\begin_inset Formula $\HH$
+\end_inset
+
+ compartment) from the intervention since they require additional care not
+ compatible with self-isolation.
+ Instead, we considered the possibility of evacuating these individuals
+ from the camp as an additional intervention (see below).
+ We simulated self-isolation with various numbers of isolation tents per
+ camp, ranging from 10 to 2000 for a camp of 2000 people (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-2).
+ In addition, we modeled the role of carers dedicated to providing for isolated
+ individuals (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-2a).
+ Carers are drawn from the younger adults class with no comorbidities who
+ are not at a stage of the disease during which they display symptoms (i.e.
+ not in compartments 
+\begin_inset Formula $\I$
+\end_inset
+
+ or 
+\begin_inset Formula $\HH$
+\end_inset
+
+), while isolated individuals may belong to any class.
+ Since this intervention only modifies the infectiousness of individuals
+ in the 
+\begin_inset Formula $\I$
+\end_inset
+
+ compartment and the exposure of carers, the consideration of additional
+ behavioural-classes is not required.
+ Instead, the intervention can be encoded in 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ by simply splitting the contribution of symptomatic individuals to the
+ rate of exposure into two terms, one for the isolated individuals and another
+ for the remaining population.
+ Hence, its implementation requires deriving the parameters 
+\begin_inset Formula $\epsilon_{ij}$
+\end_inset
+
+ and 
+\begin_inset Formula $\omega_{ij}$
+\end_inset
+
+ for interaction between healthy younger adults (from which carers are drawn),
+ the remaining classes, and isolated and non-isolated individuals separately.
+ In Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:IntervParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we present these terms and their derivation in Supplementary Materials.
+\end_layout
+
+\begin_layout Standard
+In addition, interactions between carers and isolated individuals were restricte
+d to 
+\shape italic
+buffer zones
+\shape default
+, which we envisioned as open spaces, with guidelines in place to limit
+ occupancy to 4 individuals wearing masks with at least 2 meters of distance
+ between them, where we assume transmissivity is reduced by 80% (
+\begin_inset Formula $\xi_{ij}=0.2$
+\end_inset
+
+).
+ In considering one carer per isolated individual with one contact per day,
+ we do not neglect their probability of infecting the rest of the camp.
+ 
+\change_deleted -1732430129 1623685838
+We also considered minimum time intervals for individuals to recognize their
+ symptoms: with means of 12, 24 and 48 hours (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-2b), which was implemented by incorporating an additional compartment (
+\begin_inset Formula $O_{i}$
+\end_inset
+
+) between the presymptomatic 
+\begin_inset Formula $(P_{i}$
+\end_inset
+
+) and clinical symptomatic (
+\begin_inset Formula $I_{i}$
+\end_inset
+
+) compartments (see Suppl.
+ Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:DiagramOnset"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsubsection*
+Safety zone
+\end_layout
+
+\begin_layout Standard
+In this intervention, the camp is divided in two areas: a safety zone, in
+ which more vulnerable people live (hereby referred to as a “green” zone
+ following previous studies 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vanzandvoort2020"
+literal "false"
+
+\end_inset
+
+), and an exposed (“orange”) zone with the remaining population.
+ In our simulations, the first exposed individual always belongs to the
+ orange zone.
+ The living conditions within both zones remain the same, so the overall
+ contact rate does not change unless self-distancing is also implemented.
+ A consequence of maintaining the overall contact rate is that, reducing
+ contacts with individuals living in a different zone, implies an increase
+ in contacts with individuals in the same zone (see Supplementary Material).
+ Although we do not expect this assumption to be true in general, it allows
+ us to investigate undesired side-effects of this intervention, such as
+ older adults having increased contacts amongst themselves if isolated together.
+ Since proposals for partitioning the population may be received differently
+ across camps, we considered several scenarios for allocating a camp population
+ to the two zones (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-3).
+ Implementing this intervention thus requires the split of some demographic-clas
+ses into two behaviour-classes, depending upon the scenario.
+ For example, if some healthy younger adults are allocated into the green
+ zone, we split the demographic-class 
+\begin_inset Quotes eld
+\end_inset
+
+healthy younger adults
+\begin_inset Quotes erd
+\end_inset
+
+ into 
+\begin_inset Quotes eld
+\end_inset
+
+orange
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+green
+\begin_inset Quotes erd
+\end_inset
+
+ behaviour-classes, to model the different contact rates that these two
+ subclasses of healthy younger adults will have amongst themselves and with
+ other classes.
+ In Supplementary Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:SafetyScenarios"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we present the classes considered in each scenario.
+\end_layout
+
+\begin_layout Standard
+Interactions between the two zones are limited to a buffer zone, reducing
+ transmissivity (i.e.
+ 
+\begin_inset Formula $\xi_{ij}=0.2$
+\end_inset
+
+, see previous section).
+ Individuals in the green zone cannot leave and thus need to be provided
+ with supplies by individuals in the orange zone, which will take place
+ in the buffer zone.
+ In our simulations, we considered limiting individuals in the green zone
+ to 10 or 2 contacts with individuals from the orange zone per week (see
+ Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-3a).
+ Other variations of this intervention we explored include preventing symptomati
+c individuals from entering the buffer zone (incorporating health-checks,
+ see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-3b) and a “lockdown” of the green zone, where the number of weekly contacts
+ in the buffer zone is reduced by 50% or 90% (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-3c).
+ Although overall contact rates are conserved in this intervention, we modify
+ the contact rates between 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ with 
+\begin_inset Formula $\epsilon_{ij}$
+\end_inset
+
+ and the probability of interaction between 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ with 
+\begin_inset Formula $\omega_{ij}$
+\end_inset
+
+, where both parameters are determined by whether 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ are in the same or different zones (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:IntervParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for specific values and Supplementary Materials for derivation).
+\end_layout
+
+\begin_layout Subsubsection*
+Evacuation
+\end_layout
+
+\begin_layout Standard
+The last intervention we simulated is the evacuation of severe cases (individual
+s in the hospitalization compartment).
+ Since they require more intensive care that cannot be delivered while adhering
+ to the guidelines of a buffer zone, severe cases were assumed to be fully
+ infectious and not able to self-isolate.
+ Once severe cases are evacuated, their infectivity is reduced to zero (
+\begin_inset Formula $\zeta_{\HH}=0$
+\end_inset
+
+, see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Interventions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-4).
+ The fate of severe cases is not altered by this intervention since we assumed
+ that hospitals are saturated and that evacuees are transferred to isolation
+ centers instead.
+\end_layout
+
+\begin_layout Subsection*
+Computational implementation and statistical analysis
+\end_layout
+
+\begin_layout Standard
+The specific values of the parameters shown in Eqs.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:System1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+–
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:System8"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and of 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ are independently drawn at each integration step from the probability distribut
+ions shown in Tables 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:FixedParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:tramsParams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:TableSeverity"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\change_inserted -1732430129 1624357372
+We note that, by generating transition rates from the empirically-determined
+ residence times we are not reproducing these residence times for the simulated
+ individuals.
+ In our simulations, individuals will experience exponentially-distributed
+ residence times with a mean equal to the mean of the correspondent distribution.
+ The generation of random values around the mean following the empirical
+ distribution at each time-step is aimed at adding noise to the mean, to
+ partially account for the empirical uncertainty.
+\end_layout
+
+\begin_layout Standard
+The Next Generation Matrix is also computed at each integration step from
+ the parameters drawn, and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ estimated.
+ In the code provided it is possible to fix the seed to exactly reproduce
+ the results presented.
+ Our simulations start with a completely susceptible population where one
+ person in the younger adult population is exposed to the virus (who is
+ also in the orange zone if the safety zone intervention is in place).
+ We verified that a steady state was always reached before the end of each
+ simulation.
+ We did not consider migration, births, nor deaths due to other causes,
+ since they are small enough in magnitude to not significantly impact the
+ course of an outbreak, provided additional conflict does not erupt.
+\end_layout
+
+\begin_layout Standard
+For each implementation of the interventions, we ran 2500 simulations and
+ compared results between them.
+ The main variables considered are the fraction of simulations in which
+ at least one death is observed, a proxy for the probability of an outbreak,
+ the fraction of the population that dies and the time until the symptomatic
+ population peaks, as well as the infection fatality rate (IFR), the fractions
+ of the population that are recovered and remain susceptible at steady-state.
+ For consistency, we only considered simulations in which there was an outbreak
+ when comparing the outcome of a variable between interventions.
+ We used the Shapiro-Wilk test 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shapiro_analysis_1965"
+literal "false"
+
+\end_inset
+
+ to verify that our results do not exhibit normally distributed residuals,
+ and Conover-Iman test for multiple comparisons 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "conover_multiple_1979"
+literal "false"
+
+\end_inset
+
+.
+ We used the R package PMCMRplus 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pohlert_pmcmr_2020"
+literal "false"
+
+\end_inset
+
+.
+ Confidence intervals for the probability of outbreak were computed with
+ Wilson's method 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "brown_binomialCI_2001"
+literal "false"
+
+\end_inset
+
+ implemented in the R package binom 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "R_binom"
+literal "false"
+
+\end_inset
+
+.
+ The model and all statistical analyses were implemented in R 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "R_2020"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Results
+\end_layout
+
+\begin_layout Standard
+In the absence of interventions, the mean IFR is 
+\begin_inset Formula $\sim$
+\end_inset
+
+2.5% in simulations where all severe cases requiring hospitalization recover
+ (see Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_DvsR"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), and 
+\begin_inset Formula $\sim$
+\end_inset
+
+11% in simulations where all severe cases die.
+ We consider the latter scenario to evaluate the effect of non-medical preventiv
+e interventions.
+ In this scenario, the probability of observing an outbreak is close to
+ 0.84, in which 
+\begin_inset Formula $\apprge$
+\end_inset
+
+10% of the camp dies, the number of symptomatic cases peaks after 40 days,
+ 
+\begin_inset Formula $\sim$
+\end_inset
+
+84% of the population recovers, and 
+\begin_inset Formula $\sim$
+\end_inset
+
+5% escape from infection (i.e.
+ remain susceptible).
+\end_layout
+
+\begin_layout Subsection*
+Self-distancing
+\end_layout
+
+\begin_layout Standard
+Our results show that self-distancing has a notable effect on reducing the
+ probability of an outbreak which decreases roughly linearly as the percentage
+ of contacts reduced increases.
+ (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+A).
+ A near-quadratic trend is observed for the fraction of population dying,
+ with a greater decrease for larger reduction in daily contacts, achieving
+ a 34% reduction in mortality when the number of contacts is reduced by
+ 50% (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+B).
+ Self-distancing also significantly extends the time until the peak of the
+ outbreak, from 
+\begin_inset Formula $\sim$
+\end_inset
+
+40 days when there is no intervention to 72 days when contacts are reduced
+ by 50% (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+C).
+ The proportion of the population escaping from infection after 12 months
+ also increases up to near 33% when a 50% reduction is considered, and the
+ proportion of the population recovered after 12 months (which informs on
+ the potential population level protection against future outbreaks) is
+ reduced from 84% to 60% (see Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_self"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Fig2.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Panel2"
+
+\end_inset
+
+ 
+\series bold
+Effect of interventions on outbreak probability, fatalities and time until
+ symptomatic cases peak.
+
+\series default
+ A: Self-distancing, probability of an outbreak.
+ B: Self-distancing, fraction of the population dying.
+ C: Self-distancing, time until peak symptomatic cases.
+ D: Self-isolation, probability of an outbreak.
+ E: Self-isolation, fraction of the population dying.
+ F: Self-isolation, time until peak symptomatic cases.
+ G: Safety zone, probability of an outbreak.
+ H: Safety zone, fraction of the population dying.
+ I: Safety zone, time until peak symptomatic cases.
+ Triangles indicate the means and boxes interquartile ranges.
+ Note that in figures of the safety zone intervention (panels G-I), the
+ mean of an outcome for the whole population is not the weighted mean of
+ the exposed and safety zones, since outcomes are computed considering simulatio
+ns in which at least one death was observed in the population class inhabiting
+ the zone, i.e.
+ the number of simulations considered to compute each mean is different.
+ In the safety zone figures (panels G-I) health-checks are in place, in
+ Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_Tcheck"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we show the effect of removing health-checks.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Self-isolation
+\end_layout
+
+\begin_layout Standard
+With only 10 tents for a camp of 2000 people (i.e.
+ 1 tent for every 200 people), self-isolation yields a
+\change_inserted -1732430129 1624361500
+ marked decrease in the probability of outbreak (~26%) (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+D) but there is no significant reduction in the mortality (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+E), suggesting that with a low number of tents the intervention is only
+ effective in isolating index cases preventing the epidemic to start.
+
+\change_deleted -1732430129 1624357811
+ modest decrease in the probability of observing an outbreak (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+D), but a stronger reduction in mortality (
+\begin_inset Formula $\sim$
+\end_inset
+
+30%) (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+E)
+\change_unchanged
+.
+ 
+\change_deleted -1732430129 1624358107
+F
+\change_inserted -1732430129 1624358112
+It is needed to f
+\change_unchanged
+urther increas
+\change_inserted -1732430129 1624358116
+e
+\change_deleted -1732430129 1624358115
+ing
+\change_unchanged
+ the number of tents past this level
+\change_inserted -1732430129 1624358833
+ up to at least 1 tent for every 40 people
+\change_deleted -1732430129 1624358467
+ 
+\change_inserted -1732430129 1624359754
+to observe a reduction of ~2% in the mortality and increase in ~13% in the
+ time to peak of symptomatic indviduals, and these benefits reach a ~17%
+ reduction in mortality and ~20% in the time to peak of symptomatic with
+ 1 tent for every 8 people.
+ Increasing the number of tents does not further reduce the probability
+ of outbreak, consistent with the idea that the mechanism targets index
+ cases requiring low capacity.
+ This is also confirmed by the increase in the number of susceptible individuals
+ at the end of the simulation with increasing number of tents, which leads
+ to an artificial increase in the IFR (since there are many simulations
+ in which very few individuals are infected, when there is a death among
+ them the IFR becomes high 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_isolation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\change_deleted -1732430129 1624359728
+yields diminishing returns to reductions to both probability of outbreak
+ (until there is 1 tent for every 20 people) and mortality (until there
+ is 1 tent for every 8 people, Conover-Iman test, p-val
+\begin_inset Formula $<10^{-16}$
+\end_inset
+
+).
+ Similarly, we observe a reduction in IFR when at least 10 isolation tents
+ are set up (see Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_isolation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\change_unchanged
+.
+ 
+\change_deleted -1732430129 1623685908
+Importantly, the potential reductions in probability of outbreak, overall
+ fatalities and IFR from self-isolation are realized whether the time required
+ for individuals to recognize their symptoms is 12h or 24h on average, but
+ the intervention becomes less effective when this time increases to 48h
+ (see Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_onset"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection*
+Safety zone
+\end_layout
+
+\begin_layout Standard
+In this section, we consider the scenario in which all older adults, younger
+ adults with comorbidities and their family members up to 20% of the camp
+ population live in the green zone, unless otherwise specified.
+ Creating a green zone improves the effect of the previous interventions
+ overall, but with sometimes opposite outcomes in the exposed and protected
+ populations.
+ For example, the probability of an outbreak decreases for the protected
+ population, by around 11%, if only two contacts are allowed per week in
+ the buffer zone (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+G).
+ Notably, most of this reduction is only achieved when health-checks excluding
+ symptomatic individuals from the buffer zone are in place (see Supplementary
+ Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_Tcheck"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the effect of removing health-checks).
+ On the other hand, the probability of an outbreak may slightly increase
+ for the exposed population, a consequence of the relative increase in intra-zon
+e contacts.
+ By shifting the burden of an outbreak towards the less vulnerable population
+ in the orange zone, another important outcome of this intervention is the
+ notable increase in time (62%) until the number of symptomatic cases peaks
+ for the vulnerable population, and a 40% increase in time for the whole
+ population(see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+I).
+ Nevertheless, this intervention only has a modest reduction on overall
+ mortality (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+H), possibly due to the high infectiousness of presymptomatic individuals.
+\end_layout
+
+\begin_layout Standard
+Considering different scenarios for allocating people to the green zone,
+ the lowest probability of an outbreak is achieved when only older adults
+ or at most older adults and younger adults with comorbidities move there,
+ with probabilities below 0.4 and 0.65, respectively
+\change_inserted 227091064 1615574315
+ 
+\change_unchanged
+(see Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_popClass"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Positive effects of the safety zone intervention are even more marked in
+ camps with smaller populations, especially for probability of an outbreak
+ in the green zone and overall mortality, which decreases by 20% when the
+ population is reduced from 2000 to 500.
+ However, we also observe the adverse effect of a decrease in time until
+ symptomatic cases peak (see Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_popSize"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The incorporation of a lockdown has the greatest effect on reducing the
+ probability of an outbreak in the green zone, to under 0.25 when contacts
+ in the buffer zone are reduced by 90%.
+ While lockdowns show no positive effect on green zone fatalities in the
+ few instances where an outbreak does reach there, they decrease overall
+ IFR and fatalities by further concentrating outbreaks in the less vulnerable
+ population (see Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_lockdown"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection*
+Evacuation
+\end_layout
+
+\begin_layout Standard
+We observe no significant effects when severe cases requiring hospitalization
+ are evacuated (see Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_evacuation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Since we considered that these individuals will not receive health care
+ (they are evacuated to isolation centers), their fate remains the same
+ than if staying in the camp and, hence, we expect evacuation to have an
+ effect only in reducing the infectivity.
+ Although these individuals spend a longer period being infectious with
+ respect to an individual having mild symptoms (
+\begin_inset Formula $\sim$
+\end_inset
+
+10 days longer), the number of individuals under these conditions is only
+ a small fraction of the total infectious population at any given time,
+ which explains why we do not observe significant effects for this intervention.
+\end_layout
+
+\begin_layout Subsection*
+Combined interventions
+\end_layout
+
+\begin_layout Standard
+The effects of the interventions observed when we examine them individually
+ build upon each other when multiple interventions are implemented in tandem
+ (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Panel3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Supplementary Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_combined"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The protective effects of the safety zone intervention especially are most
+ fully realized not when implemented on its own, but when paired with other
+ interventions.
+ They become so effective that outbreaks in the green zone become exceptionally
+ rare, but so well controlled when they do happen, that the majority of
+ outbreaks are small enough for us to observe an anomalous increase in IFR
+ in some of the most effective interventions, driven by the discretization
+ of the values it can take (e.g.
+ if there is only one case and this person dies, see Supplementary Table.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Suppl_combined"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ When all interventions are implemented together: strict self-distancing
+ (50% reduction in contacts), self-isolation of symptomatic cases (1 tent
+ for every 40 people), a safety zone with 2 contacts per week in the buffer
+ zone, health checks, a strict lockdown (90%), and evacuation of severe
+ cases, mortality is reduced by 
+\begin_inset Formula $\sim$
+\end_inset
+
+
+\change_inserted -1732430129 1624360217
+94
+\change_deleted -1732430129 1624360215
+80
+\change_unchanged
+% and the
+\change_inserted -1732430129 1624360750
+ probability of outbreak in the green zone is very small (~0.005).
+ In other combinations with higher probability of outbreak (e.g.
+ considering in the previous combination a 20% reduction in contacts instead
+ of 50%) the
+\change_deleted -1732430129 1624360484
+ 
+\change_unchanged
+time to peak of symptomatic cases in the green zone is delayed by 
+\change_inserted -1732430129 1624360848
+48 days
+\change_deleted -1732430129 1624360850
+two months.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/Fig3.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Panel3"
+
+\end_inset
+
+ 
+\series bold
+Combinations of interventions.
+
+\series default
+ Probability of an outbreak (top), fraction of the population dying (middle)
+ and time until peak symptomatic cases (bottom) for different combination
+ of interventions.
+ Evac = evacuation of severely symptomatic, self = self-distancing, tents
+ = number of available self-isolation tents, safety = safety zone, lock
+ = lockdown of the buffer zone.
+ For combinations of interventions including a safety zone, we distinguish
+ between the population living in the green zone, in the orange zone and
+ the whole population.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Discussion
+\end_layout
+
+\begin_layout Standard
+In this study, we propose a number of interventions of immediate applicability
+ to informal settlements.
+ We focused on IDP settlements in NW Syria, taking into account the intervention
+s' feasibility, cultural acceptance and their need for low-cost.
+ When confronted with different possible scenarios, we generally considered
+ the worst-cases, highlighting the interventions that are most effective
+ in the direst conditions, but possibly resulting in an overestimate of
+ mortality.
+ This potential overestimation does not change the qualitative picture of
+ the results, which is built upon comparison of relative values between
+ the presence and absence of interventions.
+\end_layout
+
+\begin_layout Standard
+Our results align with previous simulation studies of potential COVID-19
+ interventions in similarly densely populated, low-resource settings where
+ informal settlements are present, such as urban areas of sub-Saharan Africa.
+ In these settings, social-distancing is demonstrated to be an effective
+ intervention, and even small changes are estimated to have large effects
+ on outbreaks 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nyabadza2020"
+literal "false"
+
+\end_inset
+
+, in some cases determining whether or not already inadequate healthcare
+ systems become overwhelmed 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "siraj_early_2020"
+literal "false"
+
+\end_inset
+
+.
+ Zandvoort et al.
+ show that similar measures to the ones we consider: self-isolation, physical
+ distancing and 
+\begin_inset Quotes eld
+\end_inset
+
+shielding
+\begin_inset Quotes erd
+\end_inset
+
+ the vulnerable, may reduce mortality by 60%-75% in African cities 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vanzandvoort2020"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Self-distancing proves to be an effective measure in our models as well;
+ reducing contacts by 50% has the greatest effect across most outcomes of
+ interest in any of the interventions we examined.
+ However, the difficulty of achieving a reduction of this magnitude cannot
+ be overlooked, especially considering the large proportion of the population
+ composed of children, a group with an already high contact rate that may
+ prove difficult to control 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "noauthor_syrian_nodate"
+literal "false"
+
+\end_inset
+
+.
+ To illustrate the micro-dynamics of this intervention, in Supplementary
+ Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:critical_threshold"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we plot the maximum proportion of the population exposed at any given point
+ in time in each simulation, against the time it takes for symptomatic cases
+ to peak.
+ We observe that until reaching approximately 60%, successive reductions
+ in contacts reduce the maximum proportion of the population exposed while
+ increasing the time until symptomatic cases peak.
+ Additional reductions in contacts beyond 60% however abruptly decrease
+ both the time until cases peak and overall mortality, suggesting that outbreaks
+ die out before the virus spreads widely throughout the camp's population.
+ This suggests the existence of a critical threshold for the number of individua
+ls exposed over which large outbreaks become established in the population,
+ significantly increasing mortality.
+\end_layout
+
+\begin_layout Standard
+We also propose self-isolation using individual tents which can be located
+ in a dedicated zone or next to the tents of relatives, where contact with
+ non-isolated individuals is mediated by a buffer zone.
+ This intervention is effective with even a small number of isolation tents,
+ as low as 5-10 tents per 1000 camp residents
+\change_inserted -1732430129 1624384511
+ in preventing an outbreak in the camp, but it requires at least 25 tents
+ per 1000 camp residents to reduce mortality, and 125-250 tents for to minimize
+ it
+\change_unchanged
+.
+ After conversations with camp managers, we found that this intervention
+ is more likely to be accepted in NW Syria than evacuation to community-based
+ isolation centers.
+ Community-based isolation not only poses cultural challenges; the capacity
+ required to implement it has hardly been met 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "UNOCHA_CCTC_numbers"
+literal "false"
+
+\end_inset
+
+, and it is still one of the main challenges in the region 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "UNOCHA_collapse"
+literal "false"
+
+\end_inset
+
+.
+
+\change_inserted -1732430129 1623686196
+ We note that in our simulated intervention individuals become isolated
+ as soon as they have symptoms.
+ Recognizing symptoms, however, may require some time and we should expect
+ a less effective intervention unless systematic checks for symptomatic
+ individuals are put in place.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+Setting up a safety zone has two positive effects that most stand out: a
+ reduction in the probability of an outbreak in the vulnerable population,
+ and an increase in the time until the number of symptomatic cases peaks.
+ Much of the success or failure of the safety zone intervention hinges on
+ the functioning of the buffer zone.
+ The number of inter-zone contacts per week, the implementation of health
+ checks, and potential lockdowns all have notable effects.
+ Also important is the portion of the population that is protected; protecting
+ only the vulnerable may have the most beneficial effects, but it is precisely
+ these vulnerable individuals, older adults and people with comorbidities,
+ who may most need family members to care for them.
+ While safety zone scenarios that allow greater numbers of family members
+ to accompany their vulnerable relatives to the green zone may confer greater
+ epidemiological risk, they may also engender greater well-being and social
+ cohesion.
+\end_layout
+
+\begin_layout Standard
+Despite these benefits, we do not observe a clear decrease in IFR with this
+ intervention, although it is possible that our model may overestimate mortality
+ from an outbreak in the green zone in the few instances when there is one.
+ Since it is unlikely that the camps have the economic means to increase
+ the number of tents when implementing this intervention, we assumed that
+ individuals do not reduce their contacts when moved to the green zone since
+ household sizes will not decrease, which implies an increase in the number
+ of contacts between vulnerable individuals.
+ Despite this increase in contacts, we do not observe an increase in mortality
+ in the vulnerable population when the safety zone is implemented.
+ These results address concerns raised around this type of intervention
+ from previous experiences with large numbers of fatalities registered in
+ nursing-homes in developed countries 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dahab_covidIDPcontrol_2020"
+literal "false"
+
+\end_inset
+
+.
+ While nursing-homes in developed countries may be seen as analogous to
+ the safety zone intervention, the alternative to nursing homes in developed
+ countries for the elderly population typically involves remaining at home
+ with few contacts with younger individuals (in a scenario of lockdown),
+ while in the camps the alternative is living in tents shared with younger
+ individuals with high contacts rates (especially children).
+ This may explain why we observe a positive effect from this intervention
+ despite a relative increase in contacts among the more vulnerable subpopulation.
+\end_layout
+
+\begin_layout Standard
+An instrumental consideration for our models is the fraction of the population
+ recovered from COVID-19 after a steady state is reached.
+ Although the duration for which SARS-CoV-2 infection confers immunity is
+ uncertain, the proportion of the population recovered after an outbreak
+ should play a role in its protection against future ones.
+ For all intervention except self-distancing >30%, we observed that the
+ fraction of the population recovered meets or exceeds 50%.
+\end_layout
+
+\begin_layout Standard
+Another important consideration for interpreting our results are the modelling
+ assumptions we made.
+ From the point of view of our parameterization, perhaps the most relevant
+ relates to the relative transmissivity of the different infectious stages,
+ whose specific values still have large margins of variability 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "widders_viralLoadVsInfect_2020,casey_presymptEstim_2020,he_temporal_2020"
+literal "false"
+
+\end_inset
+
+.
+ This is particularly relevant for our purposes, because the higher the
+ relative infectivity of the presymptomatic and asymptomatic stages, the
+ less effective our non-medical interventions which rely on identification
+ of symptomatic individuals will be.
+ For instance, Bullock et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bullock_IBM4IDPs_covid21"
+literal "false"
+
+\end_inset
+
+ assumed a higher infectiousness of the presymptomatic stage and hence self-isol
+ation of symptomatic individuals had little effect.
+ Self-isolation also becomes ineffective under the assumptions made by Hernandez
+-Suarez et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hernandez_Refugee_covid20"
+literal "false"
+
+\end_inset
+
+ when they considered isolating only severe symptomatic cases (whose fraction
+ is small), hence mildly symptomatic individuals were effectively considered
+ asymptomatic.
+ On the other hand, Gilman et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gilman_IBMrefugee_covid20"
+literal "false"
+
+\end_inset
+
+ showed that self-isolation was effective when considering individuals at
+ different stages to be equally infectious.
+ We assumed that presymptomatic individuals have the highest relative infectivit
+y, consistent with the most recent estimations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "casey_presymptEstim_2020"
+literal "false"
+
+\end_inset
+
+, and the interventions we proposed are still effective.
+ Considering a different scenario in which all compartments are assumed
+ to be equally infectious, our interventions become even more effective
+ (see previous version of our manuscript 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pascual-garcia_medRxiv_2020"
+literal "false"
+
+\end_inset
+
+v1).
+\end_layout
+
+\begin_layout Standard
+It is also important to acknowledge the benefits and limitations of different
+ possible computational implementations.
+ For instance, there are interventions that do not have a natural implementation
+ within our framework, such as those requiring interventions targeting very
+ specific interactions between individuals (as opposed to large groups of
+ individuals)
+\change_inserted -1732430129 1623686247
+, or reproducing empirically-observed residence times
+\change_unchanged
+.
+ An example might be the isolation of an individual and his/her family,
+ as proposed in Gilman 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gilman_IBMrefugee_covid20"
+literal "false"
+
+\end_inset
+
+ which, since we do not explicitly model interactions at the family-level,
+ would require the creation of as many classes as families.
+ When this level of detail is required, individual based models (IBMs) may
+ be more appropriate 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gilman_IBMrefugee_covid20,bullock_IBM4IDPs_covid21"
+literal "false"
+
+\end_inset
+
+.
+ However, IBMs require a rich amount of data for their parameterization
+ which, although increasingly available, is scarce for informal IDPs camps.
+ Our framework is powerful enough to simulate a large number of scenarios
+ with little computational cost, which would be an optimal strategy as a
+ first approximation in the design of interventions to narrow down the most
+ relevant scenarios (as a reference, in <24h we model with just 12 cores
+ 75 scenarios requiring quarter million simulations).
+ The scenarios selected could then be further investigated with more detailed
+ interventions using IBMs, if data is available.
+\end_layout
+
+\begin_layout Standard
+A key limitation of our approach is that it simulates an outbreak started
+ by one infectious individual in a single camp with a closed population.
+ We acknowledge that this approach does not fully capture the complexities
+ of the NWS region, where IDPs live interspersed throughout the region in
+ several hundred camps.
+ The dynamics of an outbreak in the region are undoubtedly influenced by
+ inter-community contacts, and the dynamics of an outbreak in a single camp
+ by these region-wide dynamics, as it has been demonstrated in other countries
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gatto_spread_2020,arenas2020"
+literal "false"
+
+\end_inset
+
+.
+ We expect our results to be robust to changes in population, as long as
+ these changes are relatively small compared to the total population size
+ in the camp, implying sporadic inputs of infected individuals.
+ This is the expected behaviour in IDPs, which are often small and located
+ in rural areas, and in which important population movements, as those observed
+ in large camps, are infrequent.
+ This fact, together with the relatively young population in IDPs, may help
+ in limiting the impact of the disease, as observed in African rural areas
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "diop_COVIDruralAfrica_2020"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Other unaccounted for social and cultural dynamics will undeniably complicate
+ the feasibility of our proposed interventions.
+ Only one example we have not addressed here is the unlikeliness of children
+ under 13 self-isolating.
+ Although the number of challenges to implementing our proposed interventions
+ are potentially endless, the community-based nature of our approach may
+ help circumvent these challenges much faster than healthcare-based intervention
+s, which often depend on complex political decisions and may take years
+ to build the requisite capacity for an effective response.
+ If the dynamics of the virus are well understood by local communities and
+ at least some of the interventions we propose are implemented, the impacts
+ of COVID-19 can be mitigated even in an environment as challenging as NW
+ Syria.
+\end_layout
+
+\begin_layout Section*
+Conclusion
+\end_layout
+
+\begin_layout Standard
+Given a rapidly changing environment and slow responses of local and internation
+al authorities in conflict regions where control of policy is disputed,
+ the latter often leaving these communities aside in their priorities 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mukumbange_refugeesVaccine_2020"
+literal "false"
+
+\end_inset
+
+, empowering local communities themselves is perhaps the best, if not the
+ only way, to help them avoid the worst consequences of the pandemic.
+ Such an approach may achieve greater compliance with non-pharmaceutical
+ interventions, especially where there is a mistrust of external authority.
+ This not only applies to IDP camps in NW Syria, but more generally to refugee
+ camps in conflict-torn regions, and potentially other informal settlements
+ and vulnerable communities around the world: the low-cost, effective interventi
+ons we present are feasible, needed and urgent.
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+This collaboration was organized by crowdfightCOVID19 (www.crowdfightcovid19.org)
+ upon request from CS.
+ We thank Judith Boumann for valuable contributions.
+ We thank Peter Ashcroft, Juan Poyatos, Noreen Goldman, Burcu Tepekule and
+ members of Sebastian Bonhoeffer's and Bryan Grenfell's groups for useful
+ discussions.
+ We thank two anonymous reviewers who provided thoughtful and insightful
+ comments that greatly improved our article.
+\end_layout
+
+\begin_layout Section*
+Declarations
+\end_layout
+
+\begin_layout Subsubsection*
+Funding
+\end_layout
+
+\begin_layout Standard
+ECF's research is supported by Wellcome Trust grant 204833/Z/16/Z.
+ APG research is supported by the Simons Collaboration: Principles of Microbial
+ Ecosystems (PriME), award number 542381.
+\end_layout
+
+\begin_layout Subsubsection*
+Conflicts of interest/Competing interests
+\end_layout
+
+\begin_layout Standard
+Alberto Pascual-García is a Board Member of crowdfightCOVID19, an initiative
+ from the scientific community to put all available resources at service
+ of the fight against COVID-19.
+ Chamsy Sarkis (co-author) is a Board Member of the Pax Syriana Foundation,
+ a non-profit organization set up for social and philanthropic purposes
+ including promoting and providing support and assistance to civilian aid
+ projects in the fields of education, health, emergency assistance, psychologica
+l assistance and humanitarian aid for people affected by wars or humanitarian
+ crises.
+ These organizations had no role in study design, data collection, data
+ analysis, data interpretation, or writing of the article.
+\end_layout
+
+\begin_layout Subsubsection*
+Ethics approval
+\end_layout
+
+\begin_layout Standard
+This study used only publicly available aggregate data and was thus not
+ subject to ethical review.
+\end_layout
+
+\begin_layout Subsubsection*
+Consent to participate
+\end_layout
+
+\begin_layout Standard
+NA
+\end_layout
+
+\begin_layout Subsubsection*
+Consent for publication
+\end_layout
+
+\begin_layout Standard
+All authors agreed on publication.
+\end_layout
+
+\begin_layout Subsubsection*
+Availability of data and material
+\end_layout
+
+\begin_layout Standard
+All results are available at the url https://github.com/crowdfightcovid19/req-550
+-Syria
+\end_layout
+
+\begin_layout Subsubsection*
+Code availability
+\end_layout
+
+\begin_layout Standard
+All the code is freely available at the url https://github.com/crowdfightcovid19/
+req-550-Syria
+\end_layout
+
+\begin_layout Subsubsection*
+Authors' contributions
+\end_layout
+
+\begin_layout Standard
+All authors contributed to the conceptualization.
+ Design of the methodology: APG, ECF, JV, JK, CS.
+ Formal analysis: APG, ECF, JK.
+ Code development APG, ECF, JK.
+ Conducted research: APG, ECF, JV, JK.
+ Validate results: APG, ECF, JK, JV, CS.
+ Contributed resources: APG, CS, ECF, JK, JV.
+ Data curation: APG, JK, ECF.
+ Visualization: APG, ECF, JK, JV.
+ Writing (original draft) APG, ECF, JK.
+ All authors contributed to the final version of the manuscript, and APG
+ supervised the research.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "req550-syria"
+options "unsrt"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
