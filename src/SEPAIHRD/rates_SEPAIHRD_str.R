@@ -161,6 +161,7 @@ rates_SEPAIHRD_str = function(y, parms,t){
         
         if(Itot > isoThr){ # but if the capacity of isolation is insufficient
           Nfree=y[classI]-Niso[class] # number of non-isolated exceeding the capacity are infectious
+          if(Nfree < 0){stop("Nfree is negative")} 
         }else{ 
           Nfree=0
         }
