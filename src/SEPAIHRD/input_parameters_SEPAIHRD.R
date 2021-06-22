@@ -56,8 +56,10 @@ Ifact.std=0.53
 
 if(thisScript == 1){ # if you run this script only, these values are needed to avoid errors
   # ..... some params for testing
+  onset=0
   isoThr=10
   Nrand=10000
+  model.ver="V3"
 }
 
 # --- Fix onset distribution
@@ -165,6 +167,25 @@ eta.vec=1/t.ItoH.vec
 #eta.vec[idx.neg]=max(eta.vec) # should jump to H (this happens only if onset>0)
 alpha.vec=1/t.ItoD.vec
 
+
+# Some specific variations of the original model
+if(model.ver == "V1"){
+  eta.vec=gammaI.vec
+  alpha.vec=gammaI.vec
+}
+
+if(model.ver == "V3"){
+  # I to H is eta
+  gammaA.vec=eta.vec # A to R
+  gammaI.vec=eta.vec # I to R
+  alpha.vec=eta.vec # I to V
+  t.VtoD.vec=t.ItoD.vec-t.ItoH.vec
+  idx.neg=which(t.VtoD.vec < 0)
+  t.VtoD.vec[idx.neg]=1/24
+  t.VtoD.vec=c(t.VtoD.vec[Nrand],t.VtoD.vec[1:(Nrand-1)])
+  alphaV.vec=1/t.VtoD.vec
+}
+
 # --- Infectiousness
 AUC.vec=rnorm(Nrand,mean = AUC.mean,sd=AUC.std)
 rhoAI.vec=rlnorm(Nrand,mean=log(rhoAI.mean),sd=rhoAI.std) 
@@ -185,6 +206,7 @@ betaP.vec=betaP.mean*(fracPtoI.vec+(1-fracPtoI.vec)*rhoAI.vec)
 betaI.vec=Ifact.vec
 betaA.vec=Ifact.vec*rhoAI.vec
 betaH.vec=Ifact.vec*rhoHI.mean
+
 
  # quantile(betaP.vec,probs = c(0.01,0.05,0.5,0.95,0.99)) # 0.93 [0.89-0.99]
  # quantile(betaI.vec,probs = c(0.01,0.05,0.5,0.95,0.99))

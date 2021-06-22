@@ -161,9 +161,15 @@ if(model.type=="deterministic"){
 }else{ # stochastic variable
   MT="SV"
 }
-optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Onset",onset,"_Fate",hospitalized2,
-               "_Tcheck",Tcheck,"_PopSize",Npop,
-               "_lock",lockLabel,"_self",selfLabel,"_mod",MT,sep="")
+if(model.ver != "V0"){
+  optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Onset",onset,"_Fate",hospitalized2,
+                 "_Tcheck",Tcheck,"_PopSize",Npop,
+                 "_lock",lockLabel,"_self",selfLabel,"_mod",MT,"_",model.ver,sep="")
+}else{
+  optLabel=paste("Isolate",isolation,"_Limit",isoThr,"_Onset",onset,"_Fate",hospitalized2,
+                 "_Tcheck",Tcheck,"_PopSize",Npop,
+                 "_lock",lockLabel,"_self",selfLabel,"_mod",MT,sep="")
+}
 
 # Fix directories ------------
 if(fake == 1){
@@ -198,26 +204,50 @@ C=(unlist(struct.param["C"][[1]]))
 Nclass=length(class.str)
 
 # Initialize the model and data  ----------
-# .... Select the model and source it
+# .... Select the model and create compartments
 setwd(dirCodeSpec)
 if(CompModel == "SEPAIHRD"){ # Only this model implemented so far
-  if(onset==0){
-    compartments=c("S","E","P","A","I","H","R","D") # 
+  if(model.ver == "V2"){
+    compartments=c("S","E","P","A","IR","IH","ID","R","H","D")
+    comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
+                 "SymptomaticR","SymptomaticH","SymptomaticD",
+                 "Hospitalized","Recovered","Dead","Symptomatic")
+  }else if(model.ver == "V3"){
+    compartments=c("S","E","P","A","I","R","H","V","D")
+    comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
+                 "Symptomatic","Recovered","Hospitalized","Severe","Dead")
   }else{
-    compartments=c("S","E","P","A","O","I","H","R","D") # isolation requires one more comp.
+    if(onset==0){
+      compartments=c("S","E","P","A","I","H","R","D") # 
+      comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
+                   "Symptomatic","Hospitalized","Recovered","Dead")
+    }else{
+      compartments=c("S","E","P","A","O","I","H","R","D") # isolation requires one more comp.
+      comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
+                   "Symp_Onset-stage","Symp_Iso-stage","Hospitalized","Recovered","Dead")
+    }
   }
-  if(model.type=="deterministic"){
-    source("dxdt_SEPAIHRD_str.R")
-    dxdtfun=dxdt_SEPAIHRD_str
-  }else{ # the model is stochastic
+}
+
+# .... select the integration routine depending on deteministic or stochastic sim
+if(model.type=="deterministic"){
+  source("dxdt_SEPAIHRD_str.R")
+  dxdtfun=dxdt_SEPAIHRD_str
+}else{ # the model is stochastic
+  if(model.ver == "V2"){
+    source("rates_SEPAIHRD_str_V2.R")
+    dxdtfun=rates_SEPAIHRD_str_V2
+  }else if(model.ver == "V3"){
+    source("rates_SEPAIHRD_str_V3.R")
+    dxdtfun=rates_SEPAIHRD_str_V3
+  }else{
     source("rates_SEPAIHRD_str.R")
     dxdtfun=rates_SEPAIHRD_str
   }
-  #set.seed(18062020) # Today, store for reproducibility
-  set.seed(13072020) # Today, store for reproducibility
-  source("input_parameters_SEPAIHRD.R")
 }
-
+#set.seed(18062020) # Today, store for reproducibility
+set.seed(13072020) # Today, store for reproducibility
+source("input_parameters_SEPAIHRD.R")
 
 # --- Starting population values
 setwd(dirDataIn)
@@ -238,13 +268,18 @@ first.inf=paste(class.infected,"E",sep=".") # The class infected is initialized 
 y.start[first.inf]=1 # we initialize the first case
 first.inf=paste(class.infected,"S",sep=".")
 y.start[first.inf]=y.start[first.inf]-1 # substract from susceptible
-inf.idx=grep(".I$",names(y.start),perl = TRUE) # take indexes infectious variables, needed to estimate capacity isolation centers
-if(onset > 0){ # not used
-  ons.idx=grep(".O$",names(y.start),perl = TRUE)
+if(model.ver == "V2"){
+  inf.idx=grep(".I.$",names(y.start),perl = TRUE) # take indexes infectious variables, needed to estimate capacity isolation centers
+}else{
+  inf.idx=grep(".I$",names(y.start),perl = TRUE) # take indexes infectious variables, needed to estimate capacity isolation centers
+  # if(onset > 0){ # not used
+  #   ons.idx=grep(".O$",names(y.start),perl = TRUE)
+  # }
 }
 hosp.idx=grep(".H$",names(y.start),perl = TRUE) # take indexes hospitalized variables, needed to estimate capacity isolation centers
 #browser()
 
+# Create objects for interventions -----
 # --- Create a matrix to limit contacts between symptomatic people of one class and population of selected classes
 Tcheck.mat=matrix(1,ncol=ncol(C),nrow=nrow(C)) # Same size and names than the contacts matrix
 rownames(Tcheck.mat)=rownames(C)
@@ -273,17 +308,26 @@ if(lockDown=="YES"){ # if it is possible a lockdown
   lock.mat[idx.classB,idx.classA]=lockValue # will be applied to all classes
 }
 
+# Objects for integration -----------------
 # --- Finally, initialize times and stochastic transitions
 # (here, we do daily for Ndays days - you can change this value)
 times_vector <- seq(from=0, to=Ndays, by=1)
 if((model.type=="stochastic_fixed")||(model.type=="stochastic_variable")){
   setwd(dirCodeSpec)
-  if(onset == 0){
-    source("make_transitions.R")
+  if(model.ver == "V2"){
+    source("make_transitionsV2.R")
     transitions=make_transitions(class.names,var.names,hospitalized2)
-  }else{ # An additional onset compartment  is introduced
-    source("make_transitions_iso.R")
-    transitions=make_transitions_iso(class.names,var.names,hospitalized2)
+  }else if(model.ver == "V3"){
+    source("make_transitionsV3.R")
+    transitions=make_transitions(class.names,var.names,hospitalized2)
+  }else{
+    if(onset == 0){
+      source("make_transitions.R")
+      transitions=make_transitions(class.names,var.names,hospitalized2)
+    }else{ # An additional onset compartment  is introduced
+      source("make_transitions_iso.R")
+      transitions=make_transitions_iso(class.names,var.names,hospitalized2)
+    }
   }
   Ntrans=length(transitions)[1]/Nclass
   y.start=round(y.start)
@@ -297,6 +341,7 @@ k=1 # labels the number of fully reported results
 rand2report=vector(mode="integer",length=Nfull) # store realization that will be reported
 output.list=list()
 output.aggr.list=list()
+compartments.save=compartments # needed for V2, we need to introduce I at the end of the simulation
 for(i in 1:Nrealiz){ # Launch the script Nrealiz times
   #betaI=betaI.vec[i]
   #betaA=betaA.vec[i]
@@ -317,6 +362,10 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     betaH=betaH.vec[i]
     tau=tau.vec[i]
     fracPtoI=fracPtoI.vec[i]
+    if(model.ver == "V3"){
+      gammaA=gammaA.vec[i]
+      alphaV=alphaV.vec[i]
+    }
   }else{ # stochastic variable
     setwd(dirCodeSpec) # These three lines should be optimized
     source("input_parameters_SEPAIHRD.R") # should be converted into a function
@@ -339,6 +388,10 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
     betaI=betaI.vec
     betaH=betaH.vec
     fracPtoI=fracPtoI.vec
+    if(model.ver == "V3"){
+      gammaA=gammaA.vec
+      alphaV=alphaV.vec
+    }
   }
 
   gammaA=gammaA
@@ -353,7 +406,10 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
                   hospitalized2=hospitalized2,Hinfect=Hinfect,
                   onset=onset,isoThr=isoThr,xi=xi,carers.mat=carers.mat,
                   inf.idx=inf.idx,hosp.idx=hosp.idx,
-                  classes=class.names,vars=var.names,compartments=compartments)
+                  classes=class.names,vars=var.names,compartments=compartments.save)
+  if(model.ver == "V3"){
+    parms.list$alphaV = alphaV
+  }
   
   # Run the ODE solver
   if((model.type=="stochastic_fixed")||(model.type=="stochastic_variable")){
@@ -368,6 +424,17 @@ for(i in 1:Nrealiz){ # Launch the script Nrealiz times
                                         times=times_vector, 
                                         func=dxdtfun, 
                                         parms=parms.list))
+  }
+  # ..... if model.ver = V2 we need to aggregate infectious compartments
+  if(model.ver == "V2"){ #
+    comp.vars.inf=colnames(model.output)[inf.idx]
+    for(class in class.names){
+      idx.tmp=grep(class,comp.vars.inf)
+      I.tmp=data.frame(rowSums(model.output[,inf.idx[idx.tmp]]))
+      colnames(I.tmp)=paste(class,"I",sep=".")
+      model.output=data.frame(model.output,I.tmp)
+    }
+    compartments=c(compartments.save,"I") # create an aggregated symptomatic compartment
   }
   
   # ..... Retrieve deaths, infectious, or any other data you may want to process across realizations
@@ -479,6 +546,7 @@ if(test_sim == 1){ # stop the simulation here
 # Plots and outputs ------------------------
 # --- Prepare some aesthetics and labels
 library(RColorBrewer)
+Ncomp=length(compartments) # for V2 it has changed after adding the aggregated I comp
 n <- (Nclass*Ncomp)+5 # there is always one too light
 qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
 col_qual = rainbow(Ncomp) # unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
@@ -492,13 +560,8 @@ col_class = rainbow(n) #  c(brewer.pal(Nclass,"Set2"),brewer.pal(Nclass,"Dark2")
   #              brewer.pal(Nclass,"Spectral"),brewer.pal(Nclass,"Accent"), 
   #             brewer.pal(Nclass,"Paired"),brewer.pal(Nclass,"Pastel1"),
   #             brewer.pal(Nclass,"Set1"),brewer.pal(Nclass,"Set3")) # other palette
-if(onset==0){
-  comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
-               "Symptomatic","Hospitalized","Recovered","Deaths")
-}else{
-  comp.descr=c("Susceptible","Exposed","Presymptomatic","Asymptomatic",
-               "Symp_Onset-stage","Symp_Iso-stage","Hospitalized","Recovered","Deaths")
-}
+
+
 
 # --- Check the output, and plot dynamics
 dir.create(dirPlotOut)
@@ -758,3 +821,5 @@ cat("Mean recov total",mean(recov.total),"\n")
 #                         "Mean total recovered =",mean(recov.total)))
 # print(gg)
 # dev.off( )
+test=1-fracItoD.str-fracItoH.str
+quantile(test)
