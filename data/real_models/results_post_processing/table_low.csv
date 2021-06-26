@@ -1,23 +1,23 @@
-"","intervention","T","E","S"
-"1","none",6,NA,NA
-"2","evac",13,NA,NA
-"3","self 20%",6,NA,NA
-"4","50 tents",5,NA,NA
-"5","self 50%",20,NA,NA
-"6","self 20% + 50 tents",8,NA,NA
-"7","self 20% + 50 tents + evac",8,NA,NA
-"8","self 50% + 50 tents ",18,NA,NA
-"9","self 50% + 50 tents + evac",21,NA,NA
-"10","safety",9,9,16
-"11","safety + evac",9,8,20
-"12","safety + lock 50%",6,6,5
-"13","safety + self 20%",7,7,19
-"14","safety + 50 tents",3,3,11
-"15","safety + self 50%",24,24,13
-"16","safety + 50 tents + lock 50%",3,3,14
-"17","safety + 50 tents + evac",2,2,31
-"18","safety + 50 tents + self 20%",2,2,31
-"19","safety + 50 tents + self 50%",11,11,24
-"20","safety + 50 tents + evac + lock 50% + self 20%",6,6,50
-"21","safety + 50 tents + evac + lock 50% + self 50%",14,14,17
-"22","safety + 50 tents + evac + lock 90% + self 50%",15,15,6
+"","intervention","S"
+"1","none",NA
+"2","evac",NA
+"3","self 20%",NA
+"4","50 tents",NA
+"5","self 50%",NA
+"6","self 20% + 50 tents",NA
+"7","self 20% + 50 tents + evac",NA
+"8","self 50% + 50 tents ",NA
+"9","self 50% + 50 tents + evac",NA
+"10","safety",36
+"11","safety + evac",48
+"12","safety + lock 50%",40
+"13","safety + self 20%",56
+"14","safety + 50 tents",37
+"15","safety + self 50%",187
+"16","safety + 50 tents + lock 50%",58
+"17","safety + 50 tents + evac",44
+"18","safety + 50 tents + self 20%",78
+"19","safety + 50 tents + self 50%",57
+"20","safety + 50 tents + evac + lock 50% + self 20%",108
+"21","safety + 50 tents + evac + lock 50% + self 50%",42
+"22","safety + 50 tents + evac + lock 90% + self 50%",14
