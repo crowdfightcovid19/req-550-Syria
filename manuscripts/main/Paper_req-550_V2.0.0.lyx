@@ -6032,7 +6032,7 @@ ing
  up to at least 1 tent for every 40 people
 \change_deleted -1732430129 1624358467
  
-\change_inserted -1732430129 1624960805
+\change_inserted -1732430129 1624987831
 to observe a reduction of ~2% in the mortality and an increase in ~13% in
  the time to peak of symptomatic indviduals, and these benefits reach a
  ~17% reduction in mortality and ~20% in the time to peak of symptomatic
@@ -6044,7 +6044,9 @@ to observe a reduction of ~2% in the mortality and an increase in ~13% in
  at the end of the simulation with increasing number of tents, which leads
  to an artificial increase in the IFR (since there are many simulations
  in which very few individuals are infected, when there is a death among
- them the IFR becomes high 
+ them the IFR becomes high, see Suppl.
+ Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Suppl_isolation"
