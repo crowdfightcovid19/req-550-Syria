@@ -4522,7 +4522,7 @@ Efficacy of the safety zone in combination with other interventions.
  Total = total number of simulations where an outbreak in the green zone
  occurs (at least one death).
  % of total = percent of outbreaks where fewer than 20 cases are recorded.
- N = 500 simulations for each combination of interventions.
+ N = 2500 simulations for each combination of interventions.
  For the most effective combinations, the majority of simulations where
  an outbreak occurs in the green zone see fewer than 20 cases.
  In these simulations, the discretization of the possible values that the

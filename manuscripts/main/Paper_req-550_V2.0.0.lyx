@@ -8,7 +8,7 @@
 \begin_preamble
 \usepackage{lipsum}
 \usepackage{xr}
-\externaldocument{Paper_req-550_SM_V1.1.1}
+\externaldocument{Paper_req-550_SM_V2.0.0}
 \usepackage{lineno}
 %\usepackage[strings]{underscore} % to include underscores (appearing in bib fields)
 %\usepackage[english]{babel} % should go in hand with this to prevent errors (better to escape the underscores)
@@ -313,7 +313,13 @@ IDP: Internally Displaced Persons | NWS: Northwest region of Syria | IFR:
 \series bold
 Word count:
 \series default
- 5738
+ 5
+\change_inserted -1732430129 1624961083
+89
+\change_deleted -1732430129 1624961081
+73
+\change_unchanged
+8
 \end_layout
 
 \begin_layout Standard
@@ -3055,7 +3061,11 @@ literal "false"
 .
  Although we do not have access to official data on healthcare occupancy,
  the currently reported number of cases suggests that this scenario could
- already have been reached 
+ 
+\change_deleted -1732430129 1624964562
+already
+\change_unchanged
+ have been reached 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "UNOCHA_collapse"
@@ -3584,9 +3594,15 @@ noprefix "false"
 
 \end_inset
 
-), adding new population classes that govern behavioural changes (behaviour-clas
-ses), and/or adding a compartment to consider the time until detection of
- symptoms (see Fig.
+), 
+\change_inserted -1732430129 1624964641
+and/or 
+\change_unchanged
+adding new population classes that govern behavioural changes (behaviour-classes
+)
+\change_deleted -1732430129 1624964647
+, and/or adding a compartment to consider the time until detection of symptoms
+ (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3597,7 +3613,9 @@ noprefix "false"
 
 \end_inset
 
-).
+)
+\change_unchanged
+.
  Since 
 \begin_inset Formula $\lambda_{i}$
 \end_inset
@@ -5648,9 +5666,9 @@ noprefix "false"
 
 .
  
-\change_inserted -1732430129 1624357372
-We note that, by generating transition rates from the empirically-determined
- residence times we are not reproducing these residence times for the simulated
+\change_inserted -1732430129 1624960760
+We note that by generating transition rates from the empirically-determined
+ residence times, we are not reproducing these residence times for the simulated
  individuals.
  In our simulations, individuals will experience exponentially-distributed
  residence times with a mean equal to the mean of the correspondent distribution.
@@ -6014,11 +6032,11 @@ ing
  up to at least 1 tent for every 40 people
 \change_deleted -1732430129 1624358467
  
-\change_inserted -1732430129 1624359754
-to observe a reduction of ~2% in the mortality and increase in ~13% in the
- time to peak of symptomatic indviduals, and these benefits reach a ~17%
- reduction in mortality and ~20% in the time to peak of symptomatic with
- 1 tent for every 8 people.
+\change_inserted -1732430129 1624960805
+to observe a reduction of ~2% in the mortality and an increase in ~13% in
+ the time to peak of symptomatic indviduals, and these benefits reach a
+ ~17% reduction in mortality and ~20% in the time to peak of symptomatic
+ with 1 tent for every 8 people.
  Increasing the number of tents does not further reduce the probability
  of outbreak, consistent with the idea that the mechanism targets index
  cases requiring low capacity.
@@ -6495,7 +6513,7 @@ We also propose self-isolation using individual tents which can be located
  as low as 5-10 tents per 1000 camp residents
 \change_inserted -1732430129 1624384511
  in preventing an outbreak in the camp, but it requires at least 25 tents
- per 1000 camp residents to reduce mortality, and 125-250 tents for to minimize
+ per 1000 camp residents to reduce mortality, and 125-250 tents to minimize
  it
 \change_unchanged
 .
