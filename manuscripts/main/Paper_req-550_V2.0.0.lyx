@@ -131,23 +131,29 @@ Empowering the crowd: Feasible strategies
 \begin_inset Newline newline
 \end_inset
 
- to minimize the spread
-\change_inserted -1732430129 1624385038
- of airborne infectious diseases
-\change_deleted -1732430129 1624384738
- of COVID-19
+ 
+\change_deleted -1732430129 1625138080
+to minimize
+\change_inserted -1732430129 1625138084
+for epidemic management
+\change_deleted -1732430129 1625138096
+ the spread of COVID-19
 \change_unchanged
  
+\change_deleted -1732430129 1625138205
+
 \begin_inset Newline newline
 \end_inset
 
+
+\change_unchanged
  in high-density informal settlements
-\change_inserted -1732430129 1624385044
+\change_inserted -1732430129 1625138162
 .
-\begin_inset Newline newline
+\begin_inset Newline linebreak
 \end_inset
 
- COVID-19 in Northwest Syria as a case-study.
+ The case of COVID-19 in Northwest Syria
 \change_unchanged
 
 \end_layout
@@ -254,14 +260,42 @@ cks, and carers for isolated individuals, quantifying their impact on the
  them reduce mortality when an outbreak does occur.
  Self-distancing reduces mortality by up to 35% if contacts are reduced
  by 50%.
- A similar reduction in mortality can be achieved by providing 1 self-isolation
- tent per 200 people.
+ A 
+\change_deleted -1732430129 1625134626
+similar
+\change_unchanged
+ reduction in mortality
+\change_inserted -1732430129 1625134638
+ by up to 17%
+\change_deleted -1732430129 1625134635
+ 
+\change_unchanged
+can be achieved by providing 1 self-isolation tent per 
+\change_inserted -1732430129 1625134645
+8
+\change_deleted -1732430129 1625134648
+200
+\change_unchanged
+ people.
  Protecting the most vulnerable in a safety zone reduces the outbreak probabilit
 y in the vulnerable population and has synergistic effects with the other
  interventions.
  Our model predicts that a combination of all simulated interventions may
- reduce mortality by almost 80% and delay an outbreak’s peak by almost two
- months.
+ reduce mortality by 
+\change_inserted -1732430129 1625134988
+more
+\change_deleted -1732430129 1625134987
+almost
+\change_inserted -1732430129 1625134991
+than
+\change_unchanged
+ 
+\change_deleted -1732430129 1625134992
+8
+\change_inserted -1732430129 1625134994
+9
+\change_unchanged
+0% and delay an outbreak’s peak by almost two months.
  Our results highlight the potential for non-medical interventions to mitigate
  the effects of the pandemic.
  Similar measures may be applicable to controlling COVID-19 in other informal
@@ -447,22 +481,34 @@ literal "false"
 
 \begin_layout Standard
 The 
-\change_inserted -1732430129 1624356202
-spread of airborne infectious diseases 
+\change_inserted -1732430129 1625135057
+spread of airborne infectious diseases with pandemic potential 
 \change_deleted -1732430129 1623668201
 COVID-19 pandemic is intensifying
 \change_unchanged
- in regions immersed in protracted armed conflicts 
+ in regions immersed in protracted armed conflicts
+\change_deleted -1732430129 1625135475
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "GuardianWinter"
+key "san_humanitarian_2020"
 literal "false"
 
 \end_inset
 
+
+\change_unchanged
 , where large portions of their populations have become displaced
-\change_inserted -1732430129 1623668259
-, is an important challenge
+\change_inserted -1732430129 1625135478
+, is an important challenge 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "san_humanitarian_2020"
+literal "false"
+
+\end_inset
+
+
 \change_unchanged
 .
  When the displaced population exceeds official resettlement and refugee
@@ -6032,19 +6078,19 @@ ing
  up to at least 1 tent for every 40 people
 \change_deleted -1732430129 1624358467
  
-\change_inserted -1732430129 1624987831
+\change_inserted -1732430129 1625135748
 to observe a reduction of ~2% in the mortality and an increase in ~13% in
  the time to peak of symptomatic indviduals, and these benefits reach a
  ~17% reduction in mortality and ~20% in the time to peak of symptomatic
  with 1 tent for every 8 people.
  Increasing the number of tents does not further reduce the probability
- of outbreak, consistent with the idea that the mechanism targets index
- cases requiring low capacity.
- This is also confirmed by the increase in the number of susceptible individuals
- at the end of the simulation with increasing number of tents, which leads
- to an artificial increase in the IFR (since there are many simulations
- in which very few individuals are infected, when there is a death among
- them the IFR becomes high, see Suppl.
+ of outbreak.
+ There is also an increase in the number of susceptible individuals at the
+ end of the simulation with increasing number of tents.
+ We finally observed an artificial increase in the IFR explained by an increasin
+gly large number of simulations in which very few individuals are infected
+ since, if at least one of them dies, we retrieve a high IFR value (see
+ Suppl.
  Fig.
  
 \begin_inset CommandInset ref
