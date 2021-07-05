@@ -29,7 +29,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{lipsum}
 \usepackage{xr}
-\externaldocument{Paper_req-550_SM_V1.1.1}
+\externaldocument{Paper_req-550_SM_V2.0.0}
 \usepackage{lineno}
 %\usepackage[strings]{underscore} % to include underscores (appearing in bib fields)
 %\usepackage[english]{babel} % should go in hand with this to prevent errors (better to escape the underscores)
@@ -73,9 +73,8 @@
 
 \begin{document}
 \title{Empowering the crowd: Feasible strategies \\
- to minimize the spread of airborne infectious diseases \\
- in high-density informal settlements.\\
- COVID-19 in Northwest Syria as a case-study.}
+ for epidemic management in high-density informal settlements.\linebreak{}
+ The case of COVID-19 in Northwest Syria}
 \author{Alberto Pascual-García$^{(1,*)}$, Jordan Klein$^{(2)}$, Jennifer
 Villers$^{(3,\land)}$, \\
  Eduard Campillo-Funollet$^{(4,\wedge)}$, Chamsy Sarkis$^{(5)}$}
@@ -113,13 +112,13 @@ quantifying their impact on the micro-dynamics of disease transmission.
 All interventions significantly reduce outbreak probability and some
 of them reduce mortality when an outbreak does occur. Self-distancing
 reduces mortality by up to 35\% if contacts are reduced by 50\%. A
-similar reduction in mortality can be achieved by providing 1 self-isolation
-tent per 200 people. Protecting the most vulnerable in a safety zone
-reduces the outbreak probability in the vulnerable population and
-has synergistic effects with the other interventions. Our model predicts
-that a combination of all simulated interventions may reduce mortality
-by almost 80\% and delay an outbreak’s peak by almost two months.
-Our results highlight the potential for non-medical interventions
+reduction in mortality by up to 18\%can be achieved by providing 1
+self-isolation tent per 8 people. Protecting the most vulnerable in
+a safety zone reduces the outbreak probability in the vulnerable population
+and has synergistic effects with the other interventions. Our model
+predicts that a combination of all simulated interventions may reduce
+mortality by morethan 90\% and delay an outbreak’s peak by almost
+two months. Our results highlight the potential for non-medical interventions
 to mitigate the effects of the pandemic. Similar measures may be applicable
 to controlling COVID-19 in other informal settlements, particularly
 IDP camps in conflict regions, around the world.
@@ -139,7 +138,7 @@ based models
 
 \medskip{}
 
-\textbf{Word count:} 5738
+\textbf{Word count:} 5898
 
 \newpage{}
 
@@ -198,19 +197,20 @@ needed to contain the virus in these settings, a task which necessarily
 involves the engagement of the communities living in them \cite{wilkinson_local_2020}.
 \end{comment}
 
-The spread of airborne infectious diseases  in regions immersed in
-protracted armed conflicts \cite{GuardianWinter}, where large portions
-of their populations have become displaced, is an important challenge.
-When the displaced population exceeds official resettlement and refugee
-camp capacity, Internally Displaced Persons (IDPs) must live in informal
-settlements (hereafter named ``camps''). These regions must contend
-with the public health challenges resulting from violence \cite{abbas_migrant_2018},
-the deterioration of health-systems \cite{hill_conflict_2010}, especially
-of critical care \cite{sahloul_war_2016}, and the breakdown of essential
-public infrastructure such as water and sanitation systems \cite{sikder_water_2018}.
-Urgent action is needed to contain the spreadin these settings, a
-task which necessarily involves the engagement of the communities
-living in them \cite{wilkinson_local_2020}.
+The spread of airborne infectious diseases with pandemic potential
+in regions immersed in protracted armed conflicts, where large portions
+of their populations have become displaced, is an important challenge
+\cite{san_humanitarian_2020}. When the displaced population exceeds
+official resettlement and refugee camp capacity, Internally Displaced
+Persons (IDPs) must live in informal settlements (hereafter named
+``camps''). These regions must contend with the public health challenges
+resulting from violence \cite{abbas_migrant_2018}, the deterioration
+of health-systems \cite{hill_conflict_2010}, especially of critical
+care \cite{sahloul_war_2016}, and the breakdown of essential public
+infrastructure such as water and sanitation systems \cite{sikder_water_2018}.
+Urgent action is needed to contain the spread of disease in these
+settings, a task which necessarily involves the engagement of the
+communities living in them \cite{wilkinson_local_2020}.
 
 This study focuses on the spread of COVID-19 inNorthwest region of
 Syria (NWS): a relatively small geographical area with 4.2 million
@@ -226,18 +226,19 @@ making contact tracing interventions infeasible.
 
 To investigate feasible COVID-19 prevention interventions in the camps,
 we considered a Susceptible-Exposed-Infectious-Recovered model similar
-to the one presented in \cite{gatto_spread_2020}, in which the camps'
-populations are divided into classes reflecting their estimated age-structures
-and comorbidity prevalence. We use this model to propose various interventions
-aimed at reducing the number of contacts within and between population
-classes in general, and with symptomatic individuals in particular.
-We paid special attention to how the living conditions in informal
-camps inform the assumptions underlying our proposed interventions,
-a question often neglected \cite{rhodes_Model2context_2020}. We modeled
-interventions previously proposed for African cities \cite{vanzandvoort2020},
-such as self-distancing, isolation of symptomatic individuals and
-the creation of a 'safety zone' in which more vulnerable members of
-the population are protected from exposure to the virus.
+to the one presented by Gatto \emph{et al.} \cite{gatto_spread_2020},
+in which the camps' populations are divided into classes reflecting
+their estimated age-structures and comorbidity prevalence. We use
+this model to propose various interventions aimed at reducing the
+number of contacts within and between population classes in general,
+and with symptomatic individuals in particular. We paid special attention
+to how the living conditions in informal camps inform the assumptions
+underlying our proposed interventions, a question often neglected
+\cite{rhodes_Model2context_2020}. We modeled interventions previously
+proposed for African cities \cite{vanzandvoort2020}, such as self-distancing,
+isolation of symptomatic individuals and the creation of a 'safety
+zone' in which more vulnerable members of the population are protected
+from exposure to the virus.
 
 Building upon the approach used to model the impact of these interventions
 in African cities, our model includes a parameterization of the contacts
@@ -260,7 +261,8 @@ implementation of realistic interventions in these regions.
 \subsection*{The model}
 
 We consider a model simulating a viral outbreak in a single camp over
-a 12-month period inspired by those proposed by \cite{gatto_spread_2020,bertuzzo_geography_2020}
+a 12-month period inspired by those proposed by Gatto \emph{et al.}
+and Bertuzzo \emph{et al.} \cite{gatto_spread_2020,bertuzzo_geography_2020}
 (see Fig. \ref{fig:Diagram}). The model is adapted to the context
 of NWS IDP camps and is divided into compartments containing individuals
 at different possible stages along the disease's progression, governed
@@ -305,7 +307,7 @@ possible transitions between states of the system are shown in Fig.
 the source compartment transfers one individual to the target compartment.
 The mean transition rates corresponding to each transition are displayed.
 The system then evolves following a continuous-time Markov process
-which is simulated following the Gillespie algorithmimplemented in
+which is simulated following the Gillespie algorithm implemented in
 the adaptivetau package \cite{R_adaptivetau}.
 
 \begin{figure}[h]
@@ -408,7 +410,7 @@ Materials for details.}
 
 We parameterized the model with data from IDPs in NWS \cite{noauthor_syrian_nodate}.
 The population sizes of informal camps are right-skewed, with a mean
- of 1212. We simulated camps with populations of 500, 1000 and 2000
+of 1212. We simulated camps with populations of 500, 1000 and 2000
 individuals. Since interventions tend to be less effective in larger
 camps, the results presented refer to simulations with 2000 individuals,
 unless otherwise specified. For our demographic-classes, we considered
@@ -553,17 +555,17 @@ Estimations based on an exponential growth model from Hariri et al.
 predicted a collapse of health facilities 8 weeks into an outbreak
 \cite{hariri_SyriaForecast_2020}. Although we do not have access
 to official data on healthcare occupancy, the currently reported number
-of cases suggests that this scenario could already have been reached
-\cite{UNOCHA_collapse}. Hence, we considered a worst-case scenario
-in which individuals will not have access to healthcare and assumed
-that all critical cases (those requiring ICU care) would die. However,
-there is greater uncertainty about the fate of severe cases, those
-requiring hospitalization but not ICU care. We therefore considered
-a compartment for severe cases to account for a longer infectious
-period if they stay in the camp (see compartment $H_{i}$, Fig. \ref{fig:Diagram}).
-This compartment also helped us model some interventions more realistically,
-for example by noting that the symptoms of severe cases are incompatible
-with self-isolation. To estimate upper and lower bounds for the outcome
+of cases suggests that this scenario could have been reached \cite{UNOCHA_collapse}.
+Hence, we considered a worst-case scenario in which individuals will
+not have access to healthcare and assumed that all critical cases
+(those requiring ICU care) would die. However, there is greater uncertainty
+about the fate of severe cases, those requiring hospitalization but
+not ICU care. We therefore considered a compartment for severe cases
+to account for a longer infectious period if they stay in the camp
+(see compartment $H_{i}$, Fig. \ref{fig:Diagram}). This compartment
+also helped us model some interventions more realistically, for example
+by noting that the symptoms of severe cases are incompatible with
+self-isolation. To estimate upper and lower bounds for the outcome
 variables of our model, we simulated two possible scenarios for the
 fate of this compartment: one in which all cases recover, and another
 in which all die. In the simulations presented in the Main Text, we
@@ -618,22 +620,21 @@ The proportion of individuals recovering is computed as $1-q_{i}^{\HH}-q_{i}^{\D
 
 The interventions we consider are modelled by modifying the rate at
 which individuals become exposed (the term $\lambda_{i}$, Eq. \ref{eq:lambda}),
-adding new population classes that govern behavioural changes (behaviour-classes),
-and/or adding a compartment to consider the time until detection of
-symptoms (see Fig. \ref{fig:DiagramOnset}). Since $\lambda_{i}$
-can be factorized in four terms, the interventions may influence one
-or several of these terms. The factors present in $\lambda_{i}$ and
-the terms modulating them in the interventions are (see Eq. \ref{eq:lambdaInterv}):
-i) the maximum transmissibility, $\tau$, which is reduced in some
-interventions by a factor $\xi_{ij}$, when interactions are restricted
-to buffer zones (see below for details); ii) the average number of
-contacts that individuals in class $i$ have per day, $c_{i}$. This
-quantity can either be uniformly reduced across all classes, or the
-contact rate of class $i$ with class $j$ can be modified. We model
-this modification of contact rates using the matrix $\epsilon_{ij}$;
-iii) the probability of encounter between members of class $i$ and
-$j$ in a well-mixed population, $N_{j}/N$. This probability can
-vary by modifying the visibility of a member of class $j$ to a member
+and/or adding new population classes that govern behavioural changes
+(behaviour-classes). Since $\lambda_{i}$ can be factorized in four
+terms, the interventions may influence one or several of these terms.
+The factors present in $\lambda_{i}$ and the terms modulating them
+in the interventions are (see Eq. \ref{eq:lambdaInterv}): i) the
+maximum transmissibility, $\tau$, which is reduced in some interventions
+by a factor $\xi_{ij}$, when interactions are restricted to buffer
+zones (see below for details); ii) the average number of contacts
+that individuals in class $i$ have per day, $c_{i}$. This quantity
+can either be uniformly reduced across all classes, or the contact
+rate of class $i$ with class $j$ can be modified. We model this
+modification of contact rates using the matrix $\epsilon_{ij}$; iii)
+the probability of encounter between members of class $i$ and $j$
+in a well-mixed population, $N_{j}/N$. This probability can vary
+by modifying the visibility of a member of class $j$ to a member
 of class $i$ , which we express with the matrix $\omega_{ij}$; and
 iv) the probablility of becoming infected by individuals at specific
 stages of the disease (e.g. for hospitalized individuals this is encoded
@@ -660,7 +661,7 @@ of the parameters are presented in Table \ref{tab:IntervParams} and
 their derivations in Supplementary Materials.
 
 \begin{figure*}
-\includegraphics[width=1\textwidth]{/home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/manuscripts/main/figures/Fig1}
+\includegraphics[width=1\textwidth]{figures/Fig1}
 
 \caption{\textbf{\label{fig:Interventions}Diagram of interventions.}}
 \end{figure*}
@@ -779,7 +780,7 @@ wearing masks with at least 2 meters of distance between them, where
 we assume transmissivity is reduced by 80\% ($\xi_{ij}=0.2$). In
 considering one carer per isolated individual with one contact per
 day, we do not neglect their probability of infecting the rest of
-the camp. 
+the camp.
 
 \subsubsection*{Safety zone}
 
@@ -850,9 +851,10 @@ by generating transition rates from the empirically-determined residence
 times, we are not reproducing these residence times for the simulated
 individuals. In our simulations, individuals will experience exponentially-distributed
 residence times with a mean equal to the mean of the correspondent
-distribution. The generation of random values around the mean following
-the empirical distribution at each time-step is aimed at adding noise
-to the mean, to partially account for the empirical uncertainty.
+distribution (to $1/\kappa$ in the case of the symptomatic compartment).
+The generation of random values around the mean following the empirical
+distribution at each time-step is aimed at adding noise to the mean,
+to partially account for the empirical uncertainty.
 
 The Next Generation Matrix is also computed at each integration step
 from the parameters drawn, and $\tau$ estimated. In the code provided
@@ -940,24 +942,21 @@ we show the effect of removing health-checks.}
 
 With only 10 tents for a camp of 2000 people (i.e. 1 tent for every
 200 people), self-isolation yields a marked decrease in the probability
-of outbreak (\textasciitilde 26\%) (see Fig. \ref{fig:Panel2}D)
-but there is no significant reduction in the mortality (see Fig. \ref{fig:Panel2}E),
+of outbreak ($\sim$26\%) (see Fig. \ref{fig:Panel2}D) but there
+is no significant reduction in the mortality (see Fig. \ref{fig:Panel2}E),
 suggesting that with a low number of tents the intervention is only
-effective in isolating index cases preventing the epidemic to start..
+effective in isolating index cases preventing the epidemic to start.
 It is needed to further increase the number of tents past this level
-up to at least 1 tent for every 40 peopleto observe a reduction of
-\textasciitilde 2\% in the mortality and an increase in \textasciitilde 13\%
-in the time to peak of symptomatic indviduals, and these benefits
-reach a \textasciitilde 17\% reduction in mortality and \textasciitilde 20\%
-in the time to peak of symptomatic with 1 tent for every 8 people.
-Increasing the number of tents does not further reduce the probability
-of outbreak, consistent with the idea that the mechanism targets index
-cases requiring low capacity. This is also confirmed by the increase
-in the number of susceptible individuals at the end of the simulation
-with increasing number of tents, which leads to an artificial increase
-in the IFR (since there are many simulations in which very few individuals
-are infected, when there is a death among them the IFR becomes high
-\ref{fig:Suppl_isolation}). . 
+up to at least 1 tent for every 8 people to observe a reduction of
+$\sim$18\% in the mortality and an increase of $\sim$16\% in the
+time to peak of symptomatic individuals. Increasing the number of
+tents does not further reduce the probability of outbreak. There is
+also an increase in the number of susceptible individuals at the end
+of the simulation with increasing number of tents. We finally observed
+an artificial increase in the IFR explained by an increasingly large
+number of simulations in which very few individuals are infected since,
+if at least one of them dies, we retrieve a high IFR value (see Suppl.
+Fig. \ref{fig:Suppl_isolation}).
 
 \subsection*{Safety zone}
 
@@ -979,7 +978,7 @@ of an outbreak towards the less vulnerable population in the orange
 zone, another important outcome of this intervention is the notable
 increase in time (62\%) until the number of symptomatic cases peaks
 for the vulnerable population, and a 40\% increase in time for the
-whole population(see Fig. \ref{fig:Panel2}I). Nevertheless, this
+whole population (see Fig. \ref{fig:Panel2}I). Nevertheless, this
 intervention only has a modest reduction on overall mortality (see
 Fig. \ref{fig:Panel2}H), possibly due to the high infectiousness
 of presymptomatic individuals.
@@ -991,17 +990,17 @@ move there, with probabilities below 0.4 and 0.65, respectively (see
 Supplementary Fig. \ref{fig:Suppl_popClass}). Positive effects of
 the safety zone intervention are even more marked in camps with smaller
 populations, especially for probability of an outbreak in the green
-zone and overall mortality, which decreases by 20\% when the population
-is reduced from 2000 to 500. However, we also observe the adverse
-effect of a decrease in time until symptomatic cases peak (see Supplementary
-Fig. \ref{fig:Suppl_popSize}). The incorporation of a lockdown has
-the greatest effect on reducing the probability of an outbreak in
-the green zone, to under 0.25 when contacts in the buffer zone are
-reduced by 90\%. While lockdowns show no positive effect on green
-zone fatalities in the few instances where an outbreak does reach
-there, they decrease overall IFR and fatalities by further concentrating
-outbreaks in the less vulnerable population (see Supplementary Fig.
-\ref{fig:Suppl_lockdown}).
+zone (which decreases by 55\%) and overall mortality (which decreases
+by 20\%) when the population is reduced from 2000 to 500. However,
+we also observe the adverse effect of a decrease in time until symptomatic
+cases peak (see Supplementary Fig. \ref{fig:Suppl_popSize}). The
+incorporation of a lockdown has the greatest effect on reducing the
+probability of an outbreak in the green zone, to under 0.25 when contacts
+in the buffer zone are reduced by 90\%. While lockdowns show no positive
+effect on green zone fatalities in the few instances where an outbreak
+does reach there, they decrease overall IFR and fatalities by further
+concentrating outbreaks in the less vulnerable population (see Supplementary
+Fig. \ref{fig:Suppl_lockdown}).
 
 \subsection*{Evacuation}
 
@@ -1036,16 +1035,14 @@ contacts), self-isolation of symptomatic cases (1 tent for every 40
 people), a safety zone with 2 contacts per week in the buffer zone,
 health checks, a strict lockdown (90\%), and evacuation of severe
 cases, mortality is reduced by $\sim$94\% and the probability of
-outbreak in the green zone is very small (\textasciitilde 0.005).
-In other combinations with higher probability of outbreak (e.g. considering
+outbreak in the green zone is very small ( $\sim$0.005). In other
+combinations with higher probability of outbreak (e.g. considering
 in the previous combination a 20\% reduction in contacts instead of
 50\%) thetime to peak of symptomatic cases in the green zone is delayed
 by 48 days
-
 \begin{figure*}
 \begin{centering}
 \includegraphics[width=1\textwidth]{figures/Fig3}\\
- 
 \par\end{centering}
 \caption{\label{fig:Panel3} \textbf{Combinations of interventions.} Probability
 of an outbreak (top), fraction of the population dying (middle) and
@@ -1110,18 +1107,17 @@ located in a dedicated zone or next to the tents of relatives, where
 contact with non-isolated individuals is mediated by a buffer zone.
 This intervention is effective with even a small number of isolation
 tents, as low as 5-10 tents per 1000 camp residents in preventing
-an outbreak in the camp, but it requires at least 25 tents per 1000
-camp residents to reduce mortality, and 125-250 tents to minimize
-it. After conversations with camp managers, we found that this intervention
-is more likely to be accepted in NW Syria than evacuation to community-based
-isolation centers. Community-based isolation not only poses cultural
-challenges; the capacity required to implement it has hardly been
-met \cite{UNOCHA_CCTC_numbers}, and it is still one of the main challenges
-in the region \cite{UNOCHA_collapse}. We note that in our simulated
-intervention individuals become isolated as soon as they have symptoms.
-Recognizing symptoms, however, may require some time and we should
-expect a less effective intervention unless systematic checks for
-symptomatic individuals are put in place.
+an outbreak in the camp, but it requires at least 125 tents per 1000
+camp residents to substantially reduce mortality After conversations
+with camp managers, we found that this intervention is more likely
+to be accepted in NW Syria than evacuation to community-based isolation
+centers. Community-based isolation not only poses cultural challenges;
+the capacity required to implement it has hardly been met \cite{UNOCHA_CCTC_numbers},
+and it is still one of the main challenges in the region \cite{UNOCHA_collapse}.
+We note that in our simulated intervention individuals become isolated
+as soon as they have symptoms. Recognizing symptoms, however, may
+require some time and we should expect a less effective intervention
+unless systematic checks for symptomatic individuals are put in place.
 
 Setting up a safety zone has two positive effects that most stand
 out: a reduction in the probability of an outbreak in the vulnerable
@@ -1202,11 +1198,11 @@ our framework, such as those requiring interventions targeting very
 specific interactions between individuals (as opposed to large groups
 of individuals), or reproducing empirically-observed residence times.
 An example might be the isolation of an individual and his/her family,
-as proposed in Gilman \cite{gilman_IBMrefugee_covid20} which, since
-we do not explicitly model interactions at the family-level, would
-require the creation of as many classes as families. When this level
-of detail is required, individual based models (IBMs) may be more
-appropriate \cite{gilman_IBMrefugee_covid20,bullock_IBM4IDPs_covid21}.
+as proposed by Gilman \emph{et al.} \cite{gilman_IBMrefugee_covid20}
+which, since we do not explicitly model interactions at the family-level,
+would require the creation of as many classes as families. When this
+level of detail is required, individual based models (IBMs) may be
+more appropriate \cite{gilman_IBMrefugee_covid20,bullock_IBM4IDPs_covid21}.
 However, IBMs require a rich amount of data for their parameterization
 which, although increasingly available, is scarce for informal IDPs
 camps. Our framework is powerful enough to simulate a large number

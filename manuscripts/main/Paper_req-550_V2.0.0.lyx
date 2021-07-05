@@ -115,14 +115,12 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
 \author -1732430129 "apascual"
-\author 227091064 "Klein"
-\author 277985569 "ville"
 \end_header
 
 \begin_body
@@ -132,31 +130,15 @@ Empowering the crowd: Feasible strategies
 \begin_inset Newline newline
 \end_inset
 
+ for epidemic management 
+\change_deleted -1732430129 1625483306
  
-\change_deleted -1732430129 1625138080
-to minimize
-\change_inserted -1732430129 1625138084
-for epidemic management
-\change_deleted -1732430129 1625138096
- the spread of COVID-19
 \change_unchanged
- 
-\change_deleted -1732430129 1625138205
-
-\begin_inset Newline newline
-\end_inset
-
-
-\change_unchanged
- in high-density informal settlements
-\change_inserted -1732430129 1625138162
-.
+in high-density informal settlements.
 \begin_inset Newline linebreak
 \end_inset
 
  The case of COVID-19 in Northwest Syria
-\change_unchanged
-
 \end_layout
 
 \begin_layout Author
@@ -262,41 +244,17 @@ cks, and carers for isolated individuals, quantifying their impact on the
  Self-distancing reduces mortality by up to 35% if contacts are reduced
  by 50%.
  A 
-\change_deleted -1732430129 1625134626
-similar
-\change_unchanged
- reduction in mortality
-\change_inserted -1732430129 1625134638
- by up to 17%
-\change_deleted -1732430129 1625134635
+\change_deleted -1732430129 1625483306
  
 \change_unchanged
-can be achieved by providing 1 self-isolation tent per 
-\change_inserted -1732430129 1625134645
-8
-\change_deleted -1732430129 1625134648
-200
-\change_unchanged
- people.
+reduction in mortality by up to 18%can be achieved by providing 1 self-isolation
+ tent per 8 people.
  Protecting the most vulnerable in a safety zone reduces the outbreak probabilit
 y in the vulnerable population and has synergistic effects with the other
  interventions.
  Our model predicts that a combination of all simulated interventions may
- reduce mortality by 
-\change_inserted -1732430129 1625134988
-more
-\change_deleted -1732430129 1625134987
-almost
-\change_inserted -1732430129 1625134991
-than
-\change_unchanged
- 
-\change_deleted -1732430129 1625134992
-8
-\change_inserted -1732430129 1625134994
-9
-\change_unchanged
-0% and delay an outbreak’s peak by almost two months.
+ reduce mortality by morethan 90% and delay an outbreak’s peak by almost
+ two months.
  Our results highlight the potential for non-medical interventions to mitigate
  the effects of the pandemic.
  Similar measures may be applicable to controlling COVID-19 in other informal
@@ -348,13 +306,7 @@ IDP: Internally Displaced Persons | NWS: Northwest region of Syria | IFR:
 \series bold
 Word count:
 \series default
- 5
-\change_inserted -1732430129 1624961083
-89
-\change_deleted -1732430129 1624961081
-73
-\change_unchanged
-8
+ 5898
 \end_layout
 
 \begin_layout Standard
@@ -481,15 +433,12 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-The 
-\change_inserted -1732430129 1625135057
-spread of airborne infectious diseases with pandemic potential 
-\change_deleted -1732430129 1623668201
-COVID-19 pandemic is intensifying
-\change_unchanged
- in regions immersed in protracted armed conflicts
-\change_deleted -1732430129 1625135475
+The spread of airborne infectious diseases with pandemic potential 
+\change_deleted -1732430129 1625483306
  
+\change_unchanged
+in regions immersed in protracted armed conflicts, where large portions
+ of their populations have become displaced, is an important challenge 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "san_humanitarian_2020"
@@ -497,20 +446,6 @@ literal "false"
 
 \end_inset
 
-
-\change_unchanged
-, where large portions of their populations have become displaced
-\change_inserted -1732430129 1625135478
-, is an important challenge 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "san_humanitarian_2020"
-literal "false"
-
-\end_inset
-
-
-\change_unchanged
 .
  When the displaced population exceeds official resettlement and refugee
  camp capacity, Internally Displaced Persons (IDPs) must live in informal
@@ -558,18 +493,9 @@ literal "false"
 \end_inset
 
 .
- Urgent action is needed to contain the 
-\change_deleted -1732430129 1624356407
-virus
-\change_inserted -1732430129 1624356416
-spread
-\change_inserted 277985569 1625233901
- of disease 
-\change_deleted -1732430129 1624356416
- 
-\change_unchanged
-in these settings, a task which necessarily involves the engagement of the
- communities living in them 
+ Urgent action is needed to contain the spread of disease in these settings,
+ a task which necessarily involves the engagement of the communities living
+ in them 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wilkinson_local_2020"
@@ -581,15 +507,9 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-This study focuses on the
-\change_inserted -1732430129 1623668276
- spread of COVID-19 in
-\change_deleted -1732430129 1623668271
- 
-\change_unchanged
-Northwest region of Syria (NWS): a relatively small geographical area with
- 4.2 million people, of which 1.15 million (27.4%) are IDPs living in camps
- 
+This study focuses on the spread of COVID-19 inNorthwest region of Syria
+ (NWS): a relatively small geographical area with 4.2 million people, of
+ which 1.15 million (27.4%) are IDPs living in camps 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Health_directorate"
@@ -626,15 +546,9 @@ literal "false"
 \begin_layout Standard
 To investigate feasible COVID-19 prevention interventions in the camps,
  we considered a Susceptible-Exposed-Infectious-Recovered model similar
- to the one presented 
-\change_deleted 277985569 1625234050
-in
-\change_inserted 277985569 1625234095
-by Gatto 
+ to the one presented by Gatto 
 \emph on
 et al.
-
-\change_unchanged
 
 \emph default
  
@@ -696,13 +610,9 @@ n of contacts and other parameters in the model.
  We examine a potential worst-case scenario in which there is no access
  to any healthcare facility.
  Since empowering local communities in conflict regions to understand how
- to control 
-\change_inserted -1732430129 1624356491
-diseases like 
-\change_unchanged
-COVID-19 is possibly the most (and perhaps only) effective way to minimize
- its spread, our models are of utmost importance for informing the implementatio
-n of realistic interventions in these regions.
+ to control diseases like COVID-19 is possibly the most (and perhaps only)
+ effective way to minimize its spread, our models are of utmost importance
+ for informing the implementation of realistic interventions in these regions.
 \end_layout
 
 \begin_layout Section*
@@ -715,9 +625,7 @@ The model
 
 \begin_layout Standard
 We consider a model simulating a viral outbreak in a single camp over a
- 12-month period inspired by those proposed by
-\change_inserted 277985569 1625234359
- Gatto 
+ 12-month period inspired by those proposed by Gatto 
 \emph on
 et al.
 
@@ -725,8 +633,6 @@ et al.
  and Bertuzzo 
 \emph on
 et al.
-
-\change_unchanged
 
 \emph default
  
@@ -928,15 +834,8 @@ noprefix "false"
  one individual to the target compartment.
  The mean transition rates corresponding to each transition are displayed.
  The system then evolves following a continuous-time Markov process which
- is simulated following the 
-\change_deleted -1732430129 1624356728
-tau-leaping approximation
-\change_inserted -1732430129 1624356741
-Gillespie algorithm
-\change_deleted -1732430129 1624356731
- 
-\change_unchanged
-implemented in the adaptivetau package 
+ is simulated following the Gillespie algorithm implemented in the adaptivetau
+ package 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "R_adaptivetau"
@@ -1981,17 +1880,11 @@ literal "false"
 \end_inset
 
 .
- The population sizes of informal camps are
-\change_deleted -1732430129 1624384289
- approximately log-normally distributed
-\change_inserted -1732430129 1624384294
- right-skewed
+ The population sizes of informal camps are right-skewed, with a mean 
+\change_deleted -1732430129 1625483306
+ 
 \change_unchanged
-, with a mean 
-\change_deleted -1732430129 1624384299
-of
-\change_unchanged
- of 1212.
+of 1212.
  We simulated camps with populations of 500, 1000 and 2000 individuals.
  Since interventions tend to be less effective in larger camps, the results
  presented refer to simulations with 2000 individuals, unless otherwise
@@ -2566,11 +2459,8 @@ literal "false"
 \end_inset
 
 .
- Thus, we selected the transmissivity of these 
-\change_deleted -1732430129 1615477123
- 
-\change_unchanged
-individuals as a reference (
+ Thus, we selected the transmissivity of these individuals as a reference
+ (
 \begin_inset Formula $\beta_{\PP\rightarrow\I}=1$
 \end_inset
 
@@ -2591,15 +2481,7 @@ individuals as a reference (
 \end_inset
 
 ) is estimated as a weighted average of the transmissibility of individuals
- that will become symptomatic and 
-\change_deleted -1732430129 1615477123
- 
-\change_unchanged
-asymptomatic 
-\change_deleted -1732430129 1615477123
- 
-\change_unchanged
-(see Table 
+ that will become symptomatic and asymptomatic (see Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:tramsParams"
@@ -3136,10 +3018,10 @@ literal "false"
  Although we do not have access to official data on healthcare occupancy,
  the currently reported number of cases suggests that this scenario could
  
-\change_deleted -1732430129 1624964562
-already
+\change_deleted -1732430129 1625483306
+ 
 \change_unchanged
- have been reached 
+have been reached 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "UNOCHA_collapse"
@@ -3668,28 +3550,8 @@ noprefix "false"
 
 \end_inset
 
-), 
-\change_inserted -1732430129 1624964641
-and/or 
-\change_unchanged
-adding new population classes that govern behavioural changes (behaviour-classes
-)
-\change_deleted -1732430129 1624964647
-, and/or adding a compartment to consider the time until detection of symptoms
- (see Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:DiagramOnset"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-)
-\change_unchanged
-.
+), and/or adding new population classes that govern behavioural changes
+ (behaviour-classes).
  Since 
 \begin_inset Formula $\lambda_{i}$
 \end_inset
@@ -3892,7 +3754,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/home/apascual/Nextcloud/Militancia/crowdfightcovid19/Projects/Request550-Syria/req-550-Syria/manuscripts/main/figures/Fig1.pdf
+	filename figures/Fig1.pdf
 	width 100text%
 
 \end_inset
@@ -4321,13 +4183,9 @@ Self-isolation
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1732430129 1624383011
 \begin_inset Formula $\varTheta(N_{\I}-\tilde{N})$
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -5121,20 +4979,7 @@ Values of
 \begin_inset Formula $c_{\care}=$
 \end_inset
 
- number of
-\change_inserted -1732430129 1624383047
- 
-\change_unchanged
-contacts per day of each isolated individual with carers.
-
-\change_deleted -1732430129 1624383045
- 
-\begin_inset Formula $N_{\Exp}=$
-\end_inset
-
- potential carers available (non-symptomatic healthy younger adults).
-
-\change_unchanged
+ number of contacts per day of each isolated individual with carers.
  
 \begin_inset Formula $\tilde{I}_{j}=$
 \end_inset
@@ -5144,8 +4989,6 @@ contacts per day of each isolated individual with carers.
 \end_inset
 
 .
-
-\change_inserted -1732430129 1624383161
  
 \begin_inset Formula $N_{\I}=$
 \end_inset
@@ -5162,10 +5005,6 @@ contacts per day of each isolated individual with carers.
 
  Heaviside function.
  
-\change_deleted -1732430129 1624383078
- 
-\change_unchanged
-
 \begin_inset Formula $c_{\family}=$
 \end_inset
 
@@ -5423,45 +5262,9 @@ buffer zones
 ).
  In considering one carer per isolated individual with one contact per day,
  we do not neglect their probability of infecting the rest of the camp.
+
+\change_deleted -1732430129 1625483306
  
-\change_deleted -1732430129 1623685838
-We also considered minimum time intervals for individuals to recognize their
- symptoms: with means of 12, 24 and 48 hours (see Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Interventions"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
--2b), which was implemented by incorporating an additional compartment (
-\begin_inset Formula $O_{i}$
-\end_inset
-
-) between the presymptomatic 
-\begin_inset Formula $(P_{i}$
-\end_inset
-
-) and clinical symptomatic (
-\begin_inset Formula $I_{i}$
-\end_inset
-
-) compartments (see Suppl.
- Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:DiagramOnset"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-).
 \change_unchanged
 
 \end_layout
@@ -5739,13 +5542,16 @@ noprefix "false"
 \end_inset
 
 .
- 
-\change_inserted -1732430129 1624960760
-We note that by generating transition rates from the empirically-determined
+ We note that by generating transition rates from the empirically-determined
  residence times, we are not reproducing these residence times for the simulated
  individuals.
  In our simulations, individuals will experience exponentially-distributed
- residence times with a mean equal to the mean of the correspondent distribution.
+ residence times with a mean equal to the mean of the correspondent distribution
+ (to 
+\begin_inset Formula $1/\kappa$
+\end_inset
+
+ in the case of the symptomatic compartment).
  The generation of random values around the mean following the empirical
  distribution at each time-step is aimed at adding noise to the mean, to
  partially account for the empirical uncertainty.
@@ -6032,9 +5838,12 @@ Self-isolation
 
 \begin_layout Standard
 With only 10 tents for a camp of 2000 people (i.e.
- 1 tent for every 200 people), self-isolation yields a
-\change_inserted -1732430129 1625318303
- marked decrease in the probability of outbreak (~27%) (see Fig.
+ 1 tent for every 200 people), self-isolation yields a marked decrease in
+ the probability of outbreak (
+\begin_inset Formula $\sim$
+\end_inset
+
+26%) (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6058,59 +5867,16 @@ noprefix "false"
 
 E), suggesting that with a low number of tents the intervention is only
  effective in isolating index cases preventing the epidemic to start.
-
-\change_deleted -1732430129 1624357811
- modest decrease in the probability of observing an outbreak (see Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Panel2"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-D), but a stronger reduction in mortality (
+ It is needed to further increase the number of tents past this level up
+ to at least 1 tent for every 8 people to observe a reduction of 
 \begin_inset Formula $\sim$
 \end_inset
 
-30%) (see Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Panel2"
-plural "false"
-caps "false"
-noprefix "false"
-
+18% in the mortality and an increase of 
+\begin_inset Formula $\sim$
 \end_inset
 
-E)
-\change_unchanged
-.
- 
-\change_deleted -1732430129 1624358107
-F
-\change_inserted -1732430129 1624358112
-It is needed to f
-\change_unchanged
-urther increas
-\change_inserted -1732430129 1624358116
-e
-\change_deleted -1732430129 1624358115
-ing
-\change_unchanged
- the number of tents past this level
-\change_inserted -1732430129 1624358833
- up to at least 1 tent for every 40 people
-\change_deleted -1732430129 1624358467
- 
-\change_inserted -1732430129 1625135748
-to observe a reduction of ~2% in the mortality and an increase in ~13% in
- the time to peak of symptomatic indviduals, and these benefits reach a
- ~17% reduction in mortality and ~20% in the time to peak of symptomatic
- with 1 tent for every 8 people.
+16% in the time to peak of symptomatic individuals.
  Increasing the number of tents does not further reduce the probability
  of outbreak.
  There is also an increase in the number of susceptible individuals at the
@@ -6131,50 +5897,6 @@ noprefix "false"
 \end_inset
 
 ).
- 
-\change_deleted -1732430129 1624359728
-yields diminishing returns to reductions to both probability of outbreak
- (until there is 1 tent for every 20 people) and mortality (until there
- is 1 tent for every 8 people, Conover-Iman test, p-val
-\begin_inset Formula $<10^{-16}$
-\end_inset
-
-).
- Similarly, we observe a reduction in IFR when at least 10 isolation tents
- are set up (see Supplementary Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Suppl_isolation"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-)
-\change_unchanged
-.
- 
-\change_deleted -1732430129 1623685908
-Importantly, the potential reductions in probability of outbreak, overall
- fatalities and IFR from self-isolation are realized whether the time required
- for individuals to recognize their symptoms is 12h or 24h on average, but
- the intervention becomes less effective when this time increases to 48h
- (see Supplementary Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Suppl_onset"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection*
@@ -6222,13 +5944,8 @@ e contacts.
  By shifting the burden of an outbreak towards the less vulnerable population
  in the orange zone, another important outcome of this intervention is the
  notable increase in time (62%) until the number of symptomatic cases peaks
- for the vulnerable population, and a 
-\change_deleted -1732430129 1625319102
-40
-\change_inserted -1732430129 1625319103
-36
-\change_unchanged
-% increase in time for the whole population(see Fig.
+ for the vulnerable population, and a 40% increase in time for the whole
+ population (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6259,11 +5976,7 @@ H), possibly due to the high infectiousness of presymptomatic individuals.
 Considering different scenarios for allocating people to the green zone,
  the lowest probability of an outbreak is achieved when only older adults
  or at most older adults and younger adults with comorbidities move there,
- with probabilities below 0.4 and 0.65, respectively
-\change_inserted 227091064 1615574315
- 
-\change_unchanged
-(see Supplementary Fig.
+ with probabilities below 0.4 and 0.65, respectively (see Supplementary Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6277,21 +5990,8 @@ noprefix "false"
 ).
  Positive effects of the safety zone intervention are even more marked in
  camps with smaller populations, especially for probability of an outbreak
- in the green zone 
-\change_inserted -1732430129 1625319810
-(which decreases by 55%) 
-\change_unchanged
-and overall mortality
-\change_deleted -1732430129 1625319815
-, 
-\change_inserted -1732430129 1625319817
-(
-\change_unchanged
-which decreases by 20%
-\change_inserted -1732430129 1625319820
-)
-\change_unchanged
- when the population is reduced from 2000 to 500.
+ in the green zone (which decreases by 55%) and overall mortality (which
+ decreases by 20%) when the population is reduced from 2000 to 500.
  However, we also observe the adverse effect of a decrease in time until
  symptomatic cases peak (see Supplementary Fig.
  
@@ -6415,29 +6115,15 @@ noprefix "false"
 \begin_inset Formula $\sim$
 \end_inset
 
+94% and the probability of outbreak in the green zone is very small ( 
+\begin_inset Formula $\sim$
+\end_inset
 
-\change_inserted -1732430129 1624360217
-94
-\change_deleted -1732430129 1624360215
-80
-\change_unchanged
-% and the
-\change_inserted -1732430129 1625320084
- probability of outbreak in the green zone becomes very small (~0.005).
+0.005).
  In other combinations with higher probability of outbreak (e.g.
  considering in the previous combination a 20% reduction in contacts instead
- of 50%) the
-\change_deleted -1732430129 1624360484
- 
-\change_unchanged
-time to peak of symptomatic cases in the green zone is delayed by 
-\change_inserted -1732430129 1624360848
-48 days
-\change_deleted -1732430129 1624360850
-two months.
-\end_layout
-
-\begin_layout Standard
+ of 50%) thetime to peak of symptomatic cases in the green zone is delayed
+ by 48 days
 \begin_inset Float figure
 wide true
 sideways false
@@ -6455,7 +6141,11 @@ status open
 \begin_inset Newline newline
 \end_inset
 
+
+\change_deleted -1732430129 1625483306
  
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -6604,16 +6294,15 @@ We also propose self-isolation using individual tents which can be located
  in a dedicated zone or next to the tents of relatives, where contact with
  non-isolated individuals is mediated by a buffer zone.
  This intervention is effective with even a small number of isolation tents,
- as low as 5-10 tents per 1000 camp residents
-\change_inserted -1732430129 1624384511
- in preventing an outbreak in the camp, but it requires at least 25 tents
- per 1000 camp residents to reduce mortality, and 125-250 tents to minimize
- it
+ as low as 5-10 tents per 1000 camp residents in preventing an outbreak
+ in the camp, 
+\change_deleted -1732430129 1625483306
+ 
 \change_unchanged
-.
- After conversations with camp managers, we found that this intervention
- is more likely to be accepted in NW Syria than evacuation to community-based
- isolation centers.
+but it requires at least 125 tents per 1000 camp residents to substantially
+ reduce mortality After conversations with camp managers, we found that
+ this intervention is more likely to be accepted in NW Syria than evacuation
+ to community-based isolation centers.
  Community-based isolation not only poses cultural challenges; the capacity
  required to implement it has hardly been met 
 \begin_inset CommandInset citation
@@ -6632,15 +6321,11 @@ literal "false"
 \end_inset
 
 .
-
-\change_inserted -1732430129 1623686196
  We note that in our simulated intervention individuals become isolated
  as soon as they have symptoms.
  Recognizing symptoms, however, may require some time and we should expect
  a less effective intervention unless systematic checks for symptomatic
  individuals are put in place.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -6785,25 +6470,11 @@ It is also important to acknowledge the benefits and limitations of different
  For instance, there are interventions that do not have a natural implementation
  within our framework, such as those requiring interventions targeting very
  specific interactions between individuals (as opposed to large groups of
- individuals)
-\change_inserted -1732430129 1623686247
-, or reproducing empirically-observed residence times
-\change_unchanged
-.
+ individuals), or reproducing empirically-observed residence times.
  An example might be the isolation of an individual and his/her family,
- as proposed 
-\change_inserted 277985569 1625234427
-by
-\change_deleted 277985569 1625234426
-in
-\change_unchanged
- Gilman
-\change_inserted 277985569 1625234431
- 
+ as proposed by Gilman 
 \emph on
 et al.
-
-\change_unchanged
 
 \emph default
  
