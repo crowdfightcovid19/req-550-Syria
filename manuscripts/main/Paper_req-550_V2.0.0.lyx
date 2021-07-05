@@ -6005,8 +6005,8 @@ Self-isolation
 \begin_layout Standard
 With only 10 tents for a camp of 2000 people (i.e.
  1 tent for every 200 people), self-isolation yields a
-\change_inserted -1732430129 1624361500
- marked decrease in the probability of outbreak (~26%) (see Fig.
+\change_inserted -1732430129 1625318303
+ marked decrease in the probability of outbreak (~27%) (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6194,8 +6194,13 @@ e contacts.
  By shifting the burden of an outbreak towards the less vulnerable population
  in the orange zone, another important outcome of this intervention is the
  notable increase in time (62%) until the number of symptomatic cases peaks
- for the vulnerable population, and a 40% increase in time for the whole
- population(see Fig.
+ for the vulnerable population, and a 
+\change_deleted -1732430129 1625319102
+40
+\change_inserted -1732430129 1625319103
+36
+\change_unchanged
+% increase in time for the whole population(see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6244,8 +6249,21 @@ noprefix "false"
 ).
  Positive effects of the safety zone intervention are even more marked in
  camps with smaller populations, especially for probability of an outbreak
- in the green zone and overall mortality, which decreases by 20% when the
- population is reduced from 2000 to 500.
+ in the green zone 
+\change_inserted -1732430129 1625319810
+(which decreases by 55%) 
+\change_unchanged
+and overall mortality
+\change_deleted -1732430129 1625319815
+, 
+\change_inserted -1732430129 1625319817
+(
+\change_unchanged
+which decreases by 20%
+\change_inserted -1732430129 1625319820
+)
+\change_unchanged
+ when the population is reduced from 2000 to 500.
  However, we also observe the adverse effect of a decrease in time until
  symptomatic cases peak (see Supplementary Fig.
  
@@ -6376,8 +6394,8 @@ noprefix "false"
 80
 \change_unchanged
 % and the
-\change_inserted -1732430129 1624360750
- probability of outbreak in the green zone is very small (~0.005).
+\change_inserted -1732430129 1625320084
+ probability of outbreak in the green zone becomes very small (~0.005).
  In other combinations with higher probability of outbreak (e.g.
  considering in the previous combination a 20% reduction in contacts instead
  of 50%) the
