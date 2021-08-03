@@ -1,6 +1,6 @@
 ---
-title: "Press release"
 layout: page
+title: Press release
 subtitle: 1st September 2020
 ---
 
@@ -39,7 +39,8 @@ infeasible.
 
 The first strategy modelled by the researchers is self-distancing, that is, encouraging residents to
 reduce physical contact with others, wear masks, and wash hands regularly, similar guidelines to
-what the World Health Organization has been recommending since the beginning of the pandemic.The researchers estimate that reducing the number of contacts by 20% to 50%, could reduce mortality up to about one third.
+what the World Health Organization has been recommending since the beginning of the pandemic. The researchers 
+estimate that reducing the number of contacts by 20% to 50%, could reduce mortality up to about one third.
 
 A second strategy consists of isolating potentially symptomatic cases as early as possible, even in
 the absence of validation by a diagnostic test that can detect the SARS-CoV-2 virus that can cause
