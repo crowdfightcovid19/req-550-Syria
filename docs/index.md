@@ -2,7 +2,7 @@
 layout: page
 title: Feasible strategies for epidemic management in high-density informal settlements.
 subtitle:  The case of COVID-19 in Northwest Syria.
-cover-img: ["/assets/img/Pic1_Syria_SMART.jpg" : "(c) SMART Agency","/assets/img/Pic1_Syria_SMART.jpg" : "(c) SMART Agency","/assets/img/Pic2_Syria_SMART.jpg" : "(c) SMART Agency","/assets/img/Pic3_Syria_SMART.jpg" : "(c) SMART Agency","/assets/img/Pic4_Syria_SMART.jpg" : "(c) SMART Agency","/assets/img/Pic5_Syria_SMART.jpg" : "(c) SMART Agency","/assets/img/Pic6_Syria_SMART.jpg" : "(c) SMART Agency",]
+cover-img: ["/assets/img/Pic1_Syria_SMART NEWS.jpg" : "(c) SMART NEWS Agency","/assets/img/Pic1_Syria_SMART NEWS.jpg" : "(c) SMART NEWS Agency","/assets/img/Pic2_Syria_SMART NEWS.jpg" : "(c) SMART NEWS Agency","/assets/img/Pic3_Syria_SMART NEWS.jpg" : "(c) SMART NEWS Agency","/assets/img/Pic4_Syria_SMART NEWS.jpg" : "(c) SMART NEWS Agency","/assets/img/Pic5_Syria_SMART NEWS.jpg" : "(c) SMART NEWS Agency","/assets/img/Pic6_Syria_SMART NEWS.jpg" : "(c) SMART NEWS Agency",]
 ---
 
 

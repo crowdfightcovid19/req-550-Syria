@@ -5,9 +5,9 @@ This is the website for the crowdfight request 550 from the Pax Syriana Foundati
 
 ### Credits
 
-Built by Jordan Klein and Alberto Pascual-García
-We  thank [SMART Agency]() for providing the pictures (all rights reserved).
-We thank the developers of the template  [Beautiful Jekyll](https://beautifuljekyll.com/)
+* Built by Jordan Klein and Alberto Pascual-García.
+* We  thank [SMART Agency]() for providing the pictures (all rights reserved).
+* We thank the developers of the template  [Beautiful Jekyll](https://beautifuljekyll.com/)
 
 ### Disclaimer 
 This report is based on research performed at the initiative of the Pax Syriana
