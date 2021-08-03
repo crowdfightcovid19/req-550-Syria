@@ -1,13 +1,13 @@
 # README 
 
 This repository contains the code and results of the article: 
-
  
 >Empowering the crowd: Feasible strategies to minimize the spread of COVID-19 in high-density informal settlements (2020)
 Alberto Pascual-García, Jordan Klein, Jennifer Villers, Eduard Campillo-Funollet, Chamsy Sarkis
-_medRxiv_ 2020.08.26.20181990; doi: https://doi.org/10.1101/2020.08.26.20181990 
+_BMJ Global Health_ (2021) (In press) [Preprint](https://doi.org/10.1101/2020.08.26.20181990)
 
-Which is the **crowdfightCOVID19** request number 550,  from the **Pax Syriana Foundation.**
+Please visit the [website of the project](https://crowdfightcovid19.github.io/req-550-Syria/) to find a Policy Report and a Press Release.
+
 
 ### Participants
 
