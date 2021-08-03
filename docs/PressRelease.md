@@ -7,7 +7,6 @@ subtitle: 1st September 2020
 
 ### Protecting refugee camps from COVID-19: the case of NW Syria
 
-_Empowering the crowd: Feasible strategies to minimize the spread of COVID-19 in high-density informal settlements_
 
 Over one million people living as refugees in about 1,000 camps in the north-western region of
 Syria are especially vulnerable to the coronavirus pandemic.
@@ -63,8 +62,12 @@ protected population.
 Most strikingly, when all three non-medical measures are applied, the researchers’ model indicates
 that most lives could be saved, potentially up to 85,000 lives in NW Syria alone.
 
+#### Publication
+Pascual-García, A., Klein, J., Villers, J., Campillo-Funollet, E., & Sarkis, C.  
+Empowering the crowd: Feasible strategies for epidemic management in high-density informal settlements. The case of COVID-19 in Northwest Syria.
+_BMJ Global Health_ (in press) 2021
 
-** Contacts: **
+#### Contacts: 
 Contact for Syria-related enquiries:
 Dr Chamsy Sarkis, [email](Chamsy.sarkis@paxsyriana.com)
 
