@@ -1,4 +1,9 @@
-## Press release - 1 st September 2020
+---
+title: "Press release"
+layout: page
+subtitle: 1st September 2020
+---
+
 
 ### Protecting refugee camps from COVID-19: the case of NW Syria
 
