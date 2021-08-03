@@ -6,7 +6,7 @@
 # --- Required options --- #
 
 # Name of website
-title: Feasible strategies for epidemic management in high-density informal settlements. 
+#title: Feasible strategies for epidemic management in high-density informal settlements. 
 
 # Your name to show in the footer
 author: crowdfight.org
@@ -15,7 +15,7 @@ author: crowdfight.org
 
 navbar-links:
   Repository: "https://github.com/crowdfightcovid19/req-550-Syria"
-  Press Release: "_pages/PressRelease"
+  Press Release: "_pages/PressRelease.md"
   
 #Policy Report: "policy"
 #Disclaimer: "disclaimer"
@@ -32,7 +32,7 @@ round-avatar: true
 
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
-title-img: "/assets/img/logo_Pax_Syriana.pdf"
+title-img: "/assets/img/logo_Pax_Syriana.jpg"
 
 
 # --- Footer social media links --- #
@@ -112,10 +112,10 @@ footer-text-col: "#777777"
 footer-link-col: "#404040"
 
 # Alternatively, the navbar, footer, and page background can be set to an image
-# instead of colour
+# instead of colour.
 
-#navbar-img: "/assets/img/bgimage.png"
-#footer-img: "/assets/img/bgimage.png"
+navbar-img: "/assets/img/Pic1_Syria_SMART.jpg"
+footer-img: "/assets/img/Pic2_Syria_SMART.jpg"
 #page-img: "/assets/img/bgimage.png"
 
 # Suggest a colour for mobile browsers to use as the browser's theme. This is only supported by a few mobile browsers.
