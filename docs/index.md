@@ -1,4 +1,4 @@
-## Combating the Covid-19 Pandemic in NW Syria
+Combating the Covid-19 Pandemic in NW Syria
 
 More than 1 billion people around the world live in slums, shantytowns, and other informal settlements. While controling Covid-19 is challenging in all of these communities, it is especially so in informal Internally Displaced Persons camps in active conflict regions like Northwestern Syria. 
 
