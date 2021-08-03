@@ -9,29 +9,29 @@
 title: Feasible strategies for epidemic management in high-density informal settlements. 
 
 # Your name to show in the footer
-author: The case of COVID-19 in Northwest Syria
+author: crowdfight.org
 
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  Repository: "https://github.com/crowdfightcovid19/req-550-Syria"
+  Policy Report: "policy"
+  Press Release: "_pages/PressRelease"
+  Disclaimer: "disclaimer"
+  Test: "test"
 
 # --- Logo --- #
 
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/assets/img/Pic2_Syria_SMART.jpg"
+#avatar: "/assets/img/Pic2_Syria_SMART.jpg"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
-round-avatar: false
+round-avatar: true
 
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
-title-img: "/assets/img/logo_Pax_Syriana.jpg"
+title-img: "/assets/img/logo_Pax_Syriana.pdf"
 
 
 # --- Footer social media links --- #
