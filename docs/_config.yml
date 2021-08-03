@@ -15,7 +15,9 @@ author: crowdfight.org
 
 navbar-links:
   Repository: "https://github.com/crowdfightcovid19/req-550-Syria"
-  Press Release: "PressRelease.md"
+  Policy Report: "PolicyReport"
+  Press Release: "PressRelease"
+  Disclaimer: "Disclaimer"
   
 #Policy Report: "policy"
 #Disclaimer: "disclaimer"
