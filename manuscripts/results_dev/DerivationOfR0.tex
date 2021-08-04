@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Derivation of R0}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Reference and general idea}
+
+The derivation of R0 for a SIR type model following description of 'Mathematical Tools for Understanding Infectious Disease Dynamics' written by Odo Diekmann, Hans Heesterbeek and Tom Britton. 
+See chapter 7, section 2 'Next-generation matrix for compartmental systems'. 
+This is a general method for compartmental systems with a population structure, for the simple form of our model where we assume a well-mixed population, we can derive the R0 easier, but I provide this method as it is more general. 
+This method uses 4 steps to find the basic reproduction number of a system.
+1) Define the infected subsystem, i.e. all equations that include compartments where individuals can get infected. 
+2) Linearize the subsystem in the disease free equilibrium. 
+3) Find the next generation matrix (NGM) with large domain ($K_L$) by writing the linear system as: $\dot{x} = (T + \Sigma) x$, here $x$ is a vector containing all states where individuals can get infected, $T$ contains all terms corresponding to transmission and $\Sigma$ all terms corresponding to duration of stay in a compartment. Then: $NGM = -T \Sigma^{-1}. $
+4) The reproduction number is now the dominant eigenvalue of the NGM. 
+
+\subsection*{Derivation}
+
+The infected subsystem is the following: 
+
+\begin{gather*}
+    \dot{E}_i = \frac{1}{N} \sum_{j = 1}^n C_{ij}(\beta_A A_j + \beta_I I_j + \beta_p P_j) S_i - \delta_I E_i \\
+    \dot{P}_i = \delta_I E_i - \delta_p P_i \\
+    \dot{A}_i = \sigma_i \delta_p P_i - \gamma_A A_i \\
+    \dot{I}_i = (1-\sigma_i) \delta_p P_i - (\gamma_{I_i} + \alpha_{I_i} + \eta q) P_i   
+\end{gather*}
+
+\\
+\noindent
+After linearizing we can write it in the form of $\dot{x} = (T + \Sigma) x$, this gives us:
+
+\begin{gather}
+ T =
+  \begin{bmatrix}
+   0 & \frac{1}{N} \sum_{j} C_{ij}\beta_p & 
+   \frac{1}{N} \sum_{j} C_{ij}\beta_A &
+   \frac{1}{N} \sum_{j} C_{ij}\beta_I \\
+   0 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 0 
+   \end{bmatrix}
+\end{gather}
+
+\begin{gather}
+ \Sigma =
+  \begin{bmatrix}
+   - \delta_i & 0 & 0 & 0 \\
+   0 & -\delta_p & 0 & 0 \\
+   0 & \sigma_i \delta_p & -\gamma_A & 0 \\
+   0 & (1-\sigma_i) \delta_p & 0 & -(\gamma_{I_i} + \alpha_{I_i} + \eta q) 
+   \end{bmatrix}
+\end{gather}
+
+Now we can find the inverse of $\Sigma$: 
+
+\begin{gather}
+ \Sigma^{-1} =
+  \begin{bmatrix}
+   - \frac{1}{\delta_i} & 0 & 0 & 0 \\
+   -\frac{1}{\delta_p} & -\frac{1}{\delta_p} & 0 & 0 \\
+   -\frac{\sigma_i}{\gamma_A} & -\frac{\sigma_i}{\gamma_A} & -\frac{1}{\gamma_A} & 0 \\
+   -\frac{(1-\sigma_i)}{(\gamma_{I_i} + \alpha_{I_i} + \eta q)} & -\frac{(1-\sigma_i)}{(\gamma_{I_i} + \alpha_{I_i} + \eta q)} & 0 & -\frac{1}{(\gamma_{I_i} + \alpha_{I_i} + \eta q)} 
+   \end{bmatrix}
+\end{gather}
+
+The NGM with large domain can now be found by $K_L = - T \Sigma^{-1}$, however, as we know that each individual that gets infected first will go to the $E$ compartment we can instead calculate the NGM with small domain that only consists of the $E$ compartment.
+We do this by removing from $T$ the rows that correspond to the other compartments and from $\Sigma^{-1}$ the columns. 
+We then find: 
+
+\begin{gather}
+R0 = 
+   \frac{1}{\delta_p} \frac{1}{N} \sum_{j} C_{ij}\beta_p + \frac{\sigma_i}{\gamma_A}    \frac{1}{N} \sum_{j} C_{ij}\beta_A + \frac{(1-\sigma_i)}{(\gamma_{I_i} + \alpha_{I_i} + \eta q)} \frac{1}{N} \sum_{j} C_{ij}\beta_I.  
+\end{gather}
+
+\subsection*{Generalization}
+
+This method can be generalized for a structured population by including all subpopulations in the matrix notation. For instance for four different age categories, we would obtain a NGM with small domain of 4x4, as an individual can end up in one of those stages after getting infected. Equations would then be the same for each compartment with specified C values. 
+
+\end{document}

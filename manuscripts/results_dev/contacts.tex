@@ -1,0 +1,227 @@
+\documentclass{article}
+
+%\usepackage{amsmath}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{graphicx}
+%\graphicspath{{fig/}}
+
+
+\title{Contact matrix for camps}
+\author{Req 550 Syria Team}
+
+\begin{document}
+
+\maketitle 
+
+\section{Contact estimates}
+
+Based on Chamsy's slide, the population distribution in each zone follows Table
+\ref{tab:pop_distro}
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+        & Orange        & Green \\ 
+\hline
+Young   & $\frac{50}{85}$ & 0 \\ 
+\hline
+Adult   & $\frac{35}{85}$ & $\frac{2}{3}$ \\ 
+\hline
+Elderly & 0               & $\frac{1}{3}$  \\ 
+\hline
+\end{tabular}
+\caption{Fractions of the population in each age group}
+\label{tab:pop_distro}
+\end{center}
+\end{table}
+
+Note that age-groups in Chamsey's estimates differ slightly from our age
+groups, therefore some of the fractions need to be adjusted.
+
+Based on Chamsey's estimates (Slack), Table \ref{tab:contacts} summarises the
+number of contacts per day for each age group.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ |c|c| } 
+ \hline
+Age group & Contacts/day \\ 
+\hline
+Young     & 20 \\ 
+\hline
+Adult     & 10 \\ 
+\hline
+Elderly   & 10 \\ 
+\hline
+\end{tabular}
+\caption{Average number of contacts per day for an individual in a given age
+group.}
+\label{tab:contacts}
+\end{center}
+\end{table}
+
+\section{Contacts (perfect scenario)}
+Since we lack detailed information on the contact structure, we assume contacts
+for each age group are spread according to the population fractions. In the
+perfect scenario (no infections happening in the neutral zone), Table
+\ref{tab:contact_groups} shows the contacts between groups, per individual.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c| } 
+ \hline
+               & O/Y & O/A & O/E & G/Y & G/A & G/E \\ 
+\hline
+Orange/Young   & 11.76        & 8.24         & 0              & 0           & 0           & 0 \\ 
+\hline
+Orange/Adult   & 5.88         & 4.12         & 0              & 0           & 0           & 0 \\ 
+\hline
+Orange/Elderly & 0            & 0            & 0              & 0           & 0           & 0 \\ 
+\hline
+Green/Young    & 0            & 0            & 0              & 0           & 0           & 0 \\ 
+\hline
+Green/Adult    & 0            & 0            & 0              & 0           & 6.67        & 3.33 \\ 
+\hline
+Green/Elderly  & 0            & 0            & 0              & 0           & 6.67        & 3.33 \\ 
+\hline
+\end{tabular}
+\caption{Contacts / day / individual, between groups.}
+\label{tab:contact_groups}
+\end{center}
+\end{table}
+
+\section{Contacts between zones}
+
+In the proposed scenario, there is no direct contact between orange and green
+zones. All the contacts happen through the neutral zone, that should have a
+reduced probability of infection due to the distancing measures and the
+personal protection equipment.
+
+A conservative estimate for the interzonal contacts is the following. Assume
+that half of the carers in the green zone (about 5\% of the green adult
+population) will have daily contacts with 3 orange adults in the neutral zone,
+to fulfill their caring duties (get products, discuss issues, etc).
+Furthermore, assume that about 10\% of the green population will make use of
+the neutral zone daily, have 3 contacts there with orange adults. Finally,
+assume that effective (infectious) contacts in the neutral zone are only a fraction $\alpha$ of the
+actual contacts. The direct interpretation of $\alpha$ is that only
+$100\alpha\%$ of the meetings in the neutral zone include an actual contact,
+but note that $\alpha$ depends in a non-linear manner with the
+actual probability of infection. On the other hand, we assume that each person
+of the green zone using the neutral zone will meet with three individuals of
+the orange zone, distributed according to the fraction populations.
+
+With this assumptions, we can update Table \ref{tab:contact_groups} to include
+the interzonal contacts. Table \ref{tab:interzonal} contains the average
+contacts per day, individual.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c| } 
+ \hline
+               & O/Y & O/A & O/E & G/Y & G/A & G/E \\ 
+\hline
+Orange/Young   & 11.76          & 8.24            & 0              & 0           & $0.0208\alpha$   & $0.01038\alpha$ \\ 
+\hline
+Orange/Adult   & 5.88           & 4.12            & 0              & 0           & $ 0.01501\alpha$ & $0.00727\alpha$ \\ 
+\hline
+Orange/Elderly & 0              & 0               & 0              & 0           & 0                & 0 \\ 
+\hline
+Green/Young    & 0              & 0               & 0              & 0           & 0                & 0 \\ 
+\hline
+Green/Adult    & $0.1176\alpha$ & $0.232\alpha$   & 0              & 0           & 6.67             & 3.33 \\ 
+\hline
+Green/Elderly  & $0.0588\alpha$ & $0.0412\alpha$  & 0              & 0           & 6.67             & 3.33 \\ 
+\hline
+\end{tabular}
+\caption{Contacts / day / individual, between groups, including assumptions on
+the usage of neutral zone.}
+\label{tab:interzonal}
+\end{center}
+\end{table}
+
+\section{How to use this information}
+
+For each class of individuals X, from the expression for $R_0$ we will have an expression of
+the form (with more terms!)
+\[
+    \beta_{Y_1} [\ldots] + \beta_{Y_2} [\ldots].
+\]
+Here, $\beta_Y$ is defined as $\kappa_{XY}\log(1-c)$, where $\kappa_{XY}$ is
+the number of contacts per individual, per unit time (the values in the table)
+from class $X$ with individuals of class $Y$. $c$ is the probability of
+becoming infected in a contact. Assuming that all contacts are comparable, we can take the common factor 
+$\log(1-c)$ and factorize the expression as
+\[
+    \log(1-c) \left( \kappa_{XY_1} [\ldots]+ \kappa_{XY_2} [\ldots] \right).
+\]
+Now, $\kappa$'s are known from Table \ref{tab:interzonal}, and with the
+assumptions on $R_0$ we will be able to find $\log(1-c)$. For example,
+$\kappa_{O/A,O/Y} = 5.88$.
+
+\section{External contacts}
+Using Chamsey's estimates, and denoting by $\iota_a,\iota_c$ the fraction of
+infected individuals in the agricultural environment and the city environment,
+and by $n_a,n_c$ the average number of external contacts of an orange adult working on
+agriculture, or working in the city, we obtain that the external force of
+infection for orange adults is
+\[
+0.0412 n_c \iota_c + 0.137 n_a \iota_a.
+\]
+We can assume that $n_c > n_a$ (more contacts in an urban environment).
+
+\section{Null model (well-mixed)}
+
+From Chamseys original slide, the overall distribution of the population is
+represented in Table \ref{tab:pop_total}.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ |c|c| } 
+ \hline
+          & Population fraction\\ 
+\hline
+Young     & 0.5 \\ 
+\hline
+Adult     & 0.45 \\ 
+\hline
+Elderly   & 0.05 \\ 
+\hline
+\end{tabular}
+\caption{Fractions of the population in each age group, in a well-mixed
+scenario.}
+\label{tab:pop_distro}
+\end{center}
+\end{table}
+
+Using the assumption that contacts are distributed across the age groups
+according to the population, we get the contacts per day/person in Table
+\ref{tab:contact_wellmixed}.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+          & Young & Adult & Elderly \\ 
+\hline
+Young     & 10    & 9     & 1       \\ 
+\hline
+Adult     &  5    & 4.5   & 0.5     \\ 
+\hline
+Elderly   &  5    & 4.5   & 0.5      \\ 
+\hline
+\end{tabular}
+\caption{Contacts per day/person between age groups.}
+\label{tab:contact_wellmixed}
+\end{center}
+\end{table}
+
+\section{Spreadsheet}
+
+The spreadsheet (contact\_matrix.ods) computes the previous tables. The tabs
+"All contacts", "Pop. distribution" and "Interzonal" contain the
+assumptions/estimates for overall contacts in each age group, population
+distributions by age and assumptions on the usage of the neutral zone.
+
+\end{document}

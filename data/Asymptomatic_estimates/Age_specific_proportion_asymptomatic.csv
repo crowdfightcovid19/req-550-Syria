@@ -1,0 +1,11 @@
+﻿Age_group,Prop_asymptomatic,Study
+0-20,0.233,Diamond_Princess
+21-50,0.071,Diamond_Princess
+0-50,0.081,Diamond_Princess
+51+,0.198,Diamond_Princess
+All,0.179,Diamond_Princess
+0-20,0.333,Vo_Italy
+21-50,0.357,Vo_Italy
+0-50,0.353,Vo_Italy
+51+,0.333,Vo_Italy
+All,0.338,Vo_Italy

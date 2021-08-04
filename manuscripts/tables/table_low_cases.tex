@@ -1,0 +1,13 @@
+\documentclass{standalone}
+
+\usepackage{csvsimple}
+
+\csvstyle{LowTableStyle}{tabular=|l|c|c|c|,
+table head=\hline Intervention& $<$20 cases &Total &\% of total \\\hline\hline,
+late after line=\\\hline,
+head to column names}
+
+\begin{document}
+    \csvreader[LowTableStyle]{../../data/real_models/results_post_processing/table_combined_low_total_S_fix.csv}{}% use head of csv as column names
+    {\csvcoli&\csvcolii&\csvcoliii&\csvcoliv}
+\end{document}

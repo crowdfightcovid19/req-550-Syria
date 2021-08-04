@@ -1,0 +1,1003 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{xcolor}
+
+
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\add}[1]{\textcolor{red}{#1}}
+\newcommand{\oran}{\mathrm{o}}
+\newcommand{\g}{\mathrm{g}}
+\newcommand{\X}{\mathrm{X}}
+\newcommand{\Y}{\mathrm{Y}}
+
+\newcommand{\sh}{\mathrm{sh}}
+\newcommand{\nullm}{\mathrm{null}}
+\newcommand{\intv}{\mathrm{intv}}
+\newcommand{\family}{\mathrm{fam}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Analytical results
+\end_layout
+
+\begin_layout Section*
+Model
+\end_layout
+
+\begin_layout Standard
+We consider a model with the following ODEs:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\dot{S}_{i}=-\lambda_{i}S_{i}\\
+\dot{E}_{i}=\lambda_{i}S_{i}-\delta_{E}E_{i}\\
+\dot{P}_{i}=\delta_{E}E_{i}-\delta_{p}P_{i}\\
+\dot{A}_{i}=(1-f)\delta_{p}P_{i}-\gamma_{A}A_{i}\\
+\dot{I}_{i}=f\delta_{p}P_{i}-((1-g_{i}-h_{i})\gamma_{I}+h_{i}\eta+g_{i}\alpha)I_{i}\\
+\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{H}H_{i}\\
+\dot{(R/D)_{i}}=\gamma_{H}H_{i}\\
+\dot{R}_{i}=\gamma_{A}A_{i}+(1-g_{i}-h_{i})\gamma_{I}I_{i}\\
+\dot{D_{i}}=g_{i}\alpha I_{i}
+\end{gather}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{gather}
+\lambda_{i}=\sum_{j=1}^{n}\beta_{ij}\frac{P_{j}+A_{j}+I_{j}+H_{j}}{N_{j}}\label{eq:lambda-1}
+\end{gather}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $\beta_{ij}=\tau C_{ij}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau$
+\end_inset
+
+ being the probability of infection for a contact with an infected person,
+ and 
+\begin_inset Formula $C_{ij}$
+\end_inset
+
+ is the average number of contacts of an individual of class 
+\begin_inset Formula $i$
+\end_inset
+
+ with an individual of class 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ In the following, to simplify the notation we define 
+\begin_inset Formula $\kappa_{i}=((1-g_{i}-h_{i})\gamma_{I}+h_{i}\eta+g_{i}\alpha)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Derivation of R0
+\end_layout
+
+\begin_layout Subsection*
+Reference and general idea
+\end_layout
+
+\begin_layout Standard
+The derivation of R0 for a SIR type model following description of 'Mathematical
+ Tools for Understanding Infectious Disease Dynamics' written by Odo Diekmann,
+ Hans Heesterbeek and Tom Britton.
+ See chapter 7, section 2 'Next-generation matrix for compartmental systems'.
+ We use 4 steps to find the basic reproduction number of a system.
+ 1) Define the infected subsystem, i.e.
+ all equations that include compartments where individuals can get infected.
+ 2) Linearize the subsystem in the disease free equilibrium.
+ 3) Find the next generation matrix (NGM) with large domain (
+\begin_inset Formula $K_{L}$
+\end_inset
+
+) by writing the linear system as: 
+\begin_inset Formula $\bs{\dot{x}}=(\bs{T}+\bs{\Sigma})\bs{x}$
+\end_inset
+
+, here 
+\begin_inset Formula $\bs{x}$
+\end_inset
+
+ is a vector containing all states where individuals can get infected, 
+\begin_inset Formula $\bs{T}$
+\end_inset
+
+ contains all terms corresponding to transmission and 
+\begin_inset Formula $\bs{\Sigma}$
+\end_inset
+
+ all terms corresponding to transitions between compartments.
+ Then: 
+\begin_inset Formula $\bs{K}=-\bs{T}\bs{\Sigma}^{-1}.$
+\end_inset
+
+ 4) The reproduction number is now the dominant eigenvalue of the NGM.
+ We also reference the description of R0 in metapopulations in Philipps
+ S, Rossi D.
+ Mathematical Models of Infectious Diseases: Two-Strain Infections in Metapopula
+tions, and the methodology for calculating R0 used by the authors in Gatto
+ M, Bertuzzo E, Mari L, Miccoli S, Carraro L, Casagrandi R, et al.
+ Spread and dynamics of the COVID-19 epidemic in Italy: Effects of emergency
+ containment measures.
+ PNAS.
+ 2020 May 12;117(19):10484–91.
+\end_layout
+
+\begin_layout Subsection*
+Infected subsystem
+\end_layout
+
+\begin_layout Standard
+The infected subsystem is the following: 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{gather}
+\dot{E}_{i}=\lambda_{i}S_{i}-\delta_{E}E_{i}\\
+\dot{P}_{i}=\delta_{E}E_{i}-\delta_{p}P_{i}\\
+\dot{A}_{i}=(1-f)\delta_{p}P_{i}-\gamma_{A}A_{i}\\
+\dot{I}_{i}=f\delta_{p}P_{i}-\kappa_{i}I_{i}\\
+\dot{H}_{i}=h_{i}\eta I_{i}-\gamma_{H}H_{i}
+\end{gather}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Parametrization of the contact matrix
+\end_layout
+
+\begin_layout Standard
+We estimated the average number of contacts of individuals of class 
+\begin_inset Formula $i$
+\end_inset
+
+ in the camps, 
+\begin_inset Formula $\bar{c}_{i}$
+\end_inset
+
+, and we parametrized the contact matrix assuming that, in a well-mixed
+ population, these contacts will be distributed among classes relative to
+ the fraction of individuals within each class, i.e.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{ij}^{0}=\bar{c}_{i}^{0}N_{j}/N,
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $N$
+\end_inset
+
+ the total population size.
+ A well-mixed population will be considered the null model, and parameters
+ derived under the null model assumptions are indexed with the superscript
+ 
+\begin_inset Formula $0$
+\end_inset
+
+, e.g.
+ the null contact matrix is 
+\begin_inset Formula $C_{ij}^{0}$
+\end_inset
+
+.
+ The type of interventions that we consider, aim to reduce either the average
+ number of contacts a class 
+\begin_inset Formula $i$
+\end_inset
+
+ (e.g.
+ self-isolation) or the accessibility of class 
+\begin_inset Formula $i$
+\end_inset
+
+ to class 
+\begin_inset Formula $j$
+\end_inset
+
+ (e.g.
+ shielding strategies).
+ We model the first type of intervention introducing the parameter 
+\begin_inset Formula $\epsilon_{ij}$
+\end_inset
+
+, representing the fraction of the average number of contacts observed in
+ the null model that prevail after the intervention: 
+\begin_inset Formula $\bar{c}_{i}=\epsilon_{ij}\bar{c}_{i}^{0}$
+\end_inset
+
+.
+ Similarly, we model the second type of intervention with the matrix 
+\begin_inset Formula $m_{ij}$
+\end_inset
+
+, representing the fraction of population 
+\begin_inset Formula $j$
+\end_inset
+
+ visible to population 
+\begin_inset Formula $i$
+\end_inset
+
+ after the intervention.
+ The contact matrix resulting from management strategies can therefore be
+ written with respect to the null model as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{ij}=\epsilon_{ij}m_{ij}\bar{c}_{i}^{0}N_{j}/N=\epsilon_{ij}m_{ij}C_{ij}^{0}=M_{ij}C_{ij}^{0},
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the matrix 
+\begin_inset Formula $M_{ij}$
+\end_inset
+
+ will be called the managament matrix.
+ Given this parameterization, we substitute in the expression for lambda
+ (Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambda"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) to obtain for a model including management strategies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\epsilon_{ij}\bar{c}_{i}^{0}m_{ij}\left(P_{j}+A_{j}+I_{j}+H_{j}\right)\label{eq:lambda_simplified}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Estimation of the Next Generation Matrix
+\end_layout
+
+\begin_layout Standard
+We start considering the subsystem containing the infectious population
+ and, to facilitate notation, let us consider the following ordering of
+ the variables in the vector 
+\begin_inset Formula $x=(E_{1},...,E_{M},P_{1},...,P_{M},A_{1},...,A_{M},I_{1},...,I_{M},H_{1},...,H_{M})$
+\end_inset
+
+, with 
+\begin_inset Formula $M$
+\end_inset
+
+ the number of population classes.
+ We are interested in the parametrization of the null model, which will
+ serve as a baseline to estimate the parameter 
+\begin_inset Formula $\tau$
+\end_inset
+
+, which is unknown, and that does not change when interventions are introduced.
+ For the null model, Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lambda_simplified"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{i}=\frac{\tau}{N}\sum_{j=1}^{n}\bar{c}_{i}^{0}\left(P_{j}+A_{j}+I_{j}+H_{j}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Following this notation, the linearized system can be written in the form
+ 
+\begin_inset Formula $\bs{\dot{x}}=(\bs{T}+\bs{\Sigma})\bs{x}$
+\end_inset
+
+, where:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\bs{T}=\tau\begin{bmatrix}\bs{0} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta} & \bs{\Theta}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \bs{0} & \bs{0}
+\end{bmatrix}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is the transmission matrix, with 
+\begin_inset Formula $\bs{\Theta}=\mathrm{diag}(p_{i}\bar{c}_{i}^{0})\bs{\bs{U}}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{i}=N_{i}/N$
+\end_inset
+
+, and 
+\begin_inset Formula $\bs{U}$
+\end_inset
+
+ being the all-ones matrix of size 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ The transition matrix is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\bs{\Sigma}=\begin{bmatrix}-\delta_{E}\bs{I} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+\delta_{E}\bs{I} & -\delta_{p}\bs{I} & \bs{0} & \bs{0} & \bs{0}\\
+\bs{0} & (1-f)\delta_{p}\bs{I} & -\gamma_{A}\bs{I} & \bs{0} & \bs{0}\\
+\bs{0} & f\delta_{p}\bs{I} & \bs{0} & -\mathrm{diag}(\kappa_{i})\bs{I} & \bs{0}\\
+\bs{0} & \bs{0} & \bs{0} & \eta\mathrm{diag}(h_{i})\bs{I} & -\gamma_{H}\bs{I}
+\end{bmatrix}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\bs{I}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bs{0}$
+\end_inset
+
+ are the identity and null matrices of size 
+\begin_inset Formula $M$
+\end_inset
+
+, and 
+\begin_inset Formula $\kappa_{i}=((1-g_{i}-h_{i})\gamma_{I}+h_{i}\eta+g_{i}\alpha)$
+\end_inset
+
+.
+ We next compute the inverse of the transition matrix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\bs{\Sigma^{-1}}=\begin{bmatrix}-\frac{1}{\delta_{E}}\bs{I} & \bs{0} & \bs{0} & \bs{0} & \bs{0}\\
+-\frac{1}{\delta_{p}}\bs{I} & -\frac{1}{\delta_{p}}\bs{I} & \bs{0} & \bs{0} & \bs{0}\\
+-\frac{(1-f)}{\gamma_{A}}\bs{I} & -\frac{(1-f)}{\gamma_{A}}\bs{I} & -\frac{1}{\gamma_{A}}\bs{I} & \bs{0} & \bs{0}\\
+-f\mathrm{diag}(\frac{1}{\kappa_{i}})\bs{I} & -f\mathrm{diag}(\frac{1}{\kappa_{i}})\bs{I} & \bs{0} & -\mathrm{diag}(\frac{1}{\kappa_{i}})\bs{I} & \bs{0}\\
+-\frac{f\eta}{\gamma_{H}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & -\frac{f\eta}{\gamma_{H}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & \bs{0} & -\frac{\eta}{\gamma_{H}}\mathrm{diag}(\frac{h_{i}}{\kappa_{i}})\bs{I} & -\frac{1}{\gamma_{H}}\bs{I}
+\end{bmatrix}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The NGM with large domain can now be found by 
+\begin_inset Formula $\bs{K_{\mathrm{L}}}=-\bs{T}\bs{\Sigma}^{-1}$
+\end_inset
+
+, however, as we know that each individual that gets infected first will
+ go to the 
+\begin_inset Formula $E$
+\end_inset
+
+ compartment we can instead calculate the NGM with small domain, 
+\begin_inset Formula ${\bf {K_{\mathrm{S}}}}$
+\end_inset
+
+ that only consists of the 
+\begin_inset Formula $E$
+\end_inset
+
+ compartment 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+add{
+\end_layout
+
+\end_inset
+
+[Heffernan]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+ We do this by removing from 
+\begin_inset Formula $T$
+\end_inset
+
+ the rows that correspond to the other compartments and from 
+\begin_inset Formula $\Sigma^{-1}$
+\end_inset
+
+ the columns 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+add{
+\end_layout
+
+\end_inset
+
+APG: This could be more elegantly explained defining an epsilon matrix
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ We then find:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather*}
+\bs{K_{\mathrm{S}}}=\tau\left[\left(\frac{1}{\delta_{P}}+\frac{(1-f)}{\gamma_{A}}\right)\bs{\Theta}+\mathrm{diag}\left(\frac{f}{\kappa_{i}}(1+\frac{h_{i}\eta}{\gamma_{H}})\right)\bs{\Theta}\right].
+\end{gather*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Estimation of 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The reproduction number can be obtained from the maximum of the absolute
+ value of all eigenvalues of 
+\begin_inset Formula $\bs{K_{\mathrm{S}}}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $R_{0}=|\lambda_{1}|$
+\end_inset
+
+.
+ In our model all parameters are known except the probability of infection
+ per contact, 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+ We estimate the probability distribution of 
+\begin_inset Formula $\tau$
+\end_inset
+
+ generating realizations of 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{K_{\mathrm{S}}}=K_{\mathrm{S}}/\tau$
+\end_inset
+
+ assuming a well mixed population as null model and solving for 
+\begin_inset Formula $\tau$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tau=\frac{R_{0}}{|\tilde{\lambda}_{1}^{0}|},
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $|\tilde{\lambda}_{1}^{0}|$
+\end_inset
+
+ is the maximum of the absolute values of all eigenvalues of 
+\begin_inset Formula $\tilde{K_{\mathrm{S}}}$
+\end_inset
+
+, when the contact matrix is estimated under the null model, i.e.
+ 
+\begin_inset Formula $\bar{c}_{i}=\bar{c}_{i}^{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Parametrization of the interventions
+\end_layout
+
+\begin_layout Subsubsection*
+Shielding a population
+\end_layout
+
+\begin_layout Standard
+In the following, we analyse the effect of shielding certain fraction 
+\begin_inset Formula $f_{\mathrm{S}}$
+\end_inset
+
+ of the population, mostly vulnerable.
+ In practice, this is made dividing the camp in two areas, a 
+\begin_inset Quotes eld
+\end_inset
+
+green
+\begin_inset Quotes erd
+\end_inset
+
+ zone (denoted 
+\begin_inset Formula $\g$
+\end_inset
+
+) for vulnerable population and an 
+\begin_inset Quotes eld
+\end_inset
+
+orange
+\begin_inset Quotes erd
+\end_inset
+
+ zone (
+\begin_inset Formula $\oran$
+\end_inset
+
+) for the remaining population.
+ These two populations could eventually interact via a 
+\begin_inset Quotes eld
+\end_inset
+
+neutral
+\begin_inset Quotes erd
+\end_inset
+
+ zone under controlled conditions.
+ In particular, we will consider that members of both populations will meet
+ maintaining 2m of distance and using contention measures such as masks,
+ reducing the infectivity an 80% [Ref], i.e.
+ 
+\begin_inset Formula $\hat{\tau}=0.2\tau$
+\end_inset
+
+.
+ In addition, only a limited number of family members 
+\begin_inset Formula $c_{\family}$
+\end_inset
+
+ will be allowed to interact per each person shielded in the green area
+ per day.
+ Finally, people entering the neutral zone will be have their temperature
+ taken, and hence symptomatic patients will be excluded from the zone, reducing
+ the transmission probability.
+\end_layout
+
+\begin_layout Standard
+The model implies a reduction in the number of contacts between classes
+ of the green zone and the orange zone, but not in the mean number of contacts
+ that each individual has per day, therefore 
+\begin_inset Formula $\bar{c}_{i}$
+\end_inset
+
+ does not vary.
+ We model this redistribution of the contacts with the parameter 
+\begin_inset Formula $\epsilon_{ij}$
+\end_inset
+
+ as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\epsilon_{ij} & = & \rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in different areas})\\
+\epsilon_{ij} & = & 1-\rho c_{\family}/\bar{c}_{i}\quad(i,j\textrm{ in same area}).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we assume that the relatives from the orange zone visiting the neutral
+ zone are always different, 
+\begin_inset Formula $f_{\oran,\family}=c_{\family}\frac{N_{\g}}{N_{\oran}}$
+\end_inset
+
+ will be the fraction of the orange population susceptible of visiting the
+ neutral zone and we define 
+\begin_inset Formula $\rho$
+\end_inset
+
+ as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho=\begin{cases}
+1 & \textrm{if }i\in\g\\
+f_{\oran,\family} & \textrm{if }i\in\oran
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+We could saturate this fraction making it equal to one when every member
+ eventually visits the neutral zone:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\rho=\begin{cases}
+1 & \textrm{if }i\in\g\\
+f_{\o,\family}\left(1-\textrm{H}(f_{\oran,\family}-1)\frac{f_{\oran,\family}-1}{f_{\oran,\family}}\right) & \textrm{if }i\in\oran
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with the Heaviside function 
+\begin_inset Formula $\textrm{H}(f_{\oran,\family}-1)=1$
+\end_inset
+
+ if 
+\begin_inset Formula $f_{\oran,\family}\geq1$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The next step is to model the probability of interaction between a member
+ of the class 
+\begin_inset Formula $i$
+\end_inset
+
+ and the class 
+\begin_inset Formula $j$
+\end_inset
+
+, depending on whether they belong to the same or a different area.
+ Since in the intervention classes are constrained to interact in the demarcated
+ areas, once one individual is within a given area she will observe an increased
+ likelihood of finding members of the classes permitted to visit that area
+ with respect to the null model.
+ In particular, the proportion 
+\begin_inset Formula $N_{i}/N$
+\end_inset
+
+ of individuals for class 
+\begin_inset Formula $i$
+\end_inset
+
+ in the null model will become 
+\begin_inset Formula $N_{i}/N_{\X}$
+\end_inset
+
+ with 
+\begin_inset Formula $N_{\X}$
+\end_inset
+
+ the total number of individuals in the area 
+\begin_inset Formula $X=\{\oran,\g\}$
+\end_inset
+
+.
+ This leads to the following factors for 
+\begin_inset Formula $m_{ij}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\X}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\X}}\quad(i,j\textrm{ in same area}\ X)\\
+m_{ij} & = & \nicefrac{\left(\frac{N_{i}}{N_{\Y}}\right)}{\left(\frac{N}{N_{i}}\right)}=\frac{N}{N_{\Y}}\quad(i\in X\textrm{ and}\ j\in Y)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Maximum number of family members permitted
+\end_layout
+
+\begin_layout Standard
+[APG, the following should be reviewed, it is unfinished] We considered
+ until now that people from the orange area visiting the neutral zone will
+ be always different within the same week.
+ An interesting question for management is how to keep the fraction of the
+ orange population using the neutral zone as small as possible to minimize
+ the spread of the infection.
+ This relies on the assumption that, since symptomatic members are excluded
+ from the neutral zone, increasing this fraction increases the chances for
+ assymptomatic or presymptomatic individuals to visit the neutral zone.
+ As we will see immediately, this observation could be used to improve the
+ management strategies.
+\end_layout
+
+\begin_layout Standard
+To illustrate this point we note that the fraction of the orange population
+ getting in contact with the green population can be estimated through the
+ quantity 
+\begin_inset Formula $0.2\epsilon_{ij}m_{ij}$
+\end_inset
+
+ (
+\begin_inset Formula $i\in\oran$
+\end_inset
+
+), which we aim to keep lower than one.
+ Expanding this expression we obtain
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+c_{\family}<5\sqrt{\bar{c}_{i}\frac{N_{\oran}}{N}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with a value of 
+\begin_inset Formula $\approx17$
+\end_inset
+
+ individuals per day for the adult class and assuming 20% of the population
+ shielded.
+ Note that the estimation heavily relies on the efficiency of the protection
+ measures.
+\end_layout
+
+\begin_layout Subsubsection*
+The clan's dilemma
+\end_layout
+
+\begin_layout Standard
+In the previous section, we considered that the family members visiting
+ were always different.
+ However, if the population in the camps is structured in large families
+ (hereafter clans) it opens the question of whether it would be more beneficial
+ to keep all members of the same clan in the same area or in different areas.
+ If all members of the same clan live in the same zone, there would be little
+ need to interact with members of the other zone, hence reducing 
+\begin_inset Formula $c_{\family}$
+\end_inset
+
+.
+ However, since the capacity of the green zone is limited, shielding whole
+ clans may lead to leaving other clans completely outside of the green zone,
+ even if the strategy may be better to minimize the overall impact in the
+ population.
+ On the other hand, if clans are split, it increases the chances that the
+ same relatives visit the neutral zone several times.
+ Under the assumption that minimizing the number of different people would
+ reduce the probability of infection, this could also be a positive strategy.
+\end_layout
+
+\end_body
+\end_document
