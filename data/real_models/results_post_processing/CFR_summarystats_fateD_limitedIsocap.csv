@@ -1,0 +1,10 @@
+Model,variable,n,mean,sd
+"Experiment A, null, isocap0, FateD",CFR,500,0.12,0.047
+"Experiment A, shield 10 conts/week, isocap0, FateD",CFR,500,0.119,0.047
+"Experiment A, shield 2 conts/week, isocap0, FateD",CFR,500,0.12,0.047
+"Experiment B, null, isocap10, FateD",CFR,500,0.113,0.045
+"Experiment B, null, isocap25, FateD",CFR,500,0.112,0.045
+"Experiment B, shield 10 conts/week, isocap10, FateD",CFR,500,0.105,0.045
+"Experiment B, shield 10 conts/week, isocap25, FateD",CFR,500,0.1,0.044
+"Experiment B, shield 2 conts/week, isocap10, FateD",CFR,500,0.105,0.046
+"Experiment B, shield 2 conts/week, isocap25, FateD",CFR,500,0.1,0.045

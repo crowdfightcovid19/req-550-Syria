@@ -1,0 +1,10 @@
+"time" "age1.S" "age2_no_comorbid.S" "age2_comorbid.S" "age3_no_comorbid.S" "age3_comorbid.S" "age1.E" "age2_no_comorbid.E" "age2_comorbid.E" "age3_no_comorbid.E" "age3_comorbid.E" "age1.P" "age2_no_comorbid.P" "age2_comorbid.P" "age3_no_comorbid.P" "age3_comorbid.P" "age1.A" "age2_no_comorbid.A" "age2_comorbid.A" "age3_no_comorbid.A" "age3_comorbid.A" "age1.IR" "age2_no_comorbid.IR" "age2_comorbid.IR" "age3_no_comorbid.IR" "age3_comorbid.IR" "age1.IH" "age2_no_comorbid.IH" "age2_comorbid.IH" "age3_no_comorbid.IH" "age3_comorbid.IH" "age1.ID" "age2_no_comorbid.ID" "age2_comorbid.ID" "age3_no_comorbid.ID" "age3_comorbid.ID" "age1.R" "age2_no_comorbid.R" "age2_comorbid.R" "age3_no_comorbid.R" "age3_comorbid.R" "age1.H" "age2_no_comorbid.H" "age2_comorbid.H" "age3_no_comorbid.H" "age3_comorbid.H" "age1.D" "age2_no_comorbid.D" "age2_comorbid.D" "age3_no_comorbid.D" "age3_comorbid.D" "age1.I" "age2_no_comorbid.I" "age2_comorbid.I" "age3_no_comorbid.I" "age3_comorbid.I"
+0 814 941 125 44 75 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1.06389670720147 814 941 125 44 75 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1.20459006347263 814 940 125 44 75 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1.32468784354584 814 940 125 44 75 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+1.91873957066145 814 940 125 44 75 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+2.25270807294777 814 940 125 44 75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0
+13.7339462468432 814 940 125 44 75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+16.170516761768 814 940 125 44 75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+365 814 940 125 44 75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

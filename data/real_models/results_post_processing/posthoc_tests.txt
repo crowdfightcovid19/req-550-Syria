@@ -1,0 +1,79 @@
+Test if the difference between null model and safety interventions (10 and 2 contacts) are significantlt different.
+
+	Kruskal-Wallis rank sum test
+
+data:  FracFinalDeaths by contacts
+Kruskal-Wallis chi-squared = 150.93, df = 2, p-value < 2.2e-16
+
+There is a difference in the medians of the groups. We run a pairwise test.
+
+	Pairwise comparisons using Conover's-test for multiple	
+                         comparisons of independent samples 
+
+data:  FracFinalDeaths by contacts 
+
+                           null_model_mixed shield_cont10_age3_age2_20
+shield_cont10_age3_age2_20 <2e-16           -                         
+shield_cont2_age3_age2_20  <2e-16           0.096                     
+
+P value adjustment method: holm 
+Similar results using van Waerden.
+
+	Van der Waerden normal scores test
+
+data:  FracFinalDeaths by contacts
+Van der Waerden chi-squared = 163.65, df = 2, p-value < 2.2e-16
+
+
+	Pairwise comparisons using van der Waerden normal scores test for	
+               multiple comparisons of independent samples 
+
+data:  FracFinalDeaths by contacts 
+
+                           null_model_mixed shield_cont10_age3_age2_20
+shield_cont10_age3_age2_20 <2e-16           -                         
+shield_cont2_age3_age2_20  <2e-16           0.005                     
+
+P value adjustment method: holm 
+All differences between contact strategies are significant
+*********************************************
+Test if the difference in the fraction of deaths is significant for 24h vs. 12h in the Onset variable.
+
+	Kruskal-Wallis rank sum test
+
+data:  FracFinalDeaths by Onset
+Kruskal-Wallis chi-squared = 5095.1, df = 3, p-value < 2.2e-16
+
+The difference is significant. Posthoc...
+
+	Pairwise comparisons using Conover's-test for multiple	
+                         comparisons of independent samples 
+
+data:  FracFinalDeaths by Onset 
+
+        Onset0 Onset12 Onset24
+Onset12 <2e-16 -       -      
+Onset24 <2e-16 <2e-16  -      
+Onset48 <2e-16 0.0027  <2e-16 
+
+P value adjustment method: holm 
+All differences significant.
+van Waerden test to double check
+	Van der Waerden normal scores test
+
+data:  FracFinalDeaths by Onset
+Van der Waerden chi-squared = 4759.4, df = 3, p-value < 2.2e-16
+
+
+	Pairwise comparisons using van der Waerden normal scores test for	
+               multiple comparisons of independent samples 
+
+data:  FracFinalDeaths by Onset 
+
+        Onset0 Onset12 Onset24
+Onset12 <2e-16 -       -      
+Onset24 <2e-16 <2e-16  -      
+Onset48 <2e-16 0.092   <2e-16 
+
+P value adjustment method: holm 
+
