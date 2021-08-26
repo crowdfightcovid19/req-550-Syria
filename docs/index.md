@@ -12,7 +12,7 @@ Vaccines are scarce, testing capacity is limited, crowded living conditions make
 
 But we can't leave these communities on their own. It is imperative that we empower them to implement feasible, communnity-led non-pharmaceutical interventions based on clear scientific evidence. 
 
-We, an international team of scientists, designers, and humanitarians, through collaboration with local stakeholders have researched the best interventions and written up our findings in a ***[scientific paper](https://www.medrxiv.org/content/10.1101/2020.08.26.20181990v3)***, produced a ***[report for policymakers](/reports/COVID_19_SYRIA_Policy_Report_Pax_Syriana.pdf)*** outlining our recommendations, and put out a ***[press release](/reports/Syria_PressRelease.pdf)*** announcing the results of this collaboration.
+We, an international team of scientists, designers, and humanitarians, through collaboration with local stakeholders have researched the best interventions and written up our findings in a ***[scientific paper](hhttps://gh.bmj.com/content/6/8/e004656.full)***, and put out a ***[press release](/reports/Syria_PressRelease.pdf)*** announcing the results of this collaboration. A *** Policy Report *** is under preparation.
 
 
 ### We thank the following individuals for contributing to this project
@@ -31,7 +31,7 @@ We, an international team of scientists, designers, and humanitarians, through c
 
 #### Public dissemination
 
-* Megan Naidoo, University of Stellenbosch.
+* Megan Naidoo, public health specialist, South Africa.
 * Juan A. Garcia, French National Institute of Health and Medical Research.
 * Salma Amzil, designer, Canada.
 * Om Chabra, assistance edition, USA.

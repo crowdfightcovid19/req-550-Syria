@@ -4,6 +4,6 @@ title: Policy Report
 subtitle: -- August 2021 --
 ---
 
-### Click in the image below to download
-[![](/assets/img/cover_policyReport.jpg)](/report/COVID_19_SYRIA_Policy_Report_Pax_Syriana.pdf)
+### In preparation
+
 
